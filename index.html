@@ -3,109 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>明日早盘策略 - 2026-06-11</title>
+    <title>明日早盘策略 - 2026-06-12</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            padding: 20px;
-            min-height: 100vh;
-            color: #e0e0e0;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: #1e1e2f;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-
+        body { font-family: 'Segoe UI','Microsoft YaHei',sans-serif; background: linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); padding: 20px; min-height: 100vh; color: #e0e0e0; }
+        .container { max-width: 1400px; margin: 0 auto; background: #1e1e2f; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden; }
+        .header { background: linear-gradient(135deg,#e94560 0%,#0f3460 100%); color: white; padding: 40px; text-align: center; }
         .header h1 { font-size: 36px; margin-bottom: 10px; }
         .header .subtitle { font-size: 18px; opacity: 0.9; }
-
-        .audit-bar {
-            background: #2d2d44;
-            padding: 15px 40px;
-            border-bottom: 1px solid #3d3d5c;
-            display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-            font-size: 14px;
-        }
-
+        .audit-bar { background: #2d2d44; padding: 15px 40px; border-bottom: 1px solid #3d3d5c; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 14px; }
         .audit-status { padding: 4px 12px; border-radius: 12px; font-weight: 600; font-size: 13px; }
         .audit-pass { background: #1a3a1a; color: #4ade80; }
         .audit-warn { background: #3a3a1a; color: #facc15; }
         .audit-fail { background: #3a1a1a; color: #f87171; }
-
-        .meta {
-            background: #252540;
-            padding: 20px 40px;
-            border-bottom: 2px solid #3d3d5c;
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
-        }
+        .meta { background: #252540; padding: 20px 40px; border-bottom: 2px solid #3d3d5c; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .meta-item { display: flex; align-items: center; gap: 10px; }
         .meta-item .label { color: #888; font-size: 14px; }
         .meta-item .value { font-weight: 600; font-size: 16px; }
-
-        .morning-plan {
-            background: linear-gradient(135deg, #1a3a2a 0%, #0f3460 100%);
-            margin: 30px 40px; padding: 30px; border-radius: 15px; border: 1px solid #4ade80;
-        }
+        .morning-plan { background: linear-gradient(135deg,#1a3a2a 0%,#0f3460 100%); margin: 30px 40px; padding: 30px; border-radius: 15px; border: 1px solid #4ade80; }
         .morning-plan h2 { font-size: 24px; color: #4ade80; margin-bottom: 20px; }
         .timeline { display: flex; gap: 15px; flex-wrap: wrap; }
-        .timeline-item {
-            flex: 1; min-width: 200px;
-            background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px;
-            border-left: 3px solid #4ade80;
-        }
+        .timeline-item { flex: 1; min-width: 200px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; border-left: 3px solid #4ade80; }
         .timeline-item .time { font-size: 20px; font-weight: 700; color: #4ade80; margin-bottom: 10px; }
-        .timeline-item .action { font-size: 14px; line-height: 1.6; }
-
-        .alert-banner {
-            background: linear-gradient(135deg, #3a1a1a 0%, #2d1a1a 100%);
-            margin: 0 40px 30px; padding: 20px 30px; border-radius: 12px;
-            border: 1px solid #f87171; color: #fca5a5;
-        }
-        .alert-banner h3 { font-size: 18px; color: #f87171; margin-bottom: 10px; }
-        .alert-banner ul { padding-left: 20px; font-size: 14px; line-height: 1.8; }
-
+        .timeline-item .action { font-size: 14px; line-height: 1.6; color: #bbb; }
         .strategy-section { padding: 30px 40px; }
-        .section-title {
-            font-size: 24px; color: #e0e0e0; margin-bottom: 25px; padding-bottom: 12px;
-            border-bottom: 2px solid #3d3d5c; display: flex; align-items: center; gap: 12px;
-        }
-
-        .stocks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 25px; margin-bottom: 40px;
-        }
-
-        .stock-card {
-            background: #252540; border-radius: 15px; padding: 25px;
-            border-left: 5px solid #4ade80; transition: all 0.3s ease;
-        }
+        .section-title { font-size: 24px; color: #e0e0e0; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 2px solid #3d3d5c; display: flex; align-items: center; gap: 12px; }
+        .stocks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .stock-card { background: #252540; border-radius: 15px; padding: 25px; border-left: 5px solid #4ade80; transition: all 0.3s ease; }
         .stock-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
         .stock-card.recommend { border-left-color: #4ade80; }
         .stock-card.warning { border-left-color: #facc15; }
         .stock-card.danger { border-left-color: #f87171; }
         .stock-card.rejected { border-left-color: #666; opacity: 0.6; }
-        .stock-card.observe { border-left-color: #60a5fa; }
-
         .stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .stock-name { font-size: 22px; font-weight: 700; color: #e0e0e0; }
         .stock-code { font-size: 14px; color: #888; margin-left: 10px; }
-
         .badge { padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 600; }
         .badge-buy { background: #4ade80; color: #000; }
         .badge-strong { background: #22c55e; color: #000; }
@@ -113,9 +45,7 @@
         .badge-daban { background: #e94560; color: white; }
         .badge-t0 { background: #0ea5e9; color: white; }
         .badge-reject { background: #666; color: #ccc; }
-        .badge-pause { background: #f87171; color: white; }
-        .badge-observe { background: #60a5fa; color: white; }
-
+        .badge-pause { background: #6b7280; color: white; }
         .stock-info { margin: 15px 0; }
         .info-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #333; font-size: 14px; }
         .info-row:last-child { border-bottom: none; }
@@ -123,54 +53,28 @@
         .info-value { font-weight: 600; }
         .info-value.up { color: #f87171; }
         .info-value.down { color: #4ade80; }
-
-        .tomorrow-action {
-            background: #1a2a3a; padding: 15px; border-radius: 10px;
-            margin-top: 15px; border: 1px dashed #3d5c7d;
-        }
+        .tomorrow-action { background: #1a2a3a; padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px dashed #3d5c7d; }
         .tomorrow-action .action-title { color: #60a5fa; font-weight: 700; margin-bottom: 8px; }
         .tomorrow-action .action-detail { font-size: 13px; line-height: 1.6; color: #bbb; }
-
-        .reason {
-            background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;
-            margin-top: 12px; font-size: 13px; line-height: 1.6; color: #bbb;
-        }
-
-        .score-breakdown {
-            background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;
-            margin-top: 10px; font-size: 12px;
-        }
-        .score-breakdown table { width: 100%; border-collapse: collapse; }
-        .score-breakdown td { padding: 3px 8px; border-bottom: 1px solid #2a2a3a; }
-        .score-breakdown td:last-child { text-align: right; font-weight: 600; }
-
-        .section-pause {
-            background: #252540; border-radius: 15px; padding: 30px;
-            text-align: center; border: 1px dashed #f87171;
-            margin-bottom: 40px;
-        }
-        .section-pause h3 { color: #f87171; font-size: 20px; margin-bottom: 10px; }
-        .section-pause p { color: #bbb; font-size: 14px; line-height: 1.6; }
-
-        .data-table {
-            width: 100%; border-collapse: collapse; margin: 15px 0;
-            background: #1e1e30; border-radius: 10px; overflow: hidden;
-        }
-        .data-table th {
-            background: #2d2d44; padding: 10px 15px; text-align: left;
-            font-size: 13px; color: #aaa; font-weight: 600;
-        }
-        .data-table td {
-            padding: 10px 15px; border-bottom: 1px solid #2d2d44; font-size: 13px;
-        }
-        .data-table tr:hover { background: rgba(255,255,255,0.03); }
-
-        .footer {
-            background: #151525; padding: 30px 40px; text-align: center;
-            color: #666; font-size: 14px; border-top: 2px solid #2d2d44;
-        }
+        .reason { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-top: 12px; font-size: 13px; line-height: 1.6; color: #bbb; }
+        .pause-box { background: #252535; padding: 20px; border-radius: 12px; text-align: center; color: #888; border: 1px dashed #444; margin-bottom: 20px; }
+        .pause-box .icon { font-size: 40px; margin-bottom: 10px; }
+        .score-bar { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+        .score-bar .bar-bg { flex: 1; height: 8px; background: #333; border-radius: 4px; overflow: hidden; }
+        .score-bar .bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+        .bar-green { background: #4ade80; }
+        .bar-yellow { background: #facc15; }
+        .bar-red { background: #f87171; }
+        .audit-section { padding: 20px 40px; background: #1a1a2e; border-bottom: 1px solid #333; }
+        .audit-section h3 { color: #60a5fa; margin-bottom: 15px; }
+        .audit-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .audit-table th, .audit-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #2d2d44; }
+        .audit-table th { color: #888; }
+        .audit-table .pass { color: #4ade80; }
+        .audit-table .warn { color: #facc15; }
+        .audit-table .fail { color: #f87171; }
+        .footer { background: #151525; padding: 30px 40px; text-align: center; color: #666; font-size: 14px; border-top: 2px solid #2d2d44; }
         .footer a { color: #60a5fa; text-decoration: none; }
-
         @media (max-width: 768px) {
             .header h1 { font-size: 24px; }
             .stocks-grid { grid-template-columns: 1fr; }
@@ -183,268 +87,156 @@
     <div class="container">
         <div class="header">
             <h1>🌅 明日早盘策略</h1>
-            <p class="subtitle">隔日超短 + 打板战法 + 日内T+0 | 2026-06-11 晚间发布 → 06-12 早盘执行</p>
+            <p class="subtitle">隔日超短 + 中短线波段 + 打板战法 + 日内T+0 | 2026-06-11 晚间发布 → 明日06-12执行</p>
         </div>
 
-        <!-- 数据核查报告条 -->
         <div class="audit-bar">
             <span>🔍 数据核查：</span>
-            <span class="audit-status audit-pass">✓ 3项通过</span>
-            <span class="audit-status audit-warn">⚠ 5项警告</span>
+            <span class="audit-status audit-pass">✓ 4项通过</span>
+            <span class="audit-status audit-warn">⚠ 2项警告</span>
             <span class="audit-status audit-fail">✗ 0项拒绝</span>
-            <span style="margin-left:auto; color:#888;">数据基准: 2026-06-11收盘 | 核查时间: 18:20</span>
+            <span style="margin-left:auto; color:#888;">数据基准: 06-11收盘 | 核查时间: 06-11 20:15</span>
         </div>
 
         <div class="meta">
             <div class="meta-item">
                 <span class="label">📊 赚钱效应：</span>
-                <span class="value" style="color: #f87171;">30.1%（弱）</span>
+                <span class="value" style="color: #f87171;">26.1%（弱 — 仓位≤25%）</span>
             </div>
             <div class="meta-item">
                 <span class="label">🔥 涨停/炸板：</span>
                 <span class="value">71家 / 炸29家（炸板率29%）</span>
             </div>
             <div class="meta-item">
-                <span class="label">💰 仓位系数：</span>
-                <span class="value" style="color: #facc15;">50%（减半）</span>
+                <span class="label">📉 跌停：</span>
+                <span class="value" style="color: #4ade80;">25家</span>
             </div>
             <div class="meta-item">
-                <span class="label">📅 推荐日期：</span>
-                <span class="value">06-11晚间 → 06-12早盘执行</span>
+                <span class="label">💰 仓位系数：</span>
+                <span class="value" style="color: #facc15;">25%（轻仓）</span>
             </div>
         </div>
 
-        <!-- ⚠️ 市场风险警告 -->
-        <div class="alert-banner">
-            <h3>⚠️ 市场弱势警告 — 策略全面收缩</h3>
-            <ul>
-                <li>赚钱效应仅<strong>30.1%</strong>（极弱区间），上一日曾达到高位的涨停股今日<strong>大面积回调</strong></li>
-                <li>12只分析标的中<strong>7只下跌</strong>（58%），天娱数科跌停-10%，双星新材-7.5%</li>
-                <li>仅有3只涨停标的延续强势，但均出现RSI超买/顶背离等过热信号</li>
-                <li>科创板688标的（有研粉材+18%、联瑞新材-1.4%）因5-20万资金量门槛不推荐</li>
-                <li>建议明日以<strong>观望为主</strong>，仅保留极轻仓位打板观察</li>
-            </ul>
+        <!-- 核查详情 -->
+        <div class="audit-section">
+            <h3>📋 数据核查报告</h3>
+            <table class="audit-table">
+                <tr><th>#</th><th>核查项</th><th>结果</th><th>详情</th></tr>
+                <tr><td>1</td><td>涨幅规则一致性</td><td class="pass">✓ 通过</td><td>隔日超短暂停，无违规；所有涨停股归入打板</td></tr>
+                <tr><td>2</td><td>涨停股归类正确</td><td class="pass">✓ 通过</td><td>金安国纪(+9.5%)正确归入打板，未混入隔日超短</td></tr>
+                <tr><td>3</td><td>跌停股排除</td><td class="pass">✓ 通过</td><td>天娱数科(-10.0%)、双星新材(-7.5%)已排除</td></tr>
+                <tr><td>4</td><td>数据时间戳</td><td class="pass">✓ 通过</td><td>StockSight数据源: 06-11收盘腾讯财经，时间戳一致</td></tr>
+                <tr><td>5</td><td>评分计算复核</td><td class="warn">⚠ 警告</td><td>金安国纪打板评分为35.2分（<60不达标），已剔除</td></tr>
+                <tr><td>6</td><td>RSI超买检查</td><td class="warn">⚠ 警告</td><td>金安国纪RSI≥87极度超买，若入选则降10分</td></tr>
+                <tr><td>7</td><td>炸板率核查</td><td class="pass">—</td><td>炸板率29% < 35%，打板策略不暂停</td></tr>
+            </table>
+            <p style="margin-top:12px; font-size:14px; color:#60a5fa;"><strong>核查结论：部分通过</strong> — 金安国纪打板评分不达标已剔除，仅厦门银行入选中短线波段</p>
         </div>
 
-        <!-- 明日早盘操作计划 -->
+        <!-- 明日操作时间线 -->
         <div class="morning-plan">
-            <h2>⏰ 明日早盘操作计划（06-12 周三）</h2>
+            <h2>⏰ 明日06-12早盘操作计划</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="time">09:15</div>
-                    <div class="action">
-                        <strong>集合竞价观察</strong><br>
-                        - 观察金安国纪是否高开<br>
-                        - 高开>5%：不追，等回调<br>
-                        - 低开<-3%：直接放弃打板
-                    </div>
+                    <div class="action"><strong>集合竞价观察</strong><br>- 查看厦门银行竞价高开/低开<br>- 高开>2%则等回踩再入<br>- 低开<-1%则观望不操作</div>
                 </div>
                 <div class="timeline-item">
                     <div class="time">09:30</div>
-                    <div class="action">
-                        <strong>开盘确认</strong><br>
-                        - 市场整体开盘情绪如何<br>
-                        - 昨日涨停股是否继续砸盘<br>
-                        - 涨停数是否>50家
-                    </div>
+                    <div class="action"><strong>开盘执行</strong><br>- 厦门银行若平开或微涨→小仓位介入<br>- 金额≤1万（总仓位≤25%）<br>- 若金安国纪继续涨停→可轻仓打板试探</div>
                 </div>
                 <div class="timeline-item">
                     <div class="time">10:00</div>
-                    <div class="action">
-                        <strong>打板窗口</strong><br>
-                        - 若金安国纪封板稳固+题材联动→轻仓试探<br>
-                        - 若炸板立即止损（-5%）<br>
-                        - 隔日超短无合适标的→继续空仓
-                    </div>
+                    <div class="action"><strong>确认方向</strong><br>- 厦门银行站稳7.80以上→持仓<br>- 跌破7.42（-5%）→止损<br>- 观察银行板块是否继续稳盘</div>
                 </div>
                 <div class="timeline-item">
                     <div class="time">14:30</div>
-                    <div class="action">
-                        <strong>尾盘决策</strong><br>
-                        - 若市场回暖（赚钱效应>40%）→可重新选隔日超短<br>
-                        - 若继续弱势→持币观望，不勉强开仓<br>
-                        - 宁可错过，不可做错
+                    <div class="action"><strong>尾盘决策</strong><br>- 市场回暖可增仓厦门银行<br>- 若市场继续弱→不追加<br>- 隔日超短择机选新标的</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中短线波段 -->
+        <div class="strategy-section">
+            <div class="section-title">
+                <span>📈</span>
+                <span>中短线波段（修正后仓位 6%）— 3-5日持有，目标+8~15%</span>
+            </div>
+            <div class="stocks-grid">
+                <div class="stock-card recommend">
+                    <div class="stock-header">
+                        <div><span class="stock-name">厦门银行</span><span class="stock-code">601187</span></div>
+                        <span class="badge badge-buy">中短线持仓</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-row"><span class="info-label">今日收盘</span><span class="info-value">¥7.81</span></div>
+                        <div class="info-row"><span class="info-label">涨跌幅</span><span class="info-value up">+1.7% 📈</span></div>
+                        <div class="info-row"><span class="info-label">量比</span><span class="info-value">1.06（温和）</span></div>
+                        <div class="info-row"><span class="info-label">换手率</span><span class="info-value">1.1%</span></div>
+                        <div class="info-row"><span class="info-label">所在板块</span><span class="info-value">银行（今日净流入55亿）</span></div>
+                        <div class="info-row"><span class="info-label">买点区间</span><span class="info-value" style="color:#4ade80;">¥7.70 - ¥7.90</span></div>
+                        <div class="info-row"><span class="info-label">止损价</span><span class="info-value" style="color:#f87171;">¥7.42（-5%）</span></div>
+                        <div class="info-row"><span class="info-label">目标价</span><span class="info-value" style="color:#facc15;">¥8.40~8.60（+8~10%）</span></div>
+                        <div class="info-row"><span class="info-label">推荐仓位</span><span class="info-value">≤1万元</span></div>
+                    </div>
+                    <div class="score-bar">
+                        <span>中短线评分</span>
+                        <div class="bar-bg"><div class="bar-fill bar-green" style="width:65%"></div></div>
+                        <span style="color:#4ade80;font-weight:700;">65分</span>
+                    </div>
+                    <div class="tomorrow-action">
+                        <div class="action-title">📅 3-5日持有计划</div>
+                        <div class="action-detail">
+                            <strong>6/12（首日）</strong>：开盘若平开或微涨，小仓位介入（≤1万）。银行板块近5日净流入55亿，且有国常会政策利好支撑。<br>
+                            <strong>止损规则</strong>：跌破¥7.42（-5%）立即止损。<br>
+                            <strong>止盈规则</strong>：达到¥8.40（+8%）分批止盈；5个交易日内未达目标强制平仓。
+                        </div>
+                    </div>
+                    <div class="reason">
+                        <strong>入选理由：</strong>① 涨幅+1.7%符合中短线波段1-5%要求；② 量比1.06温和放量；③ 银行板块今日净流入55亿，居行业之首；④ 国常会政策利好+银行护盘预期；⑤ RSI中性区间；⚠️ BOLL突破上轨，短线有过热风险需关注。
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 隔日超短策略 — 暂停 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>🎯</span>
-                <span>隔日超短（修正后仓位 25%）— 明日尾盘买入，次日冲高卖出</span>
-            </div>
-
-            <div class="section-pause">
-                <h3>⏸️ 隔日超短策略暂停 — 无合格标的</h3>
-                <p style="max-width: 800px; margin: 0 auto;">
-                    <strong>筛选条件回顾：</strong>涨幅3-7%（非涨停）、量比>1.5、均线多头排列、DMA健康度>60、龙虎榜TOP20<br><br>
-                    <strong>筛选结果：</strong>12只分析标的中，涨幅在3-7%区间的标的全部为涨停股（归入打板策略），非涨停股涨幅均不足3%<br><br>
-                    <strong>典型案例：</strong>厦门银行+1.7%（量比1.06，不满足量比>1.5）、联瑞新材-1.4%（下跌）、春秋电子-3.4%（下跌）<br><br>
-                    <strong>操作建议：</strong>等待市场赚钱效应回升至40%以上再重启隔日超短策略
-                </p>
-            </div>
-        </div>
-
-        <!-- 打板战法策略 -->
+        <!-- 打板战法 -->
         <div class="strategy-section">
             <div class="section-title">
                 <span>🔥</span>
-                <span>打板战法（修正后仓位 15%）— 涨停价打板，次日冲高卖出</span>
+                <span>打板战法（修正后仓位 0%）— 涨停价打板，次日冲高卖出</span>
             </div>
 
-            <div class="stocks-grid">
-                <!-- 金安国纪 -->
-                <div class="stock-card observe">
-                    <div class="stock-header">
-                        <div>
-                            <span class="stock-name">金安国纪</span>
-                            <span class="stock-code">002636.SZ</span>
-                        </div>
-                        <span class="badge badge-observe">🔭 谨慎观察</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row">
-                            <span class="info-label">今日收盘</span>
-                            <span class="info-value up">¥84.80 (+9.5%)</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">昨收 / 今开</span>
-                            <span class="info-value">¥77.42 / ¥77.44</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">换手率 / 量比</span>
-                            <span class="info-value">12.7% / 12.67</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">连板数</span>
-                            <span class="info-value">3连板（昨日2→今日3）</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">题材</span>
-                            <span class="info-value">PCB概念（TOP3热门）</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">龙虎榜净买入</span>
-                            <span class="info-value up">1.72亿（TOP5）</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">游资席位</span>
-                            <span class="info-value">沪股通1.04亿 + 机构0.73亿 + 深股通1.04亿</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">MACD</span>
-                            <span class="info-value up">多头排列 DIF 8.15 > DEA 4.93</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">RSI(14)</span>
-                            <span class="info-value" style="color: #f87171;">87.29 ⚠️ 严重超买</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">BOLL</span>
-                            <span class="info-value" style="color: #facc15;">突破上轨76.76 ⚠️ 过热</span>
-                        </div>
-                    </div>
-
-                    <div class="score-breakdown">
-                        <table>
-                            <tr><td>🏆 龙虎榜净买入（1.72亿→17分，封顶40）</td><td>17</td></tr>
-                            <tr><td>👤 游资席位（沪股通+机构+深股通→3席×10，封顶30）</td><td>30</td></tr>
-                            <tr><td>🔥 题材热度（PCB概念TOP3）</td><td>20</td></tr>
-                            <tr><td>📐 涨停形态（换手板，非一字板）</td><td>8</td></tr>
-                            <tr style="border-top: 1px solid #4ade80; color: #4ade80;"><td><strong>打板评分</strong></td><td><strong>75分 ✓</strong></td></tr>
-                        </table>
-                        <div style="margin-top: 8px; font-size: 11px; color: #facc15;">
-                            ⚠️ RSI扣分：RSI 87严重超买，技术评分-10 = <strong>修正65分</strong>
-                        </div>
-                    </div>
-
-                    <div class="tomorrow-action">
-                        <div class="action-title">📋 明日打板计划（轻仓试探）</div>
-                        <div class="action-detail">
-                            <strong>打板价：</strong>¥84.80（今日涨停价）<br>
-                            <strong>建议仓位：</strong>不超过1万元（5-20万资金×5%）<br>
-                            <strong>止损价：</strong>¥80.56（-5%严格止损）<br>
-                            <strong>目标价：</strong>¥89.55（+5.6%）<br>
-                            <strong>卖出时机：</strong>高开>5%→09:30立刻卖；平开等+15%冲高<br>
-                            <strong>前置条件：</strong>必须PCB概念板块联动强势 + 封板率>80%才考虑<br>
-                            <strong style="color: #f87171;">风险提醒：</strong>3连板后追高风险极大，RSI 87处于极端超买区，随时可能炸板回调
-                        </div>
-                    </div>
-
-                    <div class="reason">
-                        <strong>入选理由：</strong>PCB概念龙头3连板，多方游资（沪股通+机构+深股通）共同看好，题材热度TOP3，换手板而非一字板说明有充分换手，封板质量相对可信。但RSI 87严重超买是最大风险。
-                    </div>
-                </div>
-
-                <!-- 太极实业 — 观察但不推荐 -->
-                <div class="stock-card warning">
-                    <div class="stock-header">
-                        <div>
-                            <span class="stock-name">太极实业</span>
-                            <span class="stock-code">600667.SH</span>
-                        </div>
-                        <span class="badge badge-watch">👀 观察但不推荐</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row">
-                            <span class="info-label">今日收盘</span>
-                            <span class="info-value up">¥17.51 (+10.0%涨停)</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">昨收 / 今开</span>
-                            <span class="info-value">¥15.92 / ¥15.38</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">换手率 / 量比</span>
-                            <span class="info-value">16.2% / 16.22 ⚠️ 高位</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">龙虎榜净买入</span>
-                            <span class="info-value">沪股通0.92亿（未进TOP10）</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">MACD</span>
-                            <span class="info-value up">多头 DIF 1.33 > DEA 1.13</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">RSI(14)</span>
-                            <span class="info-value" style="color: #facc15;">71.58 ⚠️ 超买</span>
-                        </div>
-                    </div>
-
-                    <div class="score-breakdown">
-                        <table>
-                            <tr><td>🏆 龙虎榜净买入（0.92亿→9分）</td><td>9</td></tr>
-                            <tr><td>👤 游资席位（仅沪股通1席→10分）</td><td>10</td></tr>
-                            <tr><td>🔥 题材热度（普通）</td><td>10</td></tr>
-                            <tr><td>📐 涨停形态（换手板）</td><td>8</td></tr>
-                            <tr style="border-top: 1px solid #f87171; color: #f87171;"><td><strong>打板评分</strong></td><td><strong>37分 ✗ 不及格</strong></td></tr>
-                        </table>
-                    </div>
-
-                    <div class="reason">
-                        <strong>不推荐原因：</strong>评分仅37分，龙虎榜净买入不足1亿，无知名游资力挺，换手率16.2%偏高，RSI 71超买。不符合打板≥60分标准。
-                    </div>
-                </div>
+            <div class="pause-box">
+                <div class="icon">⚠️</div>
+                <h3>打板战法 — 入选标的评分不达标</h3>
+                <p style="margin-top:10px;">金安国纪(002636) 打板评分 35.2/100 < 60分线，不入选。评分明细：龙虎榜1.72亿(17分) + 无知名游资(0分) + PCB非TOP3(10分) + 涨停形态(8分) = 35分。且RSI≥87极度超买。</p>
+                <p style="margin-top:8px;">中化国际(600500) 一字板封单弱，打板评分 37/100 < 60 → 不入选。宏昌电子(603002)龙虎榜4.79亿但2连板RSI偏高，打板评分53<60 → 不入选。</p>
             </div>
         </div>
 
-        <!-- 日内T+0策略 — 暂停 -->
+        <!-- 隔日超短 -->
+        <div class="strategy-section">
+            <div class="section-title">
+                <span>🎯</span>
+                <span>隔日超短（修正后仓位 0%）— 尾盘买入，次日冲高卖出</span>
+            </div>
+            <div class="pause-box">
+                <div class="icon">⏸️</div>
+                <h3>隔日超短策略暂停</h3>
+                <p style="margin-top:10px;">市场赚钱效应仅26.1%处于极弱区间，今日涨停71家中非涨停且涨幅3-7%的标的几乎为零。市场结构以涨停股和下跌股两极分化，中间地带真空。</p>
+            </div>
+        </div>
+
+        <!-- 日内T+0 -->
         <div class="strategy-section">
             <div class="section-title">
                 <span>📊</span>
-                <span>日内T+0（修正后仓位 10%）— 底仓做T，降成本增收益</span>
+                <span>日内T+0（修正后仓位 0%）— 底仓做T，降成本增收益</span>
             </div>
-
-            <div class="section-pause">
-                <h3>⏸️ 日内T+0策略暂停 — 无底仓条件</h3>
-                <p>
-                    日内T+0需要前一日买入的底仓标的。昨日（6/10）推荐标的今日表现：<br><br>
-                    宏昌电子 -1.9%、中科三环 -3.2%、天娱数科 <strong style="color:#f87171;">跌停-10%</strong>、中化国际 一字板+10.1%<br><br>
-                    昨日持仓今日已大幅回撤，不适合做T+0。建议等隔日超短策略恢复后，次日再考虑T+0。
-                </p>
+            <div class="pause-box">
+                <div class="icon">⏸️</div>
+                <h3>日内T+0策略暂停</h3>
+                <p>今日无底仓标的（前一日无买入记录），不具备T+0条件。</p>
             </div>
         </div>
 
@@ -452,137 +244,52 @@
         <div class="strategy-section">
             <div class="section-title">
                 <span>🚫</span>
-                <span>分析但剔除的标的（12只中9只不合格）</span>
+                <span>核查剔除标的（供参考，不推荐操作）</span>
             </div>
-
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>标的</th>
-                        <th>代码</th>
-                        <th>今日涨跌</th>
-                        <th>关键问题</th>
-                        <th>剔除原因</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>宏昌电子</td>
-                        <td>603002</td>
-                        <td style="color:#4ade80;">-1.9%</td>
-                        <td>MACD死叉+顶背离</td>
-                        <td>技术面恶化，昨日涨停今日回撤</td>
-                    </tr>
-                    <tr>
-                        <td>中科三环</td>
-                        <td>000970</td>
-                        <td style="color:#4ade80;">-3.2%</td>
-                        <td>BOLL超上轨，高换手14.8%</td>
-                        <td>过热回撤，下跌放量</td>
-                    </tr>
-                    <tr>
-                        <td>天娱数科</td>
-                        <td>002354</td>
-                        <td style="color:#f87171;">跌停-10.0%</td>
-                        <td>4连板后崩盘，跌停</td>
-                        <td>极度危险，连板股风险释放中</td>
-                    </tr>
-                    <tr>
-                        <td>中化国际</td>
-                        <td>600500</td>
-                        <td style="color:#f87171;">+10.1%</td>
-                        <td>一字板+顶背离，量比1.08</td>
-                        <td>一字板无法买入，顶背离风险</td>
-                    </tr>
-                    <tr>
-                        <td>厦门银行</td>
-                        <td>601187</td>
-                        <td style="color:#f87171;">+1.7%</td>
-                        <td>量比1.06，RSI 62</td>
-                        <td>涨幅<3%不满足隔日超短门槛</td>
-                    </tr>
-                    <tr>
-                        <td>有研粉材</td>
-                        <td>688456</td>
-                        <td style="color:#f87171;">+18.1%</td>
-                        <td>RSI 81超买+顶背离</td>
-                        <td>科创版688、极度过热、资金量不匹配</td>
-                    </tr>
-                    <tr>
-                        <td>双星新材</td>
-                        <td>002585</td>
-                        <td style="color:#4ade80;">-7.5%</td>
-                        <td>换手率31.9%异常</td>
-                        <td>昨日涨停今日大跌，趋势破坏</td>
-                    </tr>
-                    <tr>
-                        <td>联瑞新材</td>
-                        <td>688300</td>
-                        <td style="color:#4ade80;">-1.4%</td>
-                        <td>换手不可用</td>
-                        <td>科创版688、非金属材料无资金跟风</td>
-                    </tr>
-                    <tr>
-                        <td>春秋电子</td>
-                        <td>603890</td>
-                        <td style="color:#4ade80;">-3.4%</td>
-                        <td>换手率14%高</td>
-                        <td>无龙虎榜数据，非热门题材</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- 数据核查明细 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>📋</span>
-                <span>完整数据核查报告</span>
+            <div class="stocks-grid">
+                <div class="stock-card rejected">
+                    <div class="stock-header">
+                        <div><span class="stock-name">金安国纪</span><span class="stock-code">002636</span></div>
+                        <span class="badge badge-reject">已剔除</span>
+                    </div>
+                    <div class="reason">
+                        <strong>剔除原因：</strong>打板评分35分 < 60分。龙虎榜1.72亿仅有17分（需≥4亿拿满40分），无知名游资0分，PCB概念非今日TOP3题材（10分）。且RSI≥87极度超买，3连板后追高风险极大。换手率12.7%偏高。
+                    </div>
+                </div>
+                <div class="stock-card rejected">
+                    <div class="stock-header">
+                        <div><span class="stock-name">天娱数科</span><span class="stock-code">002354</span></div>
+                        <span class="badge badge-reject">跌停剔除</span>
+                    </div>
+                    <div class="reason">
+                        <strong>剔除原因：</strong>今日跌停-10.0%。4连板后崩盘，属跌停股，按铁律第4条"跌停股一律不推荐"直接排除。
+                    </div>
+                </div>
+                <div class="stock-card rejected">
+                    <div class="stock-header">
+                        <div><span class="stock-name">中化国际</span><span class="stock-code">600500</span></div>
+                        <span class="badge badge-reject">已剔除</span>
+                    </div>
+                    <div class="reason">
+                        <strong>剔除原因：</strong>打板评分37分 < 60分。一字板封单弱（成都系仅1.01亿介入），无TOP游资认可，且StockSight显示顶背离风险。
+                    </div>
+                </div>
+                <div class="stock-card rejected">
+                    <div class="stock-header">
+                        <div><span class="stock-name">双星新材</span><span class="stock-code">002585</span></div>
+                        <span class="badge badge-reject">已剔除</span>
+                    </div>
+                    <div class="reason">
+                        <strong>剔除原因：</strong>昨日2连板涨停，今日大跌-7.5%。属昨日涨停今日回撤的典型案例，验证弱市中追板风险。
+                    </div>
+                </div>
             </div>
-            <table class="data-table">
-                <thead>
-                    <tr><th>#</th><th>核查项</th><th>结果</th><th>详情</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td><td>涨幅规则一致性</td><td><span class="audit-status audit-pass">✓ 通过</span></td>
-                        <td>隔日超短暂停，无3-7%非涨停标的入选</td>
-                    </tr>
-                    <tr>
-                        <td>2</td><td>数据时间戳</td><td><span class="audit-status audit-warn">⚠ 警告</span></td>
-                        <td>hhxg快照为6/10收盘数据，个股用StockSight 6/11 18:00实时数据</td>
-                    </tr>
-                    <tr>
-                        <td>3</td><td>量比来源</td><td><span class="audit-status audit-warn">⚠ 警告</span></td>
-                        <td>使用6/11当日量比（收盘后结算，准确度可接受）</td>
-                    </tr>
-                    <tr>
-                        <td>4</td><td>涨停/跌停交叉验证</td><td><span class="audit-status audit-pass">✓ 通过</span></td>
-                        <td>无隔日超短推荐，已验证所有候选不包含跌停股</td>
-                    </tr>
-                    <tr>
-                        <td>5</td><td>评分计算复核</td><td><span class="audit-status audit-pass">✓ 通过</span></td>
-                        <td>金安国纪75分（修正后65分），太极实业37分不通过</td>
-                    </tr>
-                    <tr>
-                        <td>6</td><td>今日早盘表现</td><td><span class="audit-status audit-warn">⚠ 警告</span></td>
-                        <td>12只标的中7只下跌（58%），天娱数科跌停-10%，双星新材-7.5%</td>
-                    </tr>
-                    <tr>
-                        <td>7</td><td>炸板率核查</td><td><span class="audit-status audit-warn">⚠ 警告</span></td>
-                        <td>炸板率29%未超35%阈值，但市场弱势下打板风险显著升高</td>
-                    </tr>
-                    <tr>
-                        <td>8</td><td>RSI超买检查</td><td><span class="audit-status audit-warn">⚠ 警告</span></td>
-                        <td>金安国纪RSI 87、太极实业RSI 71.6、有研粉材RSI 81 → 均已超买</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 
         <div class="footer">
-            <p>⚠️ <strong>风险提示：</strong>本推荐仅供参考，不构成投资建议。股市有风险，投资需谨慎。市场弱势下建议以观望为主。</p>
-            <p>📅 数据基准：2026-06-11 15:00收盘 | 🔍 核查完成：18:20 | 🤖 生成时间：2026-06-11 18:20</p>
+            <p>⚠️ <strong>风险提示：</strong>本推荐仅供参考，不构成投资建议。股市有风险，投资需谨慎。</p>
+            <p>📅 数据基准：2026-06-11 15:00收盘 | 🔍 核查完成：2026-06-11 20:15 | 🤖 生成时间：2026-06-11 20:15</p>
+            <p>📊 今日覆盖标的：厦门银行、金安国纪、中化国际、天娱数科、双星新材、宏昌电子、中科三环、和远气体等12只</p>
             <p>🌐 网页部署：<a href="https://xljy.github.io/stock-picks/" target="_blank">https://xljy.github.io/stock-picks/</a></p>
         </div>
     </div>
