@@ -3,495 +3,705 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中短线+打板双策略 - 2026-06-11 推荐</title>
+    <title>短线策略推荐 - 2026-06-11</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             padding: 20px;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: white;
+            background: #ffffff;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
             overflow: hidden;
         }
-        
+
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%);
             color: white;
             padding: 40px;
             text-align: center;
+            position: relative;
         }
-        
+
         .header h1 {
             font-size: 36px;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
+
         .header .subtitle {
             font-size: 18px;
-            opacity: 0.9;
+            opacity: 0.95;
         }
-        
+
+        .risk-banner {
+            background: linear-gradient(90deg, #dc3545, #ff6b6b);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .risk-banner .icon { font-size: 28px; }
+
         .meta {
             background: #f8f9fa;
             padding: 20px 40px;
             border-bottom: 2px solid #e9ecef;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
         }
-        
+
         .meta-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 5px 0;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
         }
-        
+
         .meta-item .label {
             color: #6c757d;
-            font-size: 14px;
+            font-size: 13px;
+            white-space: nowrap;
         }
-        
+
         .meta-item .value {
             color: #212529;
-            font-weight: 600;
-            font-size: 16px;
+            font-weight: 700;
+            font-size: 15px;
         }
-        
+
+        .meta-item .value.red { color: #dc3545; }
+        .meta-item .value.green { color: #28a745; }
+        .meta-item .value.orange { color: #fd7e14; }
+
         .strategy-section {
-            padding: 40px;
+            padding: 30px 40px;
         }
-        
+
         .section-title {
-            font-size: 28px;
+            font-size: 24px;
             color: #212529;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #e94560;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
-        
-        .section-title .icon {
-            font-size: 32px;
+
+        .section-title .icon { font-size: 28px; }
+
+        .position-badge {
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: #e94560;
+            color: white;
+            font-weight: 600;
         }
-        
+
         .stocks-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
-        
+
         .stock-card {
             background: #f8f9fa;
             border-radius: 15px;
             padding: 25px;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #e94560;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
-        
+
         .stock-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
-        
+
         .stock-card.recommend { border-left-color: #28a745; }
         .stock-card.warning { border-left-color: #ffc107; }
         .stock-card.danger { border-left-color: #dc3545; }
-        
+
         .stock-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
         }
-        
-        .stock-name {
+
+        .stock-header-left .stock-name {
             font-size: 22px;
             font-weight: 700;
             color: #212529;
         }
-        
-        .stock-code {
-            font-size: 14px;
+
+        .stock-header-left .stock-code {
+            font-size: 13px;
             color: #6c757d;
-            margin-left: 10px;
+            margin-top: 2px;
         }
-        
+
+        .badge-group { display: flex; gap: 6px; flex-wrap: wrap; }
         .badge {
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
         }
-        
+
         .badge-buy { background: #d4edda; color: #155724; }
         .badge-strong-buy { background: #28a745; color: white; }
-        .badge-watch { background: #fff3cd; color: #856404; }
-        .badge-daban { background: #ff6b6b; color: white; }
-        
-        .stock-info {
-            margin: 15px 0;
+        .badge-daban { background: #e94560; color: white; }
+        .badge-risk { background: #fff3cd; color: #856404; }
+
+        .score-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
         }
-        
+        .score-circle.warn { background: linear-gradient(135deg, #fd7e14, #ffc107); }
+
+        .stock-info { margin: 12px 0; }
+
         .info-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
+            padding: 7px 0;
             border-bottom: 1px solid #dee2e6;
-            font-size: 14px;
+            font-size: 13px;
+            align-items: center;
         }
-        
-        .info-row:last-child {
-            border-bottom: none;
-        }
-        
-        .info-label {
-            color: #6c757d;
-        }
-        
-        .info-value {
-            font-weight: 600;
-            color: #212529;
-        }
-        
-        .info-value.positive { color: #dc3545; }
-        .info-value.negative { color: #28a745; }
-        
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-label { color: #6c757d; }
+        .info-value { font-weight: 600; color: #212529; }
+        .info-value.up { color: #dc3545; }
+        .info-value.down { color: #28a745; }
+
         .reason {
             background: white;
             padding: 15px;
             border-radius: 10px;
-            margin-top: 15px;
+            margin-top: 12px;
             font-size: 13px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #495057;
+            border: 1px solid #e9ecef;
         }
-        
-        .reason strong {
-            color: #212529;
+
+        .reason strong { color: #212529; }
+
+        .reason .risk-tag {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-right: 4px;
         }
-        
-        .data-source {
-            background: #e7f3ff;
-            border-left: 4px solid #0066cc;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
-        }
-        
-        .data-source h3 {
-            color: #0066cc;
-            margin-bottom: 10px;
-        }
-        
-        .data-source p {
-            color: #495057;
-            line-height: 1.8;
-        }
-        
-        .footer {
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
             background: #f8f9fa;
+            border-radius: 15px;
+            color: #6c757d;
+        }
+        .empty-state .icon { font-size: 48px; margin-bottom: 15px; }
+        .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: #212529; }
+
+        .strategy-rules {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .strategy-rules h4 { color: #0c5460; margin-bottom: 10px; font-size: 14px; }
+        .strategy-rules ul { margin-left: 20px; font-size: 13px; color: #0c5460; line-height: 1.8; }
+
+        .footer {
+            background: #1a1a2e;
             padding: 30px 40px;
             text-align: center;
-            color: #6c757d;
-            font-size: 14px;
-            border-top: 2px solid #e9ecef;
+            color: #adb5bd;
+            font-size: 13px;
+            line-height: 1.8;
         }
-        
+
+        .footer .disclaimer {
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
         .footer a {
-            color: #667eea;
+            color: #e94560;
             text-decoration: none;
             font-weight: 600;
         }
-        
-        @media (max-width: 768px) {
-            .header h1 { font-size: 28px; }
-            .stocks-grid { grid-template-columns: 1fr; }
-            .meta { flex-direction: column; align-items: flex-start; }
+
+        .market-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
         }
+
+        @media (max-width: 900px) {
+            .market-summary { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .market-summary { grid-template-columns: 1fr; }
+            .header h1 { font-size: 24px; }
+            .stocks-grid { grid-template-columns: 1fr; }
+            .meta { grid-template-columns: 1fr; }
+            .strategy-section { padding: 20px; }
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .summary-card .num { font-size: 32px; font-weight: 800; }
+        .summary-card .label { font-size: 12px; color: #6c757d; margin-top: 4px; }
+        .summary-card.danger { border-color: #dc3545; }
+        .summary-card.danger .num { color: #dc3545; }
+        .summary-card.warn { border-color: #ffc107; }
+        .summary-card.warn .num { color: #fd7e14; }
+        .summary-card.good { border-color: #28a745; }
+        .summary-card.good .num { color: #28a745; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 中短线 + 打板双策略</h1>
-            <p class="subtitle">基于 2026-06-10 收盘数据 · 2026-06-11 推荐标的</p>
+            <h1>📈 短线策略推荐</h1>
+            <p class="subtitle">隔日超短 + 打板战法 + 日内T+0 | 2026年6月11日（周四）</p>
         </div>
-        
+
+        <!-- 市场风险警示 -->
+        <div class="risk-banner">
+            <span class="icon">⚠️</span>
+            <span><strong>高风险警示：</strong>赚钱效应仅 30.1%（弱），炸板率 41%，今日盘中多只昨日涨停标的大幅杀跌（双星新材-10%、天娱数科-10%）。所有推荐仓位已按规则削减50%，请严格控制风险！</span>
+        </div>
+
         <div class="meta">
             <div class="meta-item">
-                <span class="label">📅 数据日期：</span>
+                <span class="label">📅 数据日期</span>
                 <span class="value">2026-06-10（昨日收盘）</span>
             </div>
             <div class="meta-item">
-                <span class="label">🎯 推荐日期：</span>
+                <span class="label">🎯 推荐日期</span>
                 <span class="value">2026-06-11（今日开盘前）</span>
             </div>
             <div class="meta-item">
-                <span class="label">📊 赚钱效应：</span>
-                <span class="value" style="color: #ffc107;">30.1%（偏弱）</span>
+                <span class="label">📊 赚钱效应</span>
+                <span class="value orange">30.1%（弱）</span>
             </div>
             <div class="meta-item">
-                <span class="label">🔥 涨停板：</span>
-                <span class="value">71 只</span>
+                <span class="label">🔥 涨停 / 跌停</span>
+                <span class="value">71 只 / 25 只</span>
+            </div>
+            <div class="meta-item">
+                <span class="label">💥 炸板数</span>
+                <span class="value red">29 只（炸板率 41%）</span>
+            </div>
+            <div class="meta-item">
+                <span class="label">🔺 最高连板</span>
+                <span class="value">天娱数科 4连板</span>
+            </div>
+            <div class="meta-item">
+                <span class="label">💰 游资净买入</span>
+                <span class="value red">14.32 亿</span>
+            </div>
+            <div class="meta-item">
+                <span class="label">🏭 热门题材</span>
+                <span class="value">基础化工(16) / 化学制品(12) / PCB(8)</span>
             </div>
         </div>
-        
+
+        <!-- 市场概况 -->
+        <div class="strategy-section" style="padding-bottom: 0;">
+            <div class="market-summary">
+                <div class="summary-card danger">
+                    <div class="num">30.1%</div>
+                    <div class="label">赚钱效应（弱）</div>
+                </div>
+                <div class="summary-card warn">
+                    <div class="num">41%</div>
+                    <div class="label">炸板率（高）</div>
+                </div>
+                <div class="summary-card good">
+                    <div class="num">71</div>
+                    <div class="label">涨停家数</div>
+                </div>
+                <div class="summary-card danger">
+                    <div class="num">-5%↓</div>
+                    <div class="label">今日早盘情绪</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 隔日超短策略 ===== -->
         <div class="strategy-section">
             <div class="section-title">
                 <span class="icon">🎯</span>
-                <span>中短线主线（80%仓位）</span>
+                <span>隔日超短</span>
+                <span class="position-badge">仓位 25%（原50%↓半仓）</span>
             </div>
-            
+
+            <div class="strategy-rules">
+                <h4>⚠️ 今日特殊规则调整</h4>
+                <ul>
+                    <li>赚钱效应 30.1%（弱），全部策略仓位降至 50%</li>
+                    <li>炸板率 41%，炸板风险极高，严格控制追高</li>
+                    <li>今日早盘多只标的杀跌，建议观望至 14:30 后决策</li>
+                    <li>止损严格在 -5%，不可侥幸</li>
+                </ul>
+            </div>
+
             <div class="stocks-grid">
-                <!-- 宏昌电子 -->
+
+                <!-- 标的1: 宏昌电子 -->
                 <div class="stock-card recommend">
                     <div class="stock-header">
-                        <div>
-                            <span class="stock-name">宏昌电子</span>
-                            <span class="stock-code">603002</span>
+                        <div class="stock-header-left">
+                            <div class="stock-name">宏昌电子 <span style="font-size:13px;color:#6c757d">603002.SH</span></div>
                         </div>
-                        <span class="badge badge-strong-buy">强烈买入</span>
+                        <div class="score-circle">72</div>
+                    </div>
+                    <div class="badge-group">
+                        <span class="badge badge-strong-buy">龙虎榜 TOP1</span>
+                        <span class="badge badge-buy">PCB概念</span>
+                        <span class="badge badge-risk">MACD死叉⚠</span>
                     </div>
                     <div class="stock-info">
                         <div class="info-row">
+                            <span class="info-label">昨日收盘</span>
+                            <span class="info-value up">¥18.25（+10%涨停 2连板）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">今日盘中</span>
+                            <span class="info-value down">¥18.07（-1.0%）</span>
+                        </div>
+                        <div class="info-row">
                             <span class="info-label">买入区间</span>
-                            <span class="info-value positive">¥19.20 - ¥20.00</span>
+                            <span class="info-value up">¥17.50~18.50</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">止损位</span>
-                            <span class="info-value negative">¥17.00（-12%）</span>
+                            <span class="info-value down">¥17.34（-5%）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">目标价</span>
-                            <span class="info-value positive">¥23.00（+18%）</span>
+                            <span class="info-value up">¥19.71（+8%）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">仓位</span>
-                            <span class="info-value">30%</span>
+                            <span class="info-value">10%（≤ 2万）</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">0610龙虎榜</span>
-                            <span class="info-value positive">净买入 4.79亿（TOP1）</span>
+                            <span class="info-label">龙虎榜</span>
+                            <span class="info-value up">净买 4.79亿 | 沪股通 2.88亿</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">DMA健康度</span>
-                            <span class="info-value positive">72分（健康）</span>
+                            <span class="info-label">技术面</span>
+                            <span class="info-value">RSI 60.7(中性) | BOLL中轨上 | MACD死叉⚠</span>
                         </div>
                     </div>
                     <div class="reason">
                         <strong>推荐理由：</strong><br>
-                        1. 0610龙虎榜TOP1，机构+游资双认可<br>
-                        2. PCB概念龙头，均线多头排列<br>
-                        3. DMA健康度72分（健康），无过热风险<br>
-                        4. 放量突破，中短线顺势而为
+                        <span class="risk-tag">技术风险</span> 龙虎榜净买入 4.79亿，排名第1，沪股通+机构合计净买超 3.6亿，资金认可度极高。PCB概念+先进封装双题材驱动，2连板后今日回踩 -1.0%，量比 8.73 显示活跃度高。<br>
+                        <span class="risk-tag">⚠注意</span> MACD今日出现死叉信号（DIF 0.77 < DEA 0.87），短线转弱风险。若 14:30 前 MACD 无修复，建议放弃。
                     </div>
                 </div>
-                
-                <!-- 和远气体 -->
-                <div class="stock-card recommend">
+
+                <!-- 标的2: 中化国际 -->
+                <div class="stock-card warning">
                     <div class="stock-header">
-                        <div>
-                            <span class="stock-name">和远气体</span>
-                            <span class="stock-code">002971</span>
+                        <div class="stock-header-left">
+                            <div class="stock-name">中化国际 <span style="font-size:13px;color:#6c757d">600500.SH</span></div>
                         </div>
-                        <span class="badge badge-strong-buy">强烈买入</span>
+                        <div class="score-circle warn">65</div>
+                    </div>
+                    <div class="badge-group">
+                        <span class="badge badge-buy">2连板</span>
+                        <span class="badge badge-buy">化学制品</span>
+                        <span class="badge badge-risk">顶背离⚠</span>
                     </div>
                     <div class="stock-info">
                         <div class="info-row">
+                            <span class="info-label">昨日收盘</span>
+                            <span class="info-value up">¥6.55（+10%涨停 2连板）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">今日盘中</span>
+                            <span class="info-value up">¥7.21（+10.1%一字板）</span>
+                        </div>
+                        <div class="info-row">
                             <span class="info-label">买入区间</span>
-                            <span class="info-value positive">¥49.50 - ¥50.30</span>
+                            <span class="info-value up">¥7.00~7.50（开板后）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">止损位</span>
-                            <span class="info-value negative">¥44.00（-11%）</span>
+                            <span class="info-value down">¥6.85（-5%）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">目标价</span>
-                            <span class="info-value positive">¥58.00（+17%）</span>
+                            <span class="info-value up">¥7.79（+8%）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">仓位</span>
-                            <span class="info-value">30%</span>
+                            <span class="info-value">10%（≤ 2万）</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">0610涨停</span>
-                            <span class="info-value positive">一字板，封单4.92亿</span>
+                            <span class="info-label">龙虎榜</span>
+                            <span class="info-value up">游资: 成都系+量化打板认可</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">DMA健康度</span>
-                            <span class="info-value positive">68分（健康）</span>
+                            <span class="info-label">技术面</span>
+                            <span class="info-value">RSI 63.7 | BOLL突破上轨 | 顶背离🔴</span>
                         </div>
                     </div>
                     <div class="reason">
                         <strong>推荐理由：</strong><br>
-                        1. 0610一字板，封单4.92亿（最强）<br>
-                        2. 化学制品龙头，题材持续性强<br>
-                        3. 可能无法买入（一字板），可排板<br>
-                        4. 止损位-11%，风险可控
+                        <span class="risk-tag">题材驱动</span> 化学制品题材热度TOP2（12涨停），基础化工联动，成都系游资+量化打板双认可。今日一字板封死但量比仅 0.93，换手率 0.9%，筹码锁定好。<br>
+                        <span class="risk-tag">⚠严重警告</span> <strong>顶背离信号确认</strong>：价格创阶段新高（5.48→6.27），但 MACD DIF 未同步创新高（0.31→0.29），见顶风险极高！MACD 空头排列，仅适合开板后轻仓试探，严格止损！
                     </div>
                 </div>
-                
-                <!-- 双星新材 -->
-                <div class="stock-card recommend">
-                    <div class="stock-header">
-                        <div>
-                            <span class="stock-name">双星新材</span>
-                            <span class="stock-code">002585</span>
-                        </div>
-                        <span class="badge badge-buy">买入</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row">
-                            <span class="info-label">买入区间</span>
-                            <span class="info-value positive">¥13.80 - ¥14.20</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">止损位</span>
-                            <span class="info-value negative">¥12.50（-10%）</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">目标价</span>
-                            <span class="info-value positive">¥16.50（+19%）</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">仓位</span>
-                            <span class="info-value">20%</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">0610龙虎榜</span>
-                            <span class="info-value positive">方新侠+深股通</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">DMA健康度</span>
-                            <span class="info-value positive">65分（健康）</span>
-                        </div>
-                    </div>
-                    <div class="reason">
-                        <strong>推荐理由：</strong><br>
-                        1. 方新侠+深股通双认可<br>
-                        2. PCB概念补涨标的<br>
-                        3. DMA健康度65分（健康）<br>
-                        4. 均线多头排列，顺势而为
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-title">
-                <span class="icon">🔥</span>
-                <span>打板辅线（20%仓位）</span>
-            </div>
-            
-            <div class="stocks-grid">
-                <!-- 宏昌电子 打板 -->
+
+                <!-- 标的3: 中科三环 -->
                 <div class="stock-card danger">
                     <div class="stock-header">
-                        <div>
-                            <span class="stock-name">宏昌电子</span>
-                            <span class="stock-code">603002</span>
+                        <div class="stock-header-left">
+                            <div class="stock-name">中科三环 <span style="font-size:13px;color:#6c757d">000970.SZ</span></div>
                         </div>
-                        <span class="badge badge-daban">打板标的</span>
+                        <div class="score-circle warn">62</div>
+                    </div>
+                    <div class="badge-group">
+                        <span class="badge badge-buy">龙虎榜 TOP2</span>
+                        <span class="badge badge-buy">小金属概念</span>
+                        <span class="badge badge-risk">RSI超买</span>
                     </div>
                     <div class="stock-info">
                         <div class="info-row">
+                            <span class="info-label">昨日收盘</span>
+                            <span class="info-value up">¥14.50（+10%涨停 1板）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">今日盘中</span>
+                            <span class="info-value down">¥13.72（-5.4% 杀跌！）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">买入区间</span>
+                            <span class="info-value">⚠ 今日杀跌，观望</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">止损位</span>
+                            <span class="info-value down">¥13.03（-5%）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">目标价</span>
+                            <span class="info-value up">¥14.82（+8% 反弹目标）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">仓位</span>
+                            <span class="info-value">5%（≤ 1万，观察仓）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">龙虎榜</span>
+                            <span class="info-value up">净买 3.03亿 | 量化打板参与</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">技术面</span>
+                            <span class="info-value">RSI 75.1超买⚠ | BOLL突破上轨 | MACD偏多</span>
+                        </div>
+                    </div>
+                    <div class="reason">
+                        <strong>推荐理由（仅反弹观察）：</strong><br>
+                        <span class="risk-tag">⚠高风险</span> 龙虎榜净买 3.03亿排名第2，量化打板+深股通认可。但今日盘中暴跌 -5.4%，换手率 11.1%，获利盘集中出逃。RSI 75 超买区未修复。<br>
+                        <span class="risk-tag">策略</span> <strong>仅建议在 ¥13.00 附近轻仓观察仓（5%），博反弹而非隔日超短。</strong>如14:30前无企稳信号，放弃。
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== 打板战法策略 ===== -->
+        <div class="strategy-section">
+            <div class="section-title">
+                <span class="icon">🔥</span>
+                <span>打板战法</span>
+                <span class="position-badge">仓位 15%（原30%↓半仓）</span>
+            </div>
+
+            <div class="strategy-rules">
+                <h4>⚠️ 今日打板特别注意</h4>
+                <ul>
+                    <li>昨日涨停 71 家 → 可打板但炸板率 41% 极高</li>
+                    <li>2板晋级率仅 12.5%，打板成功率低</li>
+                    <li>仅推荐最强资金认可的标的，严格筛选</li>
+                    <li>炸板即止损 -5%，不可犹豫</li>
+                </ul>
+            </div>
+
+            <div class="stocks-grid">
+
+                <!-- 打板1: 金安国纪 -->
+                <div class="stock-card danger">
+                    <div class="stock-header">
+                        <div class="stock-header-left">
+                            <div class="stock-name">金安国纪 <span style="font-size:13px;color:#6c757d">002636.SZ</span></div>
+                        </div>
+                        <div class="score-circle warn">68</div>
+                    </div>
+                    <div class="badge-group">
+                        <span class="badge badge-daban">3连板</span>
+                        <span class="badge badge-daban">PCB概念</span>
+                        <span class="badge badge-risk">RSI 84.7⚠</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-row">
+                            <span class="info-label">昨日收盘</span>
+                            <span class="info-value up">¥77.42（+10%涨停 3连板）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">今日盘中</span>
+                            <span class="info-value up">¥83.79（+8.2%）</span>
+                        </div>
+                        <div class="info-row">
                             <span class="info-label">打板价</span>
-                            <span class="info-value positive">¥20.45（涨停价）</span>
+                            <span class="info-value up">¥85.16（涨停价）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">打板金额</span>
-                            <span class="info-value">≤ 5万</span>
+                            <span class="info-value">≤ 1.5万（10%仓位）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">封板概率</span>
-                            <span class="info-value positive">85%</span>
+                            <span class="info-value up">~65%（因RSI极度超买）</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">炸板止损</span>
-                            <span class="info-value negative">-5%立即止损</span>
+                            <span class="info-value down">-5%立即止损</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">0610龙虎榜</span>
-                            <span class="info-value positive">净买入4.79亿（TOP1）</span>
+                            <span class="info-label">龙虎榜</span>
+                            <span class="info-value up">净买 1.72亿 TOP5 | 深股通+机构</span>
                         </div>
                     </div>
                     <div class="reason">
                         <strong>打板理由：</strong><br>
-                        1. 0610龙虎榜TOP1，游资认可度高<br>
-                        2. 封板概率85%，风险可控<br>
-                        3. 炸板止损-5%，严格执行<br>
-                        4. 打板金额≤5万，仓位控制
+                        <span class="risk-tag">强势信号</span> 3连板成功晋级（12.5%概率中唯一成功者），MACD多头排列（DIF 6.59 > DEA 4.13 > 0），量价配合良好。PCB概念+通信技术双驱动，深股通+机构持续净买。<br>
+                        <span class="risk-tag">⚠极高风险</span> <strong>RSI 84.71 极度超买</strong>，BOLL突破上轨严重，换手率 9.6%，价格远离所有均线。4板概率极低（昨日唯一4板天娱数科今日跌停！），<strong>强烈不推荐打板</strong>。
                     </div>
                 </div>
-                
-                <!-- 和远气体 打板 -->
+
+                <!-- 打板2: 宏昌电子 -->
                 <div class="stock-card warning">
                     <div class="stock-header">
-                        <div>
-                            <span class="stock-name">和远气体</span>
-                            <span class="stock-code">002971</span>
+                        <div class="stock-header-left">
+                            <div class="stock-name">宏昌电子 <span style="font-size:13px;color:#6c757d">603002.SH</span></div>
                         </div>
-                        <span class="badge badge-daban">排板标的</span>
+                        <div class="score-circle">60</div>
+                    </div>
+                    <div class="badge-group">
+                        <span class="badge badge-daban">龙虎榜 TOP1</span>
+                        <span class="badge badge-buy">PCB概念</span>
+                        <span class="badge badge-risk">MACD死叉</span>
                     </div>
                     <div class="stock-info">
                         <div class="info-row">
+                            <span class="info-label">昨日收盘</span>
+                            <span class="info-value up">¥18.25（2连板）</span>
+                        </div>
+                        <div class="info-row">
                             <span class="info-label">打板价</span>
-                            <span class="info-value positive">¥50.30（涨停价）</span>
+                            <span class="info-value up">¥20.08（涨停价）</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">排板策略</span>
-                            <span class="info-value">隔夜排单</span>
+                            <span class="info-label">打板金额</span>
+                            <span class="info-value">≤ 1.5万（10%仓位）</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">封单金额</span>
-                            <span class="info-value positive">4.92亿（很强）</span>
+                            <span class="info-label">封板概率</span>
+                            <span class="info-value">~55%（MACD死叉降级）</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">买入概率</span>
-                            <span class="info-value warning">低（一字板）</span>
+                            <span class="info-label">龙虎榜</span>
+                            <span class="info-value up">净买 4.79亿 TOP1 | 沪股通 2.88亿</span>
                         </div>
                     </div>
                     <div class="reason">
-                        <strong>排板理由：</strong><br>
-                        1. 0610一字板，封单4.92亿（最强）<br>
-                        2. 化学制品龙头，题材持续<br>
-                        3. 可能无法买入，隔夜排单<br>
-                        4. 如果开盘秒板，放弃追高
+                        <strong>打板理由：</strong><br>
+                        <span class="risk-tag">资金面</span> 龙虎榜净买 4.79亿，全市场第1，沪股通+机构合计净买 3.6亿+。PCB概念+先进封装+通信技术三重题材。<br>
+                        <span class="risk-tag">⚠风险</span> MACD死叉确认，KDJ也出现死叉后勉强金叉。今日跌 -1.0% 转弱明显。打板仅适合在强势回封时轻仓参与。
                     </div>
                 </div>
+
             </div>
         </div>
-        
-        <div class="data-source">
-            <h3>📊 数据来源（2026-06-10 收盘后）</h3>
-            <p>
-                <strong>龙虎榜数据：</strong>宏昌电子净买入4.79亿（TOP1），中电港净买入3.03亿（TOP2）<br>
-                <strong>涨停板数据：</strong>和远气体一字板封单4.92亿，安宁股份3板<br>
-                <strong>热度排名：</strong>商业航天16只涨停，化学制品12只涨停<br>
-                <strong>策略筛选：</strong>均线多头排列 + DMA健康度 + 龙虎榜确认
-            </p>
+
+        <!-- ===== 日内T+0策略 ===== -->
+        <div class="strategy-section">
+            <div class="section-title">
+                <span class="icon">📊</span>
+                <span>日内T+0</span>
+                <span class="position-badge">暂停</span>
+            </div>
+
+            <div class="empty-state">
+                <div class="icon">⏸️</div>
+                <h3>今日不推荐T+0操作</h3>
+                <p>市场赚钱效应仅 30.1%，今日早盘多只标的大幅杀跌，缺乏明确的日内低点买入信号。昨日涨停标的今日多数在跌，不具备T+0底仓条件。建议观望，等待市场情绪回暖。</p>
+            </div>
         </div>
-        
+
         <div class="footer">
-            <p>⚠️ <strong>风险提示：</strong>本推荐仅供参考，不构成投资建议。股市有风险，投资需谨慎。</p>
-            <p>📅 数据时间：2026-06-10 22:10 | 🤖 生成时间：2026-06-11 00:47</p>
-            <p>🌐 网页部署：<a href="https://0cb549673d904cafa66040f770a9bc40.app.codebuddy.work" target="_blank">https://0cb549673d904cafa66040f770a9bc40.app.codebuddy.work</a></p>
+            <p class="disclaimer">⚠️ 风险提示：本推荐仅供研究参考，不构成投资建议。股市有风险，投资需谨慎。今日市场赚钱效应偏弱，炸板率极高，请严格控制仓位，严格执行止损！</p>
+            <p>📅 数据来源：恢恢量化（hhxg.top）| 数据时间：2026-06-10 收盘 | 技术分析：StockSight</p>
+            <p>🤖 生成时间：2026-06-11 12:07 | 自动化任务：每日A股短线策略推荐</p>
+            <p>🌐 网页部署：<a href="https://xljy.github.io/stock-picks/" target="_blank">https://xljy.github.io/stock-picks/</a></p>
+            <p style="margin-top:10px;font-size:11px;color:#6c757d;">
+                涨停板晋级率：1板→2板 10.8% | 2板→3板 12.5% | 3板→4板 50.0%（仅金安国纪成功）<br>
+                热门题材涨停数：基础化工(16) 化学制品(12) 氢能源(9) 通信技术(9) PCB概念(8) 先进封装(8)
+            </p>
         </div>
     </div>
 </body>
