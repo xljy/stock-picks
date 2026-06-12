@@ -3,414 +3,298 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026年06月12日 A股复盘 | 每日选股</title>
+<title>明日早盘策略 | 2026-06-15 周一</title>
 <style>
-  :root {
-    --bg: #0d1117;
-    --bg2: #161b22;
-    --bg3: #21262d;
-    --border: #30363d;
-    --text: #c9d1d9;
-    --text2: #8b949e;
-    --red: #f85149;
-    --red-bg: rgba(248,81,73,0.15);
-    --green: #3fb950;
-    --green-bg: rgba(63,185,80,0.15);
-    --gold: #d2991d;
-    --blue: #58a6ff;
-    --purple: #bc8cff;
-    --orange: #f0883e;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; line-height:1.6; min-height:100vh; }
-  .container { max-width:1100px; margin:0 auto; padding:20px; }
-  
-  /* Header */
-  .header { text-align:center; padding:40px 20px 30px; border-bottom:1px solid var(--border); margin-bottom:30px; }
-  .header h1 { font-size:2em; font-weight:700; background:linear-gradient(135deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-  .header .date { color:var(--text2); font-size:0.95em; margin-top:6px; }
-  .header .badge { display:inline-block; background:var(--bg3); color:var(--blue); padding:4px 12px; border-radius:12px; font-size:0.8em; margin-top:8px; border:1px solid var(--border); }
-  
-  /* Section */
-  .section { margin-bottom:36px; }
-  .section-title { font-size:1.3em; font-weight:700; margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--border); display:flex; align-items:center; gap:8px; }
-  .section-title .icon { font-size:1.2em; }
-  
-  /* Cards */
-  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:20px; }
-  .card { background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:18px; transition:transform 0.15s; }
-  .card:hover { transform:translateY(-2px); }
-  .card-label { font-size:0.82em; color:var(--text2); margin-bottom:6px; }
-  .card-value { font-size:1.6em; font-weight:700; }
-  .card-sub { font-size:0.78em; color:var(--text2); margin-top:4px; }
-  .card.red .card-value { color:var(--red); }
-  .card.green .card-value { color:var(--green); }
-  .card.gold .card-value { color:var(--gold); }
-  
-  /* Table */
-  .table-container { overflow-x:auto; border:1px solid var(--border); border-radius:10px; background:var(--bg2); }
-  table { width:100%; border-collapse:collapse; font-size:0.88em; }
-  th { background:var(--bg3); color:var(--text2); font-weight:600; padding:12px 14px; text-align:left; white-space:nowrap; font-size:0.82em; text-transform:uppercase; letter-spacing:0.5px; }
-  td { padding:12px 14px; border-top:1px solid var(--border); }
-  tr:hover td { background:rgba(88,166,255,0.04); }
-  .up { color:var(--red); font-weight:600; }
-  .down { color:var(--green); font-weight:600; }
-  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.75em; font-weight:600; }
-  .tag-danger { background:var(--red-bg); color:var(--red); }
-  .tag-warn { background:rgba(210,153,29,0.15); color:var(--gold); }
-  .tag-ok { background:var(--green-bg); color:var(--green); }
-  
-  /* Hot/Cold List */
-  .hot-list { display:grid; gap:12px; margin-bottom:20px; }
-  .hot-item { display:flex; align-items:center; gap:12px; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; }
-  .hot-rank { font-size:1.3em; font-weight:800; width:32px; text-align:center; }
-  .hot-rank.r1 { color:#ffc300; }
-  .hot-rank.r2 { color:#c0c0c0; }
-  .hot-rank.r3 { color:#cd7f32; }
-  .hot-info { flex:1; }
-  .hot-name { font-weight:700; margin-bottom:2px; }
-  .hot-detail { font-size:0.8em; color:var(--text2); }
-  .hot-stat { text-align:right; }
-  .hot-stat-val { font-weight:700; font-size:1.1em; }
-  .hot-stat-sub { font-size:0.75em; color:var(--text2); }
-  
-  /* TOP 5 Cards */
-  .top5-grid { display:grid; gap:16px; }
-  .top5-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; position:relative; overflow:hidden; }
-  .top5-card .rank-badge { position:absolute; top:0; right:0; width:60px; height:60px; display:flex; align-items:center; justify-content:center; font-size:1.4em; font-weight:900; }
-  .top5-card.r1 .rank-badge { background:linear-gradient(135deg,#ffc300,#ff8c00); color:#000; }
-  .top5-card.r2 .rank-badge { background:linear-gradient(135deg,#c0c0c0,#808080); color:#000; }
-  .top5-card.r3 .rank-badge { background:linear-gradient(135deg,#cd7f32,#8b4513); color:#fff; }
-  .top5-card .stock-header { display:flex; align-items:baseline; gap:10px; margin-bottom:10px; padding-right:60px; }
-  .top5-card .stock-code { font-size:0.78em; color:var(--text2); }
-  .top5-card .stock-name { font-size:1.2em; font-weight:700; }
-  .top5-card .stock-price { font-size:1.1em; font-weight:700; color:var(--red); }
-  .top5-card .stock-meta { display:grid; grid-template-columns:1fr 1fr; gap:8px 16px; margin:12px 0; font-size:0.82em; }
-  .top5-card .stock-meta .m-label { color:var(--text2); }
-  .top5-card .stock-meta .m-value { font-weight:600; }
-  .top5-card .stock-logic { font-size:0.84em; color:var(--blue); border-left:3px solid var(--blue); padding-left:12px; margin-top:10px; line-height:1.5; }
-  
-  /* Strategy */
-  .strategy-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  @media (max-width:700px) { .strategy-grid { grid-template-columns:1fr; } }
-  .strategy-box { background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:20px; }
-  .strategy-box h3 { margin-bottom:12px; color:var(--blue); font-size:1em; }
-  .strategy-box ul { list-style:none; }
-  .strategy-box ul li { padding:6px 0; border-bottom:1px solid var(--border); font-size:0.88em; }
-  .strategy-box ul li:last-child { border-bottom:none; }
-  .strategy-box ul li::before { content:'▸ '; color:var(--blue); }
-  
-  .checklist { background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:20px; }
-  .checklist h3 { margin-bottom:12px; color:var(--orange); font-size:1em; }
-  .checklist ol { padding-left:22px; }
-  .checklist ol li { padding:8px 0; border-bottom:1px solid var(--border); font-size:0.88em; }
-  .checklist ol li:last-child { border-bottom:none; }
-  .checklist ol li small { color:var(--text2); }
-  
-  .disclaimer { background:rgba(248,81,73,0.08); border:1px solid rgba(248,81,73,0.2); border-radius:10px; padding:16px 20px; font-size:0.82em; color:var(--text2); margin-top:30px; }
-  
-  .footer { text-align:center; padding:30px; color:var(--text2); font-size:0.78em; }
-  .footer a { color:var(--blue); text-decoration:none; }
-  
-  /* Responsive */
-  @media (max-width:600px) {
-    .header h1 { font-size:1.5em; }
-    .cards { grid-template-columns:repeat(2,1fr); }
-    th, td { padding:8px 10px; font-size:0.78em; }
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d1117;color:#e6edf3;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:16px}
+header{text-align:center;padding:24px 16px;border-bottom:1px solid #21262d}
+header h1{font-size:1.6rem;background:linear-gradient(135deg,#f85149,#ffa657);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header .sub{color:#8b949e;font-size:.85rem;margin-top:4px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px;margin:16px 0}
+.card h2{font-size:1.15rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:600}
+.tag-red{background:#f8514922;color:#f85149;border:1px solid #f8514944}
+.tag-green{background:#3fb95022;color:#3fb950;border:1px solid #3fb95044}
+.tag-yellow{background:#d2992222;color:#d29922;border:1px solid #d2992244}
+.tag-blue{background:#58a6ff22;color:#58a6ff;border:1px solid #58a6ff44}
+.tag-purple{background:#bc8cff22;color:#bc8cff;border:1px solid #bc8cff44}
+table{width:100%;border-collapse:collapse;font-size:.82rem;margin:8px 0}
+th{background:#21262d;color:#8b949e;text-align:left;padding:8px 10px;font-weight:500;border-bottom:1px solid #30363d}
+td{padding:7px 10px;border-bottom:1px solid #21262d}
+tr:hover td{background:#1c2128}
+.up{color:#f85149}
+.dn{color:#3fb950}
+.warn-box{background:#d2992211;border:1px solid #d2992244;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.danger-box{background:#f8514911;border:1px solid #f8514944;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.info-box{background:#58a6ff11;border:1px solid #58a6ff44;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.ok-box{background:#3fb95011;border:1px solid #3fb95044;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+.score-bar{height:6px;border-radius:3px;background:#21262d;overflow:hidden;margin-top:3px}
+.score-fill{height:100%;border-radius:3px}
+.pause-banner{text-align:center;background:#f8514922;border:2px dashed #f85149;border-radius:12px;padding:20px;margin:12px 0}
+.pause-banner h3{color:#f85149;font-size:1.1rem}
+.pause-banner p{color:#8b949e;font-size:.85rem;margin-top:4px}
+.stock-card{background:#0d1117;border:1px solid #21262d;border-radius:8px;padding:14px;margin:8px 0}
+.stock-card h3{font-size:.95rem;display:flex;align-items:center;gap:6px}
+.stock-card .meta{color:#8b949e;font-size:.78rem;margin:4px 0}
+.stock-card .plan{background:#161b22;border-radius:6px;padding:10px;margin-top:8px;font-size:.82rem}
+.timeline{border-left:3px solid #30363d;padding-left:20px;margin:12px 0}
+.timeline .t-item{position:relative;padding:8px 0;font-size:.85rem}
+.timeline .t-item::before{content:'';position:absolute;left:-25px;top:12px;width:10px;height:10px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117}
+.timeline .t-time{color:#58a6ff;font-weight:600}
+.audit-row{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:.82rem}
+.audit-row .icon{flex-shrink:0;width:18px;text-align:center}
+footer{text-align:center;padding:24px;color:#484f58;font-size:.75rem;border-top:1px solid #21262d;margin-top:24px}
 </style>
 </head>
 <body>
-
 <div class="container">
 
-  <!-- Header -->
-  <div class="header">
-    <h1>📊 2026年06月12日 A股复盘</h1>
-    <div class="date">周五 · 数据时间 2026-06-12 21:30 CST</div>
-    <div class="badge">🤖 AI 自动化复盘 · 每日选股</div>
-  </div>
+<header>
+<h1>🎯 明日早盘策略</h1>
+<div class="sub">2026-06-15 周一 | 数据基准：06-12收盘 | 生成时间：20:30</div>
+<div class="sub" style="margin-top:6px">赚钱效应 <span class="up">72.7%</span> → 仓位系数 <span class="up">75%</span> | 游资净买入 <span class="up">32.27亿</span></div>
+</header>
 
-  <!-- 一、市场全景 -->
-  <div class="section">
-    <div class="section-title"><span class="icon">🌐</span>一、市场全景</div>
-    <div class="cards">
-      <div class="card green">
-        <div class="card-label">沪指</div>
-        <div class="card-value">4031</div>
-        <div class="card-sub">+1.12%</div>
-      </div>
-      <div class="card">
-        <div class="card-label">成交额</div>
-        <div class="card-value">3.2万亿+</div>
-        <div class="card-sub">放量成交</div>
-      </div>
-      <div class="card gold">
-        <div class="card-label">涨停效应</div>
-        <div class="card-value">72.7%</div>
-        <div class="card-sub">89涨停 · 15跌停 · 48炸板</div>
-      </div>
-      <div class="card">
-        <div class="card-label">涨跌结构</div>
-        <div class="card-value">2809↑</div>
-        <div class="card-sub">954↓ · 小盘股领涨</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 最强板块 -->
-  <div class="section">
-    <div class="section-title"><span class="icon">🔥</span>最强板块 TOP3（资金净流入）</div>
-    <div class="hot-list">
-      <div class="hot-item">
-        <div class="hot-rank r1">#1</div>
-        <div class="hot-info">
-          <div class="hot-name">工业金属 / 有色金属</div>
-          <div class="hot-detail">涨停 16 只 · 伦敦金破 4200$ + 钨精矿涨价 25% + 铜铝共振</div>
-        </div>
-        <div class="hot-stat">
-          <div class="hot-stat-val up">+38亿</div>
-          <div class="hot-stat-sub">主力净流入</div>
-        </div>
-      </div>
-      <div class="hot-item">
-        <div class="hot-rank r2">#2</div>
-        <div class="hot-info">
-          <div class="hot-name">证券</div>
-          <div class="hot-detail">涨停 4 只 · 成交破 3 万亿 → 券商直接受益</div>
-        </div>
-        <div class="hot-stat">
-          <div class="hot-stat-val up">+57亿</div>
-          <div class="hot-stat-sub">主力净流入</div>
-        </div>
-      </div>
-      <div class="hot-item">
-        <div class="hot-rank r3">#3</div>
-        <div class="hot-info">
-          <div class="hot-name">军工装备</div>
-          <div class="hot-detail">涨停 11 只 · 巴黎航展催化 + 下半年订单放量预期</div>
-        </div>
-        <div class="hot-stat">
-          <div class="hot-stat-val up">+15亿</div>
-          <div class="hot-stat-sub">主力净流入</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 最弱板块 -->
-  <div class="section">
-    <div class="section-title"><span class="icon">📉</span>最弱板块 TOP3（资金净流出）</div>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr><th>排名</th><th>板块</th><th>资金流出</th><th>原因</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>芯片概念</td><td class="down">-295亿</td><td>海外扩产利空 + 高位获利了结</td></tr>
-          <tr><td>2</td><td>华为概念</td><td class="down">-127亿</td><td>跟随科技股集体回调</td></tr>
-          <tr><td>3</td><td>通信设备</td><td class="down">-64亿</td><td>AI硬件阶段性退潮</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="margin-top:14px; color:var(--gold); font-size:0.9em;">
-      🧭 <strong>风格判断</strong>：高低切换明确 — 资金从高位科技（芯片/MLCC/通信）全面流入低位周期（有色/军工/券商）。沪指涨但赚钱效应集中在周期股，科技持仓普遍亏钱。这是"指数牛、个股熊"的典型分化日。
-    </p>
-  </div>
-
-  <!-- 二、持仓体检 -->
-  <div class="section">
-    <div class="section-title"><span class="icon">💼</span>二、持仓体检</div>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr><th>代码</th><th>名称</th><th>收盘价</th><th>涨跌幅</th><th>状态</th><th>周一策略</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>002254</td><td>泰和新材</td><td>¥18.06</td>
-            <td class="down">-4.55%</td>
-            <td><span class="tag tag-warn">🟡 持有</span></td>
-            <td>大长腿守住17.03，设17.0硬止损</td>
-          </tr>
-          <tr>
-            <td>688545</td><td>兴福电子</td><td>¥108.00</td>
-            <td class="up">+3.63%</td>
-            <td><span class="tag tag-warn">🟡 持有</span></td>
-            <td>PE 173x，周一110+减半锁利</td>
-          </tr>
-          <tr>
-            <td>603002</td><td>宏昌电子</td><td>¥17.43</td>
-            <td class="down">-2.57%</td>
-            <td><span class="tag tag-danger">🔴 清仓</span></td>
-            <td>顶背离确认，开盘竞价卖出</td>
-          </tr>
-          <tr>
-            <td>300285</td><td>国瓷材料</td><td>¥57.00</td>
-            <td class="down">-8.65%</td>
-            <td><span class="tag tag-warn">🟡 1成</span></td>
-            <td>MLCC被砸，不加仓等企稳</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- 三、首板精选 TOP5 -->
-  <div class="section">
-    <div class="section-title"><span class="icon">🏆</span>三、首板精选 TOP5（81只中精选）</div>
-    <div class="top5-grid">
-
-      <!-- #1 -->
-      <div class="top5-card r1">
-        <div class="rank-badge">🥇</div>
-        <div class="stock-header">
-          <span class="stock-code">000547</span>
-          <span class="stock-name">航天发展</span>
-          <span class="stock-price">¥20.65</span>
-        </div>
-        <div class="stock-meta">
-          <div><span class="m-label">板块</span><br><span class="m-value">军工电子</span></div>
-          <div><span class="m-label">首封</span><br><span class="m-value">09:37 早盘硬板</span></div>
-          <div><span class="m-label">封单</span><br><span class="m-value">2.09亿 (11.0%)</span></div>
-          <div><span class="m-label">换手</span><br><span class="m-value">5.7% · 完美区间</span></div>
-          <div><span class="m-label">流值</span><br><span class="m-value">328亿</span></div>
-          <div><span class="m-label">5日涨幅</span><br><span class="m-value up">+0.9%</span></div>
-        </div>
-        <div class="stock-logic">
-          💡 商业航天 + 蓝军装备 + 通信指控 + 央企。巴黎航展(6/16)催化在即，军工板块11只涨停。328亿市值偏大但央企+双重题材稀缺性弥补。
-        </div>
-      </div>
-
-      <!-- #2 -->
-      <div class="top5-card r2">
-        <div class="rank-badge">🥈</div>
-        <div class="stock-header">
-          <span class="stock-code">301348</span>
-          <span class="stock-name">蓝箭电子</span>
-          <span class="stock-price">¥30.02</span>
-        </div>
-        <div class="stock-meta">
-          <div><span class="m-label">板块</span><br><span class="m-value">半导体</span></div>
-          <div><span class="m-label">首封</span><br><span class="m-value">09:32 秒板</span></div>
-          <div><span class="m-label">封单</span><br><span class="m-value">1.62亿 (26.5%)</span></div>
-          <div><span class="m-label">换手</span><br><span class="m-value">12.9%</span></div>
-          <div><span class="m-label">流值</span><br><span class="m-value">46.6亿</span></div>
-          <div><span class="m-label">5日涨幅</span><br><span class="m-value up">+22.6%</span></div>
-        </div>
-        <div class="stock-logic">
-          💡 拟收购芯翼 + 半导体封测 + 存储芯片。半导体被砸但蓝箭逆势涨停，收购逻辑独立。46亿小盘弹性大，等回调再考虑。
-        </div>
-      </div>
-
-      <!-- #3 -->
-      <div class="top5-card r3">
-        <div class="rank-badge">🥉</div>
-        <div class="stock-header">
-          <span class="stock-code">000969</span>
-          <span class="stock-name">安泰科技</span>
-          <span class="stock-price">¥24.46</span>
-        </div>
-        <div class="stock-meta">
-          <div><span class="m-label">板块</span><br><span class="m-value">金属材料</span></div>
-          <div><span class="m-label">首封</span><br><span class="m-value">09:31 近秒板</span></div>
-          <div><span class="m-label">封单</span><br><span class="m-value">2.31亿 (24.5%)</span></div>
-          <div><span class="m-label">换手</span><br><span class="m-value">3.7% · 筹码锁定</span></div>
-          <div><span class="m-label">流值</span><br><span class="m-value">255亿</span></div>
-          <div><span class="m-label">5日涨幅</span><br><span class="m-value up">+10.5%</span></div>
-        </div>
-        <div class="stock-logic">
-          💡 金刚石铜复合材料 + 非晶纳米晶 + <strong>可控核聚变</strong>。核聚变新主线，与AI算力/有色共振。秒板+换手3.7%=高度控盘。
-        </div>
-      </div>
-
-      <!-- #4 -->
-      <div class="top5-card">
-        <div class="stock-header">
-          <span class="stock-code">002976</span>
-          <span class="stock-name">瑞玛精密</span>
-          <span class="stock-price">¥32.88</span>
-        </div>
-        <div class="stock-meta">
-          <div><span class="m-label">板块</span><br><span class="m-value">汽车零部件</span></div>
-          <div><span class="m-label">首封</span><br><span class="m-value">09:32 秒板</span></div>
-          <div><span class="m-label">封单</span><br><span class="m-value">40.1% · 极高</span></div>
-          <div><span class="m-label">换手</span><br><span class="m-value">6.1%</span></div>
-          <div><span class="m-label">流值</span><br><span class="m-value">21.9亿 · 小盘</span></div>
-          <div><span class="m-label">5日涨幅</span><br><span class="m-value up">+4.1%</span></div>
-        </div>
-        <div class="stock-logic">
-          💡 <strong>光通信散热</strong> + 5G + 空气悬架 + 特斯拉。光通信散热直接受益AI数据中心建设，22亿小盘极易拉升，40%封单占比说明主力控盘度极高。
-        </div>
-      </div>
-
-      <!-- #5 -->
-      <div class="top5-card">
-        <div class="stock-header">
-          <span class="stock-code">600531</span>
-          <span class="stock-name">豫光金铅</span>
-          <span class="stock-price">¥13.09</span>
-        </div>
-        <div class="stock-meta">
-          <div><span class="m-label">板块</span><br><span class="m-value">工业金属</span></div>
-          <div><span class="m-label">首封</span><br><span class="m-value">10:42</span></div>
-          <div><span class="m-label">封单</span><br><span class="m-value">2.1%</span></div>
-          <div><span class="m-label">换手</span><br><span class="m-value">6.2%</span></div>
-          <div><span class="m-label">流值</span><br><span class="m-value">158亿</span></div>
-          <div><span class="m-label">5日涨幅</span><br><span class="m-value">-</span></div>
-        </div>
-        <div class="stock-logic">
-          💡 铅锌龙头 + 高纯金属材料 + 黄金 + 国企。有色涨停潮中铅锌细分被低估，高纯金属材料直接受益半导体产业链。
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 四、周一策略 -->
-  <div class="section">
-    <div class="section-title"><span class="icon">🎯</span>四、周一（6/15）策略</div>
-    
-    <div class="strategy-grid">
-      <div class="strategy-box">
-        <h3>🟢 推荐方向</h3>
-        <ul>
-          <li><strong>🥇 军工/航天</strong> — 6/16巴黎航展催化，资金流入15亿确认，位置比有色低</li>
-          <li><strong>🥈 有色小金属</strong> — 钨精矿涨价25%+黄金4200$，但连涨2天可能分歧</li>
-        </ul>
-      </div>
-      <div class="strategy-box">
-        <h3>🟢 新开仓条件</h3>
-        <ul>
-          <li><strong>航天发展</strong>：回踩19-19.5 · 2成 · 止损18.5</li>
-          <li><strong>安泰科技</strong>：回踩23-23.5 · 1.5成 · 止损22</li>
-          <li><strong>瑞玛精密</strong>：回踩31-31.5 · 1成 · 止损30</li>
-          <li style="color:var(--gold)">⚠️ 高开不追！只在回踩或低开时考虑</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="checklist" style="margin-top:20px;">
-      <h3>🔴 持仓操作清单（按优先级）</h3>
-      <ol>
-        <li><strong>宏昌电子 → 开盘竞价清仓</strong><br><small>不等反弹，顶背离确认，-2.57%是学费</small></li>
-        <li><strong>兴福电子 → 如有110+减半</strong><br><small>PE 173x不便宜，设104止损</small></li>
-        <li><strong>泰和新材 → 设17.0硬止损</strong><br><small>大长腿守住17.03是最后防线，18.5+减1/3</small></li>
-        <li><strong>国瓷材料 → 不加仓</strong><br><small>等53-55企稳信号，MLCC逻辑没破但短线伤了</small></li>
-      </ol>
-    </div>
-  </div>
-
-  <!-- Disclaimer -->
-  <div class="disclaimer">
-    ⚠️ <strong>免责声明</strong>：以上分析基于公开数据，由 AI 自动生成，不构成投资建议。短线博弈风险极高，请控制仓位，独立决策。股市有风险，投资需谨慎。
-  </div>
-
-  <div class="footer">
-    Generated by <a href="https://github.com/xljy/a-stock-daily-report" target="_blank">A-Stock Daily Report</a> · Auto @ 20:30 CST daily · Powered by WorkBuddy AI
-  </div>
-
+<!-- 市场环境 -->
+<div class="card">
+<h2>📊 市场环境总览</h2>
+<div class="grid-2">
+<div>
+<table>
+<tr><th>指标</th><th>数值</th><th>判断</th></tr>
+<tr><td>赚钱效应</td><td class="up">72.7%</td><td><span class="tag tag-green">强</span></td></tr>
+<tr><td>涨停</td><td class="up">69家</td><td>🟡 偏多</td></tr>
+<tr><td>跌停</td><td class="dn">32家</td><td>🟡 分化</td></tr>
+<tr><td>炸板</td><td>31家(31%)</td><td>🟢 &lt;35%</td></tr>
+<tr><td>仓位系数</td><td class="up">75%</td><td><span class="tag tag-green">偏强</span></td></tr>
+</table>
+</div>
+<div>
+<table>
+<tr><th>热门题材</th><th>涨停数</th><th>净流入(亿)</th></tr>
+<tr><td>基础化工</td><td class="up">15</td><td class="up">7.47</td></tr>
+<tr><td>MiniLED</td><td class="up">13</td><td class="up">5.44</td></tr>
+<tr><td>氢能源</td><td class="up">13</td><td class="up">5.92</td></tr>
+<tr><td>小金属概念</td><td class="up">11</td><td class="up">16.62</td></tr>
+<tr><td>先进封装</td><td class="up">11</td><td class="up">7.40</td></tr>
+</table>
+</div>
+</div>
+<div class="info-box">
+<strong>龙虎榜TOP5：</strong>云南锗业9.36亿 | 红星发展6.74亿 | 宗申动力6.14亿 | 方邦股份5.30亿 | 雅克科技4.73亿<br>
+<strong>知名游资：</strong>成都系→多氟多2.26亿+有研新材1.05亿 | 欢乐海岸→雅克科技0.72亿 | 方新侠→双星新材-0.44亿(净卖出!)
+</div>
 </div>
 
+<!-- 连板天梯 -->
+<div class="card">
+<h2>📈 连板天梯</h2>
+<table>
+<tr><th>板数</th><th>成功</th><th>失败</th><th>代表标的</th></tr>
+<tr><td class="up">3板</td><td>4</td><td class="dn">9</td><td>京基智农、和远气体、宿迁联盛、中化国际</td></tr>
+<tr><td class="up">2板</td><td>7</td><td class="dn">48</td><td>雅克科技、昊华科技、新亚强</td></tr>
+<tr><td>1板</td><td>58</td><td>0</td><td>宗申动力、深桑达A、国城矿业</td></tr>
+</table>
+<div class="warn-box">⚠️ 3板炸板率69%(9/13失败)，高位板风险极高！2板炸板率87%，打板需极谨慎。</div>
+</div>
+
+<!-- 隔日超短 -->
+<div class="card">
+<h2>⚡ 隔日超短策略（仓位30%）</h2>
+<p style="color:#8b949e;font-size:.82rem;margin-bottom:8px">买入时间14:30-15:00 | 次日09:30-10:30卖出 | 止损-5%严格执行</p>
+
+<div class="stock-card">
+<h3>🧪 多氟多 <span class="tag tag-blue">002407</span> <span class="up">+3.9%</span> <span class="tag tag-green">79分</span></h3>
+<div class="meta">基础化工龙头 | 成都系2.26亿买入 | 量比25.11 | 换手率25.1%</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>涨幅匹配</td><td>+3.9%(3-7%)</td><td class="up">20/20</td></tr>
+<tr><td>量比</td><td>25.11(>2.0)</td><td class="up">15/15</td></tr>
+<tr><td>均线排列</td><td>MACD金叉+KDJ金叉，排列不明确</td><td>22/30</td></tr>
+<tr><td>DMA健康度</td><td>RSI64中性+BOLL内+高换手风险</td><td>12/20</td></tr>
+<tr><td>龙虎榜</td><td>成都系2.26亿</td><td class="up">10/15</td></tr>
+</table>
+<div class="plan">
+<strong>明日操作：</strong>14:30-15:00买入¥38.50-40.50区间 | 高开>3%→09:30卖50% | 平开/低开→冲高+8%卖出<br>
+<strong>止损：</strong><span class="dn">¥37.69(-5%)</span> | <strong>目标：</strong><span class="up">¥41.89(+5.6%)</span><br>
+⚠️ 换手率25.1%危险偏高，注意是否为有效突破
+</div>
+</div>
+
+<div class="stock-card">
+<h3>⛏ 章源钨业 <span class="tag tag-blue">002378</span> <span class="up">+3.0%</span> <span class="tag tag-green">82分</span></h3>
+<div class="meta">小金属概念 | 板块净流入16.62亿 | 量比16.89 | 换手率16.9%</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>涨幅匹配</td><td>+3.0%(3-7%)</td><td class="up">20/20</td></tr>
+<tr><td>量比</td><td>16.89(>2.0)</td><td class="up">15/15</td></tr>
+<tr><td>均线排列</td><td>MACD多头排列+柱扩张</td><td class="up">25/30</td></tr>
+<tr><td>DMA健康度</td><td>RSI66中性+BOLL破上轨</td><td>12/20</td></tr>
+<tr><td>龙虎榜</td><td>板块16.62亿+个股2.32亿</td><td>10/15</td></tr>
+</table>
+<div class="plan">
+<strong>明日操作：</strong>14:30-15:00买入¥33.50-35.00区间 | 高开>3%→09:30卖50% | 平开/低开→冲高+8%卖出<br>
+<strong>止损：</strong><span class="dn">¥32.91(-5%)</span> | <strong>目标：</strong><span class="up">¥36.57(+5.6%)</span><br>
+⚠️ BOLL突破上轨，短线过热风险上升
+</div>
+</div>
+
+<div class="stock-card" style="border-color:#d2992244">
+<h3>⛏ 云南锗业 <span class="tag tag-blue">002428</span> <span class="up">+4.6%</span> <span class="tag tag-yellow">68分⚠️</span></h3>
+<div class="meta">通信技术/小金属 | 龙虎榜TOP1(9.36亿) | 量比19.99 | 换手率20.0%</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>涨幅匹配</td><td>+4.6%(3-7%)</td><td class="up">20/20</td></tr>
+<tr><td>量比</td><td>19.99(>2.0)</td><td class="up">15/15</td></tr>
+<tr><td>均线排列</td><td>MACD空头排列+KDJ死叉</td><td>10/30</td></tr>
+<tr><td>DMA健康度</td><td>RSI58+MACD偏空</td><td>8/20</td></tr>
+<tr><td>龙虎榜</td><td>TOP1(9.36亿)</td><td class="up">15/15</td></tr>
+</table>
+<div class="plan">
+<strong>明日操作：</strong>⚠️ MACD空头排列是硬伤，建议谨慎！<br>
+如参与：轻仓买入¥87.00-92.00 | 止损<span class="dn">¥87.65(-5%)</span> | 目标<span class="up">¥97.43(+5.6%)</span><br>
+🔴 <strong>风险提示：</strong>MACD空头排列+KDJ死叉+高换手20%，技术面与资金面严重矛盾，建议优先选择多氟多/章源钨业
+</div>
+</div>
+
+<!-- 涨停股深度检查结果（新规则） -->
+<div class="info-box">
+<strong>🔍 涨停股深度检查结果（新规则：涨停股需深度检查后可入隔日超短）</strong><br>
+❌ 宗申动力(001696)：RSI 81极度超买 → 不通过<br>
+❌ 雅克科技(002409)：-1.4%下跌+换手20.8%+BOLL破上轨 → 不通过<br>
+❌ 方邦股份(688020)：MACD顶背离 → 不通过<br>
+❌ 中化国际(600500)：RSI 74超买+MACD顶背离 → 不通过<br>
+<em>结论：今日涨停股经深度检查后均不通过隔日超短，技术面过热风险太高</em>
+</div>
+</div>
+
+<!-- 中短线波段 -->
+<div class="card">
+<h2>📈 中短线波段策略（仓位19%）</h2>
+<p style="color:#8b949e;font-size:.82rem;margin-bottom:8px">3-5日持有 | 止盈+8~15% | 止损-8% | MACD高位死叉提前离场</p>
+
+<div class="stock-card">
+<h3>🏦 厦门银行 <span class="tag tag-blue">601187</span> <span class="up">+2.3%</span> <span class="tag tag-green">80分</span></h3>
+<div class="meta">银行板块 | MACD金叉+柱扩张 | RSI 66 | 量比1.19(温和)</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>均线趋势</td><td>MACD多头+柱扩张</td><td class="up">25/25</td></tr>
+<tr><td>MACD状态</td><td>金叉</td><td class="up">25/25</td></tr>
+<tr><td>量价健康</td><td>量比1.19温和</td><td>15/20</td></tr>
+<tr><td>题材热度</td><td>银行板块弱势(-9亿)</td><td>5/15</td></tr>
+<tr><td>RSI位置</td><td>65.9(60-70)</td><td>10/15</td></tr>
+</table>
+<div class="plan">
+<strong>操作计划：</strong>回踩¥7.80-7.90加仓 | 持有3-5日<br>
+<strong>止盈：</strong><span class="up">¥8.60-8.80(+8~10%)</span> | <strong>止损：</strong><span class="dn">¥7.35(-8%)</span><br>
+⚠️ BOLL破上轨+KDJ死叉，关注是否回踩中轨企稳
+</div>
+</div>
+</div>
+
+<!-- 打板战法 -->
+<div class="card">
+<h2>🔥 打板战法策略（仓位20%）</h2>
+<div class="pause-banner">
+<h3>⏸️ 打板战法暂停</h3>
+<p>涨停股普遍RSI超买，无达标标的</p>
+</div>
+<div class="danger-box">
+<strong>候选标的逐项检查：</strong><br>
+❌ 宗申动力(001696)：1板+6.14亿 → 评分58分(&lt;60) | RSI 81极度超买，DMA健康度&lt;50<br>
+❌ 中化国际(600500)：3板+无龙虎榜 → 评分28分 | RSI 74超买+MACD顶背离<br>
+❌ 方邦股份(688020)：科创板+5.30亿 → 评分43分 | MACD顶背离+无知名游资<br>
+❌ 京基智农(000048)：3板+无龙虎榜数据 → 评分极低<br>
+<br><em>3板炸板率69%，高位板风险极高，打板策略整体暂停</em>
+</div>
+</div>
+
+<!-- T+0 -->
+<div class="card">
+<h2>📊 日内T+0策略（仓位15%）</h2>
+<div class="pause-banner">
+<h3>⏸️ T+0暂停</h3>
+<p>底仓标的均弱势，做T条件不满足</p>
+</div>
+<div class="danger-box">
+<strong>底仓检查：</strong><br>
+❌ 宏昌电子(603002)：MACD顶背离，-2.6%，StockSight判定"过热-背离警告" → 做T条件不满足<br>
+❌ 双星新材(002585)：-6.8%大跌，3板炸板，方新侠净卖出-0.44亿 → 做T条件不满足<br>
+<br><strong>🔴 持仓建议：宏昌电子/双星新材建议下周一止损离场！</strong>
+</div>
+</div>
+
+<!-- 剔除标的 -->
+<div class="card">
+<h2>🚫 已剔除标的及原因</h2>
+<table>
+<tr><th>标的</th><th>原策略</th><th>剔除原因</th></tr>
+<tr><td>有研新材(600206)</td><td>隔日超短</td><td>今日-3.6%下跌，不符合涨幅3-7%要求</td></tr>
+<tr><td>红星发展(600367)</td><td>隔日超短</td><td>今日-1.9%下跌，RSI 75.79超买区</td></tr>
+<tr><td>雅克科技(002409)</td><td>打板/隔日超短</td><td>今日-1.4%开板下跌，2板失败，高换手20.8%</td></tr>
+<tr><td>昊华科技(600378)</td><td>所有策略</td><td>今日-10.0%跌停，RSI 70.56超买+KDJ超买</td></tr>
+<tr><td>新亚强(603155)</td><td>所有策略</td><td>今日-10.0%跌停，温州帮0.25亿(小资金)</td></tr>
+<tr><td>双星新材(002585)</td><td>所有策略</td><td>3板炸板-6.8%，方新侠净卖出</td></tr>
+</table>
+</div>
+
+<!-- 数据核查报告 -->
+<div class="card">
+<h2>🔍 数据核查报告</h2>
+<div class="audit-row"><div class="icon">✅</div><div><strong>涨幅规则一致性</strong>：多氟多+3.9%、章源钨业+3.0%、云南锗业+4.6%均在3-7%内</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>涨停股归类正确</strong>：宗申动力/中化国际/方邦股份经深度检查后不通过隔日超短，按新规则需额外skill核查后决定</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>跌停股排除</strong>：昊华科技-10%、新亚强-10%、双星新材-6.8%已全部排除</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>数据时间戳</strong>：StockSight数据06-12收盘(18:59-19:08)</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>量比来源</strong>：06-12收盘量比</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>评分复核</strong>：多氟多79、章源钨业82、云南锗业68、厦门银行80，偏差≤3分</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>炸板率核查</strong>：31% &lt; 35%，打板不因炸板率暂停（但因标的RSI超买而暂停）</div></div>
+<div class="audit-row"><div class="icon">⚠️</div><div><strong>云南锗业MACD空头</strong>：MACD空头排列+KDJ死叉，技术面与资金面矛盾，已标注风险</div></div>
+<div class="audit-row"><div class="icon">⚠️</div><div><strong>多氟多换手率危险</strong>：换手率25.1%远超正常值，需确认是否有效突破</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>RSI超买检查</strong>：云南锗业RSI57.6未超买，多氟多RSI64未超买，章源钨业RSI65.8未超买</div></div>
+
+<div class="ok-box" style="margin-top:12px">
+<strong>核查结论：部分通过</strong> | ✅ 通过 7项 | ⚠️ 警告 2项 | ❌ 拒绝 0项
+</div>
+</div>
+
+<!-- 明日操作时间线 -->
+<div class="card">
+<h2>⏰ 明日操作时间线（06-15 周一）</h2>
+<div class="timeline">
+<div class="t-item"><span class="t-time">09:15</span> 集合竞价观察：多氟多/章源钨业高开>3%不追！云南锗业谨慎观察</div>
+<div class="t-item"><span class="t-time">09:30</span> 多氟多/章源钨业平开或微涨→小仓位介入(各≤2万/1.5万)；云南锗业建议观望</div>
+<div class="t-item"><span class="t-time">09:30</span> 🔴 宏昌电子/双星新材→止损离场！不要犹豫</div>
+<div class="t-item"><span class="t-time">10:00</span> 隔日超短冲高>3%立即卖50%；厦门银行回踩7.80→加仓</div>
+<div class="t-item"><span class="t-time">14:30</span> 未卖的隔日超短尾盘全部平仓；厦门银行中线仓继续持有</div>
+<div class="t-item"><span class="t-time">15:00</span> 收盘复盘，确认持仓盈亏</div>
+</div>
+</div>
+
+<!-- 持仓提醒 -->
+<div class="card">
+<h2>💰 当前持仓提醒</h2>
+<div class="danger-box">
+<strong>🔴 宏昌电子(603002)</strong>：MACD顶背离 + 今日-2.6% + StockSight判定"过热-背离警告"<br>
+→ <strong>建议下周一开盘止损离场，目标价¥16.56附近</strong>
+</div>
+<div class="danger-box">
+<strong>🔴 双星新材(002585)</strong>：3板炸板-6.8% + 方新侠净卖出-0.44亿 + KDJ死叉<br>
+→ <strong>建议下周一开盘止损离场，目标价¥11.00附近</strong>
+</div>
+<div class="warn-box">
+<strong>⚠️ 国瓷材料(300285)</strong>：成本53元，未获取今日数据，建议手动检查
+</div>
+</div>
+
+<footer>
+数据来源：恢恢量化(hhxg.top) + StockSight | 仅供参考，不构成投资建议<br>
+涨停股深度检查规则：涨停股可入隔日超短但需经StockSight/DMA/Serenity等skill深度核查<br>
+部署：GitHub Pages → https://xljy.github.io/stock-picks/
+</footer>
+
+</div>
 </body>
 </html>
