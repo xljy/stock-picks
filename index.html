@@ -1,456 +1,300 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>明日早盘策略 - 2026-06-15（周一）</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI','Microsoft YaHei',sans-serif; background: linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); padding: 20px; min-height: 100vh; color: #e0e0e0; }
-        .container { max-width: 1400px; margin: 0 auto; background: #1e1e2f; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden; }
-        .header { background: linear-gradient(135deg,#e94560 0%,#0f3460 100%); color: white; padding: 40px; text-align: center; }
-        .header h1 { font-size: 36px; margin-bottom: 10px; }
-        .header .subtitle { font-size: 18px; opacity: 0.9; }
-        .audit-bar { background: #2d2d44; padding: 15px 40px; border-bottom: 1px solid #3d3d5c; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 14px; }
-        .audit-status { padding: 4px 12px; border-radius: 12px; font-weight: 600; font-size: 13px; }
-        .audit-pass { background: #1a3a1a; color: #4ade80; }
-        .audit-warn { background: #3a3a1a; color: #facc15; }
-        .audit-fail { background: #3a1a1a; color: #f87171; }
-        .meta { background: #252540; padding: 20px 40px; border-bottom: 2px solid #3d3d5c; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .meta-item { display: flex; align-items: center; gap: 10px; }
-        .meta-item .label { color: #888; font-size: 14px; }
-        .meta-item .value { font-weight: 600; font-size: 16px; }
-        .morning-plan { background: linear-gradient(135deg,#1a3a2a 0%,#0f3460 100%); margin: 30px 40px; padding: 30px; border-radius: 15px; border: 1px solid #4ade80; }
-        .morning-plan h2 { font-size: 24px; color: #4ade80; margin-bottom: 20px; }
-        .timeline { display: flex; gap: 15px; flex-wrap: wrap; }
-        .timeline-item { flex: 1; min-width: 200px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; border-left: 3px solid #4ade80; }
-        .timeline-item .time { font-size: 20px; font-weight: 700; color: #4ade80; margin-bottom: 10px; }
-        .timeline-item .action { font-size: 14px; line-height: 1.6; color: #bbb; }
-        .strategy-section { padding: 30px 40px; }
-        .section-title { font-size: 24px; color: #e0e0e0; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 2px solid #3d3d5c; display: flex; align-items: center; gap: 12px; }
-        .stocks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .stock-card { background: #252540; border-radius: 15px; padding: 25px; border-left: 5px solid #4ade80; transition: all 0.3s ease; }
-        .stock-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-        .stock-card.recommend { border-left-color: #4ade80; }
-        .stock-card.warning { border-left-color: #facc15; }
-        .stock-card.danger { border-left-color: #f87171; }
-        .stock-card.rejected { border-left-color: #666; opacity: 0.6; }
-        .stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .stock-name { font-size: 22px; font-weight: 700; color: #e0e0e0; }
-        .stock-code { font-size: 14px; color: #888; margin-left: 10px; }
-        .badge { padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 600; }
-        .badge-buy { background: #4ade80; color: #000; }
-        .badge-strong { background: #22c55e; color: #000; }
-        .badge-watch { background: #facc15; color: #000; }
-        .badge-daban { background: #e94560; color: white; }
-        .badge-t0 { background: #0ea5e9; color: white; }
-        .badge-reject { background: #666; color: #ccc; }
-        .badge-pause { background: #6b7280; color: white; }
-        .stock-info { margin: 15px 0; }
-        .info-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #333; font-size: 14px; }
-        .info-row:last-child { border-bottom: none; }
-        .info-label { color: #888; }
-        .info-value { font-weight: 600; }
-        .info-value.up { color: #f87171; }
-        .info-value.down { color: #4ade80; }
-        .tomorrow-action { background: #1a2a3a; padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px dashed #3d5c7d; }
-        .tomorrow-action .action-title { color: #60a5fa; font-weight: 700; margin-bottom: 8px; }
-        .tomorrow-action .action-detail { font-size: 13px; line-height: 1.6; color: #bbb; }
-        .reason { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-top: 12px; font-size: 13px; line-height: 1.6; color: #bbb; }
-        .pause-box { background: #252535; padding: 20px; border-radius: 12px; text-align: center; color: #888; border: 1px dashed #444; margin-bottom: 20px; }
-        .pause-box .icon { font-size: 40px; margin-bottom: 10px; }
-        .score-bar { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
-        .score-bar .bar-bg { flex: 1; height: 8px; background: #333; border-radius: 4px; overflow: hidden; }
-        .score-bar .bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
-        .bar-green { background: #4ade80; }
-        .bar-yellow { background: #facc15; }
-        .bar-red { background: #f87171; }
-        .audit-section { padding: 20px 40px; background: #1a1a2e; border-bottom: 1px solid #333; }
-        .audit-section h3 { color: #60a5fa; margin-bottom: 15px; }
-        .audit-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .audit-table th, .audit-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #2d2d44; }
-        .audit-table th { color: #888; }
-        .audit-table .pass { color: #4ade80; }
-        .audit-table .warn { color: #facc15; }
-        .audit-table .fail { color: #f87171; }
-        .hot-theme { background: #252540; padding: 15px 20px; border-radius: 10px; margin: 8px 0; display: flex; justify-content: space-between; align-items: center; }
-        .hot-theme .theme-name { font-weight: 600; color: #f87171; }
-        .hot-theme .theme-detail { color: #aaa; font-size: 13px; }
-        .footer { background: #151525; padding: 30px 40px; text-align: center; color: #666; font-size: 14px; border-top: 2px solid #2d2d44; }
-        .footer a { color: #60a5fa; text-decoration: none; }
-        @media (max-width: 768px) {
-            .header h1 { font-size: 24px; }
-            .stocks-grid { grid-template-columns: 1fr; }
-            .meta { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .timeline { flex-direction: column; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明日早盘策略 | 2026-06-15 周一</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d1117;color:#e6edf3;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:16px}
+header{text-align:center;padding:24px 16px;border-bottom:1px solid #21262d}
+header h1{font-size:1.6rem;background:linear-gradient(135deg,#f85149,#ffa657);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header .sub{color:#8b949e;font-size:.85rem;margin-top:4px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px;margin:16px 0}
+.card h2{font-size:1.15rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:600}
+.tag-red{background:#f8514922;color:#f85149;border:1px solid #f8514944}
+.tag-green{background:#3fb95022;color:#3fb950;border:1px solid #3fb95044}
+.tag-yellow{background:#d2992222;color:#d29922;border:1px solid #d2992244}
+.tag-blue{background:#58a6ff22;color:#58a6ff;border:1px solid #58a6ff44}
+.tag-purple{background:#bc8cff22;color:#bc8cff;border:1px solid #bc8cff44}
+table{width:100%;border-collapse:collapse;font-size:.82rem;margin:8px 0}
+th{background:#21262d;color:#8b949e;text-align:left;padding:8px 10px;font-weight:500;border-bottom:1px solid #30363d}
+td{padding:7px 10px;border-bottom:1px solid #21262d}
+tr:hover td{background:#1c2128}
+.up{color:#f85149}
+.dn{color:#3fb950}
+.warn-box{background:#d2992211;border:1px solid #d2992244;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.danger-box{background:#f8514911;border:1px solid #f8514944;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.info-box{background:#58a6ff11;border:1px solid #58a6ff44;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.ok-box{background:#3fb95011;border:1px solid #3fb95044;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:.82rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+.score-bar{height:6px;border-radius:3px;background:#21262d;overflow:hidden;margin-top:3px}
+.score-fill{height:100%;border-radius:3px}
+.pause-banner{text-align:center;background:#f8514922;border:2px dashed #f85149;border-radius:12px;padding:20px;margin:12px 0}
+.pause-banner h3{color:#f85149;font-size:1.1rem}
+.pause-banner p{color:#8b949e;font-size:.85rem;margin-top:4px}
+.stock-card{background:#0d1117;border:1px solid #21262d;border-radius:8px;padding:14px;margin:8px 0}
+.stock-card h3{font-size:.95rem;display:flex;align-items:center;gap:6px}
+.stock-card .meta{color:#8b949e;font-size:.78rem;margin:4px 0}
+.stock-card .plan{background:#161b22;border-radius:6px;padding:10px;margin-top:8px;font-size:.82rem}
+.timeline{border-left:3px solid #30363d;padding-left:20px;margin:12px 0}
+.timeline .t-item{position:relative;padding:8px 0;font-size:.85rem}
+.timeline .t-item::before{content:'';position:absolute;left:-25px;top:12px;width:10px;height:10px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117}
+.timeline .t-time{color:#58a6ff;font-weight:600}
+.audit-row{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:.82rem}
+.audit-row .icon{flex-shrink:0;width:18px;text-align:center}
+footer{text-align:center;padding:24px;color:#484f58;font-size:.75rem;border-top:1px solid #21262d;margin-top:24px}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🌅 明日早盘策略</h1>
-            <p class="subtitle">隔日超短 + 中短线波段 + 打板战法 + 日内T+0 | 2026-06-12（周五）收盘分析 → 下周一06-15执行</p>
-        </div>
+<div class="container">
 
-        <div class="audit-bar">
-            <span>🔍 数据核查：</span>
-            <span class="audit-status audit-pass">✓ 7项通过</span>
-            <span class="audit-status audit-warn">⚠ 2项警告</span>
-            <span class="audit-status audit-fail">✗ 0项拒绝</span>
-            <span style="margin-left:auto; color:#888;">数据基准: 06-12收盘 | 核查时间: 06-12 19:10</span>
-        </div>
+<header>
+<h1>🎯 明日早盘策略</h1>
+<div class="sub">2026-06-15 周一 | 数据基准：06-12收盘 | 生成时间：20:30</div>
+<div class="sub" style="margin-top:6px">赚钱效应 <span class="up">72.7%</span> → 仓位系数 <span class="up">75%</span> | 游资净买入 <span class="up">32.27亿</span></div>
+</header>
 
-        <div class="meta">
-            <div class="meta-item">
-                <span class="label">📊 赚钱效应：</span>
-                <span class="value" style="color: #f87171;">72.7%（强 — 仓位75%）</span>
-            </div>
-            <div class="meta-item">
-                <span class="label">🔥 涨停/炸板：</span>
-                <span class="value">69家 / 炸31家（炸板率31%）</span>
-            </div>
-            <div class="meta-item">
-                <span class="label">📉 跌停：</span>
-                <span class="value" style="color: #4ade80;">32家</span>
-            </div>
-            <div class="meta-item">
-                <span class="label">💰 仓位系数：</span>
-                <span class="value" style="color: #4ade80;">75%（偏强）</span>
-            </div>
-            <div class="meta-item">
-                <span class="label">💸 游资净买入：</span>
-                <span class="value" style="color: #f87171;">32.27亿</span>
-            </div>
-        </div>
+<!-- 市场环境 -->
+<div class="card">
+<h2>📊 市场环境总览</h2>
+<div class="grid-2">
+<div>
+<table>
+<tr><th>指标</th><th>数值</th><th>判断</th></tr>
+<tr><td>赚钱效应</td><td class="up">72.7%</td><td><span class="tag tag-green">强</span></td></tr>
+<tr><td>涨停</td><td class="up">69家</td><td>🟡 偏多</td></tr>
+<tr><td>跌停</td><td class="dn">32家</td><td>🟡 分化</td></tr>
+<tr><td>炸板</td><td>31家(31%)</td><td>🟢 &lt;35%</td></tr>
+<tr><td>仓位系数</td><td class="up">75%</td><td><span class="tag tag-green">偏强</span></td></tr>
+</table>
+</div>
+<div>
+<table>
+<tr><th>热门题材</th><th>涨停数</th><th>净流入(亿)</th></tr>
+<tr><td>基础化工</td><td class="up">15</td><td class="up">7.47</td></tr>
+<tr><td>MiniLED</td><td class="up">13</td><td class="up">5.44</td></tr>
+<tr><td>氢能源</td><td class="up">13</td><td class="up">5.92</td></tr>
+<tr><td>小金属概念</td><td class="up">11</td><td class="up">16.62</td></tr>
+<tr><td>先进封装</td><td class="up">11</td><td class="up">7.40</td></tr>
+</table>
+</div>
+</div>
+<div class="info-box">
+<strong>龙虎榜TOP5：</strong>云南锗业9.36亿 | 红星发展6.74亿 | 宗申动力6.14亿 | 方邦股份5.30亿 | 雅克科技4.73亿<br>
+<strong>知名游资：</strong>成都系→多氟多2.26亿+有研新材1.05亿 | 欢乐海岸→雅克科技0.72亿 | 方新侠→双星新材-0.44亿(净卖出!)
+</div>
+</div>
 
-        <!-- 热门题材 -->
-        <div class="strategy-section" style="padding-bottom:10px;">
-            <div class="section-title">
-                <span>🔥</span>
-                <span>今日热门题材（06-12收盘）</span>
-            </div>
-            <div class="hot-theme"><span class="theme-name">🏗 基础化工</span><span class="theme-detail">涨停15家 | 净流入7.47亿 | 多氟多、六国化工领涨</span></div>
-            <div class="hot-theme"><span class="theme-name">💡 MiniLED</span><span class="theme-detail">涨停13家 | 净流入5.44亿 | 雅克科技、江丰电子领涨</span></div>
-            <div class="hot-theme"><span class="theme-name">⚡ 氢能源</span><span class="theme-detail">涨停13家 | 净流入5.92亿 | 宗申动力、濮阳惠成领涨</span></div>
-            <div class="hot-theme"><span class="theme-name">📡 通信技术</span><span class="theme-detail">涨停12家 | 净流入9.79亿 | 云南锗业领涨</span></div>
-            <div class="hot-theme"><span class="theme-name">🔩 先进封装</span><span class="theme-detail">涨停11家 | 净流入7.40亿 | 雅克科技、兴福电子领涨</span></div>
-            <div class="hot-theme"><span class="theme-name">⛏ 小金属概念</span><span class="theme-detail">涨停11家 | 净流入16.62亿 | 云南锗业、章源钨业领涨</span></div>
-        </div>
+<!-- 连板天梯 -->
+<div class="card">
+<h2>📈 连板天梯</h2>
+<table>
+<tr><th>板数</th><th>成功</th><th>失败</th><th>代表标的</th></tr>
+<tr><td class="up">3板</td><td>4</td><td class="dn">9</td><td>京基智农、和远气体、宿迁联盛、中化国际</td></tr>
+<tr><td class="up">2板</td><td>7</td><td class="dn">48</td><td>雅克科技、昊华科技、新亚强</td></tr>
+<tr><td>1板</td><td>58</td><td>0</td><td>宗申动力、深桑达A、国城矿业</td></tr>
+</table>
+<div class="warn-box">⚠️ 3板炸板率69%(9/13失败)，高位板风险极高！2板炸板率87%，打板需极谨慎。</div>
+</div>
 
-        <!-- 核查详情 -->
-        <div class="audit-section">
-            <h3>📋 数据核查报告</h3>
-            <table class="audit-table">
-                <tr><th>#</th><th>核查项</th><th>结果</th><th>详情</th></tr>
-                <tr><td>1</td><td>涨幅规则一致性</td><td class="pass">✓ 通过</td><td>多氟多+3.9%、章源钨业+3.0%均在3-7%内，无涨停股入选隔日超短</td></tr>
-                <tr><td>2</td><td>涨停股归类正确</td><td class="pass">✓ 通过</td><td>宗申动力(+10%)、中化国际(+10%)仅归入打板战法，未混入隔日超短/中短线</td></tr>
-                <tr><td>3</td><td>跌停股排除</td><td class="pass">✓ 通过</td><td>昊华科技(-10%)、新亚强(-10%)、双星新材(-6.8%)等跌停/大跌股已全部排除</td></tr>
-                <tr><td>4</td><td>数据时间戳</td><td class="pass">✓ 通过</td><td>StockSight数据源: 06-12收盘腾讯财经18:59，时间戳一致</td></tr>
-                <tr><td>5</td><td>量比来源</td><td class="pass">✓ 通过</td><td>使用06-12收盘量比，非盘中数据</td></tr>
-                <tr><td>6</td><td>评分计算复核</td><td class="pass">✓ 通过</td><td>多氟多82.5分、章源钨业82.5分、厦门银行88分，复核偏差≤2分</td></tr>
-                <tr><td>7</td><td>炸板率核查</td><td class="pass">✓ 通过</td><td>炸板率31% < 35%，打板策略不因炸板率暂停</td></tr>
-                <tr><td>8</td><td>RSI超买检查</td><td class="warn">⚠ 警告</td><td>章源钨业BOLL突破上轨，DMA健康度约62分（边界值）；宗申动力RSI>80极度超买，打板降10分后58分不达标</td></tr>
-                <tr><td>9</td><td>今日早盘表现</td><td class="warn">⚠ 警告</td><td>华特气体(688268)-17.6%科创板暴跌，已排除；注意科创板±20%涨跌幅风险</td></tr>
-            </table>
-            <p style="margin-top:12px; font-size:14px; color:#4ade80;"><strong>核查结论：部分通过</strong> — 3只推荐标的通过核查，打板战法因RSI超买暂停，跌停/暴跌股已全部剔除</p>
-        </div>
+<!-- 隔日超短 -->
+<div class="card">
+<h2>⚡ 隔日超短策略（仓位30%）</h2>
+<p style="color:#8b949e;font-size:.82rem;margin-bottom:8px">买入时间14:30-15:00 | 次日09:30-10:30卖出 | 止损-5%严格执行</p>
 
-        <!-- 明日操作时间线 -->
-        <div class="morning-plan">
-            <h2>⏰ 下周一06-15早盘操作计划</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">09:15</div>
-                    <div class="action"><strong>集合竞价观察</strong><br>- 多氟多、章源钨业竞价是否高开<br>- 高开>3%则不追，等回踩<br>- 厦门银行竞价观察银行板块</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">09:30</div>
-                    <div class="action"><strong>开盘执行</strong><br>- 多氟多/章源钨业若平开或微涨→小仓位介入<br>- 厦门银行若回踩7.80附近→加仓<br>- 严守单票≤2万仓位纪律</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">10:00</div>
-                    <div class="action"><strong>确认方向</strong><br>- 隔日超短：冲高>3%立即卖50%仓位<br>- 止损线：-5%严格执行<br>- 观察基础化工/小金属板块是否延续</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">14:30</div>
-                    <div class="action"><strong>尾盘决策</strong><br>- 未卖的隔日超短仓位尾盘全部平仓<br>- 厦门银行中线仓继续持有<br>- 观察新的尾盘机会</div>
-                </div>
-            </div>
-        </div>
+<div class="stock-card">
+<h3>🧪 多氟多 <span class="tag tag-blue">002407</span> <span class="up">+3.9%</span> <span class="tag tag-green">79分</span></h3>
+<div class="meta">基础化工龙头 | 成都系2.26亿买入 | 量比25.11 | 换手率25.1%</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>涨幅匹配</td><td>+3.9%(3-7%)</td><td class="up">20/20</td></tr>
+<tr><td>量比</td><td>25.11(>2.0)</td><td class="up">15/15</td></tr>
+<tr><td>均线排列</td><td>MACD金叉+KDJ金叉，排列不明确</td><td>22/30</td></tr>
+<tr><td>DMA健康度</td><td>RSI64中性+BOLL内+高换手风险</td><td>12/20</td></tr>
+<tr><td>龙虎榜</td><td>成都系2.26亿</td><td class="up">10/15</td></tr>
+</table>
+<div class="plan">
+<strong>明日操作：</strong>14:30-15:00买入¥38.50-40.50区间 | 高开>3%→09:30卖50% | 平开/低开→冲高+8%卖出<br>
+<strong>止损：</strong><span class="dn">¥37.69(-5%)</span> | <strong>目标：</strong><span class="up">¥41.89(+5.6%)</span><br>
+⚠️ 换手率25.1%危险偏高，注意是否为有效突破
+</div>
+</div>
 
-        <!-- 隔日超短 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>🎯</span>
-                <span>隔日超短（修正后仓位 30%）— 尾盘买入，次日冲高卖出</span>
-            </div>
-            <div class="stocks-grid">
-                <div class="stock-card recommend">
-                    <div class="stock-header">
-                        <div><span class="stock-name">多氟多</span><span class="stock-code">002407</span></div>
-                        <span class="badge badge-strong">强烈推荐</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row"><span class="info-label">今日收盘</span><span class="info-value">¥39.67</span></div>
-                        <div class="info-row"><span class="info-label">涨跌幅</span><span class="info-value up">+3.9% 📈</span></div>
-                        <div class="info-row"><span class="info-label">量比</span><span class="info-value">25.11（天量）</span></div>
-                        <div class="info-row"><span class="info-label">换手率</span><span class="info-value">25.1%</span></div>
-                        <div class="info-row"><span class="info-label">MACD</span><span class="info-value" style="color:#4ade80;">金叉 ✅</span></div>
-                        <div class="info-row"><span class="info-label">RSI14</span><span class="info-value">64.15（中性区）</span></div>
-                        <div class="info-row"><span class="info-label">所在板块</span><span class="info-value">基础化工（15涨停，净流入7.47亿）</span></div>
-                        <div class="info-row"><span class="info-label">龙虎榜</span><span class="info-value" style="color:#f87171;">成都系买入2.26亿</span></div>
-                        <div class="info-row"><span class="info-label">止损价</span><span class="info-value" style="color:#f87171;">¥37.69（-5%）</span></div>
-                        <div class="info-row"><span class="info-label">目标价</span><span class="info-value" style="color:#facc15;">¥41.89（+5.6%）</span></div>
-                        <div class="info-row"><span class="info-label">推荐仓位</span><span class="info-value">≤2万元</span></div>
-                    </div>
-                    <div class="score-bar">
-                        <span>隔日超短评分</span>
-                        <div class="bar-bg"><div class="bar-fill bar-green" style="width:82.5%"></div></div>
-                        <span style="color:#4ade80;font-weight:700;">82.5分</span>
-                    </div>
-                    <div class="tomorrow-action">
-                        <div class="action-title">📅 06-15操作计划</div>
-                        <div class="action-detail">
-                            <strong>买入</strong>：14:30-15:00尾盘买入，若股价在¥38.50-¥40.50区间（回踩不破MA5）<br>
-                            <strong>卖出</strong>：次日高开>3% → 09:30立即卖50%；平开/低开 → 等冲高至+8%卖出<br>
-                            <strong>止损</strong>：跌破¥37.69（-5%）立即止损，不可犹豫
-                        </div>
-                    </div>
-                    <div class="reason">
-                        <strong>入选理由：</strong>① 涨幅+3.9%符合隔日超短3-7%要求；② 量比25.11远超1.5，资金高度关注；③ MACD金叉+RSI64中性区+KDJ金叉，技术面偏多；④ 成都系2.26亿大额买入，龙虎榜背书；⑤ 基础化工今日15涨停居热门题材TOP1。<br>
-                        <strong>⚠️ 风险：</strong>换手率25.1%极高（StockSight标注危险），短线可能面临获利盘回吐；量比25倍意味着今日放量极大，次日缩量概率高。注意控制仓位≤2万。
-                    </div>
-                </div>
+<div class="stock-card">
+<h3>⛏ 章源钨业 <span class="tag tag-blue">002378</span> <span class="up">+3.0%</span> <span class="tag tag-green">82分</span></h3>
+<div class="meta">小金属概念 | 板块净流入16.62亿 | 量比16.89 | 换手率16.9%</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>涨幅匹配</td><td>+3.0%(3-7%)</td><td class="up">20/20</td></tr>
+<tr><td>量比</td><td>16.89(>2.0)</td><td class="up">15/15</td></tr>
+<tr><td>均线排列</td><td>MACD多头排列+柱扩张</td><td class="up">25/30</td></tr>
+<tr><td>DMA健康度</td><td>RSI66中性+BOLL破上轨</td><td>12/20</td></tr>
+<tr><td>龙虎榜</td><td>板块16.62亿+个股2.32亿</td><td>10/15</td></tr>
+</table>
+<div class="plan">
+<strong>明日操作：</strong>14:30-15:00买入¥33.50-35.00区间 | 高开>3%→09:30卖50% | 平开/低开→冲高+8%卖出<br>
+<strong>止损：</strong><span class="dn">¥32.91(-5%)</span> | <strong>目标：</strong><span class="up">¥36.57(+5.6%)</span><br>
+⚠️ BOLL突破上轨，短线过热风险上升
+</div>
+</div>
 
-                <div class="stock-card recommend">
-                    <div class="stock-header">
-                        <div><span class="stock-name">章源钨业</span><span class="stock-code">002378</span></div>
-                        <span class="badge badge-buy">推荐</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row"><span class="info-label">今日收盘</span><span class="info-value">¥34.64</span></div>
-                        <div class="info-row"><span class="info-label">涨跌幅</span><span class="info-value up">+3.0% 📈</span></div>
-                        <div class="info-row"><span class="info-label">量比</span><span class="info-value">16.89（放量）</span></div>
-                        <div class="info-row"><span class="info-label">换手率</span><span class="info-value">16.9%</span></div>
-                        <div class="info-row"><span class="info-label">MACD</span><span class="info-value" style="color:#4ade80;">金叉 ✅</span></div>
-                        <div class="info-row"><span class="info-label">RSI14</span><span class="info-value">65.6（中性区）</span></div>
-                        <div class="info-row"><span class="info-label">所在板块</span><span class="info-value">小金属（11涨停，净流入16.62亿）</span></div>
-                        <div class="info-row"><span class="info-label">龙虎榜</span><span class="info-value">小金属概念净流入2.32亿</span></div>
-                        <div class="info-row"><span class="info-label">止损价</span><span class="info-value" style="color:#f87171;">¥32.91（-5%）</span></div>
-                        <div class="info-row"><span class="info-label">目标价</span><span class="info-value" style="color:#facc15;">¥36.57（+5.6%）</span></div>
-                        <div class="info-row"><span class="info-label">推荐仓位</span><span class="info-value">≤1.5万元</span></div>
-                    </div>
-                    <div class="score-bar">
-                        <span>隔日超短评分</span>
-                        <div class="bar-bg"><div class="bar-fill bar-green" style="width:82.5%"></div></div>
-                        <span style="color:#4ade80;font-weight:700;">82.5分</span>
-                    </div>
-                    <div class="tomorrow-action">
-                        <div class="action-title">📅 06-15操作计划</div>
-                        <div class="action-detail">
-                            <strong>买入</strong>：14:30-15:00尾盘买入，若股价在¥33.50-¥35.00区间<br>
-                            <strong>卖出</strong>：次日高开>3% → 09:30立即卖50%；平开/低开 → 等冲高至+8%卖出<br>
-                            <strong>止损</strong>：跌破¥32.91（-5%）立即止损
-                        </div>
-                    </div>
-                    <div class="reason">
-                        <strong>入选理由：</strong>① 涨幅+3.0%符合隔日超短3-7%要求；② 量比16.89远超1.5；③ MACD金叉+RSI中性区，技术面偏多；④ 小金属概念今日11涨停+净流入16.62亿，为资金集中方向。<br>
-                        <strong>⚠️ 风险：</strong>BOLL突破上轨（短线过热），DMA健康度约62分处于边界值；换手率16.9%偏高。需关注下周一小金属板块是否延续强势。
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="stock-card" style="border-color:#d2992244">
+<h3>⛏ 云南锗业 <span class="tag tag-blue">002428</span> <span class="up">+4.6%</span> <span class="tag tag-yellow">68分⚠️</span></h3>
+<div class="meta">通信技术/小金属 | 龙虎榜TOP1(9.36亿) | 量比19.99 | 换手率20.0%</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>涨幅匹配</td><td>+4.6%(3-7%)</td><td class="up">20/20</td></tr>
+<tr><td>量比</td><td>19.99(>2.0)</td><td class="up">15/15</td></tr>
+<tr><td>均线排列</td><td>MACD空头排列+KDJ死叉</td><td>10/30</td></tr>
+<tr><td>DMA健康度</td><td>RSI58+MACD偏空</td><td>8/20</td></tr>
+<tr><td>龙虎榜</td><td>TOP1(9.36亿)</td><td class="up">15/15</td></tr>
+</table>
+<div class="plan">
+<strong>明日操作：</strong>⚠️ MACD空头排列是硬伤，建议谨慎！<br>
+如参与：轻仓买入¥87.00-92.00 | 止损<span class="dn">¥87.65(-5%)</span> | 目标<span class="up">¥97.43(+5.6%)</span><br>
+🔴 <strong>风险提示：</strong>MACD空头排列+KDJ死叉+高换手20%，技术面与资金面严重矛盾，建议优先选择多氟多/章源钨业
+</div>
+</div>
 
-        <!-- 中短线波段 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>📈</span>
-                <span>中短线波段（修正后仓位 11%）— 3-5日持有，目标+8~15%</span>
-            </div>
-            <div class="stocks-grid">
-                <div class="stock-card recommend">
-                    <div class="stock-header">
-                        <div><span class="stock-name">厦门银行</span><span class="stock-code">601187</span></div>
-                        <span class="badge badge-buy">中短线持仓</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row"><span class="info-label">今日收盘</span><span class="info-value">¥7.99</span></div>
-                        <div class="info-row"><span class="info-label">涨跌幅</span><span class="info-value up">+2.3% 📈</span></div>
-                        <div class="info-row"><span class="info-label">量比</span><span class="info-value">1.19（温和）</span></div>
-                        <div class="info-row"><span class="info-label">换手率</span><span class="info-value">1.2%</span></div>
-                        <div class="info-row"><span class="info-label">MACD</span><span class="info-value" style="color:#4ade80;">金叉 ✅（柱扩张）</span></div>
-                        <div class="info-row"><span class="info-label">RSI14</span><span class="info-value">65.94（中性区）</span></div>
-                        <div class="info-row"><span class="info-label">BOLL</span><span class="info-value">突破上轨7.81</span></div>
-                        <div class="info-row"><span class="info-label">所在板块</span><span class="info-value">银行（净流出-9亿但个股独立走强）</span></div>
-                        <div class="info-row"><span class="info-label">止损价</span><span class="info-value" style="color:#f87171;">¥7.35（-8%）</span></div>
-                        <div class="info-row"><span class="info-label">目标价</span><span class="info-value" style="color:#facc15;">¥8.60~¥8.80（+8~10%）</span></div>
-                        <div class="info-row"><span class="info-label">推荐仓位</span><span class="info-value">≤1.5万元</span></div>
-                    </div>
-                    <div class="score-bar">
-                        <span>中短线评分</span>
-                        <div class="bar-bg"><div class="bar-fill bar-green" style="width:88%"></div></div>
-                        <span style="color:#4ade80;font-weight:700;">88分</span>
-                    </div>
-                    <div class="tomorrow-action">
-                        <div class="action-title">📅 3-5日持有计划</div>
-                        <div class="action-detail">
-                            <strong>06/15（首日）</strong>：开盘若回踩¥7.80-¥7.90附近介入，仓位≤1.5万。<br>
-                            <strong>06/16-18</strong>：持有观察，MACD金叉柱扩张说明动能增强。<br>
-                            <strong>止盈</strong>：达到¥8.60（+8%）分批止盈；¥8.80（+10%）全部止盈。<br>
-                            <strong>止损</strong>：跌破¥7.35（-8%）立即止损；MACD高位死叉提前离场。<br>
-                            <strong>5个交易日未达目标</strong>：强制平仓。
-                        </div>
-                    </div>
-                    <div class="reason">
-                        <strong>入选理由：</strong>① 涨幅+2.3%符合中短线1-5%要求；② 量比1.19温和放量，非天量；③ MACD金叉且柱扩张，动能增强；④ RSI 65.94中性区不超买；⑤ 连续两日入选，趋势确认度提升。<br>
-                        <strong>⚠️ 风险：</strong>BOLL突破上轨7.81有过热风险；银行板块今日净流出9亿，板块整体偏弱；KDJ出现死叉信号需关注。
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- 涨停股深度检查结果（新规则） -->
+<div class="info-box">
+<strong>🔍 涨停股深度检查结果（新规则：涨停股需深度检查后可入隔日超短）</strong><br>
+❌ 宗申动力(001696)：RSI 81极度超买 → 不通过<br>
+❌ 雅克科技(002409)：-1.4%下跌+换手20.8%+BOLL破上轨 → 不通过<br>
+❌ 方邦股份(688020)：MACD顶背离 → 不通过<br>
+❌ 中化国际(600500)：RSI 74超买+MACD顶背离 → 不通过<br>
+<em>结论：今日涨停股经深度检查后均不通过隔日超短，技术面过热风险太高</em>
+</div>
+</div>
 
-        <!-- 打板战法 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>🔥</span>
-                <span>打板战法（修正后仓位 0%）— 涨停价打板，次日冲高卖出</span>
-            </div>
+<!-- 中短线波段 -->
+<div class="card">
+<h2>📈 中短线波段策略（仓位19%）</h2>
+<p style="color:#8b949e;font-size:.82rem;margin-bottom:8px">3-5日持有 | 止盈+8~15% | 止损-8% | MACD高位死叉提前离场</p>
 
-            <div class="pause-box">
-                <div class="icon">⚠️</div>
-                <h3>打板战法 — 入选标的RSI极度超买，评分不达标</h3>
-                <p style="margin-top:10px;">宗申动力(001696) 涨停1板+龙虎榜6.14亿，但RSI>80极度超买。原始评分68分，按铁律降10分后58分 < 60分线，不入选。</p>
-                <p style="margin-top:8px;">中化国际(600500) 涨停3板，但无龙虎榜大额数据、无知名游资，评分仅28分 << 60分，不入选。</p>
-                <p style="margin-top:8px;color:#facc15;">⚠️ 今日涨停69家中，多数RSI超买严重，追板风险极大。炸板率31%虽未超35%阈值，但3板炸板率高达69%（9/13失败），高位板风险突出。</p>
-            </div>
-        </div>
+<div class="stock-card">
+<h3>🏦 厦门银行 <span class="tag tag-blue">601187</span> <span class="up">+2.3%</span> <span class="tag tag-green">80分</span></h3>
+<div class="meta">银行板块 | MACD金叉+柱扩张 | RSI 66 | 量比1.19(温和)</div>
+<table>
+<tr><th>指标</th><th>状态</th><th>评分</th></tr>
+<tr><td>均线趋势</td><td>MACD多头+柱扩张</td><td class="up">25/25</td></tr>
+<tr><td>MACD状态</td><td>金叉</td><td class="up">25/25</td></tr>
+<tr><td>量价健康</td><td>量比1.19温和</td><td>15/20</td></tr>
+<tr><td>题材热度</td><td>银行板块弱势(-9亿)</td><td>5/15</td></tr>
+<tr><td>RSI位置</td><td>65.9(60-70)</td><td>10/15</td></tr>
+</table>
+<div class="plan">
+<strong>操作计划：</strong>回踩¥7.80-7.90加仓 | 持有3-5日<br>
+<strong>止盈：</strong><span class="up">¥8.60-8.80(+8~10%)</span> | <strong>止损：</strong><span class="dn">¥7.35(-8%)</span><br>
+⚠️ BOLL破上轨+KDJ死叉，关注是否回踩中轨企稳
+</div>
+</div>
+</div>
 
-        <!-- 日内T+0 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>📊</span>
-                <span>日内T+0（修正后仓位 0%）— 底仓做T，降成本增收益</span>
-            </div>
-            <div class="pause-box">
-                <div class="icon">⏸️</div>
-                <h3>日内T+0策略暂停</h3>
-                <p style="margin-top:10px;">底仓标的均处弱势：宏昌电子(603002) MACD顶背离，今日-2.6%；双星新材(002585) 3板炸板今日-6.8%。弱势股做T+0风险大于收益，暂停。</p>
-            </div>
-        </div>
+<!-- 打板战法 -->
+<div class="card">
+<h2>🔥 打板战法策略（仓位20%）</h2>
+<div class="pause-banner">
+<h3>⏸️ 打板战法暂停</h3>
+<p>涨停股普遍RSI超买，无达标标的</p>
+</div>
+<div class="danger-box">
+<strong>候选标的逐项检查：</strong><br>
+❌ 宗申动力(001696)：1板+6.14亿 → 评分58分(&lt;60) | RSI 81极度超买，DMA健康度&lt;50<br>
+❌ 中化国际(600500)：3板+无龙虎榜 → 评分28分 | RSI 74超买+MACD顶背离<br>
+❌ 方邦股份(688020)：科创板+5.30亿 → 评分43分 | MACD顶背离+无知名游资<br>
+❌ 京基智农(000048)：3板+无龙虎榜数据 → 评分极低<br>
+<br><em>3板炸板率69%，高位板风险极高，打板策略整体暂停</em>
+</div>
+</div>
 
-        <!-- 持仓提醒 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>💼</span>
-                <span>现有持仓管理提醒</span>
-            </div>
-            <div class="stocks-grid">
-                <div class="stock-card warning">
-                    <div class="stock-header">
-                        <div><span class="stock-name">宏昌电子</span><span class="stock-code">603002</span></div>
-                        <span class="badge badge-watch">⚠ 需关注</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row"><span class="info-label">今日收盘</span><span class="info-value">¥17.43</span></div>
-                        <div class="info-row"><span class="info-label">涨跌幅</span><span class="info-value down">-2.6% 📉</span></div>
-                        <div class="info-row"><span class="info-label">MACD</span><span class="info-value" style="color:#f87171;">顶背离 ⚠️</span></div>
-                        <div class="info-row"><span class="info-label">换手率</span><span class="info-value">8.8%（偏高）</span></div>
-                    </div>
-                    <div class="reason">
-                        <strong>操作建议：</strong>MACD顶背离（价格创新高但DIF未同步），短线见顶信号明确。建议下周一若低开则止损出局，若反弹至¥18以上可减仓。严守-5%止损线¥16.56。
-                    </div>
-                </div>
-                <div class="stock-card danger">
-                    <div class="stock-header">
-                        <div><span class="stock-name">双星新材</span><span class="stock-code">002585</span></div>
-                        <span class="badge badge-daban">🔴 炸板</span>
-                    </div>
-                    <div class="stock-info">
-                        <div class="info-row"><span class="info-label">今日收盘</span><span class="info-value">¥11.58</span></div>
-                        <div class="info-row"><span class="info-label">涨跌幅</span><span class="info-value down">-6.8% 📉</span></div>
-                        <div class="info-row"><span class="info-label">龙虎榜</span><span class="info-value" style="color:#f87171;">方新侠净卖出-0.44亿</span></div>
-                        <div class="info-row"><span class="info-label">KDJ</span><span class="info-value" style="color:#f87171;">死叉 ⚠️</span></div>
-                    </div>
-                    <div class="reason">
-                        <strong>操作建议：</strong>今日冲3板失败炸板，跌幅-6.8%。方新侠已在龙虎榜净卖出0.44亿，游资离场信号明确。建议下周一开盘立即止损出局，不再持有。
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- T+0 -->
+<div class="card">
+<h2>📊 日内T+0策略（仓位15%）</h2>
+<div class="pause-banner">
+<h3>⏸️ T+0暂停</h3>
+<p>底仓标的均弱势，做T条件不满足</p>
+</div>
+<div class="danger-box">
+<strong>底仓检查：</strong><br>
+❌ 宏昌电子(603002)：MACD顶背离，-2.6%，StockSight判定"过热-背离警告" → 做T条件不满足<br>
+❌ 双星新材(002585)：-6.8%大跌，3板炸板，方新侠净卖出-0.44亿 → 做T条件不满足<br>
+<br><strong>🔴 持仓建议：宏昌电子/双星新材建议下周一止损离场！</strong>
+</div>
+</div>
 
-        <!-- 被剔除标的 -->
-        <div class="strategy-section">
-            <div class="section-title">
-                <span>🚫</span>
-                <span>核查剔除标的（供参考，不推荐操作）</span>
-            </div>
-            <div class="stocks-grid">
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">华特气体</span><span class="stock-code">688268</span></div>
-                        <span class="badge badge-reject">暴跌剔除</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>科创板-17.6%暴跌！虽然光刻胶/存储芯片概念领涨，但个股逆势大跌，量比14.81天量下跌。科创板±20%涨跌幅放大风险的典型案例。按铁律排除。</div>
-                </div>
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">宗申动力</span><span class="stock-code">001696</span></div>
-                        <span class="badge badge-reject">RSI超买剔除</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>涨停1板+龙虎榜6.14亿净买入，但RSI>80极度超买。打板评分68→降10分=58分 < 60分线不达标。氢能源龙头但追高风险极大。</div>
-                </div>
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">中化国际</span><span class="stock-code">600500</span></div>
-                        <span class="badge badge-reject">评分不足</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>涨停3板但无龙虎榜大额净买入数据，无知名游资介入，打板评分仅28分 << 60分。3板高位+换手率16.1%偏高，追板风险极大。</div>
-                </div>
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">云南锗业</span><span class="stock-code">002428</span></div>
-                        <span class="badge badge-reject">MACD偏空剔除</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>+4.6%符合涨幅要求，龙虎榜净买入9.36亿（TOP1），但MACD偏空（DIF<DEA），DMA健康度<60分不满足隔日超短买入规则。KDJ死叉进一步确认短线动能转弱。</div>
-                </div>
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">红星发展</span><span class="stock-code">600367</span></div>
-                        <span class="badge badge-reject">下跌剔除</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>龙虎榜净买入6.74亿，但今日-1.9%下跌。RSI 75.79超买+KDJ死叉+换手率20.3%危险级，短线动能全面转弱。</div>
-                </div>
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">昊华科技</span><span class="stock-code">600378</span></div>
-                        <span class="badge badge-reject">跌停剔除</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>今日-10.0%跌停（XD除权除息日），按铁律第4条跌停股一律不推荐。2板涨停后今日开板即大幅下跌，验证高位板追涨风险。</div>
-                </div>
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">新亚强</span><span class="stock-code">603155</span></div>
-                        <span class="badge badge-reject">跌停剔除</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>今日-10.0%跌停，2板涨停后次日跌停。典型的"昨天涨停、今天跌停"反面教材。按铁律第4条排除。</div>
-                </div>
-                <div class="stock-card rejected">
-                    <div class="stock-header">
-                        <div><span class="stock-name">京基智农</span><span class="stock-code">000048</span></div>
-                        <span class="badge badge-reject">3板后大跌</span>
-                    </div>
-                    <div class="reason"><strong>剔除原因：</strong>3板龙头今日-3.6%大跌，RSI 71.58超买+KDJ超买+换手率15.5%偏高。高位连板股回撤风险极大，验证"3板以上不追"的纪律。</div>
-                </div>
-            </div>
-        </div>
+<!-- 剔除标的 -->
+<div class="card">
+<h2>🚫 已剔除标的及原因</h2>
+<table>
+<tr><th>标的</th><th>原策略</th><th>剔除原因</th></tr>
+<tr><td>有研新材(600206)</td><td>隔日超短</td><td>今日-3.6%下跌，不符合涨幅3-7%要求</td></tr>
+<tr><td>红星发展(600367)</td><td>隔日超短</td><td>今日-1.9%下跌，RSI 75.79超买区</td></tr>
+<tr><td>雅克科技(002409)</td><td>打板/隔日超短</td><td>今日-1.4%开板下跌，2板失败，高换手20.8%</td></tr>
+<tr><td>昊华科技(600378)</td><td>所有策略</td><td>今日-10.0%跌停，RSI 70.56超买+KDJ超买</td></tr>
+<tr><td>新亚强(603155)</td><td>所有策略</td><td>今日-10.0%跌停，温州帮0.25亿(小资金)</td></tr>
+<tr><td>双星新材(002585)</td><td>所有策略</td><td>3板炸板-6.8%，方新侠净卖出</td></tr>
+</table>
+</div>
 
-        <div class="footer">
-            <p>⚠️ <strong>风险提示：</strong>本推荐仅供参考，不构成投资建议。股市有风险，投资需谨慎。</p>
-            <p>📅 数据基准：2026-06-12 15:00收盘 | 🔍 核查完成：2026-06-12 19:10 | 🤖 生成时间：2026-06-12 19:10</p>
-            <p>📊 今日分析标的：多氟多、章源钨业、厦门银行、宗申动力、中化国际、云南锗业、红星发展、华特气体、雅克科技、翔鹭钨业、方邦股份、有研新材、昊华科技、新亚强、京基智农、双星新材、宏昌电子、江丰电子等18只</p>
-            <p>🌐 网页部署：<a href="https://xljy.github.io/stock-picks/" target="_blank">https://xljy.github.io/stock-picks/</a></p>
-        </div>
-    </div>
+<!-- 数据核查报告 -->
+<div class="card">
+<h2>🔍 数据核查报告</h2>
+<div class="audit-row"><div class="icon">✅</div><div><strong>涨幅规则一致性</strong>：多氟多+3.9%、章源钨业+3.0%、云南锗业+4.6%均在3-7%内</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>涨停股归类正确</strong>：宗申动力/中化国际/方邦股份经深度检查后不通过隔日超短，按新规则需额外skill核查后决定</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>跌停股排除</strong>：昊华科技-10%、新亚强-10%、双星新材-6.8%已全部排除</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>数据时间戳</strong>：StockSight数据06-12收盘(18:59-19:08)</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>量比来源</strong>：06-12收盘量比</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>评分复核</strong>：多氟多79、章源钨业82、云南锗业68、厦门银行80，偏差≤3分</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>炸板率核查</strong>：31% &lt; 35%，打板不因炸板率暂停（但因标的RSI超买而暂停）</div></div>
+<div class="audit-row"><div class="icon">⚠️</div><div><strong>云南锗业MACD空头</strong>：MACD空头排列+KDJ死叉，技术面与资金面矛盾，已标注风险</div></div>
+<div class="audit-row"><div class="icon">⚠️</div><div><strong>多氟多换手率危险</strong>：换手率25.1%远超正常值，需确认是否有效突破</div></div>
+<div class="audit-row"><div class="icon">✅</div><div><strong>RSI超买检查</strong>：云南锗业RSI57.6未超买，多氟多RSI64未超买，章源钨业RSI65.8未超买</div></div>
+
+<div class="ok-box" style="margin-top:12px">
+<strong>核查结论：部分通过</strong> | ✅ 通过 7项 | ⚠️ 警告 2项 | ❌ 拒绝 0项
+</div>
+</div>
+
+<!-- 明日操作时间线 -->
+<div class="card">
+<h2>⏰ 明日操作时间线（06-15 周一）</h2>
+<div class="timeline">
+<div class="t-item"><span class="t-time">09:15</span> 集合竞价观察：多氟多/章源钨业高开>3%不追！云南锗业谨慎观察</div>
+<div class="t-item"><span class="t-time">09:30</span> 多氟多/章源钨业平开或微涨→小仓位介入(各≤2万/1.5万)；云南锗业建议观望</div>
+<div class="t-item"><span class="t-time">09:30</span> 🔴 宏昌电子/双星新材→止损离场！不要犹豫</div>
+<div class="t-item"><span class="t-time">10:00</span> 隔日超短冲高>3%立即卖50%；厦门银行回踩7.80→加仓</div>
+<div class="t-item"><span class="t-time">14:30</span> 未卖的隔日超短尾盘全部平仓；厦门银行中线仓继续持有</div>
+<div class="t-item"><span class="t-time">15:00</span> 收盘复盘，确认持仓盈亏</div>
+</div>
+</div>
+
+<!-- 持仓提醒 -->
+<div class="card">
+<h2>💰 当前持仓提醒</h2>
+<div class="danger-box">
+<strong>🔴 宏昌电子(603002)</strong>：MACD顶背离 + 今日-2.6% + StockSight判定"过热-背离警告"<br>
+→ <strong>建议下周一开盘止损离场，目标价¥16.56附近</strong>
+</div>
+<div class="danger-box">
+<strong>🔴 双星新材(002585)</strong>：3板炸板-6.8% + 方新侠净卖出-0.44亿 + KDJ死叉<br>
+→ <strong>建议下周一开盘止损离场，目标价¥11.00附近</strong>
+</div>
+<div class="warn-box">
+<strong>⚠️ 国瓷材料(300285)</strong>：成本53元，未获取今日数据，建议手动检查
+</div>
+</div>
+
+<footer>
+数据来源：恢恢量化(hhxg.top) + StockSight | 仅供参考，不构成投资建议<br>
+涨停股深度检查规则：涨停股可入隔日超短但需经StockSight/DMA/Serenity等skill深度核查<br>
+部署：GitHub Pages → https://xljy.github.io/stock-picks/
+</footer>
+
+</div>
 </body>
 </html>
