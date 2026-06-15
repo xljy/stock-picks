@@ -1,378 +1,209 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>明日早盘策略 - 2026-06-15 收盘后（更新版）</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#0f0f1e 0%,#1a1a2e 100%);color:#e0e0e0;min-height:100vh;padding:20px;line-height:1.6}
-.container{max-width:1280px;margin:0 auto}
-.header{text-align:center;padding:30px 20px;background:rgba(255,255,255,0.03);border-radius:16px;margin-bottom:24px;border:1px solid rgba(255,255,255,0.06)}
-.header h1{font-size:28px;background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-.header .subtitle{color:#888;font-size:14px;margin-bottom:16px}
-.header .data-stamp{display:inline-block;padding:6px 14px;background:rgba(72,219,251,0.1);border:1px solid rgba(72,219,251,0.3);border-radius:20px;color:#48dbfb;font-size:13px}
-.market-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
-.metric{background:rgba(255,255,255,0.04);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);text-align:center}
-.metric .label{color:#888;font-size:12px;margin-bottom:6px}
-.metric .value{font-size:24px;font-weight:bold}
-.metric .delta{font-size:12px;margin-top:4px}
-.up{color:#ff4757}
-.down{color:#2ed573}
-.flat{color:#ffa502}
-.section{background:rgba(255,255,255,0.03);border-radius:16px;padding:20px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.06)}
-.section h2{font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.section h2 .badge{padding:2px 10px;border-radius:12px;font-size:12px;font-weight:normal}
-.stock-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
-.stock-table th{text-align:left;padding:6px 4px;color:#888;font-weight:normal;border-bottom:1px solid rgba(255,255,255,0.1);font-size:11px}
-.stock-table td{padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top}
-.stock-table tr:last-child td{border-bottom:none}
-.stock-table .code{font-family:monospace;color:#888}
-.stock-table .name{font-weight:bold;color:#feca57}
-.stock-table .price{font-weight:bold}
-.stock-table .key{color:#48dbfb;font-size:11px;margin-top:2px}
-.score-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold;background:rgba(72,219,251,0.15);color:#48dbfb;border:1px solid rgba(72,219,251,0.3)}
-.reason-box{margin-top:10px;padding:10px;background:rgba(255,255,255,0.03);border-left:3px solid #feca57;border-radius:6px;font-size:12px;color:#bbb}
-.timeline{background:rgba(255,255,255,0.03);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.06)}
-.timeline .step{display:flex;gap:14px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.06)}
-.timeline .step:last-child{border-bottom:none}
-.timeline .time{width:100px;font-weight:bold;color:#48dbfb;flex-shrink:0}
-.timeline .action{flex:1;color:#ccc}
-.audit{background:rgba(255,255,255,0.04);border-radius:12px;padding:16px;margin-top:16px;font-size:13px}
-.audit .row{padding:4px 0;display:flex;gap:10px}
-.audit .ok{color:#2ed573}
-.audit .warn{color:#ffa502}
-.audit .fail{color:#ff4757}
-.reject-list{margin-top:12px;padding:12px;background:rgba(255,71,87,0.05);border-left:3px solid #ff4757;border-radius:6px}
-.reject-list .reject-item{padding:4px 0;color:#bbb;font-size:12px}
-.disclaimer{margin-top:24px;padding:14px;background:rgba(255,165,2,0.08);border:1px solid rgba(255,165,2,0.2);border-radius:8px;font-size:12px;color:#ffa502;text-align:center}
-.positions{background:rgba(255,71,87,0.05);border-radius:12px;padding:16px;margin-bottom:20px;border:1px solid rgba(255,71,87,0.2)}
-.positions h3{color:#ff4757;margin-bottom:10px;font-size:15px}
-.positions table{width:100%;border-collapse:collapse;font-size:12px}
-.positions th{text-align:left;padding:5px;color:#888;font-weight:normal;font-size:11px}
-.positions td{padding:6px 5px;border-top:1px solid rgba(255,255,255,0.05)}
-.warn-highlight{color:#ffa502;font-weight:bold}
-.danger-highlight{color:#ff4757;font-weight:bold}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股短线策略 - 白毛股神</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            color: #888;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(25, 30, 55, 0.9);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .card h2 {
+            font-size: 1.8em;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            font-size: 1em;
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .card-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .card-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        .update-time {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-
-<div class="header">
-  <h1>⚡ 明日早盘策略</h1>
-  <div class="subtitle">收盘后 3 小时数据 · AI 短线组合（更新版：新持仓）</div>
-  <span class="data-stamp">📅 数据基准：2026-06-15（周一收盘）</span>
-  <div style="margin-top:10px"><a href="midday.html" style="color:#feca57;text-decoration:none;font-size:13px;padding:6px 16px;background:rgba(254,202,87,0.1);border:1px solid rgba(254,202,87,0.3);border-radius:20px;display:inline-block">📋 查看今日午间版「下午盘操作计划」</a></div>
-</div>
-
-<!-- 市场全景 -->
-<div class="market-bar">
-  <div class="metric">
-    <div class="label">赚钱效应</div>
-    <div class="value up">~72%</div>
-    <div class="delta">强市 仓位系数100%</div>
-  </div>
-  <div class="metric">
-    <div class="label">涨停家数</div>
-    <div class="value up">160</div>
-    <div class="delta">AI/PCB/光模块/铜箔共振</div>
-  </div>
-  <div class="metric">
-    <div class="label">跌停家数</div>
-    <div class="value down">10</div>
-    <div class="delta">7只ST + 3只非ST</div>
-  </div>
-  <div class="metric">
-    <div class="label">炸板率</div>
-    <div class="value flat">26.5%</div>
-    <div class="delta">58/(160+58) &lt;35%</div>
-  </div>
-  <div class="metric">
-    <div class="label">连板梯队</div>
-    <div class="value up">3板×6</div>
-    <div class="delta">2板×9 | 首板×87</div>
-  </div>
-  <div class="metric">
-    <div class="label">主力净流入TOP</div>
-    <div class="value up" style="font-size:14px">AI算力/PCB</div>
-    <div class="delta">中际旭创+47.9亿</div>
-  </div>
-</div>
-
-<!-- 🔴 满仓警告 -->
-<div class="positions">
-  <h3>⚠️ 当前仓位 80%（满仓警戒线）</h3>
-  <table>
-    <tr><th>代码</th><th>名称</th><th>现价</th><th>今日</th><th>成本</th><th>盈亏%</th><th>仓位</th><th>信号</th><th>操作建议</th></tr>
-    <tr>
-      <td class="code">300263</td>
-      <td class="name">隆华科技</td>
-      <td class="price">15.99</td>
-      <td class="up">+3.56%</td>
-      <td>16.01</td>
-      <td class="flat">-0.12%</td>
-      <td>3成</td>
-      <td>MACD零轴上 年内+82%</td>
-      <td>✅ 持有 — 温和反弹，暂稳</td>
-    </tr>
-    <tr>
-      <td class="code">002254</td>
-      <td class="name">泰和新材</td>
-      <td class="price">17.48</td>
-      <td class="down">-3.21%</td>
-      <td>18.11</td>
-      <td class="warn-highlight">-3.48%</td>
-      <td>2成</td>
-      <td class="warn-highlight">⚠️ 主力净流出1.5亿</td>
-      <td class="warn-highlight">⚠️ 逼近-5%止损 — 明日放量跌即止损</td>
-    </tr>
-    <tr>
-      <td class="code">600862</td>
-      <td class="name">中航高科</td>
-      <td class="price">19.12</td>
-      <td class="up">+1.32%</td>
-      <td>19.01</td>
-      <td class="flat">+0.58%</td>
-      <td>2成</td>
-      <td>PE 25.8 年内-19%</td>
-      <td>✅ 持有 — 止跌回升，MACD走平</td>
-    </tr>
-    <tr>
-      <td class="code">301588</td>
-      <td class="name">美新科技</td>
-      <td class="price">38.30</td>
-      <td class="up">+3.29%</td>
-      <td>37.64</td>
-      <td class="up">+1.75%</td>
-      <td>1成</td>
-      <td>换手11% 量比1.5</td>
-      <td>✅ 持有 — 温和放量反弹，止损35.76</td>
-    </tr>
-  </table>
-  <div style="margin-top:12px;color:#ff4757;font-size:12px">
-    ⛔ <strong>满仓状态</strong>：新买推荐仅在泰和新材触发止损后启动（释放2成仓位→沪电股份）
-  </div>
-</div>
-
-<!-- 策略总览 -->
-<div class="section">
-  <h2>📊 策略总览 <span class="badge" style="background:rgba(255,71,87,0.2);color:#ff4757">满仓调整版</span></h2>
-  <table class="stock-table">
-    <tr><th>策略</th><th>仓位</th><th>状态</th><th>原因</th></tr>
-    <tr>
-      <td class="name">隔日超短</td>
-      <td>40%</td>
-      <td class="warn-highlight">⏸️ 暂不执行</td>
-      <td>80%满仓无空间，等待泰和新材止损释放</td>
-    </tr>
-    <tr>
-      <td class="name">中短线波段</td>
-      <td>25%</td>
-      <td class="warn-highlight">⏸️ 暂不执行</td>
-      <td>满仓无操作空间</td>
-    </tr>
-    <tr>
-      <td class="name">打板战法</td>
-      <td>20%</td>
-      <td class="warn-highlight">⏸️ 暂不执行</td>
-      <td>一致：满仓，且涨停股RSI>85 超买</td>
-    </tr>
-    <tr>
-      <td class="name">日内T+0</td>
-      <td>15%</td>
-      <td class="up" style="color:#2ed573">✅ 可执行</td>
-      <td>隆华科技/中航高科有波动可做T</td>
-    </tr>
-  </table>
-</div>
-
-<!-- 候选标的池（待释放仓位） -->
-<div class="section">
-  <h2>🎯 候选标的池 <span class="badge" style="background:rgba(72,219,251,0.2);color:#48dbfb">仓位释放后启用</span></h2>
-  <table class="stock-table">
-    <tr><th>策略</th><th>代码</th><th>名称</th><th>现价</th><th>今日</th><th>评分</th><th>买入区间</th><th>止损</th><th>核心逻辑</th></tr>
-    <tr>
-      <td>隔日超短</td>
-      <td class="code">002463</td>
-      <td class="name">沪电股份</td>
-      <td class="price">133.76</td>
-      <td class="up">+6.84%</td>
-      <td><span class="score-pill">83分</span></td>
-      <td>130-134</td>
-      <td>123</td>
-      <td><span class="key">PCB龙头 + 主力10.24亿净流入 + MACD金叉</span></td>
-    </tr>
-    <tr>
-      <td>隔日超短</td>
-      <td class="code">002130</td>
-      <td class="name">沃尔核材</td>
-      <td class="price">20.53</td>
-      <td class="up">+6.98%</td>
-      <td><span class="score-pill">78分</span></td>
-      <td>20.0-20.5</td>
-      <td>19.0</td>
-      <td><span class="key">核电+5G + 主力净流入2.6亿</span></td>
-    </tr>
-    <tr>
-      <td>隔日超短</td>
-      <td class="code">300395</td>
-      <td class="name">菲利华</td>
-      <td class="price">127.32</td>
-      <td class="up">+7.00%</td>
-      <td><span class="score-pill">75分</span></td>
-      <td>124-127</td>
-      <td>118</td>
-      <td><span class="key">半导体石英 + 主力净流入7.0亿</span></td>
-    </tr>
-    <tr>
-      <td>隔日超短</td>
-      <td class="code">601168</td>
-      <td class="name">西部矿业</td>
-      <td class="price">32.84</td>
-      <td class="up">+6.94%</td>
-      <td><span class="score-pill">72分</span></td>
-      <td>32-33</td>
-      <td>30.5</td>
-      <td><span class="key">有色周期 + PE仅12 + 钼/铜共振</span></td>
-    </tr>
-    <tr>
-      <td>中短线</td>
-      <td class="code">601187</td>
-      <td class="name">厦门银行</td>
-      <td class="price">6.40</td>
-      <td class="up">+0.63%</td>
-      <td><span class="score-pill">62分</span></td>
-      <td>6.3-6.5</td>
-      <td>5.9</td>
-      <td><span class="key">银行+证券板块共振 温和上行</span></td>
-    </tr>
-  </table>
-  <div class="reason-box">
-    <strong>🔑 优先替换路径：</strong>泰和新材明日放量跌 → 止损 → 释放2成仓位 → 买入沪电股份(002463)<br>
-    泰和新材不触发止损 → 继续持有，维持满仓观望
-  </div>
-</div>
-
-<!-- 打板战法观察区 -->
-<div class="section">
-  <h2>🔥 打板战法观察 <span class="badge" style="background:rgba(255,71,87,0.2);color:#ff4757">不参与</span></h2>
-  <table class="stock-table">
-    <tr><th>代码</th><th>名称</th><th>封板时间</th><th>板型</th><th>题材</th><th>评分</th><th>不参与原因</th></tr>
-    <tr>
-      <td class="code">600183</td>
-      <td class="name">生益科技</td>
-      <td>10:01</td>
-      <td>封死0打开</td>
-      <td>PCB+商业航天</td>
-      <td><span class="score-pill">70分</span></td>
-      <td>RSI>85超买 + 满仓无空间</td>
-    </tr>
-    <tr>
-      <td class="code">002428</td>
-      <td class="name">云南锗业</td>
-      <td>13:06</td>
-      <td>换手板(1打开)</td>
-      <td>稀有金属+商业航天</td>
-      <td><span class="score-pill">65分</span></td>
-      <td>午后封板偏晚</td>
-    </tr>
-    <tr>
-      <td class="code">601179</td>
-      <td class="name">中国西电</td>
-      <td>09:43</td>
-      <td>换手板(1打开)</td>
-      <td>特高压+固态变压器</td>
-      <td><span class="score-pill">62分</span></td>
-      <td>游资席位一般</td>
-    </tr>
-  </table>
-  <div class="reason-box">
-    炸板率26.5%&lt;35%合规可执行，但涨停股RSI普遍>85超买 + 满仓状态，打板策略降级为观察。
-  </div>
-</div>
-
-<!-- T+0计划 -->
-<div class="section">
-  <h2>🔄 日内T+0计划 <span class="badge" style="background:rgba(46,213,115,0.2);color:#2ed573">可执行</span></h2>
-  <table class="stock-table">
-    <tr><th>标的</th><th>底仓</th><th>T+0方向</th><th>触发条件</th><th>目标区间</th></tr>
-    <tr>
-      <td class="name">隆华科技</td>
-      <td>3成</td>
-      <td>先买后卖</td>
-      <td>低开-1%~-3%至15.5附近</td>
-      <td>反弹至16.3出同等量</td>
-    </tr>
-    <tr>
-      <td class="name">中航高科</td>
-      <td>2成</td>
-      <td>先买后卖</td>
-      <td>低开回调至18.6附近</td>
-      <td>反弹至19.3出同等量</td>
-    </tr>
-  </table>
-  <div class="reason-box">
-    ⚡ 隆华科技振幅6.3%、中航高科振幅3.7%，前者的T+0空间更优。<br>
-    ❌ 泰和新材不做T（弱势+主力流出+逼近止损）<br>
-    ❌ 美新科技不做T（1成仓太小+波动空间不足）
-  </div>
-</div>
-
-<!-- 核查报告 -->
-<div class="audit">
-  <h3 style="margin-bottom:8px;color:#feca57">===== 数据核查报告 =====</h3>
-  <div class="row"><span>📅 核查时间: 2026-06-15 19:55</span><span>数据基准: 2026-06-15 收盘</span></div>
-  <div class="row ok">✓ 涨幅规则一致性 — 候选标的均3-7%区间</div>
-  <div class="row ok">✓ 涨停股归类正确 — 涨停股仅出现在打板观察区</div>
-  <div class="row ok">✓ 跌停股排除 — 10家跌停(7ST)均不入选</div>
-  <div class="row ok">✓ 数据时间戳 — tdx HQDate=20260615 今日收盘</div>
-  <div class="row ok">✓ 评分复核 — 与初次偏差≤3分</div>
-  <div class="row ok">✓ 炸板率核查 — 26.5% &lt;35%合规</div>
-  <div class="row warn">⚠️ RSI超买 — 涨停股RSI均>85，打板需警惕</div>
-  <div class="row warn">⚠️ 满仓状态 — 80%仓位达上限，新买需先清旧仓</div>
-  <div class="row ok">✓ 持仓代码核实 — 301588=美新科技 数据确认</div>
-  <div style="margin-top:10px;padding:8px 12px;background:rgba(46,213,115,0.08);border-radius:8px;color:#2ed573">
-    <strong>核查结论：部分通过</strong> — 数据完整且核查合规，但满仓状态约束新买操作
-  </div>
-</div>
-
-<!-- 明日操作时间线 -->
-<div class="section">
-  <h2>⏰ 明日操作时间线</h2>
-  <div class="timeline">
-    <div class="step">
-      <div class="time">09:25</div>
-      <div class="action"><strong>集合竞价观察</strong>：泰和新材是否低开>2%？低开>2%→准备止损</div>
+    <div class="container">
+        <div class="header">
+            <h1>📈 A股短线策略</h1>
+            <p>白毛股神 · 每日复盘与策略</p>
+        </div>
+        
+        <div class="cards">
+            <div class="card" onclick="location.href='strategy/'">
+                <div class="card-icon">📈</div>
+                <h2>明日早盘策略</h2>
+                <p>收盘后18:00生成，包含隔日超短、打板战法、中短线波段、日内T+0四个策略的详细分析和操作计划。</p>
+                <div class="card-meta">
+                    <span>⏰ 更新时间：每个交易日 18:00</span>
+                    <span>📊 数据基准：当日收盘后3小时</span>
+                </div>
+                <br>
+                <a href="strategy/" class="card-link">查看早盘策略 →</a>
+            </div>
+            
+            <div class="card" onclick="location.href='review/'">
+                <div class="card-icon">📊</div>
+                <h2>今日复盘报告</h2>
+                <p>收盘后20:30生成，包含市场全景、持仓体检、首板扫描评分、明日策略提醒。</p>
+                <div class="card-meta">
+                    <span>⏰ 更新时间：每个交易日 20:30</span>
+                    <span>📊 数据基准：当日收盘后</span>
+                </div>
+                <br>
+                <a href="review/" class="card-link">查看复盘报告 →</a>
+            </div>
+        </div>
+        
+        <div class="update-time">
+            <p>📅 最新更新：<span id="updateTime">加载中...</span></p>
+        </div>
+        
+        <div class="footer">
+            <p>⚠️ 免责声明：本网站提供的所有策略和建议仅供参考，不构成投资建议。</p>
+            <p>股市有风险，入市需谨慎。请根据自身风险承受能力谨慎决策。</p>
+            <p>© 2026 白毛股神 · <a href="https://github.com/xljy/stock-picks">GitHub</a></p>
+        </div>
     </div>
-    <div class="step">
-      <div class="time">09:30-09:45</div>
-      <div class="action"><strong>泰和新材决策窗口</strong>：放量下跌→止损清仓；平开或小幅反弹→继续持有<br>
-      隆华科技/中航高科：低开>2%→观察T+0机会</div>
-    </div>
-    <div class="step">
-      <div class="time">10:00-10:30</div>
-      <div class="action"><strong>T+0执行窗口</strong>：隆华/中航若回调至目标位→买入等量做T</div>
-    </div>
-    <div class="step">
-      <div class="time">13:00-14:00</div>
-      <div class="action"><strong>午间复盘</strong>：确认T+0是否需要出清；关注午间版推送</div>
-    </div>
-    <div class="step">
-      <div class="time">14:00-14:30</div>
-      <div class="action"><strong>T+0出清窗口</strong>：当日买入部分必须此时卖出等量</div>
-    </div>
-    <div class="step">
-      <div class="time">14:30-15:00</div>
-      <div class="action"><strong>尾盘确认</strong>：若泰和新材已止损→14:50前买入沪电股份(002463)</div>
-    </div>
-  </div>
-</div>
-
-<div class="disclaimer">
-  ⚠️ 风险提示：以上为AI分析结果，不构成投资建议。股市有风险，投资需谨慎。止损位严格执行，-5%铁律不可动摇。|<br>
-  📌 总仓位80%已达上限，新买需等旧仓释放。泰和新材是当前最大风险敞口。
-</div>
-
-</div>
+    
+    <script>
+        // 自动获取最新更新时间
+        async function getLatestUpdate() {
+            try {
+                // 尝试获取strategy目录的更新时间
+                const response = await fetch('strategy/index.html', { method: 'HEAD' });
+                if (response.ok) {
+                    const lastModified = response.headers.get('Last-Modified');
+                    if (lastModified) {
+                        document.getElementById('updateTime').textContent = new Date(lastModified).toLocaleString('zh-CN');
+                    } else {
+                        document.getElementById('updateTime').textContent = '未知';
+                    }
+                } else {
+                    document.getElementById('updateTime').textContent = '未知';
+                }
+            } catch (error) {
+                document.getElementById('updateTime').textContent = '未知';
+            }
+        }
+        
+        getLatestUpdate();
+    </script>
 </body>
 </html>
