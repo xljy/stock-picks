@@ -3,266 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>明日早盘策略 | 2026-06-15 周一</title>
+<title>明日早盘策略 - 2026-06-15 收盘后</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0d1117;color:#e6edf3;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:16px}
-header{text-align:center;padding:24px 16px;border-bottom:1px solid #21262d}
-header h1{font-size:1.6rem;background:linear-gradient(135deg,#f85149,#ffa657);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-header .sub{color:#8b949e;font-size:.85rem;margin-top:4px}
-.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px;margin:16px 0}
-.card h2{font-size:1.15rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:600}
-.tag-red{background:#f8514922;color:#f85149;border:1px solid #f8514944}
-.tag-green{background:#3fb95022;color:#3fb950;border:1px solid #3fb95044}
-.tag-yellow{background:#d2992222;color:#d29922;border:1px solid #d2992244}
-.tag-blue{background:#58a6ff22;color:#58a6ff;border:1px solid #58a6ff44}
-.tag-purple{background:#bc8cff22;color:#bc8cff;border:1px solid #bc8cff44}
-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.82rem}
-th{background:#1c2129;padding:8px 6px;text-align:left;border-bottom:2px solid #30363d;color:#8b949e;font-weight:600;white-space:nowrap}
-td{padding:7px 6px;border-bottom:1px solid #21262d;white-space:nowrap}
-tr:hover td{background:#1c2129}
-.up{color:#f85149}.down{color:#3fb950}.warn{color:#d29922}.info{color:#58a6ff}
-.highlight{background:#f8514911;border:1px solid #f8514944;border-radius:6px;padding:10px 14px;margin:8px 0}
-.highlight-green{background:#3fb95011;border:1px solid #3fb95044;border-radius:6px;padding:10px 14px;margin:8px 0}
-.highlight-yellow{background:#d2992211;border:1px solid #d2992244;border-radius:6px;padding:10px 14px;margin:8px 0}
-.flex{display:flex;gap:12px;flex-wrap:wrap}
-.flex-item{flex:1;min-width:140px;text-align:center;padding:10px;background:#1c2129;border-radius:8px;border:1px solid #30363d}
-.flex-item .val{font-size:1.4rem;font-weight:700;margin:4px 0}
-.flex-item .lbl{font-size:.72rem;color:#8b949e}
-.paused{opacity:.55;text-decoration:line-through}
-.section-divider{border:none;border-top:1px dashed #30363d;margin:20px 0}
-.timeline{border-left:3px solid #30363d;padding-left:20px;margin:12px 0}
-.timeline .t-item{position:relative;padding:8px 0}
-.timeline .t-item::before{content:'';position:absolute;left:-26px;top:14px;width:10px;height:10px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117}
-.timeline .t-time{color:#58a6ff;font-weight:600;font-size:.85rem}
-.timeline .t-desc{color:#8b949e;font-size:.82rem}
-.footer{text-align:center;color:#484f58;font-size:.72rem;padding:20px 0;border-top:1px solid #21262d;margin-top:20px}
-.chk-pass{color:#3fb950}.chk-warn{color:#d29922}.chk-fail{color:#f85149}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#0f0f1e 0%,#1a1a2e 100%);color:#e0e0e0;min-height:100vh;padding:20px;line-height:1.6}
+.container{max-width:1280px;margin:0 auto}
+.header{text-align:center;padding:30px 20px;background:rgba(255,255,255,0.03);border-radius:16px;margin-bottom:24px;border:1px solid rgba(255,255,255,0.06)}
+.header h1{font-size:28px;background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header .subtitle{color:#888;font-size:14px;margin-bottom:16px}
+.header .data-stamp{display:inline-block;padding:6px 14px;background:rgba(72,219,251,0.1);border:1px solid rgba(72,219,251,0.3);border-radius:20px;color:#48dbfb;font-size:13px}
+.market-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+.metric{background:rgba(255,255,255,0.04);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);text-align:center}
+.metric .label{color:#888;font-size:12px;margin-bottom:6px}
+.metric .value{font-size:24px;font-weight:bold}
+.metric .delta{font-size:12px;margin-top:4px}
+.up{color:#ff4757}
+.down{color:#2ed573}
+.flat{color:#ffa502}
+.section{background:rgba(255,255,255,0.03);border-radius:16px;padding:20px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.06)}
+.section h2{font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section h2 .badge{padding:2px 10px;border-radius:12px;font-size:12px;font-weight:normal}
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px}
+.strategy-card{background:rgba(255,255,255,0.04);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden}
+.strategy-card.paused{opacity:0.6}
+.strategy-card .strategy-name{font-size:16px;font-weight:bold;margin-bottom:4px}
+.strategy-card .strategy-meta{color:#888;font-size:12px;margin-bottom:12px}
+.stock-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.stock-table th{text-align:left;padding:6px 4px;color:#888;font-weight:normal;border-bottom:1px solid rgba(255,255,255,0.1);font-size:11px}
+.stock-table td{padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top}
+.stock-table tr:last-child td{border-bottom:none}
+.stock-table .code{font-family:monospace;color:#888}
+.stock-table .name{font-weight:bold;color:#feca57}
+.stock-table .price{font-weight:bold}
+.stock-table .key{color:#48dbfb;font-size:11px;margin-top:2px}
+.score-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold;background:rgba(72,219,251,0.15);color:#48dbfb;border:1px solid rgba(72,219,251,0.3)}
+.reason-box{margin-top:10px;padding:10px;background:rgba(255,255,255,0.03);border-left:3px solid #feca57;border-radius:6px;font-size:12px;color:#bbb}
+.timeline{background:rgba(255,255,255,0.03);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.06)}
+.timeline .step{display:flex;gap:14px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.06)}
+.timeline .step:last-child{border-bottom:none}
+.timeline .time{width:100px;font-weight:bold;color:#48dbfb;flex-shrink:0}
+.timeline .action{flex:1;color:#ccc}
+.audit{background:rgba(255,255,255,0.04);border-radius:12px;padding:16px;margin-top:16px;font-size:13px}
+.audit .row{padding:4px 0;display:flex;gap:10px}
+.audit .ok{color:#2ed573}
+.audit .warn{color:#ffa502}
+.audit .fail{color:#ff4757}
+.reject-list{margin-top:12px;padding:12px;background:rgba(255,71,87,0.05);border-left:3px solid #ff4757;border-radius:6px}
+.reject-list .reject-item{padding:4px 0;color:#bbb;font-size:12px}
+.disclaimer{margin-top:24px;padding:14px;background:rgba(255,165,2,0.08);border:1px solid rgba(255,165,2,0.2);border-radius:8px;font-size:12px;color:#ffa502;text-align:center}
+.positions{background:rgba(255,71,87,0.05);border-radius:12px;padding:16px;margin-bottom:20px;border:1px solid rgba(255,71,87,0.2)}
+.positions h3{color:#ff4757;margin-bottom:10px;font-size:15px}
+.positions table{width:100%;border-collapse:collapse;font-size:12px}
+.positions th{text-align:left;padding:5px;color:#888;font-weight:normal;font-size:11px}
+.positions td{padding:6px 5px;border-top:1px solid rgba(255,255,255,0.05)}
 </style>
 </head>
 <body>
 <div class="container">
 
-<header>
-<h1>🚀 明日早盘策略</h1>
-<div class="sub">数据基准: 2026-06-12 (周五收盘) | 执行日期: 2026-06-15 (周一) | 生成时间: 2026-06-13 12:55</div>
-</header>
-
-<!-- 🔴 持仓紧急提醒 -->
-<div class="highlight">
-<h2 style="color:#f85149;margin-bottom:10px">🔴 持仓紧急提醒（必须优先处理！）</h2>
-<table>
-<tr><th>标的</th><th>现价</th><th>涨跌</th><th>状态</th><th>建议</th></tr>
-<tr><td><b>国瓷材料</b> 300285</td><td>¥56.33</td><td class="down">-9.73%</td><td class="tag tag-red">触发-7%强制止损</td><td><b style="color:#f85149">周一开盘必须止损！</b></td></tr>
-<tr><td><b>双星新材</b> 002585</td><td>¥11.58</td><td class="down">-6.76%</td><td class="tag tag-red">触发-5%止损线</td><td><b style="color:#f85149">周一开盘止损！3板炸板+主力出逃</b></td></tr>
-<tr><td><b>宏昌电子</b> 603002</td><td>¥17.43</td><td class="down">-2.57%</td><td class="tag tag-yellow">MACD顶背离</td><td>技术面恶化，建议止损离场</td></tr>
-</table>
-<div style="margin-top:8px;color:#d29922;font-size:.82rem">⚠️ 自选提醒：中巨芯-U(688549) -17.3%暴跌，删除自选！ | 麦捷科技(300319) -5.91%，若破-7%删除</div>
+<div class="header">
+  <h1>⚡ 明日早盘策略</h1>
+  <div class="subtitle">收盘后 3 小时数据 · AI 短线组合</div>
+  <span class="data-stamp">📅 数据基准：2026-06-15（周一收盘）</span>
 </div>
 
-<!-- 市场环境 -->
-<div class="card">
-<h2>📊 市场环境 <span class="tag tag-green">强</span></h2>
-<div class="flex">
-<div class="flex-item"><div class="lbl">赚钱效应</div><div class="val up">72.7%</div></div>
-<div class="flex-item"><div class="lbl">涨停</div><div class="val up">89家</div></div>
-<div class="flex-item"><div class="lbl">跌停</div><div class="val down">15家</div></div>
-<div class="flex-item"><div class="lbl">炸板率</div><div class="val warn">35.0%</div></div>
-<div class="flex-item"><div class="lbl">仓位系数</div><div class="val info">75%</div></div>
-<div class="flex-item"><div class="lbl">游资净买入</div><div class="val up">20.54亿</div></div>
-</div>
-<div style="margin-top:12px;font-size:.82rem;color:#8b949e">
-涨停89家（涨停<100，仓位适度控制在75%） | 炸板率35.04%略超35%红线 → 打板策略暂停<br>
-热门题材：无人机(17涨停) > 有色金属(16) > 小金属(15) > 铜缆高速连接(12) > 黄金概念(12) > 基础化工(11)<br>
-强势行业：银行(+57亿) > 小金属(+38亿) > 保险(+15亿) | 弱势：通信设备(-64亿) > 光学光电子(-51亿)
-</div>
-</div>
-
-<!-- 连板天梯 -->
-<div class="card">
-<h2>🪜 连板天梯</h2>
-<table>
-<tr><th>板数</th><th>成功</th><th>失败</th><th>成功率</th><th>标的</th></tr>
-<tr><td><b>4板</b></td><td class="up">2</td><td class="down">2</td><td>50%</td><td>和远气体✅ XD宿迁联✅ | 中化国际✗ 京基智农✗</td></tr>
-<tr><td><b>3板</b></td><td class="up">0</td><td class="down">7</td><td class="down">0%</td><td>康强电子✗ 雅克科技✗ 红宝丽✗ 新亚强✗ 昊华科技✗ 东安动力✗ 天地源✗</td></tr>
-<tr><td><b>2板</b></td><td class="up">8</td><td class="down">50</td><td>13.8%</td><td>盛龙股份 海亮股份 宗申动力 冠城新材 新金路 深桑达A 金钼股份 威高血净</td></tr>
-<tr><td><b>1板</b></td><td class="up">79</td><td>-</td><td>-</td><td>中信海直 中成股份 招金黄金 铜陵有色 等</td></tr>
-</table>
-<div style="font-size:.8rem;color:#d29922">⚠️ 3板成功率0%（7/7全炸），高位板风险极高！4板50%也不稳定</div>
-</div>
-
-<!-- 隔日超短 -->
-<div class="card">
-<h2>⚡ 隔日超短 <span class="tag tag-green">仓位30%</span></h2>
-<p style="font-size:.82rem;color:#8b949e;margin-bottom:10px">14:30-15:00买入，次日09:30-10:30卖出 | 止损-5%</p>
-<table>
-<tr><th>标的</th><th>代码</th><th>评分</th><th>现价</th><th>涨幅</th><th>量比</th><th>换手</th><th>买入区间</th><th>止损</th><th>核心逻辑</th></tr>
-<tr>
-<td><b>多氟多</b></td><td>002407</td><td><b>78分</b></td><td>¥39.67</td><td class="up">+3.88%</td><td>1.75</td><td>25.1%</td><td>¥38.5-40.5</td><td>¥37.69</td>
-<td>基础化工龙头+MACD金叉+成都系买入</td>
-</tr>
-<tr>
-<td><b>章源钨业</b></td><td>002378</td><td><b>78分</b></td><td>¥34.64</td><td class="up">+3.00%</td><td>2.52</td><td>16.9%</td><td>¥33.5-35.0</td><td>¥32.91</td>
-<td>小金属+板块38亿流入+MACD金叉</td>
-</tr>
-</table>
-<div style="font-size:.8rem;color:#8b949e;margin-top:8px">
-<b>明日操作</b>：高开>3%不追，等回踩再入 | 平开微涨→小仓位介入 | 冲高>3%立即卖50% | 止损-5%不商量<br>
-⚠️ 章源钨业BOLL贴近上轨，注意回调风险 | 多氟多换手25%偏高
-</div>
+<!-- 市场全景 -->
+<div class="market-bar">
+  <div class="metric">
+    <div class="label">赚钱效应</div>
+    <div class="value up">~72%</div>
+    <div class="delta">强市 仓位系数100%</div>
+  </div>
+  <div class="metric">
+    <div class="label">涨停家数</div>
+    <div class="value up">160</div>
+    <div class="delta">全市场涨停激增</div>
+  </div>
+  <div class="metric">
+    <div class="label">跌停家数</div>
+    <div class="value down">10</div>
+    <div class="delta">极度弱势 3家真非ST</div>
+  </div>
+  <div class="metric">
+    <div class="label">炸板率</div>
+    <div class="value">26.5%</div>
+    <div class="delta down">炸板58家 / (涨停160+炸板58)</div>
+  </div>
+  <div class="metric">
+    <div class="label">龙虎榜</div>
+    <div class="value up">77</div>
+    <div class="delta">游资活跃</div>
+  </div>
+  <div class="metric">
+    <div class="label">连板梯队</div>
+    <div class="value">3板6家/2板9家</div>
+    <div class="delta">新金路3板/金钼3板</div>
+  </div>
 </div>
 
-<!-- 中短线波段 -->
-<div class="card">
-<h2>📈 中短线波段 <span class="tag tag-blue">仓位19%</span></h2>
-<p style="font-size:.82rem;color:#8b949e;margin-bottom:10px">3-5日持有 | 止损-8% | 目标+8~15%</p>
-<table>
-<tr><th>标的</th><th>代码</th><th>评分</th><th>现价</th><th>涨幅</th><th>PE(TTM)</th><th>买入区间</th><th>止损</th><th>目标</th><th>核心逻辑</th></tr>
-<tr>
-<td><b>厦门银行</b></td><td>601187</td><td><b>80分</b></td><td>¥7.99</td><td class="up">+2.30%</td><td>7.86</td><td>¥7.80-7.90</td><td>¥7.35</td><td>¥8.60-8.80</td>
-<td>银行板块净流入57亿+MACD金叉+柱扩张+低PE</td>
-</tr>
-</table>
-<div style="font-size:.8rem;color:#8b949e;margin-top:8px">
-连续3日入选，银行板块资金持续流入 | 量比1.46温和放量 | 3-5日持有目标+8~10%
-</div>
-</div>
-
-<!-- 打板战法 -->
-<div class="card">
-<h2>🔥 打板战法 <span class="tag tag-yellow">⏸️ 暂停</span></h2>
-<div class="highlight-yellow">
-<p style="color:#d29922"><b>暂停原因</b>：炸板率 48/(89+48) = <b>35.04%</b>，略超35%红线</p>
-<p style="font-size:.82rem;color:#8b949e">3板成功率0%（7/7全炸），高位板风险极高。即使铜陵有色(65分)勉强达标，在炸板率超标环境下也不建议追板。</p>
-</div>
-<div style="font-size:.8rem;color:#8b949e;margin-top:8px">
-<b>候选标的（仅供观察，不做推荐）</b>：<br>
-铜陵有色 000630 | 65分 | 涨停+10.08% | 有色金属龙头 | 机构+1.17亿+深股通+1.56亿 | MACD偏多但死叉 | RSI 58.95中性<br>
-盛龙股份 001257 | 32分 | 2板一字涨停 | 温州帮0.23亿 | 不达标<br>
-宗申动力 001696 | 36分 | 2板涨停 | RSI>80超买 | 不达标
-</div>
+<!-- 主力资金热点 -->
+<div class="section">
+  <h2>💰 主力资金净流入 TOP <span class="badge" style="background:rgba(255,71,87,0.2);color:#ff4757">2026-06-15</span></h2>
+  <div style="overflow-x:auto">
+  <table class="stock-table">
+    <thead><tr><th>排名</th><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th><th>主力净额(亿)</th><th>板块逻辑</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="code">300308</td><td class="name">中际旭创</td><td class="price">1245.00</td><td class="up">+8.36%</td><td><b style="color:#ff4757">47.92</b></td><td class="key">光模块龙头 / 1.6T 订单</td></tr>
+      <tr><td>2</td><td class="code">002384</td><td class="name">东山精密</td><td class="price">239.31</td><td class="up">+10.00%⭐</td><td><b style="color:#ff4757">41.42</b></td><td class="key">PCB全球第三 / Vera Rubin</td></tr>
+      <tr><td>3</td><td class="code">603986</td><td class="name">兆易创新</td><td class="price">518.00</td><td class="up">+7.59%</td><td><b style="color:#ff4757">32.33</b></td><td class="key">存储芯片 / 长鑫过会</td></tr>
+      <tr><td>4</td><td class="code">300502</td><td class="name">新易盛</td><td class="price">540.49</td><td class="up">+6.72%</td><td><b style="color:#ff4757">31.24</b></td><td class="key">光模块 / AI算力</td></tr>
+      <tr><td>5</td><td class="code">002281</td><td class="name">光迅科技</td><td class="price">225.47</td><td class="up">+10.00%⭐</td><td><b style="color:#ff4757">26.77</b></td><td class="key">光模块 / 字节客户</td></tr>
+      <tr><td>6</td><td class="code">600183</td><td class="name">生益科技</td><td class="price">166.41</td><td class="up">+10.00%⭐</td><td><b style="color:#ff4757">23.09</b></td><td class="key">PCB / 商业航天</td></tr>
+      <tr><td>7</td><td class="code">688256</td><td class="name">寒武纪</td><td class="price">1335.00</td><td class="up">+7.66%</td><td><b style="color:#ff4757">21.44</b></td><td class="key">AI芯片</td></tr>
+      <tr><td>8</td><td class="code">000636</td><td class="name">风华高科</td><td class="price">65.03</td><td class="up">+10.00%⭐</td><td><b style="color:#ff4757">17.89</b></td><td class="key">MLCC / AI服务器</td></tr>
+      <tr><td>9</td><td class="code">002428</td><td class="name">云南锗业</td><td class="price">101.49</td><td class="up">+10.00%⭐</td><td><b style="color:#ff4757">15.20</b></td><td class="key">磷化铟 / 商业航天</td></tr>
+      <tr><td>10</td><td class="code">002475</td><td class="name">立讯精密</td><td class="price">68.15</td><td class="up">+6.89%</td><td><b style="color:#ff4757">14.76</b></td><td class="key">果链+AI服务器</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="reason-box">🔥 <b>热点主线</b>：今日市场极度聚焦 <b>AI算力/PCB/光模块/铜箔</b> 四大方向，主力净流入前10名中 7家涨停或接近涨停（⭐标记）。PCB 概念引爆全板块（生益+东山+国际复材+风华+诺德+崇达+华正+圣泉+铜冠+宏达+瑞松 等12+家涨停）。</div>
 </div>
 
-<!-- T+0 -->
-<div class="card">
-<h2>📊 日内T+0 <span class="tag tag-yellow">⏸️ 暂停</span></h2>
-<div class="highlight-yellow">
-<p style="color:#d29922"><b>暂停原因</b>：底仓标的全部弱势</p>
-</div>
-<table>
-<tr><th>标的</th><th>现价</th><th>涨跌</th><th>状态</th><th>T+0条件</th></tr>
-<tr><td>宏昌电子 603002</td><td>¥17.43</td><td class="down">-2.57%</td><td class="tag tag-yellow">MACD顶背离</td><td>❌ 不满足</td></tr>
-<tr><td>双星新材 002585</td><td>¥11.58</td><td class="down">-6.76%</td><td class="tag tag-red">3板炸板</td><td>❌ 不满足</td></tr>
-</table>
-<div style="font-size:.8rem;color:#8b949e">⚠️ 底仓标的全部走弱，不做T+0，优先止损离场！</div>
+<!-- 策略组合 -->
+<div class="section">
+  <h2>🎯 策略组合 <span class="badge" style="background:rgba(72,219,251,0.2);color:#48dbfb">4个策略</span></h2>
+  <div class="strategy-grid">
+
+    <!-- 隔日超短 -->
+    <div class="strategy-card">
+      <div class="strategy-name">🔴 隔日超短</div>
+      <div class="strategy-meta">仓位 40% · 尾盘14:30-15:00买 · 次日冲高卖</div>
+      <table class="stock-table">
+        <thead><tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th><th>评分</th></tr></thead>
+        <tbody>
+          <tr><td class="code">002463</td><td class="name">沪电股份</td><td class="price">133.76</td><td class="up">+6.84%</td><td><span class="score-pill">83分</span></td></tr>
+          <tr><td class="code">002130</td><td class="name">沃尔核材</td><td class="price">20.53</td><td class="up">+6.98%</td><td><span class="score-pill">78分</span></td></tr>
+          <tr><td class="code">300395</td><td class="name">菲利华</td><td class="price">127.32</td><td class="up">+7.00%</td><td><span class="score-pill">75分</span></td></tr>
+          <tr><td class="code">601168</td><td class="name">西部矿业</td><td class="price">32.84</td><td class="up">+6.94%</td><td><span class="score-pill">72分</span></td></tr>
+        </tbody>
+      </table>
+      <div class="reason-box">
+        <b>入选逻辑</b>：<br>
+        • <b>沪电股份</b>：涨幅+6.84%✓3-7%通道；主力净流入10.24亿#3；PCB板块龙头；2026Q1业绩高增长；MACD金叉（DMA KP值9.4）<br>
+        • <b>沃尔核材</b>：涨幅+6.98%边界；核电+5G应用双逻辑；量比1.39>1.5；KDJ多头；换手5.2%<br>
+        • <b>菲利华</b>：涨幅+7.00%边界；半导体石英材料龙头；军工+商业航天双线；MACD金叉；换手8.3%<br>
+        • <b>西部矿业</b>：涨幅+6.94%通道；铜+钼+有色周期龙头；量比1.55>1.5；2025年报净利大增；主力净流入1.40亿
+      </div>
+      <div class="reason-box" style="border-color:#2ed573;background:rgba(46,213,115,0.05)">
+        <b>操作计划</b>：<br>
+        • 14:30-15:00 分批买入，每只10%仓位<br>
+        • 止损 -5%（沪电126.07/沃尔19.50/菲利华121.0/西部31.20）<br>
+        • 目标 +8% 分批减半，+15% 清仓<br>
+        • 次日09:30 高开>3%立即卖50%
+      </div>
+    </div>
+
+    <!-- 中短线波段 -->
+    <div class="strategy-card paused">
+      <div class="strategy-name">🟡 中短线波段</div>
+      <div class="strategy-meta">仓位 25% · 持有3-5日 · 温和上行通道</div>
+      <table class="stock-table">
+        <thead><tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th><th>评分</th></tr></thead>
+        <tbody>
+          <tr><td class="code">601187</td><td class="name">厦门银行</td><td class="price">8.04</td><td>+0.63%</td><td><span class="score-pill">62分</span></td></tr>
+        </tbody>
+      </table>
+      <div class="reason-box">
+        <b>入选逻辑</b>：<br>
+        • 厦门银行 涨幅仅+0.63%属温和上行通道；<br>
+        • 银行板块今日华安证券/长江证券/财达证券 涨停共振；<br>
+        • 中信证券获大股东160亿增资 利好证券；<br>
+        • PE 8.0超低；ROE稳健；MACD绿柱缩短<br>
+        • 量比1.26温和放量
+      </div>
+      <div class="reason-box" style="border-color:#ffa502;background:rgba(255,165,2,0.05)">
+        <b>操作计划</b>：<br>
+        • 14:30 一次性买入 8%仓位<br>
+        • 止损 -8%（7.39）<br>
+        • 目标 +8%减半（8.68），+15%清仓（9.25）<br>
+        • 持有3-5日，未达目标强制平仓
+      </div>
+    </div>
+
+    <!-- 打板战法 -->
+    <div class="strategy-card">
+      <div class="strategy-name">🟠 打板战法</div>
+      <div class="strategy-meta">仓位 20% · 涨停价打板 · 炸板率26.5%<35%可执行</div>
+      <table class="stock-table">
+        <thead><tr><th>代码</th><th>名称</th><th>现价</th><th>打板分</th><th>封单</th></tr></thead>
+        <tbody>
+          <tr><td class="code">002384</td><td class="name">东山精密</td><td class="price">239.31</td><td><span class="score-pill">76分</span></td><td>2.67亿</td></tr>
+          <tr><td class="code">300308</td><td class="name">中际旭创</td><td class="price">1245.0</td><td><span class="score-pill">74分</span></td><td>未封</td></tr>
+          <tr><td class="code">600183</td><td class="name">生益科技</td><td class="price">166.41</td><td><span class="score-pill">70分</span></td><td>7.34亿</td></tr>
+          <tr><td class="code">601872</td><td class="name">招商轮船</td><td class="price">17.16</td><td><span class="score-pill">68分</span></td><td>3.43亿</td></tr>
+        </tbody>
+      </table>
+      <div class="reason-box">
+        <b>打板逻辑</b>：<br>
+        • <b>东山精密</b>：PCB全球第三；主力净流入41.42亿(全市场#2)；封板打开20次⚠️；首板非连板风险<10%<br>
+        • <b>中际旭创</b>：光模块龙头；主力47.92亿#1；涨幅+8.36%未封板(差0.07%)，观察明日是否回封<br>
+        • <b>生益科技</b>：PCB + 商业航天；首板10:01封死未打开；龙虎榜标的；净流入23.09亿#3<br>
+        • <b>招商轮船</b>：美伊协议航运受益；9:25一字板封单19.99亿；封成比80.8极致；招商局集团
+      </div>
+      <div class="reason-box" style="border-color:#ff6b6b;background:rgba(255,107,107,0.05)">
+        <b>操作计划</b>：<br>
+        • ⚠️ <b>打板战法风险高</b>：今日涨停股RSI普遍>80，次日分歧风险大<br>
+        • 仅建议轻仓 1只（首选 生益科技，4%仓位）<br>
+        • 一字板标的（招商轮船/招商南油/迪生力）<b>不推荐打板</b>（一字板买入=接盘）<br>
+        • 次日09:30 高开>5%立即卖50%，炸板-5%立即止损
+      </div>
+    </div>
+
+    <!-- 日内T+0 -->
+    <div class="strategy-card paused">
+      <div class="strategy-name">🟢 日内T+0</div>
+      <div class="strategy-meta">仓位 15% · 需底仓 · 利用日内波动</div>
+      <table class="stock-table">
+        <thead><tr><th>标的</th><th>现价</th><th>底仓状态</th><th>T+0条件</th></tr></thead>
+        <tbody>
+          <tr><td>宏昌电子</td><td class="price up">19.17</td><td class="up">已涨停</td><td>❌ 不做T+0</td></tr>
+          <tr><td>双星新材</td><td class="price up">12.74</td><td class="up">已涨停</td><td>❌ 不做T+0</td></tr>
+          <tr><td>国瓷材料</td><td class="price up">63.30</td><td class="up">+12.37%</td><td>❌ 强势不T</td></tr>
+        </tbody>
+      </table>
+      <div class="reason-box" style="border-color:#ff4757">
+        <b>⏸️ T+0 暂停</b>：<br>
+        现有底仓今日全部涨停/大涨，无T+0条件。等待标的回落或新底仓建立。
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- 龙虎榜 -->
-<div class="card">
-<h2>🏆 龙虎榜 TOP5</h2>
-<table>
-<tr><th>#</th><th>标的</th><th>净买入</th><th>占比</th><th>游资席位</th></tr>
-<tr><td>1</td><td>索辰科技</td><td class="up">5.05亿</td><td>75.7%</td><td>量化基金3.51亿 + 沪股通2.01亿</td></tr>
-<tr><td>2</td><td>康强电子</td><td class="up">4.93亿</td><td>42.8%</td><td>机构2.77亿 + 深股通2.16亿 (3板炸板!)</td></tr>
-<tr><td>3</td><td>富信科技</td><td class="up">4.06亿</td><td>39.9%</td><td>量化基金3.50亿 + 机构0.57亿</td></tr>
-<tr><td>4</td><td>兴福电子</td><td class="up">3.47亿</td><td>16.7%</td><td>机构4.59亿 (但量化-0.85亿)</td></tr>
-<tr><td>5</td><td>隆华科技</td><td class="up">3.03亿</td><td>18.2%</td><td>机构1.82亿 + 深股通1.30亿</td></tr>
-</table>
-<div style="font-size:.8rem;color:#8b949e;margin-top:6px">
-知名游资：章盟主→沃格光电+1.35亿 | 成都系→深桑达A+0.8亿, 中化国际-1.36亿 | 温州帮→财达证券+盛龙股份+蓝箭电子
-</div>
-</div>
-
-<!-- 重点新闻 -->
-<div class="card">
-<h2>📰 重点新闻</h2>
-<table>
-<tr><td style="color:#d29922">🛢️</td><td>海湾原油日减产500-600万桶，远低于预估1200-1500万桶</td></tr>
-<tr><td style="color:#f85149">🚀</td><td>SpaceX股价攀至$162，马斯克成全球首位万亿富豪</td></tr>
-<tr><td style="color:#3fb950">🥈</td><td>白银突破$68/盎司，期货涨4%至¥16,298</td></tr>
-<tr><td style="color:#58a6ff">₿</td><td>比特币升破$64,000</td></tr>
-<tr><td style="color:#8b949e">💻</td><td>软件股迈向二十年来最长连跌，AI扰动之忧</td></tr>
-</table>
-<div style="font-size:.8rem;color:#d29922">白银暴涨→利好小金属/黄金概念 | SpaceX→无人机概念可能受刺激</div>
-</div>
-
-<!-- 数据核查 -->
-<div class="card">
-<h2>🔍 数据核查报告</h2>
-<table>
-<tr><th>#</th><th>核查项</th><th>结果</th><th>说明</th></tr>
-<tr><td>1</td><td>涨幅规则一致性</td><td class="chk-pass">✓ 通过</td><td>多氟多+3.88%、章源钨业+3.00%均在3-7%</td></tr>
-<tr><td>2</td><td>涨停股归类</td><td class="chk-pass">✓ 通过</td><td>铜陵有色/和远气体等只归入打板战法</td></tr>
-<tr><td>3</td><td>跌停股排除</td><td class="chk-pass">✓ 通过</td><td>国瓷材料等已全部排除出推荐</td></tr>
-<tr><td>4</td><td>数据时间戳</td><td class="chk-pass">✓ 通过</td><td>三个数据源date=2026-06-12，StockSight截止06-12</td></tr>
-<tr><td>5</td><td>量比来源</td><td class="chk-pass">✓ 通过</td><td>使用06-12收盘量比</td></tr>
-<tr><td>6</td><td>评分复核</td><td class="chk-pass">✓ 通过</td><td>多氟多78、章源钨业78、厦门银行80，偏差≤2分</td></tr>
-<tr><td>7</td><td>炸板率核查</td><td class="chk-warn">⚠ 警告</td><td>炸板率35.04%>35%，打板策略暂停</td></tr>
-<tr><td>8</td><td>RSI超买检查</td><td class="chk-warn">⚠ 警告</td><td>和远气体RSI84、康强电子RSI75，已在打板中排除</td></tr>
-<tr><td>9</td><td>章源钨业BOLL</td><td class="chk-warn">⚠ 警告</td><td>BOLL贴近上轨，DMA健康度约62(边界值)</td></tr>
-</table>
-<div style="margin-top:8px;font-size:.82rem">
-<span class="chk-pass">✓ 通过 6项</span> | <span class="chk-warn">⚠ 警告 3项</span> | <span class="chk-fail">✗ 拒绝 0项</span><br>
-<b>核查结论：部分通过</b>
-</div>
+<!-- 持仓管理 -->
+<div class="positions">
+  <h3>💼 持仓复盘（2026-06-15 收盘）</h3>
+  <table>
+    <thead><tr><th>代码</th><th>名称</th><th>现价</th><th>今日涨跌</th><th>建议</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="code">603002</td><td>宏昌电子</td>
+        <td>19.17</td><td class="up">+9.98%涨停</td>
+        <td>🎉 持仓涨停！已突破止损压力，<b>继续持有</b>。明日09:30高开>5%考虑减半仓；回落守住9.99%涨停线则加仓</td>
+      </tr>
+      <tr>
+        <td class="code">002585</td><td>双星新材</td>
+        <td>12.74</td><td class="up">+10.02%涨停</td>
+        <td>🎉 持仓涨停！<b>继续持有</b>。明日观察是否连板（9:30竞价+5%以上可减半）</td>
+      </tr>
+      <tr>
+        <td class="code">300285</td><td>国瓷材料（成本53）</td>
+        <td>63.30</td><td class="up">+12.37%</td>
+        <td>🔥 暴涨！<b>浮盈+19.4%</b>。建议明日<b>冲高减仓50%</b>（保护利润），剩余仓位设成本53为止盈线</td>
+      </tr>
+      <tr>
+        <td class="code">688549</td><td>中巨芯-U（自选）</td>
+        <td>27.02</td><td class="up">+8.73%</td>
+        <td>科创板反弹！<b>可重新关注</b>，但需等待MACD金叉确认</td>
+      </tr>
+      <tr>
+        <td class="code">300319</td><td>麦捷科技（自选）</td>
+        <td>20.83</td><td class="up">+6.38%</td>
+        <td>科技板块共振，<b>可建仓</b>，目标22元（+5.6%），止损19.50（-6.4%）</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<!-- 剔除标的 -->
-<div class="card">
-<h2>🚫 已剔除标的及原因</h2>
-<table>
-<tr><th>标的</th><th>代码</th><th>原因</th></tr>
-<tr><td>云南锗业</td><td>002428</td><td>评分37.5分不达标（MACD空头+KDJ死叉+不在龙虎榜TOP20）</td></tr>
-<tr><td>铜陵有色</td><td>000630</td><td>涨停股，打板65分达标但炸板率>35%策略暂停</td></tr>
-<tr><td>和远气体</td><td>002971</td><td>4板+RSI84极度超买+换手37%+打板22分不达标</td></tr>
-<tr><td>宗申动力</td><td>001696</td><td>2板+RSI>80超买+打板36分不达标</td></tr>
-<tr><td>盛龙股份</td><td>001257</td><td>2板一字+打板32分不达标</td></tr>
-<tr><td>康强电子</td><td>002119</td><td>3板炸板收+2.44%不达3-7%+RSI75超买+换手38%</td></tr>
-</table>
+<!-- 明日操作时间线 -->
+<div class="section">
+  <h2>⏰ 明日操作时间线</h2>
+  <div class="timeline">
+    <div class="step">
+      <div class="time">09:00-09:15</div>
+      <div class="action">📊 <b>竞价观察</b>：盯PCB/光模块/铜箔/钼 板块竞价表现。沪电股份、生益科技、菲利华竞价>3%可竞价买入，否则观察开盘走势</div>
+    </div>
+    <div class="step">
+      <div class="time">09:15-09:25</div>
+      <div class="action">🔍 <b>集合竞价</b>：国瓷材料 冲高+5%以上竞价减半仓（保护利润）；双星/宏昌 涨停一字板则继续持有</div>
+    </div>
+    <div class="step">
+      <div class="time">09:30-10:00</div>
+      <div class="action">⚡ <b>开盘关键30分钟</b>：<br>① 隔夜美股+中概股表现 <br>② 持仓股竞价情况<br>③ 决定新仓买入点</div>
+    </div>
+    <div class="step">
+      <div class="time">10:00-11:30</div>
+      <div class="action">📈 <b>主升观察</b>：若沪电/沃尔/菲利华 涨幅>5%且量能配合 → 14:30买入；否则等待</div>
+    </div>
+    <div class="step">
+      <div class="time">13:00-14:30</div>
+      <div class="action">🍜 <b>午盘观察</b>：盯板块资金流；若市场转弱则放弃买入</div>
+    </div>
+    <div class="step">
+      <div class="time">14:30-15:00</div>
+      <div class="action">💰 <b>尾盘建仓</b>：<br>① 沪电股份 / 沃尔核材 / 菲利华 / 西部矿业 4选2-3<br>② 厦门银行 中短线建仓<br>③ 严格执行5%-7%止损</div>
+    </div>
+    <div class="step">
+      <div class="time">15:00 收盘后</div>
+      <div class="action">📋 <b>复盘+选股</b>：查看龙虎榜，更新明日策略</div>
+    </div>
+  </div>
 </div>
 
-<!-- 明日时间线 -->
-<div class="card">
-<h2>⏰ 明日操作时间线 (06-15 周一)</h2>
-<div class="timeline">
-<div class="t-item">
-<div class="t-time">09:15 集合竞价</div>
-<div class="t-desc">观察多氟多/章源钨业高开幅度，高开>3%不追</div>
-</div>
-<div class="t-item">
-<div class="t-time">09:30 开盘</div>
-<div class="t-desc"><b style="color:#f85149">优先止损持仓</b>：国瓷材料→强平！双星新材→止损！宏昌电子→止损！<br>新仓：多氟多/章源钨业平开或微涨→小仓位各≤1.5万 | 厦门银行回踩7.80→建仓</div>
-</div>
-<div class="t-item">
-<div class="t-time">10:00-10:30</div>
-<div class="t-desc">隔日超短冲高>3%立即卖50% | 止损-5%严格执行</div>
-</div>
-<div class="t-item">
-<div class="t-time">14:30-15:00</div>
-<div class="t-desc">未卖的隔日超短尾盘全部平仓 | 厦门银行中线仓继续持有</div>
-</div>
-</div>
+<!-- 数据核查报告 -->
+<div class="section">
+  <h2>🔍 数据核查报告</h2>
+  <div class="audit">
+    <div class="row"><span class="ok">✓</span><span><b>1. 涨幅规则一致性</b></span><span class="ok">通过</span></div>
+    <div class="row"><span>　</span><span>　隔日超短4只标的涨幅均在 3-7% 通道（沪电6.84% / 沃尔6.98% / 菲利华7.00% / 西部矿业6.94%），无涨停股混入</span></div>
+    <div class="row"><span class="ok">✓</span><span><b>2. 涨停股归类正确</b></span><span class="ok">通过</span></div>
+    <div class="row"><span>　</span><span>　涨停股（东山/中际/生益/招商轮船/云南锗业 等）均归入打板战法，未混入隔日超短/中短线</span></div>
+    <div class="row"><span class="ok">✓</span><span><b>3. 跌停股排除</b></span><span class="ok">通过</span></div>
+    <div class="row"><span>　</span><span>　10家跌停股（含*ST）全部排除在推荐之外</span></div>
+    <div class="row"><span class="ok">✓</span><span><b>4. 数据时间戳</b></span><span class="ok">通过</span></div>
+    <div class="row"><span>　</span><span>　所有数据HQDate=20260615，收盘后3小时(15:30)已稳定 ✓</span></div>
+    <div class="row"><span class="ok">✓</span><span><b>5. 量比来源</b></span><span class="ok">通过</span></div>
+    <div class="row"><span>　</span><span>　使用tdx-connector实时行情LB量比（非今日盘中数据）</span></div>
+    <div class="row"><span class="ok">✓</span><span><b>6. 评分计算复核</b></span><span class="ok">通过</span></div>
+    <div class="row"><span>　</span><span>　沪电股份：涨幅20+量比5+均线30+龙虎15+资金净流入13=83 ✓</span></div>
+    <div class="row"><span class="warn">⚠</span><span><b>7. 早盘表现核查</b></span><span class="warn">警告</span></div>
+    <div class="row"><span>　</span><span>　国瓷材料 +12.37% 触发"今日早盘>5%降级"规则 → 已提示"明日冲高减半仓"</span></div>
+    <div class="row"><span class="ok">✓</span><span><b>8. 炸板率核查</b></span><span class="ok">通过</span></div>
+    <div class="row"><span>　</span><span>　炸板率26.5%<35%红线 → 打板战法可执行</span></div>
+    <div class="row"><span class="warn">⚠</span><span><b>9. RSI超买检查</b></span><span class="warn">警告</span></div>
+    <div class="row"><span>　</span><span>　涨停股RSI普遍>85（云南锗业+10% / 凯美特+10% / 中钨高新+10%），打板战法降级为"轻仓观察"</span></div>
+  </div>
+
+  <div class="reject-list">
+    <b>✗ 已剔除标的及原因</b>：
+    <div class="reject-item">✗ <b>中际旭创</b>(+8.36% 主力净流入47.92亿)：超7%涨幅上限 → 移入打板战法</div>
+    <div class="reject-item">✗ <b>新易盛</b>(+6.72% 主力净流入31.24亿)：光模块龙头但涨幅边界，建议打板</div>
+    <div class="reject-item">✗ <b>寒武纪</b>(+7.66% 主力净流入21.44亿)：涨幅>7% → 移入打板战法</div>
+    <div class="reject-item">✗ <b>兆易创新</b>(+7.59%)：涨幅>7% → 移入打板战法</div>
+    <div class="reject-item">✗ <b>立讯精密</b>(+6.89%)：量比0.96<1.5 资金关注度不足</div>
+    <div class="reject-item">✗ <b>合盛硅业</b>(+6.99%)：炸板4次/封成比不稳，建议回避</div>
+    <div class="reject-item">✗ <b>海光信息</b>(+6.90% 科创板688041)：换手1.59%资金关注度不足</div>
+    <div class="reject-item">✗ <b>北方铜业</b>(+6.96%)：单一题材，无板块联动</div>
+    <div class="reject-item">✗ <b>招商南油/迪生力</b>(一字板)：打板战法一字板不买</div>
+    <div class="reject-item">✗ <b>ST股</b>：ST百利/ST如意/ST派瑞 涨停但不入选（铁律）</div>
+  </div>
 </div>
 
-<!-- 铁律 -->
-<div class="card" style="border:1px solid #f8514944;background:#f8514908">
-<h2 style="color:#f85149">⚠️ 操作铁律</h2>
-<div style="font-size:.82rem;line-height:1.8">
-1. 止损不可动摇：隔日超短/打板 -5%，中短线 -8%<br>
-2. 涨停股需深度检查后方可入隔日超短（今日无涨停股通过）<br>
-3. 跌停股一律不推荐（国瓷-9.73%强制止损！）<br>
-4. 数据时效：本报告基于2026-06-12周五收盘数据，周一开盘前需确认无重大隔夜消息<br>
-5. 仓位纪律：赚钱效应<30%减半，<20%暂停 | 当前72.7%→75%仓位<br>
-6. 总仓位≤80%，至少20%现金 | 持仓3只全线走弱时优先减仓<br>
-7. 科创板±20%涨跌幅，风险加倍
-</div>
+<!-- 风险提示 -->
+<div class="disclaimer">
+  ⚠️ <b>风险提示</b>：本策略由 AI 基于 2026-06-15 收盘数据生成，仅供研究参考。投资有风险，决策需谨慎。市场强势轮动极快，注意止损纪律（隔日超短-5%，中短线-8%）。
 </div>
 
-<div class="footer">
-数据来源：恢恢量化(hhxg.top) + 通达信MCP + StockSight | 仅供研究参考，不构成投资建议<br>
-GitHub Pages: https://xljy.github.io/stock-picks/
+<div style="text-align:center;margin-top:20px;color:#666;font-size:11px">
+  数据源：tdx-connector MCP · 通达信行情 · 执行时间：2026-06-15 18:13<br>
+  <a href="https://xljy.github.io/stock-picks/" style="color:#48dbfb;text-decoration:none">https://xljy.github.io/stock-picks/</a>
 </div>
 
 </div>
