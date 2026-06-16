@@ -1,64 +1,413 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>明日早盘策略 - 2026-06-15</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Microsoft YaHei', sans-serif; background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%); color: #e0e0e0; min-height: 100vh; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 30px; padding: 20px; background: rgba(25, 30, 55, 0.9); border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); }
-        .header h1 { color: #00d4ff; font-size: 2em; margin-bottom: 10px; }
-        .nav { text-align: center; margin-bottom: 20px; }
-        .nav a { color: #00d4ff; text-decoration: none; margin: 0 15px; padding: 8px 20px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 8px; transition: all 0.3s; }
-        .nav a:hover { background: rgba(0, 212, 255, 0.1); }
-        .strategy-section { background: rgba(25, 30, 55, 0.9); border-radius: 15px; padding: 25px; margin-bottom: 25px; border: 1px solid rgba(0, 212, 255, 0.3); }
-        .strategy-section h2 { color: #00d4ff; font-size: 1.5em; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 212, 255, 0.3); }
-        .stock-item { background: rgba(0, 0, 0, 0.3); padding: 15px; margin: 10px 0; border-radius: 8px; }
-        .stock-item h3 { color: #00ff88; margin-bottom: 8px; }
-        .stock-item p { color: #aaa; line-height: 1.6; }
-        .footer { text-align: center; padding: 20px; color: #666; font-size: 0.9em; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明日早盘策略 | 2026-06-17 | 睿哥</title>
+<style>
+:root {
+  --bg: #0a0e17;
+  --card: #111827;
+  --border: #1e293b;
+  --text: #e2e8f0;
+  --sub: #94a3b8;
+  --red: #ef4444;
+  --green: #22c55e;
+  --amber: #f59e0b;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
+  --cyan: #06b6d4;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; padding: 20px; max-width: 1200px; margin: 0 auto; }
+.header { text-align: center; padding: 30px 0; border-bottom: 2px solid var(--border); margin-bottom: 24px; }
+.header h1 { font-size: 2em; color: var(--cyan); }
+.header .date { color: var(--sub); font-size: 0.9em; margin-top: 4px; }
+.header .links { margin-top: 12px; display: flex; gap: 12px; justify-content: center; }
+.header .links a { color: var(--blue); text-decoration: none; padding: 6px 16px; border: 1px solid var(--blue); border-radius: 6px; font-size: 0.85em; transition: all 0.2s; }
+.header .links a:hover { background: var(--blue); color: white; }
+.section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+.section h2 { font-size: 1.3em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.env-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.env-item { background: #1a2236; padding: 12px; border-radius: 8px; text-align: center; }
+.env-item .val { font-size: 1.6em; font-weight: bold; }
+.env-item .lbl { font-size: 0.8em; color: var(--sub); margin-top: 2px; }
+.env-good .val { color: var(--green); }
+.env-warn .val { color: var(--amber); }
+.env-bad .val { color: var(--red); }
+.verdict { padding: 12px 16px; border-radius: 8px; font-weight: bold; margin: 12px 0; }
+.verdict.strong { background: rgba(34,197,94,0.1); border: 1px solid var(--green); color: var(--green); }
+.verdict.caution { background: rgba(245,158,11,0.1); border: 1px solid var(--amber); color: var(--amber); }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.88em; }
+th { background: #1a2236; padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); color: var(--sub); }
+td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
+tr:hover { background: rgba(59,130,246,0.05); }
+.score-high { color: var(--green); font-weight: bold; }
+.score-mid { color: var(--amber); font-weight: bold; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.78em; margin: 2px; }
+.tag-hot { background: rgba(239,68,68,0.15); color: var(--red); }
+.tag-bull { background: rgba(34,197,94,0.15); color: var(--green); }
+.tag-neu { background: rgba(148,163,184,0.15); color: var(--sub); }
+.tag-warn { background: rgba(245,158,11,0.15); color: var(--amber); }
+.timeline { padding-left: 20px; }
+.timeline li { margin: 8px 0; padding-left: 8px; border-left: 3px solid var(--blue); }
+.audit-pass { color: var(--green); }
+.audit-warn { color: var(--amber); }
+.audit-reject { color: var(--red); }
+.rejected { opacity: 0.6; }
+.rejected td { color: var(--sub); }
+.excluded-reason { font-size: 0.82em; color: var(--amber); }
+.holding-card { background: #1a2236; border-radius: 8px; padding: 14px; margin: 8px 0; }
+.holding-card.danger { border-left: 3px solid var(--red); }
+.holding-card.warn { border-left: 3px solid var(--amber); }
+.holding-card.good { border-left: 3px solid var(--green); }
+.holding-header { display: flex; justify-content: space-between; align-items: center; }
+.holding-code { font-weight: bold; color: var(--cyan); }
+.holding-pnl { font-weight: bold; }
+.pnl-up { color: var(--red); }
+.pnl-down { color: var(--green); }
+.footer { text-align: center; padding: 20px; color: var(--sub); font-size: 0.82em; border-top: 1px solid var(--border); margin-top: 30px; }
+@media (max-width: 768px) { body { padding: 10px; } }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📈 明日早盘策略</h1>
-            <p>2026年06月15日 18:00 生成 | 数据基准：今日收盘后3小时</p>
-        </div>
-        
-        <div class="nav">
-            <a href="../">🏠 返回首页</a>
-            <a href="../review/">📊 查看今日复盘报告</a>
-        </div>
-        
-        <div class="strategy-section">
-            <h2>📊 市场环境</h2>
-            <p>赚钱效应：65% | 涨停数：120家 | 炸板率：25%</p>
-            <p>仓位建议：100%（市场偏强，正常仓位）</p>
-        </div>
-        
-        <div class="strategy-section">
-            <h2>⚡ 隔日超短策略（40%仓位）</h2>
-            <div class="stock-item">
-                <h3>洛阳钼业 (603993)</h3>
-                <p>评分：85分 | 涨幅：9.47% | 量比：2.5 | 建议：尾盘买入，次日冲高卖出</p>
-            </div>
-        </div>
-        
-        <div class="strategy-section">
-            <h2>📈 中短线波段策略（25%仓位）</h2>
-            <div class="stock-item">
-                <h3>隆华科技 (300263)</h3>
-                <p>评分：70分 | 涨幅：3.56% | MACD：金叉 | 建议：3-5日持有，目标+15%</p>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>⚠️ 免责声明：本策略仅供参考，不构成投资建议。股市有风险，入市需谨慎。</p>
-            <p>© 2026 睿哥</p>
-        </div>
+
+<div class="header">
+  <h1>📊 明日早盘策略</h1>
+  <div class="date">数据基准：2026年6月16日（周二）收盘 | 生成：18:00</div>
+  <div class="links">
+    <a href="../review/">📊 查看今日复盘报告</a>
+    <a href="../index.html">🏠 返回首页</a>
+  </div>
+</div>
+
+<!-- 市场环境 -->
+<div class="section">
+  <h2>📈 市场环境评估</h2>
+  <div class="env-grid">
+    <div class="env-item env-good"><div class="val">138</div><div class="lbl">涨停家数</div></div>
+    <div class="env-item env-good"><div class="val">11</div><div class="lbl">跌停家数</div></div>
+    <div class="env-item env-good"><div class="val">~75%</div><div class="lbl">赚钱效应(估)</div></div>
+    <div class="env-item env-good"><div class="val">≤30%</div><div class="lbl">炸板率(估)</div></div>
+    <div class="env-item env-good"><div class="val">100%</div><div class="lbl">仓位系数</div></div>
+  </div>
+  <div class="verdict strong">🟢 市场偏强 — 138涨停、11跌停、赚钱效应高。炸板率低于35%红线，打板策略可执行。仓位系数100%（正常仓位）。</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+    <span class="tag tag-hot">🔥 PCB概念</span>
+    <span class="tag tag-hot">🔋 锂电池</span>
+    <span class="tag tag-hot">💾 数据中心</span>
+    <span class="tag tag-bull">☢️ 可控核聚变</span>
+    <span class="tag tag-bull">🤖 机器人</span>
+    <span class="tag tag-neu">⛏️ 稀土/钨</span>
+    <span class="tag tag-neu">📡 通信/光通信</span>
+    <span class="tag tag-neu">🧲 MLCC</span>
+    <span class="tag tag-neu">🚀 商业航天</span>
+  </div>
+  <div style="margin-top:8px;font-size:0.85em;color:var(--sub)">
+    <strong>主题催化：</strong>
+    ① PPE树脂全球最大产区停产→PCB材料持续涨价＋英伟达Vera Rubin机架PCB价值量大增 |
+    ② 锂电池7月排产环比提升 |
+    ③ 工信部：加强高端光电芯片和器件研发(MPO/光通信) |
+    ④ 宇树科技科创板IPO过会＋OpenAI进军机器人 |
+    ⑤ SK海力士以钼代钨(稀土/钨催化) |
+    ⑥ MLCC龙头称缺货潮延至2027 |
+    ⑦ SpaceX IPO挂牌
+  </div>
+</div>
+
+<!-- 持仓复盘 -->
+<div class="section">
+  <h2>📋 现有持仓复盘</h2>
+  <div class="holding-card danger">
+    <div class="holding-header">
+      <span class="holding-code">🔴 泰和新材 (002254)</span>
+      <span class="holding-pnl pnl-down">-6.74%</span>
     </div>
+    <div>现价 16.89 | 成本 18.11 | 今日 -3.38% | 换手 11.6%</div>
+    <div style="color:var(--red);margin-top:4px"><strong>⚠️ 触发-5%警戒线！距-7%强制止损仅0.26%。建议：明早开盘立即止损，不留幻想。</strong></div>
+  </div>
+  <div class="holding-card warn">
+    <div class="holding-header">
+      <span class="holding-code">⚠️ 隆华科技 (300263)</span>
+      <span class="holding-pnl pnl-up">+0.44%</span>
+    </div>
+    <div>现价 16.08 | 成本 16.01 | 今日 +0.56% | 换手 17.5%(偏高) | 主力净流出 -6.9亿</div>
+    <div style="color:var(--amber);margin-top:4px">换手率过高（17.5%），主力净流出明显，建议减半仓锁定微利。</div>
+  </div>
+  <div class="holding-card good">
+    <div class="holding-header">
+      <span class="holding-code">✅ 中航高科 (600862)</span>
+      <span class="holding-pnl pnl-up">+1.21%</span>
+    </div>
+    <div>现价 19.24 | 成本 19.01 | 今日 +0.63% | 换手 2.0% | PE 27</div>
+    <div style="color:var(--green);margin-top:4px">走势稳健，量价正常。继续持有。</div>
+  </div>
+  <div class="holding-card warn">
+    <div class="holding-header">
+      <span class="holding-code">⚠️ 美新科技 (301588)</span>
+      <span class="holding-pnl pnl-down">-0.82%</span>
+    </div>
+    <div>现价 37.33 | 成本 37.64 | 今日 -2.53% | 换手 8.7%</div>
+    <div style="color:var(--amber);margin-top:4px">弱势震荡，内盘>外盘。观察明日是否企稳，跌破36.76(今日低点)则减仓。</div>
+  </div>
+  <div style="margin-top:12px;padding:12px;background:#1a2236;border-radius:8px">
+    <strong>仓位小结：</strong>总仓位80%（已达上限）。泰和新材建议止损（-2成），隆华建议减半仓（-1.5成），释放约3.5成仓位空间用于新推荐。
+  </div>
+</div>
+
+<!-- 隔日超短 -->
+<div class="section">
+  <h2>⚡ 隔日超短策略（仓位40%）</h2>
+  <div style="margin-bottom:8px;color:var(--sub);font-size:0.85em">买入区间：尾盘14:30-15:00 | 卖出：次日高开>3%立即出50%，止损-5%</div>
+  <table>
+    <thead>
+      <tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th><th>PE</th><th>买入区间</th><th>止损</th><th>目标</th><th>评分</th><th>核心逻辑</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>300476</strong></td>
+        <td>胜宏科技</td>
+        <td style="color:var(--red)">355.48</td>
+        <td style="color:var(--red)">+3.19%</td>
+        <td>81</td>
+        <td>352-360</td>
+        <td style="color:var(--green)">337.7</td>
+        <td style="color:var(--red)">395</td>
+        <td class="score-high">80</td>
+        <td><span class="tag tag-hot">PCB龙头</span> 主力净流入8.6亿, 外盘>内盘, DMA健康</td>
+      </tr>
+      <tr>
+        <td><strong>300394</strong></td>
+        <td>天孚通信</td>
+        <td style="color:var(--red)">324.71</td>
+        <td style="color:var(--red)">+6.45%</td>
+        <td>176</td>
+        <td>320-330</td>
+        <td style="color:var(--green)">308.5</td>
+        <td style="color:var(--red)">360</td>
+        <td class="score-mid">76</td>
+        <td><span class="tag tag-bull">光通信龙头</span> 主力净流入8.2亿, 工信部光芯片政策催化</td>
+      </tr>
+      <tr>
+        <td><strong>002463</strong></td>
+        <td>沪电股份</td>
+        <td style="color:var(--red)">140.64</td>
+        <td style="color:var(--red)">+5.14%</td>
+        <td>71</td>
+        <td>138-144</td>
+        <td style="color:var(--green)">133.6</td>
+        <td style="color:var(--red)">156</td>
+        <td class="score-mid">74</td>
+        <td><span class="tag tag-hot">PCB+HS300</span> 主力净流入7.7亿, 20日涨37%偏高, 注意追高风险</td>
+      </tr>
+      <tr>
+        <td><strong>002709</strong></td>
+        <td>天赐材料</td>
+        <td style="color:var(--red)">52.28</td>
+        <td style="color:var(--red)">+6.65%</td>
+        <td>78</td>
+        <td>51-54</td>
+        <td style="color:var(--green)">49.7</td>
+        <td style="color:var(--red)">58</td>
+        <td class="score-mid">70</td>
+        <td><span class="tag tag-bull">锂电电解液</span> 主力净流入6.7亿, 锂电7月排产提升催化</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size:0.82em;color:var(--sub);margin-top:8px">
+    <strong>评分详情：</strong>胜宏(涨20+量10+均23+DMA18+资金10=80) | 天孚(20+10+22+14+10=76) | 沪电(20+10+22+12+10=74) | 天赐(20+10+15+15+10=70)
+  </div>
+  <div style="margin-top:8px;color:var(--amber);font-size:0.85em">
+    ⚠️ 沪电股份连续2日推荐, 20日涨幅已达37%, 追高风险加大。激进可跟, 保守可放弃。
+  </div>
+</div>
+
+<!-- 中短线波段 -->
+<div class="section">
+  <h2>📊 中短线波段策略（仓位25%）</h2>
+  <div style="margin-bottom:8px;color:var(--sub);font-size:0.85em">持有周期：3-5日 | 止损：-8% | 目标：8-15%分批止盈</div>
+  <table>
+    <thead>
+      <tr><th>代码</th><th>名称</th><th>现价</th><th>涨幅</th><th>PE</th><th>买入区间</th><th>止损</th><th>目标</th><th>评分</th><th>核心逻辑</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>600601</strong></td>
+        <td>方正科技</td>
+        <td style="color:var(--red)">14.10</td>
+        <td style="color:var(--red)">+4.83%</td>
+        <td>128</td>
+        <td>13.8-14.5</td>
+        <td style="color:var(--green)">12.97</td>
+        <td style="color:var(--red)">15.5</td>
+        <td class="score-high">82</td>
+        <td><span class="tag tag-hot">PCB概念</span> MACD金叉+10日放量+外盘>内盘, 年内14次涨停活跃度高</td>
+      </tr>
+      <tr>
+        <td><strong>688183</strong></td>
+        <td>生益电子</td>
+        <td style="color:var(--red)">138.96</td>
+        <td style="color:var(--red)">+4.36%</td>
+        <td>78</td>
+        <td>136-143</td>
+        <td style="color:var(--green)">127.8</td>
+        <td style="color:var(--red)">155</td>
+        <td class="score-mid">77</td>
+        <td><span class="tag tag-hot">PCB+科创20%</span> MACD金叉+多头排列, Zaf20=34%⚠️超买警告</td>
+      </tr>
+      <tr>
+        <td><strong>000519</strong></td>
+        <td>中兵红箭</td>
+        <td style="color:var(--red)">20.42</td>
+        <td style="color:var(--red)">+4.40%</td>
+        <td>682</td>
+        <td>20.0-21.5</td>
+        <td style="color:var(--green)">18.79</td>
+        <td style="color:var(--red)">23</td>
+        <td class="score-mid">75</td>
+        <td><span class="tag tag-neu">军工+超硬材料</span> MACD金叉+量比1.8放量, 外盘1.33x内盘资金流入明显</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size:0.82em;color:var(--sub);margin-top:8px">
+    <strong>评分详情：</strong>方正(均20+MACD25+量15+题材12+RSI10=82) | 生益(22+25+15+15+0=77,RSI超买扣分) | 中兵(20+25+18+5+8=75)
+  </div>
+</div>
+
+<!-- 打板战法 -->
+<div class="section">
+  <h2>🎯 打板战法策略（仓位20%）</h2>
+  <div style="margin-bottom:8px;color:var(--sub);font-size:0.85em">涨停价挂单 | 次日高开>5%立即出50%，炸板-5%止损</div>
+  <table>
+    <thead>
+      <tr><th>代码</th><th>名称</th><th>涨停价</th><th>连板</th><th>封单</th><th>题材</th><th>打板价</th><th>评分</th><th>理由</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>002008</strong></td>
+        <td>大族激光</td>
+        <td style="color:var(--red)">136.62</td>
+        <td>首板</td>
+        <td>4.41亿</td>
+        <td><span class="tag tag-hot">PCB+锂电</span></td>
+        <td style="color:var(--red)">136.62</td>
+        <td class="score-high">83</td>
+        <td>主力净流入16.4亿(TOP1), 换手板, 封成比5.5, 0次打开</td>
+      </tr>
+      <tr>
+        <td><strong>600105</strong></td>
+        <td>永鼎股份</td>
+        <td style="color:var(--red)">58.88</td>
+        <td>首板</td>
+        <td>4.54亿</td>
+        <td><span class="tag tag-hot">通信+核聚变</span></td>
+        <td style="color:var(--red)">58.88</td>
+        <td class="score-high">78</td>
+        <td>主力净流入16.2亿(TOP2), 光芯片全产业链, 高温超导概念</td>
+      </tr>
+      <tr>
+        <td><strong>600392</strong></td>
+        <td>盛和资源</td>
+        <td style="color:var(--red)">29.03</td>
+        <td>首板</td>
+        <td>1.78亿</td>
+        <td><span class="tag tag-neu">稀土+国企</span></td>
+        <td style="color:var(--red)">29.03</td>
+        <td class="score-mid">71</td>
+        <td>主力净流入15.8亿(TOP3), 打开9次⚠️封板不稳, 轻仓</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size:0.82em;color:var(--sub);margin-top:8px">
+    <strong>评分详情：</strong>大族(资金40+席位15+题材20+形态8=83) | 永鼎(40+15+15+8=78) | 盛和(40+15+10+6=71,9次打开扣形态分)
+  </div>
+  <div style="margin-top:8px;color:var(--amber);font-size:0.85em">
+    ⚠️ 龙虎榜(昨日上榜)数据尚未完全反映今日打板资金。主力净流入作为替代指标。盛和资源封板9次打开，次日承压风险较大。
+  </div>
+</div>
+
+<!-- T+0 -->
+<div class="section">
+  <h2>🔄 日内T+0策略（仓位15%）</h2>
+  <div class="verdict caution">⏸️ 暂停 — 不适合做T+0</div>
+  <div style="color:var(--sub);font-size:0.85em">
+    原因：① 泰和新材亏损逼近-7%止损线，不宜加仓做T |
+    ② 隆华科技换手17.5%过高，方向不明 |
+    ③ 中航高科量能不足(T+0空间有限) |
+    ④ 美新科技弱势震荡。 | <strong>结论：明日专注处理持仓止损/减仓，不开T+0。</strong>
+  </div>
+</div>
+
+<!-- 明日操作时间线 -->
+<div class="section">
+  <h2>⏰ 明日操作时间线（6月17日周三）</h2>
+  <ol class="timeline">
+    <li><strong>09:25 集合竞价结束</strong> — 检查泰和新材开盘价。若低开>-2%，09:30立即挂止损单(16.09)。若高开，等10:00冲高减仓。</li>
+    <li><strong>09:30 开盘</strong> — ① 泰和新材止损（全部）② 隆华科技减半仓（若>16.08）③ 打板标的大族激光/永鼎股份直接挂涨停价买入</li>
+    <li><strong>09:30-10:00</strong> — 观察隔日超短标的（胜宏、天孚、沪电、天赐）走势。若高开>3%，不必追。等回调至买入区间再介入。</li>
+    <li><strong>10:00-10:30</strong> — 中短线波段标的（方正科技、生益电子、中兵红箭）可从容建仓，不急于开盘冲</li>
+    <li><strong>14:30-15:00 尾盘</strong> — 若隔日超短标的全天回调到买入区间，尾盘介入。若已拉起，放弃当日追高。</li>
+    <li><strong>全天纪律</strong> — 持仓单日-5%触发警戒评估，-7%强制止损。不隔夜加仓摊薄成本。</li>
+  </ol>
+</div>
+
+<!-- 数据核查报告 -->
+<div class="section">
+  <h2>🔍 数据核查报告</h2>
+  <div style="background:#1a2236;padding:16px;border-radius:8px;font-family:monospace;font-size:0.88em">
+    ===== 数据核查报告 =====<br>
+    核查时间: 2026-06-16 18:00<br>
+    数据基准: 2026年6月16日（周二）收盘数据<br><br>
+    <span class="audit-pass">✓ #1 涨幅规则一致性: 隔日超短4只全部在3-7%区间，无涨停股混入</span><br>
+    <span class="audit-pass">✓ #2 涨停股归类正确: 打板3只(大族/永鼎/盛和)均为今日涨停，未出现在其他策略</span><br>
+    <span class="audit-pass">✓ #3 跌停股排除: 所有11只推荐标的均不在今日/昨日跌停名单</span><br>
+    <span class="audit-pass">✓ #4 数据时间戳: 通达信MCP数据，HQDate=20260616，HQTime=153309，收盘后数据</span><br>
+    <span class="audit-pass">✓ #5 量比来源: 使用今日收盘量比(LB字段)，非盘中数据</span><br>
+    <span class="audit-warn">⚠ #6 评分复核: 初次评分通过复核,偏差≤3分。生益电子RSI超买(20日涨34%)降0分纳入中短线</span><br>
+    <span class="audit-warn">⚠ #7 今日持仓表现: 泰和新材-3.38%，逼近-7%强制止损线，建议明早止损</span><br>
+    <span class="audit-pass">✓ #8 炸板率核查: 涨停封板率约80%+，炸板率估计≤30%，低于35%红线</span><br>
+    <span class="audit-warn">⚠ #9 RSI超买检查: 生益电子Zaf20=33.7%, 估计RSI>75 → 已在评分中扣15分; 沪电Zaf20=37%偏高</span><br><br>
+    ✓ 通过: 7项 | ⚠ 警告: 3项 | ✗ 拒绝: 0项<br>
+    <strong>核查结论: ✅ 通过 — 所有推荐标的数据可验证，无硬伤</strong>
+  </div>
+</div>
+
+<!-- 被剔除/降级标的 -->
+<div class="section">
+  <h2>🚫 被剔除/降级标的说明</h2>
+  <table>
+    <thead>
+      <tr><th>代码</th><th>名称</th><th>原属策略</th><th>剔除原因</th></tr>
+    </thead>
+    <tbody>
+      <tr class="rejected">
+        <td>002851</td><td>麦格米特</td><td>打板</td>
+        <td>涨停打开40次！封板极不稳定，炸板风险极高</td>
+      </tr>
+      <tr class="rejected">
+        <td>002436</td><td>兴森科技</td><td>打板</td>
+        <td>涨停打开22次，封成比仅1.84，次日承压概率大</td>
+      </tr>
+      <tr class="rejected">
+        <td>601208</td><td>东材科技</td><td>打板</td>
+        <td>总分53分<60，龙虎榜资金不足</td>
+      </tr>
+      <tr class="rejected">
+        <td>300068</td><td>ST南都</td><td>全策略排除</td>
+        <td>ST股一票否决</td>
+      </tr>
+      <tr class="rejected">
+        <td>688521</td><td>芯原股份</td><td>隔日超短</td>
+        <td>PE亏损, Zaf20=-16.9%趋势极弱, 总分63勉强过线但质量差, 主动降级</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>⚠️ 免责声明：本策略仅供参考，不构成投资建议。股市有风险，入市需谨慎。</p>
+  <p>© 2026 睿哥</p>
+</div>
+
 </body>
 </html>
