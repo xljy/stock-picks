@@ -199,24 +199,68 @@ tr:hover { background:#1c2128; }
 </div>
 
 <!-- 首板扫描 -->
-<h2>🎯 首板扫描</h2>
+<h2>🎯 首板扫描 TOP5</h2>
 
-<div class="miss-data">
-<strong>⚠️ 首板数据未放置</strong><br>
-今日(20260616)首板Excel文件不存在于 <code>.workbuddy/shouban/20260616首板.xlsx</code><br>
-请手动下载首板数据并放置到该路径，然后重新运行复盘。<br>
-<br>
-根据 hhxg 数据，今日首板88只，涨停总数117只。以下为涨幅前20中可关注标的：
+<div class="card card-ok">
+<p>今日首板87只，涨停总数117只。按涨停强度/封板质量/换手/市值/题材评分筛选：</p>
+<table>
+<tr><th>#</th><th>代码</th><th>名称</th><th>评分</th><th>首封时间</th><th>开板</th><th>换手率</th><th>流通市值</th><th>封成比</th><th>5日涨幅</th><th>板块</th><th>涨停原因</th></tr>
+<tr>
+  <td>1</td><td>002449</td><td class="highlight">国星光电</td><td class="red">70</td>
+  <td><span class="tag tag-red">09:30</span></td><td>0</td><td>3.46%</td>
+  <td>51.3亿</td><td class="green">47.95%</td><td>2.6%</td>
+  <td>光学光电子</td><td>光耦器件+LED封装+华为合作+广东国资</td>
+</tr>
+<tr>
+  <td>2</td><td>001283</td><td class="highlight">豪鹏科技</td><td class="red">60</td>
+  <td><span class="tag tag-yellow">10:21</span></td><td>0</td><td>6.14%</td>
+  <td>54.8亿</td><td class="green">10.25%</td><td>6.06%</td>
+  <td>电池</td><td>定增通过+储能电池+AI眼镜电池+机器人</td>
+</tr>
+<tr>
+  <td>3</td><td>000541</td><td>佛山照明</td><td class="yellow">58</td>
+  <td><span class="tag tag-yellow">09:36</span></td><td>1</td><td>5.69%</td>
+  <td>65.3亿</td><td>7.10%</td><td>9.03%</td>
+  <td>光学光电子</td><td>LED+智能照明+国企改革</td>
+</tr>
+<tr>
+  <td>4</td><td>000736</td><td class="highlight">中交发展</td><td class="yellow">57</td>
+  <td><span class="tag tag-yellow">09:37</span></td><td>0</td><td>4.83%</td>
+  <td>34.5亿</td><td class="green">50.46%</td><td>6.45%</td>
+  <td>房地产</td><td>更名+轻资产运营+物业服务+数据中心</td>
+</tr>
+<tr>
+  <td>5</td><td>001387</td><td>雪祺电气</td><td class="yellow">57</td>
+  <td><span class="tag tag-yellow">10:49</span></td><td>0</td><td>9.63%</td>
+  <td>15.0亿</td><td class="green">26.06%</td><td>7.76%</td>
+  <td>白色家电</td><td>PCB概念+境外营收增长+大冰箱ODM</td>
+</tr>
+</table>
+<p class="data-source">数据源：通达信首板Excel | 评分规则：涨停强度(秒板+20/早盘+15/上午+10/下午+5/尾盘-5) + 开板0次+10 + 换手3-8%+10 + 流通市值<30亿+15 + 封成比>10%+12 + 热门板块+8 + 题材+5</p>
 </div>
 
+<div class="card card-info">
+<h3>💡 首板亮点解读</h3>
+<ul>
+<li><strong>国星光电(002449)</strong>：9:30秒板，0开板，封成比47.95%超强，光学光电子+F5G主线，华为合作概念，评分断层领先</li>
+<li><strong>豪鹏科技(001283)</strong>：10:21封板，0开板，换手6.14%适中，电池+AI眼镜+机器人多重题材叠加，定增审核通过催化</li>
+<li><strong>中交发展(000736)</strong>：9:37封板，封成比50.46%，流通市值34.5亿小盘，更名+数据中心双催化</li>
+<li>首板87只数量较多，但评分分化明显，70分以上仅1只，60分以上仅2只，整体质量一般</li>
+<li>注意：F5G/光通信/PCB主线首板占比高，明日看分歧后谁能晋级2板</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>📊 首板评分分布</h3>
 <table>
-<tr><th>代码</th><th>名称</th><th>现价</th><th>涨跌幅</th><th>换手率</th><th>板块</th><th>看点</th></tr>
-<tr><td>688635</td><td>长进光子</td><td>509.99</td><td class="red">+20.00%</td><td>32.08%</td><td>光通信</td><td>F5G龙头，一字板</td></tr>
-<tr><td>688484</td><td>南芯科技</td><td>52.67</td><td class="red">+20.00%</td><td>9.19%</td><td>芯片</td><td>主力净流入39亿</td></tr>
-<tr><td>300570</td><td>太辰光</td><td>263.29</td><td class="red">+18.55%</td><td>21.27%</td><td>光通信</td><td>F5G核心标的</td></tr>
-<tr><td>300780</td><td>德恩精工</td><td>32.32</td><td class="red">+20.01%</td><td>6.88%</td><td>自动化</td><td>换手适中，封板强</td></tr>
-<tr><td>301055</td><td>张小泉</td><td>40.12</td><td class="red">+20.01%</td><td>6.47%</td><td>消费</td><td>换手低，封板稳</td></tr>
+<tr><th>评分区间</th><th>数量</th><th>代表</th></tr>
+<tr><td class="red">≥70分</td><td>1</td><td>国星光电</td></tr>
+<tr><td class="yellow">60-69分</td><td>1</td><td>豪鹏科技</td></tr>
+<tr><td>55-59分</td><td>7</td><td>佛山照明、中交发展、雪祺电气、万憬能源、王子新材、长城电工、中广天择</td></tr>
+<tr><td>50-54分</td><td>15</td><td>宏英智能、安德利、宝鼎科技…</td></tr>
+<tr><td><50分</td><td>63</td><td>多数尾盘板/高开板/大市值</td></tr>
 </table>
+</div>
 
 <!-- 主力净流入TOP5 -->
 <h2>💰 主力净流入 TOP5</h2>
