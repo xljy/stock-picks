@@ -23,17 +23,20 @@ h1 { font-size:1.6em; color:#fff; margin-bottom:16px; }
 .banner a { display:inline-block; background:var(--accent); color:#fff; padding:10px 28px; border-radius:6px; text-decoration:none; font-weight:600; font-size:1.1em; transition:background .2s; }
 .banner a:hover { background:#79b8ff; }
 ul { list-style:none; padding:0; }
-li { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:12px 16px; margin-bottom:8px; }
+li { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:12px 16px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
 li a { color:var(--text); text-decoration:none; font-weight:500; }
 li a:hover { color:var(--accent); }
-li .date { color:var(--text-dim); font-size:0.85em; margin-left:8px; }
-li .tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:0.75em; margin-left:8px; }
+li .date { color:var(--text-dim); font-size:0.85em; }
+li .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.75em; }
 .tag-new { background:rgba(46,213,115,.15); color:var(--green); }
+.tag-warn { background:rgba(242,153,0,.15); color:#f29900; }
+.tag-up{ background:rgba(255,71,87,.12); color:var(--red); }
 .footer { text-align:center; margin-top:32px; padding-top:16px; border-top:1px solid var(--border); color:var(--text-dim); font-size:0.85em; }
 .nav-bar { display:flex; gap:8px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
 .nav-bar a { color:var(--accent); text-decoration:none; font-size:0.85em; padding:6px 14px; border:1px solid var(--border); border-radius:6px; transition:all .2s; }
 .nav-bar a:hover { background:rgba(88,166,255,.1); }
 .nav-bar a.active { background:var(--accent); color:#0d1117; border-color:var(--accent); font-weight:600; }
+.summary { color:var(--text-dim); font-size:0.8em; }
 </style>
 </head>
 <body>
@@ -53,7 +56,22 @@ li .tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:0.
 </div>
 
 <ul>
-<li><em style="color:var(--text-dim);">等待午间复盘生成...</em></li>
+  <li>
+    <div>
+      <a href="2026-06-17.html">2026-06-17 周三午间</a>
+      <span class="tag tag-new">NEW</span>
+      <br><span class="summary">涨停71家 · 泰和新材涨停 · 美新锁利+9.86% · 情绪极强</span>
+    </div>
+    <span class="date">06/17</span>
+  </li>
+  <li>
+    <div>
+      <a href="2026-06-16.html">2026-06-16 周二午间</a>
+      <span class="tag tag-warn">⚠️</span>
+      <br><span class="summary">涨停104家 · 泰和新材逼近止损 · 隆华微盈 · 强势市场</span>
+    </div>
+    <span class="date">06/16</span>
+  </li>
 </ul>
 
 <div class="footer">
