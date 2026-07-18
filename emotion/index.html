@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>市场情绪扫描 | 2026年07月17日 | 睿哥</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --card2: #1c2030;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-dim: #8b949e;
+  --accent: #58a6ff;
+  --red: #f85149;
+  --green: #3fb950;
+  --amber: #d29922;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; padding:20px; max-width:1200px; margin:0 auto; }
+.nav-bar { display:flex; gap:8px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
+.nav-bar a { color:var(--accent); text-decoration:none; font-size:0.85em; padding:6px 14px; border:1px solid var(--border); border-radius:6px; transition:all .2s; }
+.nav-bar a:hover { background:rgba(88,166,255,.1); }
+.nav-bar a.active { background:var(--accent); color:#0d1117; border-color:var(--accent); font-weight:600; }
+.header { text-align:center; padding:30px 0; border-bottom:2px solid var(--border); margin-bottom:24px; }
+.header h1 { font-size:2em; color:#fff; }
+.header .date { color:var(--text-dim); font-size:0.95em; margin-top:6px; }
+.metric-bar { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:24px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; text-align:center; }
+.card .label { color:var(--text-dim); font-size:0.8em; margin-bottom:6px; }
+.card .value { font-size:1.6em; font-weight:700; color:#fff; }
+.section { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:20px; }
+.section h2 { font-size:1.15em; color:var(--accent); margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+ul.history { list-style:none; padding:0; column-count:3; column-gap:16px; }
+ul.history li { background:var(--card2); border:1px solid var(--border); border-radius:6px; padding:10px 12px; margin-bottom:8px; break-inside:avoid; }
+ul.history li a { color:var(--text); text-decoration:none; font-size:0.9em; display:block; }
+ul.history li:hover { border-color:var(--accent); }
+ul.history li a:hover { color:var(--accent); }
+.footer { text-align:center; margin-top:30px; padding-top:20px; border-top:1px solid var(--border); color:var(--text-dim); font-size:0.85em; }
+.embed-wrap { background:var(--card2); border:1px solid var(--border); border-radius:8px; overflow:hidden; margin-top:8px; }
+.embed-wrap iframe { width:100%; height:1200px; border:0; display:block; }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <a href="../index.html">🏠 首页</a>
+  <a href="../review/index.html">📊 收盘复盘</a>
+  <a href="../strategy/index.html">📈 明日策略</a>
+  <a href="../midday/index.html">☀️ 午间复盘</a>
+  <a href="./index.html" class="active">🌡️ 情绪扫描</a>
+</div>
+
+<div class="header">
+  <h1>🌡️ 全市场情绪扫描</h1>
+  <div class="date">2026年07月17日 周五 · 17:00 收盘后自动生成</div>
+</div>
+
+<div class="metric-bar"><div class="card"><div class="label">涨停家数</div><div class="value">35</div></div><div class="card"><div class="label">跌停家数</div><div class="value">20</div></div><div class="card"><div class="label">首板家数</div><div class="value">25</div></div><div class="card"><div class="label">连板家数</div><div class="value">10</div></div><div class="card"><div class="label">平均封成比</div><div class="value">63.5%</div></div><div class="card"><div class="label">炸板次数(总)</div><div class="value">48</div></div></div>
+
+<div class="section">
+  <h2>📊 最新报告：2026年07月17日</h2>
+  <div class="embed-wrap">
+    <iframe src="./20260717.html" loading="lazy"></iframe>
+  </div>
+  <p style="margin-top:12px;font-size:0.85em;color:var(--text-dim)">
+    <a href="./20260717.html" style="color:var(--accent);text-decoration:none">📄 在新窗口打开完整报告 →</a>
+  </p>
+</div>
+
+<div class="section">
+  <h2>📅 历史报告（近30天）</h2>
+  <ul class="history">
+    <li style="color:var(--text-dim)">暂无历史记录</li>
+  </ul>
+</div>
+
+<div class="footer">
+  数据来源：通达信全市场涨跌停 / 连板梯队扫描 · 情绪分位基准：p20=41, p40=50, p60=61, p80=79<br>
+  ⚠️ 仅供研究参考，不构成投资建议
+</div>
+
+</body>
+</html>
