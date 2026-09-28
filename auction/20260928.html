@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9:25竞价扫描收盘反查 · 2026-09-28</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#f4f6f8;color:#1f2328;font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.6;padding:24px}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:24px;margin-bottom:6px}
+  .sub{color:#5b6570;font-size:13px;margin-bottom:20px}
+  h2{font-size:17px;margin:26px 0 12px;padding-left:10px;border-left:4px solid #4a7fb5}
+  .card{background:#fff;border:1px solid #d8dee4;border-radius:8px;padding:16px 18px;margin-bottom:14px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+  .kpi{background:#fff;border:1px solid #d8dee4;border-radius:8px;padding:14px 16px}
+  .kpi .lbl{font-size:12px;color:#5b6570}
+  .kpi .val{font-size:24px;font-weight:700;margin-top:2px}
+  .kpi .note{font-size:11px;color:#5b6570;margin-top:2px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border:1px solid #d8dee4;padding:7px 9px;text-align:left}
+  th{background:#eef1f4;font-weight:600;white-space:nowrap}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .up{color:#cf222e;font-weight:600}
+  .dn{color:#1a7f37;font-weight:600}
+  .flat{color:#5b6570}
+  .tag{display:inline-block;padding:1px 7px;border-radius:4px;font-size:11px;border:1px solid #d8dee4;background:#f4f6f8;color:#5b6570}
+  .tag.s{background:#fdf0e6;color:#a34b00;border-color:#f0c9a0}
+  .tag.aplus{background:#eaf3fb;color:#1361a8;border-color:#bcd9f2}
+  .tag.hit{background:#fdecec;color:#cf222e;border-color:#f3c2c2}
+  .tag.miss{background:#e8f5ec;color:#1a7f37;border-color:#b7e0c6}
+  ul{margin:6px 0 0 20px;font-size:13px}
+  li{margin-bottom:4px}
+  .warn{background:#fff8e6;border:1px solid #f0d58c;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:#6b4e00}
+  .muted{color:#5b6570;font-size:12px}
+  .src{font-size:12px;color:#5b6570;margin-bottom:10px}
+</style>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<body>
+<div class="wrap">
+
+<h1>9:25 竞价打板扫描 · 收盘反查报告</h1>
+<div class="sub">交易日 2026-09-28（周一）　|　候选池基准日 2026-09-24　|　生成时间 15:47</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="lbl">候选池总数</div><div class="val">52</div><div class="note">9/24 首板股，8 只入查询集</div></div>
+  <div class="kpi"><div class="lbl">今日晋级涨停</div><div class="val">7</div><div class="note">全市场涨停池 33 只</div></div>
+  <div class="kpi"><div class="lbl">晋级率</div><div class="val">13.5%</div><div class="note">11 日样本第 2 低</div></div>
+  <div class="kpi"><div class="lbl">扫描筛出数</div><div class="val">—</div><div class="note">扫描报告缺失，无数据</div></div>
+  <div class="kpi"><div class="lbl">筛出命中封板</div><div class="val">—</div><div class="note">同上</div></div>
+  <div class="kpi"><div class="lbl">过滤误杀数</div><div class="val">—</div><div class="note">同上</div></div>
+</div>
+
+<div class="warn">
+  <strong>降级说明：</strong>当日 <code>zt_925_report_20260928.html</code> 与 <code>zt_925_capture_20260928.json</code> 均不存在 → <strong>本报告降级为「仅候选池晋级统计」</strong>，开盘价区间规则的正反检验与误杀统计<strong>无数据</strong>（自 9/4 起已连续第 8 个交易日无法执行，本次为 9/15 停用后首次恢复运行）。<br>
+  候选池 <code>date=20260924</code> 与交易日历 <code>T_PREV=20260924</code> <strong>匹配</strong>（9/25 中秋休市，9/24 首板股的下一交易日即 9/28），口径正确；但 <code>prepare_time=2026-09-28 11:12:56</code> 晚于 9:25 竞价窗口，说明上游 9:25 链路今日未在盘前产出，池子为盘后补生成。
+</div>
+
+<h2>1. 数据口径与溯源</h2>
+<div class="card">
+<table>
+<tr><th style="width:150px">环节</th><th style="width:190px">实际数据源</th><th>溯源字段 / 状态</th></tr>
+<tr><td>数据源自检</td><td>非TDX 主源</td><td><code>primary</code>：indices / quote / kline_day / emotion <strong>全 ok</strong>；<code>tdx.ok=false</code>（HTTP 401 Unauthorized）→ 结论「主源可用；TDX 兜底不可用」</td></tr>
+<tr><td>交易日确认</td><td>zt_trade_cal.py</td><td><code>T=20260928　T_PREV=20260924　来源=akshare日历</code>（真实交易日历，无算术推算）</td></tr>
+<tr><td>涨停池（33 只）</td><td>akshare / 东财 push2ex</td><td>脚本日志：<code>[WARN] TDX 涨停池(20260928) 失败: HTTP 401</code> → <code>[WARN] TDX 涨停池为空，降级 akshare(eastmoney)</code>。<strong>涨停池来源已降级</strong>，非 TDX 口径</td></tr>
+<tr><td>收盘行情</td><td>腾讯 qt.gtimg.cn</td><td><code>src="tencent qt.gtimg.cn"</code>，<code>tdx_fallback=false</code>，<code>tdx_client_ok=false</code>，<code>tdx_enriched_fields=[]</code> → <strong>主力净额(main_net)/chg10/PE 补缺字段缺失</strong>（TDX 不可用），报告中不展示该三项</td></tr>
+</table>
+<p class="muted" style="margin-top:8px">说明：本次<strong>未触发 TDX 兜底</strong>（主源全程可用），TDX 401 仅导致「补缺字段」缺失。涨停池 33 只为东财收盘口径，若与 17:00 流水线的涨停数不一致属正常口径差异。</p>
+</div>
+
+<h2>2. 扫描筛出标的 vs 实际收盘</h2>
+<div class="card">
+<p class="muted">当日扫描报告不存在，<code>scan.final_picks</code> / <code>open_band</code> / <code>killed_but_up</code> 全为空，本表无数据。以下改为呈现<strong>查询集 8 只（S 级 7 + A+ 级 1）的竞价预判 vs 实际收盘</strong>，用于检验高分端的实际区分度。</p>
+<table style="margin-top:10px">
+<tr><th>代码</th><th>名称</th><th>评级</th><th>ML概率</th><th class="num">开盘涨幅</th><th class="num">收盘涨幅</th><th class="num">换手%</th><th>结果</th></tr>
+<tr><td>600825</td><td>新华传媒</td><td><span class="tag s">S</span></td><td class="num">0.874</td><td class="num up">+10.04%</td><td class="num up">+10.04%</td><td class="num">0.48</td><td><span class="tag hit">一字封板（5板）</span></td></tr>
+<tr><td>001234</td><td>泰慕士</td><td><span class="tag s">S</span></td><td class="num">0.874</td><td class="num dn">-10.00%</td><td class="num dn">-10.00%</td><td class="num">11.64</td><td><span class="tag miss">一字跌停</span></td></tr>
+<tr><td>601567</td><td>三星电气</td><td><span class="tag s">S</span></td><td class="num">0.489</td><td class="num dn">-1.54%</td><td class="num dn">-9.97%</td><td class="num">4.10</td><td><span class="tag miss">跌停</span></td></tr>
+<tr><td>000850</td><td>华茂股份</td><td><span class="tag s">S</span></td><td class="num">0.464</td><td class="num up">+9.77%</td><td class="num up">+0.39%</td><td class="num">21.86</td><td>高开炸板回落</td></tr>
+<tr><td>601811</td><td>新华文轩</td><td><span class="tag s">S</span></td><td class="num">0.358</td><td class="num up">+8.11%</td><td class="num dn">-8.99%</td><td class="num">8.05</td><td>高开天地板</td></tr>
+<tr><td>603949</td><td>雪龙集团</td><td><span class="tag s">S</span></td><td class="num">0.355</td><td class="num up">+10.00%</td><td class="num up">+10.00%</td><td class="num">7.80</td><td><span class="tag hit">一字封板（3板）</span></td></tr>
+<tr><td>002614</td><td>奥佳华</td><td><span class="tag s">S</span></td><td class="num">0.308</td><td class="num up">+9.60%</td><td class="num up">+2.04%</td><td class="num">42.87</td><td>高开炸板（换手最高）</td></tr>
+<tr><td>603500</td><td>祥和实业</td><td><span class="tag aplus">A+</span></td><td class="num">0.234</td><td class="num dn">-0.29%</td><td class="num dn">-4.13%</td><td class="num">8.53</td><td>未晋级</td></tr>
+</table>
+<p class="muted" style="margin-top:8px">S 级 7 只收盘均值 <strong class="dn">-0.93%</strong>；S+A+ 共 8 只均值 <strong class="dn">-1.33%</strong>。行情源为腾讯 qt.gtimg.cn（主源），主力净额/PE 因 TDX 401 缺失。</p>
+</div>
+
+<h2>3. 候选池晋级完整清单（7 只）</h2>
+<div class="card">
+<table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>题材</th><th class="num">连板</th><th>首封时间</th><th class="num">今日炸板</th><th class="num">封单额(万)</th><th class="num">pre_score</th></tr>
+<tr><td>600825</td><td>新华传媒</td><td><span class="tag s">S</span></td><td>出版业</td><td class="num">5</td><td>09:25:01</td><td class="num">0</td><td class="num">238615.5</td><td class="num">8</td></tr>
+<tr><td>603949</td><td>雪龙集团</td><td><span class="tag s">S</span></td><td>活跃小盘非融</td><td class="num">3</td><td>09:30:00</td><td class="num">1</td><td class="num">5084.2</td><td class="num">8</td></tr>
+<tr><td>603396</td><td>金辰股份</td><td>A</td><td>光伏</td><td class="num">3</td><td>09:30:02</td><td class="num">2</td><td class="num">4020.4</td><td class="num">—</td></tr>
+<tr><td>600802</td><td>福建水泥</td><td>C</td><td>微小盘股</td><td class="num">3</td><td>09:34:41</td><td class="num">1</td><td class="num">6108.9</td><td class="num">—</td></tr>
+<tr><td>603278</td><td>大业股份</td><td>A</td><td>人形机器人</td><td class="num">2</td><td>09:30:24</td><td class="num">1</td><td class="num">4474.9</td><td class="num">—</td></tr>
+<tr><td>000678</td><td>襄阳轴承</td><td>B</td><td>一带一路</td><td class="num">2</td><td>09:30:27</td><td class="num">1</td><td class="num">7618.7</td><td class="num">—</td></tr>
+<tr><td>601218</td><td>吉鑫科技</td><td>B</td><td>风电</td><td class="num">2</td><td>14:26:14</td><td class="num">1</td><td class="num">2676.0</td><td class="num">—</td></tr>
+</table>
+<p class="muted" style="margin-top:8px">结构：2板 3 只、3板 3 只、5板 1 只；首封 ≤09:31 共 5 只（71.4%）；炸板过的 5 只（71.4%）；封单最强 新华传媒 23.86 亿（占全池绝对主导）；最晚首封 吉鑫科技 14:26。</p>
+</div>
+
+<h2>4. 分级有效性检验</h2>
+<div class="card">
+<table>
+<tr><th>评级</th><th class="num">候选数</th><th class="num">晋级数</th><th class="num">晋级率</th><th>今日排序</th></tr>
+<tr><td>B</td><td class="num">6</td><td class="num">2</td><td class="num"><strong>33.3%</strong></td><td>1</td></tr>
+<tr><td><span class="tag s">S</span></td><td class="num">7</td><td class="num">2</td><td class="num"><strong>28.6%</strong></td><td>2</td></tr>
+<tr><td>A</td><td class="num">17</td><td class="num">2</td><td class="num">11.8%</td><td>3</td></tr>
+<tr><td>C</td><td class="num">9</td><td class="num">1</td><td class="num">11.1%</td><td>4</td></tr>
+<tr><td><span class="tag aplus">A+</span></td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td>并列末位</td></tr>
+<tr><td>B+</td><td class="num">7</td><td class="num">0</td><td class="num">0.0%</td><td>并列末位</td></tr>
+<tr><td>D</td><td class="num">5</td><td class="num">0</td><td class="num">0.0%</td><td>并列末位</td></tr>
+</table>
+<p style="margin-top:10px"><strong>客观结论：</strong></p>
+<ul>
+<li><strong>S 级首次未能登顶</strong>：B 级 33.3% 反超 S 级 28.6%，为 11 日样本中 S 级首次未排第一（此前 S 在 9/9、9/10…均居前）。</li>
+<li><strong>两端仍部分有效</strong>：D 级 0/5、B+ 0/7 继续保持底部/中位剔除能力；但 <strong>C 级 11.1% 与 A 级 11.8% 几乎持平</strong>，中部倒挂延续。</li>
+<li><strong>A+ 级样本仅 1 只且未晋级</strong>，无法评估；A+ vs A 的区分度今日无统计意义。</li>
+<li><strong>S 级内部两极分化达到样本期最剧烈</strong>：7 只中 2 只一字涨停（+10.04%、+10.00%）、2 只跌停（-10.00%、-9.97%）、1 只近天地板（-8.99%），极差 20 个百分点。</li>
+</ul>
+<h3 style="font-size:14px;margin:14px 0 6px">pre_score 分档</h3>
+<table>
+<tr><th>pre_score</th><th class="num">候选数</th><th class="num">晋级数</th><th class="num">晋级率</th></tr>
+<tr><td>8</td><td class="num">6</td><td class="num">2</td><td class="num">33.3%</td></tr>
+<tr><td>7</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td></tr>
+<tr><td>4</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td></tr>
+</table>
+<p class="muted" style="margin-top:6px">仅 8 只标的有 pre_score（覆盖 15.4%）；8 分档 33.3% 为今日最高档，与 9/9、9/10 的「最高档崩塌」相反，7 分档 0/1。样本过小，不构成单调性证据。</p>
+</div>
+
+<h2>5. 开盘价区间规则 · 今日正反检验</h2>
+<div class="card">
+<p class="muted">当日无扫描报告、无竞价快照 → <code>open_band=[]</code>、<code>filtered_out=[]</code>、<code>killed_but_up=[]</code>，<strong>规则检验与误杀统计无数据</strong>。</p>
+<p style="margin-top:10px"><strong>可用的旁证事实（非规则执行结果，仅为收盘观察）：</strong></p>
+<ul>
+<li>查询集 8 只中，开盘 ≥+8% 的 5 只（新华传媒一字、雪龙一字、华茂+9.77、奥佳华+9.60、新华文轩+8.11）→ <strong>仅 2 只一字封死，3 只炸板/回落</strong>，其中新华文轩 +8.11% 开 → -8.99% 收。</li>
+<li>开盘为负的 3 只（泰慕士 -10.00 一字跌停、三星电气 -1.54 → -9.97、祥和实业 -0.29 → -4.13）全部收绿，无一反转。</li>
+<li>今日环境为「<strong>高开即风险</strong>」：4 只高开 ≥+8% 非一字标的全部大幅回落，与 9/10 的「高开有溢价」环境相反。</li>
+</ul>
+</div>
+
+<h2>6. 核心事实列表</h2>
+<div class="card">
+<ul>
+<li>候选池 52 只（9/24 首板）→ 今日晋级 7 只，晋级率 <strong>13.5%</strong>，为 11 日样本第 2 低（仅高于 9/15 的 10.0%，且 9/15 为候选池未刷新的无效口径）。</li>
+<li>全市场涨停池 33 只（东财口径），较 9/15 的 32 只基本持平，较 9/14 的 55 只下降 40%。</li>
+<li><strong>ML 概率排序失效达到样本期最极端</strong>：TOP1 新华传媒 0.874 → +10.04% 封板；TOP2 泰慕士 <strong>同为 0.874</strong> → -10.00% 一字跌停。同一概率值对应完全相反的两个极端结果。</li>
+<li>S 级 7 只收盘：+10.04 / +10.00 / +2.04 / +0.39 / -8.99 / -9.97 / -10.00，<strong>3 只跌停级、2 只涨停级</strong>，无中间态。</li>
+<li>晋级 7 只中 5 只（71.4%）盘中曾炸板，封板质量整体偏弱；封单 TOP1 新华传媒 23.86 亿，第 2 名仅 7618.7 万，量级差 31 倍。</li>
+<li>晋级标的连板分布：2板 3、3板 3、5板 1，无 4 板及以上断层缺失；最高板 5 板（新华传媒，出版业）。</li>
+<li>查询集覆盖率 8/52 = 15.4%，延续历史长期不足 20% 的状态。</li>
+<li>数据质量：候选池 <code>data_quality</code> 四维（封成比 / 封板时间分钟 / 炸板次数 / 流通市值）全 ok，为样本期少见。</li>
+</ul>
+</div>
+
+<h2>7. 累积样本库状态</h2>
+<div class="card">
+<table>
+<tr><th>日期</th><th class="num">候选池</th><th class="num">晋级</th><th class="num">晋级率</th><th class="num">全市场涨停</th><th>备注</th></tr>
+<tr><td>2026-09-02</td><td class="num">83</td><td class="num">13</td><td class="num">15.7%</td><td class="num">52</td><td>基线</td></tr>
+<tr><td>2026-09-03</td><td class="num">54</td><td class="num">9</td><td class="num">16.7%</td><td class="num">46</td><td></td></tr>
+<tr><td>2026-09-04</td><td class="num">46</td><td class="num">7</td><td class="num">15.2%</td><td class="num">39</td><td>降级</td></tr>
+<tr><td>2026-09-07</td><td class="num">41</td><td class="num">13</td><td class="num"><strong>31.7%</strong></td><td class="num">93</td><td>降级，样本期最高</td></tr>
+<tr><td>2026-09-08</td><td class="num">95</td><td class="num">18</td><td class="num">18.9%</td><td class="num">73</td><td>降级</td></tr>
+<tr><td>2026-09-09</td><td class="num">74</td><td class="num">15</td><td class="num">20.3%</td><td class="num">48</td><td>降级</td></tr>
+<tr><td>2026-09-10</td><td class="num">48</td><td class="num">9</td><td class="num">18.8%</td><td class="num">35</td><td>降级</td></tr>
+<tr><td>2026-09-11</td><td class="num">35</td><td class="num">7</td><td class="num">20.0%</td><td class="num">40</td><td>扫描恢复，筛出 0</td></tr>
+<tr><td>2026-09-14</td><td class="num">40</td><td class="num">11</td><td class="num"><strong>27.5%</strong></td><td class="num">55</td><td>快照复算（推演级）</td></tr>
+<tr><td>2026-09-15</td><td class="num">40</td><td class="num">4</td><td class="num"><strong>10.0%</strong></td><td class="num">32</td><td>候选池未刷新，口径无效</td></tr>
+<tr style="background:#fdf6f6"><td><strong>2026-09-28</strong></td><td class="num">52</td><td class="num">7</td><td class="num"><strong>13.5%</strong></td><td class="num">33</td><td>降级（本报告）</td></tr>
+</table>
+<p class="muted" style="margin-top:8px"><code>zt_925_review_history.json</code> 累计 <strong>11 个交易日</strong>。晋级率区间 10.0% ~ 31.7%，均值约 18.9%。注：history 各日仅存 a_plus/a 晋级计数，未存 grade_stats，跨日分级聚合需另算。</p>
+<p style="margin-top:10px"><strong>重校准条件检查：</strong></p>
+<ul>
+<li>① A 级晋级率连续 5 日 ≥ A+：<strong>不成立</strong>（A+ 今日仅 1 只样本，且历史为 4:4 交替，无 5 日连续）。</li>
+<li>② &gt;5% 误杀率 &gt;50%：<strong>无法判定</strong>（扫描报告连续缺失，该项自 9/4 起从未可计算）。</li>
+<li>③ 样本 ≥10 交易日：<strong>已满足（11 日）</strong>，但前两项显式条件均未触发 → <strong>本次不触发强制重校准</strong>。</li>
+</ul>
+</div>
+
+<div class="card" style="margin-top:16px">
+<p class="muted">数据源：非TDX 主源（腾讯 qt.gtimg.cn / 东财 push2ex）优先，本次全程由主源供数，<strong>未触发 TDX 兜底</strong>；TDX 端点 HTTP 401 不可用，导致主力净额等补缺字段缺失。本报告仅呈现客观数据与统计结论，不含任何操作建议。</p>
+</div>
+
+</div>
+<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+</html>
