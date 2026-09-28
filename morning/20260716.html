@@ -1,207 +1,207 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-wb-theme="light" lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A股早盘快报 — 2026年7月16日 09:45</title>
 <style>
   :root {
-    --bg: #0d1117;
-    --card-bg: #161b22;
-    --border: #30363d;
-    --text: #c9d1d9;
-    --text-secondary: #8b949e;
-    --text-muted: #6e7681;
-    --red: #f85149;
-    --green: #3fb950;
-    --accent: #58a6ff;
-    --warning: #d2991d;
-    --purple: #a371f7;
+    --bg:#f4f6f8;
+    --card-bg:#ffffff;
+    --border:#d8dee4;
+    --text:#1f2328;
+    --text-secondary:#5b6570;
+    --text-muted:#5b6570;
+    --red:#f85149;
+    --green:#3fb950;
+    --accent:#0a66c2;
+    --warning:#9a3412;
+    --purple:#a371f7;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing:border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    padding: 20px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    padding:20px;
   }
-  .container { max-width: 1200px; margin: 0 auto; }
+  .container { max-width:1200px; margin:0 auto; }
   
   /* Header */
   .header {
-    text-align: center;
-    padding: 30px 20px 25px;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, #1a1f2e 0%, #161b22 100%);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    text-align:center;
+    padding:30px 20px 25px;
+    margin-bottom:24px;
+    background:linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    border:1px solid var(--border);
+    border-radius:12px;
   }
-  .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; color: #f0f6fc; }
-  .header .subtitle { font-size: 14px; color: var(--text-secondary); }
-  .header .timestamp { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+  .header h1 { font-size:24px; font-weight:700; margin-bottom:6px; color:#1f2328; }
+  .header .subtitle { font-size:14px; color:var(--text-secondary); }
+  .header .timestamp { font-size:12px; color:var(--text-muted); margin-top:8px; }
   .market-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(248,81,73,0.15); border: 1px solid rgba(248,81,73,0.3);
-    padding: 4px 12px; border-radius: 20px; margin-top: 10px;
-    font-size: 13px; color: var(--red); font-weight: 600;
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(248,81,73,0.15); border:1px solid rgba(248,81,73,0.3);
+    padding:4px 12px; border-radius:20px; margin-top:10px;
+    font-size:13px; color:var(--red); font-weight:600;
   }
 
   /* Cards */
-  .section { margin-bottom: 24px; }
+  .section { margin-bottom:24px; }
   .section-title {
-    font-size: 18px; font-weight: 700; color: #f0f6fc;
-    padding-bottom: 10px; margin-bottom: 16px;
-    border-bottom: 2px solid var(--border);
-    display: flex; align-items: center; gap: 8px;
+    font-size:18px; font-weight:700; color:#1f2328;
+    padding-bottom:10px; margin-bottom:16px;
+    border-bottom:2px solid var(--border);
+    display:flex; align-items:center; gap:8px;
   }
-  .section-title .icon { font-size: 20px; }
+  .section-title .icon { font-size:20px; }
 
   /* Index Cards */
   .index-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:16px;
   }
   .index-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 18px; transition: transform 0.15s;
+    background:var(--card-bg); border:1px solid var(--border); border-radius:10px;
+    padding:18px; transition:transform 0.15s;
   }
-  .index-card:hover { transform: translateY(-2px); }
-  .index-card .name { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
-  .index-card .price { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
-  .index-card .change { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
-  .index-card .meta { font-size: 12px; color: var(--text-muted); }
-  .index-card .meta span { display: block; margin-bottom: 2px; }
+  .index-card:hover { transform:translateY(-2px); }
+  .index-card .name { font-size:13px; color:var(--text-secondary); margin-bottom:8px; }
+  .index-card .price { font-size:28px; font-weight:700; margin-bottom:4px; }
+  .index-card .change { font-size:15px; font-weight:600; margin-bottom:10px; }
+  .index-card .meta { font-size:12px; color:var(--text-muted); }
+  .index-card .meta span { display:block; margin-bottom:2px; }
   .index-card .trend-tag {
-    display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px;
-    margin-top: 6px; font-weight: 600;
+    display:inline-block; font-size:11px; padding:2px 8px; border-radius:4px;
+    margin-top:6px; font-weight:600;
   }
-  .up { color: var(--red); }
-  .down { color: var(--green); }
+  .up { color:var(--red); }
+  .down { color:var(--green); }
 
   /* Sentiment Dashboard */
   .sentiment-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 14px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:14px;
   }
   .sentiment-item {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 16px; text-align: center;
+    background:var(--card-bg); border:1px solid var(--border); border-radius:10px;
+    padding:16px; text-align:center;
   }
-  .sentiment-item .label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
-  .sentiment-item .value { font-size: 26px; font-weight: 700; }
-  .sentiment-item .sub { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+  .sentiment-item .label { font-size:12px; color:var(--text-muted); margin-bottom:8px; }
+  .sentiment-item .value { font-size:26px; font-weight:700; }
+  .sentiment-item .sub { font-size:12px; color:var(--text-secondary); margin-top:4px; }
 
   /* Table */
   .data-table {
-    width: 100%; border-collapse: collapse; font-size: 13px;
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-    overflow: hidden;
+    width:100%; border-collapse:collapse; font-size:13px;
+    background:var(--card-bg); border:1px solid var(--border); border-radius:10px;
+    overflow:hidden;
   }
   .data-table th {
-    text-align: left; padding: 12px 14px; font-size: 12px;
-    color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border);
-    background: rgba(48,54,61,0.3);
+    text-align:left; padding:12px 14px; font-size:12px;
+    color:var(--text-muted); font-weight:600; border-bottom:1px solid var(--border);
+    background:rgba(48,54,61,0.3);
   }
   .data-table td {
-    padding: 10px 14px; border-bottom: 1px solid rgba(48,54,61,0.5);
+    padding:10px 14px; border-bottom:1px solid rgba(48,54,61,0.5);
   }
-  .data-table tr:last-child td { border-bottom: none; }
-  .data-table tr:hover td { background: rgba(88,166,255,0.04); }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(88,166,255,0.04); }
 
   /* Board Chain */
   .chain-bar {
-    display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
-    flex-wrap: wrap;
+    display:flex; align-items:center; gap:10px; margin-bottom:16px;
+    flex-wrap:wrap;
   }
   .chain-tag {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 700;
-    background: rgba(88,166,255,0.1); border: 1px solid rgba(88,166,255,0.3);
-    color: var(--accent);
+    display:inline-flex; align-items:center; gap:4px;
+    padding:6px 14px; border-radius:6px; font-size:14px; font-weight:700;
+    background:rgba(88,166,255,0.1); border:1px solid rgba(88,166,255,0.3);
+    color:var(--accent);
   }
-  .chain-sub { font-size: 12px; color: var(--text-secondary); }
+  .chain-sub { font-size:12px; color:var(--text-secondary); }
 
   /* Repair Scout */
-  .repair-grid { display: grid; gap: 12px; }
+  .repair-grid { display:grid; gap:12px; }
   .repair-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 16px; display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 12px;
+    background:var(--card-bg); border:1px solid var(--border); border-radius:10px;
+    padding:16px; display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px;
   }
-  .repair-card .stock-info { flex: 1; min-width: 160px; }
-  .repair-card .stock-name { font-size: 15px; font-weight: 700; }
-  .repair-card .stock-code { font-size: 12px; color: var(--text-muted); }
-  .repair-card .metrics { display: flex; gap: 20px; flex-wrap: wrap; }
-  .repair-card .metric { text-align: center; }
-  .repair-card .metric .val { font-size: 16px; font-weight: 700; }
-  .repair-card .metric .lbl { font-size: 11px; color: var(--text-muted); }
-  .repair-card .stars { font-size: 18px; min-width: 50px; text-align: center; }
-  .star-red { color: var(--red); }
-  .star-gold { color: var(--warning); }
+  .repair-card .stock-info { flex:1; min-width:160px; }
+  .repair-card .stock-name { font-size:15px; font-weight:700; }
+  .repair-card .stock-code { font-size:12px; color:var(--text-muted); }
+  .repair-card .metrics { display:flex; gap:20px; flex-wrap:wrap; }
+  .repair-card .metric { text-align:center; }
+  .repair-card .metric .val { font-size:16px; font-weight:700; }
+  .repair-card .metric .lbl { font-size:11px; color:var(--text-muted); }
+  .repair-card .stars { font-size:18px; min-width:50px; text-align:center; }
+  .star-red { color:var(--red); }
+  .star-gold { color:var(--warning); }
 
   /* Top 5 Sectors */
   .sector-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 14px 18px; margin-bottom: 10px;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 10px;
+    background:var(--card-bg); border:1px solid var(--border); border-radius:10px;
+    padding:14px 18px; margin-bottom:10px;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
   }
-  .sector-card .rank { font-size: 20px; font-weight: 900; min-width: 30px; }
-  .sector-card .sector-name { font-size: 15px; font-weight: 700; flex: 1; }
-  .sector-card .sector-lead { font-size: 12px; color: var(--text-secondary); display: block; }
-  .sector-card .sector-chg { font-size: 16px; font-weight: 700; }
+  .sector-card .rank { font-size:20px; font-weight:900; min-width:30px; }
+  .sector-card .sector-name { font-size:15px; font-weight:700; flex:1; }
+  .sector-card .sector-lead { font-size:12px; color:var(--text-secondary); display:block; }
+  .sector-card .sector-chg { font-size:16px; font-weight:700; }
 
   /* Verdict */
   .verdict-box {
-    background: linear-gradient(135deg, rgba(248,81,73,0.08), rgba(161,113,247,0.08));
-    border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+    background:linear-gradient(135deg, rgba(248,81,73,0.08), rgba(161,113,247,0.08));
+    border:1px solid var(--border); border-radius:12px; padding:24px;
   }
-  .verdict-box h3 { font-size: 16px; margin-bottom: 12px; color: #f0f6fc; }
+  .verdict-box h3 { font-size:16px; margin-bottom:12px; color:#1f2328; }
   .verdict-box .verdict-tag {
-    display: inline-block; padding: 6px 20px; border-radius: 6px; font-size: 18px; font-weight: 900;
-    margin-bottom: 14px;
+    display:inline-block; padding:6px 20px; border-radius:6px; font-size:18px; font-weight:900;
+    margin-bottom:14px;
   }
-  .verdict-strong { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
-  .verdict-weak { background: rgba(63,185,80,0.12); color: #3fb950; border: 1px solid rgba(63,185,80,0.3); }
-  .verdict-neutral { background: rgba(210,153,29,0.12); color: var(--warning); border: 1px solid rgba(210,153,29,0.3); }
-  .verdict-list { list-style: none; }
-  .verdict-list li { padding: 6px 0; font-size: 14px; border-bottom: 1px solid rgba(48,54,61,0.3); }
-  .verdict-list li:last-child { border-bottom: none; }
-  .verdict-list li::before { content: '▸ '; color: var(--accent); }
+  .verdict-strong { background:rgba(248,81,73,0.15); color:var(--red); border:1px solid rgba(248,81,73,0.3); }
+  .verdict-weak { background:rgba(63,185,80,0.12); color:#1a7f37; border:1px solid rgba(63,185,80,0.3); }
+  .verdict-neutral { background:rgba(210,153,29,0.12); color:var(--warning); border:1px solid rgba(210,153,29,0.3); }
+  .verdict-list { list-style:none; }
+  .verdict-list li { padding:6px 0; font-size:14px; border-bottom:1px solid rgba(48,54,61,0.3); }
+  .verdict-list li:last-child { border-bottom:none; }
+  .verdict-list li::before { content:'▸ '; color:var(--accent); }
 
   /* Signal cards */
   .signal-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 14px;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:14px;
   }
   .signal-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px;
+    background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:16px;
   }
-  .signal-card .sc-title { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; font-weight: 600; }
-  .signal-item { padding: 6px 0; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
-  .signal-item .si-name { color: var(--text); }
-  .signal-item .si-val { font-weight: 600; }
+  .signal-card .sc-title { font-size:13px; color:var(--text-secondary); margin-bottom:10px; font-weight:600; }
+  .signal-item { padding:6px 0; font-size:13px; display:flex; justify-content:space-between; align-items:center; }
+  .signal-item .si-name { color:var(--text); }
+  .signal-item .si-val { font-weight:600; }
 
-  .divider { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
+  .divider { border:none; border-top:1px solid var(--border); margin:8px 0; }
 
   /* Footer */
   .footer {
-    text-align: center; padding: 20px; font-size: 11px;
-    color: var(--text-muted); margin-top: 30px;
-    border-top: 1px solid var(--border);
+    text-align:center; padding:20px; font-size:11px;
+    color:var(--text-muted); margin-top:30px;
+    border-top:1px solid var(--border);
   }
 
-  .na { color: var(--text-muted); font-style: italic; }
+  .na { color:var(--text-muted); font-style:italic; }
 
-  @media (max-width: 768px) {
-    .index-grid { grid-template-columns: 1fr 1fr; }
-    .sentiment-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width:768px) {
+    .index-grid { grid-template-columns:1fr 1fr; }
+    .sentiment-grid { grid-template-columns:1fr 1fr; }
   }
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#39414d;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div class="container">
 
@@ -223,7 +223,7 @@
       <div class="change down">-1.88%  <span style="font-size:13px;">-74.43点</span></div>
       <div class="meta">
         <span>开盘: 3,912.38 | 最高: 3,940.45 | 最低: 3,867.60</span>
-        <span>成交额: 1.11万亿 | PE: 17.59</span>
+        <span>成交额: 1.11万亿 | PE:17.59</span>
       </div>
       <div class="trend-tag" style="background:rgba(63,185,80,0.15);color:var(--green);">低开震荡下行</div>
     </div>
@@ -233,7 +233,7 @@
       <div class="change down">-2.02%  <span style="font-size:13px;">-298.21点</span></div>
       <div class="meta">
         <span>开盘: 14,497.43 | 最高: 14,780.46 | 最低: 14,386.41</span>
-        <span>成交额: 1.27万亿 | PE: 47.54</span>
+        <span>成交额: 1.27万亿 | PE:47.54</span>
       </div>
       <div class="trend-tag" style="background:rgba(63,185,80,0.15);color:var(--green);">低开冲高回落</div>
     </div>
@@ -243,7 +243,7 @@
       <div class="change down">-3.03%  <span style="font-size:13px;">-115.41点</span></div>
       <div class="meta">
         <span>开盘: 3,710.51 | 最高: 3,796.35 | 最低: 3,658.07</span>
-        <span>成交额: 5,746亿 | PE: 71.68</span>
+        <span>成交额: 5,746亿 | PE:71.68</span>
       </div>
       <div class="trend-tag" style="background:rgba(63,185,80,0.15);color:var(--green);">低开低走</div>
     </div>
@@ -253,7 +253,7 @@
       <div class="change down">-4.13%  <span style="font-size:13px;">-79.41点</span></div>
       <div class="meta">
         <span>开盘: 1,869.94 | 最高: 1,947.25 | 最低: 1,828.57</span>
-        <span>成交额: 1,734亿 | PE: 222.71</span>
+        <span>成交额: 1,734亿 | PE:222.71</span>
       </div>
       <div class="trend-tag" style="background:rgba(63,185,80,0.15);color:var(--green);">低开冲高后大幅回落</div>
     </div>
@@ -676,5 +676,5 @@
 </div>
 
 </div>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(22,27,34,.94);border:1px solid #2e3742;color:#9aa5b1;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s}.rp-back:hover{color:#6cb6ff;border-color:#6cb6ff;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

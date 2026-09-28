@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
 <title>题材导图 | 睿哥</title>
 <style>
 :root{
-  --bg:#0d1117; --card:#161b22; --card2:#1c2230; --border:#2e3742;
-  --text:#d9e0e8; --dim:#9aa5b1; --accent:#6cb6ff; --ok:#3fb950;
-  --up:#ff5c5c; --down:#2ed573; --amber:#d29922;
+  --bg:#f4f6f8; --card:#ffffff; --card2:#eef1f4; --border:#d8dee4;
+  --text:#1f2328; --dim:#5b6570; --accent:#0a66c2; --ok:#1a7f37;
+  --up:#d1242f; --down:#1a7f37; --amber:#9a6700;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
@@ -24,23 +24,23 @@ body{
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
 ::-webkit-scrollbar{width:10px;height:10px;}
-::-webkit-scrollbar-thumb{background:#39414d;border-radius:6px;}
-::-webkit-scrollbar-thumb:hover{background:#4a5462;}
+::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px;}
+::-webkit-scrollbar-thumb:hover{background:#b1bac4;}
 ::-webkit-scrollbar-track{background:transparent;}
 
 /* ---- 顶部导航（吸顶） ---- */
 .nav{position:sticky;top:0;z-index:50;display:flex;gap:8px;justify-content:center;
   flex-wrap:wrap;padding:12px 8px;margin-bottom:24px;
-  background:rgba(13,17,23,.93);backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--border);}
 .nav a{font-size:.88em;padding:7px 15px;border:1px solid var(--border);border-radius:8px;
-  transition:all .2s;color:var(--text);}
-.nav a:hover{background:rgba(108,182,255,.12);border-color:var(--accent);text-decoration:none;}
-.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+  transition:all .2s;color:var(--text);background:var(--card);}
+.nav a:hover{background:rgba(10,102,194,.08);border-color:var(--accent);text-decoration:none;}
+.nav a.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
 
 .hero{text-align:center;padding:30px 16px 26px;border-bottom:1px solid var(--border);
   margin-bottom:32px;}
-.hero h1{font-size:1.75em;line-height:1.4;color:#fff;margin-bottom:10px;letter-spacing:.02em;}
+.hero h1{font-size:1.75em;line-height:1.4;color:#111418;margin-bottom:10px;letter-spacing:.02em;}
 .hero .sub{color:var(--dim);font-size:.92em;line-height:1.8;}
 section{margin-bottom:44px;}
 section h2{font-size:1.15em;color:var(--accent);margin-bottom:18px;padding-bottom:11px;
@@ -55,10 +55,10 @@ section h2{font-size:1.15em;color:var(--accent);margin-bottom:18px;padding-botto
 .card{display:block;background:var(--card);border:1px solid var(--border);border-radius:12px;
   padding:18px 14px 16px;text-align:center;color:var(--text);transition:all .18s;}
 .card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
-  box-shadow:0 6px 22px rgba(108,182,255,.14);text-decoration:none;}
+  box-shadow:0 6px 22px rgba(10,102,194,.16);text-decoration:none;}
 .card.off{opacity:.4;}
 .card .icon{font-size:1.75em;line-height:1;}
-.card .name{font-size:1em;color:#fff;font-weight:600;margin-top:8px;}
+.card .name{font-size:1em;color:#111418;font-weight:600;margin-top:8px;}
 .card .tm{font-size:.78em;color:var(--dim);margin-top:3px;}
 .card .badge{display:inline-block;margin-top:10px;font-size:.72em;padding:3px 10px;
   border-radius:20px;}
@@ -75,20 +75,20 @@ th,td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--border);
   white-space:nowrap;line-height:1.55;}
 thead th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.94em;
   position:sticky;top:0;z-index:2;}
-tbody tr:nth-child(even){background:rgba(255,255,255,.018);}
-tbody tr:hover{background:rgba(108,182,255,.07);}
+tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
+tbody tr:hover{background:rgba(10,102,194,.06);}
 tbody tr:last-child td{border-bottom:0;}
 td.dt{text-align:left;padding-left:16px;color:var(--text);font-weight:600;
   position:sticky;left:0;z-index:1;background:var(--card);}
-tbody tr:nth-child(even) td.dt{background:#1a1f26;}
-tbody tr:hover td.dt{background:#1e2834;}
+tbody tr:nth-child(even) td.dt{background:#fafbfc;}
+tbody tr:hover td.dt{background:#eaf2fb;}
 thead th:first-child{left:0;z-index:3;}
 td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
 .dot{display:inline-block;min-width:30px;height:24px;line-height:22px;border-radius:6px;
   font-size:.8em;font-weight:600;}
 .dot.y{background:rgba(63,185,80,.18);color:var(--ok);border:1px solid rgba(63,185,80,.35);}
 .dot.y:hover{background:rgba(63,185,80,.35);text-decoration:none;}
-.dot.n{background:rgba(154,165,177,.06);color:#4b5563;border:1px solid var(--border);}
+.dot.n{background:#f1f3f5;color:#aab4bd;border:1px solid var(--border);}
 
 /* ---- 分类列表 ---- */
 .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
@@ -105,39 +105,39 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
 /* ---- md 正文（复盘/周报/预判/套利日报 由 .md 渲染） ---- */
 .doc{background:var(--card);border:1px solid var(--border);border-radius:12px;
   max-width:880px;margin:0 auto;padding:34px 40px 42px;font-size:1.02em;line-height:1.95;}
-.doc h1{font-size:1.5em;color:#fff;margin:4px 0 20px;padding-bottom:12px;line-height:1.5;
+.doc h1{font-size:1.5em;color:#111418;margin:4px 0 20px;padding-bottom:12px;line-height:1.5;
   border-bottom:1px solid var(--border);}
 .doc h2{font-size:1.22em;color:var(--accent);margin:36px 0 16px;display:block;border:0;
   padding:0 0 0 12px;border-left:3px solid var(--accent);line-height:1.6;}
-.doc h3{font-size:1.08em;color:#e8eef5;margin:26px 0 12px;line-height:1.6;}
+.doc h3{font-size:1.08em;color:#24292f;margin:26px 0 12px;line-height:1.6;}
 .doc h4,.doc h5,.doc h6{font-size:1em;color:var(--text);margin:20px 0 10px;}
 .doc p{margin:13px 0;}
 .doc ul,.doc ol{margin:13px 0;padding-left:24px;}
 .doc li{margin:7px 0;}
 .doc li>ul,.doc li>ol{margin:6px 0;}
 .doc hr{border:0;border-top:1px solid var(--border);margin:30px 0;}
-.doc blockquote{border-left:3px solid var(--accent);background:rgba(108,182,255,.07);
-  margin:16px 0;padding:12px 18px;color:#bac6d2;border-radius:0 8px 8px 0;font-size:.97em;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(10,102,194,.06);
+  margin:16px 0;padding:12px 18px;color:#454f5b;border-radius:0 8px 8px 0;font-size:.97em;}
 .doc blockquote p{margin:5px 0;}
 .doc code{background:var(--card2);border:1px solid var(--border);border-radius:5px;
   padding:2px 7px;font-family:Consolas,"Courier New",monospace;font-size:.92em;
-  color:#f0883e;word-break:break-word;}
-.doc pre{background:#12171f;border:1px solid var(--border);border-radius:10px;
+  color:#9a3412;word-break:break-word;}
+.doc pre{background:#f6f8fa;border:1px solid var(--border);border-radius:10px;
   padding:14px 18px;overflow-x:auto;margin:16px 0;line-height:1.7;}
 .doc pre code{background:none;border:0;padding:0;color:var(--text);font-size:.94em;}
-.doc strong{color:#fff;font-weight:600;}
+.doc strong{color:#111418;font-weight:600;}
 .doc .tbl{overflow-x:auto;overscroll-behavior-x:contain;border:1px solid var(--border);
   border-radius:10px;margin:18px 0;}
 .doc table{min-width:0;font-size:.96em;}
 .doc th,.doc td{white-space:normal;text-align:left;padding:10px 13px;line-height:1.7;}
 .doc thead th{background:var(--card2);color:var(--dim);}
-.doc tbody tr:nth-child(even){background:rgba(255,255,255,.02);}
+.doc tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
 
 /* ---- 回到顶部 ---- */
 .totop{position:fixed;right:18px;bottom:18px;z-index:60;width:42px;height:42px;
   border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--dim);
   display:flex;align-items:center;justify-content:center;font-size:1.05em;
-  box-shadow:0 4px 16px rgba(0,0,0,.35);}
+  box-shadow:0 4px 16px rgba(0,0,0,.1);}
 .totop:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;}
 
 @media (max-width:700px){
@@ -156,6 +156,6 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
 </style>
 </head>
 <body>
-<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html" class="active">🕸️ 题材导图</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>🕸️ 题材导图</h1><div class="sub">行业→主题域→个股 涨停题材拓扑 · 每日 17:05 自动归档</div></div><p style="text-align:center;margin:-16px 0 22px;color:var(--dim);font-size:.9em">最新一期：<b style="color:var(--ok)">2026-09-24 周四</b></p><section><h2>🗂️ 历史记录<span class="tag">共 15 期</span></h2><div class="list"><a href="./20260924.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-24 周四</span><span class="tag" style="color:var(--ok);border-color:rgba(63,185,80,.4)">最新</span></a><a href="./20260923.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-23 周三</span></a><a href="./20260922.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-22 周二</span></a><a href="./20260921.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-21 周一</span></a><a href="./20260918.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-18 周五</span></a><a href="./20260917.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-17 周四</span></a><a href="./20260916.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-16 周三</span></a><a href="./20260915.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-15 周二</span></a><a href="./20260914.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-14 周一</span></a><a href="./20260911.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-11 周五</span></a><a href="./20260910.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-10 周四</span></a><a href="./20260909.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-09 周三</span></a><a href="./20260908.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-08 周二</span></a><a href="./20260907.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-07 周一</span></a><a href="./20260904.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-04 周五</span></a></div></section><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html" class="active">🕸️ 题材导图</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>🕸️ 题材导图</h1><div class="sub">行业→主题域→个股 涨停题材拓扑 · 每日 17:05 自动归档</div></div><p style="text-align:center;margin:-16px 0 22px;color:var(--dim);font-size:.9em">最新一期：<b style="color:var(--ok)">2026-09-24 周四</b></p><section><h2>🗂️ 历史记录<span class="tag">共 15 期</span></h2><div class="list"><a href="./20260924.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-24 周四</span><span class="tag" style="color:var(--ok);border-color:rgba(63,185,80,.4)">最新</span></a><a href="./20260923.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-23 周三</span></a><a href="./20260922.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-22 周二</span></a><a href="./20260921.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-21 周一</span></a><a href="./20260918.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-18 周五</span></a><a href="./20260917.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-17 周四</span></a><a href="./20260916.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-16 周三</span></a><a href="./20260915.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-15 周二</span></a><a href="./20260914.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-14 周一</span></a><a href="./20260911.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-11 周五</span></a><a href="./20260910.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-10 周四</span></a><a href="./20260909.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-09 周三</span></a><a href="./20260908.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-08 周二</span></a><a href="./20260907.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-07 周一</span></a><a href="./20260904.html" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>2026-09-04 周五</span></a></div></section><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
 </body>
 </html>

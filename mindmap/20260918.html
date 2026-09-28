@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-wb-theme="light" lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>涨停题材思维导图 2026-09-18</title>
 <style>
 :root{
-  --bg:#0d1117; --bg2:#121924; --card:#171f2b; --card2:#1d2635;
-  --line:#26324a; --txt:#e6edf3; --txt2:#9fb0c6; --txt3:#6b7d94;
-  --up:#ff4d4f; --down:#00c853; --acc:#4f8cff;
+  --bg:#f4f6f8; --bg2:#eef1f4; --card:#ffffff; --card2:#eef1f4;
+  --line:#d8dee4; --txt:#1f2328; --txt2:#5b6570; --txt3:#5b6570;
+  --up:#cf222e; --down:#1a7f37; --acc:#0a66c2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -22,7 +22,7 @@ body{
 /* ---------- header ---------- */
 header{
   display:flex;align-items:center;gap:18px;padding:10px 18px;
-  background:linear-gradient(90deg,#131c2b,#0f1622);
+  background:linear-gradient(90deg,#e7f1fc,#f4f6f8);
   border-bottom:1px solid var(--line);flex-shrink:0;flex-wrap:wrap;
 }
 h1{font-size:16px;font-weight:700;letter-spacing:.5px}
@@ -35,7 +35,7 @@ h1 span{color:var(--acc)}
 .stat b{font-size:15px;font-weight:700}
 .stat i{font-style:normal;font-size:11px;color:var(--txt3)}
 .stat.hot b{color:var(--up)}
-.stat.warn b{color:#f59e0b}
+.stat.warn b{color:#9a3412}
 
 /* ---------- layout ---------- */
 .body{display:flex;flex:1;min-height:0}
@@ -44,8 +44,7 @@ aside{
   overflow-y:auto;padding:12px;flex-shrink:0;
 }
 aside.right{border-right:none;border-left:1px solid var(--line);width:300px}
-main{flex:1;position:relative;overflow:hidden;background:
-  radial-gradient(circle at 30% 20%,#16202f 0%,#0d1117 60%);cursor:grab}
+main{flex:1;position:relative;overflow:hidden;background:radial-gradient(circle at 30% 20%,#e7f1fc 0%,#f4f6f8 60%);cursor:grab}
 main.drag{cursor:grabbing}
 #stage{width:100%;height:100%;display:block}
 
@@ -58,7 +57,7 @@ main.drag{cursor:grabbing}
   cursor:pointer;font-size:12px;transition:.15s;font-family:inherit;
 }
 .btn:hover{background:var(--card2);border-color:var(--acc)}
-.btn.on{background:#1b2b4a;border-color:var(--acc);color:#cfe0ff}
+.btn.on{background:#e7f1fc;border-color:var(--acc);color:#0a66c2}
 .chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--txt2);
   padding:5px 2px;cursor:pointer;user-select:none}
 .chk input{accent-color:var(--acc);cursor:pointer}
@@ -70,7 +69,7 @@ input[type=text]:focus{border-color:var(--acc)}
 
 .ti{display:flex;align-items:center;gap:7px;padding:4px 2px;font-size:12px;
   cursor:pointer;border-radius:5px;user-select:none}
-.ti:hover{background:#1a2333}
+.ti:hover{background:#e7f1fc}
 .ti .dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
 .ti .n{flex:1;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ti .c{color:var(--txt3);font-size:11px}
@@ -87,21 +86,21 @@ input[type=text]:focus{border-color:var(--acc)}
 .kv dt{color:var(--txt3)}
 .kv dd{color:var(--txt)}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-.tag{background:#1e2a3d;border:1px solid #2c3d57;color:#a9c2e6;
+.tag{background:#e7f1fc;border:1px solid #d8dee4;color:#0a66c2;
   border-radius:5px;padding:2px 7px;font-size:11px}
 .reason{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);
   border-radius:6px;padding:9px 11px;font-size:12px;line-height:1.75;color:var(--txt2)}
 .rk{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12px}
 .rk .r{width:16px;color:var(--txt3);font-size:11px;text-align:right}
 .rk .nm{width:78px;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rk .bar{flex:1;height:7px;background:#1c2739;border-radius:4px;overflow:hidden}
+.rk .bar{flex:1;height:7px;background:#e7f1fc;border-radius:4px;overflow:hidden}
 .rk .bar i{display:block;height:100%;background:linear-gradient(90deg,#4f8cff,#ff4d4f);border-radius:4px}
 .rk .v{width:24px;text-align:right;color:var(--txt3);font-size:11px}
 
 .tabs{display:flex;gap:4px;margin-bottom:10px}
 .tab{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);
   border-radius:7px;padding:6px;font-size:12px;cursor:pointer;color:var(--txt2)}
-.tab.on{background:#1b2b4a;border-color:var(--acc);color:#cfe0ff}
+.tab.on{background:#e7f1fc;border-color:var(--acc);color:#0a66c2}
 .hide{display:none}
 
 /* ---------- svg ---------- */
@@ -113,8 +112,8 @@ path.lk{fill:none;stroke-width:1.6;transition:.15s}
 path.lk.hi{stroke-width:3}
 text{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;
   -webkit-user-select:none;user-select:none}
-.ti-sel{background:#1b2b4a !important}
-#tip{position:absolute;pointer-events:none;background:#0b1220;border:1px solid var(--line);
+.ti-sel{background:#e7f1fc !important}
+#tip{position:absolute;pointer-events:none;background:#e7f1fc;border:1px solid var(--line);
   border-radius:6px;padding:5px 9px;font-size:11px;color:var(--txt);opacity:0;
   transition:opacity .12s;white-space:nowrap;z-index:9}
 .zoom{position:absolute;right:14px;bottom:14px;display:flex;gap:6px;z-index:5}
@@ -179,7 +178,7 @@ function buildTree(){
   const root = {id:'root', type:'root', name:DATA.meta.date,
     sub:`${DATA.meta.zt_count}家涨停 · 最高${DATA.meta.max_lb}板`,
     sub2:`炸板${DATA.meta.zb_count??'-'}家 · ${DATA.meta.theme_count}个主题域 · ${DATA.meta.topic_count}个细分题材`,
-    children:[], color:'#4f8cff'};
+    children:[], color:'#0a66c2'};
   DATA.themes.forEach((th,ti)=>{
     const tn = {id:'t'+ti, type:'theme', name:th.name, color:th.color,
       count:th.count, max_lb:th.max_lb, children:[], raw:th};
@@ -233,7 +232,7 @@ function esc(s){return String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;
 function nodeBody(n){
   const g=el('g',{class:'node','data-id':n.id});
   const r=el('rect',{class:'nd',x:n.x,y:n.y-n.h/2,width:n.w,height:n.h,rx:9,
-    fill:'#171f2b',stroke:n.color,'stroke-width':n.type==='root'?2:1.4,
+    fill:'#ffffff',stroke:n.color,'stroke-width':n.type==='root'?2:1.4,
     'stroke-opacity':n.type==='stock'?.45:.9});
   if(n.type==='theme'||n.type==='topic'||n.type==='root'){
     r.setAttribute('fill',hexA(n.color,n.type==='topic'?.07:.13));
@@ -246,28 +245,28 @@ function nodeBody(n){
   }
 
   if(n.type==='root'){
-    g.appendChild(txt(n.x+14,n.y-16,n.name,15,'#fff',700));
-    g.appendChild(txt(n.x+14,n.y+5,n.sub,12,'#ff6b6d',700));
-    g.appendChild(txt(n.x+14,n.y+23,n.sub2,10.5,'#6b7d94'));
+    g.appendChild(txt(n.x+14,n.y-16,n.name,15,'#111418',700));
+    g.appendChild(txt(n.x+14,n.y+5,n.sub,12,'#cf222e',700));
+    g.appendChild(txt(n.x+14,n.y+23,n.sub2,10.5,'#5b6570'));
   }
   else if(n.type==='theme'){
-    g.appendChild(txt(n.x+14,n.y-7,n.name,14,'#e6edf3',700));
-    g.appendChild(txt(n.x+14,n.y+13,`${n.count}家 · 最高${n.max_lb}板`,11,'#9fb0c6'));
+    g.appendChild(txt(n.x+14,n.y-7,n.name,14,'#1f2328',700));
+    g.appendChild(txt(n.x+14,n.y+13,`${n.count}家 · 最高${n.max_lb}板`,11,'#5b6570'));
     g.appendChild(badgeR(n.x+n.w-10,n.y,`${n.count}`,n.color));
   }
   else if(n.type==='topic'){
-    g.appendChild(txt(n.x+13,n.y+1,n.name,12.5,'#dbe6f2',600));
+    g.appendChild(txt(n.x+13,n.y+1,n.name,12.5,'#1f2328',600));
     g.appendChild(badgeR(n.x+n.w-10,n.y,`${n.count}`,hexA(n.color,.9),true));
   }
   else{
     const s=n.raw;
-    g.appendChild(txt(n.x+12,n.y-6,s.name,13.5,'#e6edf3',700));
+    g.appendChild(txt(n.x+12,n.y-6,s.name,13.5,'#1f2328',700));
     g.appendChild(badgeR(n.x+n.w-10,n.y-6,`${s.lb}板`,lbColor(n)));
     if(SHOWLABEL){
       const bt=s.board_type?s.board_type.replace('(涨停)',''):'';
       g.appendChild(txt(n.x+12,n.y+13,
         `封单${fmtYi(s.seal_amt)} · ${bt||s.lb_stat||''} · ${fmtTime(s.first_time)}`,
-        10.5,'#6b7d94'));
+        10.5,'#5b6570'));
     }
   }
   return g;
@@ -514,7 +513,7 @@ document.getElementById('bPng').onclick=()=>{
   const img=new Image();
   img.onload=()=>{const cv=document.createElement('canvas');
     cv.width=VW*2;cv.height=VH*2;const cx=cv.getContext('2d');
-    cx.fillStyle='#0d1117';cx.fillRect(0,0,cv.width,cv.height);
+    cx.fillStyle='#f4f6f8';cx.fillRect(0,0,cv.width,cv.height);
     cx.scale(2,2);cx.drawImage(img,0,0);
     cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);
       a.download=`涨停思维导图_${DATA.meta.date}.png`;a.click();});};

@@ -1,245 +1,245 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-wb-theme="light" lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A股早盘快报 — 2026年7月2日 09:45</title>
 <style>
   :root {
-    --bg: #0d1117;
-    --card-bg: #161b22;
-    --border: #30363d;
-    --text: #c9d1d9;
-    --text-dim: #8b949e;
-    --red: #f85149;
-    --green: #3fb950;
-    --gold: #d2991d;
-    --blue: #58a6ff;
-    --purple: #a371f7;
-    --card-radius: 12px;
+    --bg:#f4f6f8;
+    --card-bg:#ffffff;
+    --border:#d8dee4;
+    --text:#1f2328;
+    --text-dim:#5b6570;
+    --red:#f85149;
+    --green:#3fb950;
+    --gold:#d2991d;
+    --blue:#58a6ff;
+    --purple:#a371f7;
+    --card-radius:12px;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing:border-box; }
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    line-height: 1.6;
-    padding: 24px;
-    max-width: 1400px;
-    margin: 0 auto;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height:1.6;
+    padding:24px;
+    max-width:1400px;
+    margin:0 auto;
   }
   .header {
-    text-align: center;
-    padding: 32px 0 20px;
-    border-bottom: 2px solid var(--border);
-    margin-bottom: 28px;
+    text-align:center;
+    padding:32px 0 20px;
+    border-bottom:2px solid var(--border);
+    margin-bottom:28px;
   }
   .header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #58a6ff, #a371f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 8px;
+    font-size:2rem;
+    font-weight:700;
+    background:linear-gradient(135deg, #58a6ff, #a371f7);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:8px;
   }
-  .header .subtitle { color: var(--text-dim); font-size: 0.95rem; }
+  .header .subtitle { color:var(--text-dim); font-size:0.95rem; }
   .header .market-date {
-    color: var(--gold);
-    font-size: 0.85rem;
-    margin-top: 6px;
+    color:var(--gold);
+    font-size:0.85rem;
+    margin-top:6px;
   }
   .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    margin-bottom: 24px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:20px;
+    margin-bottom:24px;
   }
   .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--card-radius);
-    padding: 20px;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:var(--card-radius);
+    padding:20px;
   }
-  .card.full { grid-column: 1 / -1; }
+  .card.full { grid-column:1 / -1; }
   .card-title {
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    gap:8px;
   }
-  .card-title .icon { font-size: 1.3rem; }
+  .card-title .icon { font-size:1.3rem; }
   .index-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:16px;
+    margin-bottom:24px;
   }
   .index-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--card-radius);
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:var(--card-radius);
+    padding:20px;
+    position:relative;
+    overflow:hidden;
   }
   .index-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
   }
-  .index-card.sh::before { background: var(--red); }
-  .index-card.sz::before { background: var(--red); }
-  .index-card.cy::before { background: var(--red); }
-  .index-card.kc::before { background: var(--red); }
+  .index-card.sh::before { background:var(--red); }
+  .index-card.sz::before { background:var(--red); }
+  .index-card.cy::before { background:var(--red); }
+  .index-card.kc::before { background:var(--red); }
   .index-name {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin-bottom: 4px;
+    font-size:0.85rem;
+    color:var(--text-dim);
+    margin-bottom:4px;
   }
   .index-price {
-    font-size: 1.6rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
+    font-size:1.6rem;
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
   }
   .index-change {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 4px;
+    font-size:1.1rem;
+    font-weight:600;
+    margin-top:4px;
   }
-  .red { color: var(--red); }
-  .green { color: var(--green); }
-  .gold { color: var(--gold); }
-  .blue { color: var(--blue); }
+  .red { color:var(--red); }
+  .green { color:var(--green); }
+  .gold { color:var(--gold); }
+  .blue { color:var(--blue); }
   .index-detail {
-    margin-top: 10px;
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px 12px;
+    margin-top:10px;
+    font-size:0.82rem;
+    color:var(--text-dim);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4px 12px;
   }
-  .index-detail span { color: var(--text); font-weight: 500; }
+  .index-detail span { color:var(--text); font-weight:500; }
   .index-trend {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    padding: 6px 10px;
-    border-radius: 6px;
-    display: inline-block;
-    font-weight: 600;
+    margin-top:10px;
+    font-size:0.85rem;
+    padding:6px 10px;
+    border-radius:6px;
+    display:inline-block;
+    font-weight:600;
   }
-  .trend-bearish { background: rgba(248,81,73,0.15); color: var(--red); }
-  .trend-bullish { background: rgba(63,185,80,0.15); color: var(--green); }
-  .trend-neutral { background: rgba(210,153,29,0.15); color: var(--gold); }
+  .trend-bearish { background:rgba(248,81,73,0.15); color:var(--red); }
+  .trend-bullish { background:rgba(63,185,80,0.15); color:var(--green); }
+  .trend-neutral { background:rgba(210,153,29,0.15); color:var(--gold); }
   table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.88rem;
   }
   th {
-    text-align: left;
-    padding: 8px 10px;
-    color: var(--text-dim);
-    font-weight: 500;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.8rem;
+    text-align:left;
+    padding:8px 10px;
+    color:var(--text-dim);
+    font-weight:500;
+    border-bottom:1px solid var(--border);
+    font-size:0.8rem;
   }
   td {
-    padding: 8px 10px;
-    border-bottom: 1px solid rgba(48,54,61,0.5);
+    padding:8px 10px;
+    border-bottom:1px solid rgba(48,54,61,0.5);
   }
   .tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:4px;
+    font-size:0.75rem;
+    font-weight:600;
   }
-  .tag-hot { background: rgba(248,81,73,0.15); color: var(--red); }
-  .tag-cool { background: rgba(63,185,80,0.15); color: var(--green); }
-  .tag-warn { background: rgba(210,153,29,0.15); color: var(--gold); }
-  .tag-info { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .tag-hot { background:rgba(248,81,73,0.15); color:var(--red); }
+  .tag-cool { background:rgba(63,185,80,0.15); color:var(--green); }
+  .tag-warn { background:rgba(210,153,29,0.15); color:var(--gold); }
+  .tag-info { background:rgba(88,166,255,0.15); color:var(--blue); }
   .sentiment-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:12px;
   }
   .sentiment-item {
-    text-align: center;
-    padding: 14px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 8px;
+    text-align:center;
+    padding:14px;
+    background:rgba(0,0,0,0.018);
+    border-radius:8px;
   }
   .sentiment-value {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size:1.4rem;
+    font-weight:700;
   }
   .sentiment-label {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    margin-top: 4px;
+    font-size:0.78rem;
+    color:var(--text-dim);
+    margin-top:4px;
   }
   .bar-container {
-    height: 6px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 3px;
-    margin-top: 12px;
-    overflow: hidden;
+    height:6px;
+    background:rgba(0,0,0,0.048);
+    border-radius:3px;
+    margin-top:12px;
+    overflow:hidden;
   }
   .bar-filled {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.5s ease;
+    height:100%;
+    border-radius:3px;
+    transition:width 0.5s ease;
   }
   .star-box {
-    display: flex;
-    gap: 4px;
-    font-size: 1rem;
+    display:flex;
+    gap:4px;
+    font-size:1rem;
   }
-  .star-active { color: var(--gold); }
-  .star-inactive { color: rgba(255,255,255,0.15); }
+  .star-active { color:var(--gold); }
+  .star-inactive { color:rgba(0,0,0,0.090); }
   .assessment-box {
-    padding: 16px;
-    border-radius: 8px;
-    margin-top: 12px;
-    font-size: 0.9rem;
+    padding:16px;
+    border-radius:8px;
+    margin-top:12px;
+    font-size:0.9rem;
   }
-  .assessment-weak { background: rgba(248,81,73,0.08); border-left: 3px solid var(--red); }
-  .assessment-warn { background: rgba(210,153,29,0.08); border-left: 3px solid var(--gold); }
-  .assessment-info { background: rgba(88,166,255,0.08); border-left: 3px solid var(--blue); }
+  .assessment-weak { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); }
+  .assessment-warn { background:rgba(210,153,29,0.08); border-left:3px solid var(--gold); }
+  .assessment-info { background:rgba(88,166,255,0.08); border-left:3px solid var(--blue); }
   .footer {
-    text-align: center;
-    padding: 20px;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-    margin-top: 20px;
+    text-align:center;
+    padding:20px;
+    color:var(--text-dim);
+    font-size:0.8rem;
+    border-top:1px solid var(--border);
+    margin-top:20px;
   }
   .ladder-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(48,54,61,0.3);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:6px 0;
+    border-bottom:1px solid rgba(48,54,61,0.3);
   }
   .ladder-tag {
-    font-weight: 700;
-    font-size: 0.9rem;
-    min-width: 30px;
+    font-weight:700;
+    font-size:0.9rem;
+    min-width:30px;
   }
-  .na-tag { color: var(--text-dim); font-style: italic; }
-  @media (max-width: 768px) {
-    body { padding: 12px; }
-    .index-grid { grid-template-columns: 1fr; }
-    .row { grid-template-columns: 1fr; }
+  .na-tag { color:var(--text-dim); font-style:italic; }
+  @media (max-width:768px) {
+    body { padding:12px; }
+    .index-grid { grid-template-columns:1fr; }
+    .row { grid-template-columns:1fr; }
   }
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#39414d;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 
 <div class="header">
@@ -353,11 +353,11 @@
         <div class="sentiment-label">沪深总成交额(开15分钟)</div>
       </div>
       <div class="sentiment-item">
-        <div class="sentiment-value" style="color:#ff7b72;">-9.2亿</div>
+        <div class="sentiment-value" style="color:#cf222e;">-9.2亿</div>
         <div class="sentiment-label">上证主力净额</div>
       </div>
       <div class="sentiment-item">
-        <div class="sentiment-value" style="color:#ff7b72;">-121.3亿</div>
+        <div class="sentiment-value" style="color:#cf222e;">-121.3亿</div>
         <div class="sentiment-label">深证主力净额</div>
       </div>
       <div class="sentiment-item">
@@ -365,7 +365,7 @@
         <div class="sentiment-label">北向资金</div>
       </div>
     </div>
-    <div style="margin-top: 16px; font-size: 0.85rem; color: var(--text-dim);">
+    <div style="margin-top:16px; font-size:0.85rem; color:var(--text-dim);">
       <div>涨停构成：非ST <span style="color:var(--red)">6</span> + ST <span style="color:var(--gold)">15</span> + 退市 <span style="color:var(--text-dim)">2</span></div>
       <div style="margin-top:4px;">炸板3家(全ST)：<span style="color:var(--green)">炸板率 11.5%</span></div>
       <div style="margin-top:4px;">主力资金：沪深两市主力<strong style="color:var(--red)">整体净流出</strong></div>
@@ -453,7 +453,7 @@
         <td>88.00 <span style="color:var(--text-dim);font-size:0.78rem;">(-3.63%)</span></td>
         <td class="red">94.00</td>
         <td class="red">+2.95%</td>
-        <td style="color:#ff7b72;">-1,317万</td>
+        <td style="color:#cf222e;">-1,317万</td>
         <td>
           <div class="star-box">
             <span class="star-active">★</span><span class="star-active">★</span><span class="star-inactive">★</span>
@@ -468,7 +468,7 @@
         <td>54.95 <span style="color:var(--text-dim);font-size:0.78rem;">(-0.16%)</span></td>
         <td class="red">55.08</td>
         <td class="red">+0.07%</td>
-        <td style="color:#ff7b72;">-714万</td>
+        <td style="color:#cf222e;">-714万</td>
         <td>
           <div class="star-box">
             <span class="star-inactive">★</span><span class="star-inactive">★</span><span class="star-inactive">★</span>
@@ -531,11 +531,11 @@
     </div>
 
     <div style="margin:10px 0 8px;font-weight:600;font-size:0.9rem;color:var(--purple);">3板 (10家)</div>
-    <div class="ladder-item" style="border-left: 2px solid var(--red); padding-left: 8px;">
+    <div class="ladder-item" style="border-left:2px solid var(--red); padding-left:8px;">
       <div><strong>恒尚节能</strong></div>
       <div><span class="red">+9.98%</span> <span class="tag tag-hot">收购存储芯片</span></div>
     </div>
-    <div class="ladder-item" style="border-left: 2px solid var(--red); padding-left: 8px;">
+    <div class="ladder-item" style="border-left:2px solid var(--red); padding-left:8px;">
       <div><strong>先导基电</strong></div>
       <div><span class="red">+9.53%</span> <span class="tag tag-hot">半导体设备</span></div>
     </div>
@@ -683,5 +683,5 @@
   <p>免责声明：本报告仅供信息参考，不构成任何投资建议。股市有风险，投资需谨慎。</p>
 </div>
 
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(22,27,34,.94);border:1px solid #2e3742;color:#9aa5b1;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s}.rp-back:hover{color:#6cb6ff;border-color:#6cb6ff;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-wb-theme="light" lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,239 +7,239 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif;
-  background: #0a0e14;
-  color: #c8ccd4;
-  line-height: 1.6;
-  padding: 20px;
+  font-family:-apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  background:#f4f6f8;
+  color:#1f2328;
+  line-height:1.6;
+  padding:20px;
 }
 .container { max-width:1200px; margin:0 auto; }
 
 .header {
-  text-align: center;
-  padding: 30px 20px;
-  background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
-  border-radius: 16px;
-  margin-bottom: 24px;
-  border: 1px solid #1e2433;
+  text-align:center;
+  padding:30px 20px;
+  background:linear-gradient(135deg, #ffffff 0%, #f4f6f8 100%);
+  border-radius:16px;
+  margin-bottom:24px;
+  border:1px solid #d8dee4;
 }
 .header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #e6e8ec;
-  margin-bottom: 6px;
+  font-size:28px;
+  font-weight:700;
+  color:#1f2328;
+  margin-bottom:6px;
 }
 .header .subtitle {
-  font-size: 14px;
-  color: #6b7280;
+  font-size:14px;
+  color:#6b7280;
 }
 .header .timestamp {
-  font-size: 12px;
-  color: #4b5563;
-  margin-top: 8px;
+  font-size:12px;
+  color:#4b5563;
+  margin-top:8px;
 }
 
 /* Index Cards */
 .index-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:16px;
+  margin-bottom:24px;
 }
-@media (max-width: 900px) { .index-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width:900px) { .index-grid { grid-template-columns:repeat(2, 1fr); } }
 
 .index-card {
-  background: #111720;
-  border: 1px solid #1e2433;
-  border-radius: 12px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
+  background:#f4f6f8;
+  border:1px solid #d8dee4;
+  border-radius:12px;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
 }
 .index-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:3px;
 }
-.index-card.up::before { background: linear-gradient(90deg, #ef4444, #dc2626); }
-.index-card .name { font-size: 13px; color: #6b7280; margin-bottom: 8px; }
-.index-card .price { font-size: 26px; font-weight: 700; color: #e6e8ec; }
-.index-card .change { font-size: 18px; font-weight: 600; margin: 4px 0; }
-.index-card .change.up { color: #ef4444; }
-.index-card .change.down { color: #22c55e; }
-.index-card .meta { font-size: 12px; color: #4b5563; margin-top: 6px; display:flex; justify-content:space-between; }
+.index-card.up::before { background:linear-gradient(90deg, #ef4444, #dc2626); }
+.index-card .name { font-size:13px; color:#6b7280; margin-bottom:8px; }
+.index-card .price { font-size:26px; font-weight:700; color:#1f2328; }
+.index-card .change { font-size:18px; font-weight:600; margin:4px 0; }
+.index-card .change.up { color:#cf222e; }
+.index-card .change.down { color:#1a7f37; }
+.index-card .meta { font-size:12px; color:#4b5563; margin-top:6px; display:flex; justify-content:space-between; }
 .index-card .trend {
-  display: inline-block;
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  margin-top: 8px;
+  display:inline-block;
+  font-size:11px;
+  padding:2px 8px;
+  border-radius:10px;
+  margin-top:8px;
 }
-.trend-strong-up { background: rgba(239,68,68,0.15); color: #ef4444; }
-.trend-up { background: rgba(239,68,68,0.1); color: #f87171; }
-.trend-shake { background: rgba(250,204,21,0.15); color: #facc15; }
-.trend-high-open-drop { background: rgba(34,197,94,0.1); color: #fbbf24; }
+.trend-strong-up { background:rgba(239,68,68,0.15); color:#cf222e; }
+.trend-up { background:rgba(239,68,68,0.1); color:#cf222e; }
+.trend-shake { background:rgba(250,204,21,0.15); color:#9a6700; }
+.trend-high-open-drop { background:rgba(34,197,94,0.1); color:#9a3412; }
 
 /* Section */
 .section {
-  background: #111720;
-  border: 1px solid #1e2433;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 20px;
+  background:#f4f6f8;
+  border:1px solid #d8dee4;
+  border-radius:12px;
+  padding:24px;
+  margin-bottom:20px;
 }
 .section-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #e6e8ec;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #1e2433;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size:18px;
+  font-weight:700;
+  color:#1f2328;
+  margin-bottom:16px;
+  padding-bottom:10px;
+  border-bottom:1px solid #d8dee4;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-.section-title .icon { font-size: 20px; }
+.section-title .icon { font-size:20px; }
 
 /* Stats Grid */
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
 }
 .stat-item {
-  background: #161b24;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
+  background:#ffffff;
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
 }
-.stat-item .label { font-size: 12px; color: #6b7280; margin-bottom: 6px; }
-.stat-item .value { font-size: 24px; font-weight: 700; color: #e6e8ec; }
-.stat-item .sub { font-size: 11px; color: #4b5563; margin-top: 4px; }
+.stat-item .label { font-size:12px; color:#6b7280; margin-bottom:6px; }
+.stat-item .value { font-size:24px; font-weight:700; color:#1f2328; }
+.stat-item .sub { font-size:11px; color:#4b5563; margin-top:4px; }
 
 /* Tables */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
 }
 thead th {
-  text-align: left;
-  padding: 10px 12px;
-  border-bottom: 2px solid #1e2433;
-  color: #6b7280;
-  font-weight: 600;
-  font-size: 11px;
-  text-transform: uppercase;
+  text-align:left;
+  padding:10px 12px;
+  border-bottom:2px solid #d8dee4;
+  color:#6b7280;
+  font-weight:600;
+  font-size:11px;
+  text-transform:uppercase;
 }
 tbody td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #1a1f2e;
+  padding:10px 12px;
+  border-bottom:1px solid #d8dee4;
 }
-tr:hover { background: rgba(255,255,255,0.02); }
-.up { color: #ef4444 !important; }
-.down { color: #22c55e !important; }
-.neutral { color: #fbbf24 !important; }
+tr:hover { background:rgba(0,0,0,0.012); }
+.up { color:#cf222e !important; }
+.down { color:#1a7f37 !important; }
+.neutral { color:#9a3412 !important; }
 
 .tag {
-  display: inline-block;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 8px;
-  margin: 2px;
+  display:inline-block;
+  font-size:10px;
+  padding:2px 8px;
+  border-radius:8px;
+  margin:2px;
 }
-.tag-red { background: rgba(239,68,68,0.15); color: #ef4444; }
-.tag-green { background: rgba(34,197,94,0.15); color: #22c55e; }
-.tag-yellow { background: rgba(250,204,21,0.15); color: #facc15; }
-.tag-blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
-.tag-purple { background: rgba(168,85,247,0.15); color: #a78bfa; }
+.tag-red { background:rgba(239,68,68,0.15); color:#cf222e; }
+.tag-green { background:rgba(34,197,94,0.15); color:#1a7f37; }
+.tag-yellow { background:rgba(250,204,21,0.15); color:#9a6700; }
+.tag-blue { background:rgba(59,130,246,0.15); color:#0a66c2; }
+.tag-purple { background:rgba(168,85,247,0.15); color:#0a66c2; }
 
 /* Stars */
-.star { color: #facc15; font-size: 14px; }
-.star-empty { color: #374151; font-size: 14px; }
+.star { color:#9a6700; font-size:14px; }
+.star-empty { color:#374151; font-size:14px; }
 
 /* Alert Box */
 .alert-box {
-  padding: 14px 18px;
-  border-radius: 10px;
-  margin-bottom: 14px;
-  font-size: 13px;
+  padding:14px 18px;
+  border-radius:10px;
+  margin-bottom:14px;
+  font-size:13px;
 }
-.alert-info { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); }
-.alert-warn { background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.2); }
-.alert-danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+.alert-info { background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.2); }
+.alert-warn { background:rgba(250,204,21,0.08); border:1px solid rgba(250,204,21,0.2); }
+.alert-danger { background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.2); }
 
 /* Gauge */
 .gauge-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
 }
 .gauge-ring {
-  width: 120px;
-  height: 120px;
-  position: relative;
+  width:120px;
+  height:120px;
+  position:relative;
 }
-.gauge-ring svg { transform: rotate(-90deg); }
+.gauge-ring svg { transform:rotate(-90deg); }
 .gauge-value {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 22px;
-  font-weight: 700;
-  color: #e6e8ec;
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%, -50%);
+  font-size:22px;
+  font-weight:700;
+  color:#1f2328;
 }
-.gauge-label { font-size: 11px; color: #6b7280; text-align: center; margin-top: 6px; }
+.gauge-label { font-size:11px; color:#6b7280; text-align:center; margin-top:6px; }
 
-.divider { border: none; border-top: 1px solid #1e2433; margin: 20px 0; }
+.divider { border:none; border-top:1px solid #d8dee4; margin:20px 0; }
 
 .verdict-box {
-  background: linear-gradient(135deg, #1a1f2e 0%, #161b24 100%);
-  border: 1px solid #fbbf24;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 16px;
+  background:linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  border:1px solid #fbbf24;
+  border-radius:12px;
+  padding:20px;
+  margin-top:16px;
 }
-.verdict-box h3 { color: #fbbf24; font-size: 16px; margin-bottom: 12px; }
+.verdict-box h3 { color:#9a3412; font-size:16px; margin-bottom:12px; }
 .verdict-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
 }
-.verdict-item { font-size: 13px; }
-.verdict-item .key { color: #6b7280; display: block; margin-bottom: 4px; }
-.verdict-item .val { color: #e6e8ec; font-weight: 600; display: block; }
+.verdict-item { font-size:13px; }
+.verdict-item .key { color:#6b7280; display:block; margin-bottom:4px; }
+.verdict-item .val { color:#1f2328; font-weight:600; display:block; }
 
 .recovery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:12px;
 }
-@media (max-width: 768px) { .recovery-grid { grid-template-columns: 1fr; } }
+@media (max-width:768px) { .recovery-grid { grid-template-columns:1fr; } }
 .recovery-card {
-  background: #161b24;
-  border: 1px solid #1e2433;
-  border-radius: 10px;
-  padding: 14px;
+  background:#ffffff;
+  border:1px solid #d8dee4;
+  border-radius:10px;
+  padding:14px;
 }
-.recovery-card .name-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.recovery-card .stock-name { font-weight: 600; color: #e6e8ec; }
-.recovery-card .stock-code { font-size: 11px; color: #4b5563; }
-.recovery-card .data-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
-.recovery-card .data-row .lbl { color: #6b7280; }
-.no-data { text-align: center; color: #6b7280; padding: 30px; font-size: 14px; }
+.recovery-card .name-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.recovery-card .stock-name { font-weight:600; color:#1f2328; }
+.recovery-card .stock-code { font-size:11px; color:#4b5563; }
+.recovery-card .data-row { display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px; }
+.recovery-card .data-row .lbl { color:#6b7280; }
+.no-data { text-align:center; color:#6b7280; padding:30px; font-size:14px; }
 
 .footer {
-  text-align: center;
-  padding: 20px;
-  color: #374151;
-  font-size: 11px;
+  text-align:center;
+  padding:20px;
+  color:#374151;
+  font-size:11px;
 }
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#39414d;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div class="container">
 
@@ -314,17 +314,17 @@ tr:hover { background: rgba(255,255,255,0.02); }
     </div>
     <div class="stat-item">
       <div class="label">炸板数</div>
-      <div class="value" style="color:#fbbf24;">5只</div>
+      <div class="value" style="color:#9a3412;">5只</div>
       <div class="sub">三佳科技/景兴纸业等</div>
     </div>
     <div class="stat-item">
       <div class="label">炸板率</div>
-      <div class="value" style="color:#fbbf24;">~25%</div>
+      <div class="value" style="color:#9a3412;">~25%</div>
       <div class="sub">非ST范畴估算</div>
     </div>
     <div class="stat-item">
       <div class="label">昨日跌>5%修复比</div>
-      <div class="value" style="color:#60a5fa;">~85%</div>
+      <div class="value" style="color:#0a66c2;">~85%</div>
       <div class="sub">昨720只/今多数翻红</div>
     </div>
     <div class="stat-item">
@@ -350,8 +350,8 @@ tr:hover { background: rgba(255,255,255,0.02); }
     </thead>
     <tbody>
       <tr>
-        <td><span style="color:#facc15;font-size:18px;">🥇</span></td>
-        <td style="font-weight:700;color:#e6e8ec;">半导体</td>
+        <td><span style="color:#9a6700;font-size:18px;">🥇</span></td>
+        <td style="font-weight:700;color:#1f2328;">半导体</td>
         <td style="font-size:12px;">
           普冉股份 <span class="up">+14.69%</span>、有研硅 <span class="up">+14.57%</span>、神工股份 <span class="up">+12.31%</span><br>
           恒坤新材 <span class="up">+11.32%</span>、上海新阳 <span class="up">+10.23%</span>、三佳科技 <span class="up">+9.99%</span>
@@ -360,8 +360,8 @@ tr:hover { background: rgba(255,255,255,0.02); }
         <td><span class="tag tag-red">高弹性</span> <span class="tag tag-purple">存储/材料</span></td>
       </tr>
       <tr>
-        <td><span style="color:#9ca3af;font-size:18px;">🥈</span></td>
-        <td style="font-weight:700;color:#e6e8ec;">光学光电/电子</td>
+        <td><span style="color:#5b6570;font-size:18px;">🥈</span></td>
+        <td style="font-weight:700;color:#1f2328;">光学光电/电子</td>
         <td style="font-size:12px;">
           天山电子 <span class="up">+19.99%</span>、华瑞股份 <span class="up">+12.20%</span>、道明光学 <span class="up">+9.98%</span>
         </td>
@@ -369,8 +369,8 @@ tr:hover { background: rgba(255,255,255,0.02); }
         <td><span class="tag tag-blue">涨停一字板</span></td>
       </tr>
       <tr>
-        <td><span style="color:#cd7f32;font-size:18px;">🥉</span></td>
-        <td style="font-weight:700;color:#e6e8ec;">通信/IT设备</td>
+        <td><span style="color:#9a3412;font-size:18px;">🥉</span></td>
+        <td style="font-weight:700;color:#1f2328;">通信/IT设备</td>
         <td style="font-size:12px;">
           美利信 <span class="up">+16.67%</span>、中威电子 <span class="up">+13.86%</span>、广脉科技 <span class="up">+13.44%</span>
         </td>
@@ -379,7 +379,7 @@ tr:hover { background: rgba(255,255,255,0.02); }
       </tr>
       <tr>
         <td><span style="color:#6b7280;">4</span></td>
-        <td style="font-weight:700;color:#e6e8ec;">电子元器件</td>
+        <td style="font-weight:700;color:#1f2328;">电子元器件</td>
         <td style="font-size:12px;">
           商络电子 <span class="up">+13.82%</span>、雅创电子 <span class="up">+10.15%</span>
         </td>
@@ -388,7 +388,7 @@ tr:hover { background: rgba(255,255,255,0.02); }
       </tr>
       <tr>
         <td><span style="color:#6b7280;">5</span></td>
-        <td style="font-weight:700;color:#e6e8ec;">设备制造</td>
+        <td style="font-weight:700;color:#1f2328;">设备制造</td>
         <td style="font-size:12px;">
           鑫磊股份 <span class="up">+20.00%(涨停)</span>、星网宇达 <span class="up">+9.99%(涨停)</span>、浙江美大 <span class="up">+10.05%</span>
         </td>
@@ -478,7 +478,7 @@ tr:hover { background: rgba(255,255,255,0.02); }
     <div class="recovery-card">
       <div class="name-row">
         <div><span class="stock-name">中天科技</span> <span class="stock-code">600522</span></div>
-        <span class="star">★★ <span style="font-size:10px;color:#fbbf24;">(边界)</span></span>
+        <span class="star">★★ <span style="font-size:10px;color:#9a3412;">(边界)</span></span>
       </div>
       <div class="data-row"><span class="lbl">昨日跌幅</span><span class="down">-5.10%</span></div>
       <div class="data-row"><span class="lbl">今日开盘</span><span>45.85 (+2.21% 高开略超+2%)</span></div>
@@ -535,7 +535,7 @@ tr:hover { background: rgba(255,255,255,0.02); }
 <div class="section">
   <div class="section-title"><span class="icon">⚡</span> 早盘异动信号</div>
 
-  <h4 style="color:#e6e8ec;margin-bottom:10px;font-size:14px;">🔺 集合竞价大幅高开 (>5%)</h4>
+  <h4 style="color:#1f2328;margin-bottom:10px;font-size:14px;">🔺 集合竞价大幅高开 (>5%)</h4>
   <table>
     <thead><tr><th>代码</th><th>名称</th><th>开盘涨幅</th><th>现涨幅</th><th>实体涨幅</th><th>信号</th></tr></thead>
     <tbody>
@@ -567,7 +567,7 @@ tr:hover { background: rgba(255,255,255,0.02); }
     </tbody>
   </table>
 
-  <h4 style="color:#e6e8ec;margin:18px 0 10px;font-size:14px;">🔻 集合竞价大幅低开 (>5%)</h4>
+  <h4 style="color:#1f2328;margin:18px 0 10px;font-size:14px;">🔻 集合竞价大幅低开 (>5%)</h4>
   <table>
     <thead><tr><th>代码</th><th>名称</th><th>开盘跌幅</th><th>现跌幅</th><th>实体涨幅</th><th>信号</th></tr></thead>
     <tbody>
@@ -599,7 +599,7 @@ tr:hover { background: rgba(255,255,255,0.02); }
     </tbody>
   </table>
 
-  <h4 style="color:#e6e8ec;margin:18px 0 10px;font-size:14px;">💥 炸板追踪</h4>
+  <h4 style="color:#1f2328;margin:18px 0 10px;font-size:14px;">💥 炸板追踪</h4>
   <table>
     <thead><tr><th>代码</th><th>名称</th><th>现涨幅</th><th>首次涨停</th><th>打开次数</th><th>涨停原因</th><th>当前状态</th></tr></thead>
     <tbody>
@@ -637,15 +637,15 @@ tr:hover { background: rgba(255,255,255,0.02); }
       </div>
       <div class="verdict-item">
         <span class="key">修复力度</span>
-        <span class="val" style="color:#60a5fa;">强 (昨跌720只约85%翻红)</span>
+        <span class="val" style="color:#0a66c2;">强 (昨跌720只约85%翻红)</span>
       </div>
       <div class="verdict-item">
         <span class="key">连板梯队</span>
-        <span class="val" style="color:#fbbf24;">极弱 (实质最高2板)</span>
+        <span class="val" style="color:#9a3412;">极弱 (实质最高2板)</span>
       </div>
       <div class="verdict-item">
         <span class="key">恐慌程度</span>
-        <span class="val" style="color:#22c55e;">低 (跌停仅4只含ST)</span>
+        <span class="val" style="color:#1a7f37;">低 (跌停仅4只含ST)</span>
       </div>
     </div>
   </div>
@@ -663,7 +663,7 @@ tr:hover { background: rgba(255,255,255,0.02); }
   </div>
 
   <div class="verdict-box" style="border-color:#60a5fa;">
-    <h3 style="color:#60a5fa;">🔬 超跌修复标的整体评估</h3>
+    <h3 style="color:#0a66c2;">🔬 超跌修复标的整体评估</h3>
     <ul style="margin:8px 0 0 16px;line-height:1.8;font-size:13px;">
       <li><strong>修复数量：</strong>昨日720只跌幅>5%，约610只今日翻红（~85%），修复广度极高</li>
       <li><strong>修复力度：</strong>★★级3只、★级2只、边界1只，修复深度中等，无涨停级修复</li>
@@ -683,5 +683,5 @@ tr:hover { background: rgba(255,255,255,0.02); }
 </div>
 
 </div>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(22,27,34,.94);border:1px solid #2e3742;color:#9aa5b1;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s}.rp-back:hover{color:#6cb6ff;border-color:#6cb6ff;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

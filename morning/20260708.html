@@ -1,326 +1,326 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-wb-theme="light" lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A股早盘快报 — 2026年7月8日 09:45</title>
     <style>
         :root {
-            --bg-primary: #0d1117;
-            --bg-card: #161b22;
-            --bg-card-hover: #1c2129;
-            --border: #30363d;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --red: #e93030;
-            --red-bg: rgba(233,48,48,0.12);
-            --green: #229d45;
-            --green-bg: rgba(34,157,69,0.12);
-            --accent: #58a6ff;
-            --accent-bg: rgba(88,166,255,0.1);
-            --gold: #d2991d;
-            --orange: #e36209;
-            --purple: #8957e5;
+            --bg-primary:#f4f6f8;
+            --bg-card:#ffffff;
+            --bg-card-hover:#ffffff;
+            --border:#d8dee4;
+            --text-primary:#1f2328;
+            --text-secondary:#5b6570;
+            --red:#e93030;
+            --red-bg:rgba(233,48,48,0.12);
+            --green:#229d45;
+            --green-bg:rgba(34,157,69,0.12);
+            --accent:#0a66c2;
+            --accent-bg:rgba(88,166,255,0.1);
+            --gold:#d2991d;
+            --orange:#e36209;
+            --purple:#8957e5;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            padding: 24px;
+            font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background:var(--bg-primary);
+            color:var(--text-primary);
+            line-height:1.6;
+            padding:24px;
         }
-        .container { max-width: 1200px; margin:0 auto; }
+        .container { max-width:1200px; margin:0 auto; }
         
         /* Header */
         .header {
-            text-align: center;
-            padding: 32px 24px;
-            background: linear-gradient(135deg, #161b22 0%, #1a2332 50%, #161b22 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 24px;
+            text-align:center;
+            padding:32px 24px;
+            background:linear-gradient(135deg, #ffffff 0%, #e7f1fc 50%, #ffffff 100%);
+            border:1px solid var(--border);
+            border-radius:16px;
+            margin-bottom:24px;
         }
         .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #58a6ff, #8957e5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
+            font-size:28px;
+            font-weight:700;
+            background:linear-gradient(90deg, #58a6ff, #8957e5);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+            margin-bottom:8px;
         }
-        .header .subtitle { color: var(--text-secondary); font-size: 14px; }
+        .header .subtitle { color:var(--text-secondary); font-size:14px; }
         .header .timestamp { 
-            color: var(--orange); 
-            font-size: 12px; 
-            margin-top: 8px;
-            display: inline-block;
-            background: rgba(227,98,9,0.15);
-            padding: 4px 12px;
-            border-radius: 12px;
+            color:var(--orange); 
+            font-size:12px; 
+            margin-top:8px;
+            display:inline-block;
+            background:rgba(227,98,9,0.15);
+            padding:4px 12px;
+            border-radius:12px;
         }
         .header .tagline {
-            margin-top: 16px;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
+            margin-top:16px;
+            display:flex;
+            justify-content:center;
+            gap:16px;
+            flex-wrap:wrap;
         }
         .header .tag {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
+            padding:4px 12px;
+            border-radius:12px;
+            font-size:12px;
+            font-weight:600;
         }
-        .tag-bear { background: var(--green-bg); color: var(--green); }
-        .tag-mixed { background: var(--accent-bg); color: var(--accent); }
-        .tag-hot { background: var(--red-bg); color: var(--red); }
+        .tag-bear { background:var(--green-bg); color:var(--green); }
+        .tag-mixed { background:var(--accent-bg); color:var(--accent); }
+        .tag-hot { background:var(--red-bg); color:var(--red); }
 
         /* Card Grid */
-        .grid { display: grid; gap: 16px; margin-bottom: 24px; }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid { display:grid; gap:16px; margin-bottom:24px; }
+        .grid-2 { grid-template-columns:repeat(2, 1fr); }
+        .grid-3 { grid-template-columns:repeat(3, 1fr); }
+        .grid-4 { grid-template-columns:repeat(4, 1fr); }
 
         /* Cards */
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
+            background:var(--bg-card);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:20px;
         }
-        .card-full { grid-column: 1 / -1; }
+        .card-full { grid-column:1 / -1; }
         .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            margin-bottom:16px;
+            padding-bottom:12px;
+            border-bottom:1px solid var(--border);
         }
         .card-title {
-            font-size: 16px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size:16px;
+            font-weight:700;
+            display:flex;
+            align-items:center;
+            gap:8px;
         }
-        .card-icon { font-size: 20px; }
+        .card-icon { font-size:20px; }
         .card-badge {
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 8px;
-            background: var(--accent-bg);
-            color: var(--accent);
+            font-size:11px;
+            padding:2px 8px;
+            border-radius:8px;
+            background:var(--accent-bg);
+            color:var(--accent);
         }
 
         /* Index Card */
-        .index-list { display: flex; flex-direction: column; gap: 12px; }
+        .index-list { display:flex; flex-direction:column; gap:12px; }
         .index-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.02);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:12px;
+            border-radius:8px;
+            background:rgba(0,0,0,0.012);
         }
-        .index-name { font-weight: 600; font-size: 14px; min-width: 80px; }
-        .index-price { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
-        .index-chg { font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
-        .index-amt { font-size: 12px; color: var(--text-secondary); }
-        .index-trend { font-size: 11px; padding: 2px 8px; border-radius: 4px; }
+        .index-name { font-weight:600; font-size:14px; min-width:80px; }
+        .index-price { font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; }
+        .index-chg { font-size:14px; font-weight:600; padding:4px 10px; border-radius:6px; }
+        .index-amt { font-size:12px; color:var(--text-secondary); }
+        .index-trend { font-size:11px; padding:2px 8px; border-radius:4px; }
         
-        .chg-up { color: var(--red); background: var(--red-bg); }
-        .chg-down { color: var(--green); background: var(--green-bg); }
-        .text-up { color: var(--red); }
-        .text-down { color: var(--green); }
-        .trend-up { background: rgba(233,48,48,0.15); color: var(--red); }
-        .trend-down { background: rgba(34,157,69,0.15); color: var(--green); }
-        .trend-mixed { background: rgba(210,153,29,0.15); color: var(--gold); }
+        .chg-up { color:var(--red); background:var(--red-bg); }
+        .chg-down { color:var(--green); background:var(--green-bg); }
+        .text-up { color:var(--red); }
+        .text-down { color:var(--green); }
+        .trend-up { background:rgba(233,48,48,0.15); color:var(--red); }
+        .trend-down { background:rgba(34,157,69,0.15); color:var(--green); }
+        .trend-mixed { background:rgba(210,153,29,0.15); color:var(--gold); }
 
         /* Market Breadth */
         .breadth-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:12px;
         }
-        .breadth-label { font-size: 13px; color: var(--text-secondary); }
-        .breadth-val { font-size: 16px; font-weight: 700; }
+        .breadth-label { font-size:13px; color:var(--text-secondary); }
+        .breadth-val { font-size:16px; font-weight:700; }
         .breadth-bar {
-            height: 8px;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--red) 0%, var(--red) 21%, var(--green) 21%, var(--green) 100%);
-            margin-bottom: 16px;
+            height:8px;
+            border-radius:4px;
+            background:linear-gradient(90deg, var(--red) 0%, var(--red) 21%, var(--green) 21%, var(--green) 100%);
+            margin-bottom:16px;
         }
         .breadth-ratio {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: var(--text-secondary);
+            display:flex;
+            justify-content:space-between;
+            font-size:11px;
+            color:var(--text-secondary);
         }
 
         /* Stat Grid */
-        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .stat-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; }
         .stat-item {
-            text-align: center;
-            padding: 12px 8px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.02);
+            text-align:center;
+            padding:12px 8px;
+            border-radius:8px;
+            background:rgba(0,0,0,0.012);
         }
-        .stat-value { font-size: 22px; font-weight: 700; }
-        .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+        .stat-value { font-size:22px; font-weight:700; }
+        .stat-label { font-size:11px; color:var(--text-secondary); margin-top:4px; }
 
         /* Sector Table */
-        .sector-table { width: 100%; border-collapse: collapse; }
+        .sector-table { width:100%; border-collapse:collapse; }
         .sector-table th {
-            text-align: left;
-            padding: 8px 12px;
-            font-size: 11px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            border-bottom: 1px solid var(--border);
+            text-align:left;
+            padding:8px 12px;
+            font-size:11px;
+            color:var(--text-secondary);
+            font-weight:600;
+            border-bottom:1px solid var(--border);
         }
         .sector-table td {
-            padding: 10px 12px;
-            font-size: 13px;
-            border-bottom: 1px solid rgba(48,54,61,0.5);
+            padding:10px 12px;
+            font-size:13px;
+            border-bottom:1px solid rgba(48,54,61,0.5);
         }
         .sector-table .rank { 
-            width: 28px; height: 28px; 
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 6px;
-            font-weight: 700; font-size: 12px;
+            width:28px; height:28px; 
+            display:flex; align-items:center; justify-content:center;
+            border-radius:6px;
+            font-weight:700; font-size:12px;
         }
-        .rank-1 { background: #d2991d; color: #000; }
-        .rank-2 { background: #8b949e; color: #000; }
-        .rank-3 { background: #cd853f; color: #000; }
+        .rank-1 { background:#d2991d; color:#000; }
+        .rank-2 { background:#8b949e; color:#000; }
+        .rank-3 { background:#cd853f; color:#000; }
 
         /* Recovery Table */
-        .recovery-table { width: 100%; border-collapse: collapse; }
+        .recovery-table { width:100%; border-collapse:collapse; }
         .recovery-table th {
-            text-align: left;
-            padding: 8px 12px;
-            font-size: 11px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            border-bottom: 1px solid var(--border);
+            text-align:left;
+            padding:8px 12px;
+            font-size:11px;
+            color:var(--text-secondary);
+            font-weight:600;
+            border-bottom:1px solid var(--border);
         }
         .recovery-table td {
-            padding: 10px 12px;
-            font-size: 13px;
-            border-bottom: 1px solid rgba(48,54,61,0.5);
+            padding:10px 12px;
+            font-size:13px;
+            border-bottom:1px solid rgba(48,54,61,0.5);
         }
-        .star-rating { font-size: 16px; letter-spacing: 2px; }
-        .star-gold { color: var(--gold); }
-        .star-empty { color: #30363d; }
+        .star-rating { font-size:16px; letter-spacing:2px; }
+        .star-gold { color:var(--gold); }
+        .star-empty { color:#eef1f4; }
 
         /* Board Analysis */
         .board-tier {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.02);
+            display:flex;
+            align-items:center;
+            gap:12px;
+            margin-bottom:10px;
+            padding:8px 12px;
+            border-radius:8px;
+            background:rgba(0,0,0,0.012);
         }
         .tier-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 6px;
+            font-size:11px;
+            font-weight:700;
+            padding:4px 10px;
+            border-radius:6px;
         }
-        .tier-7 { background: var(--purple); color: #fff; }
-        .tier-2 { background: var(--accent-bg); color: var(--accent); }
-        .tier-1 { background: rgba(255,255,255,0.05); color: var(--text-secondary); }
-        .tier-names { font-size: 13px; }
-        .tier-count { font-size: 12px; color: var(--text-secondary); margin-left: auto; }
+        .tier-7 { background:var(--purple); color:#fff; }
+        .tier-2 { background:var(--accent-bg); color:var(--accent); }
+        .tier-1 { background:rgba(0,0,0,0.030); color:var(--text-secondary); }
+        .tier-names { font-size:13px; }
+        .tier-count { font-size:12px; color:var(--text-secondary); margin-left:auto; }
 
         /* Alert Items */
-        .alert-list { display: flex; flex-direction: column; gap: 8px; }
+        .alert-list { display:flex; flex-direction:column; gap:8px; }
         .alert-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 10px 12px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.02);
-            font-size: 13px;
+            display:flex;
+            align-items:flex-start;
+            gap:10px;
+            padding:10px 12px;
+            border-radius:8px;
+            background:rgba(0,0,0,0.012);
+            font-size:13px;
         }
         .alert-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            margin-top: 6px;
-            flex-shrink: 0;
+            width:8px; height:8px;
+            border-radius:50%;
+            margin-top:6px;
+            flex-shrink:0;
         }
-        .dot-up { background: var(--red); }
-        .dot-down { background: var(--green); }
-        .dot-warn { background: var(--orange); }
+        .dot-up { background:var(--red); }
+        .dot-down { background:var(--green); }
+        .dot-warn { background:var(--orange); }
 
         /* Assessment */
         .assessment-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            display:grid;
+            grid-template-columns:repeat(2, 1fr);
+            gap:12px;
         }
         .assess-item {
-            padding: 16px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+            padding:16px;
+            border-radius:8px;
+            border:1px solid var(--border);
         }
-        .assess-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; }
-        .assess-value { font-size: 15px; font-weight: 700; }
+        .assess-label { font-size:11px; color:var(--text-secondary); margin-bottom:6px; }
+        .assess-value { font-size:15px; font-weight:700; }
 
         /* N/A */
-        .na { color: var(--text-secondary); font-style: italic; }
+        .na { color:var(--text-secondary); font-style:italic; }
 
         /* Section Title */
         .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size:18px;
+            font-weight:700;
+            margin-bottom:16px;
+            padding-bottom:12px;
+            border-bottom:2px solid var(--border);
+            display:flex;
+            align-items:center;
+            gap:10px;
         }
         .section-num {
-            width: 28px; height: 28px;
-            border-radius: 8px;
-            background: var(--accent-bg);
-            color: var(--accent);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
+            width:28px; height:28px;
+            border-radius:8px;
+            background:var(--accent-bg);
+            color:var(--accent);
+            display:flex; align-items:center; justify-content:center;
+            font-size:13px;
+            font-weight:700;
         }
 
         /* Divider */
         .section-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 24px 0;
+            height:1px;
+            background:var(--border);
+            margin:24px 0;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-            .assessment-grid { grid-template-columns: 1fr; }
+        @media (max-width:768px) {
+            .grid-4, .grid-3, .grid-2 { grid-template-columns:1fr; }
+            .assessment-grid { grid-template-columns:1fr; }
         }
 
         /* Footer */
         .footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-secondary);
-            font-size: 11px;
-            border-top: 1px solid var(--border);
-            margin-top: 24px;
+            text-align:center;
+            padding:20px;
+            color:var(--text-secondary);
+            font-size:11px;
+            border-top:1px solid var(--border);
+            margin-top:24px;
         }
     </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#39414d;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div class="container">
 
@@ -432,7 +432,7 @@
                 <span class="card-title"><span class="card-icon">🔴</span> 涨跌停统计</span>
                 <span class="card-badge">实时</span>
             </div>
-            <div class="stat-grid" style="grid-template-columns: repeat(4,1fr);">
+            <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);">
                 <div class="stat-item">
                     <div class="stat-value text-up">13</div>
                     <div class="stat-label">涨停家数</div>
@@ -667,7 +667,7 @@
             <div style="margin:8px 0;padding:4px 12px;font-size:11px;color:var(--orange);">
                 ⚠ 重组一字板，无实际换手，无参考价值
             </div>
-            <div style="margin-top:12px;padding:8px 12px;background:rgba(255,255,255,0.01);border-radius:8px;">
+            <div style="margin-top:12px;padding:8px 12px;background:rgba(0,0,0,0.006);border-radius:8px;">
                 <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">实际有效连板梯队：</div>
                 <div class="board-tier">
                     <span class="tier-badge tier-2">2板</span>
@@ -785,22 +785,22 @@
                 <span class="card-title"><span class="card-icon">📋</span> 市场定性</span>
             </div>
             <div class="assessment-grid">
-                <div class="assess-item" style="border-color: rgba(34,157,69,0.3);">
+                <div class="assess-item" style="border-color:rgba(34,157,69,0.3);">
                     <div class="assess-label">今日定性</div>
                     <div class="assess-value" style="color:var(--orange);">弱势分化</div>
                     <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">三大指数下跌，科创50独自翻红</div>
                 </div>
-                <div class="assess-item" style="border-color: rgba(34,157,69,0.3);">
+                <div class="assess-item" style="border-color:rgba(34,157,69,0.3);">
                     <div class="assess-label">涨跌比</div>
                     <div class="assess-value" style="color:var(--green);">0.27:1</div>
                     <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">近八成下跌，广度极弱</div>
                 </div>
-                <div class="assess-item" style="border-color: rgba(233,48,48,0.3);">
+                <div class="assess-item" style="border-color:rgba(233,48,48,0.3);">
                     <div class="assess-label">主线方向</div>
                     <div class="assess-value" style="color:var(--red);">AI算力</div>
                     <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">液冷+服务器+CDN，浪潮信息一字板引领</div>
                 </div>
-                <div class="assess-item" style="border-color: rgba(88,166,255,0.3);">
+                <div class="assess-item" style="border-color:rgba(88,166,255,0.3);">
                     <div class="assess-label">情绪周期</div>
                     <div class="assess-value" style="color:var(--accent);">分歧/轮动</div>
                     <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">连板高度压缩至2板，高位股退潮</div>
@@ -813,25 +813,25 @@
                 <span class="card-title"><span class="card-icon">⚠️</span> 关键风险提示</span>
             </div>
             <div class="alert-list">
-                <div class="alert-item" style="border-left: 3px solid var(--red);">
+                <div class="alert-item" style="border-left:3px solid var(--red);">
                     <div>
                         <b style="color:var(--red);">深成指 -1.03% 领跌，市场整体弱势</b><br>
                         <span style="font-size:12px;color:var(--text-secondary);">深市权重股抛压明显，早盘单边下行未见企稳迹象</span>
                     </div>
                 </div>
-                <div class="alert-item" style="border-left: 3px solid var(--orange);">
+                <div class="alert-item" style="border-left:3px solid var(--orange);">
                     <div>
                         <b style="color:var(--orange);">连板高度骤降至2板</b><br>
                         <span style="font-size:12px;color:var(--text-secondary);">恒尚节能7板为重组一字板无参考价值；实际市场最高仅2板，短线情绪退潮明显</span>
                     </div>
                 </div>
-                <div class="alert-item" style="border-left: 3px solid var(--orange);">
+                <div class="alert-item" style="border-left:3px solid var(--orange);">
                     <div>
                         <b style="color:var(--orange);">AI算力线炸板率偏高</b><br>
                         <span style="font-size:12px;color:var(--text-secondary);">紫光股份、华勤技术炸板，追高风险大；仅浪潮信息一字板稳固</span>
                     </div>
                 </div>
-                <div class="alert-item" style="border-left: 3px solid var(--green);">
+                <div class="alert-item" style="border-left:3px solid var(--green);">
                     <div>
                         <b style="color:var(--green);">人形机器人方向严重分化</b><br>
                         <span style="font-size:12px;color:var(--text-secondary);">华菱线缆涨停 vs 埃斯顿跌停，板块内部两极分化</span>
@@ -847,21 +847,21 @@
             <span class="card-title"><span class="card-icon">🎯</span> 可操作性评估 & 超跌修复总评</span>
         </div>
         <div class="grid grid-3">
-            <div class="assess-item" style="border-color: rgba(34,157,69,0.3);">
+            <div class="assess-item" style="border-color:rgba(34,157,69,0.3);">
                 <div class="assess-label">可操作性</div>
                 <div class="assess-value" style="color:var(--green);">偏低</div>
                 <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">
                     近八成个股下跌+连板高度骤降，短线环境较差。AI算力虽强但追高风险大（炸板率23.5%）。需等待指数企稳和情绪修复信号。
                 </div>
             </div>
-            <div class="assess-item" style="border-color: rgba(88,166,255,0.3);">
+            <div class="assess-item" style="border-color:rgba(88,166,255,0.3);">
                 <div class="assess-label">超跌修复评估</div>
                 <div class="assess-value" style="color:var(--accent);">强度偏低</div>
                 <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">
                     224只修复（修复率29.2%），仅1只涨停修复（太极集团★★★医药），无板块效应。修复标的分散在医药/通信/材料/存储，互不关联。
                 </div>
             </div>
-            <div class="assess-item" style="border-color: rgba(233,48,48,0.3);">
+            <div class="assess-item" style="border-color:rgba(233,48,48,0.3);">
                 <div class="assess-label">核心关注</div>
                 <div class="assess-value" style="color:var(--red);">浪潮信息引领的AI算力线能否延续</div>
                 <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">
@@ -875,9 +875,9 @@
     <div class="footer">
         <div>A股早盘快报 · 2026年7月8日 09:45 · WorkBuddy 自动化生成</div>
         <div style="margin-top:4px;">数据源: tdx-connector MCP | 北向资金数据暂不可获取 | 报告仅供参考，不构成投资建议</div>
-        <div style="margin-top:4px; color: var(--text-secondary);">⚠ 免责声明：本报告展示客观市场数据与逻辑分析，不包含任何操作建议</div>
+        <div style="margin-top:4px; color:var(--text-secondary);">⚠ 免责声明：本报告展示客观市场数据与逻辑分析，不包含任何操作建议</div>
     </div>
 
 </div>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(22,27,34,.94);border:1px solid #2e3742;color:#9aa5b1;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s}.rp-back:hover{color:#6cb6ff;border-color:#6cb6ff;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

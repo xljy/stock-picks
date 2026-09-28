@@ -1,239 +1,239 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-wb-theme="light" lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>涨停次日预测 | 2026年06月01日</title>
 <style>
 :root {
-    --bg: #0a0e17;
-    --card: #111827;
-    --card2: #1a2332;
-    --border: #1e2d3d;
-    --text: #e2e8f0;
-    --text2: #94a3b8;
-    --accent: #3b82f6;
-    --red: #ef4444;
-    --green: #22c55e;
-    --orange: #f97316;
-    --yellow: #eab308;
+    --bg:#f4f6f8;
+    --card:#e7f1fc;
+    --card2:#e7f1fc;
+    --border:#d8dee4;
+    --text:#1f2328;
+    --text2:#5b6570;
+    --accent:#0a66c2;
+    --red:#ef4444;
+    --green:#22c55e;
+    --orange:#f97316;
+    --yellow:#eab308;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-    font-family: -apple-system, 'SF Pro', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    min-height: 100vh;
+    font-family:-apple-system, 'SF Pro', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    min-height:100vh;
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
 header {
-    text-align: center;
-    padding: 40px 0 30px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    border-bottom: 1px solid var(--border);
-    margin: -20px -20px 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+    text-align:center;
+    padding:40px 0 30px;
+    background:linear-gradient(135deg, #e7f1fc 0%, #e7f1fc 50%, #e7f1fc 100%);
+    border-bottom:1px solid var(--border);
+    margin:-20px -20px 30px;
+    padding-left:20px;
+    padding-right:20px;
 }
 header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
+    font-size:2rem;
+    font-weight:700;
+    background:linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:8px;
 }
 header .date {
-    font-size: 1.1rem;
-    color: var(--text2);
+    font-size:1.1rem;
+    color:var(--text2);
 }
 header .date span {
-    color: var(--accent);
-    font-weight: 600;
+    color:var(--accent);
+    font-weight:600;
 }
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    margin-bottom: 30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:16px;
+    margin-bottom:30px;
 }
 .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
 }
-.stat-card .label { font-size: 0.85rem; color: var(--text2); margin-bottom: 6px; }
-.stat-card .value { font-size: 1.8rem; font-weight: 700; }
-.stat-card .sub { font-size: 0.75rem; color: var(--text2); margin-top: 4px; }
+.stat-card .label { font-size:0.85rem; color:var(--text2); margin-bottom:6px; }
+.stat-card .value { font-size:1.8rem; font-weight:700; }
+.stat-card .sub { font-size:0.75rem; color:var(--text2); margin-top:4px; }
 
 .section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 24px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:24px;
+    margin-bottom:24px;
 }
 .section h2 {
-    font-size: 1.2rem;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size:1.2rem;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
-.section h2 .icon { font-size: 1.3rem; }
+.section h2 .icon { font-size:1.3rem; }
 
 .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 12px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+    gap:12px;
 }
 .focus-card {
-    background: var(--card2);
-    border-radius: 8px;
-    padding: 14px 16px;
-    transition: transform 0.2s;
+    background:var(--card2);
+    border-radius:8px;
+    padding:14px 16px;
+    transition:transform 0.2s;
 }
-.focus-card:hover { transform: translateY(-2px); }
-.focus-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.focus-card:hover { transform:translateY(-2px); }
+.focus-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
 .focus-grade {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 700;
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:4px;
+    color:white;
+    font-size:0.8rem;
+    font-weight:700;
 }
-.focus-name { font-weight: 600; font-size: 1rem; }
-.focus-code { color: var(--text2); font-size: 0.85rem; }
-.focus-prob { margin-left: auto; font-size: 1.1rem; font-weight: 700; }
-.focus-details { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.8rem; color: var(--text2); }
+.focus-name { font-weight:600; font-size:1rem; }
+.focus-code { color:var(--text2); font-size:0.85rem; }
+.focus-prob { margin-left:auto; font-size:1.1rem; font-weight:700; }
+.focus-details { display:flex; flex-wrap:wrap; gap:12px; font-size:0.8rem; color:var(--text2); }
 
 .grade-dist {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    height: 140px;
-    padding-top: 20px;
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    height:140px;
+    padding-top:20px;
 }
 .grade-bar-wrap {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    justify-content: flex-end;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:100%;
+    justify-content:flex-end;
 }
 .grade-bar {
-    width: 100%;
-    border-radius: 6px 6px 0 0;
-    min-height: 4px;
-    transition: height 0.5s ease;
+    width:100%;
+    border-radius:6px 6px 0 0;
+    min-height:4px;
+    transition:height 0.5s ease;
 }
 .grade-label {
-    margin-top: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    margin-top:8px;
+    font-size:0.85rem;
+    font-weight:600;
 }
 .grade-count {
-    margin-bottom: 4px;
-    font-size: 0.8rem;
-    color: var(--text2);
+    margin-bottom:4px;
+    font-size:0.8rem;
+    color:var(--text2);
 }
 
 .industry-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
 }
-.industry-name { width: 80px; text-align: right; font-size: 0.85rem; color: var(--text2); }
+.industry-name { width:80px; text-align:right; font-size:0.85rem; color:var(--text2); }
 .industry-bar-bg {
-    flex: 1;
-    height: 20px;
-    background: var(--card2);
-    border-radius: 10px;
-    overflow: hidden;
+    flex:1;
+    height:20px;
+    background:var(--card2);
+    border-radius:10px;
+    overflow:hidden;
 }
 .industry-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), #8b5cf6);
-    border-radius: 10px;
-    transition: width 0.5s ease;
+    height:100%;
+    background:linear-gradient(90deg, var(--accent), #8b5cf6);
+    border-radius:10px;
+    transition:width 0.5s ease;
 }
-.industry-count { width: 30px; font-size: 0.85rem; color: var(--text2); }
+.industry-count { width:30px; font-size:0.85rem; color:var(--text2); }
 
 .table-wrap {
-    overflow-x: auto;
-    margin-top: 12px;
+    overflow-x:auto;
+    margin-top:12px;
 }
 table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.88rem;
 }
 th {
-    background: var(--card2);
-    padding: 10px 12px;
-    text-align: left;
-    font-weight: 600;
-    color: var(--text2);
-    position: sticky;
-    top: 0;
-    border-bottom: 2px solid var(--border);
-    white-space: nowrap;
+    background:var(--card2);
+    padding:10px 12px;
+    text-align:left;
+    font-weight:600;
+    color:var(--text2);
+    position:sticky;
+    top:0;
+    border-bottom:2px solid var(--border);
+    white-space:nowrap;
 }
-td { padding: 8px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
-tr:hover { background: rgba(59,130,246,0.06); }
-.rank { color: var(--text2); font-size: 0.8rem; }
-.code { font-family: 'SF Mono', 'Consolas', monospace; color: var(--accent); }
-.name { font-weight: 500; }
-.prob { font-weight: 700; }
-.industry { color: var(--text2); font-size: 0.8rem; }
-.grade-cell { border-radius: 4px; text-align: center; }
+td { padding:8px 12px; border-bottom:1px solid var(--border); white-space:nowrap; }
+tr:hover { background:rgba(59,130,246,0.06); }
+.rank { color:var(--text2); font-size:0.8rem; }
+.code { font-family:'SF Mono', 'Consolas', monospace; color:var(--accent); }
+.name { font-weight:500; }
+.prob { font-weight:700; }
+.industry { color:var(--text2); font-size:0.8rem; }
+.grade-cell { border-radius:4px; text-align:center; }
 
 .filter-bar {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
+    display:flex;
+    gap:8px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
 }
 .filter-btn {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--card2);
-    color: var(--text2);
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.2s;
+    padding:6px 14px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:var(--card2);
+    color:var(--text2);
+    cursor:pointer;
+    font-size:0.85rem;
+    transition:all 0.2s;
 }
 .filter-btn:hover, .filter-btn.active {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(59,130,246,0.1);
+    border-color:var(--accent);
+    color:var(--accent);
+    background:rgba(59,130,246,0.1);
 }
 
 footer {
-    text-align: center;
-    padding: 30px 0;
-    color: var(--text2);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-    margin-top: 20px;
+    text-align:center;
+    padding:30px 0;
+    color:var(--text2);
+    font-size:0.8rem;
+    border-top:1px solid var(--border);
+    margin-top:20px;
 }
-footer a { color: var(--accent); text-decoration: none; }
+footer a { color:var(--accent); text-decoration:none; }
 
-@media (max-width: 768px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .focus-grid { grid-template-columns: 1fr; }
-    table { font-size: 0.78rem; }
-    td, th { padding: 6px 8px; }
+@media (max-width:768px) {
+    .stats-grid { grid-template-columns:repeat(2, 1fr); }
+    .focus-grid { grid-template-columns:1fr; }
+    table { font-size:0.78rem; }
+    td, th { padding:6px 8px; }
 }
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#39414d;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div style="text-align:right;padding:10px 24px 0;"><a href="index.html" style="color:var(--accent);text-decoration:none;font-size:0.9rem;opacity:0.85;">📋 历史记录</a></div>
 <div class="container">
@@ -273,7 +273,7 @@ footer a { color: var(--accent); text-decoration: none; }
         </div>
         <div style="margin-left:auto;text-align:right">
             <div style="font-size:0.8rem;color:var(--text2)">动态推荐门槛</div>
-            <div style="font-size:1.1rem;font-weight:700;color:#ef4444">12.0%</div>
+            <div style="font-size:1.1rem;font-weight:700;color:#cf222e">12.0%</div>
         </div>
     </div>
 </div>
@@ -281,7 +281,7 @@ footer a { color: var(--accent); text-decoration: none; }
 <div class="section">
     <h2><span class="icon">🎯</span> 重点推荐</h2>
     <div class="focus-grid">
-        <div class="focus-card" style="border-left: 4px solid #ff1744">
+        <div class="focus-card" style="border-left:4px solid #d8dee4">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff1744">S</span>
                 <span class="focus-name">百合花</span>
@@ -294,7 +294,7 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 116.9亿</span>
                 <span>🏭 化学制品</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff1744">
+        </div><div class="focus-card" style="border-left:4px solid #d8dee4">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff1744">S</span>
                 <span class="focus-name">胜利精密</span>
@@ -307,7 +307,7 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 124.5亿</span>
                 <span>🏭 消费电子</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff1744">
+        </div><div class="focus-card" style="border-left:4px solid #d8dee4">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff1744">S</span>
                 <span class="focus-name">万里股份</span>
@@ -320,7 +320,7 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 24.5亿</span>
                 <span>🏭 电池</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff1744">
+        </div><div class="focus-card" style="border-left:4px solid #d8dee4">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff1744">S</span>
                 <span class="focus-name">粤 传 媒</span>
@@ -333,7 +333,7 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 206.0亿</span>
                 <span>🏭 文化传媒</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff1744">
+        </div><div class="focus-card" style="border-left:4px solid #d8dee4">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff1744">S</span>
                 <span class="focus-name">浙大网新</span>
@@ -346,7 +346,7 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 79.8亿</span>
                 <span>🏭 IT服务</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff1744">
+        </div><div class="focus-card" style="border-left:4px solid #d8dee4">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff1744">S</span>
                 <span class="focus-name">金房能源</span>
@@ -359,12 +359,12 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 31.9亿</span>
                 <span>🏭 电力</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff6d00">
+        </div><div class="focus-card" style="border-left:4px solid #ff6d00">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff6d00">A+</span>
                 <span class="focus-name">福莱蒽特</span>
                 <span class="focus-code">SH605566</span>
-                <span class="focus-prob" style="color:#ff6d00">21.9%</span>
+                <span class="focus-prob" style="color:#9a3412">21.9%</span>
             </div>
             <div class="focus-details">
                 <span>🕐 09:53</span>
@@ -372,12 +372,12 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 55.7亿</span>
                 <span>🏭 化学制品</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff6d00">
+        </div><div class="focus-card" style="border-left:4px solid #ff6d00">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff6d00">A+</span>
                 <span class="focus-name">火炬电子</span>
                 <span class="focus-code">SH603678</span>
-                <span class="focus-prob" style="color:#ff6d00">20.6%</span>
+                <span class="focus-prob" style="color:#9a3412">20.6%</span>
             </div>
             <div class="focus-details">
                 <span>🕐 09:38</span>
@@ -385,12 +385,12 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 253.4亿</span>
                 <span>🏭 军工电子</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff6d00">
+        </div><div class="focus-card" style="border-left:4px solid #ff6d00">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff6d00">A+</span>
                 <span class="focus-name">方大集团</span>
                 <span class="focus-code">SZ000055</span>
-                <span class="focus-prob" style="color:#ff6d00">20.4%</span>
+                <span class="focus-prob" style="color:#9a3412">20.4%</span>
             </div>
             <div class="focus-details">
                 <span>🕐 09:39</span>
@@ -398,12 +398,12 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>💰 25.8亿</span>
                 <span>🏭 建筑材料</span>
             </div>
-        </div><div class="focus-card" style="border-left: 4px solid #ff6d00">
+        </div><div class="focus-card" style="border-left:4px solid #ff6d00">
             <div class="focus-header">
                 <span class="focus-grade" style="background:#ff6d00">A+</span>
                 <span class="focus-name">赫美集团</span>
                 <span class="focus-code">SZ002356</span>
-                <span class="focus-prob" style="color:#ff6d00">20.2%</span>
+                <span class="focus-prob" style="color:#9a3412">20.2%</span>
             </div>
             <div class="focus-details">
                 <span>🕐 09:35</span>
@@ -425,27 +425,27 @@ footer a { color: var(--accent); text-decoration: none; }
         </div><div class="grade-bar-wrap">
             <div class="grade-count">25</div>
             <div class="grade-bar" style="height:37.878787878787875%;background:#ff6d00"></div>
-            <div class="grade-label" style="color:#ff6d00">A+</div>
+            <div class="grade-label" style="color:#9a3412">A+</div>
         </div><div class="grade-bar-wrap">
             <div class="grade-count">66</div>
             <div class="grade-bar" style="height:100.0%;background:#ff9100"></div>
-            <div class="grade-label" style="color:#ff9100">A</div>
+            <div class="grade-label" style="color:#9a3412">A</div>
         </div><div class="grade-bar-wrap">
             <div class="grade-count">7</div>
             <div class="grade-bar" style="height:10.606060606060606%;background:#ffc400"></div>
-            <div class="grade-label" style="color:#ffc400">B+</div>
+            <div class="grade-label" style="color:#9a6700">B+</div>
         </div><div class="grade-bar-wrap">
             <div class="grade-count">3</div>
             <div class="grade-bar" style="height:4.545454545454546%;background:#aeea00"></div>
-            <div class="grade-label" style="color:#aeea00">B</div>
+            <div class="grade-label" style="color:#1a7f37">B</div>
         </div><div class="grade-bar-wrap">
             <div class="grade-count">2</div>
             <div class="grade-bar" style="height:4%;background:#69f0ae"></div>
-            <div class="grade-label" style="color:#69f0ae">C</div>
+            <div class="grade-label" style="color:#1a7f37">C</div>
         </div><div class="grade-bar-wrap">
             <div class="grade-count">0</div>
             <div class="grade-bar" style="height:4%;background:#90a4ae"></div>
-            <div class="grade-label" style="color:#90a4ae">D</div>
+            <div class="grade-label" style="color:#5b6570">D</div>
         </div>
     </div>
 </div>
@@ -606,8 +606,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">7</td>
             <td class="code">SH605566</td>
             <td class="name">福莱蒽特</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">21.9%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">21.9%</td>
             <td>09:53</td>
             <td>5</td>
             <td>14.9%</td>
@@ -619,8 +619,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">8</td>
             <td class="code">SH603678</td>
             <td class="name">火炬电子</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">20.6%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">20.6%</td>
             <td>09:38</td>
             <td>3</td>
             <td>4.0%</td>
@@ -632,8 +632,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">9</td>
             <td class="code">SZ000055</td>
             <td class="name">方大集团</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">20.4%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">20.4%</td>
             <td>09:39</td>
             <td>1</td>
             <td>21.3%</td>
@@ -645,8 +645,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">10</td>
             <td class="code">SZ002356</td>
             <td class="name">赫美集团</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">20.2%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">20.2%</td>
             <td>09:35</td>
             <td>1</td>
             <td>44.1%</td>
@@ -658,8 +658,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">11</td>
             <td class="code">SZ300956</td>
             <td class="name">英力股份</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">20.1%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">20.1%</td>
             <td>09:35</td>
             <td>0</td>
             <td>57.5%</td>
@@ -671,8 +671,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">12</td>
             <td class="code">SZ002580</td>
             <td class="name">圣阳股份</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">19.9%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">19.9%</td>
             <td>09:41</td>
             <td>0</td>
             <td>14.8%</td>
@@ -684,8 +684,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">13</td>
             <td class="code">SZ002795</td>
             <td class="name">永和智控</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">19.1%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">19.1%</td>
             <td>09:37</td>
             <td>1</td>
             <td>19.5%</td>
@@ -697,8 +697,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">14</td>
             <td class="code">SH600403</td>
             <td class="name">大有能源</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">19.0%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">19.0%</td>
             <td>11:02</td>
             <td>2</td>
             <td>26.4%</td>
@@ -710,8 +710,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">15</td>
             <td class="code">SZ300197</td>
             <td class="name">节能铁汉</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.9%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.9%</td>
             <td>09:35</td>
             <td>0</td>
             <td>28.7%</td>
@@ -723,8 +723,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">16</td>
             <td class="code">SZ002229</td>
             <td class="name">鸿博股份</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.9%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.9%</td>
             <td>09:46</td>
             <td>1</td>
             <td>17.4%</td>
@@ -736,8 +736,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">17</td>
             <td class="code">SH603533</td>
             <td class="name">掌阅科技</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.8%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.8%</td>
             <td>09:45</td>
             <td>1</td>
             <td>12.7%</td>
@@ -749,8 +749,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">18</td>
             <td class="code">SZ002766</td>
             <td class="name">索菱股份</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.7%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.7%</td>
             <td>09:53</td>
             <td>2</td>
             <td>6.0%</td>
@@ -762,8 +762,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">19</td>
             <td class="code">SZ000727</td>
             <td class="name">冠捷科技</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.3%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.3%</td>
             <td>09:37</td>
             <td>1</td>
             <td>3.2%</td>
@@ -775,8 +775,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">20</td>
             <td class="code">SH600367</td>
             <td class="name">红星发展</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.1%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.1%</td>
             <td>09:36</td>
             <td>0</td>
             <td>8.6%</td>
@@ -788,8 +788,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">21</td>
             <td class="code">SZ002579</td>
             <td class="name">中京电子</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.1%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.1%</td>
             <td>09:58</td>
             <td>3</td>
             <td>1.5%</td>
@@ -801,8 +801,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">22</td>
             <td class="code">SZ000722</td>
             <td class="name">湖南发展</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.0%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.0%</td>
             <td>14:39</td>
             <td>0</td>
             <td>13.0%</td>
@@ -814,8 +814,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">23</td>
             <td class="code">SZ002235</td>
             <td class="name">安妮股份</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">18.0%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">18.0%</td>
             <td>09:42</td>
             <td>0</td>
             <td>31.6%</td>
@@ -827,8 +827,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">24</td>
             <td class="code">SZ002062</td>
             <td class="name">宏润建设</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.6%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.6%</td>
             <td>09:56</td>
             <td>3</td>
             <td>7.3%</td>
@@ -840,8 +840,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">25</td>
             <td class="code">SZ002279</td>
             <td class="name">久其软件</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.4%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.4%</td>
             <td>09:46</td>
             <td>4</td>
             <td>6.2%</td>
@@ -853,8 +853,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">26</td>
             <td class="code">SH603773</td>
             <td class="name">沃格光电</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.4%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.4%</td>
             <td>09:39</td>
             <td>0</td>
             <td>26.5%</td>
@@ -866,8 +866,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">27</td>
             <td class="code">SH603598</td>
             <td class="name">引力传媒</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.3%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.3%</td>
             <td>10:43</td>
             <td>1</td>
             <td>8.5%</td>
@@ -879,8 +879,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">28</td>
             <td class="code">SZ002421</td>
             <td class="name">达实智能</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.2%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.2%</td>
             <td>09:47</td>
             <td>0</td>
             <td>12.2%</td>
@@ -892,8 +892,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">29</td>
             <td class="code">SZ002613</td>
             <td class="name">北玻股份</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.2%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.2%</td>
             <td>09:49</td>
             <td>2</td>
             <td>5.7%</td>
@@ -905,8 +905,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">30</td>
             <td class="code">SH600152</td>
             <td class="name">维科技术</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.1%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.1%</td>
             <td>09:42</td>
             <td>1</td>
             <td>8.7%</td>
@@ -918,8 +918,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">31</td>
             <td class="code">SH600156</td>
             <td class="name">华升股份</td>
-            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
-            <td class="prob" style="color:#ff6d00">17.1%</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#9a3412;font-weight:700">A+</td>
+            <td class="prob" style="color:#9a3412">17.1%</td>
             <td>09:46</td>
             <td>0</td>
             <td>21.4%</td>
@@ -931,8 +931,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">32</td>
             <td class="code">SH603330</td>
             <td class="name">天洋新材</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.9%</td>
             <td>09:41</td>
             <td>0</td>
             <td>15.9%</td>
@@ -944,8 +944,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">33</td>
             <td class="code">SZ002404</td>
             <td class="name">嘉欣丝绸</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.8%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.8%</td>
             <td>10:23</td>
             <td>3</td>
             <td>4.4%</td>
@@ -957,8 +957,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">34</td>
             <td class="code">SH603819</td>
             <td class="name">神力股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.7%</td>
             <td>09:55</td>
             <td>1</td>
             <td>15.4%</td>
@@ -970,8 +970,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">35</td>
             <td class="code">SH603045</td>
             <td class="name">福达合金</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.7%</td>
             <td>09:50</td>
             <td>6</td>
             <td>2.4%</td>
@@ -983,8 +983,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">36</td>
             <td class="code">SH600463</td>
             <td class="name">空港股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.7%</td>
             <td>10:29</td>
             <td>0</td>
             <td>27.7%</td>
@@ -996,8 +996,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">37</td>
             <td class="code">920876</td>
             <td class="name">慧为智能</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.6%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.6%</td>
             <td>14:36</td>
             <td>1</td>
             <td>5.3%</td>
@@ -1009,8 +1009,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">38</td>
             <td class="code">SH603341</td>
             <td class="name">龙旗科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.0%</td>
             <td>09:48</td>
             <td>1</td>
             <td>16.3%</td>
@@ -1022,8 +1022,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">39</td>
             <td class="code">SZ001314</td>
             <td class="name">亿道信息</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">16.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">16.0%</td>
             <td>09:36</td>
             <td>0</td>
             <td>29.5%</td>
@@ -1035,8 +1035,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">40</td>
             <td class="code">SZ002951</td>
             <td class="name">金时科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.9%</td>
             <td>14:55</td>
             <td>0</td>
             <td>18.1%</td>
@@ -1048,8 +1048,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">41</td>
             <td class="code">SH605298</td>
             <td class="name">必得科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.9%</td>
             <td>10:51</td>
             <td>0</td>
             <td>19.7%</td>
@@ -1061,8 +1061,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">42</td>
             <td class="code">SZ002830</td>
             <td class="name">名雕股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.6%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.6%</td>
             <td>09:45</td>
             <td>0</td>
             <td>62.9%</td>
@@ -1074,8 +1074,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">43</td>
             <td class="code">SH600758</td>
             <td class="name">辽宁能源</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.4%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.4%</td>
             <td>14:53</td>
             <td>0</td>
             <td>8.2%</td>
@@ -1087,8 +1087,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">44</td>
             <td class="code">SZ300649</td>
             <td class="name">杭州园林</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.4%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.4%</td>
             <td>09:37</td>
             <td>0</td>
             <td>26.5%</td>
@@ -1100,8 +1100,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">45</td>
             <td class="code">SH603171</td>
             <td class="name">税友股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.3%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.3%</td>
             <td>09:45</td>
             <td>0</td>
             <td>47.5%</td>
@@ -1113,8 +1113,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">46</td>
             <td class="code">SH603725</td>
             <td class="name">天安新材</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.2%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.2%</td>
             <td>09:49</td>
             <td>0</td>
             <td>27.2%</td>
@@ -1126,8 +1126,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">47</td>
             <td class="code">SH600798</td>
             <td class="name">宁波海运</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.1%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.1%</td>
             <td>10:47</td>
             <td>1</td>
             <td>13.7%</td>
@@ -1139,8 +1139,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">48</td>
             <td class="code">SZ000533</td>
             <td class="name">顺钠股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.0%</td>
             <td>10:13</td>
             <td>0</td>
             <td>22.1%</td>
@@ -1152,8 +1152,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">49</td>
             <td class="code">SH603161</td>
             <td class="name">科华控股</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.0%</td>
             <td>10:07</td>
             <td>0</td>
             <td>42.5%</td>
@@ -1165,8 +1165,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">50</td>
             <td class="code">SZ002474</td>
             <td class="name">榕基软件</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">15.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">15.0%</td>
             <td>09:47</td>
             <td>0</td>
             <td>11.3%</td>
@@ -1178,8 +1178,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">51</td>
             <td class="code">SZ000048</td>
             <td class="name">京基智农</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.9%</td>
             <td>09:43</td>
             <td>0</td>
             <td>62.5%</td>
@@ -1191,8 +1191,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">52</td>
             <td class="code">SZ002871</td>
             <td class="name">伟隆股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.9%</td>
             <td>09:46</td>
             <td>0</td>
             <td>38.2%</td>
@@ -1204,8 +1204,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">53</td>
             <td class="code">SH603138</td>
             <td class="name">海量数据</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.8%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.8%</td>
             <td>10:28</td>
             <td>1</td>
             <td>11.8%</td>
@@ -1217,8 +1217,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">54</td>
             <td class="code">SH600121</td>
             <td class="name">郑州煤电</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.8%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.8%</td>
             <td>10:43</td>
             <td>0</td>
             <td>11.1%</td>
@@ -1230,8 +1230,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">55</td>
             <td class="code">SZ002657</td>
             <td class="name">中科金财</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.7%</td>
             <td>10:17</td>
             <td>1</td>
             <td>14.8%</td>
@@ -1243,8 +1243,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">56</td>
             <td class="code">SH600981</td>
             <td class="name">苏豪汇鸿</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.6%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.6%</td>
             <td>10:01</td>
             <td>0</td>
             <td>89.0%</td>
@@ -1256,8 +1256,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">57</td>
             <td class="code">920190</td>
             <td class="name">雷神科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.6%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.6%</td>
             <td>09:51</td>
             <td>1</td>
             <td>3.8%</td>
@@ -1269,8 +1269,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">58</td>
             <td class="code">SZ000031</td>
             <td class="name">大悦城</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.5%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.5%</td>
             <td>09:57</td>
             <td>0</td>
             <td>65.7%</td>
@@ -1282,8 +1282,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">59</td>
             <td class="code">SZ002328</td>
             <td class="name">新朋股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.5%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.5%</td>
             <td>09:35</td>
             <td>4</td>
             <td>9.0%</td>
@@ -1295,8 +1295,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">60</td>
             <td class="code">SH600617</td>
             <td class="name">国新能源</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.4%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.4%</td>
             <td>10:37</td>
             <td>1</td>
             <td>17.7%</td>
@@ -1308,8 +1308,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">61</td>
             <td class="code">SZ000681</td>
             <td class="name">视觉中国</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.4%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.4%</td>
             <td>09:44</td>
             <td>0</td>
             <td>14.3%</td>
@@ -1321,8 +1321,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">62</td>
             <td class="code">SH603778</td>
             <td class="name">国晟科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.4%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.4%</td>
             <td>14:53</td>
             <td>0</td>
             <td>4.1%</td>
@@ -1334,8 +1334,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">63</td>
             <td class="code">SZ002629</td>
             <td class="name">仁智股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.3%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.3%</td>
             <td>10:08</td>
             <td>0</td>
             <td>46.5%</td>
@@ -1347,8 +1347,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">64</td>
             <td class="code">SH603877</td>
             <td class="name">太平鸟</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.2%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.2%</td>
             <td>13:31</td>
             <td>0</td>
             <td>23.5%</td>
@@ -1360,8 +1360,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">65</td>
             <td class="code">SH603991</td>
             <td class="name">领先股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.2%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.2%</td>
             <td>10:01</td>
             <td>0</td>
             <td>5.8%</td>
@@ -1373,8 +1373,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">66</td>
             <td class="code">SZ300849</td>
             <td class="name">锦盛新材</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.1%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.1%</td>
             <td>11:10</td>
             <td>0</td>
             <td>26.7%</td>
@@ -1386,8 +1386,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">67</td>
             <td class="code">SZ003004</td>
             <td class="name">声迅股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.1%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.1%</td>
             <td>10:08</td>
             <td>0</td>
             <td>6.3%</td>
@@ -1399,8 +1399,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">68</td>
             <td class="code">SH600539</td>
             <td class="name">狮头股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.1%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.1%</td>
             <td>13:06</td>
             <td>0</td>
             <td>27.5%</td>
@@ -1412,8 +1412,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">69</td>
             <td class="code">SZ002099</td>
             <td class="name">海翔药业</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.1%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.1%</td>
             <td>14:53</td>
             <td>0</td>
             <td>7.9%</td>
@@ -1425,8 +1425,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">70</td>
             <td class="code">SH603808</td>
             <td class="name">歌力思</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">14.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">14.0%</td>
             <td>13:52</td>
             <td>0</td>
             <td>45.6%</td>
@@ -1438,8 +1438,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">71</td>
             <td class="code">SH600301</td>
             <td class="name">华锡有色</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.9%</td>
             <td>09:47</td>
             <td>0</td>
             <td>13.9%</td>
@@ -1451,8 +1451,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">72</td>
             <td class="code">SH603407</td>
             <td class="name">长裕集团</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.9%</td>
             <td>09:56</td>
             <td>0</td>
             <td>11.8%</td>
@@ -1464,8 +1464,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">73</td>
             <td class="code">SZ000510</td>
             <td class="name">新金路</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.9%</td>
             <td>09:58</td>
             <td>0</td>
             <td>21.3%</td>
@@ -1477,8 +1477,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">74</td>
             <td class="code">SH600727</td>
             <td class="name">鲁北化工</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.9%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.9%</td>
             <td>10:30</td>
             <td>2</td>
             <td>12.0%</td>
@@ -1490,8 +1490,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">75</td>
             <td class="code">SH603121</td>
             <td class="name">华培动力</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.8%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.8%</td>
             <td>10:11</td>
             <td>0</td>
             <td>29.0%</td>
@@ -1503,8 +1503,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">76</td>
             <td class="code">SZ003041</td>
             <td class="name">真爱美家</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.8%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.8%</td>
             <td>10:38</td>
             <td>0</td>
             <td>28.6%</td>
@@ -1516,8 +1516,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">77</td>
             <td class="code">SZ003030</td>
             <td class="name">祖名股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.7%</td>
             <td>13:24</td>
             <td>1</td>
             <td>2.2%</td>
@@ -1529,8 +1529,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">78</td>
             <td class="code">SH600540</td>
             <td class="name">新赛股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.7%</td>
             <td>13:32</td>
             <td>0</td>
             <td>16.0%</td>
@@ -1542,8 +1542,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">79</td>
             <td class="code">SZ002637</td>
             <td class="name">赞宇科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.5%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.5%</td>
             <td>09:44</td>
             <td>0</td>
             <td>41.3%</td>
@@ -1555,8 +1555,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">80</td>
             <td class="code">SH603344</td>
             <td class="name">星德胜</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.5%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.5%</td>
             <td>10:13</td>
             <td>0</td>
             <td>11.7%</td>
@@ -1568,8 +1568,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">81</td>
             <td class="code">SZ300103</td>
             <td class="name">达刚控股</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.4%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.4%</td>
             <td>09:55</td>
             <td>0</td>
             <td>36.0%</td>
@@ -1581,8 +1581,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">82</td>
             <td class="code">SH605398</td>
             <td class="name">新炬网络</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.3%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.3%</td>
             <td>13:06</td>
             <td>0</td>
             <td>54.4%</td>
@@ -1594,8 +1594,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">83</td>
             <td class="code">SZ002527</td>
             <td class="name">新时达</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.3%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.3%</td>
             <td>10:11</td>
             <td>0</td>
             <td>9.6%</td>
@@ -1607,8 +1607,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">84</td>
             <td class="code">SZ002955</td>
             <td class="name">鸿合科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.3%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.3%</td>
             <td>10:19</td>
             <td>0</td>
             <td>22.9%</td>
@@ -1620,8 +1620,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">85</td>
             <td class="code">SH600596</td>
             <td class="name">新安股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.3%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.3%</td>
             <td>09:56</td>
             <td>1</td>
             <td>4.6%</td>
@@ -1633,8 +1633,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">86</td>
             <td class="code">SZ002925</td>
             <td class="name">盈趣科技</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.3%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.3%</td>
             <td>11:25</td>
             <td>0</td>
             <td>46.2%</td>
@@ -1646,8 +1646,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">87</td>
             <td class="code">SZ000626</td>
             <td class="name">远大控股</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.2%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.2%</td>
             <td>10:12</td>
             <td>0</td>
             <td>49.4%</td>
@@ -1659,8 +1659,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">88</td>
             <td class="code">SZ301329</td>
             <td class="name">信音电子</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.1%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.1%</td>
             <td>10:33</td>
             <td>1</td>
             <td>0.9%</td>
@@ -1672,8 +1672,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">89</td>
             <td class="code">SH600503</td>
             <td class="name">华丽家族</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">13.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">13.0%</td>
             <td>09:52</td>
             <td>0</td>
             <td>14.8%</td>
@@ -1685,8 +1685,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">90</td>
             <td class="code">SZ002933</td>
             <td class="name">新兴装备</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.8%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.8%</td>
             <td>13:10</td>
             <td>0</td>
             <td>36.1%</td>
@@ -1698,8 +1698,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">91</td>
             <td class="code">SH600546</td>
             <td class="name">山煤国际</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.7%</td>
             <td>14:22</td>
             <td>1</td>
             <td>0.3%</td>
@@ -1711,8 +1711,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">92</td>
             <td class="code">SZ301107</td>
             <td class="name">瑜欣电子</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.7%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.7%</td>
             <td>10:08</td>
             <td>0</td>
             <td>23.5%</td>
@@ -1724,8 +1724,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">93</td>
             <td class="code">SH601101</td>
             <td class="name">昊华能源</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.6%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.6%</td>
             <td>10:44</td>
             <td>0</td>
             <td>12.3%</td>
@@ -1737,8 +1737,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">94</td>
             <td class="code">SZ002700</td>
             <td class="name">万憬能源</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.5%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.5%</td>
             <td>13:35</td>
             <td>0</td>
             <td>12.8%</td>
@@ -1750,8 +1750,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">95</td>
             <td class="code">SH603193</td>
             <td class="name">润本股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.5%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.5%</td>
             <td>13:09</td>
             <td>0</td>
             <td>13.8%</td>
@@ -1763,8 +1763,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">96</td>
             <td class="code">SH603039</td>
             <td class="name">泛微网络</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.0%</td>
             <td>13:15</td>
             <td>0</td>
             <td>19.9%</td>
@@ -1776,8 +1776,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">97</td>
             <td class="code">SZ002068</td>
             <td class="name">黑猫股份</td>
-            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
-            <td class="prob" style="color:#ff9100">12.0%</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#9a3412;font-weight:700">A</td>
+            <td class="prob" style="color:#9a3412">12.0%</td>
             <td>13:17</td>
             <td>0</td>
             <td>27.7%</td>
@@ -1789,8 +1789,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">98</td>
             <td class="code">SH601699</td>
             <td class="name">潞安环能</td>
-            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
-            <td class="prob" style="color:#ffc400">12.0%</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#9a6700;font-weight:700">B+</td>
+            <td class="prob" style="color:#9a6700">12.0%</td>
             <td>10:57</td>
             <td>2</td>
             <td>6.8%</td>
@@ -1802,8 +1802,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">99</td>
             <td class="code">SZ002647</td>
             <td class="name">仁东控股</td>
-            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
-            <td class="prob" style="color:#ffc400">12.0%</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#9a6700;font-weight:700">B+</td>
+            <td class="prob" style="color:#9a6700">12.0%</td>
             <td>13:11</td>
             <td>0</td>
             <td>12.8%</td>
@@ -1815,8 +1815,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">100</td>
             <td class="code">SH600769</td>
             <td class="name">祥龙电业</td>
-            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
-            <td class="prob" style="color:#ffc400">11.9%</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#9a6700;font-weight:700">B+</td>
+            <td class="prob" style="color:#9a6700">11.9%</td>
             <td>10:30</td>
             <td>0</td>
             <td>24.6%</td>
@@ -1828,8 +1828,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">101</td>
             <td class="code">SH601918</td>
             <td class="name">新集能源</td>
-            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
-            <td class="prob" style="color:#ffc400">11.6%</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#9a6700;font-weight:700">B+</td>
+            <td class="prob" style="color:#9a6700">11.6%</td>
             <td>14:04</td>
             <td>0</td>
             <td>3.1%</td>
@@ -1841,8 +1841,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">102</td>
             <td class="code">SZ301236</td>
             <td class="name">软通动力</td>
-            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
-            <td class="prob" style="color:#ffc400">11.6%</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#9a6700;font-weight:700">B+</td>
+            <td class="prob" style="color:#9a6700">11.6%</td>
             <td>09:48</td>
             <td>0</td>
             <td>10.7%</td>
@@ -1854,8 +1854,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">103</td>
             <td class="code">SH600841</td>
             <td class="name">动力新科</td>
-            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
-            <td class="prob" style="color:#ffc400">11.5%</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#9a6700;font-weight:700">B+</td>
+            <td class="prob" style="color:#9a6700">11.5%</td>
             <td>10:00</td>
             <td>0</td>
             <td>12.5%</td>
@@ -1867,8 +1867,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">104</td>
             <td class="code">SH600188</td>
             <td class="name">兖矿能源</td>
-            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
-            <td class="prob" style="color:#ffc400">10.1%</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#9a6700;font-weight:700">B+</td>
+            <td class="prob" style="color:#9a6700">10.1%</td>
             <td>14:39</td>
             <td>0</td>
             <td>4.5%</td>
@@ -1880,8 +1880,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">105</td>
             <td class="code">SH601001</td>
             <td class="name">晋控煤业</td>
-            <td class="grade-cell" style="background:rgba(174,234,0,0.10);color:#aeea00;font-weight:700">B</td>
-            <td class="prob" style="color:#aeea00">9.8%</td>
+            <td class="grade-cell" style="background:rgba(174,234,0,0.10);color:#1a7f37;font-weight:700">B</td>
+            <td class="prob" style="color:#1a7f37">9.8%</td>
             <td>11:08</td>
             <td>0</td>
             <td>6.9%</td>
@@ -1893,8 +1893,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">106</td>
             <td class="code">SH600737</td>
             <td class="name">中粮糖业</td>
-            <td class="grade-cell" style="background:rgba(174,234,0,0.10);color:#aeea00;font-weight:700">B</td>
-            <td class="prob" style="color:#aeea00">9.8%</td>
+            <td class="grade-cell" style="background:rgba(174,234,0,0.10);color:#1a7f37;font-weight:700">B</td>
+            <td class="prob" style="color:#1a7f37">9.8%</td>
             <td>13:19</td>
             <td>2</td>
             <td>2.2%</td>
@@ -1906,8 +1906,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">107</td>
             <td class="code">SH603296</td>
             <td class="name">华勤技术</td>
-            <td class="grade-cell" style="background:rgba(174,234,0,0.10);color:#aeea00;font-weight:700">B</td>
-            <td class="prob" style="color:#aeea00">9.3%</td>
+            <td class="grade-cell" style="background:rgba(174,234,0,0.10);color:#1a7f37;font-weight:700">B</td>
+            <td class="prob" style="color:#1a7f37">9.3%</td>
             <td>09:50</td>
             <td>0</td>
             <td>11.1%</td>
@@ -1919,8 +1919,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">108</td>
             <td class="code">SH600588</td>
             <td class="name">用友网络</td>
-            <td class="grade-cell" style="background:rgba(105,240,174,0.10);color:#69f0ae;font-weight:700">C</td>
-            <td class="prob" style="color:#69f0ae">6.9%</td>
+            <td class="grade-cell" style="background:rgba(105,240,174,0.10);color:#1a7f37;font-weight:700">C</td>
+            <td class="prob" style="color:#1a7f37">6.9%</td>
             <td>13:08</td>
             <td>0</td>
             <td>9.3%</td>
@@ -1932,8 +1932,8 @@ footer a { color: var(--accent); text-decoration: none; }
             <td class="rank">109</td>
             <td class="code">SH600160</td>
             <td class="name">巨化股份</td>
-            <td class="grade-cell" style="background:rgba(105,240,174,0.10);color:#69f0ae;font-weight:700">C</td>
-            <td class="prob" style="color:#69f0ae">6.9%</td>
+            <td class="grade-cell" style="background:rgba(105,240,174,0.10);color:#1a7f37;font-weight:700">C</td>
+            <td class="prob" style="color:#1a7f37">6.9%</td>
             <td>10:14</td>
             <td>2</td>
             <td>3.0%</td>
@@ -1948,7 +1948,7 @@ footer a { color: var(--accent); text-decoration: none; }
 </div>
 
 <footer>
-    <p>涨停次日ML预测系统 | 模型：RF+GBDT融合 · Isotonic校准 | AUC: 0.684</p>
+    <p>涨停次日ML预测系统 | 模型：RF+GBDT融合 · Isotonic校准 | AUC:0.684</p>
     <p style="margin-top:4px">⚠️ 仅供研究参考，不构成投资建议 | 数据来源：首板涨停数据</p>
     <p style="margin-top:8px">上次更新：2026-06-08 18:55</p>
 </footer>
@@ -1969,5 +1969,5 @@ function filterGrade(grade) {
     });
 }
 </script>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(22,27,34,.94);border:1px solid #2e3742;color:#9aa5b1;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s}.rp-back:hover{color:#6cb6ff;border-color:#6cb6ff;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

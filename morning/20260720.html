@@ -1,139 +1,139 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-wb-theme="light" lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A股早盘快报 — 2026年7月20日 09:45</title>
 <style>
 :root {
-  --bg: #0f1117;
-  --card-bg: #1a1d28;
-  --card-border: #2a2d3a;
-  --text: #e1e4ed;
-  --text-secondary: #8b8fa3;
-  --red: #ff4d4f;
-  --green: #29cc6a;
-  --yellow: #f0b90b;
-  --blue: #4dabf7;
-  --accent: #5c6cf0;
+  --bg:#f4f6f8;
+  --card-bg:#ffffff;
+  --card-border:#eef1f4;
+  --text:#1f2328;
+  --text-secondary:#5b6570;
+  --red:#ff4d4f;
+  --green:#29cc6a;
+  --yellow:#f0b90b;
+  --blue:#4dabf7;
+  --accent:#0a66c2;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  line-height: 1.6;
-  padding: 20px;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  line-height:1.6;
+  padding:20px;
 }
 .header {
-  text-align: center;
-  padding: 30px 20px 20px;
-  border-bottom: 1px solid var(--card-border);
-  margin-bottom: 24px;
+  text-align:center;
+  padding:30px 20px 20px;
+  border-bottom:1px solid var(--card-border);
+  margin-bottom:24px;
 }
-.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
-.header .subtitle { color: var(--text-secondary); font-size: 14px; }
-.header .timestamp { color: var(--text-secondary); font-size: 12px; margin-top: 6px; }
+.header h1 { font-size:28px; font-weight:700; margin-bottom:4px; }
+.header .subtitle { color:var(--text-secondary); font-size:14px; }
+.header .timestamp { color:var(--text-secondary); font-size:12px; margin-top:6px; }
 .summary-strip {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
+  display:flex;
+  gap:12px;
+  margin-bottom:24px;
+  flex-wrap:wrap;
 }
 .summary-chip {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:600;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
 }
-.summary-chip.bull { border-color: var(--red); color: var(--red); }
-.summary-chip.bear { border-color: var(--green); color: var(--green); }
-.summary-chip.neutral { border-color: var(--yellow); color: var(--yellow); }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.summary-chip.bull { border-color:var(--red); color:var(--red); }
+.summary-chip.bear { border-color:var(--green); color:var(--green); }
+.summary-chip.neutral { border-color:var(--yellow); color:var(--yellow); }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:20px; }
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 18px;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:10px;
+  padding:18px;
 }
 .card h2 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--card-border);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:14px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--card-border);
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-.card h2 .icon { font-size: 18px; }
+.card h2 .icon { font-size:18px; }
 .index-card {
-  text-align: center;
-  padding: 16px 12px;
+  text-align:center;
+  padding:16px 12px;
 }
-.index-card .name { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
-.index-card .price { font-size: 22px; font-weight: 700; }
-.index-card .pct { font-size: 18px; font-weight: 700; margin-top: 2px; }
-.index-card .trend { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
-.index-card .extra { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
-.up { color: var(--red); }
-.down { color: var(--green); }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--card-border); color: var(--text-secondary); font-weight: 600; font-size: 12px; }
-td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); }
-tr:last-child td { border-bottom: none; }
-.star { color: var(--yellow); }
-.na { color: var(--text-secondary); font-style: italic; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
-.tag-red { background: rgba(255,77,79,0.15); color: var(--red); }
-.tag-green { background: rgba(41,204,106,0.15); color: var(--green); }
-.tag-blue { background: rgba(77,171,247,0.15); color: var(--blue); }
-.tag-yellow { background: rgba(240,185,11,0.15); color: var(--yellow); }
-.gauge-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-.gauge-row:last-child { border-bottom: none; }
-.gauge-label { font-size: 13px; color: var(--text-secondary); }
-.gauge-value { font-size: 16px; font-weight: 700; }
-.gauge-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; margin-top: 6px; overflow: hidden; }
-.gauge-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
-.gauge-fill.up { background: var(--red); }
-.gauge-fill.down { background: var(--green); }
-.ladder-item { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; }
-.ladder-item:last-child { border-bottom: none; }
-.ladder-level { font-weight: 700; color: var(--accent); }
+.index-card .name { font-size:13px; color:var(--text-secondary); margin-bottom:4px; }
+.index-card .price { font-size:22px; font-weight:700; }
+.index-card .pct { font-size:18px; font-weight:700; margin-top:2px; }
+.index-card .trend { font-size:12px; color:var(--text-secondary); margin-top:4px; }
+.index-card .extra { font-size:11px; color:var(--text-secondary); margin-top:4px; }
+.up { color:var(--red); }
+.down { color:var(--green); }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; padding:8px 10px; border-bottom:1px solid var(--card-border); color:var(--text-secondary); font-weight:600; font-size:12px; }
+td { padding:8px 10px; border-bottom:1px solid rgba(0,0,0,0.024); }
+tr:last-child td { border-bottom:none; }
+.star { color:var(--yellow); }
+.na { color:var(--text-secondary); font-style:italic; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; margin-right:4px; }
+.tag-red { background:rgba(255,77,79,0.15); color:var(--red); }
+.tag-green { background:rgba(41,204,106,0.15); color:var(--green); }
+.tag-blue { background:rgba(77,171,247,0.15); color:var(--blue); }
+.tag-yellow { background:rgba(240,185,11,0.15); color:var(--yellow); }
+.gauge-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.024); }
+.gauge-row:last-child { border-bottom:none; }
+.gauge-label { font-size:13px; color:var(--text-secondary); }
+.gauge-value { font-size:16px; font-weight:700; }
+.gauge-bar { width:100%; height:6px; background:rgba(0,0,0,0.048); border-radius:3px; margin-top:6px; overflow:hidden; }
+.gauge-fill { height:100%; border-radius:3px; transition:width 0.3s; }
+.gauge-fill.up { background:var(--red); }
+.gauge-fill.down { background:var(--green); }
+.ladder-item { padding:8px 12px; border-bottom:1px solid rgba(0,0,0,0.024); font-size:13px; }
+.ladder-item:last-child { border-bottom:none; }
+.ladder-level { font-weight:700; color:var(--accent); }
 .alert-box {
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  margin-bottom: 12px;
+  padding:12px 16px;
+  border-radius:8px;
+  font-size:13px;
+  margin-bottom:12px;
 }
-.alert-box.warn { background: rgba(240,185,11,0.08); border-left: 3px solid var(--yellow); }
-.alert-box.danger { background: rgba(255,77,79,0.08); border-left: 3px solid var(--red); }
-.alert-box.info { background: rgba(77,171,247,0.08); border-left: 3px solid var(--blue); }
-.alert-box.success { background: rgba(41,204,106,0.08); border-left: 3px solid var(--green); }
+.alert-box.warn { background:rgba(240,185,11,0.08); border-left:3px solid var(--yellow); }
+.alert-box.danger { background:rgba(255,77,79,0.08); border-left:3px solid var(--red); }
+.alert-box.info { background:rgba(77,171,247,0.08); border-left:3px solid var(--blue); }
+.alert-box.success { background:rgba(41,204,106,0.08); border-left:3px solid var(--green); }
 .verdict {
-  background: linear-gradient(135deg, rgba(92,108,240,0.12) 0%, rgba(92,108,240,0.04) 100%);
-  border: 1px solid rgba(92,108,240,0.3);
-  border-radius: 10px;
-  padding: 20px 24px;
-  margin-bottom: 20px;
+  background:linear-gradient(135deg, rgba(92,108,240,0.12) 0%, rgba(92,108,240,0.04) 100%);
+  border:1px solid rgba(92,108,240,0.3);
+  border-radius:10px;
+  padding:20px 24px;
+  margin-bottom:20px;
 }
-.verdict h2 { border-bottom: none; margin-bottom: 10px; }
-.verdict .judgment { font-size: 20px; font-weight: 700; }
-.verdict p { font-size: 13px; margin-top: 8px; color: var(--text-secondary); }
+.verdict h2 { border-bottom:none; margin-bottom:10px; }
+.verdict .judgment { font-size:20px; font-weight:700; }
+.verdict p { font-size:13px; margin-top:8px; color:var(--text-secondary); }
 .empty-state {
-  text-align: center;
-  color: var(--text-secondary);
-  padding: 20px;
-  font-size: 13px;
+  text-align:center;
+  color:var(--text-secondary);
+  padding:20px;
+  font-size:13px;
 }
-@media (max-width: 900px) {
-  .grid-2, .grid-4 { grid-template-columns: 1fr; }
+@media (max-width:900px) {
+  .grid-2, .grid-4 { grid-template-columns:1fr; }
 }
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#39414d;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 
 <div class="header">
@@ -296,7 +296,7 @@ tr:last-child td { border-bottom: none; }
       <td>300209</td><td>行云科技</td><td class="down">-5.00%</td><td class="na">N/A</td><td>26.84</td><td class="up">+19.98%</td><td class="na">N/A</td><td><span class="star">★★★</span> 涨停修复</td><td>IT服务/AI</td>
     </tr>
   </table>
-  <div style="margin-top:12px; padding:10px 14px; border-radius:6px; background:rgba(255,255,255,0.03); font-size:12px;">
+  <div style="margin-top:12px; padding:10px 14px; border-radius:6px; background:rgba(0,0,0,0.018); font-size:12px;">
     <b>修复总评：</b>在2231只昨日大跌股中，今日早盘约68%（3350/4928）的整体市场回暖推动广泛修复。但从扫描的前3页（30只）样本看：
     <br>• ★★★级 1只（行云科技涨停，但该股数据存疑 - 昨跌幅仅-5%而非-5.00%）
     <br>• ★★级 4只（金运激光/上海新阳/恒宝股份/镇海股份）
@@ -314,7 +314,7 @@ tr:last-child td { border-bottom: none; }
     <span class="tag tag-yellow" style="font-size:13px;padding:6px 14px;">5板 1只</span>
     <span class="tag tag-red" style="font-size:13px;padding:6px 14px;">3板 1只</span>
     <span class="tag tag-blue" style="font-size:13px;padding:6px 14px;">2板 6只</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px;background:rgba(255,255,255,0.05);">首板 3只(Non-ST)</span>
+    <span class="tag" style="font-size:13px;padding:6px 14px;background:rgba(0,0,0,0.030);">首板 3只(Non-ST)</span>
   </div>
 
   <table>
@@ -409,5 +409,5 @@ tr:last-child td { border-bottom: none; }
   数据源：通达信 tdx-connector MCP | 采集时间 09:40~09:42 CST | 报告生成 09:45 CST
 </div>
 
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(22,27,34,.94);border:1px solid #2e3742;color:#9aa5b1;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s}.rp-back:hover{color:#6cb6ff;border-color:#6cb6ff;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>
