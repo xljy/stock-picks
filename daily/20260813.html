@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-08-13 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-08-13 周四 · 源文件 2026-08-13.md</div></div><div class="doc"><h2>大盘观察工具 market_advisor.py</h2>
+<ul><li>新建 <code>D:\WorkBuddy\Claw\market_advisor.py</code>：盘前/盘中/盘后随时启动的短线决策助手。</li><li>三模式：<code>python market_advisor.py --mode pre|intraday|post [--no-scan]</code>，报告写到 <code>market_advisor_&lt;mode&gt;_YYYYMMDD.md</code>。</li><li>判断引擎四维度：指数环境(大小票分化) + 市场宽度(涨跌家数比) + 情绪温度(涨停/连板/炸板) + 板块热点(题材聚合)。综合评级→仓位姿态(进攻/试错/轻仓/防守/空仓)。</li><li><code>--snapshot &lt;json&gt;</code> 支持外部快照注入（对话用 tdx 拉全维度后统一渲染）。</li></ul>
+<h2>数据源实测结论（本环境 2026-08-13 盘中）</h2>
+<ul><li>✅ 腾讯 qt.gtimg.cn：指数+个股实时，稳。注意 <code>tencent_quote</code> 对 <code>000001</code>(上证指数)会误加 sz 前缀，指数需带前缀单独拉。</li><li>✅ 同花顺 <code>ths_hot_reason</code>（fetch_hot_stocks）：返回当日涨停股列表+reason，可拿涨停家数(56)与板块题材聚合，稳。</li><li>❌ 东方财富 push2.eastmoney.com：持续断连/不可达（网络策略只放行腾讯+同花顺），宽度分页拉取失败。保留代码作其他环境降级。</li><li>✅ 通达信 tdx_screener（对话驱动）：补宽度(涨幅&gt;0=2287/涨幅&lt;0=3095) + 连板高度(最高4板) + 炸板率，最准。脚本缺的宽度/连板用对话模式补全。</li><li>依赖：requests/pandas 用 <code>python -m pip install</code>（当前解释器是 versions/3.13.12，不是 envs/default）。</li></ul>
+<h2>今日盘中快照（验证用）</h2>
+<ul><li>指数全红小票领涨(创业+1.61%)；宽度42.5%(下跌3095&gt;上涨2287)=赚了指数不赚钱；涨停56/跌停0；连板最高4板(蓝盾光电)；主线=创新药(6)/AI应用(5)/算力租赁(4)/CRO(3)/人形机器人(3)。</li><li>评级：偏多·试错，仓位40-60%，但宽度未达48%开仓硬条件→仅最强前排轻仓。</li></ul>
+<h2>固化 tdx 全维度工作流（market_advisor_tdx）</h2>
+<ul><li>新建 <code>market_advisor_tdx.py</code>：复用 market_advisor 引擎，把 tdx 对话查到的 宽度/连板/炸板 注入。</li><li>用法：<code>python market_advisor_tdx.py --mode pre|intraday|post --up &lt;涨&gt; --down &lt;跌&gt; --dt &lt;跌停&gt; --zt &lt;涨停&gt; --conn &lt;连板板数&gt; --conn-names "..." --zhaban &lt;炸板&gt; --touch &lt;涨停+炸板&gt;</code></li><li>板块热点默认同花顺聚合（不传 --hot）。</li><li>新建 skill <code>.workbuddy/skills/market-advisor-tdx/SKILL.md</code>：固化"tdx_screener 拉 涨幅&gt;0/涨幅&lt;0/跌停/涨停/炸板 5 个 total + 解析连板高度 → 跑脚本"流程，盘前/盘中/盘后一键触发。</li><li>验证（2026-08-13 14:00 盘中，真实数据）：涨停70(tdx全量)/跌停0/连板最高5板(秦安股份)/炸板28→炸板率28.6%；宽度42.5%未达开仓硬条件；评级偏多·试错。报告存 <code>market_advisor_intraday_20260813.md</code>。</li><li>结论：本环境纯脚本拿不到全市场宽度（东财墙+tdx行情墙），tdx MCP 是唯一全维度源，故采用"对话拉数+脚本渲染"的固化工作流而非纯脚本。</li></ul>
+<h2>盘中运行实测（2026-08-13，验证 skill 固化）</h2>
+<ul><li>14:00：up2287/down3095/宽度42.5%/涨停70/连板5板(秦安股份)/炸板28/炸板率28.6% → 评级偏多·试错。</li><li>14:58（尾盘跳水）：up1147/down4308/宽度21.0%(冰点区)/涨停64/跌停2/连板5板/炸板37/炸板率36.6%/指数全绿(上证-0.50%,小票-1.05%) → 评级<strong>偏弱·防守</strong>，仓位0-20%。</li><li>关键：14:00→14:58 宽度从42.5%腰斩到21%，指数由全红转全绿，评级由试错转防守。少数高标(秦安5板)抱团、多数票杀跌的背离日 = 退潮分歧，建议只卖不开。</li></ul>
+<h2>盘后复盘（2026-08-13 15:11，收盘）</h2>
+<ul><li>收盘定格：up1142/down4317/宽度<strong>20.9%(冰点区)</strong>/涨停65/跌停2/连板最高<strong>5板</strong>(秦安股份,一字)/4板6只(蓝盾光电·北京文化·京投发展·皇氏集团·同力天启·一鸣食品)/炸板37/触板102/炸板率<strong>36.3%</strong>。指数全绿(上证-0.50%,小票-1.00%)。</li><li>评级：<strong>偏弱·防守</strong>，仓位0-20%。情绪标签"活跃"(涨停65&gt;30)与宽度冰点背离 = 高标抱团+赚钱效应极差的典型退潮分歧结构。</li><li>次日策略：警惕高标断板（5板秦安一字缩量，断层断板风险大）。主线仍清晰——创新药(6)·人形机器人(4)·AI应用(4)·CRO(3)；但宽度未回48%前不恢复试错，等冰点(&lt;28%)后拐点或放量共振信号。报告存 <code>market_advisor_post_20260813.md</code>。</li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

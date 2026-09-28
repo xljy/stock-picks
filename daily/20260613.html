@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-06-13 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-06-13 周六 · 源文件 2026-06-13.md</div></div><div class="doc"><h2>创建了 short-term-picker Skill</h2>
+<ul><li><strong>目的</strong>：当用户问"明天买什么"时，自动执行短线选股工作流</li><li><strong>功能</strong>：扫描市场，推荐3-5只A股，给出买点、止损位、目标位</li><li><strong>位置</strong>：<code>C:/Users/Administrator/.workbuddy/skills/short-term-picker/</code></li><li><strong>触发词</strong>："明天买什么"、"推荐股票"、"短线选股"</li></ul>
+<h2>配置了用户炒股偏好</h2>
+<ul><li><strong>操作市场</strong>：A股</li><li><strong>交易风格</strong>：短线选手，持仓周期 3-5 天</li><li><strong>止损纪律</strong>：5%-7%</li><li><strong>推荐数量</strong>：3-5只（动态调整）</li><li><strong>扫描范围</strong>：全市场或近期热门板块</li></ul>
+<h2>写入长期记忆</h2>
+<ul><li>已将用户偏好写入 <code>C:/Users/Administrator/.workbuddy/MEMORY.md</code></li><li>定义了工作流触发规则（哪个意图用哪个Skill）</li></ul>
+<h2>确定了A股 Skill 分层架构</h2>
+<p>用户反馈多个A股 Skill 推荐矛盾，确定分层架构：</p>
+<ul><li><strong>数据层</strong>：a-stock-data（tencent_quote）+ hhxg-market</li><li><strong>验证层</strong>：stocksight + gf-dma-health-index（不产生推荐）</li><li><strong>分析层</strong>：按场景选一个（serenity-alpha / stock-analyzer / bayesian / daily-stock-analysis），不叠加</li><li><strong>决策层</strong>：short-term-picker（唯一推荐出口）</li><li><strong>不再使用</strong>：serenity-skill（与serenity-alpha重叠）</li></ul>
+<h2>更新了 short-term-picker Skill</h2>
+<ul><li>加入分层架构规则</li><li>加入低开买入决策框架</li><li>明确各Skill职责边界</li><li>更新 MEMORY.md 长期记忆</li></ul>
+<h2>首次执行"明天买什么"工作流</h2>
+<ul><li>推荐3只：东方精工(002611)、科林电气(603050)、华锡有色(600301)</li><li>与其他Skill推荐的3只涨停股（航天发展/安泰科技/瑞玛精密）做对比分析</li><li>保存对比分析到 <code>D:/WorkBuddy/Claw/短线选股对比分析_20260616.md</code></li><li>发现数据准确性问题：之前错误地称东方精工/科林电气涨停，实际未封板</li><li>已用 tencent_quote.py 获取准确数据并纠正</li></ul>
+<h2>第二次执行"明天买什么"工作流（6月16日周一）</h2>
+<ul><li>基于6月12日收盘数据，市场风格切换：高位科技→低位金属/军工/券商</li><li>推荐4只（均周五未涨停，周一可正常买入）：</li><li>江西铜业(600362) — 43.05元 +7.25% PE18.6x 铜业龙头</li><li>紫金矿业(601899) — 29.09元 +6.44% PE12.5x 全球铜金龙头PE最低</li><li>广发证券(000776) — 20.08元 +4.86% PE10.0x 券商风格切换</li><li>云南铜业(000878) — 17.27元 +7.40% PE31.0x 未涨停小市值弹性</li><li>关键风险：6/16-17美联储FOMC议息，建议FOMC前轻仓≤15%</li><li>已按新的紧凑表格格式输出（一屏看完）</li></ul>
+<h2>用户询问"这个还可以怎么用"</h2>
+<p>用户可能指：短线推荐工作流 / tencent_quote.py / short-term-picker Skill</p>
+<h2>搭建了模拟交易系统（阶段1）</h2>
+<p>路径：D:/WorkBuddy/Claw/trading_sim/</p>
+<ul><li>signal_generator.py — 信号生成器（推荐表格→JSON信号）</li><li>simulator.py — 模拟交易引擎（买入/卖出/止损/止盈）</li><li>stop_loss_monitor.py — 止损监控（持续运行/单次检查）</li><li>report.py — 绩效报告</li><li>run.py — 主入口</li></ul>
+<p>常用命令：<br>python run.py demo          # 完整演示<br>python run.py execute       # 执行信号<br>python run.py monitor --once  # 单次止损检查<br>python run.py show          # 查看持仓<br>python run.py report        # 生成报告<br>python run.py reset         # 重置账户</p>
+<p>阶段2建议：国金证券开通miniQMT（10万门槛，线上1-3天）</p>
+<h2>接入通达信 MCP（tdx-connector）</h2>
+<p>用户说"我有通达信数据，使用它"，完成以下整合：</p>
+<ul><li>验证 tdx_quotes（300285 完整数据，含PE/主力内外盘/CalcInfo技术指标/BspInfo盘口）</li><li>验证 tdx_screener（自然语言选股，返回29条结构化数据，直接替代搜索引擎扫市场）</li><li>更新 short-term-picker/SKILL.md：数据层升级，通达信 MCP 为首选数据源</li><li>更新 ~/.workbuddy/MEMORY.md：记录通达信 MCP 已接入</li></ul>
+<p>核心用法：</p>
+<ul><li>tdx_screener message="昨日涨幅超7%且未涨停且主力净流入" rang="AG"</li><li>tdx_quotes code="000001" setcode="0" hasCalcInfo="1" hasCwInfo="1"</li><li>tdx_kline code="600519" setcode="1" period="4" tqFlag="11"</li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

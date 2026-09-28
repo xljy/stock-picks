@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>题材导图 | 睿哥</title>
+<title>收盘复盘 2026-09-12 · 睿哥 A股短线日报</title>
 <style>
 :root{
   --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
@@ -83,6 +83,14 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
 </style>
 </head>
 <body>
-<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html" class="active">🕸️ 题材导图</a></div><div class="hero"><h1>🕸️ 题材导图</h1><div class="sub">行业→主题域→个股 涨停题材拓扑 · 每日 17:05 自动归档</div></div><section><h2>🗂️ 历史记录<span class="tag">共 15 期</span></h2><div class="list"><a href="./20260924.html">2026-09-24 周四</a><a href="./20260923.html">2026-09-23 周三</a><a href="./20260922.html">2026-09-22 周二</a><a href="./20260921.html">2026-09-21 周一</a><a href="./20260918.html">2026-09-18 周五</a><a href="./20260917.html">2026-09-17 周四</a><a href="./20260916.html">2026-09-16 周三</a><a href="./20260915.html">2026-09-15 周二</a><a href="./20260914.html">2026-09-14 周一</a><a href="./20260911.html">2026-09-11 周五</a><a href="./20260910.html">2026-09-10 周四</a><a href="./20260909.html">2026-09-09 周三</a><a href="./20260908.html">2026-09-08 周二</a><a href="./20260907.html">2026-09-07 周一</a><a href="./20260904.html">2026-09-04 周五</a></div></section><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-09-12 周六 · 源文件 2026-09-12.md</div></div><div class="doc"><h2>执行 W37 周报三条改进建议</h2>
+<h3>建议2：重跑 20260909/20260910 流水线（数据污染修复）</h3>
+<ul><li>确认污染属实：<code>zt_tdx_data_20260909.json</code> source=akshare（48只）、<code>zt_1700_data_20260909.json</code> source=akshare(eastmoney)，已备份为 <code>.bak-akshare</code></li><li>用 <code>zt_pipeline_fetch.py --date 20260909 --prev-date 20260908</code> 重跑（TDX 口径）：</li><li>09-09 涨停 48→<strong>49只</strong>，跌停 7 只，前日涨停 74 只</li><li>09-10 涨停 35→<strong>40只</strong>（akshare 漏了 5 只，污染更严重），跌停 13 只</li><li>重新生成首板.xlsx + 首板+1.xlsx（用 venv default 解释器，系统 python 无 pandas）</li><li>09-09首板.xlsx 49只；09-08首板+1.xlsx 74只中15只次日涨停（20.3%）</li><li>09-10首板.xlsx 40只；09-09首板+1.xlsx 49只中9只次日涨停（18.4%）</li><li>09-11 数据字段完整（TDX 口径，total=40 与复盘记录一致），无需重跑</li><li>遗留：流通市值/换手率 历史时点字段实时接口无法回填，保留为空</li></ul>
+<h3>建议1：建立每日收盘复盘自动化</h3>
+<ul><li>新建自动化 <code>54f476b7-ea18-49e2-9b4c-c8922dbd1b17</code>「每日收盘复盘（15:30·写D:\WorkBuddy\Claw memory）」</li><li>每个交易日 15:30 运行，用绝对路径固定写回 <code>D:\WorkBuddy\Claw\.workbuddy\memory\YYYY-MM-DD.md</code></li><li>根因：盘前简报自动化(66ae1a1c) cwds 是旧目录 <code>D:\WorkBuddy\2026-08-17-08-28-07</code>，导致 Claw 目录 memory 断档</li></ul>
+<h3>建议3：首板统计补收益率字段 + 多因素交叉</h3>
+<ul><li>新建 <code>sb_backtest_v2.py</code>（流水线目录），用 tdx_kline 批量拉 306 只唯一代码的 T+1 日线，补三个字段：次日收益率、触及-5%止损率、次日涨停率</li><li>关键踩坑：tdx_kline 返回文本夹带 MCP App 候选元数据（dataCard/dataFunction），<code>json.loads(text[s:rfind('}')])</code> 会混入尾部 JSON 报 Extra data，改用 <code>json.JSONDecoder().raw_decode()</code> 只解析第一个 JSON 对象</li><li>结果（406 样本，20 交易日）：</li><li>首封时间仍是最强变量：09:25前涨停率35%/收益+2.78%，14:01后涨停率0%/收益-3.41%/触及-5%达52.63%（唯一负期望时段）</li><li>封成比40%+最强：涨停率43.18%/收益+5.46%/触及-5%仅18.18%</li><li>T字板是陷阱：收益-1.55%/触及-5%达69.23%</li><li>最优交叉「09:26-10:00+封成比40%+」收益+6.53%；最差「09:25前+封成比0-5%」-6.89%</li><li>产出：<code>D:\WorkBuddy\Claw\sb_backtest_v2_result.json</code>、<code>主板10cm首板次日统计_V2_补收益率_20260912.html</code></li></ul>
+<h2>可复用认知</h2>
+<ul><li>tdx_kline 返回文本用 <code>json.JSONDecoder().raw_decode(text[text.find('{'):])</code> 解析（避开尾部候选元数据）</li><li>流水线数据类脚本需 venv default 解释器（<code>C:\Users\Administrator\.workbuddy\binaries\python\envs\default\Scripts\python.exe</code>），系统 python 无 pandas</li><li>重跑历史流水线用 <code>--date YYYYMMDD --prev-date YYYYMMDD</code> 手动覆盖日期</li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
 </body>
 </html>

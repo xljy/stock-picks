@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-06-25 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-06-25 周四 · 源文件 2026-06-25.md</div></div><div class="doc"><h2>HBM4 12层供应链卡脖子点 Serenity 深度拆解</h2>
+<p><strong>任务：</strong> 用 serenity-alpha 方法论拆解 A 股中 HBM4 12层相关股票的卡脖子点</p>
+<p><strong>数据基准：</strong> 2026-06-24（周三）收盘数据</p>
+<h3>关键发现</h3>
+<ol><li><strong>6个卡脖子点，2个无解（A股投不了）</strong>：</li><li>① DRAM晶圆产能（★★★★★）：SK海力士已主动放缓HBM4保普通DRAM，TrendForce预估HBM投片占DRAM比重18%→30%</li><li>⑤ CoWoS系统封装（★★★★★）：台积电100%垄断，玻璃基板2-3年后量产</li></ol>
+<ol><li><strong>4个有A股标的的卡脖子点</strong>：</li><li>④ GMC封装材料（★★★★☆）：华海诚科(688535)最纯，PE 685x，收入仅2.2亿，弹性最大</li><li>⑥ 测试分选（★★★★☆）：金海通(603061)昨日涨停，赛腾股份(603283) +7%</li><li>② 前驱体材料（★★★☆☆）：雅克科技(002409)昨日涨停，但市值824亿弹性低</li><li>③ TSV堆叠（★★★★☆）：晶方科技(603005)概念正但HBM营收占比极低</li></ol>
+<ol><li><strong>Alpha弹性排名</strong>：</li><li>华海诚科 &gt; 金海通 &gt; 赛腾股份 &gt; 联瑞新材 &gt; 雅克科技 &gt; 晶方科技</li></ol>
+<ol><li><strong>昨日异动</strong>（6/24收盘）：</li><li>雅克科技(002409) 涨停+10%</li><li>金海通(603061) 涨停+10%</li><li>华海诚科(688535) +6.79%</li><li>赛腾股份(603283) +7%</li></ol>
+<h3>数据源</h3>
+<ul><li>tdx-connector: tdx_screener（HBM概念股池11只）+ tdx_quotes（5只核心标的实时行情+财务数据）+ wenda_news_query（HBM相关资讯6条）</li><li>资讯关键点：SK海力士放缓HBM4、三星HBM4破10亿美元、台积电玻璃基板CoWoS、JEDEC发布SPHBM4标准</li></ul>
+<h3>输出</h3>
+<ul><li>供应链瓶颈全景图（SVG可视化）</li><li>Serenity完整分析（6个节点逐个拆解 + alpha弹性排名表）</li></ul>
+<hr>
+<h2>金海通(603061)深度拆解 + 搭便车路线图</h2>
+<p><strong>任务：</strong> 用户问金海通，然后问小股民怎么搭便车</p>
+<h3>金海通核心数据</h3>
+<ul><li>387.09元（涨停+10%）· 市值337亿 · PE(TTM) 144x</li><li>Q1营收2.84亿(+120.77%) · Q1净利润8250万(+221.54%)</li><li>100%分选机纯度 · AMD核心供应商 · 可转债8.5亿扩产</li><li>今年+300% · 单手38,700元超用户仓位上限 → 无法参与</li></ul>
+<h3>搭便车四条路线</h3>
+<ol><li><strong>ETF路线</strong>：半导体ETF(512480) 2.65元/份、芯片ETF(159995) 3.01元/份 → 100份=265-301元，最省心</li><li><strong>被遗忘二阶股</strong>：壹石通(688733) 39.72元 -3.50%逆势下跌，Low-α球铝/球硅与联瑞新材同赛道但联瑞涨壹石通跌，定价错误</li><li><strong>中价位有实质</strong>：赛腾股份(603283) 69.86元+7% PE49x HBM量测设备；兴森科技(002436) 50.23元+3.57% IC载板</li><li><strong>等龙头回调</strong>：金海通/华海诚科回踩20日线再进</li></ol>
+<h3>HBM概念股池（11只，6/24收盘涨跌幅）</h3>
+<div class="tbl"><table><thead><tr><th>代码</th><th>名称</th><th>价格</th><th>涨跌幅</th><th>今年涨幅</th></tr></thead><tbody><tr><td>002409</td><td>雅克科技</td><td>173.05</td><td>+10%</td><td>—</td></tr><tr><td>603283</td><td>赛腾股份</td><td>69.86</td><td>+7%</td><td>+112%</td></tr><tr><td>688535</td><td>华海诚科</td><td>147.47</td><td>+6.79%</td><td>—</td></tr><tr><td>688262</td><td>国芯科技</td><td>41.26</td><td>+6.20%</td><td>—</td></tr><tr><td>603005</td><td>晶方科技</td><td>49.63</td><td>+4.93%</td><td>—</td></tr><tr><td>002436</td><td>兴森科技</td><td>50.23</td><td>+3.57%</td><td>+138%</td></tr><tr><td>002559</td><td>亚威股份</td><td>10.88</td><td>+3.23%</td><td>+8%</td></tr><tr><td>688300</td><td>联瑞新材</td><td>246.56</td><td>+3.19%</td><td>—</td></tr><tr><td>300475</td><td>香农芯创</td><td>289.60</td><td>+2.15%</td><td>—</td></tr><tr><td>688733</td><td>壹石通</td><td>39.72</td><td>-3.50%</td><td>+37%</td></tr></tbody></table></div>
+<hr>
+<h2>A股短线情绪周期框架 + 当前定位</h2>
+<p><strong>任务：</strong> 用户问"如何跟上情绪热潮"</p>
+<h3>情绪周期6阶段框架</h3>
+<ul><li>冰点（涨停&lt;30）→ 修复（50-80）→ 发酵（80-120）→ 高潮（&gt;150）→ 分歧（断板增多）→ 退潮（跌停潮）→ 循环</li></ul>
+<h3>4个核心量化指标</h3>
+<ol><li>涨停数：106只（中高水平）</li><li>跌停数：58只（偏高，ST为主）</li><li>连板高度：4板（兴业科技/东方锆业）→ 比6/23的5板下降</li><li>封板率：约65%（中等偏低）</li></ol>
+<h3>当前定位：分歧阶段</h3>
+<ul><li>6/23：96涨停/50炸板/封板率66%/连板晋级率26%/创业板-3.84% → 高位股断板信号</li><li>6/24：106涨停/58跌停/连板高度降至4板 → 老热点退潮（MLCC/PCB/小金属），新热点发酵（存储/半导体/光通信）</li><li>典型"高低切"阶段：高位连板断板 + 新方向首板大面积发酵</li></ul>
+<h3>6/24连板梯队</h3>
+<ul><li>4板：兴业科技（光通信材料）、东方锆业（锆/小金属）</li><li>3板：三孚股份（电子特气）、正和生态（AI）</li><li>2板：海南海药、圣阳股份、西陇科学、宏柏新材、乔治白、宝光股份、德尔未来</li></ul>
+<h3>6/24新发酵热点（首板）</h3>
+<ul><li>存储芯片/半导体：长电科技、兆易创新、太极实业、深科技、汇成股份、雅克科技、金海通、聚辰股份（催化：台积电涨价+美光HBM4+长鑫IPO）</li><li>光通信/CPO：三安光电、通鼎互联、航天电器、永鼎股份</li><li>PCB/电子布：中国巨石、满坤科技、平安电工</li><li>液冷：领益智造、圣阳股份</li><li>AI智能体：天娱数科、宏景科技</li></ul>
+<h3>输出</h3>
+<ul><li>情绪周期6阶段定位图（SVG可视化）</li><li>完整情绪跟踪框架 + 每阶段操作策略 + 今日操作建议</li></ul>
+<hr>
+<h2>康宁GlassBridge产业链卡脖子分析（serenity-alpha）</h2>
+<p><strong>任务：</strong> 用户问"康宁的玻璃桥产业链卡脖子"</p>
+<p><strong>数据基准：</strong> 2026-06-25（周四）收盘数据</p>
+<h3>事件</h3>
+<ul><li>6月24日康宁在首尔发布GlassBridge玻璃光学互连组件，面向CPO/NPO共封装光学</li><li>核心技术：晶圆级玻璃基光纤-硅光芯片耦合连接器，替代传统FAU光纤阵列</li><li>康宁在高端玻璃基板全球约70%份额，国产替代紧迫</li></ul>
+<h3>产业链A股标的（按环节）</h3>
+<p><strong>上游（原材料+设备）：</strong></p>
+<div class="tbl"><table><thead><tr><th>标的</th><th>价格</th><th>涨跌</th><th>PE</th><th>核心逻辑</th></tr></thead><tbody><tr><td>红星发展 600367</td><td>52.98</td><td>+3.88%</td><td>196x</td><td>康宁TGV产线5N高纯碳酸锶独家供应商</td></tr><tr><td>海目星 688559</td><td>81.45</td><td>+7.64%</td><td>—</td><td>国内唯一TGV全链条设备商</td></tr><tr><td>帝尔激光 300776</td><td>179.20</td><td>+8.53%</td><td>—</td><td>TGV激光打孔设备</td></tr><tr><td>锐科激光 300747</td><td>59.18</td><td>+12.02%</td><td>178x</td><td>国产超快激光器龙头，TGV核心光源</td></tr></tbody></table></div>
+<p><strong>中游（玻璃基板制造）：</strong></p>
+<div class="tbl"><table><thead><tr><th>标的</th><th>价格</th><th>涨跌</th><th>PE</th><th>核心逻辑</th></tr></thead><tbody><tr><td>沃格光电 603773</td><td>171.99</td><td>+2.76%</td><td>-208x</td><td>唯一打通TGV全制程企业</td></tr><tr><td>京东方A 000725</td><td>7.52</td><td>+6.36%</td><td>—</td><td>与康宁签3年战略协议，承接光波导本土化</td></tr><tr><td>彩虹股份 600707</td><td>13.63</td><td>+1.26%</td><td>851x</td><td>CCTV报道的国产玻璃原片突破企业</td></tr><tr><td>蓝特光学 688127</td><td>95.96</td><td>+9.00%</td><td>—</td><td>12英寸超薄玻璃晶圆自主量产</td></tr><tr><td>凯盛科技 600552</td><td>26.91</td><td>-3.38%</td><td>93x</td><td>国产玻璃原片，但今日逆势下跌</td></tr></tbody></table></div>
+<p><strong>下游（封装+光互连）：</strong></p>
+<div class="tbl"><table><thead><tr><th>标的</th><th>价格</th><th>涨跌</th><th>PE</th><th>核心逻辑</th></tr></thead><tbody><tr><td>长电科技 600584</td><td>104.17</td><td>+10.00%涨停</td><td>—</td><td>国内封测龙头，提前布局玻璃基板适配封装</td></tr><tr><td>通富微电 002156</td><td>77.81</td><td>+4.25%</td><td>—</td><td>AMD封测合作伙伴，玻璃基板先进封装布局</td></tr><tr><td>天孚通信 300394</td><td>341.97</td><td>+5.13%</td><td>172x</td><td>国内FAU龙头，战略卡位玻璃基光互连</td></tr><tr><td>光迅科技 002281</td><td>261.46</td><td>-1.84%</td><td>—</td><td>光模块+光器件，今日逆势下跌</td></tr></tbody></table></div>
+<h3>风险事实</h3>
+<ul><li>GlassBridge目前仅样品阶段，量产预计1-2年</li><li>康宁独家离子交换工艺壁垒极高，国产替代良率爬坡可能超预期</li><li>沃格光电亏损（PE -208x）、彩虹股份（PE 851x）——纯题材属性强</li><li>板块今日集体爆发（6/25），属于"新闻落地次日"情绪高点</li></ul>
+<h3>输出</h3>
+<ul><li>产业链传导图（SVG可视化）</li><li>完整serenity-alpha分析（9个章节）</li></ul>
+<hr>
+<h2>用户重要反馈：只讲事实，不说怎么做（2026-06-25）</h2>
+<p><strong>反馈内容：</strong> "如果我卖了天承科技就大亏了，所以只能让你讲事实，不能说该怎么做"</p>
+<p><strong>含义：</strong></p>
+<ol><li>用户曾因AI的操作建议而错过盈利机会（天承科技）</li><li>从此铁律：AI只提供客观事实、数据、逻辑分析，不输出任何操作建议</li><li>禁止：买入/卖出/持有/减仓/止损/观望/建议/可以买/不买/仓位等指令性语言</li><li>允许：现价、涨跌幅、PE、换手率、主力流向、产业链位置、技术壁垒、风险清单</li></ol>
+<p><strong>已在 <code>~/.workbuddy/MEMORY.md</code> 新增「回复风格铁律」章节，优先级最高。</strong></p>
+<hr>
+<h2>铁律补充：反向观点强制搭配（2026-06-25）</h2>
+<p><strong>用户反馈：</strong> "如果你忍不住，再告诉怎么做，还要告诉反过来怎么看"</p>
+<p><strong>新增规则：</strong> 如果输出中不慎包含操作建议，必须同时搭配等权重的反向逻辑。强制平衡，防止单向诱导。已更新至 <code>~/.workbuddy/MEMORY.md</code>。</p></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

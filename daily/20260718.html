@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>题材导图 | 睿哥</title>
+<title>收盘复盘 2026-07-18 · 睿哥 A股短线日报</title>
 <style>
 :root{
   --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
@@ -83,6 +83,17 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
 </style>
 </head>
 <body>
-<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html" class="active">🕸️ 题材导图</a></div><div class="hero"><h1>🕸️ 题材导图</h1><div class="sub">行业→主题域→个股 涨停题材拓扑 · 每日 17:05 自动归档</div></div><section><h2>🗂️ 历史记录<span class="tag">共 15 期</span></h2><div class="list"><a href="./20260924.html">2026-09-24 周四</a><a href="./20260923.html">2026-09-23 周三</a><a href="./20260922.html">2026-09-22 周二</a><a href="./20260921.html">2026-09-21 周一</a><a href="./20260918.html">2026-09-18 周五</a><a href="./20260917.html">2026-09-17 周四</a><a href="./20260916.html">2026-09-16 周三</a><a href="./20260915.html">2026-09-15 周二</a><a href="./20260914.html">2026-09-14 周一</a><a href="./20260911.html">2026-09-11 周五</a><a href="./20260910.html">2026-09-10 周四</a><a href="./20260909.html">2026-09-09 周三</a><a href="./20260908.html">2026-09-08 周二</a><a href="./20260907.html">2026-09-07 周一</a><a href="./20260904.html">2026-09-04 周五</a></div></section><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-07-18 周六 · 源文件 2026-07-18.md</div></div><div class="doc"><h2>自动化任务MCP检查</h2>
+<h3>背景</h3>
+<p>用户反馈"MCP有修改"，要求检查7个自动化任务是否有问题。</p>
+<h3>检查结果</h3>
+<h4>MCP连通性测试</h4>
+<div class="tbl"><table><thead><tr><th>MCP</th><th>来源</th><th>状态</th><th>测试结果</th></tr></thead><tbody><tr><td>tdx-connector</td><td>connector机制（非mcp.json）</td><td>connected</td><td>✅ 正常返回创业板指行情</td></tr><tr><td>tdx-finance</td><td>mcp.json配置</td><td>配置存在</td><td>❌ Access denied</td></tr></tbody></table></div>
+<h4>7个自动化任务逐一检查</h4>
+<div class="tbl"><table><thead><tr><th>#</th><th>任务名</th><th>调度</th><th>MCP引用</th><th>脚本/目录</th><th>结论</th></tr></thead><tbody><tr><td>1</td><td>涨停次日预测-17:00全流水线</td><td>工作日17:00</td><td>tdx-connector ✅</td><td>全部存在 ✅</td><td>无问题</td></tr><tr><td>2</td><td>9:25竞价打板扫描</td><td>工作日9:25</td><td>tdx-connector ✅</td><td>全部存在 ✅</td><td>无问题</td></tr><tr><td>3</td><td>早盘大盘分析报告(9:45)</td><td>工作日9:50</td><td>tdx-connector ✅</td><td>全部存在 ✅</td><td>无问题</td></tr><tr><td>4</td><td>每周五收盘后生成周报</td><td>周五23:00</td><td>无MCP</td><td>全部存在 ✅</td><td>无问题</td></tr><tr><td>5</td><td>创业板/科创板盘中预判版(10:35)</td><td>工作日10:35</td><td>tdx-connector ✅ + a-share-board-analysis Skill ✅</td><td>全部存在 ✅</td><td>无问题</td></tr><tr><td>6</td><td>创业板/科创板14:55套利日报(v1.4)</td><td>工作日14:43</td><td>tdx-connector ✅ + a-share-board-analysis Skill ✅</td><td>全部存在 ✅</td><td>无问题</td></tr><tr><td>7</td><td>涨停预测-每月重训练模型</td><td>周五21:30</td><td>无MCP</td><td>全部存在 ✅</td><td>无问题</td></tr></tbody></table></div>
+<h3>结论</h3>
+<ol><li><strong>7个自动化任务全部正常</strong>，引用的tdx-connector MCP可正常调用</li><li><strong>mcp.json里的tdx-finance有问题</strong>（Access denied），但自动化任务没有引用它，不影响运行</li><li>tdx-connector通过connector机制连接（非mcp.json），与tdx-finance是两个独立通道</li><li>用户记忆中"首选tdx-finance MCP"的描述与实际不符——tdx-finance当前不可用，实际可用的是tdx-connector</li></ol>
+<h3>已处理</h3>
+<ul><li>已从 mcp.json 删除 tdx-finance 条目（Access denied，不可用，tdx-connector已覆盖所有需求）</li><li>mcp.json 现为空 mcpServers，tdx-connector 通过 connector 机制独立连接，不受影响</li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
 </body>
 </html>

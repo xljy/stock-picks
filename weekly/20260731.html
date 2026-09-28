@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每周复盘 2026-07-31 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📅 每周复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📅 每周复盘</h1><div class="sub">2026-07-31 周五 · 源文件 2026-W31.md</div></div><div class="doc"><p><strong>日期范围</strong>：2026-07-27（周一）至 2026-07-31（周五）<br><strong>有效交易日</strong>：5天（7/27、7/28、7/29、7/30、7/31）<br><strong>日记记录</strong>：7/29（ML预测盘中决策框架+承接扫描器）、7/31（涨停次日开盘位置统计+买入价技能升级）。7/27、7/28、7/30无日记（覆盖率40%）。</p>
+<hr>
+<h2>一、本周市场概览</h2>
+<h3>主要指数涨跌（7/24上周五收盘 → 7/31本周五收盘）</h3>
+<div class="tbl"><table><thead><tr><th>指数</th><th>7/24收盘</th><th>7/31收盘</th><th>本周涨跌</th><th>日均成交</th></tr></thead><tbody><tr><td>上证指数</td><td>3814.20</td><td>3832.26</td><td><strong>+0.47%</strong></td><td>1.07万亿</td></tr><tr><td>深证成指</td><td>13774.68</td><td>13578.93</td><td><strong>-1.42%</strong></td><td>1.18万亿</td></tr><tr><td>创业板指</td><td>3480.87</td><td>3343.96</td><td><strong>-3.93%</strong></td><td>0.57万亿</td></tr></tbody></table></div>
+<h3>日内走势节奏</h3>
+<ul><li><strong>周一(7/27)</strong>：全线大涨。上证+1.15%（3858.25），创业板+3.16%（3590.79），深证+2.71%。上涨2800家/下跌104家，普反格局。承接上周W30反弹惯性。</li><li><strong>周二(7/28)</strong>：<strong>暴跌吞没</strong>。上证-1.16%（3813.31），创业板-7.35%（3327.03），深证-4.52%（13509.68）。周一涨幅全部抹杀并创新低。创业板单日-7.35%为W29周五（-7.15%）后第二大单日跌幅。</li><li><strong>周三(7/29)</strong>：超跌反弹。上证+0.40%，创业板+1.55%，深证+1.10%。缩量反弹，成交额未显著放大。</li><li><strong>周四(7/30)</strong>：<strong>二次杀跌</strong>。上证-0.62%（3804.69），创业板-3.97%（3244.62），深证-2.73%（13285.80）。创业板盘中最低3158.14，为本轮调整绝对新低（从W26高点3694.90算起累计-14.5%）。</li><li><strong>周五(7/31)</strong>：全线反弹。上证+0.72%（3832.26），创业板+3.06%（3343.96），深证+2.21%（13578.93）。上涨1886/下跌392，成交额全周最高（上证1.19万亿）。</li></ul>
+<h3>关键特征</h3>
+<ol><li><strong>巨幅震荡周</strong>：创业板周内振幅达12.1%（周一高点3592.10→周四低点3158.14），但全周仅收跌-3.93%。单日交替大涨大跌（+3.16%/-7.35%/+1.55%/-3.97%/+3.06%），多空双方激烈搏杀。</li><li><strong>上证与创业板分化加剧</strong>：上证全周微涨+0.47%，创业板全周-3.93%，差距达4.4个百分点。大盘蓝筹抗跌，成长股持续承压。</li><li><strong>创业板成交逐日放量</strong>：0.48→0.52→0.57→0.60→0.67万亿，周五放量反弹。但对比W29周五暴跌日0.63万亿，放量幅度有限。</li><li><strong>连续四周下跌后的震荡筑底尝试</strong>：W28（-4.41%）→W29（-10.76%）→W30（+1.52%反弹但无日记）→W31（-3.93%巨幅震荡）。W31跌幅收窄但波动加剧，呈"跌势放缓、多空分歧加大"特征。</li></ol>
+<h3>情绪周期定位</h3>
+<p>W29恐慌加速→W30超跌反弹（无记录）→W31<strong>恐慌后震荡分歧阶段</strong>。周一普反被周二暴跌一日吞没，说明市场仍未脱离恐慌阴影；周四创新低3158.14后周五反弹+3.06%，有一定超跌修复特征，但收盘3343.96仍远低于周初水平。情绪处于"冰点后的反复试探"——既不像W29那样单边恐慌，也未形成可持续的修复趋势。</p>
+<hr>
+<h2>二、本周思维方法进展</h2>
+<ol><li><strong>ML预测数据从回测到盘中决策的转化框架</strong>：</li></ol>
+<p>7/29日记将74个xlsx历史涨停次日ML预测数据（半年历史，N≈252只/日）转化为盘中观察池。建立三层架构：①盘前跑脚本得观察池→ML融合概率/评级做优先级过滤；②盘中ML分是"该不该关注"的过滤器，不是"何时买"的触发器，买入时机看实时价格行为；③3日活跃窗口退出机制。<strong>首次将ML预测管线与实盘决策流程显式对接</strong>。</p>
+<ol><li><strong>6维承接形态量化评分系统</strong>：</li></ol>
+<p>7/29日记实现intraday_scan.py，对252只候选票做0-100分承接评分：VWAP上方(+25)、量比≥1.5(+20)、涨跌幅-3%~+7%(+20)、开盘不崩(+10)、板块联动(+15)、维持日内高位(+10)。午间实盘跑通，命中30只。<strong>首次将"承接形态"从定性描述升级为可量化、可复现的评分系统</strong>。</p>
+<ol><li><strong>大样本统计验证直觉假设并发现"视角依赖"</strong>：</li></ol>
+<p>7/31日记对N=5730首板次日样本做开盘位置vs看涨概率分析。发现开盘越高收盘越强（动量效应），但<strong>两种视角结论相反</strong>：持仓视角高开=盈利（6%+开盘88%~93%收涨）；买入视角低开/平开(-3%~+2%)盘中收涨概率更高(47~56%)，高开≥10%仅18%盘中收涨。<strong>首次在自有数据上验证"同一数据因视角不同得出相反结论"的现象</strong>。</p>
+<ol><li><strong>数据工程教训：T+1滞后数据的窗口边界</strong>：</li></ol>
+<p>7/29日记修复观察池窗口BUG——xlsx库有T+1数据滞后（今天0729无xlsx，回退到0728，但<code>&lt;today</code>严格小于把0728自身排除）。修复为<code>&lt;=today</code>。<strong>记录了数据管线中滞后处理的边界陷阱</strong>。</p>
+<hr>
+<h2>三、仍存在的主要盲区</h2>
+<ol><li><strong>日记覆盖率连续第四周停留在40%</strong>：5个交易日仅2天有记录。7/27周一暴涨、7/28周二暴跌（创业板-7.35%）、7/30周四创新低——三个关键日均无日记。特别是7/28单日-7.35%的暴跌日无任何记录，缺失了对极端行情的即时复盘。"每日强制写日记"建议从W29提出至今未执行。</li></ol>
+<ol><li><strong>W30整周数据断档</strong>：7/20-7/24五个交易日零日记（W30周报已跳过）。从K线数据看W30是反弹周（上证+1.33%、创业板+1.52%），但反弹的逻辑、板块主线、情绪修复过程全部无记录。这导致W31的分析缺乏W30的连续性基础。</li></ol>
+<ol><li><strong>工具建设多于交易实践</strong>：本周两篇日记全部是工具/方法建设（intraday_scan.py、intraday_watchlist.py、analyze_zt_full.py、技能升级），没有一笔实际选股或持仓操作的记录。工具是否在实盘中有效、命中率和假阳性率如何，均未验证。</li></ol>
+<ol><li><strong>极端波动下工具适用性未验证</strong>：周二创业板-7.35%、周四-3.97%，承接扫描器的6维评分在此类环境下是否有效？VWAP上方+25分在暴跌日是否反而筛选出"假承接"标的？这些问题在工具上线后未经历实盘极端环境检验。</li></ol>
+<hr>
+<h2>四、下周关注方向</h2>
+<ul><li><strong>创业板3158支撑有效性</strong>：周四盘中最低3158.14为本轮绝对新低，周五反弹收3343.96。若下周初不再击穿3158，则可能形成双底结构；若击穿，则进入更深恐慌区间。</li><li><strong>成交额趋势延续性</strong>：创业板全周逐日放量（0.48→0.67万亿），周五放量反弹。下周若维持0.6万亿以上成交，反弹有一定资金支撑；若缩量回落，则仍是下跌中继。</li><li><strong>上证与创业板分化走向</strong>：本周上证+0.47% vs 创业板-3.93%，4.4个百分点差距。关注分化是收敛（创业板补涨）还是扩大（创业板补跌）。</li><li><strong>承接扫描器实盘命中验证</strong>：intraday_scan.py已接入9:55自动化，下周一可首次在完整交易日验证。关注命中票的后续表现（T+1涨跌）以校准评分权重。</li><li><strong>涨停次日开盘位置统计的实战应用</strong>：N=5730样本已证明低开/平开(-3%~+2%)买入视角盘中收涨概率更高(47~56%)。下周可对照实盘涨停票的次日开盘位置做前瞻验证。</li></ul>
+<hr>
+<h2>五、改进建议</h2>
+<ol><li><strong>日记门槛降至"3行硬底线"</strong>：连续四周覆盖率40%，"每日完整日记"目标不现实。建议降为硬底线3行：①三大指数涨跌幅+涨跌家数+成交额；②今日板块强度Top3；③一句话状态描述。即使无操作无选股也必须记录，总字数不超过100字。先解决"有没有"再解决"好不好"。</li></ol>
+<ol><li><strong>承接扫描器上线后强制跟踪命中票T+1表现</strong>：intraday_scan.py已接入自动化但无反馈闭环。建议每次扫描后，将命中票列表存档，次日收盘后回查涨跌幅，按周统计命中率和平均收益。至少跑2周数据后再调评分权重，避免过早优化。</li></ol>
+<ol><li><strong>补录W30关键数据填补断档</strong>：W30（7/20-7/24）整周无日记，但K线数据已有。建议补录W30的三大指数日涨跌、成交额、当日板块强度，至少让周报的市场概览连续不断档。可一次性从tdx-connector拉取补录。</li></ol></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

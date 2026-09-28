@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-07-15 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-07-15 周三 · 源文件 2026-07-15.md</div></div><div class="doc"><h2>托伦斯（301583）卡脖子可能性与成长性分析</h2>
+<p><strong>数据基准日</strong>：2026-07-14收盘</p>
+<h3>关键数据</h3>
+<ul><li>最新价：179.03元（-19.28%），总市值332亿，PE(TTM) 567倍</li><li>上市3天K线：7/10收216.70(+858%) → 7/13收221.80 → 7/14收179.03(-19.28%)</li><li>财务：2023-2025营收CAGR 57.69%，但2025增收不增利（营收+18%，净利-7.8%）</li><li>毛利率连续3年低于行业均值3-7个百分点（2025: 27.14% vs 行业32.66%）</li><li>Q1 2026经营现金流-7555万（负）</li><li>客户集中度：前五大客户占比92.6%（北方华创+中微为主）</li></ul>
+<h3>核心判断</h3>
+<ol><li><strong>卡脖子属性中等</strong>：所处机械金属件是零部件里国产化率最高的品类，7层真空钎焊有壁垒但非全球唯一；真正硬卡脖子的射频电源/MFC/静电卡盘它不碰</li><li><strong>成长性赛道确定但质量恶化</strong>：营收高增长但利润掉头、毛利率回落、现金流为负</li><li><strong>估值极端</strong>：567倍PE透支3-5年增长预期</li><li>毛利率低于行业均值是核心矛盾点——如果技术真的不可替代，毛利率不该比同行低5个点</li></ol>
+<h2>Serenity框架再分析：三高问题（高股价/高估值/高预期）</h2>
+<p><strong>数据基准日</strong>：2026-07-14收盘</p>
+<h3>可比公司对比（核心发现）</h3>
+<div class="tbl"><table><thead><tr><th>公司</th><th>市值</th><th>PE(TTM)</th><th>PB</th><th>业务</th></tr></thead><tbody><tr><td>托伦斯(301583)</td><td>332亿</td><td>567x</td><td>17.9x</td><td>半导体设备精密金属件</td></tr><tr><td>先锋精科(688605)</td><td>194亿</td><td>113x</td><td>11.8x</td><td>刻蚀/沉积设备关键零部件</td></tr><tr><td>富创精密(688409)</td><td>769亿</td><td>1075x</td><td>17.0x</td><td>7nm工艺精密件（亏损）</td></tr></tbody></table></div>
+<h3>客户绑定详情</h3>
+<ul><li>北方华创（第一大客户）：2023-2025占比44.06%/52.11%/45.64%，采购额1.26/3.16/3.26亿</li><li>中微公司（第二大客户）：2023-2025占比30.23%/31.40%/35.68%，采购额0.87/1.90/2.36亿</li><li>两家合计：74.29%/83.51%/81.32%</li><li>中微公司同时是股东（B轮+战配，持1.91%）</li><li>应收账款2年涨4倍，两大客户占应收80%+</li></ul>
+<h3>Serenity核心判定</h3>
+<ol><li>需求真：国产替代+设备扩产已体现在营收CAGR 57.69%</li><li>传导断：增收不增利（2025净利-7.8%）、毛利率见顶回落、经营现金流为负</li><li>误分类：市场定价为"硬卡脖子"，实际是国产化率最高的机械金属件品类</li><li>弹性消失：332亿市值已非small shovel，同赛道先锋精科PE仅113x且市值更低</li><li>验证条件：2026中报毛利率回到30%+且经营现金流转正，两条件同时成立才说明传导修复</li></ol>
+<h2>Serenity分析：大普微（301666）+ 鸿仕达（920125）</h2>
+<p><strong>数据基准日</strong>：2026-07-14收盘</p>
+<h3>大普微（301666）——企业级SSD全栈自研第一股</h3>
+<ul><li>发行价46.08，现价543.98（+1080%），市值2373亿，PE 160x</li><li>2022-2025连续亏损（累计亏~18亿），Q1 2026首次盈利（营收13.10亿+340%，净利3.70亿）</li><li>毛利率剧烈波动：2025全年3.51% → Q1 2026 37.56%（依赖NAND现价）</li><li>核心矛盾：全栈自研技术优势被"NAND外购+锁量不锁价"供应链劣势对冲</li><li>同行对比：江波龙PE~15x/毛利率55%+，大普微PE 160x/毛利率37.56%，估值差10倍</li><li>客户：字节/腾讯/阿里/Google/英伟达(testing)/xAI(testing)</li><li>供应链风险：NAND 100%外购（铠侠/SK海力士），前5大供应商&gt;92%</li><li>机构共识2026净利~17亿，即使达成PE仍有140x</li><li>验证条件：中报毛利率&gt;45%且半年利润&gt;8亿</li></ul>
+<h3>鸿仕达（920125）——果链自动化设备商，北交所新股</h3>
+<ul><li>发行价16.57，现价139.86（+744%），市值78.55亿，PE 1381x</li><li>主营：消费电子组装测试设备，客户=立讯/富士康/鹏鼎（苹果代工厂）</li><li>果链收入占比：77%/62%/77%/82%（2022-2025H1），依赖加深</li><li>2025营收6.64亿（+2.42%），增速骤降；Q1 2026净利率仅1.3%</li><li>新能源/泛半导体"两翼"无收入数据，纯叙事</li><li>可比公司博众精工PE~33x/赛腾PE~20x，鸿仕达PE 1381x</li><li>与"卡脖子"无关，市场误分类为"半导体设备概念"</li><li>验证条件：中报营收增速&gt;20%且净利率&gt;8%</li></ul>
+<h3>三家横向对比结论</h3>
+<ul><li>需求真实性：大普微 &gt; 托伦斯 &gt;&gt; 鸿仕达</li><li>卡脖子真实性：大普微(中高) &gt; 托伦斯(中) &gt;&gt; 鸿仕达(无)</li><li>估值不合理程度：鸿仕达 &gt; 托伦斯 &gt; 大普微</li><li>三家共同问题：市场用"半导体卡脖子"统一定价，但实际位置完全不同</li></ul>
+<h2>托伦斯（301583）7/15盘前情绪流分析</h2>
+<p><strong>数据基准日</strong>：2026-07-14收盘（7/15开盘前分析）</p>
+<h3>7/14分时情绪流7阶段</h3>
+<ol><li>9:30-9:35 诱多出逃：210→180，5分钟跌14%，量7.08亿（全天最大）</li><li>9:35-10:00 弱势反弹：180→195→184，量递减</li><li>10:00-10:05 加速破位：184→170，量2.33亿放量，180心理关口击穿</li><li>10:05-11:00 阴跌寻底：180→163.13，底部量能放大</li><li>11:00-11:25 技术反弹：163→177，缩量</li><li>13:05-13:35 午后脉冲：178→196，量0.70亿（午后最大），FOMO陷阱</li><li>13:35-15:00 脉冲失败：196→172→179，收盘低于VWAP(182.6)</li></ol>
+<h3>关键数据</h3>
+<ul><li>三日量能递减：59→38→33亿</li><li>内盘95782 &gt; 外盘84306（卖压重）</li><li>委比-5.32%</li><li>量比0.86（低于均量）</li><li>VWAP 182.61，收盘179.03在VWAP下方</li></ul>
+<h3>关键价位</h3>
+<ul><li>163.13（7/14低点）= 恐慌地板</li><li>170 = 心理整数关</li><li>179.03 = 前收/平开线</li><li>182.61 = VWAP</li><li>185-190 = 7/14午后密集成交区</li><li>196 = 7/14午后高点/套牢天花板</li></ul>
+<h3>7/15三种场景</h3>
+<ul><li>场景A（50%）：低开续杀，开&lt;170，测163，破则看150-155</li><li>场景B（30%）：低开震荡，168-178开，163-185箱体，量缩至25亿以下</li><li>场景C（20%）：超跌反弹，开&gt;175，摸185-190，196极难突破（套牢盘压力）</li></ul>
+<h3>核心判断</h3>
+<ul><li>7/14午后196的脉冲是出货不是建仓，今天185-196区间是套牢抛压区</li><li>量能是终极裁判：缩量=阴跌中继，放量破163=恐慌延续，放量站上185=反弹启动</li></ul>
+<h2>修正：SK海力士ADR+27%外部催化剂</h2>
+<p><strong>时间</strong>：2026-07-15 08:22</p>
+<h3>事件</h3>
+<ul><li>7/14美东：SK海力士ADR涨27%，美光+5%，闪迪+5%，ADR溢价韩国本地股51%</li><li>7/15韩国：KOSPI开涨6%+，SK海力士+9%+，触发SIDECAR暂停程序化买盘</li><li>SK海力士Q1：营收52.6万亿韩元，营业利润率72%，HBM市占率60%+</li></ul>
+<h3>对三只票的影响</h3>
+<ul><li><strong>大普微(301666)</strong>：直接受益。SK海力士是其NAND供应商，存储全线涨价验证需求。但毛利率能否从37.56%→45%+的核心矛盾不变</li><li><strong>托伦斯(301583)</strong>：间接情绪受益。7/15场景概率修正：场景A(低开续杀)从50%降至25%，场景C(超跌反弹)从20%升至45%。但196套牢区+毛利率问题不因催化剂解决</li><li><strong>鸿仕达(920125)</strong>：无关。果链设备商与存储半导体无传导链</li></ul>
+<h2>托伦斯7/14吸筹信号分析（1分钟K线240根）</h2>
+<p><strong>数据</strong>：2026-07-14全天240根1分钟K线逐根拆解</p>
+<h3>6个吸筹信号</h3>
+<ol><li><strong>早盘Selling Climax</strong>：09:31单分钟2.42亿（占全天7.4%），210→199但未继续破位</li><li><strong>163.13底部一次性测试</strong>：11:05触163.13，0.30亿量能，7分钟V型反转到170，4小时15分钟不再回探</li><li><strong>午后极端缩量=Supply Test</strong>：13:38-14:30，52根1分钟K线，单分钟0.012-0.054亿，价格180-188横盘</li><li><strong>尾盘急跌后放量回收</strong>：14:43-14:46跌到172（0.147亿），14:47-15:00拉回179（0.224亿午后最大量）</li><li><strong>三天量能递减</strong>：59→38→33亿，卖压衰竭趋势</li><li><strong>收盘在低点上方9.7%</strong>：179.03 vs 163.13，有托底但不足以回VWAP</li></ol>
+<h3>4个反方信号</h3>
+<ol><li>85%时间在VWAP下方（203/240分钟）</li><li>收盘179 &lt; VWAP 182.61</li><li>13:33冲196仅0.169亿/分钟 vs 早盘2.42亿（1/14量比）</li><li>196→179回落17元，午后反弹失败</li></ol>
+<h3>判定</h3>
+<ul><li>弱吸筹，不是强吸筹：底部有承接但全天控盘权在卖方</li><li>确认条件（7/15）：开盘&gt;182.61 + 163不破 + 10:00前站上185 + 全天&gt;35亿收阳</li><li>若高开冲不过185回落，或低开破163，则7/14"吸筹"是下跌中继假信号</li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

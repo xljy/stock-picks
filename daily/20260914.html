@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-09-14 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-09-14 周一 · 源文件 2026-09-14.md</div></div><div class="doc"><h2>自动化模型批量切换（DeepSeek 优惠期）</h2>
+<p><strong>任务</strong>：把所有定时任务的模型切到 Deepseek-V4.1-Flash（优惠价 credits x0.03），并约定 9月24日换回。</p>
+<p><strong>执行结果</strong>：</p>
+<ul><li>13 个有效自动化全部切换 <code>modelId = deepseek-v4.1-flash</code>（切换前分布在 hy4-preview/fast-model/balanced-model/custom-local:deepseek-v4-pro）</li><li>新建一次性任务 <code>ee88c0c9-94f1-49ca-bddc-a76e619268ec</code>（2026-09-24 09:00），届时按映射表逐个恢复原模型</li></ul>
+<p><strong>关键技术发现</strong>：</p>
+<ul><li><code>automation_update</code> 工具 schema 未文档化 <code>modelId</code> 参数，但 <code>additionalProperties: true</code>，实测<strong>接受 modelId 字段并成功写入</strong>（已用 workbuddy.db 校验）</li><li>自动化主存储：<code>C:\Users\Administrator\.workbuddy\workbuddy.db</code> → <code>automations</code> 表，含 <code>model_id</code> / <code>model_is_thinking</code> 列；<code>automation-backups/*.json</code> 是备份快照</li><li>模型目录：<code>C:\Users\Administrator\.workbuddy\cache\conversation-product-spill\acc-product-config-v3-*.json</code> 的 <code>models[]</code> 数组，含 id/name/credits</li><li>定价速查（credits 系数）：hy4-preview 0.00（免费）/ hy3 0.00 / deepseek-v4.1-flash 0.03 / glm-5.3-flash 0.06 / deepseek-v4-flash 0.17 / fast-model 0.21 / balanced-model 0.65</li></ul>
+<p><strong>原模型映射表</strong>（9月24日恢复用）：</p>
+<div class="tbl"><table><thead><tr><th>automation id</th><th>原模型</th></tr></thead><tbody><tr><td>automation-1780916234489</td><td>balanced-model</td></tr><tr><td>automation-1782290369730</td><td>hy4-preview</td></tr><tr><td>automation-1782372352347</td><td>fast-model</td></tr><tr><td>automation-1782429883308</td><td>hy4-preview</td></tr><tr><td>automation-1782910217402</td><td>fast-model</td></tr><tr><td>automation-1784341193378</td><td>hy4-preview</td></tr><tr><td>automation-1784351279196</td><td>hy4-preview</td></tr><tr><td>automation-1784543119720</td><td>hy4-preview</td></tr><tr><td>579b12dd-39c8-40bd-8bf6-117b79232308</td><td>hy4-preview</td></tr><tr><td>b78790c3-44ba-476f-b308-dfc8f192f253</td><td>hy4-preview</td></tr><tr><td>a6da418f-6340-405e-8621-ec065d4541b8</td><td>hy4-preview</td></tr><tr><td>66ae1a1c-0d0c-4b81-93ca-920cf1cbdba7</td><td>hy4-preview</td></tr><tr><td>54f476b7-ea18-49e2-9b4c-c8922dbd1b17</td><td>custom-local:deepseek-v4-pro</td></tr></tbody></table></div>
+<hr>
+<h1>2026-09-14（周一）收盘复盘</h1>
+<blockquote><p>基准日：2026-09-14（交易日已用实盘行情时间戳核验：腾讯接口返回 20260914153039/150003）。<br>数据源标注：指数/个股行情 = 腾讯 qt.gtimg.cn + 东方财富 push2delay/push2ex（实盘接口）；涨停原因与催化 = WebSearch 媒体报道（证券时报/新华财经/央广财经，搜索来源）。<br>tdx-connector MCP 本会话不可用（工具未加载），已走兜底链。</p></blockquote>
+<h2>一、当日市场客观数据</h2>
+<h3>指数（收盘）</h3>
+<div class="tbl"><table><thead><tr><th>指数</th><th>收盘</th><th>涨跌幅</th><th>成交额</th></tr></thead><tbody><tr><td>上证指数</td><td>3885.33</td><td><strong>-0.07%</strong></td><td>7793亿</td></tr><tr><td>深证成指</td><td>13384.57</td><td><strong>-0.64%</strong></td><td>8499亿</td></tr><tr><td>创业板指</td><td>3285.58</td><td><strong>-1.10%</strong></td><td>4007亿</td></tr><tr><td>科创50</td><td>1528.27</td><td><strong>-1.62%</strong></td><td>610亿</td></tr><tr><td>沪深300</td><td>4480.08</td><td>-0.67%</td><td>3987亿</td></tr><tr><td>上证50</td><td>2861.05</td><td>-0.25%</td><td>—</td></tr><tr><td>中证500</td><td>7571.20</td><td>-0.12%</td><td>—</td></tr><tr><td>中证1000</td><td>7468.30</td><td><strong>+0.55%</strong></td><td>—</td></tr><tr><td>国证2000</td><td>9787.25</td><td><strong>+0.84%</strong></td><td>—</td></tr></tbody></table></div>
+<p>两市成交额 <strong>1.63万亿</strong>，较上一交易日缩量 3427亿（媒体口径：年内次低）。盘面形态：低开回升 → 午后跳水 → 低位震荡。</p>
+<h3>涨跌停 / 炸板</h3>
+<ul><li>涨停 <strong>55</strong> 家 ｜ 跌停 <strong>16</strong> 家 ｜ 炸板 <strong>30</strong> 家</li><li><strong>炸板率 35.3%</strong>（30/85），连续第二日 &gt;35%（9/11 为 38.5%）</li><li>跌停股集中于：种植业 3 家（亚盛集团/敦煌种业/新农开发）、旅游及景区 2 家（云南旅游/曲江文旅）、一般零售 2 家（南宁百货/中央商场方向）</li></ul>
+<h3>全市场宽度（沪深A股 5209 只）</h3>
+<ul><li>上涨 <strong>2939</strong> ／ 下跌 <strong>2083</strong> ／ 平盘 187，<strong>上涨占比 56.4%</strong>（媒体口径"超3100只上涨"，差异为是否含北交所）</li><li>分布：涨&gt;7% 64家，涨3~7% 439家，跌-3~-7% 235家</li><li><strong>关键背离</strong>：三大指数全绿，但个股上涨占比 56.4%、中证1000/国证2000 收红 → 当日为"大市值杀跌、中小市值普涨"</li></ul>
+<h3>连板梯队（高度 = 4 板）</h3>
+<div class="tbl"><table><thead><tr><th>高度</th><th>家数</th><th>个股</th></tr></thead><tbody><tr><td>4板</td><td>1</td><td>闽东电力 000993（电力，09:30 封板，炸板2次）</td></tr><tr><td>3板</td><td>3</td><td>中新赛克 002912（计算机设备/网络安全，09:25 一字）、超声电子 000823（元件/PCB，6天4板）、凯盛新能 600876（玻璃玻纤，炸板5次）</td></tr><tr><td>2板</td><td>7</td><td>正和生态、通达股份、中视传媒、双星新材、众泰汽车（5天4板）、三力制药、澳弘电子</td></tr><tr><td>首板</td><td>44</td><td>占 80%</td></tr></tbody></table></div>
+<p>首封时间分布：09:25-10:00 <strong>29家</strong> ｜ 10:00-11:30 16家 ｜ 13:00-14:00 7家 ｜ 14:00-15:00 <strong>3家</strong></p>
+<h3>主线板块（按涨停家数归类，附催化）</h3>
+<ol><li><strong>PCB/覆铜板（元件 6 家）</strong> — 超声电子3板、澳弘电子2板、中京电子、贤丰控股、满坤科技(20CM)、科翔股份(20CM)。催化：算力硬件资金盘中回流 + 覆铜板涨价延续（9/11 建滔积层板/松下/南亚塑胶提价）。行业"印制电路板" +3.18%</li><li><strong>网络安全/数据安全 + AI应用（6 家）</strong> — 中新赛克3板一字、永信至诚20CM、博汇科技20CM、天融信、启明信息、国安股份。VPN +3.58%、横向通用软件 +3.96%</li><li><strong>创新药/CRO/医疗服务（6 家）</strong> — 万邦医药20CM、近岸蛋白20CM、三力制药2板、澳洋健康、津药药业、(精华制药炸板)。催化：中信证券研报——中国CDMO进入"工程师红利+引领创新红利"双核驱动。医疗研发外包 <strong>+5.75%</strong>、CRO +4.56%</li><li><strong>汽车整车/零部件（5 家）</strong> — 山子高科一字、众泰汽车2板、海马汽车、安凯客车、瑞玛精密。催化：9/11 工信部等9部门印发《智能网联新能源汽车产业发展"十五五"规划》，2030年新能源乘用车占70%、商用车占40%</li><li><strong>培育钻石/金刚石散热（4 家）</strong> — 恒盛能源反包、黄河旋风（换手23.7%）、康达新材、贤丰控股。催化：机构研报——金刚石铜凭热导率/成本/热膨胀匹配三优势，2025-2029 全球AI芯片金刚石铜市场 CAGR 237%，空间扩至65亿美元</li><li><strong>MLCC/被动元件（2 家）</strong> — 双星新材2板、康达新材。MLCC 概念 +3.31%</li><li><strong>电力（3 家）</strong> — 闽东电力4板、豫能控股、恒盛能源。催化：算电协同延续</li></ol>
+<h3>跌幅居前</h3>
+<p>种植业与林业、教育、旅游及酒店、兵装重组、中船系、猪肉、粮食、煤炭。<strong>高位人气股大面积跌停</strong>：龙版传媒、新农开发、敦煌种业、南宁百货、红棉股份、集泰股份（2连跌停）。</p>
+<h2>二、情绪周期定位</h2>
+<p><strong>定位：分歧期（高位退潮 + 低位高低切），尚未进入全面退潮。</strong></p>
+<p>支撑"未退潮"的证据：</p>
+<ul><li>"昨日连板"概念 <strong>+4.94%</strong>、"昨日涨停" <strong>+3.74%</strong> → 昨日涨停股今日整体为正收益，接力链条未断</li><li>涨停家数 55 &gt; 上一交易日（9/11）40，数量扩张</li><li>主线为涨价/研报/政策驱动（PCB涨价、金刚石铜研报、智能网联政策、CDMO研报），非纯情绪炒作</li></ul>
+<p>支撑"已现退潮信号"的证据：</p>
+<ul><li>炸板率 35.3%，连续两日 &gt;35%（9/11 38.5%），接力意愿不足</li><li>高度仅 4 板，首板占 80%（数量靠低位补涨堆出，梯队断层）</li><li>高位股反复开板：恒林股份炸9次、澳弘电子炸7次、凯盛新能炸5次</li><li>高位人气股跌停潮（龙版传媒/新农开发/敦煌种业/南宁百货/红棉股份），前日强势的农业与旅游直接反向</li><li>成交额 1.63万亿，缩量 3427亿（年内次低）→ 存量博弈</li></ul>
+<p>结论：属"高潮→分歧"的切换日，资金在做高低切——弃前期高位股（农业/旅游/传媒），转 PCB/MLCC/培育钻石/CRO/汽车等新方向。</p>
+<h2>三、思维方法反思</h2>
+<ol><li><strong>想到的：先看市值分层再判当日体感。</strong> 三大指数全绿（创业板-1.10%、科创50-1.62%），但 56.4% 个股上涨、中证1000/国证2000 收红。若只看三大指数会完全判错方向——今日真实结构是"权重与小盘反向"。</li><li><strong>想到的：涨停家数与情绪高度是两条线。</strong> 55家涨停里 80% 是首板、最高仅4板。数量可以靠低位补涨堆出来，<strong>高度才反映接力意愿</strong>，"涨停变多"最容易误读为情绪转好。</li><li><strong>后视才看清：板块内部首尾分化可以极端。</strong> 桂林旅游（6天5板）仍在涨停池，同板块云南旅游、曲江文旅直接跌停 → 只看"板块涨停数"做合力判断，会漏掉板块内部已经崩掉的一端。</li><li><strong>没想到：跌幅榜前列全是前一日强势方向。</strong> 种植业3家跌停、旅游2家跌停，均为 9/11 的活跃方向。强势板块次日反噬的速度与幅度高于预期，方向切换的滞后成本很高。</li><li><strong>首封时间再次被验证。</strong> 今日 09:25-10:00 封板 29家（占53%），14:00 后仅 3家（5.5%）。与 9/11 统计（9:25前次日涨停率 42.86% vs 14点后 3.41%）同向。</li></ol>
+<h2>四、反方逻辑（与正面逻辑等权重并列）</h2>
+<ul><li>正面：昨日连板 +4.94%、昨日涨停 +3.74%、涨停家数扩张至55家 → 情绪仍在，只是换方向。</li></ul>
+<p><strong>反方：炸板率连续两日 &gt;35% + 高位股跌停潮 + 成交额缩至年内次低 → 是存量资金在低位方向做最后一段补涨，高位跌停不可逆。</strong></p>
+<ul><li>正面：PCB/MLCC/金刚石铜有涨价与研报支撑，属有基本面锚的主线。</li></ul>
+<p><strong>反方：研报驱动（金刚石铜CAGR 237%、CDMO双核）本质是预期定价；当日核心票多为一字/T字（中新赛克、山子高科、博汇科技 09:25 封板）→ 换手极低、筹码未交换，次日承接力量未知。</strong></p>
+<ul><li>正面：小盘普涨（国证2000 +0.84%），个股赚钱效应存在。</li></ul>
+<p><strong>反方：小盘普涨 + 大市值杀跌 + 缩量，是资金从权重撤退、在低位小票做短促接力，指数重心实际下移（沪深300 -0.67%、科创50 -1.62%）。</strong></p>
+<h2>五、当日关键收获（可复用认知）</h2>
+<ol><li><strong>涨停家数扩张 ≠ 情绪转好</strong>：要同时看"首板占比 + 最高板高度"。首板占80%、高度仅4板时，数量扩张更可能是低位补涨堆出来的假象。</li><li><strong>判断当日体感必须先做市值分层</strong>：指数下跌而个股普涨（今日 56.4%）时，上证50/沪深300 与 中证1000/国证2000 的分化才是有效信号，三大指数会失真。</li><li><strong>退潮最先出现在涨幅最大、筹码最松的方向</strong>：今日跌停集中在种植业/旅游（前日强势方向），而非市场平均分布——强势板块的次日反噬是退潮最早的显性信号。</li></ol>
+<hr>
+<h2>TDX 连接问题排查（19:47 用户提问）</h2>
+<p><strong>用户观察</strong>：09-14 09:20:22 TDX 有数据传输，下午又连接问题。</p>
+<p><strong>日志核查结论（workbuddyMainThread + Clash sidecar）</strong>：</p>
+<ul><li><strong>09:20:22</strong>：应用启动 ConnectorService 注入连接器配置；紧接 09:20:23.673→09:20:24.909 MCP-Connect <strong>ok</strong>（598ms，握手+工具枚举完成）→ 即用户看到的"09:20 有数据传输"。</li><li><strong>真正异常在上午 09:25，不是下午</strong>：09:25:48 与 09:25:55 两次 <code>RemoteMcpClient fetch failed (This operation was aborted)</code>、<code>handshake SLOW 6092ms</code>、<code>tools/list SLOW 3602ms</code>。09:25 为竞价扫描高峰，短时并发探针过多导致 abort/超时。全天 tdx-connector 的 fetch failed <strong>仅这 2 次，全在 09:25</strong>。</li><li><strong>下午 TDX 连接层全部正常</strong>：14:43/15:30/15:45/17:00 MCP-Connect 全 ok，0 次 fetch failed。唯一下午异常是 <strong>15:30:47 / 15:30:58 tools/list SLOW（3359ms / 7001ms）</strong>（15:30 为每日收盘复盘运行点）。</li><li><strong>下午的 fetch failed 均属其它连接器</strong>（netdrive 17 次 / genie-baas 9 次），非 TDX。</li></ul>
+<p><strong>Clash 层面（沿用 09-11 根因）</strong>：</p>
+<ul><li>09-14 内核重启时刻：10:13(×4)、10:37(×3)、10:39、<strong>14:46(×1)</strong>。</li><li><strong>prepend 直连规则已生效</strong>：sidecar_latest.log（19:46 起）显示 <code>vip.tdx.com.cn / tdx-live.tdx.com.cn / data.tdx.com.cn</code> 全部 <code>match DomainSuffix(tdx.com.cn) using DIRECT</code>；「⚓️其他流量」当前 = DIRECT。14:46 重启后同样是 DIRECT，未见 TDX 走境外。</li></ul>
+<p><strong>关键路径备忘</strong>：</p>
+<ul><li>Clash 配置：<code>C:\Users\Administrator\AppData\Roaming\io.github.clash-verge-rev.clash-verge-rev\</code>（profiles/robVAXldOzsf.yaml 含 prepend；logs/sidecar/ 为内核连接日志）</li><li>WorkBuddy 主日志：<code>~/.workbuddy/logs/&lt;date&gt;/workbuddyMainThread__*.log</code>（MCP-Connect/SLOW/fetch failed 都在这）</li><li><strong>结论待用户补充</strong>：下午"连接问题"的具体现象（哪个界面/自动化/报错）——日志中下午 TDX 连接层无失败记录。</li></ul>
+<hr>
+<h2>TDX「连续3天不可用」根因诊断（19:55 用户提问）</h2>
+<p><strong>用户观察</strong>：TDX 9/10、9/11、9/14 连续不可用；<code>fetch_zt.py</code> 报 <code>KeyError: 'tdx-connector'</code>；某会话 <code>CODEBUDDY_MCP_CONFIG</code> 只含 connector-proxy/agent-mail/genie-baas，ToolSearch 查 <code>tdx_screener</code> 无匹配。</p>
+<p><strong>实测（09-14 19:5x，本交互会话）——TDX 此刻可用</strong>：</p>
+<ul><li><code>CODEBUDDY_MCP_CONFIG</code> 含 <strong>5</strong> 个服务：connector-proxy / <strong>tdx-connector</strong> / agent-mail / genie-baas / sheetagent</li><li><code>tdx_screener</code> 实测返回 2026-09-14 涨停 <strong>56 条</strong>（涨停原因/连板天数/封成比字段完整）</li><li><code>fetch_zt.py 20260914</code> 跑通 → source=<strong>tdx</strong>，56 只</li><li>工具清单：<strong>tdx-connector 基址=20 工具</strong>（含 tdx_screener/tdx_quotes/tdx_kline）；<strong>connector-proxy 基址=16 内置工具，不含 tdx_screener</strong></li></ul>
+<p><strong>根因（分层）</strong>：</p>
+<ol><li><strong>会话级</strong>：连接器按会话注入。<strong>交互会话有 tdx-connector；定时/自动会话常缺</strong>（今日 15:30 收盘复盘 memory 自记"tdx-connector 本会话不可用（工具未加载）"）。→ MCP 工具未注册（ToolSearch 无匹配）＋ 脚本读 env 取不到 tdx 项。</li><li><strong>脚本级脆弱</strong>：</li><li><code>zt-mindmap/fetch_zt.py</code>：<code>json.loads(env)["mcpServers"]["tdx-connector"]</code> <strong>硬索引、无兜底</strong> → 缺键即 KeyError，被 <code>run_one()</code> 的 except 吞成 <code>[warn] tdx 不可用(...)</code> → 静默降级 akshare。</li><li><code>zt_mcp_client.get_tdx_endpoint()</code>：有 <code>tdx-connector→connector-proxy→tdx-finance</code> 兜底，但 <strong>connector-proxy 基址不含 tdx_screener</strong>，兜底形同虚设（仍失败）。</li><li><strong>每个连接器 Bearer 独立</strong>（tdx=<code>C1AICE5q...</code>、agent-mail=<code>BJanvx...</code>、genie-baas=<code>tBvLjY...</code>）→ 无法用其它连接器重建 tdx 的 token。</li><li><strong>旁证</strong>：09-09 回填降级是 <code>HTTPError: 500 Server Error</code>（连接器/服务端 500），与"缺键 KeyError"是两种不同成因。</li></ol>
+<p><strong>数据落盘证据（17:00 流水线降级）</strong>：</p>
+<ul><li><code>zt_tdx_data_20260914.json</code>：meta.source=<strong>akshare</strong>（total 55），mtime 09-14 17:01</li><li><code>zt-mindmap/data/zt_20260910.json</code>：<strong>akshare(降级)</strong> 35，09-10 17:09</li><li><code>zt-mindmap/data/zt_20260911.json</code>：<strong>akshare(降级)</strong> 40，09-11 17:06（<strong>同晚 21:11 复跑成功=tdx_screener</strong>）</li><li><code>zt_925_*_20260914.json</code>：source=<strong>tdx_screener</strong>（15:46）→ 同日不同会话结果相反，印证"会话级"差异</li></ul>
+<p><strong>hash 稳定性</strong>：tdx 路径 <code>424fab1914eccbe13e2bbe77451cb766</code> 跨 08-31~09-14 稳定，<strong>只有端口随会话变</strong>（10056/12786/10867/...）；另 <code>7df0c7d48f385def0bad...</code> 仅在 08-31~09-09 出现、09-10 起消失。</p>
+<p><strong>修复方向</strong>：① 脚本层去掉假兜底，缺键时<strong>明确硬报错</strong>并打印 resolved URL，禁止静默降级；② 更根本：17:00 流水线改为<strong>由 Agent 直接调 tdx_screener 取数写盘</strong>，彻底摆脱 env 依赖；③ 应用层确保定时会话注入/信任 tdx-connector。</p>
+<h3>✅ 已实施修复（用户选「脚本去掉假兜底+硬报错」，2026-09-14 20:00）</h3>
+<p>已备份原件（<code>.bak-20260914_195928</code>），改 3 个文件：</p>
+<div class="tbl"><table><thead><tr><th>文件</th><th>改动</th></tr></thead><tbody><tr><td><code>2026-05-30-20-32-15/zt_mcp_client.py</code></td><td><code>get_tdx_endpoint()</code> <strong>删除</strong> <code>connector-proxy</code>/<code>tdx-finance</code> 假兜底，只认 <code>tdx-connector</code>；缺键抛 RuntimeError（列出现有键）。新增 <code>TDX_MCP_URL</code>/<code>TDX_MCP_TOKEN</code> 应急覆盖</td></tr><tr><td><code>zt-mindmap/fetch_zt.py</code></td><td>新增 <code>TdxConfigError</code>/<code>TdxUnavailableError</code>；<code>load_mcp_cfg()</code> 改严格解析（不再硬索引 KeyError）；<code>run_one()</code> <strong>默认硬失败</strong>，仅 <code>--allow-degrade</code> 才落 akshare 并在产物写 <code>degraded=true</code>+<code>degrade_reason</code>；<code>main()</code> 捕获后 <code>sys.exit(2)</code></td></tr><tr><td><code>zt_pipeline_fetch.py</code></td><td><code>__main__</code> 捕获 RuntimeError → <code>[FATAL]</code>+<code>sys.exit(2)</code>，不再裸栈</td></tr></tbody></table></div>
+<p><strong>验证</strong>：语法 OK；正常路径 <code>fetch_zt.py 20260914</code>→<code>source=tdx</code> 56只；模拟缺 tdx-connector→<code>exit=2</code>+明确 FATAL，<strong>不再静默降级</strong>；<code>get_tdx_endpoint()</code> 缺键抛清晰 RuntimeError。</p>
+<p><strong>效果</strong>：定时会话再缺连接器时，流水线将<strong>显式失败</strong>（非零退出码），而非落一份 akshare 冒充实盘的口径——避免 09-10/11/14 那种「看起来成功、实为降级」的静默污染。根本解仍需保证定时会话注入 tdx-connector（或流水线改由 Agent 直调取数）。</p></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

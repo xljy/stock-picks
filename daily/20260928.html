@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-09-28 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-09-28 周一 · 源文件 2026-09-28.md</div></div><div class="doc"><h2>暂停的定时任务改走非TDX数据源 → 全部恢复</h2>
+<p><strong>背景</strong>：3 个暂停任务的数据层重度依赖通达信 MCP（tdx_screener / tdx_quotes / tdx_kline），<br>而 TDX 在定时会话里经常缺失（连接器按会话注入），导致反复降级/失败。<br>用户要求：改成不走 TDX，没问题就取消暂停。</p>
+<p><strong>处理对象（3 个）</strong>：</p>
+<div class="tbl"><table><thead><tr><th>id</th><th>名称</th><th>原暂停原因（推定）</th></tr></thead><tbody><tr><td>579b12dd-39c8-40bd-8bf6-117b79232308</td><td>9:25竞价扫描-收盘反查（15:45）</td><td>仅第3步用 tdx_quotes</td></tr><tr><td>automation-1782372352347</td><td>创业板/科创板盘中预判版（10:35）</td><td>全流程重度 TDX</td></tr><tr><td>automation-1782290369730</td><td>创业板/科创板14:55套利日报（14:45）</td><td>全流程重度 TDX</td></tr></tbody></table></div>
+<h3>一、非TDX数据源实测矩阵（2026-09-28 本机实测）</h3>
+<div class="tbl"><table><thead><tr><th>能力</th><th>可用源</th><th>状态</th></tr></thead><tbody><tr><td>指数/个股实时行情（含量比/涨停价/买卖5档/换手）</td><td><strong>腾讯 qt.gtimg.cn</strong></td><td>✅ 0.04s，已有脚本 <code>zt_tencent_src.py</code></td></tr><tr><td>日K（前复权）</td><td><strong>腾讯 ifzq.gtimg.cn</strong> <code>/appstock/app/fqkline/get</code></td><td>✅ 0.1s</td></tr><tr><td>分钟K（5m/15m/30m/60m）</td><td><strong>腾讯 ifzq.gtimg.cn</strong> <code>/appstock/app/kline/mkline</code></td><td>✅ 0.2s ⚠️<code>web.ifzq</code> 会 302 到 <code>web3.ifzq</code>（DNS 解析失败），<strong>必须用裸 <code>ifzq.gtimg.cn</code></strong></td></tr><tr><td>全市场快照</td><td><strong>新浪</strong> <code>ak.stock_zh_a_spot()</code></td><td>✅ ⚠️<code>代码</code>列带前缀(sz300750)，需 <code>[-6:]</code> 归一化</td></tr><tr><td>涨停/炸板/跌停/昨日涨停池</td><td><strong>东财 push2ex</strong> <code>ak.stock_zt_pool_em / _zbgc_em / _dtgc_em / _previous_em</code></td><td>✅ 0.2-0.4s</td></tr><tr><td>日K（备选）</td><td><strong>东财 push2his</strong> <code>ak.stock_zh_a_hist</code></td><td>✅ 0.2s</td></tr><tr><td>个股资金净额</td><td><strong>同花顺</strong> <code>ak.stock_fund_flow_individual(symbol="即时")</code></td><td>✅ 9.1s/5210只 ⚠️<strong>口径=全单净额，≠ 通达信主力净额</strong></td></tr><tr><td>行业板块排行（含净流入/上涨家数/领涨股）</td><td><strong>同花顺</strong> <code>ak.stock_board_industry_summary_ths</code></td><td>✅</td></tr><tr><td>行业板块（备选）</td><td><strong>新浪</strong> <code>ak.stock_sector_spot</code></td><td>✅ 49行</td></tr><tr><td>~~东财 push2 clist / spot / 资金流排行~~</td><td><code>push2.eastmoney.com</code> / <code>push2delay</code></td><td>❌ <strong>RemoteDisconnected，全线被拒</strong></td></tr><tr><td>~~问财 pywencai~~</td><td>已安装但 <code>AttributeError NoneType.get</code></td><td>❌ 不可用</td></tr><tr><td>~~同花顺主力净额~~</td><td><code>ak.stock_main_fund_flow</code></td><td>❌ ConnectionError</td></tr><tr><td>~~5分钟K（东财）~~</td><td><code>ak.stock_zh_a_hist_min_em</code></td><td>❌ push2 被拒</td></tr></tbody></table></div>
+<p><strong>结论</strong>：行情/K线走腾讯，快照走新浪，资金/板块走同花顺，情绪池走东财 push2ex。<strong>绕开 push2 与问财。</strong></p>
+<h3>二、新建统一数据层脚本</h3>
+<p><strong><code>C:\Users\Administrator\WorkBuddy\2026-05-30-20-32-15\nontdx_src.py</code></strong>（非TDX数据层，7 个子命令，全部自测通过）</p>
+<pre><code>indices                      三大指数涨跌幅+成交额（腾讯）
+quote --codes 300750,688268  个股实时行情（腾讯；含量比/涨停价/换手）
+kline --code X --period day|5 --n N   K线（腾讯 ifzq）
+emotion [--date YYYYMMDD]    涨停/炸板/跌停/连板高度/20cm（东财 push2ex）
+rank10d --n 60               创业板+科创板 10日涨幅前N（新浪快照+腾讯日K本地计算）
+sectors --n 20               行业板块涨幅排行（同花顺）
+fundflow [--codes ...]       个股资金净额（同花顺，元）</code></pre>
+<p>设计要点：</p>
+<ul><li>顶部 <strong>noproxy-guard</strong>（照抄 <code>zt_tencent_src.py</code>）：清空代理环境变量 + 强制直连 opener，避免 Clash 残留代理导致降级。</li><li><code>emotion</code> 默认日期自动取「腾讯指数 servertime 的前 8 位」= 最新交易日，回退 akshare 交易日历（否则周末/盘前取不到池子 → 报"只能获取最近30个交易日"）。</li><li><code>fundflow</code> 把 <code>-2524.15万</code> / <code>-6.84亿</code> 这类字符串<strong>数值化为元</strong>（<code>_num_cn</code>），否则无法做阈值比较。</li><li><code>rank10d</code> 取池逻辑：新浪快照 → 归一化代码 → 取 300/301/688 → 排 ST → <strong>先按今日上涨初筛</strong>（原策略本就剔除今日下跌，故最终候选集不变）→ 8 线程并发取腾讯前复权日K → <code>chg10 = 收盘[-1]/收盘[-11]-1</code> → 排序取前 N。</li></ul>
+<p>实测：313 只候选耗时 <strong>31.5s</strong>（强势日 600-800 只约 60-90s）。</p>
+<ul><li>任一源失败必须 exit=2 或标空，<strong>禁止编造</strong>。</li></ul>
+<h3>三、prompt 改写要点（3 个任务）</h3>
+<p>统一加「## 数据源约定（2026-09-28 起：全面不走通达信 TDX）」段，明确：</p>
+<ul><li><strong>禁止任何 tdx_* / MCP 行情工具调用</strong>（写进铁律）</li><li>全部命令给出<strong>绝对路径</strong>（解释器 + 脚本）</li><li>第0.5步 由「TDX 连通性自检」改为「数据源自检」（跑 <code>indices</code>，3 次失败则中止，不用记忆数据臆造）</li></ul>
+<p><strong>口径变更（必须如实标注，已在 prompt 中写明）</strong>：</p>
+<ol><li><strong>指数级主力资金净额无替代</strong>（原 tdx ProInfo.InOut）→ 第1步大盘判定改用「指数涨跌幅 + 两市成交额」，删除"上证主力净流出&gt;200亿"硬闸门。</li><li><strong>个股资金口径变了</strong>：同花顺全单净额 ≠ 通达信主力净额。阈值(1亿/5000万)沿用但<strong>需实盘重新校准</strong>。</li><li>10日涨幅由 tdx_screener 改为本地计算，算法等价、候选集不变。</li><li><code>emotion</code> 返回的是<strong>最近收盘日</strong>池子，盘中(10:35)需标注"情绪基准日 + 盘中漂移"。</li><li>花园生物辅助策略需要「今日下跌」标的，而 rank10d 以「今日上涨」初筛 → 已改为对候选池逐只用 <code>kline day</code> 验证。</li></ol>
+<h3>四、结果</h3>
+<p>3 个任务全部 <code>status=ACTIVE</code>（原 PAUSED 已解除），11 个自动化当前 0 暂停。<br>后续若 TDX 恢复，也可继续用非TDX链路（不依赖会话注入，稳定性更高）。</p>
+<hr>
+<h2>追加：TDX 降级为「最后保底 + 缺失字段补缺」（用户："可以把TDX作为最后保底或者缺失数据的源"）</h2>
+<p>方向修正：不是"彻底不用 TDX"，而是<strong>主源优先、TDX 兜底</strong>——既避开定时会话缺连接器的降级，<br>又把 TDX 独有口径补回来。</p>
+<h3>一、先修了两个"隐形的根因"（与本次需求无关但必须先修，否则兜底会变成常态主源）</h3>
+<p><strong>根因1：TDX 端点没有失效转移（解释了历史"上午有数据、下午就降级"）</strong></p>
+<ul><li>本会话 <code>mcpServers</code> 里<strong>同时存在</strong> <code>tdx-finance</code>(7df0c7d4) 与 <code>tdx-connector</code>(424fab19) 两个 tdx 键。</li><li><code>tdx-connector</code> <strong>间歇性 401</strong>（同一会话内一次成功、下一次 401），而旧 <code>zt_mcp_client.py</code> 只取</li></ul>
+<p>"字典里存在的第一个键"(<code>tdx-connector</code> 在候选首位) → 把 401 直接抛给上层 → 表现为随机降级。</p>
+<ul><li>同一个 401 还影响 <code>zt_trade_cal.py</code>（打印 <code>[WARN] TDX 交易日历不可用：HTTP Error 401</code>）。</li><li><strong>修复</strong>：<code>zt_mcp_client.py</code> 增加 <code>get_tdx_endpoints()</code>（返回全部候选，不发网络）+ <code>get_tdx_endpoint(probe=True)</code></li></ul>
+<p>逐个 <code>initialize</code> 探测、取第一个可用并进程内缓存；新增 <code>open_tdx_client()</code> / <code>get_tdx_info()</code> / <code>reset_tdx_cache()</code>。<br><code>TDX_SRV_CANDIDATES</code> 改为 <code>("tdx-finance","tdx-connector")</code>（新名在前）+ 任意含 <code>tdx</code> 键模糊兜底。<br>7+ 处调用点（zt_trade_cal / zt_pipeline_fetch / zt_925_review / zt_tdx_features / zt_fetch_run / sb_backtest_v2）<strong>无需改动</strong>即受益。<br>实测：注入 2 个坏端点（404 + 拒连）夹在真端点之前 → 正确跳过并选中可用端点。</p>
+<p><strong>根因2：腾讯 <code>ifzq.gtimg.cn</code> 的日K路径被 WAF 拦（501）</strong></p>
+<ul><li><code>curl https://ifzq.gtimg.cn/appstock/app/fqkline/get?...</code> → <strong>HTTP 501</strong> + <code>waf.tencent.com</code> 拦截页。</li></ul>
+<p>同主机的 <strong>分钟K(mkline) 正常</strong>；<code>web.ifzq.gtimg.cn</code>、<code>proxy.finance.qq.com/ifzqgtimg</code> 均 <strong>200</strong>。<br>触发原因：高频拉取（rank10d 一次并发 313 只日K）后被限流。</p>
+<ul><li><strong>修复</strong>：<code>TX_KLINE_HOSTS</code> 三入口失效转移 + <strong>熔断</strong>（某入口某路径确认不可用后本进程不再重试）。</li></ul>
+<p>另在 rank10d 里按代码<strong>轮转入口</strong>分散单主机压力。熔断后耗时 <strong>49.1s → 32.7s</strong>（恢复原水平），<br>最终全部走 <code>proxy.finance.qq.com/ifzqgtimg</code>。</p>
+<ul><li>附带：<code>_get</code> 的 headers 补上 <code>Accept</code> / <code>Accept-Language</code>。</li></ul>
+<h3>二、<code>nontdx_src.py</code> 接入 TDX 保底层</h3>
+<p><strong>策略开关</strong>：<code>--tdx auto|off|force</code>（默认 auto）；<code>--no-tdx-enrich</code>；环境变量 <code>NONTDX_TDX</code> / <code>NONTDX_TDX_ENRICH</code>。</p>
+<ul><li><code>auto</code> = 主源失败/返回空 → TDX 兜底；主源拿不到的字段 → TDX 补缺</li><li><code>off</code> = 完全不碰 TDX（旧行为，已验证主源挂了就 exit 2 硬报错）</li><li><code>force</code> = TDX 优先（仅排错/对比）</li></ul>
+<p><strong>新增 TDX 能力封装</strong>：<code>tdx_quotes</code> / <code>tdx_indices</code> / <code>tdx_kline</code> / <code>tdx_screener</code> / <code>tdx_emotion</code> /<br><code>tdx_rank10d</code> / <code>tdx_sectors</code> / <code>tdx_fundflow</code> + 通用 <code>with_tdx(primary, fallback, what)</code>。<br>输出统一加溯源字段：<code>src</code> / <code>tdx_fallback</code> / <code>fallback_errors</code> / <code>tdx_enriched_fields</code> /<br><code>tdx_probed</code> / <code>tdx_client_ok</code> / <code>tdx_error</code>。</p>
+<p><strong>新增 <code>doctor</code> 子命令</strong>：一次探测「非TDX主源(4项) + TDX 兜底」，给 <code>verdict</code>，供自动化第0.5步用。</p>
+<p><strong>兜底触发实测</strong>（把每个主源打成 RuntimeError，7 个子命令全部成功接管）：</p>
+<div class="tbl"><table><thead><tr><th>子命令</th><th>兜底结果</th></tr></thead><tbody><tr><td>indices</td><td>上证 pct -1.223 / 主力 <strong>-299.58亿</strong></td></tr><tr><td>quote</td><td>300750 -2.49% / 主力 -3.84亿</td></tr><tr><td>kline</td><td>20 根日K 正常</td></tr><tr><td>emotion</td><td>zt=52 zb=15 dt=15 20cm=5 连板=5 日期20260924</td></tr><tr><td>sectors</td><td>林业 8.17% / 油气开采 2.12% / 纺织制造 2.07%</td></tr><tr><td>fundflow</td><td>net=通达信主力净额</td></tr><tr><td>rank10d</td><td>20 只，近岸蛋白 79.78 / 鼎阳科技 75.72</td></tr></tbody></table></div>
+<h3>三、⭐ 最大收益：TDX 补缺把「删掉的闸门」和「会误杀的口径」都救回来了</h3>
+<ol><li><strong>指数级主力净额回来了</strong>：<code>tdx_quotes</code> 的 <code>ProInfo.主力资金净流入（元）</code></li></ol>
+<p>→ 上证 <strong>-299.58亿</strong> / 深成 <strong>-279.00亿</strong> / 创业板 <strong>-170.24亿</strong>（2026-09-24）。<br>→ 之前被迫删除的「上证主力净流出&gt;200亿 → 不做」硬闸门<strong>可以恢复</strong>，已写回两个盘中任务的 第1步。<br>注意：TDX 不可用时 <code>main_net</code> 为 null，prompt 里已写明「跳过该闸门并显式标注未生效」。</p>
+<ol><li><strong>个股主力净额回来了，且实测两口径会差到符号相反</strong>：</li></ol>
+<div class="tbl"><table><thead><tr><th>股票</th><th>同花顺全单净额</th><th>通达信主力净额</th></tr></thead><tbody><tr><td>300300 海峡创新</td><td><strong>-0.06亿</strong>（流出）</td><td><strong>+4.06亿</strong>（大幅流入）</td></tr><tr><td>300750 宁德时代</td><td>-6.84亿</td><td>-3.84亿</td></tr></tbody></table></div>
+<p>→ 旧口径的「净额&lt;0不买」会<strong>直接误杀</strong>海峡创新。三条 prompt 已统一改为<br><strong>优先判 <code>main_net</code>（主力口径，与原 1亿/5000万 阈值同源）</strong>，仅在缺失时才退回 <code>net</code> 并标注口径。</p>
+<ol><li><strong>交叉验证</strong>：TDX 无长度依赖的独立路径给出与主源<strong>完全一致</strong>的数值 ——</li></ol>
+<p>rank10d 兜底 <code>近岸蛋白 79.78% / 鼎阳科技 75.72%</code> == 主源本地计算值；<br><code>chg10</code> for 301047 义翘神州 = 54.57 == screener 值；K线 OHLC 两路吻合（300750 09-24 收293.5/高302/低293）。</p>
+<ol><li><strong>TDX 情绪数据比非TDX更丰富</strong>：screener <code>涨停</code> 返回 封单金额 / 首次涨停时间 / 涨停打开次数 /</li></ol>
+<p>连续涨停天数 / 几天几板 / 封成比 / 涨停原因 —— 正好是 <code>sb_backtest_v2.py</code> 回测出的最强变量。</p>
+<p><strong>口径差异（写进报告必读）</strong>：涨停 52 vs 52 一致；<strong>炸板 15 vs 10、跌停 15 vs 13</strong> 口径不同。</p>
+<p><strong>归一化处理</strong>：TDX K线的 <code>date</code>(<code>20260922</code>) / <code>time</code>(<code>20260924 14:55:00</code>) 已格式化为与腾讯一致<br>（<code>2026-09-22</code> / <code>202609241455</code>），使自动化在兜底切换时<strong>无需特殊处理</strong>。</p>
+<h3>四、三条定时任务 prompt 同步更新</h3>
+<div class="tbl"><table><thead><tr><th>id</th><th>变更</th></tr></thead><tbody><tr><td>579b12dd…（15:45 反查）</td><td>数据源约定改为「非TDX为主+TDX保底」；新增第0步 <code>doctor</code> 自检；涨停池空时降级用 <code>emotion</code>；报告须标注兜底来源</td></tr><tr><td>automation-1782372352347（10:35，v1.3）</td><td>同上 + <strong>恢复指数级主力资金闸门</strong> + 资金门槛改判 <code>main_net</code> + 输出加 <code>main_net</code> 列与数据源行</td></tr><tr><td>automation-1782290369730（14:43，v1.5）</td><td>同上 + 铁律扩到 24 条（新增指数主力闸门、数据源条）</td></tr></tbody></table></div>
+<p>三个 prompt 都明确：<strong>禁止直接调用任何 <code>tdx_*</code> MCP 工具，TDX 只能经 <code>nontdx_src.py</code> 兜底通路访问</strong><br>（保证「主源优先」与统一溯源）；<code>tdx_probed=false</code> 是"本次无需 TDX"<strong>不是故障</strong>，不要误报。</p>
+<h3>五、产出与备份</h3>
+<ul><li>脚本：<code>nontdx_src.py</code>（8 子命令）｜备份 <code>nontdx_src.py.bak-20260928-pretdx</code></li><li>客户端：<code>zt_mcp_client.py</code>（多端点失效转移）｜备份 <code>zt_mcp_client.py.bak-20260928-failover</code></li><li>技能：<code>~/.workbuddy/skills/nontdx-a-stock-data-layer/SKILL.md</code> 升 v1.1（12 个坑 + 口径表 + 排障速查）</li><li>⚠️ 待观察：明后天跑一轮 10:35 / 14:43，确认 <code>main_net</code> 补缺正常、且<strong>资金门槛松紧是否合适</strong></li></ul>
+<p>（主力口径已回归原阈值同源，理论上不再需要重新校准）。</p>
+<hr>
+<h1>stock-picks 统一归档发布（08:30）</h1>
+<h2>需求</h2>
+<p>「设计一个目录页面，能够直接在网络浏览当日和历史数据，把定时任务所有产出的 html 文件推送到 github，替换<br>https://xljy.github.io/stock-picks/ 原来的 index.html」</p>
+<h2>关键澄清：11 个定时任务里只有 6 类会产出 HTML</h2>
+<div class="tbl"><table><thead><tr><th>任务</th><th>时间</th><th>HTML 产出</th></tr></thead><tbody><tr><td>盘前简报 <code>66ae1a1c</code></td><td>07:00</td><td><code>A股盘前简报_YYYYMMDD.html</code></td></tr><tr><td>早盘大盘分析 <code>1782910217402</code></td><td>09:55</td><td><code>morning_report_YYYYMMDD.html</code></td></tr><tr><td>9:25竞价反查 <code>579b12dd</code></td><td>15:45</td><td><code>zt_925_review_YYYYMMDD.html</code></td></tr><tr><td>涨停次日预测 <code>1784351279196</code></td><td>17:00</td><td><code>zt_1700_report_*.html</code> + <code>zt-predict/history/*.html</code></td></tr><tr><td>涨停题材思维导图 <code>a6da418f</code></td><td>17:05</td><td><code>zt_mindmap_YYYYMMDD.html</code></td></tr><tr><td>二波扫描 <code>6d01a140</code></td><td>21:00</td><td><code>二波扫描_YYYYMMDD.html</code></td></tr></tbody></table></div>
+<p>（10:35 预判 / 14:55 套利日报 / 每日复盘 / 周报 / 月重训 → 输出为对话文本或 md，<strong>无 HTML</strong>）</p>
+<h2>产出：<code>stock_picks_publish.py</code>（新脚本）</h2>
+<p>路径：<code>C:\Users\Administrator\WorkBuddy\2026-05-30-20-32-15\stock_picks_publish.py</code><br>解释器：<code>C:\Users\Administrator\.workbuddy\binaries\python\envs\default\Scripts\python.exe</code></p>
+<p>干的事：扫描 7 类源目录 → 复制进 <code>xljy/stock-picks</code> 子目录（统一 <code>YYYYMMDD.html</code>）→ 重建分类索引 + 根目录页 → git add/commit/push（失败自动 retry 3 次 + <code>pull --rebase</code>）。</p>
+<p>参数：<code>--all</code>（全量回填）/ <code>--date YYYYMMDD</code>（单日）/ <code>--index-only</code>（只重建索引）/ <code>--no-push</code> / <code>--dry-run</code></p>
+<p><strong>归档映射（源 → 仓库子目录）</strong>：<br><code>premarket/</code> 盘前 · <code>morning/</code> 早盘 · <code>auction/</code> 竞价反查 · <code>emotion/</code> 情绪扫描 ·<br><code>predict/</code> ML预测 · <code>mindmap/</code> 题材导图 · <code>wave2/</code> 二波扫描<br>（旧目录 <code>review/</code> <code>strategy/</code> <code>midday/</code> 是 6 月的历史归档，保留不动）</p>
+<h2>目录页设计</h2>
+<p>根 <code>index.html</code>：「最新交易日」卡片区（7 类，标明已生成/未生成，点击直达）+「分类入口」+「历史归档矩阵」<br>（行=日期 118 个交易日，列=7 类，圆点直达）。纯静态，无后端。深色主题，涨红跌绿。<br>各分类 <code>&lt;cat&gt;/index.html</code> 为该类的日期列表页。</p>
+<h2>首次全量结果</h2>
+<p><code>premarket 10 · morning 44 · auction 10 · emotion 50 · predict 116 · mindmap 15 · wave2 2</code> 期，<br>根目录页 <strong>118 个交易日</strong>，commit 207 files，推送成功（<code>d6a6752..cc37181</code>）。<br>线上验证 7 个 URL 全部 200。</p>
+<h2>🔴 踩坑：github.com DNS 污染导致 push 失败</h2>
+<ul><li>现象：<code>git push</code> 反复 <code>Recv failure: Connection was reset</code> / <code>Could not connect to github.com:443</code></li><li>诊断：<code>nslookup github.com</code> → <code>20.205.243.166</code>（<strong>不可用</strong>）；但 <code>api.github.com</code> → <code>20.205.243.168</code>（200）</li><li>实测各 GitHub 节点 IP：<code>20.205.243.166</code> ✗ ｜ <code>20.27.177.113</code> / <code>140.82.112.3</code> / <code>140.82.113.3</code> / <code>140.82.114.4</code> / <code>140.82.116.3</code> / <code>4.237.22.38</code> <strong>全部 200</strong></li><li><strong>修复</strong>：hosts 追加 <code>140.82.113.3 github.com</code>（<code>C:\Windows\System32\drivers\etc\hosts</code>），改完立即 200、push 成功</li><li>排查手法留档：<code>curl --resolve github.com:443:&lt;ip&gt; -o /dev/null -w "%{http_code}"</code> 逐个试 IP</li></ul>
+<h2>自动化（2 个，替代逐个改 6 个任务 prompt）</h2>
+<div class="tbl"><table><thead><tr><th>ID</th><th>时间</th><th>说明</th></tr></thead><tbody><tr><td><code>1a4fbc63-0385-4d75-bb72-be2ae3fea5e4</code></td><td>周一~五 17:30</td><td>覆盖盘前/早盘/竞价/情绪/预测/导图（6 类）</td></tr><tr><td><code>015d68f6-5136-434c-9d9b-aca513d3d3d2</code></td><td>周一~五 22:30</td><td>全量（含 21:00 二波扫描），增量提交不重复</td></tr></tbody></table></div>
+<p>均调用 <code>stock_picks_publish.py --all</code>，memory 记到<br><code>...\2026-05-30-20-32-15\.workbuddy\memory\automations\stock-picks-publish\memory.md</code>。<br>⚠️ rrule <strong>不支持多值 BYHOUR</strong>（只能单值），故拆成两个任务。</p>
+<h2>其它记录</h2>
+<ul><li>另有两个历史 stock-picks 副本（<code>C:\Users\Administrator\WorkBuddy\stock-picks</code>、</li></ul>
+<p><code>C:\Users\Administrator\stock-picks-push</code>、<code>D:\WorkBuddy\stock-picks</code>），是 6 月的旧克隆，<br><strong>正式推送仓库是</strong> <code>C:\Users\Administrator\WorkBuddy\2026-05-30-20-32-15\stock-picks</code>。</p>
+<ul><li><code>.nojekyll</code> 由脚本在 push 前自动写入（避免 GitHub Pages 走 Jekyll）。</li></ul>
+<hr>
+<h2>补记：发布链路收尾 + 查缺（08:52）</h2>
+<h3>🔴 修掉一个会每天打架的真冲突</h3>
+<p><code>zt_emotion_push.py</code>（旧情绪推送脚本）<strong>仍挂在 17:00 涨停预测流水线的第 1.7 步</strong>，<br>它自己写 <code>stock-picks/emotion/index.html</code>（旧格式：iframe + 旧 nav），<br>而 17:30 新归档器又重建同一个文件（新格式）→ <strong>索引页一天内反复横跳 + 双倍 push</strong>。</p>
+<ul><li>处置：<code>automation-1784351279196</code> 第 1.7 步改为调 <code>stock_picks_publish.py --date YYYYMMDD</code>；</li></ul>
+<p>prompt 内所有 <code>zt_emotion_push.py</code> 引用标注"已停用，不要再调用"；第 3 步验证 URL 改为根目录页 + emotion 页。</p>
+<ul><li>教训：<strong>改造完发布链路，要顺着旧脚本名 grep 一遍所有 automation prompt</strong>，确认没人再调。</li></ul>
+<h3>修补：停更的旧目录在站内成了孤岛</h3>
+<p><code>review/</code>(5) <code>strategy/</code>(4) <code>midday/</code>(3) 是 2026-06 的旧归档，最后日期 06-17/06-18，<br>新根页没有指向它们的任何链接 → 内容还在仓库、线上能访问，但站内无入口。</p>
+<ul><li>处置：<code>stock_picks_publish.py</code> 新增 <code>LEGACY</code> 表 + 根页「🗃️ 历史归档（已停更）」区块，</li></ul>
+<p>只在对应目录存在时渲染。<strong>不参与归档与矩阵，只给入口。</strong></p>
+<ul><li>注意：拼接 body 时在 f-string 链里插 <code>+ (...)</code> 后，<strong>下一个字符串字面量必须显式补 <code>+</code></strong>，</li></ul>
+<p>否则 <code>expr 'literal'</code> 是语法错误（隐式拼接只发生在字面量之间）。</p>
+<h3>清理</h3>
+<p>删除上一轮数据源改造的临时验证文件：<code>_caliber_check.py</code>、<code>_caliber_check2.py</code>、<code>_dump_002909.py</code>、<br><code>_verify_tx_vs_tdx.py</code>、<code>_enrich_e2e.py</code>、<code>_golden_diff.py</code>、<code>_chain_e2e.py</code>、<code>_impact.py</code></p>
+<ul><li>目录 <code>_enrich_test/</code>、<code>_chain_test/</code>、<code>_golden/</code>。</li></ul>
+<p>（工作目录下仍有一批 6~8 月的 <code>_zt_save_*.py</code> / <code>_zt_build_*.py</code> 等历史一次性脚本，<strong>是用户的，未动</strong>。）</p>
+<h3>文档沉淀</h3>
+<ul><li>技能 <code>nontdx-a-stock-data-layer</code> → <strong>v1.2</strong>：能力表补 <code>breadth</code>；新增 §五「涨停池/特征流水线</li></ul>
+<p>（非TDX 取数 + <code>enrich --force</code> + 交易日历主源翻转）」；§四补腾讯口径复刻的实测验证表与<br>时间戳语义/除权日/北交所号段三条结论；§六自动化表 <strong>3 → 11 个任务</strong>；坑清单补<br>东财首次封板时间口径、GitHub DNS 污染与可用 IP 清单。</p>
+<ul><li>新建技能 <code>github-pages-report-publish</code>（v1.0）：把「源目录表驱动归档 + 三段式目录页 +</li></ul>
+<p>增量幂等 + 双时点调度 + push 重试 + GitHub DNS 定位与 hosts 修法」沉淀成可复用工作流。</p></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-07-29 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-07-29 周三 · 源文件 2026-07-29.md</div></div><div class="doc"><h2>涨停次日ML预测数据的盘中决策框架</h2>
+<p>用户需求：已有「历史上每日涨停次日ML预测数据」，发现近3日内涨停的票较活跃有套利机会，问如何用于盘中决策。</p>
+<h3>数据资产盘点（关键发现）</h3>
+<ul><li>ML预测管线在 <code>C:\Users\Administrator\WorkBuddy\2026-05-30-20-32-15\</code></li><li><strong>历史库 = 74个 <code>次日ML预测_YYYYMMDD.xlsx</code>（20260115~20260728，约半年）</strong>，每条票字段：</li></ul>
+<p><code>code,name,次日涨停概率,RF概率,GB概率,融合概率,预测等级(S/A+/A),封板时间分钟,炸板次数,封成比,流通市值,换手率,连板数,行业</code></p>
+<ul><li>文件名日期 = 涨停次日（模型当日09:25预测"该首板次日"表现），即 xlsx日期D 对应 涨停日D-1</li><li>坑：<code>zt_925_candidates.json</code> 是<strong>单文件每日覆盖</strong>，无日期；只有 zt_925_report_YYYYMMDD.html 有日期。所以"按日期关联3天前ML分"必须用 xlsx 历史库，不能用 candidates 单文件。</li></ul>
+<h3>已交付</h3>
+<ul><li>新建 <code>D:\WorkBuddy\Claw\intraday_watchlist.py</code>：读近3个交易日 xlsx → 合并去重"近3日涨停×ML评分" → 按(最近涨停日,融合概率,评级)排序 → 输出盘中观察池(JSON+表格)，并从数据自动派生"封成比强/曾炸板/N连板"盘中要点。</li><li>0728 实测：取 xlsx日 0723/0724/0727，合出 252 只候选。</li></ul>
+<h3>盘中决策架构（方法，非个股建议）</h3>
+<ol><li>盘前(09:25后)：跑脚本得观察池 → 用融合概率/评级做优先级偏置过滤</li><li>盘中：ML分是"该不该关注"的过滤器，不是"何时买"的触发器；买入时机看实时价格行为(缺口/分时均线承接/量能/板块联动)，用 tdx-connector 拉实时行情</li><li>3日窗口退出：活跃窗口≈3天，持仓T+1~T+3，第3天未走强退出</li></ol>
+<h3>待办/建议</h3>
+<ul><li>让每日925管线额外存档 <code>zt_925_candidates_YYYYMMDD.json</code>（带日期），未来可直接join而不依赖xlsx</li><li>可加一个盘中自动化：09:30后读观察池+tdx实时行情，输出"当前符合承接形态"的票</li></ul>
+<h2>盘中承接扫描器 (intraday_scan.py) — 已完成</h2>
+<p>用户需求：在早盘报告后，盘中用一条命令扫出"当前符合承接形态"的票，耗时短。</p>
+<h3>实现</h3>
+<ul><li>新建 <code>D:\WorkBuddy\Claw\intraday_scan.py</code></li><li>读最新 <code>intraday_watchlist_YYYYMMDD.json</code>(观察池, 252只) + 腾讯批量实时行情(一次HTTP拉全部, 秒级)</li><li>承接形态评分(0-100, 纯快照字段):</li><li>分时均价线VWAP=成交额/成交量, 价≥VWAP +25</li><li>量比≥1.5 +20 / ≥1.2 +14</li><li>涨跌幅-3%~+7% +20 (排除已涨停锁定/跌停/崩盘&lt;-5%)</li><li>开盘不崩(open≥昨收*0.97) +10</li><li>板块联动(同行业观察池内≥2只上涨) +15</li><li>维持日内高位(价≥(高+低)/2) +10</li><li><code>--append-to &lt;file&gt;</code> 自动识别 .html/.md: HTML包成&lt;section&gt;插到&lt;/body&gt;前; MD追加表格段</li><li>输出: 控制台表 + intraday_scan_YYYYMMDD_HHMMSS.json</li></ul>
+<h3>关键事实</h3>
+<ul><li>09:18盘前腾讯接口只返昨收涨跌停快照(量=0, 量比=0, VWAP算不出), 故盘前0命中=正确行为; 开盘后(09:30-15:00)才生效</li><li>实时行情默认腾讯批量接口(零配置); 用户原话"tdx实时行情", 但tdx是MCP不可在独立脚本调用, 已在代码注释标注替换点</li></ul>
+<h3>盘中命令</h3>
+<ul><li>扫描: <code>python D:/WorkBuddy/Claw/intraday_scan.py</code></li><li>挂到早盘报告后: <code>python D:/WorkBuddy/Claw/intraday_scan.py --append-to "C:/Users/Administrator/WorkBuddy/2026-06-10-22-32-06/dist/index.html"</code></li></ul>
+<h2>把扫描接入「早盘大盘分析报告 (9:45)」自动化 — 已完成</h2>
+<p>用户要求：用较快的方式实现，把盘中承接扫描加入 9:55 自动化（id=automation-1782910217402），并问行情源选哪个。</p>
+<h3>行情源结论（直接给建议）</h3>
+<ul><li><strong>选腾讯批量接口</strong>（脚本已内置），理由：一次HTTP拉全部~252只、1-2秒、零配置、脚本可直连、不依赖MCP/agent；若用tdx MCP拉252只需多轮工具调用，慢贵不稳。报告主体(指数/板块/情绪)仍用tdx-connector，扫描段独立用腾讯不影响质量。代价：腾讯无主力净额/内外盘，后续可在<code>_fetch_quotes</code>替换点换tdx富集。</li></ul>
+<h3>实现改动</h3>
+<ul><li><code>intraday_scan.py</code> 新增 <code>--build</code> 单命令模式：自动用 xlsx 历史库重建观察池 → 拉行情 → 扫描 → 追加，一条命令搞定。</li><li>新增依赖 <code>from intraday_watchlist import build_watchlist</code></li><li>新增参数: <code>--build</code>(store_true), <code>--today</code>(默认今天), <code>--ml_dir</code>(默认xlsx库路径)</li><li>自动化 <code>automation-1782910217402</code> 已更新：新增「模块8 盘中承接扫描」，报告保存后运行：</li></ul>
+<p><code>python D:\WorkBuddy\Claw\intraday_scan.py --build --append-to "D:\WorkBuddy\2026-07-01-20-49-50\outputs\morning_report_{YYYYMMDD}.html"</code></p>
+<h3>验证</h3>
+<ul><li>午间(12:50)实盘跑通：<code>--build</code> 建池252只 + 拉到251只实时 + 命中30只(承接分100/94为主)，HTML段正确插入<code>&lt;/body&gt;</code>前。</li><li>注意：开盘后25分钟(9:55)量比普遍偏高，承接分易顶满100，若噪音大可调高 <code>--min-score</code> 或 <code>--min-mlprob</code>。</li><li>风险：自动化沙箱若禁外网，腾讯API拉不到→脚本写"无符合"占位段，优雅降级；如遇此情况改走tdx富集。</li></ul>
+<h3>用户要求"用语言操作、不要命令行" → 已封装技能</h3>
+<ul><li>新建项目技能 <code>D:\WorkBuddy\Claw\.workbuddy\skills\intraday-chengjie-scan\SKILL.md</code></li><li>触发词：「扫一下」「扫描承接」「承接形态」「盘中承接扫描」「符合承接的票」「挂到早盘报告」「加到报告」</li><li>行为：用户自然语言 → 助手解析意图 → 跑 <code>intraday_scan.py</code>(首扫加--build/复扫复用池/挂报告加--append-to/收紧加--min-score等) → 大白话回报，不输出命令、不给买卖建议</li><li>用户只需说人话，无需记命令</li></ul>
+<h2>BUG修复：观察池近3日窗口漏掉最新一天 (13:02)</h2>
+<ul><li>现象：13:00 跑 <code>--build</code> 时，建池文件名落 <code>intraday_watchlist_20260728.json</code>，xlsx日用了 0723/0724/0727（漏了最新 0728）。</li><li>根因：<code>intraday_watchlist.py:73</code> 取 <code>xlsx_dates &lt; today_str</code>（严格小于）。今天 0729 在 xlsx 库中无对应文件→回退到 <code>cand[-1]=0728</code> 作 today，再严格小于把 0728 自己排除。</li><li>修复：改为 <code>d &lt;= today_str</code>，窗口取「≤today 的最近3个」→ 0724/0727/0728（含最新）。修复后候选 201 只（原 252，更准），重新扫描命中 30 只。</li><li>教训：xlsx 库有 T+1 数据滞后（库最新 0728，今天 0729 尚无 xlsx），回退到最新可用日时窗口必须含当天本身。</li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

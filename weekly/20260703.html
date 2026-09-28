@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每周复盘 2026-07-03 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📅 每周复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📅 每周复盘</h1><div class="sub">2026-07-03 周五 · 源文件 2026-W27.md</div></div><div class="doc"><p><strong>日期范围</strong>：2026-06-29（周一）至 2026-07-03（周五）<br><strong>有效交易日</strong>：5天（6/29、6/30、7/1、7/2、7/3）<br><strong>日记记录</strong>：6/29（花园生物修复+全天跟踪）、6/30（市场概况+候选扫描+世名科技复盘）、7/02（机器人板块分析）。7/1、7/3无日记。</p>
+<hr>
+<h2>一、本周市场概览</h2>
+<h3>主要指数涨跌（6/26上周五收盘 → 7/3本周五收盘）</h3>
+<div class="tbl"><table><thead><tr><th>指数</th><th>6/26收盘</th><th>7/3收盘</th><th>本周涨跌</th><th>日内走势特征</th></tr></thead><tbody><tr><td>上证指数</td><td>4027.26</td><td>4043.64</td><td><strong>+0.41%</strong></td><td>周一至周三温和上行，周四暴跌-2.03%，周五微弹+0.37%</td></tr><tr><td>深证成指</td><td>~15782</td><td>15597.51</td><td><strong>-1.16%</strong></td><td>周二冲高16205后连续回落，周四暴跌-3.85%，周五+0.64%</td></tr><tr><td>创业板指</td><td>4194.21</td><td>4019.93</td><td><strong>-4.17%</strong></td><td>周二高点4353，周三-1.91%分歧，周四-5.71%退潮，周五+0.07%近乎持平</td></tr></tbody></table></div>
+<h3>走势节奏</h3>
+<ul><li><strong>周一(6/29)</strong>：上证+1.18%，深证分化（涨1187家跌1677家），创业板涨525跌856偏弱。医药板块集体爆发（5只20cm涨停）。</li><li><strong>周二(6/30)</strong>：全线走强。上证+0.50%，深证+2.47%，创业板+2.99%（创周内高点4353）。CPO/光通信（工信部白皮书催化）、储能（欧盟协议）、消费电子集体涨停潮（73只涨停）。</li><li><strong>周三(7/1)</strong>：分化。上证+0.44%，深证-0.53%，创业板-1.91%。创业板从高点开始回落，分歧信号出现。</li><li><strong>周四(7/2)</strong>：全线暴跌。上证-2.03%，深证-3.85%，创业板-5.71%。上涨仅991家vs下跌1292家。创业板跌超5%触发套利模式"大盘暴跌不做"红线。机器人概念逆势走强（特斯拉Optimus 3催化）。</li><li><strong>周五(7/3)</strong>：微反弹。上证+0.37%，深证+0.64%，创业板+0.07%。创业板盘中最低3985（跌破4000），收4020。上涨1567家vs下跌730家，情绪回暖但力度有限。</li></ul>
+<h3>情绪周期定位</h3>
+<p>本周前两天处于修复→发酵阶段（创业板周二冲高4353），周三开始分歧，周四进入退潮（创业板-5.71%），周五企稳但仅微弹+0.07%。当前处于<strong>退潮→冰点过渡阶段</strong>，创业板指4000关口反复争夺（周四盘中跌破3999，周五最低3985），尚未确认企稳。</p>
+<hr>
+<h2>二、本周思维方法进展</h2>
+<ol><li><strong>花园生物修复模式全流程实战验证</strong>：6/29完成从早盘扫描→K线过滤→实时修复验证→二次验证→最终覆灭的完整链条。北京君正从A级93分到午盘翻绿-1.87%的逆转，记录了主力资金从+1.37亿到-1.01亿的全反转。核心教训：<strong>早盘强势≠全天强势</strong>。</li></ol>
+<ol><li><strong>修复倍数的迷惑性识别</strong>：胜科纳米修复倍数6.3x但站不回均价线→淘汰。光智科技修复7.1x但日内振幅33.7%→严重超买。修复倍数需结合均价线偏离度综合判断，单一指标不可靠。</li></ol>
+<ol><li><strong>7问开仓框架的实战应用</strong>：6/30对立讯精密、浪潮信息、领益智造、中兴通讯做了Q1-Q4快检，4只全过→Level 1观察仓资格。领益智造午盘涨停封板验证了筛选方向正确。但世名科技复盘发现Q1未通过（10日涨94%），揭示了"好逻辑≠好买点"。</li></ol>
+<ol><li><strong>机器人产业链系统梳理</strong>：从券商研报出发，完整梳理了人形机器人五大卡脖子环节——行星滚柱丝杠（国产化率&lt;10%）、六维力传感器、RV减速器、空心杯电机、高端数控系统，建立了产业链→A股标的映射框架。</li></ol>
+<ol><li><strong>主力资金动态追踪的必要性</strong>：6/30长信科技午盘主力+6155万，14:23变-1.39亿，下午踩踏式撤退。验证了"午盘数据≠收盘数据"和14:55确认窗口的必要性。</li></ol>
+<hr>
+<h2>三、仍存在的主要盲区</h2>
+<ol><li><strong>修复持续性预测缺失</strong>：北京君正从+5.44%到-1.87%的日内逆转（跌幅7.3%），没有量化工具在10:00前预警这种反转。光智科技日内振幅33.7%也超出任何风控模型覆盖范围。</li></ol>
+<ol><li><strong>大盘恶化时个股联动幅度的量化</strong>：6/29创业板指从早盘+0.89%跌到午盘-1.28%，4只候选全军覆没。修复模式在大盘转弱时的失效概率缺少回测数据。</li></ol>
+<ol><li><strong>板块轮动速度与持续性预判</strong>：医药6/29单日爆发（5只20cm涨停），本周后续无延续；CPO/储能6/30爆发，7/2暴跌后是否存活不确定；机器人7/2逆势走强但7/3数据缺失。均为单日脉冲式行情，无法判断是启动还是昙花一现。</li></ol>
+<ol><li><strong>周五7/3市场数据空白</strong>：当日无日记记录，无法确认机器人板块在7/3退潮日后的延续性，也无法复盘当日是否有修复信号被错过。</li></ol>
+<hr>
+<h2>四、下周关注方向</h2>
+<ul><li><strong>创业板指4000关口争夺</strong>：本周两次跌破4000（7/2盘中3999，7/3最低3985），周五收4020微弹。4000是否构成有效支撑将决定超跌修复策略的环境判定。</li><li><strong>特斯拉Optimus 3量产催化</strong>：7-8月投产窗口临近，产业链（行星滚柱丝杠→斯菱智驱/长盛轴承、六维力传感器→汉威科技/安培龙、减速器→绿的谐波）可能有持续催化。</li><li><strong>7/2暴跌后的超跌修复窗口</strong>：若下周创业板企稳，7/2单日跌幅&gt;5%的品种可能出现garden-bio-recovery模式信号。</li><li><strong>半年报预告密集期</strong>：7月进入中报预告窗口，业绩超预期可能成为新催化主线。</li><li><strong>7/3反弹力度确认</strong>：上涨1567家vs下跌730家显示情绪回暖，但创业板仅+0.07%说明资金犹豫。需观察下周初是否延续反弹。</li></ul>
+<hr>
+<h2>五、改进建议</h2>
+<ol><li><strong>增加"10:30环境重检"步骤</strong>：garden-bio-recovery目前仅在9:25做一次大盘判断。6/29教训：早盘环境好但10:30后恶化。应在10:30增加创业板指环境重检——跌超1%触发仓位降级或退出。</li></ol>
+<ol><li><strong>修复倍数增加"均价线偏离度"辅助过滤</strong>：胜科纳米6.3x修复但跌破均价线被淘汰，北京君正站均价上方+2.1%偏离过大同样危险。规则：修复倍数高但均价偏离&gt;2%的，标注"超买风险"降级。</li></ol>
+<ol><li><strong>每日强制写日记</strong>：7/1和7/3无日记记录，导致周报数据链断裂。建议设自动化提醒（收盘后17:30）触发当日复盘记录，即使无操作也应记录市场概况和关键观察。</li></ol></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

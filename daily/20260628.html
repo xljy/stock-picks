@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-06-28 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-06-28 周日 · 源文件 2026-06-28.md</div></div><div class="doc"><h2>7问开仓框架整合到技能体系</h2>
+<h3>完成内容</h3>
+<ol><li><strong>新建共享技能</strong>：<code>~/.workbuddy/skills/7-question-entry-gate/SKILL.md</code></li><li>定义7问框架的完整判定标准、数据源映射、必要/增强分类</li><li>Phase 1 (Q1-Q4 必要条件)：开仓前硬过滤，4问全过才开仓</li><li>Phase 2 (Q5-Q7 增强条件)：开仓后逐日验证持仓信心</li><li>包含与各技能的适配说明和MCP调用清单</li></ol>
+<ol><li><strong>整合到 short-term-picker</strong> (Step 3.5)</li><li>在验证层和决策层之间新增7问开仓检查</li><li>输出格式新增"7问"列（如4/4=全过✅）</li><li>依赖列表新增7-question-entry-gate</li></ol>
+<ol><li><strong>整合到 chiNext-star-arbitrage</strong> (Step 9.5, v1.4→v1.5)</li><li>在第9步评分后新增7问开仓闸门</li><li>标注已有步骤覆盖情况，补查缺失项</li><li>铁律新增第23条：7问开仓闸门</li><li>输出格式新增"7问"列</li></ol>
+<ol><li><strong>整合到 garden-bio-recovery</strong> (Step 5.5, v1.0→v1.1)</li><li>Q1适配为"减速不是见顶"</li><li>Q2放宽至主力净额&gt;-500万</li><li>Q3适配为"修复力度强"</li><li>Q4放宽至同板块≥2只强势</li><li>输出格式新增"7问"列</li></ol>
+<h3>7问框架核心结构</h3>
+<div class="tbl"><table><thead><tr><th>Phase</th><th>问题</th><th>类型</th><th>判定</th></tr></thead><tbody><tr><td>开仓前</td><td>Q1 刚启动不是已涨很久</td><td>必要</td><td>10日涨幅&lt;50%/60% + 今年&lt;200%</td></tr><tr><td>开仓前</td><td>Q2 有明显新增资金</td><td>必要</td><td>主力净额&gt;0 + 成交额&gt;5日均×1.2</td></tr><tr><td>开仓前</td><td>Q3 买方今天赢了</td><td>必要</td><td>收盘位置&gt;50% + 站均价线 + 红盘</td></tr><tr><td>开仓前</td><td>Q4 板块在支持</td><td>必要</td><td>同板块≥3只强势 + 板块Top20</td></tr><tr><td>开仓后</td><td>Q5 次日继续验证</td><td>增强</td><td>不低开&gt;-2% + 30分钟翻红</td></tr><tr><td>开仓后</td><td>Q6 回踩有承接</td><td>增强</td><td>均线不破 + 缩量 + 反弹</td></tr><tr><td>开仓后</td><td>Q7 资金继续留下</td><td>增强</td><td>连续2日净流入&gt;0</td></tr></tbody></table></div>
+<h3>关键设计决策</h3>
+<ul><li><strong>不新建独立决策层技能</strong>，而是作为共享引用模块，被三个决策层技能各自引用</li><li><strong>各技能做适配</strong>而非一刀切：chiNext的Q3用14:50-14:55替代收盘，garden-bio的Q1改为"减速不是见顶"</li><li><strong>Phase 1是硬门槛</strong>（缺1问不开仓），Phase 2是滚动评估（决定持有/加仓/走人）</li><li>所有数据源统一使用tdx-connector MCP，不额外引入新数据源</li></ul>
+<hr>
+<h2>7问框架升级：二元闸门 → 概率仓位分级模型</h2>
+<h3>背景</h3>
+<p>用户提醒：不要把"证据越多越好"理解成"必须等所有证据都出现才买"。市场不存在100%确定的机会。更实用的做法是提前定义仓位对应的证据等级。</p>
+<h3>核心改动</h3>
+<p>将7问框架从"4问全过才开仓"的二元闸门，升级为<strong>三级证据-仓位映射模型</strong>：</p>
+<div class="tbl"><table><thead><tr><th>证据等级</th><th>7问状态</th><th>总仓位</th><th>思维</th></tr></thead><tbody><tr><td>Level 1 观察仓</td><td>Q1-Q4全过</td><td>20%~30%</td><td>建立观察仓，允许市场证明你</td></tr><tr><td>Level 2 验证仓</td><td>+Q5-Q7过2-3个</td><td>50%~70%</td><td>判断正在被验证</td></tr><tr><td>Level 3 顺势仓</td><td>+Q5-Q7全过+三共振</td><td>80%</td><td>顺势持有，不因涨了才追</td></tr></tbody></table></div>
+<h3>修改的文件</h3>
+<ol><li><strong>7-question-entry-gate</strong> v1.0 → v1.1</li><li>核心理念：从"全过才动手"改为"随证据增强仓位同步增加"</li><li>框架总览图：加入三级仓位升级路径</li><li>综合决策矩阵：替换为概率仓位分级模型 + 各技能仓位适配表</li><li>输出格式：加入证据等级和仓位标注</li></ol>
+<ol><li><strong>short-term-picker</strong> Step 3.5</li><li>从"最终闸门"改为"开仓7问检查 + 仓位定级"</li><li>输出格式新增"证据等级"和"仓位"两列</li></ol>
+<ol><li><strong>chiNext-star-arbitrage</strong> v1.5 → v1.6</li><li>第9.5步从"7问开仓闸门"改为"7问开仓检查 + 仓位定级"</li><li>Level 1=2.5万/只 → Level 2=5万/只（受限于套利仓位上限10万）</li><li>铁律第23条更新</li></ol>
+<ol><li><strong>garden-bio-recovery</strong> v1.1 → v1.2</li><li>第5.5步从"7问开仓适配检查"改为"7问开仓检查 + 仓位定级"</li><li>Level 1=1.5万/只 → Level 2=2.5万/只</li><li>铁律从"仓位固定2.5万"改为"仓位分级"</li></ol>
+<h3>关键设计决策</h3>
+<ul><li><strong>必要条件仍是硬底线</strong>：Q1-Q4缺任1问=不开仓，这不是概率问题</li><li><strong>增强条件驱动仓位升级</strong>：Q5-Q7每多过1个，仓位同步增加</li><li><strong>各技能仓位适配不同</strong>：chiNext受限于套利仓位上限10万，garden-bio仓位较小</li><li><strong>总仓位80%警戒线不变</strong>：Level 3顺势仓最高80%，现金底线5万不动</li></ul>
+<hr>
+<h2>怡达股份 (300721) 分析</h2>
+<h3>分析时间</h3>
+<p>2026-06-28（周日），基于6/26（周五）收盘数据</p>
+<h3>公司概况</h3>
+<ul><li>创业板化工股，醇醚供应商，主营醇醚(53%)+醇醚酯(27%)+环氧丙烷(9%)+双氧水(8%)</li><li>总市值60.93亿，流通市值51.16亿</li></ul>
+<h3>关键数据</h3>
+<ul><li>收盘价36.96(+5.15%)，换手率31.70%，成交额16.33亿</li><li>PE(TTM) -88.50（亏损），PB 5.46，毛利率7.24%</li><li>Q1 2026: 营收+64.92%，净利430万(+111.90%)，但2025上半年亏6298万</li><li>今年以来+190.34%，3个月从14涨到37</li></ul>
+<h3>资金特征</h3>
+<ul><li>游资脉冲式进出：6/23涨停+3.70亿→6/24冲高回落-1.28亿</li><li>近5日累计主力净流入+3.03亿，但进出交替非持续</li><li>环氧丙烷毛利率-58%、双氧水-32%，严重拖累</li></ul>
+<h3>7问检查结果</h3>
+<ul><li>Q1 刚启动? ❌（今年+190%）</li><li>Q2 新增资金? ✅（近3日+2.22亿，但波动大）</li><li>Q3 收盘强? ✅（+5.15%，但收在均价下方）</li><li>Q4 板块支持? ⚠️（概念有联动但非强板块潮）</li></ul>
+<h3>分析结论</h3>
+<p>纯事实分析，未给操作建议。核心特征是游资主导的高波动投机股，基本面薄弱但概念丰富。</p></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

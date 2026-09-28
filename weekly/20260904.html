@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每周复盘 2026-09-04 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📅 每周复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📅 每周复盘</h1><div class="sub">2026-09-04 周五 · 源文件 2026-W36.md</div></div><div class="doc"><blockquote><p>周期：2026-08-31（周一）～ 2026-09-04（周五）｜ 数据基准：本周 <code>memory/</code> 目录仅 2 份日记录（09-03 盘中、09-04 自动化核查）</p></blockquote>
+<h2>1. 本周市场概览</h2>
+<p><strong>指数</strong>（09-03 盘中 14:38 快照，全红但分化）：</p>
+<ul><li>上证 +0.12% ｜ 沪深300 +0.22% ｜ 深证成指 +0.26% ｜ 创业板指 +0.19% ｜ 中证1000 +0.40% ｜ 国证2000 +0.39%</li><li>特征：指数护盘收红，小票（中证1000/国证2000）略强于权重。</li></ul>
+<p><strong>宽度与情绪</strong>：</p>
+<ul><li>涨跌比 2056 : 3362 → <strong>宽度 37.9%</strong>，远低于 48% 开仓硬条件，指数红但多数个股下跌。</li><li>涨停 45 / 跌停 12 / 炸板 33 → <strong>炸板率 42.3%</strong>（偏高，追高亏钱效应明显）。</li><li>连板高度：<strong>国芳集团 5板</strong>（新零售）；上一批 6板高标 <strong>深中华A 当日一字跌停 -9.96%</strong>（封单 5.57亿）→ 高位抱团退潮信号。</li></ul>
+<p><strong>主线板块</strong>（按涨停分布强弱）：</p>
+<ol><li>液冷服务器（最强，12+ 涨停：艾华集团/三安光电/金富科技/集泰股份/飞龙股份…）— 催化：产线满产、CDU 订单排至年底</li><li>人形机器人（鸣志电器/凯迪股份/光洋股份…）— 催化：Hugging Face Microduck</li><li>新零售/消费（国芳集团 5板/东百集团/珠免集团/龙版传媒 4板）— 催化：7部门促消费文件</li><li>CPO（三安光电/华盛昌）— 强度弱于液冷</li></ol>
+<p><strong>情绪周期定位</strong>：分歧/退潮初期。连板高度仍达 5板（高潮特征），但炸板率 42.3% 超退潮阈值、跌停由上周 4 家升至 12 家、前高标一字跌停，三项共振指向高位抱团瓦解、资金向低位新题材（液冷/机器人/消费）切换。</p>
+<h2>2. 本周思维方法进展</h2>
+<ul><li><strong>指数红 ≠ 赚钱效应</strong>：宽度 37.9% 与炸板率 42.3% 才是真实情绪，单看指数会误判。</li><li><strong>高位退潮的可识别信号</strong>：以"前一批最高标一字跌停+封单放大"为抱团瓦解确认点（深中华A 案例）。</li><li><strong>主线切换的客观验证法</strong>：用"上周观察名单（预案）本周实际表现"作对照——8/28 算力链前排 4 只本周全跌、3 只主力净流出，反向确认资金已切向液冷+机器人+消费，而非主观猜测。</li></ul>
+<h2>3. 仍存在的主要盲区</h2>
+<ul><li><strong>数据覆盖断档</strong>：本周仅 9-03 有完整盘中复盘，周一(8-31)/周二(9-1)/周三(9-2) 无任何日记录，无法还原情绪从"8-28 强多头(宽度63.6%)"到"9-03 分歧退潮(宽度37.9%)"的演变路径。</li><li><strong>主线切换时点模糊</strong>：已知 9-03 算力链已弱、液冷已强，但缺乏周一到周三连续快照，无法确定切换是周一发生还是周三发生，对"启动期 vs 高潮期"判断无支撑。</li><li><strong>预案闭环缺失</strong>：8-28 观察名单（7问框架筛选）在 9-03 被验证全跌，但未记录当时是否实际持仓/是否执行止损，无法量化 7问框架的真实命中率与失效场景。</li></ul>
+<h2>4. 下周关注方向（客观事实）</h2>
+<ul><li><strong>液冷服务器</strong>：订单兑现逻辑（产线满产、CDU 订单排至年底），观察能否从事件催化走向业绩验证。</li><li><strong>人形机器人</strong>：Hugging Face Microduck 开源催化持续度，关注板块联动数量变化。</li><li><strong>新零售/消费</strong>：7部门促消费文件落地节奏，国芳集团 5板后的连板高度演进。</li><li><strong>CPO</strong>：仍活跃但强度弱于液冷，观察是否重新获得资金聚焦。</li><li><strong>高标退潮后续</strong>：连板高度是否从 5板回落、跌停家数是否继续放大，作为退潮深度的观测锚。</li></ul>
+<h2>5. 改进建议</h2>
+<ol><li><strong>补齐每日收盘复盘</strong>：本周仅 1 天有实质交易复盘，建议每日收盘后固定写一条 <code>YYYY-MM-DD.md</code>，避免周报数据时断档、情绪序列断裂。</li><li><strong>主线切换连续跟踪</strong>：在盘中简报固定增设"昨日主线 vs 今日主线"对比字段，积累成日序列，使"启动/发酵/高潮/退潮"定位有连续数据支撑，而非单点快照。</li><li><strong>预案闭环回填</strong>：观察名单在卖出后回填实际结果（盈亏%、是否触发止损），才能评估 7问开仓框架的真实命中率，区分"框架失效"与"执行偏差"。</li></ol></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

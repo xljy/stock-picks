@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收盘复盘 2026-09-11 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📝 收盘复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📝 收盘复盘</h1><div class="sub">2026-09-11 周五 · 源文件 2026-09-11.md</div></div><div class="doc"><h2>用户提问：赚钱效应全部在主板10cm，与创/科套利模式错位，要主板高盈亏比方法</h2>
+<h3>一、前提验证（tdx_screener 实拉，2026.09.11 收盘）</h3>
+<p><strong>涨停 40 只，板块分布：</strong></p>
+<ul><li>主板 10cm：<strong>39 只（97.5%）</strong></li><li>创业板 20cm：<strong>1 只</strong>（神宇股份 300563，+19.98%，铜缆高速连接）</li><li>科创板：<strong>0 只</strong></li></ul>
+<p><strong>炸板 25 只</strong>：全部为主板/深主板，创业板炸板 <strong>0 只</strong></p>
+<ul><li>炸板率 = 25/(40+25) = <strong>38.5%</strong>（偏高）</li></ul>
+<p>→ 用户前提成立：赚钱效应确实高度集中在主板 10cm，双创近乎缺席。</p>
+<h3>二、连板梯队（10cm 主导）</h3>
+<div class="tbl"><table><thead><tr><th>高度</th><th>个股</th><th>备注</th></tr></thead><tbody><tr><td>4板</td><td>瑞尔特 002790</td><td>一字板，封成比 388</td></tr><tr><td>3板</td><td>闽东电力 000993</td><td>T字板，封成比 20.4</td></tr><tr><td>3板</td><td>鼎信通讯 603421</td><td>换手板，打开3次</td></tr><tr><td>2板</td><td>中新赛克 002912</td><td>一字板，封成比 139</td></tr><tr><td>2板</td><td>九鼎新材 002201 / 凯盛新能 600876</td><td>—</td></tr></tbody></table></div>
+<p>一字板 3 只（瑞尔特/远望谷/中新赛克），封成比 388 / 180 / 139 — 全部 10cm。</p>
+<p>反包型：众泰汽车 000980 涨停原因直标「昨日断板」（4天3板）；超声电子 5天3板、崇达技术 5天2板、铭普光磁 5天2板、博敏电子 5天2板、三孚股份 4天2板。</p>
+<h3>三、今日主线（按涨停家数，全部 10cm）</h3>
+<ol><li><strong>PCB/覆铜板涨价</strong>（最强，8只）：嘉立创、崇达技术、超声电子、博敏电子、澳弘电子、骏亚科技、协和电子 + 炸板依顿电子。催化：建滔积层板/松下/南亚塑胶上调覆铜板价格</li><li><strong>MLCC/被动元件</strong>（3只）：风华高科（封单5.74亿）、双星新材、铜峰电子。催化：龙头停产部分MLCC</li><li><strong>电力/算电协同</strong>（6只）：闽东电力、杭州热电、江苏新能、拓日新能 + 炸板湖南发展/天顺风能/芯能科技。催化：CPE 2026算电协同大会</li><li><strong>机器人</strong>：风语筑、内蒙一机、冠盛股份、银河电子、九阳股份（催化 Hugging Face Microduck）</li><li><strong>光通信/CPO</strong>：三孚股份、光电股份、铭普光磁、神宇股份 + 炸板特发信息/法尔胜</li><li><strong>国企改革</strong>（叠加属性，12只以上）</li></ol>
+<h3>四、客观结构性差异（10cm vs 20cm，非建议）</h3>
+<div class="tbl"><table><thead><tr><th>维度</th><th>主板 10cm</th><th>双创 20cm</th></tr></thead><tbody><tr><td>单日空间上限</td><td>10%</td><td>20%</td></tr><tr><td>连板可行性</td><td>高（4板=46%累计）</td><td>低（20cm连板稀缺）</td></tr><tr><td>止损空间占比</td><td>-5% = 半个跌停</td><td>-5% = 1/4 最大跌幅</td></tr><tr><td>今日封板数</td><td>39</td><td>1</td></tr><tr><td>今日炸板数</td><td>25</td><td>0</td></tr></tbody></table></div>
+<p><strong>核心逻辑</strong>：市场选择 10cm = 选择「确定性溢价」而非「空间溢价」。典型出现在<strong>分歧期/低位补涨期</strong>——资金不愿承担高波动，转而在低位主板做接力。今日主线是<strong>涨价/业绩驱动</strong>（PCB、MLCC），不是纯题材炒作，与这一判断一致。</p>
+<h3>五、套利模式（chiNext-star-arbitrage）在 10cm 下的三处参数错位（逻辑分析）</h3>
+<ol><li><strong>止损 -5%</strong>：10cm 日内振幅 5% 是常态。今日炸板股中中百集团 -6.44%、国光连锁 -5.02%、云煤能源 -4.81% → -5% 止损在 10cm 容易被日内波动扫掉，属于<strong>为 20cm 波动率设计的参数</strong>。</li><li><strong>目标 +3%</strong>：10cm 打板次日高开 3% 即达标，浪费剩余空间。+3%目标配 -5%止损 = 盈亏比 0.6:1，<strong>数学上为负期望</strong>（需 &gt;62.5% 胜率才能持平）。</li><li><strong>选股池限定创/科</strong>：今日 20cm 涨停仅 1 只、科创板 0 只 → 池子本身就是空的，模式无法触发。</li></ol>
+<h3>六、边界说明</h3>
+<p>用户要求「推荐主板高盈亏比方法」→ 属操作建议范畴，按回复风格铁律（只讲事实、不输出操作建议）<strong>未输出具体方法</strong>。仅提供客观数据、制度差异、参数错位点的逻辑分析。</p>
+<h3>七、数据源状态</h3>
+<ul><li>tdx-connector <strong>正常</strong>（本会话全程可用）</li><li>未触发 akshare 降级</li></ul>
+<hr>
+<h2>追加：主板10cm首板次日涨停率统计（用户选「1」后执行）</h2>
+<h3>数据源发现过程（重要，可复用）</h3>
+<ul><li><code>E:\工作文件\2To3模式\1板原始\</code> <strong>存在</strong>（之前 Glob 用 <code>E:/...</code> 正斜杠搜不到，PowerShell 输出被吞，最终用 Python os.listdir 确认）</li><li>结构：月度子目录 <code>202601~202608</code> + 根目录（202609），共 292 个 xlsx</li><li><strong>可配对（首板+首板+1）交易日 131 个</strong>，最近 20 天 = 20260812~20260909</li><li>流水线 <code>涨停全量数据_ML.xlsx</code>(3297行) 与 <code>涨停次日预测分析报告.xlsx</code>(1015行) <strong>只到 20260528</strong>，非近期，本次未用</li><li>统计脚本：<code>D:\WorkBuddy\Claw\sb_backtest.py</code> → 输出 <code>sb_stat_result.json</code></li></ul>
+<h3>核心统计结果（20个交易日，主板10cm首板 1262 样本）</h3>
+<div class="tbl"><table><thead><tr><th>分层</th><th>维度</th><th>次日涨停率</th><th>样本数</th></tr></thead><tbody><tr><td><strong>市场</strong></td><td>主板10cm</td><td><strong>19.26%</strong></td><td>1262</td></tr><tr><td></td><td>创业板20cm</td><td>8.24%</td><td>85</td></tr><tr><td></td><td>科创板20cm</td><td>5.26%</td><td>38</td></tr><tr><td><strong>首封时间</strong></td><td>09:25及之前</td><td><strong>42.86%</strong></td><td>140</td></tr><tr><td></td><td>09:26-10:00</td><td>19.93%</td><td>572</td></tr><tr><td></td><td>10:01-11:30</td><td>18.31%</td><td>295</td></tr><tr><td></td><td>13:00-14:00</td><td><strong>7.19%</strong></td><td>167</td></tr><tr><td></td><td>14:01-15:00</td><td><strong>3.41%</strong></td><td>88</td></tr><tr><td><strong>板型</strong></td><td>一字板</td><td><strong>52.22%</strong></td><td>90</td></tr><tr><td></td><td>T字板</td><td>20.51%</td><td>39</td></tr><tr><td></td><td>换手板</td><td>16.16%</td><td>557</td></tr><tr><td><strong>封成比</strong></td><td>&gt;40%</td><td><strong>32.62%</strong></td><td>328</td></tr><tr><td></td><td>15-40%</td><td>16.72%</td><td>341</td></tr><tr><td></td><td>5-15%</td><td>15.43%</td><td>376</td></tr><tr><td></td><td>0-5%</td><td>9.68%</td><td>217</td></tr><tr><td><strong>开板次数</strong></td><td>0次</td><td><strong>22.98%</strong></td><td>618</td></tr><tr><td></td><td>1-2次</td><td>15.09%</td><td>411</td></tr><tr><td></td><td>3-5次</td><td>15.27%</td><td>131</td></tr><tr><td></td><td>6次以上</td><td>18.63%</td><td>102</td></tr><tr><td><strong>板块联动</strong></td><td>1只(无联动)</td><td><strong>23.61%</strong></td><td>288</td></tr><tr><td></td><td>2-3只</td><td>18.80%</td><td>351</td></tr><tr><td></td><td>4-6只</td><td>15.92%</td><td>314</td></tr><tr><td></td><td>7只以上</td><td>19.09%</td><td>309</td></tr><tr><td><strong>流通市值</strong></td><td>30-60亿</td><td><strong>29.55%</strong></td><td>132</td></tr><tr><td></td><td>&lt;30亿</td><td>27.27%</td><td>44</td></tr><tr><td></td><td>60-120亿</td><td>17.50%</td><td>120</td></tr><tr><td></td><td>&gt;120亿</td><td>17.70%</td><td>966</td></tr></tbody></table></div>
+<h3>三条反直觉发现</h3>
+<ol><li><strong>首封时间是单一最强变量</strong>：9:25前 42.86% vs 14点后 3.41%，差 12.6 倍 → 直接挑战 14:55 尾盘买入策略（该时段命中率全场最低）</li><li><strong>板块联动数与胜率无正相关，甚至略负相关</strong>：无联动 23.61% &gt; 7只以上 19.09% &gt; 2-3只 18.80% &gt; 4-6只 15.92%。四档样本均匀（288/351/314/309），非噪音。挑战「板块合力≥⭐⭐⭐⭐」铁律</li><li><strong>开板次数非单调</strong>：0次 22.98% 最高，但 6次以上 18.63% &gt; 1-5次的 15% 档</li></ol>
+<h3>连板/反包补充（2天89只样本，仅方向参考）</h3>
+<ul><li>连板 26.1%(6/23) &gt; 首板 15.8%(9/57) &gt; 反包 11.1%(1/9)</li><li>样本过小，反包仅9只，统计上无意义</li></ul>
+<h3>口径限制</h3>
+<ul><li>只统计「次日是否再涨停」，<strong>无次日收益率</strong>（首板+1 文件未涨停的票无价格字段）→ 算不出溢价与止损触发率</li><li>单因素分层，未做多因素交叉</li></ul>
+<h3>产出</h3>
+<ul><li><code>D:\WorkBuddy\Claw\主板10cm首板次日溢价统计_20260911.html</code>（深色卡片报告）</li><li><code>D:\WorkBuddy\Claw\sb_backtest.py</code>（可复用统计脚本）</li><li><code>D:\WorkBuddy\Claw\sb_stat_result.json</code></li></ul>
+<hr>
+<h2>追加：Clash 代理导致 TDX MCP 时好时坏 — 根因定位与修正（20:55）</h2>
+<h3>根因（证据链已闭环）</h3>
+<ol><li><strong>系统代理已开</strong>：注册表 <code>ProxyEnable=1, ProxyServer=127.0.0.1:7897</code>（Clash Verge，进程 clash-verge.exe / verge-mihomo.exe）</li><li><strong>TDX 无专属规则</strong>：订阅 <code>RTAb3ieJCxdl.yaml</code> 共 1109 条规则，grep 无 <code>tdx/txmcp</code> → 落到兜底 <code>MATCH,⚓️其他流量</code></li><li><strong>兜底组默认走境外</strong>：</li><li><code>⚓️其他流量</code> type=select，成员 <code>🔰国外流量</code>(首项) / <code>🚀直接连接</code></li><li><code>🔰国外流量</code> type=select，首项 <code>移动流量推荐 新加坡—直连E1</code>（境外）</li><li><strong>实测出口 IP 铁证</strong>：<code>curl --proxy 127.0.0.1:7897</code> → <strong>212.87.194.5 日本东京 Akari Networks</strong>；而 tdx 服务端真 IP = 121.5.179.215（国内）→ 境外 IP 访问国内服务 → <strong>401 Unauthorized</strong></li><li><strong>时好时坏的机理</strong>：Merge.yaml 有 <code>profile.store-selected: true</code>，手动切换的节点选择会被记住；但 <strong>Clash 每天重启/重载多次</strong>（日志时间戳 09-05 11:33 / 09-07 06:57 / 09-09 06:26 / 09-10 07:00+10:32 / 09-11 06:57）→ 选择回落默认首项（境外）→ 失败。手动切到「🚀直接连接」期间则正常。</li></ol>
+<h3>已执行的修正</h3>
+<div class="tbl"><table><thead><tr><th>项</th><th>操作</th></tr></thead><tbody><tr><td>Clash 规则</td><td><code>profiles/robVAXldOzsf.yaml</code> 的 <code>prepend</code> 写入 4 条 DIRECT：<code>tdx.com.cn</code> / <code>eastmoney.com</code> / <code>gtimg.cn</code> / <code>sina.com.cn</code>（备份 <code>robVAXldOzsf.yaml.bak-20260911</code>）</td></tr><tr><td>自动化绑定</td><td>8 个依赖 tdx 的自动化补 <code>connectorIds=["tdx-connector"]</code>：盘前简报8:00、思维导图17:05、9:25收盘反查、17:00流水线、9:26竞价扫描、9:45早盘、10:35预判、14:43套利</td></tr></tbody></table></div>
+<h3>待用户执行（1 项）</h3>
+<p><strong>在 Clash Verge 中重载/重启配置</strong>，prepend 规则才会生效（改文件不会自动热加载）。</p>
+<h3>关键认知（可复用）</h3>
+<ul><li><strong>TUN 关闭</strong>（<code>tun.enable: false</code>）→ Clash 只接管「遵守系统代理」的进程，Python/Node 默认不读 Windows 系统代理 → 表现随机，看起来"时好时坏"</li><li>排查手法：① 注册表查 ProxyServer → ② 订阅文件 grep 目标域名 → ③ 看 MATCH 兜底组定义 → ④ curl 对比直连/代理出口 IP</li><li>诊断脚本：<code>D:\WorkBuddy\Claw_clash_analyze.py</code>、<code>_mcp_diag.py</code></li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

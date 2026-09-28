@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每周复盘 2026-07-17 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+/* ---- md 正文渲染（复盘/周报/预判/套利日报 由 .md 转来） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:26px 30px 34px;font-size:.93em;}
+.doc h1{font-size:1.5em;color:#fff;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.2em;color:var(--accent);margin:26px 0 12px;display:block;border:0;padding:0;}
+.doc h3{font-size:1.05em;color:#e6edf3;margin:20px 0 9px;}
+.doc h4,.doc h5,.doc h6{font-size:.98em;color:var(--text);margin:16px 0 7px;}
+.doc p{margin:9px 0;}
+.doc ul,.doc ol{margin:9px 0 9px 22px;}
+.doc li{margin:5px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:22px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(88,166,255,.06);
+  margin:12px 0;padding:9px 14px;color:var(--dim);border-radius:0 6px 6px 0;}
+.doc blockquote p{margin:4px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:4px;
+  padding:1px 6px;font-family:Consolas,'Courier New',monospace;font-size:.9em;color:#f0883e;}
+.doc pre{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;overflow-x:auto;margin:12px 0;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);}
+.doc .tbl{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:14px 0;}
+.doc table{min-width:0;font-size:.92em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:8px 11px;}
+.doc th{background:var(--card2);color:var(--dim);}
+.doc strong{color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">📅 每周复盘 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>📅 每周复盘</h1><div class="sub">2026-07-17 周五 · 源文件 2026-W29.md</div></div><div class="doc"><p><strong>日期范围</strong>：2026-07-13（周一）至 2026-07-17（周五）<br><strong>有效交易日</strong>：5天（7/13、7/14、7/15、7/16、7/17）<br><strong>日记记录</strong>：7/15（新股Serenity分析+情绪流+吸筹信号）、7/17（陕鼓动力连板分析）。7/13-7/14、7/16无日记（覆盖率40%）。</p>
+<hr>
+<h2>一、本周市场概览</h2>
+<h3>主要指数涨跌（7/10上周五收盘 → 7/17本周五收盘）</h3>
+<div class="tbl"><table><thead><tr><th>指数</th><th>7/10收盘</th><th>7/17收盘</th><th>本周涨跌</th><th>日均成交</th></tr></thead><tbody><tr><td>上证指数</td><td>3996.16</td><td>3764.15</td><td><strong>-5.81%</strong></td><td>1.24万亿</td></tr><tr><td>深证成指</td><td>15046.67</td><td>13706.88</td><td><strong>-8.88%</strong></td><td>1.39万亿</td></tr><tr><td>创业板指</td><td>3842.73</td><td>3428.63</td><td><strong>-10.76%</strong></td><td>0.63万亿</td></tr></tbody></table></div>
+<h3>日内走势节奏</h3>
+<ul><li><strong>周一(7/13)</strong>：延续上周跌势，全面下杀。上证从3996→3914(-2.06%)，创业板跌破3700(-3.11%)。上涨443家/下跌1880家，恐慌蔓延。</li><li><strong>周二(7/14)</strong>：超跌反弹。上证+1.35%回到3967，创业板+3.41%回到3851。上涨1735家/下跌570家，普反格局。成交1.27万亿（缩量反弹）。</li><li><strong>周三(7/15)</strong>：反弹昙花一现。上证-0.29%窄幅震荡，创业板-1.21%回落至3805。上涨1451/下跌862，多空分歧。</li><li><strong>周四(7/16)</strong>：二次下探。上证-1.84%至3882，创业板-2.95%至3692。上涨946/下跌1339，空头重新控盘。成交1.12万亿（继续缩量）。</li><li><strong>周五(7/17)</strong>：<strong>崩盘式暴跌</strong>。上证-3.05%至3764，创业板-7.15%至3428。上涨202/下跌2119——<strong>仅202家上涨，创本轮极端值</strong>。创业板从3642开盘一路单边杀至3387盘中最低，收盘3428。</li></ul>
+<h3>关键特征</h3>
+<ol><li><strong>连续两周崩盘加速</strong>：W28创业板-4.41%→W29创业板-10.76%，跌幅翻倍。创业板两周累计从4019→3428，跌幅-14.8%。</li><li><strong>周二反弹是下跌中继</strong>：7/14超跌反弹+3.41%但成交仅0.66万亿（缩量），次日即回落，与W28周四的+4.49%假修复同构。</li><li><strong>周五跌停比例极端</strong>：上涨202家vs下跌2119家，涨跌比约1:10.5，为近两个月最极端值。</li><li><strong>成交额持续萎缩</strong>：全周日均成交1.24万亿（上证），低于W28日均1.35万亿。周五放量暴跌1.25万亿。</li><li><strong>创业板指跌破3500</strong>：盘中最低3387，收3428。从W26高点4353到3428，三周累计-21.4%。</li></ol>
+<h3>情绪周期定位</h3>
+<p>W27退潮→W28冰点+假修复→W29<strong>恐慌加速</strong>。当前处于情绪周期的<strong>恐慌释放阶段</strong>：连续两周加速下跌、涨跌比极端（1:10.5）、周二反弹被次日吞没、周五单边崩盘无抵抗。创业板三周从4353→3428（-21.4%），已超出常规退潮幅度，进入恐慌级杀跌。</p>
+<hr>
+<h2>二、本周思维方法进展</h2>
+<ol><li><strong>Serenity框架在新股上的系统化应用</strong>：</li></ol>
+<p>7/15日记对三只新股（托伦斯301583、大普微301666、鸿仕达920125）做了完整的Serenety分析，包括：需求真实性→传导完整性→市场误分类→弹性消失→验证条件。三只横向对比得出"需求真实性：大普微&gt;托伦斯&gt;&gt;鸿仕达""卡脖子真实性：大普微(中高)&gt;托伦斯(中)&gt;&gt;鸿仕达(无)"的梯度判断。<strong>首次将多只同概念新股做横向Serenity交叉对比</strong>，而非孤立分析单票。</p>
+<ol><li><strong>Wyckoff吸筹信号微结构分析</strong>：</li></ol>
+<p>7/15日记对托伦斯7/14全天240根1分钟K线逐根拆解，识别出6个吸筹信号（Selling Climax、底部一次性测试、午后极端缩量Supply Test、尾盘急跌后放量回收、量能递减、收盘在低点上方9.7%）和4个反方信号。判定为"弱吸筹而非强吸筹"，并设定次日确认条件。<strong>这是首次将Wyckoff微观分析框架系统化应用于A股新股</strong>。</p>
+<ol><li><strong>外部催化剂对场景概率的动态修正</strong>：</li></ol>
+<p>7/15日记中，SK海力士ADR+27%的外部催化出现后，立即修正了托伦斯7/15三种场景的概率分布（场景A低开续杀从50%降至25%，场景C超跌反弹从20%升至45%），但保留了核心判断（196套牢区+毛利率问题不因催化剂解决）。<strong>首次在盘中分析中建立"催化剂→场景概率修正"的显式框架</strong>。</p>
+<ol><li><strong>"只讲事实不给操作建议"规则的执行确认</strong>：</li></ol>
+<p>7/17日记明确记录"用户规则：只讲事实不给操作建议，本次严格遵循"。规则从提出到执行已稳定落地。</p>
+<hr>
+<h2>三、仍存在的主要盲区</h2>
+<ol><li><strong>日记覆盖率仍然只有40%</strong>：本周5个交易日仅2天有记录。7/13周一暴跌、7/14周二反弹、7/16周四二次下探均无记录。<strong>"每日强制写日记"的改进建议连续第三周未执行</strong>。特别是7/17周五崩盘日，日记仅记录了陕鼓动力个案分析，缺乏对全市场崩盘的系统性复盘。</li></ol>
+<ol><li><strong>恐慌级杀跌下无系统性应对框架</strong>：创业板两周-14.8%、三周-21.4%，已超出套利模式中"大盘暴跌（沪指-2%）→空仓"的阈值。但当前没有"恐慌级杀跌持续多久/多深才构成系统性风险vs超跌反弹机会"的量化判断标准。W28建议的"大盘环境与个股7问并行过滤"仍未落地。</li></ol>
+<ol><li><strong>新股/次新股分析的时效性矛盾</strong>：7/15对三只新股做了深度分析，但这些票上市仅3-5天，价格完全脱离基本面（PE 567x/160x/1381x）。Serenity框架能判定"估值不合理"，但无法回答"市场会在哪一天定价回归"。<strong>对纯情绪驱动品种，基本面分析的实用性边界尚未厘清</strong>。</li></ol>
+<ol><li><strong>地天板等极端形态的积累不足</strong>：7/17陕鼓动力地天板是重组股常见走势，日记中标注"可积累为模式"，但尚未系统梳理地天板的次日表现统计、封板质量标准、板块独立性要求等。</li></ol>
+<hr>
+<h2>四、下周关注方向</h2>
+<ul><li><strong>创业板3400/上证3750支撑区域</strong>：创业板周五盘中最低3387、收盘3428；上证最低3745、收盘3764。若下周开盘继续击穿3400/3750，将进入更深层恐慌区间。若在此区域企稳（缩量止跌+不再创新低），则可能进入超跌反弹窗口。</li><li><strong>周二反弹日的成交量对比</strong>：7/14反弹日成交0.66万亿（创业板），远低于7/13下跌日的0.70万亿。缩量反弹=反弹无根基。下周若出现反弹，需对比下跌日和反弹日的成交额——放量反弹才值得关注。</li><li><strong>周五202家上涨的品种归类</strong>：极端弱势中仅202家上涨，这些品种的抗跌属性值得关注——是低估值防御、还是逆势题材？梳理这202家的板块归属，可能发现恐慌环境下的真实主线。</li><li><strong>陕鼓动力等重组股的周一表现</strong>：周五地天板后，次日封板/炸板/回落的表现是观察重组题材情绪温度的微观指标。</li><li><strong>半年报预告密集期继续</strong>：7月中下旬预告高峰，业绩超预期/暴雷仍在持续。关注是否有业绩催化品种在恐慌中被错杀。</li></ul>
+<hr>
+<h2>五、改进建议</h2>
+<ol><li><strong>提高日记覆盖率至80%以上</strong>：连续三周覆盖率40%，大量交易日无记录导致复盘数据缺失。建议：每个交易日收盘后，无论是否有持仓操作，都强制记录当日市场关键数据（三大指数涨跌+涨跌家数+成交额+板块强度Top3）。即使没有选股或操作，市场状态的记录本身就是复盘素材。可考虑设置每日17:00自动化提醒。</li></ol>
+<ol><li><strong>建立"恐慌级vs退潮级"的环境分级标准</strong>：当前套利模式只有"沪指-2%→空仓"一条线，但W28-W29的连续杀跌已远超-2%。建议建立三级环境分类：①正常波动（创业板日跌幅&lt;2%）→正常操作；②退潮级（日跌幅2-4%，连续2天以上）→降仓/只做B类尾盘；③恐慌级（日跌幅&gt;4%，或涨跌比&lt;1:5）→空仓观望，不执行任何买入信号。三级对应不同的操作纪律，避免在恐慌级环境中仍然按正常标准选股。</li></ol>
+<ol><li><strong>新股/次新股基本面分析的适用边界声明</strong>：Serenity框架对"需求真/传导断/误分类"的判定有效，但对上市&lt;10天、PE&gt;100x的品种，应明确标注"情绪定价阶段，基本面分析仅提供安全边界参考，不构成择时依据"。避免在极端估值的情绪票上过度投入分析资源而忽视市场情绪面的实时变化。</li></ol></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>
