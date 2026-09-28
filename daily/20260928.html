@@ -196,6 +196,36 @@ fundflow [--codes ...]       个股资金净额（同花顺，元）</code></pre
 <ul><li>技能 <code>nontdx-a-stock-data-layer</code> → <strong>v1.2</strong>：能力表补 <code>breadth</code>；新增 §五「涨停池/特征流水线</li></ul>
 <p>（非TDX 取数 + <code>enrich --force</code> + 交易日历主源翻转）」；§四补腾讯口径复刻的实测验证表与<br>时间戳语义/除权日/北交所号段三条结论；§六自动化表 <strong>3 → 11 个任务</strong>；坑清单补<br>东财首次封板时间口径、GitHub DNS 污染与可用 IP 清单。</p>
 <ul><li>新建技能 <code>github-pages-report-publish</code>（v1.0）：把「源目录表驱动归档 + 三段式目录页 +</li></ul>
-<p>增量幂等 + 双时点调度 + push 重试 + GitHub DNS 定位与 hosts 修法」沉淀成可复用工作流。</p></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+<p>增量幂等 + 双时点调度 + push 重试 + GitHub DNS 定位与 hosts 修法」沉淀成可复用工作流。</p>
+<hr>
+<h2>补记 2：决策链上站（09:00 起，用户回复"好"）</h2>
+<h3>背景：发现归档只覆盖"数据链"，缺"决策链"</h3>
+<p>站上原本只有 7 类<strong>数据链</strong>报告（盘前/早盘/竞价/情绪/预测/导图/二波），<br><strong>决策类产出一个都没有</strong>。深挖后发现分两种严重程度：</p>
+<div class="tbl"><table><thead><tr><th>#</th><th>情况</th><th>严重度</th></tr></thead><tbody><tr><td>①</td><td><code>10:35 盘中预判</code> / <code>14:43 套利日报</code> 的输出<strong>根本没落盘</strong>——产出目录 <code>D:\WorkBuddy\2026-06-24-15-21-57\outputs\</code> 的 md 只写到 <strong>2026-07-01</strong> 就断了，之后只存在于对话里</td><td>🔴 无法回溯、无法复盘</td></tr><tr><td>②</td><td><code>15:30 收盘复盘</code>（→ <code>memory\YYYY-MM-DD.md</code>）、<code>周五周报</code>（→ <code>memory\weekly\</code>）有 md，但没上站</td><td>🟡 只缺归档</td></tr><tr><td>③</td><td><strong>额外发现</strong>：<code>579b12dd 竞价反查(15:45)</code> 自 <strong>2026-09-15 起已停摆</strong>——上游 9:25 预备链路被删、候选池不再刷新，HTML 只到 09-15，automation memory 最后一条(09-15) 自己写着"报告职能连续 7 日空转，是否停用待用户裁定"</td><td>🔴 任务空转中，<strong>待用户裁定</strong></td></tr></tbody></table></div>
+<h3>处置</h3>
+<p><strong>①</strong> 给两个 chiNext 任务加"落盘存档"步骤（各 +1 步，放在执行记录之前）：</p>
+<ul><li><code>D:\WorkBuddy\2026-06-24-15-21-57\outputs\YYYYMMDD-1035-prejudgment.md</code></li><li><code>D:\WorkBuddy\2026-06-24-15-21-57\outputs\YYYYMMDD-1443-daily.md</code></li><li>prompt 里写明<strong>精确正则</strong> <code>^(\d{8})-1035-prejudgment\.md$</code> / <code>^(\d{8})-1443-daily\.md$</code>，</li></ul>
+<p>并注明"若因非交易日/数据源不可用中止则不写文件、不留空文件"</p>
+<p><strong>② + ①</strong> 发布器加 md 支持（<code>kind: "md"</code>），新增 4 个分类 → <strong>CATS 7 → 11 类</strong>，按时间重排：</p>
+<div class="tbl"><table><thead><tr><th>子目录</th><th>报告</th><th>时间</th><th>源</th></tr></thead><tbody><tr><td><code>prejudge/</code></td><td>盘中预判</td><td>10:35</td><td><code>outputs\YYYYMMDD-1035-prejudgment.md</code></td></tr><tr><td><code>arb/</code></td><td>套利日报</td><td>14:43</td><td><code>outputs\YYYYMMDD-1443-daily.md</code></td></tr><tr><td><code>daily/</code></td><td>收盘复盘</td><td>15:30</td><td><code>memory\YYYY-MM-DD.md</code>（40 期）</td></tr><tr><td><code>weekly/</code></td><td>每周复盘</td><td>周五 23:00</td><td><code>memory\weekly\YYYY-Www.md</code>（8 期）</td></tr></tbody></table></div>
+<h3>代码要点（<code>stock_picks_publish.py</code>）</h3>
+<ul><li><code>scan_src</code> 新增 <code>datefix</code>（接收 match、返回 YYYYMMDD）→ <strong>源文件名不用改</strong>：</li></ul>
+<p>复盘 <code>(\d{4}-\d{2}-\d{2})\.md</code> 去横杠；周报 <code>(\d{4})-W(\d{2})\.md</code> 用<br><code>strptime("%s-W%s-5", "%G-W%V-%u")</code> 映射到<strong>该周周五</strong>（=实际产出日，比用周一更直观）</p>
+<ul><li>新增自包含 <code>md_to_html</code>（<strong>不依赖 markdown 库</strong>，避免解释器/依赖差异变成新故障点）：</li></ul>
+<p>支持标题/表格/列表/引用/代码块/分隔线/段落 + 行内 bold/italic/code/link</p>
+<ul><li><strong>增量判断</strong>：md 类不能比源文件字节（永远不等 → 每次"新增"、无限无意义 commit），</li></ul>
+<p>改为<strong>渲染到内存 → 与目标 html 全文比对 → 相同则跳过</strong></p>
+<ul><li>根页 hero 与 colspan 改 <code>len(CATS)</code> 动态；抽 <code>foot()</code> 复用；表格加"可左右滑动"提示</li><li>LEGACY 段补 <code>review/strategy/midday</code> 入口（上一轮遗留的孤岛问题）</li></ul>
+<h3>🔴 md 渲染踩到的两个真坑（已写进技能）</h3>
+<ol><li><strong>行内代码里的裸星号会炸掉粗体</strong>：源 md 写 `<code> **禁止调用 </code>tdx_*<code> 工具** </code>`，</li></ol>
+<p><code>tdx_*</code> 的 <code>*</code> 与别处 <code>*</code> 配成 <code>&lt;em&gt;</code> → 粗体只渲染一半、页面裸出 <code>**</code>。<br><strong>正确顺序</strong>：转义符占位 → <strong>抽出行内代码占位</strong> → bold → italic → link → 还原</p>
+<ol><li><strong>md 转义符</strong>（<code>tdx_*</code>）同样要占位后再还原</li></ol>
+<p>修完自检：<code>daily/</code> + <code>weekly/</code> 共 50 个产物，残留 <code>**</code> 从 2 → <strong>0</strong></p>
+<h3>结果</h3>
+<ul><li>归档 <code>--all</code>：daily 40 + weekly 8 渲染成功，root 目录页 <strong>124 个交易日 × 11 列</strong></li><li>push <strong>60 files</strong>，一次成功（hosts 修复有效）</li><li>线上验证 9 个 URL 全 <strong>200</strong>；抽查 <code>daily/20260928.html</code> 渲染干净（7 表 / 11 小节 / 0 残留）</li><li>两个归档任务（17:30 / 22:30）prompt 的类别映射 7 → 11 已同步</li></ul>
+<h3>待办 / 遗留</h3>
+<ul><li>🔴 <strong>竞价反查停摆待裁定</strong>：停用？还是恢复 9:25 上游链路？</li><li>⚠️ <code>17:00 涨停预测流水线</code> prompt 里"7 类报告"是描述性旧数字（不影响执行），未同步</li><li>⚠️ <strong><code>daily/</code> 归档的是"活文档"</strong>：<code>memory\YYYY-MM-DD.md</code> 当天会被后续对话继续追加，</li></ul>
+<p>所以 17:30 归档后再跑会更新同一页面。属预期行为，但要知道"当天复盘页会变"</p>
+<ul><li>⚠️ 复盘 md 内容含思维反思/反方逻辑，现已<strong>公开到公网</strong></li></ul></div><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
 </body>
 </html>
