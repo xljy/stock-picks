@@ -299,6 +299,35 @@ fundflow [--codes ...]       个股资金净额（同花顺，元）</code></pre
 <h3>待办 / 遗留</h3>
 <ul><li>🔴 <strong>竞价反查停摆待裁定</strong>：停用？还是恢复 9:25 上游链路？</li><li>⚠️ <code>17:00 涨停预测流水线</code> prompt 里"7 类报告"是描述性旧数字（不影响执行），未同步</li><li>⚠️ <strong><code>daily/</code> 归档的是"活文档"</strong>：<code>memory\YYYY-MM-DD.md</code> 当天会被后续对话继续追加，</li></ul>
 <p>所以 17:30 归档后再跑会更新同一页面。属预期行为，但要知道"当天复盘页会变"</p>
-<ul><li>⚠️ 复盘 md 内容含思维反思/反方逻辑，现已<strong>公开到公网</strong></li></ul></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+<ul><li>⚠️ 复盘 md 内容含思维反思/反方逻辑，现已<strong>公开到公网</strong></li></ul>
+<hr>
+<h2>09:10 全站可读性重构 + 双份预测站收敛为一个入口</h2>
+<p>用户指令：「3里面保留一份最合适的就好。所有页面的渲染需要适合眼睛阅读」</p>
+<h3>一、渲染层重构（<code>stock_picks_publish.py</code>）</h3>
+<div class="tbl"><table><thead><tr><th>项</th><th>改前</th><th>改后</th></tr></thead><tbody><tr><td>md 正文字号</td><td>.93em ≈ 14.9px</td><td><strong>1.02em ≈ 16.3px</strong></td></tr><tr><td>行高</td><td>1.6</td><td><strong>1.8</strong>（md 页 1.95）</td></tr><tr><td>阅读页行宽</td><td>1100px（继承 body）</td><td><strong>880px</strong>（<code>.doc</code> 独立收窄，否则中文一行 100+ 字）</td></tr><tr><td>表格</td><td>无斑马纹、首列不固定</td><td><strong>斑马纹 + 表头 sticky + 首列 sticky left</strong></td></tr><tr><td>圆点</td><td>26×20px</td><td><strong>30×24px</strong>（触摸友好）</td></tr><tr><td>移动端</td><td>无</td><td><code>@media(max-width:700px)</code> 独立适配</td></tr></tbody></table></div>
+<p>新增：吸顶导航、右下角「回到顶部」、「📌 最新一期」直达按钮、<code>color-scheme:dark</code>。</p>
+<p><strong>关键发现</strong>：<code>thead{position:sticky;top:0}</code> 在 <code>overflow-x:auto</code> 容器里<strong>原本根本没生效</strong> ——<br>容器高度由内容撑开、没有内部滚动空间，sticky 退化为不吸附。加 <code>max-height:76vh</code> 后才真正吸附。</p>
+<h3>二、归档 HTML「呈现层增强」（新增 <code>enhance_html()</code>）</h3>
+<p>7 类 HTML 报告由不同任务生成、样式参差。原则：<strong>只补缺，不覆盖</strong>。</p>
+<div class="tbl"><table><thead><tr><th>补什么</th><th>实际命中的页面</th></tr></thead><tbody><tr><td><code>&lt;meta viewport&gt;</code></td><td>emotion（缺了手机端整体缩放）</td></tr><tr><td><code>body{line-height:1.85}</code></td><td>emotion（默认 1.2，最挤）</td></tr><tr><td><code>body{line-height:1.8}</code></td><td>morning(1.65) / predict(1.6) / auction(1.6) / wave2(1.62)</td></tr><tr><td>图片上限、滚动条、右下角「返回目录」胶囊</td><td>全部</td></tr></tbody></table></div>
+<ul><li><strong>字号一律不动</strong>：未设 = 浏览器默认 16px，正是中文舒适区。中途曾补 15.5px —— 那是<strong>往小改、方向反了</strong>，已撤。</li><li><strong>跳过全屏画布页</strong>：判据要<strong>只看 body 规则</strong>（<code>body{overflow:hidden}</code> + <code>100vh</code>）。</li></ul>
+<p>最初用全文搜 <code>overflow:hidden</code>，把 ML 预测页误杀了（它只有进度条元素是 hidden）。</p>
+<ul><li><strong>幂等注入</strong>：<code>&lt;!--rp:start--&gt;…&lt;!--rp:end--&gt;</code> 包裹 → 生成前先剥离 → <strong>紧贴 <code>&lt;/head&gt;</code>/<code>&lt;/body&gt;</code> 插入</strong>。</li></ul>
+<p>加了 <code>\n</code> 会导致剥离后残留空行 → 每次跑都算有变更、幂等破功（实测踩到）。<br>修完全站 <strong>247/247 幂等通过</strong>。</p>
+<h3>三、双份预测站收敛为单一入口</h3>
+<p><code>xljy.github.io/zt-predict/</code>（<code>zt_auto_run.py</code> copytree 推）与 <code>stock-picks/predict/</code>（归档器推）<br>原是同一份预测的两个入口、<strong>118 个文件重复</strong>。</p>
+<ul><li>保留 <strong><code>stock-picks/predict/</code></strong>（在统一目录页体系内，有分类索引 + 历史矩阵 + 站内导航）</li><li><code>zt_auto_run.py</code> 的 <code>push_to_github()</code> 重写：不再 copytree 整棵树，改为</li></ul>
+<p><code>git rm -r --ignore-unmatch zt-predict</code> 清重复 → 原地写跳转页（meta refresh + canonical + 手动按钮）→ push</p>
+<ul><li>结果：<code>118 files changed, 14 insertions(+), 187320 deletions(-)</code>；<code>/zt-predict/</code> 现只有 1208 字节跳转页</li><li>⚠️ <strong>本地 <code>zt-predict/</code> 目录不可删</strong> —— 它是归档器的取数源</li></ul>
+<h3>四、md 渲染器补双反引号支持</h3>
+<p>源 md 里 <code>`` **禁止调用 `tdx_*` 工具**</code> `` 这类双反引号代码 span（内部含单反引号）此前会错配。<br>改为<strong>先匹配双反引号、再匹配单反引号</strong>，两者都先占位再还原。</p>
+<h3>验证</h3>
+<ul><li>幂等：HTML 247/247；48 个 md 产物代码块外残留 <strong>0</strong></li><li>根页：<strong>12 列 × 124 行</strong>，<code>tblwrap scroll</code> ✓ <code>totop</code> ✓ 正文 16px/1.8 ✓ 行宽 880px ✓</li><li>线上 9 个 URL 全 200；<code>zt-predict/history/20260924.html</code> 正确地 <strong>404</strong>（重复副本已清）</li><li>push：stock-picks 293 files / xljy.github.io 118 files，均<strong>一次成功</strong></li></ul>
+<h3>本轮踩坑（已写入技能 <code>github-pages-report-publish</code> v1.2）</h3>
+<ol><li>注入块加换行 → 剥离残留空行 → 幂等失败</li><li>全屏页判据用全文搜索 → 误杀 ML 预测页（判据必须落在 body 规则层）</li><li>采样验证取到 <code>index.html</code>（字母序排在数字之后，且是上一轮产物）→ 一度误判 7 个分类的注入决策</li><li>自检"残留 markdown"未剔除 <code>&lt;code&gt;</code> → 把正文里合法展示的 <code>**</code> 误报为渲染有洞</li></ol>
+<h3>待办 / 遗留</h3>
+<ul><li>⚠️ <code>17:00 涨停预测流水线</code> prompt 里"7 类报告"旧数字仍未同步（本轮未动该 prompt）</li><li>⚠️ 该 prompt 里的验证 URL 仍写 <code>https://xljy.github.io/zt-predict/</code>（现已是跳转页），</li></ul>
+<p>应改成 <code>stock-picks/predict/</code></p>
+<ul><li>🔴 竞价反查停摆仍在待裁定（停用 or 恢复 9:25 上游链路）</li></ul></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 复盘 15:30 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 二波 21:00 · 周报 周五 23:00<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
 </body>
 </html>
