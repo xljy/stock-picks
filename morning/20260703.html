@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026年7月3日 09:45</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0f1117; color:#c9d1d9; font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; padding:20px; line-height:1.5; }
+.container { max-width:1400px; margin:0 auto; }
+.header { text-align:center; padding:30px 20px; border-bottom:2px solid #21262d; margin-bottom:25px; }
+.header h1 { font-size:28px; color:#e6edf3; margin-bottom:8px; }
+.header .subtitle { color:#8b949e; font-size:14px; }
+.header .timestamp { color:#f0883e; font-size:12px; margin-top:6px; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-bottom:20px; }
+.grid-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:15px; margin-bottom:20px; }
+.card { background:#161b22; border:1px solid #21262d; border-radius:10px; padding:20px; }
+.card h2 { font-size:16px; color:#e6edf3; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid #21262d; display:flex; align-items:center; gap:8px; }
+.card h2 .icon { font-size:20px; }
+.index-card { text-align:center; }
+.index-card .name { font-size:13px; color:#8b949e; margin-bottom:6px; }
+.index-card .price { font-size:24px; font-weight:700; margin-bottom:4px; }
+.index-card .change { font-size:15px; font-weight:600; }
+.index-card .info { font-size:11px; color:#8b949e; margin-top:6px; }
+.index-card .trend { font-size:11px; margin-top:4px; padding:2px 8px; border-radius:10px; display:inline-block; }
+.up { color:#f85149 !important; }
+.down { color:#3fb950 !important; }
+.bg-up { background:rgba(248,81,73,0.1); }
+.bg-down { background:rgba(63,185,80,0.1); }
+.bg-mixed { background:rgba(240,136,62,0.1); color:#f0883e !important; }
+.metric-row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #21262d; }
+.metric-row:last-child { border-bottom:none; }
+.metric-row .label { color:#8b949e; font-size:13px; }
+.metric-row .value { font-size:14px; font-weight:600; }
+.metric-row .desc { font-size:11px; color:#8b949e; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; padding:10px 8px; color:#8b949e; font-weight:500; border-bottom:1px solid #21262d; font-size:11px; }
+td { padding:8px; border-bottom:1px solid #1a1f27; }
+tr:hover { background:rgba(255,255,255,0.02); }
+.sector-bar { height:6px; border-radius:3px; margin-top:4px; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; margin:2px; }
+.tag-up { background:rgba(248,81,73,0.15); color:#f85149; }
+.tag-down { background:rgba(63,185,80,0.15); color:#3fb950; }
+.tag-warn { background:rgba(240,136,62,0.15); color:#f0883e; }
+.tag-info { background:rgba(88,166,255,0.12); color:#58a6ff; }
+.star { color:#f0883e; font-weight:700; }
+.verdict { padding:16px; border-radius:8px; margin-bottom:12px; }
+.verdict-strong { background:rgba(248,81,73,0.08); border:1px solid rgba(248,81,73,0.2); }
+.verdict-weak { background:rgba(63,185,80,0.08); border:1px solid rgba(63,185,80,0.2); }
+.verdict-mixed { background:rgba(240,136,62,0.08); border:1px solid rgba(240,136,62,0.2); }
+.verdict h3 { font-size:15px; margin-bottom:8px; }
+.verdict p { font-size:13px; color:#8b949e; line-height:1.7; }
+.na { color:#484f58; font-style:italic; }
+.warning { background:rgba(240,136,62,0.1); border-left:3px solid #f0883e; padding:10px 14px; border-radius:0 6px 6px 0; font-size:13px; margin:10px 0; }
+.footer { text-align:center; color:#484f58; font-size:11px; padding:30px 20px; border-top:1px solid #21262d; margin-top:25px; }
+.badge { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:12px; font-size:12px; }
+.badge-warn { background:rgba(240,136,62,0.15); color:#f0883e; }
+.badge-ok { background:rgba(88,166,255,0.12); color:#58a6ff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>📊 A股早盘快报 — 2026年7月3日 09:45</h1>
+  <div class="subtitle">开盘后15分钟全景扫描 | 数据来源: tdx-connector MCP</div>
+  <div class="timestamp">⏰ 数据获取时间: 2026-07-03 09:41~09:42 CST</div>
+</div>
+
+<!-- 1. CORE INDICES -->
+<h2 style="color:#e6edf3;font-size:18px;margin-bottom:15px;">📈 1. 核心指数概览</h2>
+<div class="grid-4">
+  <div class="card index-card">
+    <div class="name">上证指数</div>
+    <div class="price">4043.35</div>
+    <div class="change up">+0.36%</div>
+    <div class="info">成交 2673亿 | 换手 0.23%</div>
+    <div class="trend bg-mixed">高开震荡</div>
+  </div>
+  <div class="card index-card">
+    <div class="name">深证成指</div>
+    <div class="price">15571.12</div>
+    <div class="change up">+0.47%</div>
+    <div class="info">成交 3313亿 | 换手 0.64%</div>
+    <div class="trend bg-up">低开高走</div>
+  </div>
+  <div class="card index-card">
+    <div class="name">创业板指</div>
+    <div class="price">4041.99</div>
+    <div class="change up">+0.62%</div>
+    <div class="info">成交 1469亿 | 换手 0.75%</div>
+    <div class="trend bg-up">低开高走</div>
+  </div>
+  <div class="card index-card">
+    <div class="name">科创50</div>
+    <div class="price">1978.23</div>
+    <div class="change down">-0.46%</div>
+    <div class="info">成交 304亿 | 换手 0.14%</div>
+    <div class="trend bg-down">低开低走</div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:20px;">
+  <div class="metric-row">
+    <span class="label">上证走势判断</span>
+    <span>开 4031.34 → 现 4043.35，高开+0.06%后窄幅震荡上行，盘中最高触及 4051.39</span>
+  </div>
+  <div class="metric-row">
+    <span class="label">深证走势判断</span>
+    <span>开 15480.12 → 现 15571.12，低开-0.12%后快速拉升翻红，盘中最高 15593.50</span>
+  </div>
+  <div class="metric-row">
+    <span class="label">创业板走势判断</span>
+    <span>开 4010.82 → 现 4041.99，低开-0.16%后震荡走高，盘中最低 3985.36 后反弹</span>
+  </div>
+  <div class="metric-row">
+    <span class="label">科创50走势判断</span>
+    <span class="down">开 1978.75 → 现 1978.23，低开-0.43%后持续走低，盘中最低 1953.93，跌幅一度超1.5%</span>
+  </div>
+</div>
+
+<!-- 2. MARKET SENTIMENT -->
+<div class="grid-2">
+  <div class="card">
+    <h2><span class="icon">🌡️</span>2. 市场情绪仪表盘</h2>
+    <div class="metric-row">
+      <span class="label">涨幅超7%</span>
+      <span class="value up">83 家</span>
+      <span class="desc">含天山电子 +20% (创业板涨停)</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">跌幅超7%</span>
+      <span class="value down">37 家</span>
+      <span class="desc">晶瑞电材 -8.44% 领跌</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">涨停家数(昨收)</span>
+      <span class="value up">156 家</span>
+      <span class="desc">含ST，7月2日收盘数据</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">跌停家数(昨收)</span>
+      <span class="value down">41 家</span>
+      <span class="desc">半导体/芯片板块继续承压</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">涨跌比(估算)</span>
+      <span class="value up">偏多</span>
+      <span class="desc">早盘涨幅>0%个股明显多于跌幅>0%</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">北向资金</span>
+      <span class="value na">N/A</span>
+      <span class="desc">数据暂不可获取</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🔥</span>3. 热点板块 TOP5</h2>
+    <table>
+      <tr><th>排名</th><th>板块</th><th>涨幅</th><th>成交(手)</th><th>驱动逻辑</th></tr>
+      <tr>
+        <td>🥇</td>
+        <td><strong>黄金</strong> (881076)</td>
+        <td class="up">+7.26%</td>
+        <td>320万</td>
+        <td>国际金价走强 / 避险需求</td>
+      </tr>
+      <tr>
+        <td>🥈</td>
+        <td><strong>贵金属</strong> (881075)</td>
+        <td class="up">+6.83%</td>
+        <td>406万</td>
+        <td>黄金联动 / 有色资源重估</td>
+      </tr>
+      <tr>
+        <td>🥉</td>
+        <td><strong>航天装备</strong> (881289)</td>
+        <td class="up">+6.03%</td>
+        <td>94万</td>
+        <td>军工催化 / 国防需求</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>航海装备</strong> (881290)</td>
+        <td class="up">+4.96%</td>
+        <td>81万</td>
+        <td>军工船舶链联动</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>预计扭亏</strong> (880844)</td>
+        <td class="up">+4.16%</td>
+        <td>30万</td>
+        <td>中报预增预期</td>
+      </tr>
+    </table>
+    <div style="margin-top:10px;font-size:12px;color:#8b949e;">
+      此外：<span class="tag tag-up">铜 +3.89%</span><span class="tag tag-up">国防军工 +3.63%</span><span class="tag tag-up">风电整机 +3.47%</span>
+    </div>
+  </div>
+</div>
+
+<!-- 4. RECOVERY SCAN -->
+<div class="card" style="margin-bottom:20px;">
+  <h2><span class="icon">🔬</span>4. 早盘修复侦察（超跌修复模式）</h2>
+  <p style="font-size:12px;color:#8b949e;margin-bottom:15px;">
+    扫描逻辑：昨日跌超5%的546只股票 → 今日低开翻红且主力未大幅流出 → 逐只验证
+  </p>
+
+  <table>
+    <tr>
+      <th>代码</th><th>名称</th><th>昨日跌幅</th><th>今开</th><th>现价</th><th>今日涨幅</th><th>主力净额</th><th>修复强度</th><th>行业</th>
+    </tr>
+    <tr>
+      <td>300342</td>
+      <td><strong>天银机电</strong></td>
+      <td class="down">-5.24%</td>
+      <td>46.93</td>
+      <td class="up">50.10</td>
+      <td class="up">+9.58%</td>
+      <td class="up">+9189万</td>
+      <td><span class="star">★★</span></td>
+      <td>电气设备</td>
+    </tr>
+    <tr>
+      <td>000938</td>
+      <td><strong>紫光股份</strong></td>
+      <td class="down">-3.01%</td>
+      <td>30.50</td>
+      <td class="up">31.34</td>
+      <td class="up">+7.96%</td>
+      <td class="up">+2.11亿</td>
+      <td><span class="star">★★</span></td>
+      <td>软件服务</td>
+    </tr>
+    <tr>
+      <td>300853</td>
+      <td><strong>申昊科技</strong></td>
+      <td class="down">-5.01%</td>
+      <td>33.98</td>
+      <td class="up">34.16</td>
+      <td class="up">+6.05%</td>
+      <td class="up">+1827万</td>
+      <td><span class="star">★</span></td>
+      <td>专用机械</td>
+    </tr>
+    <tr>
+      <td>001400</td>
+      <td><strong>江顺科技</strong></td>
+      <td class="down">-5.13%</td>
+      <td>113.21</td>
+      <td class="up">120.50</td>
+      <td class="up">+5.86%</td>
+      <td class="up">+1098万</td>
+      <td><span class="star">★</span></td>
+      <td>专用机械</td>
+    </tr>
+    <tr>
+      <td>688539</td>
+      <td><strong>高华科技</strong></td>
+      <td class="down">-3.09%</td>
+      <td>32.00</td>
+      <td class="up">33.66</td>
+      <td class="up">+5.29%</td>
+      <td class="up">+470万</td>
+      <td><span class="star">★</span></td>
+      <td>专用机械</td>
+    </tr>
+  </table>
+
+  <div style="margin-top:12px; font-size:12px; color:#8b949e;">
+    <strong>修复强度标准：</strong>
+    <span class="star">★</span> 低开翻红 ≥+1% &nbsp;
+    <span class="star">★★</span> 低开翻红 ≥+5% &nbsp;
+    <span class="star">★★★</span> 低开涨停
+  </div>
+  <div class="warning" style="margin-top:12px;">
+    <strong>⚠️ 注意：</strong>筛选出的修复标的中，天银机电/紫光股份修复力度最强，主力资金同步流入。高华科技虽涨幅可观但主力净额偏小（+470万）。
+    需注意：部分标的（如潍柴动力）虽然今日翻红+3.94%，但主力净额为-4799万，不符合修复条件，未列入上表。
+  </div>
+</div>
+
+<!-- 5. BOARD LADDER -->
+<div class="grid-2">
+  <div class="card">
+    <h2><span class="icon">🪜</span>5. 连板梯队（7月2日收盘）</h2>
+    <div class="metric-row">
+      <span class="label">最高连板</span>
+      <span class="value"><span class="tag tag-warn">5板</span> *ST瑞茂 (600180)</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">非ST最高标</span>
+      <span class="value"><span class="tag tag-info">4板</span> 海南海药 (000566)</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">3板 × 3 (非ST)</span>
+      <span class="value">先导基电(半导体) | 恒尚节能(复牌)</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">3板 ST</span>
+      <span class="value">9只 (ST京蓝/*ST联翔/*ST康佳A等)</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">2板</span>
+      <span class="value">美诺华(原料药) | 韶能股份(电力) | 华映科技(芯片)等</span>
+    </div>
+    <div class="warning">
+      ⚠️ 连板数据为昨日收盘统计。今日早盘恒尚节能继续一字涨停+10.03%，先导基电+3.96%冲高回落。海南海药+0.17%高位震荡。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">⚡</span>6. 早盘异动信号</h2>
+    
+    <h3 style="font-size:14px;color:#f0883e;margin-bottom:8px;">🚀 开盘急拉 TOP5</h3>
+    <table>
+      <tr><th>代码</th><th>名称</th><th>涨幅</th><th>驱动</th></tr>
+      <tr><td>301379</td><td>天山电子</td><td class="up">+20.00%</td><td>创业板涨停 / 元器件</td></tr>
+      <tr><td>300163</td><td>先锋新材</td><td class="up">+19.94%</td><td>昨日首板延续 / 家居用品</td></tr>
+      <tr><td>920932</td><td>科达自控</td><td class="up">+18.86%</td><td>北交所 / 软件服务</td></tr>
+      <tr><td>301165</td><td>锐捷网络</td><td class="up">+13.81%</td><td>通信设备 / 算力概念</td></tr>
+      <tr><td>300912</td><td>凯龙高科</td><td class="up">+12.94%</td><td>汽车配件 / 重组预案</td></tr>
+    </table>
+
+    <h3 style="font-size:14px;color:#3fb950;margin:14px 0 8px;">📉 开盘急跌 TOP5</h3>
+    <table>
+      <tr><th>代码</th><th>名称</th><th>跌幅</th><th>备注</th></tr>
+      <tr><td>300655</td><td>晶瑞电材</td><td class="down">-8.12%</td><td>光刻胶概念</td></tr>
+      <tr><td>603778</td><td>国晟科技</td><td class="down">-8.07%</td><td>昨日涨停今大幅回落</td></tr>
+      <tr><td>002354</td><td>天娱数科</td><td class="down">-8.03%</td><td>昨日5板放量炸板</td></tr>
+      <tr><td>688596</td><td>正帆科技</td><td class="down">-7.94%</td><td>半导体设备</td></tr>
+      <tr><td>002842</td><td>翔鹭钨业</td><td class="down">-7.89%</td><td>有色/钨板块回调</td></tr>
+    </table>
+
+    <div class="warning" style="margin-top:10px;">
+      ⚡ <strong>集合竞价异常：</strong>天娱数科昨日5板涨停今直接低开-7.93%，为典型"昨日涨停今闷杀"信号；国晟科技昨日涨停今跌-8.07%，高位股风险释放明显。
+    </div>
+  </div>
+</div>
+
+<!-- 7. COMPREHENSIVE ASSESSMENT -->
+<div class="card" style="margin-bottom:20px;">
+  <h2><span class="icon">📋</span>7. 综合研判</h2>
+
+  <div class="verdict verdict-mixed">
+    <h3>🎯 今日市场定性：<span style="color:#f0883e;">震荡偏强</span></h3>
+    <p>
+      三大指数（上证、深证、创业板）低开或平开后集体走高翻红，创业板指领涨+0.62%。但科创50逆势下跌-0.46%，科技/半导体方向继续承压，市场呈现明显的结构性分化。
+    </p>
+  </div>
+
+  <div class="grid-2" style="margin-top:15px;">
+    <div>
+      <h3 style="font-size:14px;color:#f85149;margin-bottom:8px;">🔴 关键风险提示</h3>
+      <ul style="font-size:13px;color:#8b949e;padding-left:20px;line-height:2;">
+        <li><strong>半导体延续弱势：</strong>科创50仅有的下跌指数，芯片/半导体板块昨日大面积跌停（兆易创新/北方华创/长电科技等），今日早盘未见明显修复</li>
+        <li><strong>高位股炸板风险：</strong>天娱数科（昨5板）今跌-8.03%、国晟科技（昨涨停）今跌-8.07%，高位连板股风险集中释放</li>
+        <li><strong>主线轮动过快：</strong>今日热点从昨日的创新药/机器人切换到黄金/军工，题材持续性存疑</li>
+        <li><strong>北向资金数据缺失：</strong>无法判断外资动向，信息存在盲区</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:14px;color:#58a6ff;margin-bottom:8px;">🔵 积极信号</h3>
+      <ul style="font-size:13px;color:#8b949e;padding-left:20px;line-height:2;">
+        <li><strong>三大指数共振翻红：</strong>上证+0.36%深证+0.47%创业板+0.62%，权重护盘力度尚可</li>
+        <li><strong>黄金/军工主线明确：</strong>黄金+7.26%带动贵金属/铜等资源板块，航天+6.03%航海+4.96%军工链完整</li>
+        <li><strong>超跌修复信号出现：</strong>天银机电（昨-5.24%今+9.58%）、紫光股份（昨-3.01%今+7.96%）等修复力度较强</li>
+        <li><strong>涨幅>7%个股83家 vs 跌幅>7%仅37家：</strong>早盘多头力量明显占优</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="verdict verdict-mixed" style="margin-top:15px;">
+    <h3>🔬 超跌修复整体评估</h3>
+    <p>
+      昨日跌超5%的546只股票中，今日早盘出现修复信号的约15%-20%。其中<strong>修复强度★★</strong>的2只（天银机电+9.58%、紫光股份+7.96%），<strong>修复强度★</strong>的约8-10只。<br><br>
+      <strong>未形成板块效应：</strong>修复标的分散在电气设备、软件服务、专用机械、元器件等多个行业，缺乏统一的板块逻辑支撑。更多是个股层面的超跌反弹，而非系统性修复。相比之下，黄金/军工板块的普涨更值得关注——这是由宏观逻辑驱动的新热点，而非修复性质。
+    </p>
+  </div>
+
+  <div class="verdict verdict-strong" style="margin-top:10px;">
+    <h3>⚙️ 可操作性评估：<span style="color:#f0883e;">中低</span></h3>
+    <p>
+      <strong>有利因素：</strong>三大指数翻红、涨停家数偏多、黄金/军工主线清晰。<br>
+      <strong>不利因素：</strong>科创50持续走弱、高位连板股炸板、热点切换频繁、半导体未企稳。<br>
+      <strong>核心矛盾：</strong>市场选择了防御性的黄金+军工作为攻击方向，而非进攻性的科技/成长，说明资金风险偏好并未真正提升。结构性机会存在，但整体可操作性一般。
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>A股早盘快报 | 数据来源: tdx-connector MCP | 采集时间: 2026-07-03 09:41~09:42 CST</p>
+  <p style="margin-top:4px;">连板数据为7月2日收盘统计 | 北向资金暂不可获取 | 本报告仅呈现客观数据，不构成投资建议</p>
+</div>
+
+</div>
+</body>
+</html>

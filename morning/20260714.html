@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026-07-14 09:45</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;background:#0d1117;color:#c9d1d9;min-height:100vh;padding:24px}
+.header{text-align:center;padding:32px 0 24px;border-bottom:1px solid #21262d;margin-bottom:24px}
+.header h1{font-size:28px;background:linear-gradient(135deg,#58a6ff,#bc8cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header .sub{font-size:13px;color:#8b949e}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-bottom:20px}
+.card{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:20px}
+.card.full{grid-column:1/-1}
+.card h2{font-size:16px;font-weight:600;color:#e6edf3;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:8px}
+.card h2 .icon{font-size:20px}
+.up{color:#f85149}
+.down{color:#3fb950}
+.neutral{color:#8b949e}
+.index-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #21262d22}
+.index-row:last-child{border-bottom:none}
+.idx-name{font-weight:600;font-size:14px;color:#e6edf3}
+.idx-price{font-size:16px;font-weight:700}
+.idx-chg{font-size:14px;font-weight:600;min-width:80px;text-align:right}
+.idx-amount{font-size:12px;color:#8b949e;min-width:80px;text-align:right}
+.idx-trend{font-size:12px;color:#8b949e;padding:2px 8px;background:#21262d;border-radius:4px;white-space:nowrap}
+.sent-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #21262d22}
+.sent-row:last-child{border-bottom:none}
+.sent-label{font-size:13px;color:#8b949e}
+.sent-val{font-size:14px;font-weight:600;color:#e6edf3}
+.sent-sub{font-size:11px;color:#8b949e;margin-left:6px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:8px 6px;color:#8b949e;font-weight:500;border-bottom:1px solid #21262d;font-size:12px}
+td{padding:8px 6px;border-bottom:1px solid #21262d22;color:#c9d1d9}
+td.up{color:#f85149;font-weight:600}
+td.down{color:#3fb950;font-weight:600}
+.tag{padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-up{background:#f8514920;color:#f85149}
+.tag-down{background:#3fb95020;color:#3fb950}
+.tag-neutral{background:#21262d;color:#8b949e}
+.star{color:#ffd700;font-weight:700}
+.star-n{color:#8b949e}
+.bar-container{height:6px;background:#21262d;border-radius:3px;margin-top:4px}
+.bar-fill{height:100%;border-radius:3px}
+.bar-up{background:#f85149}
+.bar-down{background:#3fb950}
+.verdict{background:linear-gradient(135deg,#1a1f2e,#161b22);border:1px solid #30363d;border-radius:8px;padding:20px;margin-bottom:20px}
+.verdict h3{font-size:14px;color:#8b949e;margin-bottom:8px}
+.verdict .main{font-size:22px;font-weight:700;margin-bottom:8px}
+.risk-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.risk-tag{padding:4px 12px;border-radius:4px;font-size:12px;background:#21262d;color:#c9d1d9}
+.risk-tag.warn{background:#f8514920;color:#f85149;border:1px solid #f8514930}
+.footer{text-align:center;padding:16px;color:#484f58;font-size:11px;margin-top:24px;border-top:1px solid #21262d}
+.highlight{color:#58a6ff;font-weight:600}
+.amber{color:#d29922}
+.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;background:#21262d}
+.badge-up{background:#f8514920;color:#f85149}
+.badge-down{background:#3fb95020;color:#3fb950}
+.badge-warn{background:#d2992220;color:#d29922}
+.last-cell{color:#8b949e;font-size:12px;text-align:right;padding-top:12px;border-top:1px solid #21262d;margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>A股早盘快报</h1>
+  <div class="sub">2026年7月14日（周二） 09:45 · 数据来源：通达信MCP · 北向资金：N/A</div>
+</div>
+
+<!-- 综合研判 -->
+<div class="verdict">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <h3>今日市场定性</h3>
+      <div class="main" style="color:#f85149">弱势震荡 ⚠️</div>
+      <div style="font-size:13px;color:#8b949e">四大指数全线下跌，科创50 -1.33%领跌</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:12px;color:#8b949e;margin-bottom:4px">涨停 16 | 跌停 20 | 炸板 4</div>
+      <div style="font-size:12px;color:#8b949e">炸板率 20% | 涨跌停比 0.8:1</div>
+      <div style="font-size:12px;color:#8b949e;margin-top:4px">采集时间 09:36~09:43</div>
+    </div>
+  </div>
+  <div class="risk-tags">
+    <span class="risk-tag warn">商业航天板块连续重挫</span>
+    <span class="risk-tag warn">4板高标艾艾精工一字板无参与度</span>
+    <span class="risk-tag warn">深证/创业板高开低走形态弱</span>
+    <span class="risk-tag">涨停以微小盘+一字板为主</span>
+    <span class="risk-tag">油服/石油逆势上涨</span>
+    <span class="risk-tag">消费十五五规划催化新零售</span>
+  </div>
+</div>
+
+<!-- 模块1: 核心指数概览 -->
+<div class="grid">
+  <div class="card">
+    <h2><span class="icon">📊</span>核心指数概览</h2>
+    <div class="index-row" style="padding:8px 0">
+      <span style="width:15%;font-size:12px;color:#8b949e">指数</span>
+      <span style="width:20%;font-size:12px;color:#8b949e;text-align:right">现价</span>
+      <span style="width:15%;font-size:12px;color:#8b949e;text-align:right">涨跌幅</span>
+      <span style="width:22%;font-size:12px;color:#8b949e;text-align:right">成交额(亿)</span>
+      <span style="width:28%;font-size:12px;color:#8b949e;text-align:right">走势</span>
+    </div>
+    <div class="index-row">
+      <span class="idx-name">上证指数</span>
+      <span class="idx-price">3895.92</span>
+      <span class="idx-chg down">-0.46%</span>
+      <span class="idx-amount">1999</span>
+      <span class="idx-trend" style="background:#f8514920;color:#f85149">低开低走</span>
+    </div>
+    <div class="index-row">
+      <span class="idx-name">深证成指</span>
+      <span class="idx-price">14403.29</span>
+      <span class="idx-chg down">-0.82%</span>
+      <span class="idx-amount">2318</span>
+      <span class="idx-trend" style="background:#f8514920;color:#f85149">高开低走</span>
+    </div>
+    <div class="index-row">
+      <span class="idx-name">创业板指</span>
+      <span class="idx-price">3694.94</span>
+      <span class="idx-chg down">-0.77%</span>
+      <span class="idx-amount">965</span>
+      <span class="idx-trend" style="background:#f8514920;color:#f85149">高开低走</span>
+    </div>
+    <div class="index-row">
+      <span class="idx-name">科创50</span>
+      <span class="idx-price">1967.84</span>
+      <span class="idx-chg down">-1.33%</span>
+      <span class="idx-amount">275</span>
+      <span class="idx-trend" style="background:#f8514920;color:#f85149">高开低走</span>
+    </div>
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid #21262d">
+      <div style="font-size:12px;color:#8b949e;line-height:1.8">
+        <span>上证: 开3909.27 → 收3895.92 (低-17.88)</span><br>
+        <span>深证: 开14532.36 → 收14403.29 (高开回落-119.56)</span><br>
+        <span>创业板: 开3729.61 → 收3694.94 (高开回落-28.58)</span><br>
+        <span>科创50: 开1994.44 → 收1967.84 (高开回落-26.48)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块2: 市场情绪仪表盘 -->
+  <div class="card">
+    <h2><span class="icon">🌡️</span>市场情绪仪表盘</h2>
+    <div class="sent-row">
+      <span class="sent-label">涨停家数</span>
+      <span><span class="sent-val up">16</span><span class="sent-sub">(非ST ~14)</span></span>
+    </div>
+    <div class="sent-row">
+      <span class="sent-label">跌停家数</span>
+      <span><span class="sent-val down">20</span><span class="sent-sub">(非ST ~19)</span></span>
+    </div>
+    <div class="sent-row">
+      <span class="sent-label">炸板家数</span>
+      <span><span class="sent-val amber">4</span><span class="sent-sub">炸板率20%</span></span>
+    </div>
+    <div class="sent-row">
+      <span class="sent-label">涨跌停比</span>
+      <span><span class="sent-val" style="color:#d29922">0.80</span><span class="sent-sub">偏弱</span></span>
+    </div>
+    <div class="sent-row">
+      <span class="sent-label">深证买卖委托比</span>
+      <span><span class="sent-val" style="color:#3fb950">748:2067</span><span class="sent-sub">卖盘主导</span></span>
+    </div>
+    <div class="sent-row">
+      <span class="sent-label">创业板买卖委托比</span>
+      <span><span class="sent-val" style="color:#3fb950">291:1085</span><span class="sent-sub">卖压沉重</span></span>
+    </div>
+    <div class="sent-row">
+      <span class="sent-label">科创50买卖比</span>
+      <span><span class="sent-val" style="color:#3fb950">161:445</span><span class="sent-sub">卖盘主导</span></span>
+    </div>
+    <div class="sent-row" style="margin-top:8px;padding-top:8px;border-top:1px solid #30363d">
+      <span class="sent-label">市场情绪定位</span>
+      <span><span class="badge badge-warn">退潮/冰点交界</span></span>
+    </div>
+    <div class="bar-container" style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:#8b949e;margin-bottom:4px">
+        <span>多方</span><span>空方</span>
+      </div>
+      <div style="display:flex;height:8px;border-radius:4px;overflow:hidden;background:#21262d">
+        <div style="width:44%;background:#f85149"></div>
+        <div style="width:56%;background:#3fb950"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 模块3: 热点板块 -->
+<div class="card" style="margin-bottom:20px">
+  <h2><span class="icon">🔥</span>热点板块 TOP5（概念/行业板块）</h2>
+  <table>
+    <thead>
+      <tr><th>排名</th><th>板块名称</th><th style="text-align:right">涨幅</th><th>领涨股</th><th style="text-align:right">板块成交额</th><th>主力净额</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag-up">TOP1</span></td>
+        <td style="font-weight:600">油服工程</td>
+        <td class="up" style="text-align:right">+3.12%</td>
+        <td>科力股份 +14.43%</td>
+        <td style="text-align:right">24.6亿</td>
+        <td class="up">+1.46亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-up">TOP2</span></td>
+        <td style="font-weight:600">石油</td>
+        <td class="up" style="text-align:right">+1.13%</td>
+        <td>泰山石油 +8.72%</td>
+        <td style="text-align:right">58.8亿</td>
+        <td class="up">+4.94亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-up">TOP3</span></td>
+        <td style="font-weight:600">中药</td>
+        <td class="up" style="text-align:right">+0.76%</td>
+        <td>陇神戎发 +13.00%</td>
+        <td style="text-align:right">57.2亿</td>
+        <td class="up">+3.58亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-up">TOP4</span></td>
+        <td style="font-weight:600">生物制品</td>
+        <td class="up" style="text-align:right">+0.30%</td>
+        <td>欧康医药 +12.22%</td>
+        <td style="text-align:right">53.0亿</td>
+        <td class="up">+3.35亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-neutral">TOP5</span></td>
+        <td style="font-weight:600">仓储物流</td>
+        <td style="text-align:right;color:#8b949e">-0.10%</td>
+        <td>—</td>
+        <td style="text-align:right">9.2亿</td>
+        <td style="color:#8b949e">+0.39亿</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:10px;font-size:12px;color:#8b949e">
+    ⚠️ 说明：市场整体偏弱，仅油服工程/石油/中药/生物制品四个行业板块收红。新零售概念（中百集团+9.93%、厦门信达+3.60%）受消费十五五规划催化表现活跃，但板块整体涨幅未进入TOP5。商业航天概念（中国卫星-10%跌停等）大面积重挫，为主要拖累方向。
+  </div>
+</div>
+
+<!-- 模块4: 超跌修复侦察 -->
+<div class="card full" style="margin-bottom:20px">
+  <h2><span class="icon">🔍</span>早盘修复侦察（花园生物超跌修复模式）</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+    <div>
+      <h4 style="font-size:13px;color:#8b949e;margin-bottom:12px">扫描逻辑</h4>
+      <div style="font-size:12px;color:#c9d1d9;line-height:1.8">
+        <div>📌 <b>第一步</b>：昨日跌超5%池 → 2237只</div>
+        <div>📌 <b>第二步</b>：今早修复信号筛选（低开不恐慌、价格高于开盘、非恐慌量）</div>
+        <div>📌 <b>第三步</b>：主力验证（主力无持续流出、非ST、非连续跌停）</div>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size:13px;color:#8b949e;margin-bottom:12px">今日修复概况</h4>
+      <div style="font-size:12px;color:#c9d1d9;line-height:1.8">
+        <div>昨日跌超5%: <span class="highlight">2237</span> 只</div>
+        <div>今日翻红修复: <span class="up">~45%</span>（昨大面积下跌后普反）</div>
+        <div>★★★级: <span class="star">1</span> 只（涨停板修复）</div>
+        <div>★★级: <span class="star">1</span> 只（强力修复）</div>
+        <div>★级: <span class="star">3</span> 只（温和修复）</div>
+        <div>板块效应: <span style="color:#d29922">未形成</span>（分散于算力/包装/电池/医药/地产）</div>
+      </div>
+    </div>
+  </div>
+
+  <table style="margin-top:16px">
+    <thead>
+      <tr><th>修复强度</th><th>代码</th><th>名称</th><th style="text-align:right">昨跌幅</th><th style="text-align:right">今开盘</th><th style="text-align:right">现价</th><th style="text-align:right">今日涨幅</th><th style="text-align:right">主力净额</th><th>题材</th></tr>
+    </thead>
+    <tbody>
+      <tr style="background:#f8514908">
+        <td><span class="star">★★★</span></td>
+        <td>002243</td>
+        <td style="font-weight:600">力合科创</td>
+        <td class="down" style="text-align:right">-5.03%</td>
+        <td style="text-align:right">6.85</td>
+        <td style="text-align:right">6.85</td>
+        <td class="up" style="text-align:right">+9.95%</td>
+        <td class="up" style="text-align:right">+2157万</td>
+        <td style="font-size:12px">算力租赁/芯片/国企改革（一字板涨停修复）</td>
+      </tr>
+      <tr style="background:#f8514904">
+        <td><span class="star">★★</span></td>
+        <td>603687</td>
+        <td style="font-weight:600">大胜达</td>
+        <td class="down" style="text-align:right">-5.01%</td>
+        <td style="text-align:right">14.71</td>
+        <td style="text-align:right">15.23</td>
+        <td class="up" style="text-align:right">+5.62%</td>
+        <td class="up" style="text-align:right">+2146万</td>
+        <td style="font-size:12px">包装印刷/机器人/工业互联</td>
+      </tr>
+      <tr>
+        <td><span class="star">★</span></td>
+        <td>688005</td>
+        <td style="font-weight:600">容百科技</td>
+        <td class="down" style="text-align:right">-5.02%</td>
+        <td style="text-align:right">25.61</td>
+        <td style="text-align:right">25.55</td>
+        <td class="up" style="text-align:right">+0.79%</td>
+        <td class="up" style="text-align:right">+1091万</td>
+        <td style="font-size:12px">锂电池/固态电池/新能源车（科创板）</td>
+      </tr>
+      <tr>
+        <td><span class="star">★</span></td>
+        <td>301509</td>
+        <td style="font-weight:600">金凯生科</td>
+        <td class="down" style="text-align:right">-5.09%</td>
+        <td style="text-align:right">28.89</td>
+        <td style="text-align:right">29.53</td>
+        <td class="up" style="text-align:right">+1.51%</td>
+        <td style="color:#8b949e;text-align:right">+62万</td>
+        <td style="font-size:12px">CXO/医药中间体（创业板）</td>
+      </tr>
+      <tr>
+        <td><span class="star">★</span></td>
+        <td>600094</td>
+        <td style="font-weight:600">大名城</td>
+        <td class="down" style="text-align:right">-5.05%</td>
+        <td style="text-align:right">3.83</td>
+        <td style="text-align:right">3.80</td>
+        <td class="up" style="text-align:right">+1.06%</td>
+        <td style="color:#8b949e;text-align:right">+521万</td>
+        <td style="font-size:12px">房地产开发/创投/低空经济</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:12px;font-size:12px;color:#8b949e;line-height:1.6">
+    <b>修复总结</b>：力合科创一字板涨停为算力租赁方向最强修复信号（模型厂商ARR指数级增长驱动），但为一字板无交易机会。大胜达低开后强势拉升5.62%有真实承接。整体修复标的分散，无板块联动效应。其余★级修复力度偏弱，多为被动跟涨而非主动修复。
+  </div>
+</div>
+
+<!-- 模块5: 连板梯队 & 模块6: 早盘异动 -->
+<div class="grid">
+  <div class="card">
+    <h2><span class="icon">🪜</span>连板梯队</h2>
+    <table>
+      <thead><tr><th>梯队</th><th>代码</th><th>名称</th><th style="text-align:right">现价/涨幅</th><th>板型</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-up">4板</span></td><td>603580</td><td style="font-weight:600">艾艾精工</td><td class="up" style="text-align:right">33.75 +10.01%</td><td><span style="color:#58a6ff">一字板</span></td></tr>
+        <tr><td><span class="badge badge-up">2板</span></td><td>000759</td><td style="font-weight:600">中百集团</td><td class="up" style="text-align:right">6.75 +9.93%</td><td>换手板</td></tr>
+        <tr><td><span class="badge badge-up">2板</span></td><td>001388</td><td style="font-weight:600">信通电子</td><td class="up" style="text-align:right">32.44 +10.00%</td><td>换手板</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px">
+      <h4 style="font-size:12px;color:#8b949e;margin-bottom:8px">昨日连板今日分化</h4>
+      <div style="font-size:12px;line-height:2">
+        <div><span class="up">✅ 哈药股份 +9.70%</span> <span style="color:#8b949e">（昨日连板转强势）</span></div>
+        <div><span class="up">✅ 立方制药 +6.26%</span></div>
+        <div><span class="up">✅ 华建集团 +4.56%</span></div>
+        <div><span class="up">✅ 联环药业 +3.70%</span></div>
+        <div><span class="down">❌ 贵绳股份 -4.01%</span><span style="color:#8b949e">（断板）</span></div>
+        <div><span class="down">❌ 沃顿科技 -4.56%</span><span style="color:#8b949e">（断板）</span></div>
+        <div><span class="down">❌ 亚联机械 -5.68%</span><span style="color:#8b949e">（断板）</span></div>
+        <div><span class="down">❌ 九丰能源 -7.87%</span><span style="color:#8b949e">（断板）</span></div>
+        <div><span class="down">❌ 中信重工 -9.39%</span><span style="color:#8b949e">（断板近跌停）</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">⚡</span>早盘异动信号</h2>
+    <div style="margin-bottom:16px">
+      <h4 style="font-size:13px;color:#f85149;margin-bottom:8px">🔴 炸板回落</h4>
+      <table>
+        <thead><tr><th>代码</th><th>名称</th><th style="text-align:right">现涨幅</th><th>炸板次数</th><th>题材</th></tr></thead>
+        <tbody>
+          <tr><td>300532</td><td style="font-weight:600">今天国际</td><td class="up" style="text-align:right">+14.47%</td><td>3次</td><td style="font-size:12px">机器人/软件服务</td></tr>
+          <tr><td>600895</td><td style="font-weight:600">张江高科</td><td class="up" style="text-align:right">+5.33%</td><td>1次</td><td style="font-size:12px">房地产/创投</td></tr>
+          <tr><td>002396</td><td style="font-weight:600">星网锐捷</td><td class="down" style="text-align:right">-3.76%</td><td>1次</td><td style="font-size:12px">通信设备/炸板翻绿</td></tr>
+          <tr><td>601700</td><td style="font-weight:600">风范股份</td><td class="up" style="text-align:right">+2.07%</td><td>1次</td><td style="font-size:12px">电网设备/封板无力</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h4 style="font-size:13px;color:#d29922;margin-bottom:8px">⚠️ 跌停潮 — 商业航天重灾区</h4>
+      <div style="font-size:12px;line-height:2">
+        <div><span class="down">中国卫星 -10.00%</span> <span style="color:#8b949e">（龙头跌停，商业航天）</span></div>
+        <div><span class="down">航天工程 -10.01%</span> <span style="color:#8b949e">（2连跌停）</span></div>
+        <div><span class="down">航天动力 -9.98%</span> <span style="color:#8b949e">（2连跌停）</span></div>
+        <div><span class="down">雪龙集团 -10.01%</span> <span style="color:#8b949e">（2连跌停）</span></div>
+        <div><span class="down">双杰电气 -20.00%</span> <span style="color:#8b949e">（创业板20cm跌停）</span></div>
+        <div><span class="down">铖昌科技 -10.00%</span> <span style="color:#8b949e">（2连跌停，航天芯片）</span></div>
+        <div><span class="down">星网宇达 -10.00%</span> <span style="color:#8b949e">（航天+人形机器人）</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 模块7: 综合研判 -->
+<div class="card full" style="margin-bottom:20px">
+  <h2><span class="icon">📋</span>综合研判</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+    <div>
+      <h4 style="font-size:13px;color:#e6edf3;margin-bottom:10px">市场结构</h4>
+      <div style="font-size:13px;color:#c9d1d9;line-height:1.8">
+        <div>• <b>弱势震荡</b>：四大指数全跌，深证/创业板/科创50均为高开低走形态，反映多头无力。上证低开低走最弱。</div>
+        <div>• <b>涨停质量差</b>：16家涨停中一字板占5家（艾艾精工、力合科创、神州高铁等），换手涨停仅11家，市场真实参与度低。</div>
+        <div>• <b>连板高度虚</b>：最高4板艾艾精工为一字板无实质参考。实际可交易最高仅2板（中百集团/信通电子）。</div>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size:13px;color:#f85149;margin-bottom:10px">关键风险</h4>
+      <div style="font-size:13px;color:#c9d1d9;line-height:1.8">
+        <div>• 商业航天大面积连续跌停（中国卫星/航天工程/航天动力/铖昌科技/上海港湾等），前期主线退潮明确</div>
+        <div>• 昨日连板股9只中5只断板下跌（断板率55.6%），中信重工近跌停，高位风险释放中</div>
+        <div>• 炸板率20%中性偏高，张江高科/星网锐捷/风范股份封板无力，今天国际炸3次极不稳定</div>
+        <div>• 双杰电气-20%跌停显示创业板高波动风险</div>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size:13px;color:#58a6ff;margin-bottom:10px">可操作性评估</h4>
+      <div style="font-size:13px;color:#c9d1d9;line-height:1.8">
+        <div>• <b>低</b>：涨停以一字板/微小盘为主，真实可参与标的极少。跌停20家多于涨停16家，空头碾压。</div>
+        <div>• <b>防御方向</b>：油服工程+3.12%、石油+1.13%逆势上涨，传统能源/资源方向有避险资金流入。</div>
+        <div>• <b>新催化</b>：消费十五五规划驱动新零售（中百集团/厦门信达），算力租赁（力合科创一字板）有持续催化潜力。</div>
+        <div>• <b>修复信号弱</b>：5只修复标的分散无板块效应，仅力合科创（算力方向）有实质逻辑支撑。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  数据来源：通达信 MCP (tdx-connector) · 采集时间 2026-07-14 09:36~09:43 · 北向资金：N/A · <br>
+  本报告仅提供客观市场数据，不构成任何投资建议。股市有风险，投资需谨慎。
+</div>
+
+</body>
+</html>

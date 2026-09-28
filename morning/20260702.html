@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026年7月2日 09:45</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --red: #f85149;
+    --green: #3fb950;
+    --gold: #d2991d;
+    --blue: #58a6ff;
+    --purple: #a371f7;
+    --card-radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 32px 0 20px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 28px;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #a371f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .subtitle { color: var(--text-dim); font-size: 0.95rem; }
+  .header .market-date {
+    color: var(--gold);
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 20px;
+  }
+  .card.full { grid-column: 1 / -1; }
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .icon { font-size: 1.3rem; }
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .index-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .index-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .index-card.sh::before { background: var(--red); }
+  .index-card.sz::before { background: var(--red); }
+  .index-card.cy::before { background: var(--red); }
+  .index-card.kc::before { background: var(--red); }
+  .index-name {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .index-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .index-change {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .red { color: var(--red); }
+  .green { color: var(--green); }
+  .gold { color: var(--gold); }
+  .blue { color: var(--blue); }
+  .index-detail {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+  }
+  .index-detail span { color: var(--text); font-weight: 500; }
+  .index-trend {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+  }
+  .trend-bearish { background: rgba(248,81,73,0.15); color: var(--red); }
+  .trend-bullish { background: rgba(63,185,80,0.15); color: var(--green); }
+  .trend-neutral { background: rgba(210,153,29,0.15); color: var(--gold); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  th {
+    text-align: left;
+    padding: 8px 10px;
+    color: var(--text-dim);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .tag-hot { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-cool { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-warn { background: rgba(210,153,29,0.15); color: var(--gold); }
+  .tag-info { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .sentiment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .sentiment-item {
+    text-align: center;
+    padding: 14px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+  }
+  .sentiment-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .sentiment-label {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+  .bar-container {
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  .bar-filled {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+  .star-box {
+    display: flex;
+    gap: 4px;
+    font-size: 1rem;
+  }
+  .star-active { color: var(--gold); }
+  .star-inactive { color: rgba(255,255,255,0.15); }
+  .assessment-box {
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+  }
+  .assessment-weak { background: rgba(248,81,73,0.08); border-left: 3px solid var(--red); }
+  .assessment-warn { background: rgba(210,153,29,0.08); border-left: 3px solid var(--gold); }
+  .assessment-info { background: rgba(88,166,255,0.08); border-left: 3px solid var(--blue); }
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+  .ladder-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.3);
+  }
+  .ladder-tag {
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-width: 30px;
+  }
+  .na-tag { color: var(--text-dim); font-style: italic; }
+  @media (max-width: 768px) {
+    body { padding: 12px; }
+    .index-grid { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>A股早盘快报</h1>
+  <div class="subtitle">2026年7月2日（星期四） — 09:45 开盘快照</div>
+  <div class="market-date">数据采集时间：2026-07-02 09:36~09:37 CST | 数据源：tdx-connector MCP</div>
+</div>
+
+<!-- ===== 模块1: 核心指数概览 ===== -->
+<div class="index-grid">
+  <div class="index-card sh">
+    <div class="index-name">上证指数 999999</div>
+    <div class="index-price">4,063.07</div>
+    <div class="index-change red">-1.20% <span style="font-size:0.85rem">(-49.38)</span></div>
+    <div class="index-detail">
+      <div>开盘 <span>4,054.09</span></div>
+      <div>最高 <span>4,066.83</span></div>
+      <div>昨收 <span>4,112.45</span></div>
+      <div>最低 <span>4,043.23</span></div>
+      <div>成交额 <span>2,233.6亿</span></div>
+      <div>换手 <span>0.19%</span></div>
+    </div>
+    <div class="index-trend trend-bearish">低开震荡偏弱</div>
+  </div>
+  <div class="index-card sz">
+    <div class="index-name">深证成指 399001</div>
+    <div class="index-price">15,675.89</div>
+    <div class="index-change red">-2.75% <span style="font-size:0.85rem">(-443.28)</span></div>
+    <div class="index-detail">
+      <div>开盘 <span>15,729.92</span></div>
+      <div>最高 <span>15,743.59</span></div>
+      <div>昨收 <span>16,119.17</span></div>
+      <div>最低 <span>15,578.83</span></div>
+      <div>成交额 <span>2,968.5亿</span></div>
+      <div>换手 <span>0.56%</span></div>
+    </div>
+    <div class="index-trend trend-bearish">低开低走</div>
+  </div>
+  <div class="index-card cy">
+    <div class="index-name">创业板指 399006</div>
+    <div class="index-price">4,114.92</div>
+    <div class="index-change red">-3.42% <span style="font-size:0.85rem">(-145.80)</span></div>
+    <div class="index-detail">
+      <div>开盘 <span>4,135.34</span></div>
+      <div>最高 <span>4,136.16</span></div>
+      <div>昨收 <span>4,260.72</span></div>
+      <div>最低 <span>4,083.50</span></div>
+      <div>成交额 <span>1,389.2亿</span></div>
+      <div>换手 <span>0.72%</span></div>
+    </div>
+    <div class="index-trend trend-bearish">低开低走 跌幅扩大</div>
+  </div>
+  <div class="index-card kc">
+    <div class="index-name">科创50 000688</div>
+    <div class="index-price">2,057.99</div>
+    <div class="index-change red">-4.41% <span style="font-size:0.85rem">(-95.05)</span></div>
+    <div class="index-detail">
+      <div>开盘 <span>2,059.90</span></div>
+      <div>最高 <span>2,064.44</span></div>
+      <div>昨收 <span>2,153.04</span></div>
+      <div>最低 <span>2,022.64</span></div>
+      <div>成交额 <span>297.9亿</span></div>
+      <div>换手 <span>0.14%</span></div>
+    </div>
+    <div class="index-trend trend-bearish">低开急跌 跌幅最大</div>
+  </div>
+</div>
+
+<!-- ===== 模块2: 市场情绪仪表盘 ===== -->
+<div class="row">
+  <div class="card">
+    <div class="card-title"><span class="icon">🌡️</span>市场情绪仪表盘</div>
+    <div class="sentiment-grid">
+      <div class="sentiment-item">
+        <div class="sentiment-value" style="color:var(--green)">1,134</div>
+        <div class="sentiment-label">深市上涨家数</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value" style="color:var(--red)">1,641</div>
+        <div class="sentiment-label">深市下跌家数</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value gold">0.69</div>
+        <div class="sentiment-label">涨跌比 (深市)</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value red">23</div>
+        <div class="sentiment-label">涨停家数</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value green">3</div>
+        <div class="sentiment-label">跌停家数</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value" style="color:var(--purple)">88.5%</div>
+        <div class="sentiment-label">封板率 (23/26)</div>
+      </div>
+    </div>
+    <div class="bar-container">
+      <div class="bar-filled" style="width:41%; background:linear-gradient(90deg,var(--green),var(--red))"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.75rem;color:var(--text-dim);">
+      <span>涨 41%</span><span>跌 59%</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="icon">💰</span>成交与资金</div>
+    <div class="sentiment-grid">
+      <div class="sentiment-item">
+        <div class="sentiment-value blue">5,891亿</div>
+        <div class="sentiment-label">沪深总成交额(开15分钟)</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value" style="color:#ff7b72;">-9.2亿</div>
+        <div class="sentiment-label">上证主力净额</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value" style="color:#ff7b72;">-121.3亿</div>
+        <div class="sentiment-label">深证主力净额</div>
+      </div>
+      <div class="sentiment-item">
+        <div class="sentiment-value na-tag">N/A</div>
+        <div class="sentiment-label">北向资金</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; font-size: 0.85rem; color: var(--text-dim);">
+      <div>涨停构成：非ST <span style="color:var(--red)">6</span> + ST <span style="color:var(--gold)">15</span> + 退市 <span style="color:var(--text-dim)">2</span></div>
+      <div style="margin-top:4px;">炸板3家(全ST)：<span style="color:var(--green)">炸板率 11.5%</span></div>
+      <div style="margin-top:4px;">主力资金：沪深两市主力<strong style="color:var(--red)">整体净流出</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 模块3: 热点板块 TOP5 ===== -->
+<div class="card full">
+  <div class="card-title"><span class="icon">🔥</span>热点板块 TOP5</div>
+  <table>
+    <thead>
+      <tr>
+        <th>排名</th><th>板块名称</th><th>代码</th><th>涨幅</th><th>振幅</th><th>领涨股</th><th>主力资金</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag-hot">TOP1</span></td>
+        <td><strong>风力发电</strong></td>
+        <td style="color:var(--text-dim)">881463</td>
+        <td class="red" style="font-weight:700;font-size:1.05rem;">+6.55%</td>
+        <td>3.29%</td>
+        <td>N华润(+177.7%)<br><span style="font-size:0.78rem;color:var(--text-dim)">节能风电/宝塔实业/龙源电力</span></td>
+        <td>N华润 7.05亿<br><span style="font-size:0.78rem;color:var(--text-dim)">节能+546万</span></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-info">TOP2</span></td>
+        <td><strong>保健品</strong></td>
+        <td style="color:var(--text-dim)">881148</td>
+        <td class="red">+4.15%</td>
+        <td>5.22%</td>
+        <td colspan="2" style="color:var(--text-dim)">—</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-info">TOP3</span></td>
+        <td><strong>电动乘用车</strong></td>
+        <td style="color:var(--text-dim)">881213</td>
+        <td class="red">+4.13%</td>
+        <td>3.35%</td>
+        <td colspan="2" style="color:var(--text-dim)">—</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-info">TOP4</span></td>
+        <td><strong>印染</strong></td>
+        <td style="color:var(--text-dim)">881153</td>
+        <td class="red">+3.73%</td>
+        <td>3.09%</td>
+        <td colspan="2" style="color:var(--text-dim)">—</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-info">TOP5</span></td>
+        <td><strong>互联网广告</strong></td>
+        <td style="color:var(--text-dim)">881371</td>
+        <td class="red">+3.23%</td>
+        <td>2.44%</td>
+        <td colspan="2" style="color:var(--text-dim)">—</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:12px;font-size:0.82rem;color:var(--text-dim);">
+    <span class="tag tag-warn">注意</span> 风力发电涨幅6.55%主要受N华润(新股首日+177.74%)计入板块指数影响，实际板块内非新股涨幅有限。<br>
+    板块涨幅TOP5均为防御性或题材型板块，科技/半导体等进攻性板块集体承压。
+  </div>
+</div>
+
+<!-- ===== 模块4: 早盘修复侦察 ===== -->
+<div class="card full">
+  <div class="card-title"><span class="icon">🔍</span>早盘修复侦察 — 超跌修复模式</div>
+  <div style="font-size:0.85rem;color:var(--text-dim);margin-bottom:14px;">
+    扫描范围：昨日跌幅>5%共202只 → 筛选今早具备修复信号的个股 → 排除ST/连续跌停
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>代码</th><th>名称</th><th>昨日跌幅</th><th>今日开盘</th><th>现价</th><th>今日涨幅</th><th>主力净额</th><th>修复评级</th><th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-family:monospace;font-size:0.85rem;">688362</td>
+        <td><strong>甬矽电子</strong></td>
+        <td class="green">-5.28%</td>
+        <td>88.00 <span style="color:var(--text-dim);font-size:0.78rem;">(-3.63%)</span></td>
+        <td class="red">94.00</td>
+        <td class="red">+2.95%</td>
+        <td style="color:#ff7b72;">-1,317万</td>
+        <td>
+          <div class="star-box">
+            <span class="star-active">★</span><span class="star-active">★</span><span class="star-inactive">★</span>
+          </div>
+        </td>
+        <td style="font-size:0.8rem;color:var(--text-dim);">低开-3.63%后强势翻红<br>振幅7.89% | 半导体封装</td>
+      </tr>
+      <tr>
+        <td style="font-family:monospace;font-size:0.85rem;">002487</td>
+        <td><strong>大金重工</strong></td>
+        <td class="green">-5.05%</td>
+        <td>54.95 <span style="color:var(--text-dim);font-size:0.78rem;">(-0.16%)</span></td>
+        <td class="red">55.08</td>
+        <td class="red">+0.07%</td>
+        <td style="color:#ff7b72;">-714万</td>
+        <td>
+          <div class="star-box">
+            <span class="star-inactive">★</span><span class="star-inactive">★</span><span class="star-inactive">★</span>
+          </div>
+        </td>
+        <td style="font-size:0.8rem;color:var(--text-dim);">几乎平盘修复<br>振幅3.26% | 风电设备</td>
+      </tr>
+      <tr>
+        <td style="font-family:monospace;font-size:0.85rem;">002407</td>
+        <td><strong>多氟多</strong></td>
+        <td class="green">-5.00%<span style="font-size:0.75rem">(估)</span></td>
+        <td>—</td>
+        <td class="red">55.34</td>
+        <td class="red">+0.16%</td>
+        <td style="color:var(--gold);">N/A</td>
+        <td>
+          <div class="star-box">
+            <span class="star-inactive">★</span><span class="star-inactive">★</span><span class="star-inactive">★</span>
+          </div>
+        </td>
+        <td style="font-size:0.8rem;color:var(--text-dim);">微幅修复<br>成交额50.8亿 换手8.55%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="assessment-box assessment-weak" style="margin-top:16px;">
+    <strong>修复侦察结论：</strong>昨日大跌202只个股中，仅3只今日盘中翻红。<br>
+    其中<strong>甬矽电子(688362)</strong>修复力度最强（低开-3.6%后涨至+2.95%），但主力仍净流出1,317万。<br>
+    大金重工/多氟多修复力度微弱（+0.07%/+0.16%），无有效修复信号。<br>
+    <strong>整体修复率 1.5%（3/202），无板块性修复效应。</strong>
+  </div>
+
+  <div style="margin-top:14px;font-size:0.82rem;color:var(--text-dim);">
+    <strong>修复力度评级标准：</strong>
+    ★ 低开翻红 ≥ +1% &nbsp;|&nbsp;
+    ★★ 低开翻红 ≥ +2% &nbsp;|&nbsp;
+    ★★★ 低开涨停
+  </div>
+</div>
+
+<!-- ===== 模块5: 连板梯队 ===== -->
+<div class="row">
+  <div class="card">
+    <div class="card-title"><span class="icon">🪜</span>连板梯队</div>
+    <div style="font-size:0.85rem;color:var(--text-dim);margin-bottom:12px;">最高连板：<strong style="color:var(--gold)">5板</strong>（ST） | 非ST最高：<strong style="color:var(--red)">3板</strong></div>
+
+    <div class="ladder-item" style="background:rgba(210,153,29,0.08);padding:6px 10px;border-radius:6px;margin-bottom:6px;">
+      <div><span class="ladder-tag gold">5板</span> *ST瑞茂</div>
+      <div style="font-size:0.8rem;"><span class="red">+5.34%</span> <span class="tag tag-warn">一字</span></div>
+    </div>
+
+    <div style="margin-bottom:8px;font-weight:600;font-size:0.9rem;color:var(--purple);">4板 (2家 / 全ST)</div>
+    <div class="ladder-item">
+      <div>*ST东智 <span class="tag tag-info" style="font-size:0.7rem;">控制权变更</span></div>
+      <div><span class="red">+5.06%</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>*ST美芝 <span class="tag tag-info" style="font-size:0.7rem;">ST+国企</span></div>
+      <div><span class="red">+4.98%</span></div>
+    </div>
+
+    <div style="margin:10px 0 8px;font-weight:600;font-size:0.9rem;color:var(--purple);">3板 (10家)</div>
+    <div class="ladder-item" style="border-left: 2px solid var(--red); padding-left: 8px;">
+      <div><strong>恒尚节能</strong></div>
+      <div><span class="red">+9.98%</span> <span class="tag tag-hot">收购存储芯片</span></div>
+    </div>
+    <div class="ladder-item" style="border-left: 2px solid var(--red); padding-left: 8px;">
+      <div><strong>先导基电</strong></div>
+      <div><span class="red">+9.53%</span> <span class="tag tag-hot">半导体设备</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>ST星农</div><div><span class="red">+5.03%</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>ST京蓝</div><div><span class="red">+5.03%</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>*ST联翔</div><div><span class="red">+5.01%</span></div>
+    </div>
+    <div style="font-size:0.8rem;color:var(--text-dim);margin-top:4px;">... 其余5家为ST/退市</div>
+
+    <div style="margin:10px 0 8px;font-weight:600;font-size:0.9rem;color:var(--purple);">2板 (5家 / 全ST)</div>
+
+    <div style="margin:10px 0 8px;font-weight:600;font-size:0.9rem;color:var(--purple);">首板 (5家 / 非ST)</div>
+    <div class="ladder-item">
+      <div>雷赛智能</div>
+      <div><span class="red">+10.00%</span> <span class="tag tag-hot">人形机器人</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>京新药业</div>
+      <div><span class="red">+9.98%</span> <span class="tag tag-info">创新药</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>金科股份</div>
+      <div><span class="red">+10.28%</span> <span class="tag tag-info">摘帽</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>宝塔实业</div>
+      <div><span class="red">+10.10%</span> <span class="tag tag-info">摘帽/储能</span></div>
+    </div>
+    <div class="ladder-item">
+      <div>优彩资源</div>
+      <div><span class="red">+10.07%</span></div>
+    </div>
+  </div>
+
+  <!-- ===== 模块6: 早盘异动信号 ===== -->
+  <div class="card">
+    <div class="card-title"><span class="icon">⚡</span>早盘异动信号</div>
+
+    <div style="font-weight:600;font-size:0.9rem;margin-bottom:8px;color:var(--red);">
+      大幅下跌（科技股集体杀跌）
+    </div>
+    <table>
+      <thead><tr><th>代码</th><th>名称</th><th>现价</th><th>跌幅</th><th>成交额</th></tr></thead>
+      <tbody>
+        <tr><td>300776</td><td>帝尔激光</td><td>186.39</td><td class="green">-8.59%</td><td>—</td></tr>
+        <tr><td>603986</td><td>兆易创新</td><td>715.90</td><td class="green">-7.27%</td><td>73.9亿</td></tr>
+        <tr><td>000725</td><td>京东方Ａ</td><td>8.16</td><td class="green">-6.96%</td><td>82.0亿</td></tr>
+        <tr><td>002463</td><td>沪电股份</td><td>135.68</td><td class="green">-6.43%</td><td>—</td></tr>
+        <tr><td>301308</td><td>江波龙</td><td>625.00</td><td class="green">-6.41%</td><td>—</td></tr>
+        <tr><td>300502</td><td>新易盛</td><td>538.81</td><td class="green">-6.39%</td><td>58.9亿</td></tr>
+        <tr><td>300054</td><td>鼎龙股份</td><td>94.27</td><td class="green">-6.01%</td><td>10.3亿</td></tr>
+        <tr><td>001309</td><td>德明利</td><td>848.12</td><td class="green">-5.05%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:0.8rem;color:var(--text-dim);margin-top:8px;">
+      兆易创新、新易盛、京东方A三只科技龙头成交额均超50亿，资金集中出逃半导体/存储/光通信。
+    </div>
+
+    <div style="font-weight:600;font-size:0.9rem;margin:16px 0 8px;color:var(--green);">
+      跌停个股 (3家)
+    </div>
+    <table>
+      <thead><tr><th>代码</th><th>名称</th><th>现价</th><th>跌幅</th><th>原因</th></tr></thead>
+      <tbody>
+        <tr><td>603001</td><td>奥康国际</td><td>12.73</td><td class="green">-9.97%</td><td style="font-size:0.78rem;">个股调整</td></tr>
+        <tr><td>603989</td><td>XD艾华集</td><td>45.59</td><td class="green">-9.99%</td><td style="font-size:0.78rem;">个股调整</td></tr>
+        <tr><td>002217</td><td>ST合力泰</td><td>1.68</td><td class="green">-5.08%</td><td style="font-size:0.78rem;">连续8跌停</td></tr>
+      </tbody>
+    </table>
+
+    <div style="font-size:0.82rem;color:var(--text-dim);margin-top:12px;">
+      <span class="tag tag-warn">集合竞价</span> 奥康国际/XDS艾华集一字跌停，无正面集合竞价异动。<br>
+      <span class="tag tag-warn">急拉/急跌</span> 科技半导体板块普遍低开低走，未见大幅急拉反包信号。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 模块7: 综合研判 ===== -->
+<div class="card full">
+  <div class="card-title"><span class="icon">📊</span>综合研判</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;">
+
+    <div class="assessment-box assessment-weak">
+      <strong style="font-size:1.05rem;">今日市场定性：弱势</strong>
+      <div style="margin-top:10px;font-size:0.85rem;">
+        <ul style="padding-left:16px;line-height:2;">
+          <li>四大指数全线下跌，科创50领跌-4.41%，创业板-3.42%</li>
+          <li>深市涨跌比 1134:1641 (1:1.45)，近六成个股下跌</li>
+          <li>主力资金沪深两市合计净流出超130亿</li>
+          <li>涨停23家中ST占17家(74%)，有效涨停(非ST)仅6家</li>
+          <li>高位科技股第二轮杀跌，兆易创新-7.3%/新易盛-6.4%/江波龙-6.4%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="assessment-box assessment-warn">
+      <strong style="font-size:1.05rem;">关键风险提示</strong>
+      <div style="margin-top:10px;font-size:0.85rem;">
+        <ul style="padding-left:16px;line-height:2;">
+          <li><span class="tag tag-hot">风险1</span> 科技/半导体/存储板块连续二日重挫，芯片ETF跟踪板块仍有下行惯性</li>
+          <li><span class="tag tag-warn">风险2</span> 科创50从年内新高快速回撤，短线获利盘集中兑现</li>
+          <li><span class="tag tag-warn">风险3</span> 连板高度仅5板且为ST，市场缺乏高辨识度的非ST连板龙头</li>
+          <li><span class="tag tag-info">风险4</span> 涨停多为"一字板"集合竞价封板，盘中无换手板机会</li>
+          <li><span class="tag tag-info">风险5</span> 风力发电板块涨幅受N华润新股影响虚高，实际板块效应有限</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="assessment-box assessment-info">
+      <strong style="font-size:1.05rem;">可操作性评估</strong>
+      <div style="margin-top:10px;font-size:0.85rem;">
+        <ul style="padding-left:16px;line-height:2;">
+          <li>市场整体赚钱效应极弱，深市仅41%个股上涨</li>
+          <li>非ST涨停6家均为集合竞价一字板，盘中无买点</li>
+          <li>炸板率11.5%但仅3家，实际参与难度不低</li>
+          <li>热点板块（风电/保健品/电动车）偏防御、缺乏持续性逻辑</li>
+          <li><strong>综合：今日市场处于弱势调整阶段，主动参与性偏低</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="assessment-box assessment-info">
+      <strong style="font-size:1.05rem;">超跌修复标的全景评估</strong>
+      <div style="margin-top:10px;font-size:0.85rem;">
+        <ul style="padding-left:16px;line-height:2;">
+          <li>修复数量：202只昨日大跌股中仅3只翻红（修复率1.5%）</li>
+          <li>修复力度：甬矽电子★★（+2.95%）最强，其余无有效修复</li>
+          <li>板块效应：<strong>无</strong> — 三只修复股分属半导体封装、风电、化工，无联动</li>
+          <li>主力态度：三只修复股主力均呈净流出状态</li>
+          <li>整体判断：<strong>今日无符合条件的有效超跌修复标的</strong></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>本报告由 WorkBuddy AI 自动化生成 | 数据来源：通达信 tdx-connector MCP | 采集时间：2026-07-02 09:36~09:37 CST</p>
+  <p>免责声明：本报告仅供信息参考，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+</body>
+</html>

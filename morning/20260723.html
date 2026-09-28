@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026年7月23日 09:45</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  
+  .header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #161b22, #1c2333);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #30363d;
+  }
+  .header h1 { font-size: 28px; color: #e6edf3; margin-bottom: 6px; }
+  .header .subtitle { color: #8b949e; font-size: 14px; }
+  .header .timestamp { color: #6e7681; font-size: 12px; margin-top: 8px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .card-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px; padding-bottom: 12px;
+    border-bottom: 1px solid #21262d;
+  }
+  .card-header h2 { font-size: 18px; color: #e6edf3; }
+  .card-header .icon { font-size: 20px; }
+
+  .up { color: #ff4444; font-weight: 600; }
+  .down { color: #00aa00; font-weight: 600; }
+  .neutral { color: #8b949e; }
+
+  .index-card {
+    background: #1c2333;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .index-name { font-size: 13px; color: #8b949e; margin-bottom: 4px; }
+  .index-price { font-size: 22px; font-weight: 700; color: #e6edf3; margin-bottom: 4px; }
+  .index-change { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .index-sub { font-size: 11px; color: #6e7681; }
+  .index-trend { font-size: 12px; margin-top: 8px; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+  .trend-up { background: rgba(255,68,68,0.1); color: #ff6666; }
+  .trend-down { background: rgba(0,170,0,0.1); color: #00cc00; }
+  .trend-mix { background: rgba(139,148,158,0.1); color: #8b949e; }
+
+  .meter-box {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .meter-item {
+    background: #1c2333; padding: 14px; border-radius: 8px;
+    text-align: center;
+  }
+  .meter-label { font-size: 12px; color: #8b949e; margin-bottom: 4px; }
+  .meter-value { font-size: 20px; font-weight: 700; }
+  .meter-sub { font-size: 11px; color: #6e7681; margin-top: 2px; }
+
+  .alert-card {
+    background: #1a1a2e;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .alert-card .warning-badge {
+    position: absolute; top: -12px; left: 20px;
+    background: #ff4444; color: white; padding: 4px 14px;
+    border-radius: 4px; font-size: 13px; font-weight: 700;
+  }
+  .alert-card h2 { color: #ff6b6b; font-size: 18px; margin-bottom: 12px; margin-top: 4px; }
+  .alert-card .alert-content { font-size: 14px; }
+  .alert-card .alert-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #2d2d4e; }
+  .alert-card .alert-label { color: #8b949e; }
+  .alert-card .alert-value { font-weight: 600; color: #e6edf3; }
+
+  .checklist { margin-top: 12px; }
+  .checklist-item { padding: 6px 10px; margin: 4px 0; border-radius: 4px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+  .check-yes { background: rgba(0,170,0,0.08); color: #33cc33; }
+  .check-no { background: rgba(139,148,158,0.05); color: #6e7681; }
+
+  .key-reminders {
+    background: #1c2333; border: 1px solid #ff6b6b; border-radius: 8px;
+    padding: 16px; margin-top: 16px;
+  }
+  .key-reminders h4 { color: #ff6b6b; font-size: 14px; margin-bottom: 8px; }
+  .key-reminders ul { padding-left: 18px; font-size: 13px; color: #c9d1d9; }
+  .key-reminders li { margin-bottom: 4px; }
+
+  .sector-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .sector-table th { text-align: left; padding: 10px 12px; color: #8b949e; font-size: 12px; border-bottom: 1px solid #30363d; }
+  .sector-table td { padding: 10px 12px; border-bottom: 1px solid #21262d; }
+  .sector-table tr:hover { background: #1c2333; }
+
+  .recovery-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .recovery-item {
+    background: #1c2333; border: 1px solid #30363d; border-radius: 8px;
+    padding: 14px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .recovery-left { }
+  .recovery-code { font-size: 12px; color: #6e7681; }
+  .recovery-name { font-size: 15px; font-weight: 600; color: #e6edf3; }
+  .recovery-detail { font-size: 12px; color: #8b949e; margin-top: 4px; }
+  .recovery-stars { font-size: 18px; }
+
+  .ladder-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .ladder-item {
+    background: #1c2333; padding: 14px; border-radius: 8px; text-align: center;
+    border: 1px solid #30363d;
+  }
+  .ladder-num { font-size: 24px; font-weight: 700; color: #ff4444; }
+  .ladder-label { font-size: 12px; color: #8b949e; }
+  .ladder-stocks { font-size: 12px; color: #c9d1d9; margin-top: 6px; }
+
+  .abnormal-item {
+    background: #1c2333; padding: 12px 16px; border-radius: 8px;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 12px;
+    border: 1px solid #30363d;
+  }
+  .abnormal-type { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+  .type-up { background: rgba(255,68,68,0.15); color: #ff6666; }
+  .type-down { background: rgba(0,170,0,0.15); color: #33cc33; }
+  .type-recovery { background: rgba(255,165,0,0.15); color: #ffa500; }
+
+  .summary-section { }
+  .summary-item { margin-bottom: 14px; }
+  .summary-title { font-weight: 700; color: #8b949e; font-size: 13px; margin-bottom: 4px; }
+  .summary-text { font-size: 14px; color: #c9d1d9; }
+
+  .no-data { color: #6e7681; font-style: italic; text-align: center; padding: 20px; }
+  .na { color: #6e7681; font-style: italic; }
+
+  .phase-badge {
+    display: inline-block; padding: 4px 12px; border-radius: 4px;
+    font-weight: 700; font-size: 14px;
+  }
+  .phase-fenqi { background: rgba(255,165,0,0.2); color: #ffa500; border: 1px solid #ffa500; }
+
+  hr { border: none; border-top: 1px solid #30363d; margin: 16px 0; }
+
+  @media (max-width: 768px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .ladder-grid { grid-template-columns: repeat(2, 1fr); }
+    .meter-box { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <h1>A股早盘快报</h1>
+    <div class="subtitle">2026年7月23日（周四） 09:45 开盘快照</div>
+    <div class="timestamp">数据采集时间：09:40~09:42 | 数据源：tdx-connector MCP | 北向资金：N/A</div>
+  </div>
+
+  <!-- ===== MODULE 1: 核心指数概览 ===== -->
+  <div class="card">
+    <div class="card-header"><span class="icon">📊</span><h2>核心指数概览</h2></div>
+    <div class="grid-4">
+      <div class="index-card">
+        <div class="index-name">上证指数</div>
+        <div class="index-price">3,868.70</div>
+        <div class="index-change up">+0.04%</div>
+        <div class="index-sub">成交额 1,785亿 | PE 17.3</div>
+        <div class="index-trend trend-mix">平开震荡</div>
+      </div>
+      <div class="index-card">
+        <div class="index-name">深证成指</div>
+        <div class="index-price">14,106.10</div>
+        <div class="index-change up">+0.32%</div>
+        <div class="index-sub">成交额 2,149亿 | PE 44.9</div>
+        <div class="index-trend trend-mix">高开回落</div>
+      </div>
+      <div class="index-card">
+        <div class="index-name">创业板指</div>
+        <div class="index-price">3,577.24</div>
+        <div class="index-change up">+0.29%</div>
+        <div class="index-sub">成交额 951亿 | PE 66.1</div>
+        <div class="index-trend trend-mix">高开回落</div>
+      </div>
+      <div class="index-card">
+        <div class="index-name">科创50</div>
+        <div class="index-price">1,839.69</div>
+        <div class="index-change down">-1.10%</div>
+        <div class="index-sub">成交额 233亿 | PE 208.3</div>
+        <div class="index-trend trend-down">高开低走</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:#6e7681;margin-top:8px;line-height:1.6">
+      上证指数开3868.09→现3868.70，全天窄幅震荡于3857-3872区间，振幅仅0.40%；深证成指/创业板指均小幅高开后回落收窄涨幅；<span class="down">科创50承压最重，高开1876.61→现1839.69（高开低走-1.10%），高开0.89%后快速跳水近2%</span>，科技板块信心脆弱。
+    </div>
+  </div>
+
+  <!-- ===== MODULE 2: 市场情绪仪表盘 ===== -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🌡️</span><h2>市场情绪仪表盘</h2></div>
+    <div class="meter-box">
+      <div class="meter-item">
+        <div class="meter-label">上涨/下跌家数</div>
+        <div class="meter-value up">2,861 ↑</div>
+        <div class="meter-sub" style="color:#00aa00">2,112 ↓（涨跌比 1.35:1）</div>
+      </div>
+      <div class="meter-item">
+        <div class="meter-label">涨停/跌停（昨全日）</div>
+        <div class="meter-value" style="color:#ff4444">48 涨停</div>
+        <div class="meter-sub" style="color:#00aa00">9 跌停（比 5.3:1）</div>
+      </div>
+      <div class="meter-item">
+        <div class="meter-label">炸板率（昨全日）</div>
+        <div class="meter-value" style="color:#ffa500">47.3%</div>
+        <div class="meter-sub">43只炸板 / 91只触及涨停</div>
+      </div>
+      <div class="meter-item">
+        <div class="meter-label">市场总成交额</div>
+        <div class="meter-value" style="color:#e6edf3">~ 5,116亿</div>
+        <div class="meter-sub">上证1,785亿+深证2,149亿+创业951亿+科创233亿（开盘15分钟估算全日约1.3~1.5万亿）</div>
+      </div>
+      <div class="meter-item">
+        <div class="meter-label">今日涨幅>5%</div>
+        <div class="meter-value up">103 只</div>
+        <div class="meter-sub">含20%涨停2只（昀冢科技/五洲医疗）</div>
+      </div>
+      <div class="meter-item">
+        <div class="meter-label">今日跌幅>5%</div>
+        <div class="meter-value down">27 只</div>
+        <div class="meter-sub">含创业板/科创板股多只</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:#6e7681;margin-top:12px;">
+      ⚠️ 昨炸板率47.3%处于偏高区间（>40%即为退潮信号），昨日虽有48只涨停但封板失败率近半，资金追涨意愿薄弱。
+      今早涨跌比1.35:1中性偏多，但科创50独自下跌暴露结构性分化。
+    </div>
+  </div>
+
+  <!-- ===== MODULE 2.5: 情绪周期定位与极端反转预警 ===== -->
+  <div class="alert-card">
+    <div class="warning-badge">⚠️ 警戒模块</div>
+    <h2>情绪周期定位与极端反转预警</h2>
+
+    <div class="alert-content">
+      <!-- Phase Output -->
+      <div style="font-size:16px;font-weight:700;margin-bottom:16px;">
+        📍 情绪周期定位：<span class="phase-badge phase-fenqi">分歧期（高潮→分歧过渡）</span>
+      </div>
+      <div style="font-size:14px;color:#8b949e;margin-bottom:16px;">
+        🔄 反转风险：<span style="color:#ffa500;font-weight:600;">顶部反转风险（中等）</span> — 昨日涨停数骤增至48只但炸板率47.3%，典型高潮末段特征
+      </div>
+
+      <!-- Indicators -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;">
+        <div class="alert-row"><span class="alert-label">涨停数</span><span class="alert-value">48只</span></div>
+        <div class="alert-row"><span class="alert-label">跌停数</span><span class="alert-value">9只</span></div>
+        <div class="alert-row"><span class="alert-label">连板高度</span><span class="alert-value">5板（立新能源）</span></div>
+        <div class="alert-row"><span class="alert-label">炸板率</span><span class="alert-value" style="color:#ffa500;">47.3% ⚠️</span></div>
+        <div class="alert-row"><span class="alert-label">昨涨停溢价</span><span class="alert-value" style="color:#ffa500;">分化</span></div>
+        <div class="alert-row"><span class="alert-label">成交量</span><span class="alert-value">昨6,142亿/上证</span></div>
+      </div>
+
+      <hr>
+
+      <!-- 连跌连涨极端检测 -->
+      <div style="font-size:14px;margin-bottom:12px;">
+        <strong>极端检测（过去5日）</strong>
+      </div>
+      <div style="font-size:13px;color:#8b949e;margin-bottom:12px;">
+        <table style="width:100%;font-size:12px;border-collapse:collapse;">
+          <tr style="color:#6e7681;"><td>日期</td><td>07-17</td><td>07-20</td><td>07-21</td><td>07-22</td><td style="color:#ffa500;">07-23(今)</td></tr>
+          <tr><td>涨停</td><td>12</td><td>9</td><td>2</td><td style="color:#ff4444;">48</td><td style="color:#8b949e;">—</td></tr>
+          <tr><td>跌停</td><td style="color:#00aa00;">10</td><td style="color:#00aa00;">20</td><td style="color:#00aa00;">17</td><td>9</td><td style="color:#8b949e;">—</td></tr>
+        </table>
+      </div>
+      <div style="font-size:13px;color:#c9d1d9;margin-bottom:16px;">
+        <strong>判断</strong>：昨日涨停从2→48为单日爆发，非连续极端。07-20~07-21连续两日跌停>15家，07-22骤降至9家，已出现初步的<b>空头衰竭→多头反扑</b>信号。但昨日炸板率47.3%意味着多头反扑质量存疑。
+      </div>
+
+      <hr>
+
+      <!-- 反转确认信号检查 -->
+      <div style="font-size:14px;margin-bottom:8px;"><strong>✅ 顶部反转信号确认清单</strong></div>
+      <div class="checklist">
+        <div class="checklist-item check-yes">✅ <b>炸板率飙升</b>：47.3%（>40%阈值，确认）</div>
+        <div class="checklist-item check-yes">✅ <b>板块分化</b>：MLCC概念独自领涨+4.48%，科创50反向-1.10%（科技/能源资源分化明显，确认）</div>
+        <div class="checklist-item check-no">❌ 高标断板：最高5板立新能源今早仍+9.81%，未断板</div>
+        <div class="checklist-item check-no">❌ 涨停家数骤降：昨日48家未骤降（需看今天收盘）</div>
+        <div class="checklist-item check-no">❌ 跌停异常增加：昨日仅9家跌停（<30标准）</div>
+        <div class="checklist-item check-no">❌ 放量滞涨：昨上证6142亿 vs 5日均值约6772亿，缩量而非放量</div>
+      </div>
+
+      <div style="padding:8px 12px;background:rgba(255,165,0,0.08);border-radius:6px;margin:12px 0;font-size:14px;">
+        <b>✅ 已确认顶部反转信号：2/6个</b>（炸板率飙升 + 板块分化）<br>
+        <span style="color:#ffa500;">⚠️ 警戒级别：黄色预警</span> — 2个信号触发关注阈值，但高标未断板+跌停未增加降低了反转紧迫性，需观察今明两日是否新增确认信号。
+      </div>
+
+      <hr>
+
+      <!-- 概率参考 -->
+      <div style="font-size:13px;margin-bottom:8px;"><strong>📊 历史参考</strong></div>
+      <div style="font-size:13px;color:#8b949e;margin-bottom:16px;">
+        当前未出现连续极端连涨（涨停>100家×3日）或连续极端连跌（跌停>50家×3日）模式。<br>
+        <span style="color:#ffa500;">炸板率47.3%在高潮期中，次日分歧概率约<strong>60~70%</strong></span>（历史经验区间）。<br>
+        核心变量：今日收盘炸板率是否持续>40%、高标立新能源是否能继续封板。
+      </div>
+
+      <!-- 关键提醒 -->
+      <div class="key-reminders">
+        <h4>⚠️ 关键提醒</h4>
+        <ul>
+          <li><b>反转靠确认，不靠预测</b>：已有2个确认信号，但需等待第3个（高标断板 或 今日涨停骤降<30）才能判定顶部反转确立</li>
+          <li><b>单一信号可能是噪音</b>：昨日炸板率高可能与尾盘情绪波动有关，今日若炸板率回落到30%以下则信号解除</li>
+          <li><b>外部催化不可忽视</b>：昨日算力（Kimi算力紧缺）、存储（长鑫上市）等主题驱动涨停潮，若今日催化消退则涨停数将自然回落</li>
+          <li><b>极端可以更极端</b>：昨日涨停48家虽不少但远未到极端（>80家），分歧后可能继续发酵而非退潮</li>
+          <li><b>反转≠立刻反向</b>：分歧期可能横盘震荡2-3天再选择方向</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODULE 3: 热点板块 TOP5 ===== -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🔥</span><h2>热点板块 TOP10（概念板块）</h2></div>
+    <table class="sector-table">
+      <thead><tr><th>排名</th><th>板块</th><th>涨幅</th><th>成交量</th><th>特征</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>MLCC概念</b></td><td class="up">+4.48%</td><td>267万手</td><td>电子陶瓷元件，MLCC涨价周期预期</td></tr>
+        <tr><td>2</td><td><b>可燃冰</b></td><td class="up">+2.56%</td><td>308万手</td><td>能源资源</td></tr>
+        <tr><td>3</td><td><b>页岩气</b></td><td class="up">+1.92%</td><td>804万手</td><td>能源资源</td></tr>
+        <tr><td>4</td><td><b>光热发电</b></td><td class="up">+1.75%</td><td>266万手</td><td>新能源发电</td></tr>
+        <tr><td>5</td><td><b>PVDF概念</b></td><td class="up">+1.59%</td><td>111万手</td><td>锂电材料（粘结剂）</td></tr>
+        <tr><td>6</td><td><b>6G概念</b></td><td class="up">+1.59%</td><td>816万手</td><td>通信技术</td></tr>
+        <tr><td>7</td><td><b>锂矿</b></td><td class="up">+1.58%</td><td>330万手</td><td>新能源上游资源</td></tr>
+        <tr><td>8</td><td><b>超级电容</b></td><td class="up">+1.57%</td><td>320万手</td><td>储能相关</td></tr>
+        <tr><td>9</td><td><b>光通信</b></td><td class="up">+1.57%</td><td>1,222万手</td><td>AI算力基础设施</td></tr>
+        <tr><td>10</td><td><b>复合铜箔</b></td><td class="up">+1.49%</td><td>221万手</td><td>锂电新材料</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:12px;color:#6e7681;margin-top:12px;">
+      📌 主线特征：<b>电子材料+传统能源+新能源三线并行</b>。MLCC概念以+4.48%断层式领先，电子元件景气预期最强。
+      光通信（1.57%）承接昨日算力热度延续。传统能源（可燃冰/页岩气）防御属性突出。<br>
+      ⚠️ 板块涨幅均<5%，整日热度有限，未形成单一主线碾压式行情。
+    </div>
+  </div>
+
+  <!-- ===== MODULE 4: 超跌修复侦察 ===== -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🔍</span><h2>早盘修复侦察（超跌修复模式）</h2></div>
+
+    <div style="font-size:13px;color:#8b949e;margin-bottom:12px;">
+      昨日跌超5%股票池共 <b>244只</b>，今日早盘翻红修复的约 <b>30%</b>（约73只）。
+      以下为修复力度较强者：
+    </div>
+
+    <div class="recovery-grid">
+      <div class="recovery-item">
+        <div class="recovery-left">
+          <div class="recovery-code">003036</div>
+          <div class="recovery-name">泰坦股份</div>
+          <div class="recovery-detail">昨跌 -5.12% → 今 +7.77% | 成交量7.5万手</div>
+        </div>
+        <div class="recovery-stars up">★★</div>
+      </div>
+      <div class="recovery-item">
+        <div class="recovery-left">
+          <div class="recovery-code">688808</div>
+          <div class="recovery-name">联讯仪器</div>
+          <div class="recovery-detail">昨跌 -5.27% → 今 +4.74% | 成交量1.4万手</div>
+        </div>
+        <div class="recovery-stars up">★</div>
+      </div>
+      <div class="recovery-item">
+        <div class="recovery-left">
+          <div class="recovery-code">600110</div>
+          <div class="recovery-name">诺德股份</div>
+          <div class="recovery-detail">昨跌 -5.25% → 今 +4.29% | 成交量115万手</div>
+        </div>
+        <div class="recovery-stars up">★</div>
+      </div>
+      <div class="recovery-item">
+        <div class="recovery-left">
+          <div class="recovery-code">301511</div>
+          <div class="recovery-name">德福科技</div>
+          <div class="recovery-detail">昨跌 -5.18% → 今 +3.53% | 成交量37万手</div>
+        </div>
+        <div class="recovery-stars up">★</div>
+      </div>
+      <div class="recovery-item">
+        <div class="recovery-left">
+          <div class="recovery-code">301317</div>
+          <div class="recovery-name">鑫磊股份</div>
+          <div class="recovery-detail">昨跌 -5.04% → 今 +3.67% | 成交量3.5万手</div>
+        </div>
+        <div class="recovery-stars up">★</div>
+      </div>
+      <div class="recovery-item">
+        <div class="recovery-left">
+          <div class="recovery-code">688300</div>
+          <div class="recovery-name">联瑞新材</div>
+          <div class="recovery-detail">昨跌 -5.16% → 今 +3.49% | 成交量10.5万手</div>
+        </div>
+        <div class="recovery-stars up">★</div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;color:#6e7681;margin-top:12px;">
+      📌 修复评分：★ 低开翻红≥+1%、★★ 低开翻红≥+2%、★★★ 低开涨停<br>
+      修复标的分散（纺织机械/仪器设备/锂电铜箔/高分子材料/半导体填料），<b>未形成板块效应</b>。<br>
+      最佳修复泰坦股份★★（昨-5.12%→今+7.77%），属专用设备方向。<br>
+      整体修复广度约30%，修复深度偏浅（无涨停级修复），修复质量一般。
+    </div>
+  </div>
+
+  <!-- ===== MODULE 5: 连板梯队 ===== -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🪜</span><h2>连板梯队（昨收盘数据）</h2></div>
+    <div class="ladder-grid">
+      <div class="ladder-item">
+        <div class="ladder-num">5板</div>
+        <div class="ladder-label">1只</div>
+        <div class="ladder-stocks">立新能源<br><span style="color:#8b949e;font-size:11px;">特高压/储能/国企</span></div>
+      </div>
+      <div class="ladder-item">
+        <div class="ladder-num">4板</div>
+        <div class="ladder-label">1只</div>
+        <div class="ladder-stocks">华银电力<br><span style="color:#8b949e;font-size:11px;">火电/国企改革</span></div>
+      </div>
+      <div class="ladder-item">
+        <div class="ladder-num">3板</div>
+        <div class="ladder-label">1只</div>
+        <div class="ladder-stocks">美利云<br><span style="color:#8b949e;font-size:11px;">算力租赁/数据中心</span></div>
+      </div>
+      <div class="ladder-item">
+        <div class="ladder-num">2板</div>
+        <div class="ladder-label">9只</div>
+        <div class="ladder-stocks" style="font-size:11px;">利通电子/爱丽家居/证通电子<br>共进股份/长裕集团/大为股份<br>盛达资源/托伦斯/长缆科技</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:#6e7681;margin-top:12px;">
+      📌 连板总计12只，梯队完整但高度集中在5板。立新能源一字5板（十五五碳达峰催化），华银电力4板尾盘封板质量一般。
+      2板数量9只较丰富，涵盖算力（利通/证通/共进）、存储（大为/长裕）、贵金属（盛达）、半导体设备（托伦斯）。
+      <br>今早表现：<span class="up">立新能源+9.81%</span>继续封板、<span class="up">美利云+9.98%</span>3进4、<span class="up">证通电子+10.04%</span>2进3、
+      <span class="up">爱丽家居+10.03%</span>一字2进3，<span class="down">但长裕集团-0.56%、托伦斯-0.96%、大为股份-1.13%明显分化</span>。
+    </div>
+  </div>
+
+  <!-- ===== MODULE 6: 早盘异动信号 ===== -->
+  <div class="card">
+    <div class="card-header"><span class="icon">⚡</span><h2>早盘异动信号</h2></div>
+
+    <div style="font-size:14px;color:#e6edf3;margin-bottom:12px;font-weight:600;">集合竞价异常低开（低开超5%）</div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-recovery">低开修复</span>
+      <div>
+        <b>立霸股份(603519)</b> <span style="color:#8b949e;">开 -10.03% → 现 +1.05%</span><br>
+        <span style="font-size:12px;color:#6e7681;">一字跌停开盘后大幅拉升翻红，实体涨幅+12%，2连跌停后释放</span>
+      </div>
+    </div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-recovery">低开修复</span>
+      <div>
+        <b>甘咨询(000779)</b> <span style="color:#8b949e;">开 -9.98% → 现 -2.69%</span><br>
+        <span style="font-size:12px;color:#6e7681;">接近跌停开盘，大幅修复至-2.69%，3连跌停后出现承接</span>
+      </div>
+    </div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-recovery">低开修复</span>
+      <div>
+        <b>信通电子(001388)</b> <span style="color:#8b949e;">开 -6.37% → 现 -0.46%</span><br>
+        <span style="font-size:12px;color:#6e7681;">2连跌停后大幅低开，实体涨幅+6.31%大幅修复接近平盘</span>
+      </div>
+    </div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-down">跌停延续</span>
+      <div>
+        <b>依依股份(001206)</b> <span style="color:#8b949e;">开 -10.00% → 现 -10.00%（一字跌停）</span><br>
+        <span style="font-size:12px;color:#6e7681;">3连一字跌停，无承接</span>
+      </div>
+    </div>
+
+    <div style="font-size:14px;color:#e6edf3;margin:16px 0 12px;font-weight:600;">开盘15分钟急拉（预警系统触发）</div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-up">急拉涨停</span>
+      <div>
+        <b>昀冢科技(688260)</b> <span class="up">+20.00%</span><br>
+        <span style="font-size:12px;color:#6e7681;">09:33预警急拉+8.1%，后封20%涨停，科创板MLCC概念</span>
+      </div>
+    </div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-up">急拉涨停</span>
+      <div>
+        <b>拓日新能(002218)</b> <span class="up">+10.09%</span><br>
+        <span style="font-size:12px;color:#6e7681;">09:33预警急拉+9.14%，快速封板，光伏概念</span>
+      </div>
+    </div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-up">急拉涨停</span>
+      <div>
+        <b>鸿博股份(002229)</b> <span class="up">+10.01%</span><br>
+        <span style="font-size:12px;color:#6e7681;">09:36预警急拉+8.96%，算力/彩票概念</span>
+      </div>
+    </div>
+    <div class="abnormal-item">
+      <span class="abnormal-type type-up">急拉</span>
+      <div>
+        <b>福瑞医科(300049)</b> <span class="up">+15.85%</span><br>
+        <span style="font-size:12px;color:#6e7681;">09:33预警急拉+6.64%，医药板块</span>
+      </div>
+    </div>
+
+    <div style="font-size:12px;color:#6e7681;margin-top:12px;">
+      ⚠️ 大幅高开数据503超时无法获取。急拉预警共触发88条，活跃度较高。
+      MLCC/电子材料方向急拉个股集中出现，与板块+4.48%领涨一致。
+    </div>
+  </div>
+
+  <!-- ===== MODULE 7: 综合研判 ===== -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🧭</span><h2>综合研判</h2></div>
+
+    <div class="summary-section">
+      <div class="summary-item">
+        <div class="summary-title">市场定性</div>
+        <div class="summary-text">
+          <span class="phase-badge phase-fenqi" style="font-size:13px;">震荡分化·分歧期</span><br>
+          三大指数微涨但科创50独跌-1.10%，指数表象温和但内部结构严重分化。MLCC概念+4.48%一枝独秀 vs 科创50代表的高估值科技股明显承压。
+          涨跌比1.35:1偏多但不强，涨幅>5%个股103只远多于跌幅>5%的27只，表面多头占优。
+        </div>
+      </div>
+
+      <div class="summary-item">
+        <div class="summary-title">情绪周期与明日演化预判</div>
+        <div class="summary-text">
+          当前处于<b>高潮→分歧过渡期</b>。昨日涨停48只骤增（前一天仅2只），但炸板率47.3%暴露封板意愿薄弱。
+          今早2个顶部反转信号已确认（炸板率飙升+板块分化），但高标未断板、跌停未增加，反转紧迫性不高。
+          <br><br>
+          <b>明日演化路径判断</b>：<br>
+          ①（概率约50%）<b>继续分歧</b>：今日若涨停回落<30只+炸板率持续>35%，分歧加深，高位连板出现断板 → 转向退潮<br>
+          ②（概率约30%）<b>分歧后修复</b>：算力/存储催化剂持续发酵（长鑫上市），涨停维持在40-50只，新主线确立 → 重回发酵<br>
+          ③（概率约20%）<b>快速退潮</b>：科创50继续领跌拖累全市场，高位连板集体断板，跌停骤增至30+ → 退潮确认
+        </div>
+      </div>
+
+      <div class="summary-item">
+        <div class="summary-title">关键风险提示</div>
+        <div class="summary-text">
+          ⚠️ <b>科创50持续弱势</b>：高开1876→现1839（-1.10%），高开0.89%后跳水近2%，科技/芯片方向资金信心脆弱，是当前最大拖累因素<br>
+          ⚠️ <b>炸板率高企</b>：昨日47.3%炸板率处于退潮警戒区域，若今日持续>35%则进一步确认顶部反转<br>
+          ⚠️ <b>高标集中风险</b>：立新能源5板（今天大概率6板），一旦断板将引发短线情绪剧烈波动<br>
+          ⚠️ <b>板块分化加剧</b>：MLCC+4.48% vs 科创50 -1.10%，板块间温差近6%，结构性风险积聚<br>
+          ⚠️ <b>跌停开板股需警惕</b>：立霸股份/甘咨询/信通电子虽然大幅修复，但均为连续跌停后的技术反弹，基本面风险未解除
+        </div>
+      </div>
+
+      <div class="summary-item">
+        <div class="summary-title">可操作性评估</div>
+        <div class="summary-text">
+          今日早盘可操作性：<b style="color:#ffa500;">中等偏低</b><br>
+          - 指数温和但结构分化严重，选股难度高<br>
+          - 连板股中一字板占比高（爱丽家居/证通电子），真实换手板选择有限<br>
+          - 超跌修复广度约30%但深度偏浅，无涨停级修复，修复效率一般<br>
+          - 今日热点（MLCC/可燃冰/页岩气）延续性待验证，追高风险大<br>
+          - 算力/光通信方向有延续性但昨日已充分发酵，今天追入性价比降低
+        </div>
+      </div>
+
+      <div class="summary-item">
+        <div class="summary-title">超跌修复整体评估</div>
+        <div class="summary-text">
+          修复数量：244只昨跌>5%中约73只翻红（30%），数量尚可但质量一般。<br>
+          修复力度：★★级仅1只（泰坦股份+7.77%），其余均为★级（+3%~+5%），无涨停级修复。<br>
+          板块效应：<b>未形成</b>。修复标的分散于纺织机械/仪器设备/锂电铜箔/高分子材料/半导体填料等多个不相关板块。<br>
+          修复逻辑：多数为超跌技术性反弹而非基本面驱动，泰坦股份/联瑞新材等修复力度较强但板块孤立。<br>
+          综合评级：<b>修复广度达标、深度不足、无板块效应</b>，不具备系统性修复机会特征。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align:center;padding:20px;color:#484f58;font-size:11px;">
+    数据源：tdx-connector MCP | 采集时间：2026-07-23 09:40~09:42 | 北向资金：N/A | 本报告仅供信息参考
+  </div>
+</div>
+</body>
+</html>

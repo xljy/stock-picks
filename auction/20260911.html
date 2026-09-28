@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9:25竞价打板扫描 收盘反查 20260911</title>
+<style>
+:root{
+  --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --line:#30363d;
+  --txt:#e6edf3; --sub:#8b949e; --up:#f85149; --down:#3fb950; --warn:#d29922; --acc:#58a6ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.6;padding:24px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px}
+h2{font-size:17px;margin:30px 0 12px;padding-left:10px;border-left:4px solid var(--acc)}
+.sub{color:var(--sub);font-size:13px;margin-bottom:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.card .k{color:var(--sub);font-size:12px}
+.card .v{font-size:24px;font-weight:700;margin-top:4px}
+.card .n{font-size:11px;color:var(--sub);margin-top:2px}
+.up{color:var(--up)} .down{color:var(--down)} .acc{color:var(--acc)} .warn{color:var(--warn)}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:13px}
+th{background:var(--panel2);color:var(--sub);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr.feng td{background:rgba(248,81,73,.07)}
+.tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11px;border:1px solid var(--line)}
+.tag.ok{color:var(--up);border-color:rgba(248,81,73,.5);background:rgba(248,81,73,.1)}
+.tag.bad{color:var(--down);border-color:rgba(63,185,80,.5);background:rgba(63,185,80,.1)}
+.tag.nu{color:var(--sub)}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:6px;padding:12px 14px;margin:12px 0;font-size:13px}
+.note.info{border-left-color:var(--acc)}
+ul{margin:8px 0;padding-left:20px} li{margin:4px 0;font-size:13px}
+.foot{color:var(--sub);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>9:25 竞价打板扫描 · 收盘反查 <span class="acc">20260911</span></h1>
+<div class="sub">交易日 T=20260911（akshare 交易日历）｜候选池日期 20260910（= T_PREV，匹配）｜快照 09:25:08 → 报告 09:33:20 ｜生成于 2026-09-11 15:45</div>
+
+<div class="note info"><strong>链路状态：扫描报告已恢复。</strong>本日为 9/4、9/7、9/8、9/9、9/10 连续 5 日降级后，首次取得完整 9:25 扫描报告（Windows 计划任务 ZT925Capture 09:25:08 落盘 → 09:33 出报告）。但<strong>查询集仅 1 只</strong>（候选池 35 只中 A+ 级仅 1 只），开盘价区间规则今日仅对 1 只标的实际执行。</div>
+
+<div class="cards">
+  <div class="card"><div class="k">候选池总数</div><div class="v">35</div><div class="n">date=20260910</div></div>
+  <div class="card"><div class="k">今日晋级涨停</div><div class="v up">7</div><div class="n">晋级率 20.0%</div></div>
+  <div class="card"><div class="k">扫描筛出</div><div class="v">0</div><div class="n">无标的通过开盘价过滤</div></div>
+  <div class="card"><div class="k">筛出命中封板</div><div class="v">0</div><div class="n">筛出数为 0，命中率不适用</div></div>
+  <div class="card"><div class="k">过滤误杀</div><div class="v warn">1</div><div class="n">瑞尔特 002790</div></div>
+  <div class="card"><div class="k">查询集覆盖率</div><div class="v warn">2.9%</div><div class="n">1 / 35</div></div>
+</div>
+
+<h2>1. 数据口径</h2>
+<table>
+<tr><th>项目</th><th>取值</th><th>说明</th></tr>
+<tr><td>涨停池来源</td><td>akshare（东财）40 只</td><td>TDX screener 返回空涨停池，脚本自动降级东财口径</td></tr>
+<tr><td>候选池</td><td>zt_925_candidates.json，35 只</td><td>date=20260910，与 T 的上一交易日一致（交易日历校验通过）</td></tr>
+<tr><td>收盘行情</td><td>腾讯 qt.gtimg.cn，34/35 只</td><td>920268 无行情（北交所代码），标注"数据为空"；TDX MCP 未连接</td></tr>
+<tr><td>数据质量</td><td>封成比=数据缺失(常数列)</td><td>封板时间分钟 / 炸板次数 / 流通市值 = ok</td></tr>
+<tr><td>口径差异</td><td>—</td><td>东财涨停池 40 只 vs TDX 空，与 17:00 流水线 zt_1700_data 若不一致属正常口径差异</td></tr>
+</table>
+
+<h2>2. 扫描筛出标的 vs 实际收盘</h2>
+<table>
+<tr><th>代码</th><th>名称</th><th>开盘涨幅</th><th>竞价判定</th><th>今日收盘</th><th>是否封板</th><th>结果</th></tr>
+<tr><td colspan="7" style="color:var(--sub)">final_picks：无达标标的（本次无个股通过开盘价过滤）— 筛出 0 只，无命中/失败可判</td></tr>
+<tr class="feng"><td>002790</td><td>瑞尔特</td><td class="up">+10.05%</td><td>🔒 一字晋级候选（归入放弃块）</td><td class="up">+10.05%</td><td class="up">封板 4 连板</td><td><span class="tag bad">误杀</span></td></tr>
+</table>
+<div class="note">瑞尔特为今日唯一进入开盘价规则执行的标的：一字开盘 +10.05%（买一档 431,780 手、封成比数据缺失），规则以"一字晋级候选"归入放弃块，收盘一字封死 +10.05%、4 连板、封单 3.85 亿、零炸板。<strong>规则判定与实际结果相反，计 1 次误杀。</strong>这是继 9/3、9/4 国芳集团之后，第 3 次出现「一字 → 被规则放弃但封死」的同型误杀，但本次放弃依据是"一字"本身，而非封单量不足（瑞尔特买一档 43.2 万手 &gt; 10 万手阈值）。</div>
+
+<h2>3. 候选池晋级完整清单（7 只）</h2>
+<table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>连板数</th><th>首封时间</th><th>炸板次数</th><th>封单额(亿)</th><th>今日收盘</th><th>行业</th><th>是否入查询集</th></tr>
+<tr class="feng"><td>002790</td><td>瑞尔特</td><td>A+</td><td>5</td><td>4</td><td>09:25:00</td><td>0</td><td>3.85</td><td class="up">+10.05%</td><td>家居用品</td><td class="up">是</td></tr>
+<tr class="feng"><td>000993</td><td>闽东电力</td><td>A</td><td>—</td><td>3</td><td>09:25:00</td><td>1</td><td>1.36</td><td class="up">+9.98%</td><td>电力</td><td class="sub">否</td></tr>
+<tr class="feng"><td>603421</td><td>鼎信通讯</td><td>B</td><td>—</td><td>3</td><td>10:20:33</td><td>3</td><td>0.27</td><td class="up">+10.01%</td><td>通信设备</td><td>否</td></tr>
+<tr class="feng"><td>600876</td><td>凯盛新能</td><td>A</td><td>—</td><td>2</td><td>09:31:30</td><td>1</td><td>0.27</td><td class="up">+9.99%</td><td>玻璃玻纤</td><td>否</td></tr>
+<tr class="feng"><td>002201</td><td>九鼎新材</td><td>A</td><td>—</td><td>2</td><td>13:36:24</td><td>0</td><td>0.96</td><td class="up">+10.02%</td><td>玻璃玻纤</td><td>否</td></tr>
+<tr class="feng"><td>002912</td><td>中新赛克</td><td>B+</td><td>—</td><td>2</td><td>09:25:00</td><td>0</td><td>1.13</td><td class="up">+10.01%</td><td>计算机设备</td><td>否</td></tr>
+<tr class="feng"><td>000823</td><td>超声电子</td><td>B+</td><td>—</td><td>2</td><td>13:04:15</td><td>1</td><td>1.28</td><td class="up">+10.00%</td><td>元件</td><td>否</td></tr>
+</table>
+<div class="note"><strong>覆盖漏报：晋级 7 只中 6 只（85.7%）不在查询集内。</strong>查询集按 A+ 取 1 只（瑞尔特），其余 A/B+/B/C/D 共 34 只未进入 9:25 扫描。晋级结构：4 板 1 只、3 板 2 只、2 板 4 只；首封 ≤09:31:30 共 4 只；炸板 4 只（57.1%），鼎信通讯炸板 3 次为最多。封单最强瑞尔特 3.85 亿，占 7 只封单总额 47%。</div>
+
+<h2>4. 分级有效性检验</h2>
+<table>
+<tr><th>评级</th><th>池内只数</th><th>晋级</th><th>晋级率</th><th>收盘均值</th><th>红盘数</th><th>判读</th></tr>
+<tr><td>A+</td><td>1</td><td>1</td><td class="up">100.0%</td><td class="up">+10.05%</td><td>1/1</td><td>样本 n=1，无统计意义</td></tr>
+<tr><td>A</td><td>13</td><td>3</td><td class="up">23.1%</td><td class="down">−1.45%</td><td>5/12</td><td>晋级率与 B+/B 持平</td></tr>
+<tr><td>B+</td><td>10</td><td>2</td><td>20.0%</td><td class="up">+0.92%</td><td>6/10</td><td>与 A 仅差 3.1pp</td></tr>
+<tr><td>B</td><td>4</td><td>1</td><td>25.0%</td><td class="up">+3.17%</td><td>2/4</td><td>收盘均值全池最高</td></tr>
+<tr><td>C</td><td>2</td><td>0</td><td class="down">0.0%</td><td class="down">−3.81%</td><td>0/2</td><td>底部剔除有效</td></tr>
+<tr><td>D</td><td>5</td><td>0</td><td class="down">0.0%</td><td class="down">−1.17%</td><td>1/5</td><td>底部剔除有效</td></tr>
+<tr><td>S</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td><td>今日无 S 级</td></tr>
+</table>
+<div class="note">
+<strong>结论：粗分层有效，细分层无区分度。</strong><br>
+· 顶部 A+ 100% 但只有 1 只样本；扣除 A+ 后，A/B+/B 三档晋级率 23.1% / 20.0% / 25.0%，极差仅 5pp，<strong>细分层之间无区分度</strong>。<br>
+· 底部 C/D 合计 0/7 = 0%，收盘均值 −3.81% / −1.17%，<strong>剔除能力连续 8 日有效</strong>。<br>
+· <strong>收盘均值倒挂</strong>：B 档 +3.17% &gt; A+ 以外全部档位，A 档 −1.45% 是红盘率最低的中上档（5/12），延续 9/4、9/7、9/8 的「中部倒挂」同型特征。<br>
+· pre_score：今日仅 1 只标的（A+ 瑞尔特）有分值，5 分档 1/1=100%，样本不足无法检验单调性（9/9、9/10 连续两次最高档跑输中分档的观察项今日无新增证据）。
+</div>
+
+<h2>5. 开盘价区间规则：今日正/反检验</h2>
+<table>
+<tr><th>标的</th><th>开盘涨幅</th><th>规则判定</th><th>实际收盘</th><th>规则对错</th></tr>
+<tr class="feng"><td>瑞尔特 002790</td><td class="up">+10.05%（一字）</td><td>🔒 一字晋级候选 → 放弃</td><td class="up">+10.05% 封（4板）</td><td><span class="tag bad">错·误杀</span></td></tr>
+<tr><td colspan="5" style="color:var(--sub)">其余 34 只未进入扫描，规则未实际执行（覆盖率 2.9%）</td></tr>
+</table>
+<div class="note"><strong>实际执行样本仅 1 条，规则检验不具备统计意义。</strong>以下为对全池 34 只（有行情）按开盘涨幅分档的<strong>推演级</strong>统计（非实际执行结果，仅供规则校准参考）：</div>
+<table>
+<tr><th>开盘涨幅分档</th><th>只数</th><th>封板</th><th>封板率</th><th>代表标的</th></tr>
+<tr><td>一字 ≥ +9.8%</td><td>4</td><td class="up">3</td><td class="up">75.0%</td><td>瑞尔特+10.05封 / 中新赛克+10.01封 / 闽东电力+9.98封 / 南宁百货+9.96开→−1.90</td></tr>
+<tr><td>+7 ~ +9.8%</td><td>3</td><td>1</td><td>33.3%</td><td>凯盛新能+7.08封 / 云煤能源+9.43→−4.81 / 新农开发+7.68→+0.83</td></tr>
+<tr><td>+5 ~ +7%</td><td>1</td><td>0</td><td class="down">0.0%</td><td>水发燃气+6.28→−4.16</td></tr>
+<tr><td>+3 ~ +5%</td><td>2</td><td>0</td><td class="down">0.0%</td><td>—</td></tr>
+<tr><td>+1 ~ +3%</td><td>4</td><td>0</td><td class="down">0.0%</td><td>—</td></tr>
+<tr><td>0 ~ +1%</td><td>2</td><td>0</td><td class="down">0.0%</td><td>—</td></tr>
+<tr><td>&lt; 0%</td><td>18</td><td class="up">3</td><td>16.7%</td><td>鼎信通讯−6.72→+10.01封 / 九鼎新材−1.09→+10.02封 / 超声电子−0.37→+10.00封</td></tr>
+</table>
+<div class="note">
+· <strong>「&gt;5% 一律放弃」推演误杀率 50%</strong>（8 只高开 &gt;5% 中 4 只封板），为 8 个样本日内最高（9/10 推演值 40%）。<br>
+· 一字非充分条件：南宁百货 +9.96% 开盘 → 收盘 −1.90%，与 9/10 南京港、红棉同型。<br>
+· <strong>低开封板 3 只全部落在 &lt;0% 档</strong>（鼎信通讯 −6.72% 开盘收 +10.01%，为样本期内最大开盘→收盘反转），&lt;0% 档 18 只中封板 3 只，是除一字档外唯一有效档位。今日为「高开溢价 + 低开反包并存」环境。
+</div>
+
+<h2>6. 核心事实</h2>
+<ul>
+<li>候选池 35 只（date=20260910，与 T_PREV 一致），今日晋级 7 只，晋级率 20.0%，为 8 个样本日中第 3 高（9/7 31.7% &gt; 9/9 20.3% &gt; 今日 20.0%）。</li>
+<li>当日全市场涨停 40 只（akshare 东财口径），较 9/10 的 35 只回升 14.3%，较 9/7 的 93 只下降 57%。</li>
+<li>指数环境：上证低开 −0.60%、深成 −0.98%、创业板 −0.85%，系统判定「弱势低开日」。</li>
+<li>扫描筛出 0 只、命中 0 只、误杀 1 只（瑞尔特 002790，4 连板、封单 3.85 亿、零炸板）。</li>
+<li>查询集覆盖率 2.9%（1/35），晋级 7 只中 6 只在扫描范围之外。</li>
+<li>分级：A+ 100%(1/1)、A 23.1%(3/13)、B+ 20.0%(2/10)、B 25.0%(1/4)、C 0%(0/2)、D 0%(0/5)；粗分层（A+）与底部（C/D）方向正确，A/B+/B 三档无区分度。</li>
+<li>收盘均值：B +3.17% &gt; A+ +10.05%（单样本）&gt; B+ +0.92% &gt; D −1.17% &gt; A −1.45% &gt; C −3.81%；A 档红盘率 5/12 为中上档最低。</li>
+<li>晋级结构：4板1、3板2、2板4；首封 ≤09:31:30 共 4 只；炸板 4 只（57.1%）。</li>
+<li>一字 4 只中 3 只封（75%），是今日封板率最高的开盘档位；&lt;0% 档 18 只中 3 只封（16.7%），含开盘 −6.72% 的鼎信通讯。</li>
+<li>封成比维度连续第 N 日缺失（常数列），报告与打分均未使用该维度。</li>
+</ul>
+
+<h2>7. 累积样本库状态</h2>
+<table>
+<tr><th>项目</th><th>状态</th></tr>
+<tr><td>累积交易日</td><td class="acc">8 天（9/2、9/3、9/4、9/7、9/8、9/9、9/10、9/11）</td></tr>
+<tr><td>重校准阈值</td><td>样本 ≥10 日 且 规则持续失效 → 当前 8 &lt; 10，<strong>未触发</strong></td></tr>
+<tr><td>A 级 ≥ A+ 连续性</td><td>今日 A+ (100%) &gt; A (23.1%)，9/10 的「A+ 全灭」未延续，<strong>连续计数中断，&lt;5 日</strong></td></tr>
+<tr><td>&gt;5% 误杀率</td><td>推演值 50%（8 只中 4 封），为推演非实际执行；实际执行样本仅 1 条</td></tr>
+<tr><td>持续观察项</td><td>① 查询集覆盖不足（连续多日 &lt;20%，今日 2.9%）② B/C 档收盘表现强于 A/A+（中部倒挂）③ 一字标的被规则放弃（累计 3 次同型误杀）④ pre_score 高档位稳定性</td></tr>
+</table>
+
+<div class="foot">数据来源：zt_925_candidates.json（9:10 预备）· zt_925_report_20260911.html（9:33 扫描）· zt_925_review_20260911.json（脚本反查）· akshare 东财涨停池 · 腾讯 qt.gtimg.cn 收盘行情。<br>本报告只呈现客观数据与统计结论，不含任何操作建议。反查过程未修改候选池与扫描报告文件。</div>
+
+</div></body></html>

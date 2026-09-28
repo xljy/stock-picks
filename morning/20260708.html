@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股早盘快报 — 2026年7月8日 09:45</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-card: #161b22;
+            --bg-card-hover: #1c2129;
+            --border: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --red: #e93030;
+            --red-bg: rgba(233,48,48,0.12);
+            --green: #229d45;
+            --green-bg: rgba(34,157,69,0.12);
+            --accent: #58a6ff;
+            --accent-bg: rgba(88,166,255,0.1);
+            --gold: #d2991d;
+            --orange: #e36209;
+            --purple: #8957e5;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 24px;
+        }
+        .container { max-width: 1200px; margin:0 auto; }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 32px 24px;
+            background: linear-gradient(135deg, #161b22 0%, #1a2332 50%, #161b22 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #58a6ff, #8957e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .header .subtitle { color: var(--text-secondary); font-size: 14px; }
+        .header .timestamp { 
+            color: var(--orange); 
+            font-size: 12px; 
+            margin-top: 8px;
+            display: inline-block;
+            background: rgba(227,98,9,0.15);
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+        .header .tagline {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .header .tag {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .tag-bear { background: var(--green-bg); color: var(--green); }
+        .tag-mixed { background: var(--accent-bg); color: var(--accent); }
+        .tag-hot { background: var(--red-bg); color: var(--red); }
+
+        /* Card Grid */
+        .grid { display: grid; gap: 16px; margin-bottom: 24px; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .card-full { grid-column: 1 / -1; }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-icon { font-size: 20px; }
+        .card-badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 8px;
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+
+        /* Index Card */
+        .index-list { display: flex; flex-direction: column; gap: 12px; }
+        .index-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+        }
+        .index-name { font-weight: 600; font-size: 14px; min-width: 80px; }
+        .index-price { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+        .index-chg { font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
+        .index-amt { font-size: 12px; color: var(--text-secondary); }
+        .index-trend { font-size: 11px; padding: 2px 8px; border-radius: 4px; }
+        
+        .chg-up { color: var(--red); background: var(--red-bg); }
+        .chg-down { color: var(--green); background: var(--green-bg); }
+        .text-up { color: var(--red); }
+        .text-down { color: var(--green); }
+        .trend-up { background: rgba(233,48,48,0.15); color: var(--red); }
+        .trend-down { background: rgba(34,157,69,0.15); color: var(--green); }
+        .trend-mixed { background: rgba(210,153,29,0.15); color: var(--gold); }
+
+        /* Market Breadth */
+        .breadth-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .breadth-label { font-size: 13px; color: var(--text-secondary); }
+        .breadth-val { font-size: 16px; font-weight: 700; }
+        .breadth-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--red) 0%, var(--red) 21%, var(--green) 21%, var(--green) 100%);
+            margin-bottom: 16px;
+        }
+        .breadth-ratio {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* Stat Grid */
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .stat-item {
+            text-align: center;
+            padding: 12px 8px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+        }
+        .stat-value { font-size: 22px; font-weight: 700; }
+        .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+
+        /* Sector Table */
+        .sector-table { width: 100%; border-collapse: collapse; }
+        .sector-table th {
+            text-align: left;
+            padding: 8px 12px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+        .sector-table td {
+            padding: 10px 12px;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(48,54,61,0.5);
+        }
+        .sector-table .rank { 
+            width: 28px; height: 28px; 
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 6px;
+            font-weight: 700; font-size: 12px;
+        }
+        .rank-1 { background: #d2991d; color: #000; }
+        .rank-2 { background: #8b949e; color: #000; }
+        .rank-3 { background: #cd853f; color: #000; }
+
+        /* Recovery Table */
+        .recovery-table { width: 100%; border-collapse: collapse; }
+        .recovery-table th {
+            text-align: left;
+            padding: 8px 12px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+        .recovery-table td {
+            padding: 10px 12px;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(48,54,61,0.5);
+        }
+        .star-rating { font-size: 16px; letter-spacing: 2px; }
+        .star-gold { color: var(--gold); }
+        .star-empty { color: #30363d; }
+
+        /* Board Analysis */
+        .board-tier {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+        }
+        .tier-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .tier-7 { background: var(--purple); color: #fff; }
+        .tier-2 { background: var(--accent-bg); color: var(--accent); }
+        .tier-1 { background: rgba(255,255,255,0.05); color: var(--text-secondary); }
+        .tier-names { font-size: 13px; }
+        .tier-count { font-size: 12px; color: var(--text-secondary); margin-left: auto; }
+
+        /* Alert Items */
+        .alert-list { display: flex; flex-direction: column; gap: 8px; }
+        .alert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            font-size: 13px;
+        }
+        .alert-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+        .dot-up { background: var(--red); }
+        .dot-down { background: var(--green); }
+        .dot-warn { background: var(--orange); }
+
+        /* Assessment */
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .assess-item {
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .assess-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; }
+        .assess-value { font-size: 15px; font-weight: 700; }
+
+        /* N/A */
+        .na { color: var(--text-secondary); font-style: italic; }
+
+        /* Section Title */
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-num {
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            background: var(--accent-bg);
+            color: var(--accent);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* Divider */
+        .section-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 24px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            .assessment-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 11px;
+            border-top: 1px solid var(--border);
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <h1>A股早盘快报 — 2026年7月8日 09:45</h1>
+        <div class="subtitle">早盘开盘15分钟市场全景 · 数据驱动决策</div>
+        <div class="tagline">
+            <span class="tag tag-bear">深成指 -1.03% 领跌</span>
+            <span class="tag tag-mixed">科创50 +0.87% 逆势翻红</span>
+            <span class="tag tag-hot">AI算力线强势</span>
+        </div>
+        <div class="timestamp">⏱ 数据采集时间: 2026-07-08 09:35~09:42 | 数据源: tdx-connector MCP</div>
+    </div>
+
+    <!-- ===== MODULE 1: 核心指数概览 ===== -->
+    <div class="section-title">
+        <span class="section-num">1</span> 核心指数概览
+    </div>
+    <div class="grid grid-4">
+        <!-- 上证指数 -->
+        <div class="card">
+            <div class="index-list">
+                <div class="index-item" style="flex-direction:column; gap:6px;">
+                    <span class="index-name">📊 上证指数</span>
+                    <div style="display:flex; align-items:baseline; gap:8px;">
+                        <span class="index-price">3,985.35</span>
+                        <span class="index-chg chg-down">-0.12%</span>
+                    </div>
+                    <div class="index-amt">成交 2,089亿 | 今开 3,996.81</div>
+                    <span class="index-trend trend-down">低开震荡偏弱</span>
+                </div>
+            </div>
+        </div>
+        <!-- 深证成指 -->
+        <div class="card">
+            <div class="index-list">
+                <div class="index-item" style="flex-direction:column; gap:6px;">
+                    <span class="index-name">📊 深证成指</span>
+                    <div style="display:flex; align-items:baseline; gap:8px;">
+                        <span class="index-price">15,068.75</span>
+                        <span class="index-chg chg-down">-1.03%</span>
+                    </div>
+                    <div class="index-amt">成交 2,453亿 | 今开 15,269.82</div>
+                    <span class="index-trend trend-down">低开低走</span>
+                </div>
+            </div>
+        </div>
+        <!-- 创业板指 -->
+        <div class="card">
+            <div class="index-list">
+                <div class="index-item" style="flex-direction:column; gap:6px;">
+                    <span class="index-name">📊 创业板指</span>
+                    <div style="display:flex; align-items:baseline; gap:8px;">
+                        <span class="index-price">3,887.51</span>
+                        <span class="index-chg chg-down">-0.62%</span>
+                    </div>
+                    <div class="index-amt">成交 1,075亿 | 今开 3,932.42</div>
+                    <span class="index-trend trend-down">低开低走</span>
+                </div>
+            </div>
+        </div>
+        <!-- 科创50 -->
+        <div class="card">
+            <div class="index-list">
+                <div class="index-item" style="flex-direction:column; gap:6px;">
+                    <span class="index-name">📊 科创50</span>
+                    <div style="display:flex; align-items:baseline; gap:8px;">
+                        <span class="index-price">2,018.95</span>
+                        <span class="index-chg chg-up">+0.87%</span>
+                    </div>
+                    <div class="index-amt">成交 267亿 | 今开 2,022.45</div>
+                    <span class="index-trend trend-mixed">高开回落但守红</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== MODULE 2: 市场情绪仪表盘 ===== -->
+    <div class="section-title">
+        <span class="section-num">2</span> 市场情绪仪表盘
+    </div>
+    <div class="grid grid-2">
+        <!-- 涨跌分布 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">⚖️</span> 涨跌分布</span>
+                <span class="card-badge">全市场</span>
+            </div>
+            <div class="breadth-row">
+                <span class="breadth-label">上涨 <span class="text-up">1,057</span> 家</span>
+                <span class="breadth-label">下跌 <span class="text-down">~3,943</span> 家</span>
+            </div>
+            <div class="breadth-bar"></div>
+            <div class="breadth-ratio">
+                <span class="text-up">涨 21.1%</span>
+                <span class="text-down">跌 78.9%</span>
+            </div>
+            <div style="margin-top:12px; font-size:12px; color:var(--text-secondary);">
+                涨跌比 <b style="color:var(--green);">0.27 : 1</b> · 近八成个股下跌
+            </div>
+        </div>
+
+        <!-- 涨跌停统计 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">🔴</span> 涨跌停统计</span>
+                <span class="card-badge">实时</span>
+            </div>
+            <div class="stat-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="stat-item">
+                    <div class="stat-value text-up">13</div>
+                    <div class="stat-label">涨停家数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value text-down">5</div>
+                    <div class="stat-label">跌停家数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" style="color:var(--orange)">4</div>
+                    <div class="stat-label">炸板家数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" style="color:var(--gold)">23.5%</div>
+                    <div class="stat-label">炸板率</div>
+                </div>
+            </div>
+            <div style="margin-top:8px; font-size:11px; color:var(--text-secondary);">
+                涨跌停比 13:5 · 跌停含2只ST(*ST萃华连续11跌停/*ST卓然)
+            </div>
+        </div>
+
+        <!-- 成交额 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">💰</span> 成交额参考</span>
+            </div>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-value" style="color:var(--accent);">4,544亿</div>
+                    <div class="stat-label">上证+深证开盘成交</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" style="color:var(--text-secondary);">N/A</div>
+                    <div class="stat-label">近5日均值对比</div>
+                </div>
+            </div>
+            <div style="margin-top:8px; font-size:11px; color:var(--text-secondary);">
+                上证2,089亿 + 深证2,453亿（开盘15分钟累计）
+            </div>
+        </div>
+
+        <!-- 北向资金 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">🌐</span> 北向资金</span>
+            </div>
+            <div style="text-align:center; padding:20px;">
+                <div class="stat-value na">N/A</div>
+                <div class="stat-label">当前数据源无法获取北向资金实时数据</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== MODULE 3: 热点板块 TOP5 ===== -->
+    <div class="section-title">
+        <span class="section-num">3</span> 热点板块 TOP5
+    </div>
+    <div class="card card-full">
+        <div class="card-header">
+            <span class="card-title"><span class="card-icon">🔥</span> 早盘强势方向</span>
+            <span class="card-badge">基于涨停股聚类分析</span>
+        </div>
+        <table class="sector-table">
+            <thead>
+                <tr>
+                    <th style="width:40px;">#</th>
+                    <th>板块方向</th>
+                    <th>核心逻辑</th>
+                    <th>领涨股</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="rank rank-1">1</span></td>
+                    <td style="font-weight:700;">AI服务器 / 液冷算力</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">奇鋐6月营收年增66%，液冷需求业绩兑现阶段；浪潮信息H1业绩预增超226%</td>
+                    <td><span class="text-up">浪潮信息</span> 一字涨停10.01%<br><span class="text-up">紫光股份</span> +8.64% 炸板<br><span class="text-up">华勤技术</span> +8.61% 炸板</td>
+                </tr>
+                <tr>
+                    <td><span class="rank rank-2">2</span></td>
+                    <td style="font-weight:700;">算力基础设施 / CDN</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">算力需求外溢至基础设施层</td>
+                    <td><span class="text-up">网宿科技</span> +13.83%<br><span class="text-up">锐捷网络</span> +12.49%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank rank-3">3</span></td>
+                    <td style="font-weight:700;">元器件 / PCB</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">建滔积层板再度涨价；英伟达下一代机架PCB价值量大增</td>
+                    <td><span class="text-up">威尔高</span> 20%涨停 2连板<br><span class="text-up">灿芯股份</span> +13.42%</td>
+                </tr>
+                <tr>
+                    <td><span class="rank" style="background:rgba(206,50,50,0.15);color:var(--red);">4</span></td>
+                    <td style="font-weight:700;">人形机器人</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">电网设备+机器人概念联动；锦浪科技Q3逆变器出货环增30%指引</td>
+                    <td><span class="text-up">华菱线缆</span> 一字涨停<br><span class="text-down">埃斯顿</span> 跌停 -10.00%<br><span style="color:var(--orange);">板块严重分化</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank" style="background:rgba(206,50,50,0.15);color:var(--red);">5</span></td>
+                    <td style="font-weight:700;">半导体</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">算力需求拉动上游芯片/设计</td>
+                    <td><span class="text-up">灿芯股份</span> +13.42%<br><span class="text-up">星网锐捷</span> 涨停（断板续板）</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== MODULE 4: 早盘修复侦察 ===== -->
+    <div class="section-title">
+        <span class="section-num">4</span> 早盘修复侦察（超跌修复模式）
+    </div>
+    <div class="card card-full">
+        <div class="card-header">
+            <span class="card-title"><span class="card-icon">🔍</span> 花园生物超跌修复模式扫描</span>
+            <span class="card-badge">昨跌>5%池: 766只 → 今回升: 224只</span>
+        </div>
+        
+        <div style="margin-bottom:16px; font-size:12px; color:var(--text-secondary);">
+            <b>扫描逻辑：</b>第一步筛选昨日跌幅>5%股票池(766只) → 第二步识别今日回升信号(224只) → 第三步主力资金验证 → 输出修复候选
+        </div>
+
+        <table class="recovery-table">
+            <thead>
+                <tr>
+                    <th>代码</th>
+                    <th>名称</th>
+                    <th>行业</th>
+                    <th>昨日跌幅</th>
+                    <th>今日现价</th>
+                    <th>今日涨幅</th>
+                    <th>修复强度</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-family:monospace;">600129</td>
+                    <td style="font-weight:600;">太极集团</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">医药</td>
+                    <td class="text-down">-5.03%</td>
+                    <td>14.95</td>
+                    <td class="text-up" style="font-weight:700;">+9.93%</td>
+                    <td><span class="star-rating"><span class="star-gold">★★★</span></span><br><span style="font-size:10px;color:var(--text-secondary);">低开翻红涨停</span></td>
+                </tr>
+                <tr>
+                    <td style="font-family:monospace;">002446</td>
+                    <td style="font-weight:600;">盛路通信</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">通信</td>
+                    <td class="text-down">-5.16%</td>
+                    <td>10.59</td>
+                    <td class="text-up">+4.75%</td>
+                    <td><span class="star-rating"><span class="star-gold">★</span><span class="star-empty">★★</span></span><br><span style="font-size:10px;color:var(--text-secondary);">低开翻红≥1%</span></td>
+                </tr>
+                <tr>
+                    <td style="font-family:monospace;">600673</td>
+                    <td style="font-weight:600;">东阳光</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">材料</td>
+                    <td class="text-down">-5.13%</td>
+                    <td>35.70</td>
+                    <td class="text-up">+2.20%</td>
+                    <td><span class="star-rating"><span class="star-gold">★</span><span class="star-empty">★★</span></span><br><span style="font-size:10px;color:var(--text-secondary);">低开翻红≥1%</span></td>
+                </tr>
+                <tr>
+                    <td style="font-family:monospace;">601089</td>
+                    <td style="font-weight:600;">福元医药</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">医药</td>
+                    <td class="text-down">-5.14%</td>
+                    <td>17.38</td>
+                    <td class="text-up">+1.34%</td>
+                    <td><span class="star-rating"><span class="star-gold">★</span><span class="star-empty">★★</span></span><br><span style="font-size:10px;color:var(--text-secondary);">低开翻红≥1%</span></td>
+                </tr>
+                <tr>
+                    <td style="font-family:monospace;">300857</td>
+                    <td style="font-weight:600;">协创数据</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">存储</td>
+                    <td class="text-down">-5.14%</td>
+                    <td>281.57</td>
+                    <td class="text-up">+1.18%</td>
+                    <td><span class="star-rating"><span class="star-gold">★</span><span class="star-empty">★★</span></span><br><span style="font-size:10px;color:var(--text-secondary);">低开翻红≥1%</span></td>
+                </tr>
+                <tr>
+                    <td style="font-family:monospace;">002792</td>
+                    <td style="font-weight:600;">通宇通讯</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">通信</td>
+                    <td class="text-down">-5.06%</td>
+                    <td>32.04</td>
+                    <td class="text-up">+1.14%</td>
+                    <td><span class="star-rating"><span class="star-gold">★</span><span class="star-empty">★★</span></span><br><span style="font-size:10px;color:var(--text-secondary);">低开翻红≥1%</span></td>
+                </tr>
+                <tr>
+                    <td style="font-family:monospace;">301089</td>
+                    <td style="font-weight:600;">拓新药业</td>
+                    <td style="font-size:12px; color:var(--text-secondary);">医药</td>
+                    <td class="text-down">-5.11%</td>
+                    <td>22.55</td>
+                    <td class="text-up">+1.12%</td>
+                    <td><span class="star-rating"><span class="star-gold">★</span><span class="star-empty">★★</span></span><br><span style="font-size:10px;color:var(--text-secondary);">低开翻红≥1%</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top:16px; padding:12px; background:rgba(88,166,255,0.06); border-radius:8px; font-size:13px;">
+            <div style="display:flex; gap:24px; flex-wrap:wrap;">
+                <div><b style="color:var(--accent);">修复总数：</b>224只（昨跌>5%池766只中）</div>
+                <div><b style="color:var(--accent);">修复率：</b>29.2%</div>
+                <div><b style="color:var(--gold);">★★★修复：</b>1只（太极集团）</div>
+                <div><b style="color:var(--accent);">★★修复：</b>0只</div>
+                <div><b style="color:var(--accent);">★修复：</b>5只+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== MODULE 5: 连板梯队 ===== -->
+    <div class="section-title">
+        <span class="section-num">5</span> 连板梯队
+    </div>
+    <div class="grid grid-2">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">🪜</span> 连板结构</span>
+            </div>
+            <div class="board-tier">
+                <span class="tier-badge tier-7">7板</span>
+                <span class="tier-names"><b>恒尚节能</b> 22.91 一字板</span>
+                <span class="tier-count">1只</span>
+            </div>
+            <div style="margin:8px 0;padding:4px 12px;font-size:11px;color:var(--orange);">
+                ⚠ 重组一字板，无实际换手，无参考价值
+            </div>
+            <div style="margin-top:12px;padding:8px 12px;background:rgba(255,255,255,0.01);border-radius:8px;">
+                <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">实际有效连板梯队：</div>
+                <div class="board-tier">
+                    <span class="tier-badge tier-2">2板</span>
+                    <span class="tier-names">视源股份 | 大名城 | 魅视科技 | 威尔高(20%)</span>
+                    <span class="tier-count">4只</span>
+                </div>
+                <div class="board-tier">
+                    <span class="tier-badge tier-1">首板</span>
+                    <span class="tier-names">浪潮信息 | 星网锐捷(断板续板) | 华菱线缆 | 岭南控股 | 易德龙 | 浪潮软件 | 新联电子 | 熙菱信息</span>
+                    <span class="tier-count">8只</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">💀</span> 跌停梯队</span>
+            </div>
+            <div class="board-tier">
+                <span class="tier-badge" style="background:var(--green);color:#fff;">2连跌</span>
+                <span class="tier-names"><b>海南海药</b> 5.21(-10.02%) 一字跌停 · <b>德新科技</b> 24.10(-10.01%) 换手跌停</span>
+            </div>
+            <div class="board-tier">
+                <span class="tier-badge" style="background:var(--green);color:#fff;">1跌停</span>
+                <span class="tier-names"><b>埃斯顿</b> 44.10(-10.00%) 机器人概念股</span>
+            </div>
+            <div class="board-tier">
+                <span class="tier-badge" style="background:rgba(139,148,158,0.3);color:var(--text-secondary);">ST</span>
+                <span class="tier-names">*ST萃华(11连跌) · *ST卓然(2连跌, -20%)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== MODULE 6: 早盘异动 ===== -->
+    <div class="section-title">
+        <span class="section-num">6</span> 早盘异动信号
+    </div>
+    <div class="grid grid-2">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">🚀</span> 集合竞价/大幅高开</span>
+            </div>
+            <div class="alert-list">
+                <div class="alert-item">
+                    <span class="alert-dot dot-up"></span>
+                    <div>
+                        <b>浪潮信息</b> 一字涨停 +10.01%（AI服务器龙头，H1业绩预增超226%）
+                    </div>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-dot dot-up"></span>
+                    <div>
+                        <b>威尔高</b> 高开+16.66% → 20%涨停 2连板（PCB/CPO）
+                    </div>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-dot dot-up"></span>
+                    <div>
+                        <b>网宿科技</b> 高开+7.86% → 冲高至+13.83%（CDN算力）
+                    </div>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-dot dot-warn"></span>
+                    <div>
+                        <b>长裕集团</b> 高开+7.16% → 跌至-1.58%（<span class="text-down">高开陷阱</span>）
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">⚡</span> 炸板 / 急跌 / 其他异常</span>
+            </div>
+            <div class="alert-list">
+                <div class="alert-item">
+                    <span class="alert-dot dot-warn"></span>
+                    <div>
+                        <b>紫光股份</b> 开板回落 +8.64%（涨停→开板，AI服务器跟风分化）
+                    </div>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-dot dot-warn"></span>
+                    <div>
+                        <b>华勤技术</b> 炸板 +8.61%（液冷服务器，涨停→开板）
+                    </div>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-dot dot-warn"></span>
+                    <div>
+                        <b>西藏旅游</b> 炸板 +9.97%（涨停→2次打开→回封）
+                    </div>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-dot dot-down"></span>
+                    <div>
+                        <b>埃斯顿</b> 跌停 -10.00%（人形机器人概念股，与华菱线缆涨停形成板块内巨大分化）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== MODULE 7: 综合研判 ===== -->
+    <div class="section-title">
+        <span class="section-num">7</span> 综合研判
+    </div>
+    <div class="grid grid-2">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">📋</span> 市场定性</span>
+            </div>
+            <div class="assessment-grid">
+                <div class="assess-item" style="border-color: rgba(34,157,69,0.3);">
+                    <div class="assess-label">今日定性</div>
+                    <div class="assess-value" style="color:var(--orange);">弱势分化</div>
+                    <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">三大指数下跌，科创50独自翻红</div>
+                </div>
+                <div class="assess-item" style="border-color: rgba(34,157,69,0.3);">
+                    <div class="assess-label">涨跌比</div>
+                    <div class="assess-value" style="color:var(--green);">0.27:1</div>
+                    <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">近八成下跌，广度极弱</div>
+                </div>
+                <div class="assess-item" style="border-color: rgba(233,48,48,0.3);">
+                    <div class="assess-label">主线方向</div>
+                    <div class="assess-value" style="color:var(--red);">AI算力</div>
+                    <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">液冷+服务器+CDN，浪潮信息一字板引领</div>
+                </div>
+                <div class="assess-item" style="border-color: rgba(88,166,255,0.3);">
+                    <div class="assess-label">情绪周期</div>
+                    <div class="assess-value" style="color:var(--accent);">分歧/轮动</div>
+                    <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">连板高度压缩至2板，高位股退潮</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title"><span class="card-icon">⚠️</span> 关键风险提示</span>
+            </div>
+            <div class="alert-list">
+                <div class="alert-item" style="border-left: 3px solid var(--red);">
+                    <div>
+                        <b style="color:var(--red);">深成指 -1.03% 领跌，市场整体弱势</b><br>
+                        <span style="font-size:12px;color:var(--text-secondary);">深市权重股抛压明显，早盘单边下行未见企稳迹象</span>
+                    </div>
+                </div>
+                <div class="alert-item" style="border-left: 3px solid var(--orange);">
+                    <div>
+                        <b style="color:var(--orange);">连板高度骤降至2板</b><br>
+                        <span style="font-size:12px;color:var(--text-secondary);">恒尚节能7板为重组一字板无参考价值；实际市场最高仅2板，短线情绪退潮明显</span>
+                    </div>
+                </div>
+                <div class="alert-item" style="border-left: 3px solid var(--orange);">
+                    <div>
+                        <b style="color:var(--orange);">AI算力线炸板率偏高</b><br>
+                        <span style="font-size:12px;color:var(--text-secondary);">紫光股份、华勤技术炸板，追高风险大；仅浪潮信息一字板稳固</span>
+                    </div>
+                </div>
+                <div class="alert-item" style="border-left: 3px solid var(--green);">
+                    <div>
+                        <b style="color:var(--green);">人形机器人方向严重分化</b><br>
+                        <span style="font-size:12px;color:var(--text-secondary);">华菱线缆涨停 vs 埃斯顿跌停，板块内部两极分化</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Operability Assessment -->
+    <div class="card card-full" style="margin-top:16px;">
+        <div class="card-header">
+            <span class="card-title"><span class="card-icon">🎯</span> 可操作性评估 & 超跌修复总评</span>
+        </div>
+        <div class="grid grid-3">
+            <div class="assess-item" style="border-color: rgba(34,157,69,0.3);">
+                <div class="assess-label">可操作性</div>
+                <div class="assess-value" style="color:var(--green);">偏低</div>
+                <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">
+                    近八成个股下跌+连板高度骤降，短线环境较差。AI算力虽强但追高风险大（炸板率23.5%）。需等待指数企稳和情绪修复信号。
+                </div>
+            </div>
+            <div class="assess-item" style="border-color: rgba(88,166,255,0.3);">
+                <div class="assess-label">超跌修复评估</div>
+                <div class="assess-value" style="color:var(--accent);">强度偏低</div>
+                <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">
+                    224只修复（修复率29.2%），仅1只涨停修复（太极集团★★★医药），无板块效应。修复标的分散在医药/通信/材料/存储，互不关联。
+                </div>
+            </div>
+            <div class="assess-item" style="border-color: rgba(233,48,48,0.3);">
+                <div class="assess-label">核心关注</div>
+                <div class="assess-value" style="color:var(--red);">浪潮信息引领的AI算力线能否延续</div>
+                <div style="font-size:12px; color:var(--text-secondary);margin-top:4px;">
+                    若午后AI算力线进一步强化（紫光/华勤回封），则市场情绪有望改善。反之，浪潮独木难支可能导致情绪进一步恶化。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>A股早盘快报 · 2026年7月8日 09:45 · WorkBuddy 自动化生成</div>
+        <div style="margin-top:4px;">数据源: tdx-connector MCP | 北向资金数据暂不可获取 | 报告仅供参考，不构成投资建议</div>
+        <div style="margin-top:4px; color: var(--text-secondary);">⚠ 免责声明：本报告展示客观市场数据与逻辑分析，不包含任何操作建议</div>
+    </div>
+
+</div>
+</body>
+</html>

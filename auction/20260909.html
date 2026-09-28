@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9:25竞价打板扫描 收盘反查报告 2026-09-09</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d1117;color:#e6edf3;font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;padding:24px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:24px;font-weight:700;margin-bottom:6px;color:#f0f6fc}
+.sub{color:#8b949e;font-size:13px;margin-bottom:22px}
+h2{font-size:17px;font-weight:600;margin:30px 0 12px;padding-left:10px;border-left:3px solid #58a6ff;color:#f0f6fc}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 16px}
+.card .k{font-size:12px;color:#8b949e;margin-bottom:6px}
+.card .v{font-size:23px;font-weight:700;color:#e6edf3}
+.card .v.red{color:#f85149}.card .v.green{color:#3fb950}.card .v.blue{color:#58a6ff}.card .v.gray{color:#8b949e}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:8px}
+th{background:#161b22;color:#8b949e;text-align:left;padding:9px 10px;border-bottom:1px solid #30363d;font-weight:600;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid #21262d;white-space:nowrap}
+tr:hover td{background:#161b22}
+.up{color:#f85149;font-weight:600}.down{color:#3fb950;font-weight:600}.flat{color:#8b949e}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.t-s{background:#3d1d00;color:#ffa657}.t-ap{background:#3b0d0d;color:#ff7b72}.t-a{background:#3b2a0d;color:#e3b341}
+.t-b{background:#0d2818;color:#56d364}.t-c{background:#0d2131;color:#58a6ff}.t-d{background:#21262d;color:#8b949e}
+.note{background:#161b22;border:1px solid #30363d;border-left:3px solid #d29922;border-radius:6px;padding:12px 16px;font-size:13px;color:#c9d1d9;margin:12px 0}
+.note.warn{border-left-color:#f85149}
+ul.fact{list-style:none;font-size:13.5px}
+ul.fact li{padding:7px 0 7px 20px;position:relative;border-bottom:1px solid #21262d;color:#c9d1d9}
+ul.fact li:before{content:"▸";position:absolute;left:2px;color:#58a6ff}
+ul.fact li:last-child{border-bottom:none}
+.bar{height:16px;background:#21262d;border-radius:3px;overflow:hidden;min-width:110px}
+.bar i{display:block;height:100%;background:#58a6ff}
+.bar i.hi{background:#f85149}.bar i.mid{background:#e3b341}.bar i.lo{background:#3fb950}
+.foot{margin-top:34px;padding-top:14px;border-top:1px solid #30363d;color:#6e7681;font-size:12px}
+.degrade{background:#2d1418;border:1px solid #f85149;border-radius:8px;padding:14px 18px;margin-bottom:18px}
+.degrade b{color:#f85149}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>9:25 竞价打板扫描 · 收盘反查报告</h1>
+<div class="sub">交易日 2026-09-09（周三） ｜ 候选池生成日 2026-09-08 ｜ 生成时间 15:50 ｜ 降级版（当日扫描报告缺失）</div>
+
+<div class="degrade">
+<b>⚠ 报告降级说明</b><br>
+当日 <code>zt_925_report_20260909.html</code> 与 9:25 快照 <code>zt_925_capture_20260909.json</code> 均不存在 → 9:25 扫描任务今日未产出报告。<br>
+<b>连续第 4 个交易日（9/4、9/7、9/8、9/9）降级</b>，"开盘价区间规则检验""误杀统计""筛出命中率"三节无法执行，本报告仅提供候选池晋级统计与漏因核对。
+</div>
+
+<h2>一、核心指标</h2>
+<div class="cards">
+<div class="card"><div class="k">交易日</div><div class="v">2026-09-09</div></div>
+<div class="card"><div class="k">候选池总数</div><div class="v">74</div></div>
+<div class="card"><div class="k">今日晋级涨停</div><div class="v red">15</div></div>
+<div class="card"><div class="k">晋级率</div><div class="v blue">20.3%</div></div>
+<div class="card"><div class="k">全市场涨停</div><div class="v">48</div></div>
+<div class="card"><div class="k">扫描筛出数</div><div class="v gray">—</div></div>
+<div class="card"><div class="k">筛出命中封板</div><div class="v gray">—</div></div>
+<div class="card"><div class="k">过滤误杀数</div><div class="v gray">—</div></div>
+</div>
+
+<h2>二、数据口径</h2>
+<table>
+<tr><th>项目</th><th>取值</th><th>说明</th></tr>
+<tr><td>候选池来源</td><td>zt_925_candidates.json</td><td>date=20260908，匹配 T_PREV ✓；status=ok</td></tr>
+<tr><td>候选池数据质量</td><td>四维全 ok</td><td>封成比 / 封板时间分钟 / 炸板次数 / 流通市值 均正常</td></tr>
+<tr><td>涨停池来源</td><td>akshare（东方财富）</td><td class="up">TDX 返回空涨停池 → 降级</td></tr>
+<tr><td>涨停池只数</td><td>48 只</td><td>9/8 为 73 只，环比 −25 只（−34%），情绪降温</td></tr>
+<tr><td>收盘行情补齐</td><td>腾讯 qt.gtimg.cn</td><td>TDX MCP 未连接、akshare hist 被代理拦截 → 兜底链路，存 zt_925_close_20260909.json</td></tr>
+<tr><td>17:00 流水线口径</td><td>—</td><td>zt_1700_data_20260909.json 不存在，无法做口径差对照</td></tr>
+</table>
+<div class="note">口径差提示：akshare（东财）以"收盘有效封单"判涨停，TDX 以"首次触及涨停价"判涨停，两者日常相差 0–3 只。今日 TDX 整体不可用，48 只为单一口径，可能低估尾盘炸板股。</div>
+
+<h2>三、候选池晋级完整清单（15 只）</h2>
+<table>
+<tr><th>#</th><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>ML概率</th><th>连板</th><th>首封时间</th><th>今日炸板</th><th>封单(万元)</th><th>板块</th></tr>
+<tr><td>1</td><td>600865</td><td>百大集团</td><td><span class="tag t-s">S</span></td><td>8</td><td>0.807</td><td>5板</td><td>09:32:21</td><td class="down">2</td><td>5,978</td><td>新零售</td></tr>
+<tr><td>2</td><td>000759</td><td>中百集团</td><td><span class="tag t-s">S</span></td><td>5</td><td>0.300</td><td>3板</td><td>09:33:30</td><td class="down">1</td><td>16,795</td><td>新零售</td></tr>
+<tr><td>3</td><td>000978</td><td>桂林旅游</td><td><span class="tag t-s">S</span></td><td>7</td><td>0.292</td><td>3板</td><td>13:06:24</td><td>0</td><td>3,526</td><td>微盘精选</td></tr>
+<tr><td>4</td><td>603042</td><td>华脉科技</td><td><span class="tag t-s">S</span></td><td>7</td><td>0.256</td><td>3板</td><td>09:25:02</td><td>0</td><td>15,403</td><td>微小盘股</td></tr>
+<tr><td>5</td><td>002470</td><td>金正大</td><td><span class="tag t-a">A</span></td><td>5</td><td>—</td><td>3板</td><td>09:25:00</td><td>0</td><td>17,541</td><td>国企改革</td></tr>
+<tr><td>6</td><td>000930</td><td>中粮科技</td><td><span class="tag t-s">S</span></td><td>6</td><td>0.257</td><td>2板</td><td>09:32:12</td><td>0</td><td>13,780</td><td>国企改革</td></tr>
+<tr><td>7</td><td>000523</td><td>红棉股份</td><td><span class="tag t-s">S</span></td><td>6</td><td>0.242</td><td>2板</td><td>09:25:00</td><td>0</td><td class="up">34,585</td><td>国企改革</td></tr>
+<tr><td>8</td><td>002295</td><td>精艺股份</td><td><span class="tag t-s">S</span></td><td>5</td><td>0.236</td><td>2板</td><td>09:25:00</td><td>0</td><td>10,429</td><td>储能</td></tr>
+<tr><td>9</td><td>000912</td><td>泸天化</td><td><span class="tag t-ap">A+</span></td><td>5</td><td>0.204</td><td>2板</td><td>09:25:00</td><td class="down">4</td><td>933</td><td>国企改革</td></tr>
+<tr><td>10</td><td>000980</td><td>众泰汽车</td><td><span class="tag t-a">A</span></td><td>—</td><td>—</td><td>2板</td><td>09:33:03</td><td class="down">1</td><td>11,536</td><td>百度概念</td></tr>
+<tr><td>11</td><td>600792</td><td>云煤能源</td><td><span class="tag t-a">A</span></td><td>—</td><td>—</td><td>2板</td><td>10:50:26</td><td>0</td><td>6,260</td><td>国企改革</td></tr>
+<tr><td>12</td><td>002790</td><td>瑞尔特</td><td><span class="tag t-a">A</span></td><td>—</td><td>—</td><td>2板</td><td>09:25:00</td><td>0</td><td>15,208</td><td>微小盘股</td></tr>
+<tr><td>13</td><td>002068</td><td>黑猫股份</td><td><span class="tag t-b">B+</span></td><td>—</td><td>—</td><td>2板</td><td>13:10:42</td><td>0</td><td>5,700</td><td>国企改革</td></tr>
+<tr><td>14</td><td>002349</td><td>精华制药</td><td><span class="tag t-b">B</span></td><td>—</td><td>—</td><td>2板</td><td>09:50:27</td><td>0</td><td>7,808</td><td>创新药</td></tr>
+<tr><td>15</td><td>605077</td><td>华康股份</td><td><span class="tag t-c">C</span></td><td>—</td><td>—</td><td>2板</td><td>09:34:02</td><td class="down">4</td><td>5,311</td><td>微小盘股</td></tr>
+</table>
+<div class="note">结构事实：2板 10 只（66.7%）为绝对主力，3板 4 只，5板 1 只（百大集团，候选池最高板）；首封落在 09:25:00–09:25:02 的有 5 只（金正大/红棉/精艺/泸天化/瑞尔特）；封单 TOP3 为红棉 3.46 亿、金正大 1.75 亿、中百 1.68 亿；炸板次数最多为泸天化与华康各 4 次，两者封单均不足 1 亿/5 千万级。</div>
+
+<h2>四、分级有效性检验</h2>
+<table>
+<tr><th>评级</th><th>候选数</th><th>晋级数</th><th>晋级率</th><th>强度</th></tr>
+<tr><td><span class="tag t-s">S</span></td><td>16</td><td>7</td><td class="up">43.8%</td><td><div class="bar"><i class="hi" style="width:43.8%"></i></div></td></tr>
+<tr><td><span class="tag t-b">B+</span></td><td>5</td><td>1</td><td class="up">20.0%</td><td><div class="bar"><i style="width:20%"></i></div></td></tr>
+<tr><td><span class="tag t-c">C</span></td><td>5</td><td>1</td><td class="up">20.0%</td><td><div class="bar"><i style="width:20%"></i></div></td></tr>
+<tr><td><span class="tag t-a">A</span></td><td>22</td><td>4</td><td>18.2%</td><td><div class="bar"><i class="mid" style="width:18.2%"></i></div></td></tr>
+<tr><td><span class="tag t-ap">A+</span></td><td>8</td><td>1</td><td class="down">12.5%</td><td><div class="bar"><i class="lo" style="width:12.5%"></i></div></td></tr>
+<tr><td><span class="tag t-b">B</span></td><td>16</td><td>1</td><td class="down">6.2%</td><td><div class="bar"><i class="lo" style="width:6.2%"></i></div></td></tr>
+<tr><td><span class="tag t-d">D</span></td><td>2</td><td>0</td><td class="down">0.0%</td><td><div class="bar"><i class="lo" style="width:0%"></i></div></td></tr>
+</table>
+<div class="note warn">
+<b>分级检验结论（客观）：</b><br>
+1. <b>两端有效</b>：S 级 43.8% 居首（5 日内 S 级首次登顶），D 级 0/2 垫底，底部剔除能力成立。<br>
+2. <b>A+ / A 再次倒挂</b>：A 级 18.2% &gt; A+ 级 12.5%。6 日内 A+ 与 A 的大小关系为：9/2 A&gt;A+ → 9/3 A+&gt;A → 9/4 A+&gt;A → 9/7 A&gt;A+ → 9/8 A+&gt;A → 9/9 A&gt;A+，<b>逐日交替，无连续方向，分级在这一档位上不具备稳定区分度</b>。<br>
+3. <b>C 级 20.0% 与 B+ 持平并高于 A+（12.5%）</b>，B 级 6.2% 却低于 A+。中部 B/B+/C 相对 A+/A 的排序在 6 日内每天都在变化，与 9/8 记录的"B/C 倒挂"同型但方向已改。<br>
+4. 合计口径：A+/S 合计 23 只晋级 8 只（34.8%），其余 51 只晋级 7 只（13.7%），高评级组整体仍有 2.5 倍优势——区分度只存在于"高 vs 低"粗分层，不存在于 A+/A/S 内部细分层。
+</div>
+
+<h2>五、pre_score 分档晋级率</h2>
+<table>
+<tr><th>pre_score</th><th>候选数</th><th>晋级数</th><th>晋级率</th><th>强度</th></tr>
+<tr><td>7 分</td><td>2</td><td>2</td><td class="up">100.0%</td><td><div class="bar"><i class="hi" style="width:100%"></i></div></td></tr>
+<tr><td>5 分</td><td>5</td><td>3</td><td class="up">60.0%</td><td><div class="bar"><i class="hi" style="width:60%"></i></div></td></tr>
+<tr><td>6 分</td><td>4</td><td>2</td><td class="up">50.0%</td><td><div class="bar"><i style="width:50%"></i></div></td></tr>
+<tr><td>8 分</td><td>7</td><td>1</td><td class="down">14.3%</td><td><div class="bar"><i class="lo" style="width:14.3%"></i></div></td></tr>
+<tr><td>0 分</td><td>1</td><td>0</td><td class="down">0.0%</td><td><div class="bar"><i class="lo" style="width:0%"></i></div></td></tr>
+<tr><td>1 分</td><td>1</td><td>0</td><td class="down">0.0%</td><td><div class="bar"><i class="lo" style="width:0%"></i></div></td></tr>
+<tr><td>2 分</td><td>1</td><td>0</td><td class="down">0.0%</td><td><div class="bar"><i class="lo" style="width:0%"></i></div></td></tr>
+<tr><td>3 分</td><td>1</td><td>0</td><td class="down">0.0%</td><td><div class="bar"><i class="lo" style="width:0%"></i></div></td></tr>
+<tr><td>4 分</td><td>2</td><td>0</td><td class="down">0.0%</td><td><div class="bar"><i class="lo" style="width:0%"></i></div></td></tr>
+</table>
+<div class="note warn"><b>pre_score 完全非单调，且最高分档今日垫底：</b>7 分档 100% &gt; 5 分档 60% &gt; 6 分档 50% &gt; <b>8 分档仅 14.3%（7 只中 6 只未晋级）</b>。8 分档是评分体系的理论最高档，实际表现为 6 日内最差档之一（9/8 为 60%、9/7 为 0/5）。<b>6 个交易日内 pre_score 与晋级率从未呈现稳定单调关系，最高分档连续多日跑输中分档。</b></div>
+
+<h2>六、高分未晋级标的漏因核对（收盘精确数据）</h2>
+<table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>pre</th><th>ML概率</th><th>开盘</th><th>收盘</th><th>涨跌%</th><th>最高</th><th>最低</th><th>换手%</th><th>漏因</th></tr>
+<tr><td>600108</td><td>亚盛集团</td><td><span class="tag t-s">S</span></td><td>8</td><td>0.875</td><td>5.78</td><td>5.71</td><td class="up">+8.14</td><td class="up">5.81</td><td>5.55</td><td>40.55</td><td>最高=涨停价，触板未封</td></tr>
+<tr><td>603938</td><td>三孚股份</td><td><span class="tag t-s">S</span></td><td>8</td><td>0.342</td><td>46.87</td><td>47.11</td><td class="up">+6.03</td><td>48.87</td><td>46.59</td><td>14.55</td><td>盘中冲高回落</td></tr>
+<tr><td>600880</td><td>博瑞传播</td><td><span class="tag t-s">S</span></td><td>8</td><td>0.380</td><td>4.78</td><td>4.70</td><td class="up">+2.62</td><td>5.02</td><td>4.42</td><td>12.98</td><td>高开冲高回落</td></tr>
+<tr><td>600354</td><td>敦煌种业</td><td><span class="tag t-s">S</span></td><td>6</td><td>0.441</td><td>10.48</td><td>10.98</td><td class="up">+4.77</td><td class="up">11.51</td><td>10.48</td><td>45.50</td><td>触板未封（最高11.51=涨停）</td></tr>
+<tr><td>002579</td><td>中京电子</td><td><span class="tag t-ap">A+</span></td><td>6</td><td>0.201</td><td>17.74</td><td>16.81</td><td class="down">−1.47</td><td>17.97</td><td>16.59</td><td>31.63</td><td>高开低走翻绿</td></tr>
+<tr><td>002702</td><td>海欣食品</td><td><span class="tag t-s">S</span></td><td>5</td><td>0.329</td><td>6.79</td><td>6.45</td><td class="down">−5.01</td><td>6.87</td><td>6.27</td><td>37.96</td><td>一字开盘后崩塌</td></tr>
+<tr><td>601949</td><td>中国出版</td><td><span class="tag t-s">S</span></td><td>8</td><td>0.385</td><td>7.05</td><td>6.68</td><td class="down">−5.25</td><td>7.10</td><td>6.36</td><td>8.04</td><td>平开后单边下行</td></tr>
+<tr><td>603999</td><td>读者传媒</td><td><span class="tag t-s">S</span></td><td>8</td><td>0.599</td><td>7.28</td><td>6.72</td><td class="down">−7.82</td><td>7.28</td><td>6.61</td><td>11.57</td><td>开盘即最高，全天杀跌</td></tr>
+<tr><td>603823</td><td>百合花</td><td><span class="tag t-s">S</span></td><td>8</td><td>0.315</td><td>66.13</td><td>58.38</td><td class="down">−8.55</td><td>67.00</td><td>57.50</td><td>10.87</td><td>高开+3.6%后崩 −8.55%</td></tr>
+<tr><td>002403</td><td>爱仕达</td><td><span class="tag t-s">S</span></td><td>5</td><td>0.291</td><td>13.65</td><td>12.41</td><td class="down">−9.08</td><td>13.70</td><td>12.29</td><td>21.80</td><td>连续第2日大跌</td></tr>
+</table>
+<div class="note warn">
+<b>关键事实：10 只高评级/高分未晋级标的收盘均值 −1.56%，仅 4 只红盘，其中 2 只（亚盛、敦煌）最高价触及涨停但未封住。</b><br>
+<b>ML 概率最高（0.875）的亚盛集团与概率 0.599 的读者传媒，收盘分别为 +8.14%（触板未封）与 −7.82%（全天杀跌）——概率排序与实际结果反向。</b><br>
+另注：亚盛 40.55%、敦煌 45.50% 的换手率说明这两只是当日高换手炸板股，而非缩量一字。
+</div>
+
+<h2>七、开盘价区间规则检验</h2>
+<div class="note">当日无 9:25 扫描报告，<code>open_band</code>、<code>final_picks</code>、<code>filtered_out</code>、<code>killed_but_up</code> 四组数据全空，开盘价区间规则（含"&gt;5% 高开降级""一字封单&lt;10 万手放弃"等）今日<b>无法执行正反检验</b>。此为连续第 4 日无规则校验数据。</div>
+
+<h2>八、核心事实列表</h2>
+<ul class="fact">
+<li>候选池 74 只（date=20260908，四维数据质量全 ok），今日晋级 15 只，晋级率 20.3%，为 6 日样本中第 2 高（最高 9/7 的 31.7%）。</li>
+<li>全市场涨停 48 只（akshare 东财口径，TDX 返回空降级），较 9/8 的 73 只减少 25 只，降幅 34%。</li>
+<li>晋级结构中 2 板占 10 只（66.7%），3 板 4 只，4 板 0 只，5 板 1 只——高标稀缺，资金集中在 2 板接力层。</li>
+<li>15 只晋级股中 5 只首封落在 09:25:00–09:25:02（竞价即封），占 33.3%，为 6 日内占比最高的一次。</li>
+<li>封单额 TOP3：红棉股份 3.46 亿、金正大 1.75 亿、中百集团 1.68 亿；封单最弱的泸天化 933 万伴随炸板 4 次。</li>
+<li>炸板统计：15 只晋级股中 6 只盘中炸板（百大 2 次、中百 1 次、泸天化 4 次、众泰 1 次、华康 4 次），炸板率 40%。</li>
+<li>板块分布：国企改革 6 只（40%）为第一主线，微小盘/微盘 4 只，新零售 2 只，其余分散。</li>
+<li>分级：S 43.8% 居首、D 0% 垫底两端成立；A+ 12.5% &lt; A 18.2%，6 日内第 3 次出现 A 反超 A+，无连续方向。</li>
+<li>pre_score 最高档（8 分）7 只仅晋级 1 只（14.3%），7 分档 2/2 全中，单调关系 6 日内始终未成立。</li>
+<li>高分未晋级的 10 只收盘均值 −1.56%，ML 概率前二的亚盛（0.875）与读者（0.599）分别收 +8.14% 触板未封与 −7.82% 杀跌。</li>
+<li>9:25 扫描任务连续 4 个交易日（9/4、9/7、9/8、9/9）未产出报告，规则校验链路自 9/4 起中断至今未恢复。</li>
+</ul>
+
+<h2>九、累积样本库状态</h2>
+<table>
+<tr><th>#</th><th>日期</th><th>候选池</th><th>晋级</th><th>晋级率</th><th>全市场涨停</th><th>A+ 晋级</th><th>A 晋级</th><th>扫描筛出</th><th>筛出命中</th><th>状态</th></tr>
+<tr><td>1</td><td>09-02</td><td>83</td><td>13</td><td>15.7%</td><td>52</td><td>5</td><td>8</td><td>5</td><td>1</td><td>完整</td></tr>
+<tr><td>2</td><td>09-03</td><td>54</td><td>9</td><td>16.7%</td><td>46</td><td>1</td><td>1</td><td>4</td><td>2</td><td>完整</td></tr>
+<tr><td>3</td><td>09-04</td><td>46</td><td>7</td><td>15.2%</td><td>39</td><td>1</td><td>3</td><td>0</td><td>0</td><td class="down">降级</td></tr>
+<tr><td>4</td><td>09-07</td><td>41</td><td>13</td><td class="up">31.7%</td><td>93</td><td>1</td><td>4</td><td>0</td><td>0</td><td class="down">降级</td></tr>
+<tr><td>5</td><td>09-08</td><td>95</td><td>18</td><td>18.9%</td><td>73</td><td>4</td><td>3</td><td>0</td><td>0</td><td class="down">降级</td></tr>
+<tr><td>6</td><td><b>09-09</b></td><td>74</td><td>15</td><td>20.3%</td><td>48</td><td>1</td><td>4</td><td>0</td><td>0</td><td class="down">降级</td></tr>
+</table>
+<div class="note">
+<b>重校准条件检查（未触发）：</b><br>
+· 样本 6 个交易日 &lt; 10 日阈值 → 未达。<br>
+· A 级晋级率 ≥ A+ 级：9/2、9/7、9/9 共 3 日，<b>不连续</b>（9/3、9/4、9/8 为 A+ &gt; A），未达"连续 5 日"条件。<br>
+· "&gt;5% 高开"误杀率：连续 4 日无数据，无法评估。<br>
+· <b>新增观察项：pre_score 最高档（8 分）在 9/7（0/5）、9/9（1/7）两次跑输 7 分档与 5 分档，且 ML 概率 0.875 的头部标的实际触板未封。建议周五重训练单独核查 pre_score 8 分档与 ML 概率 &gt;0.5 区间的特征权重是否过拟合。</b>
+</div>
+
+<div class="foot">
+数据来源：zt_925_candidates.json（候选池）／akshare 东方财富涨停池（降级）／腾讯 qt.gtimg.cn（收盘行情兜底）。<br>
+反查脚本：zt_925_review.py --date 20260909 ｜ 产物：zt_925_review_20260909.json、zt_925_review_history.json（累计 6 日）。<br>
+本报告仅呈现客观数据与统计结论，不含任何操作建议。
+</div>
+
+</div>
+</body>
+</html>

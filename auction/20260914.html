@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9:25竞价扫描收盘反查 · 20260914</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:22px 16px 60px;background:#0d1117;color:#e6edf3;
+font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.65}
+.wrap{max-width:1120px;margin:0 auto}
+h1{font-size:21px;margin:0 0 4px;letter-spacing:.3px}
+.sub{color:#8b949e;font-size:12.5px;margin-bottom:18px}
+h2{font-size:16px;margin:30px 0 10px;padding-left:10px;border-left:3px solid #f85149}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin:14px 0 6px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:11px 13px}
+.card .k{color:#8b949e;font-size:11.5px}
+.card .v{font-size:20px;font-weight:700;margin-top:3px}
+.card.hi{border-color:#f85149}.card.warn{border-color:#e3b341}.card.ok{border-color:#3fb950}
+table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:12.5px;
+background:#161b22;border-radius:8px;overflow:hidden}
+th{background:#1c2128;color:#8b949e;font-weight:600;padding:7px 8px;text-align:left;
+border-bottom:1px solid #30363d;white-space:nowrap}
+td{padding:6px 8px;border-bottom:1px solid #21262d}
+tr:last-child td{border-bottom:none}
+tr.ztd td{background:#1d1416}
+.c{text-align:center}.r{text-align:right}.l{text-align:left;font-size:12px}
+.scroll{overflow-x:auto}
+.note{background:#161b22;border:1px solid #30363d;border-left:3px solid #58a6ff;border-radius:6px;
+padding:11px 14px;margin:12px 0;color:#c9d1d9;font-size:12.8px}
+.alert{border-left-color:#e3b341;background:#1c1a12}
+.danger{border-left-color:#f85149;background:#1d1416}
+ul{margin:6px 0 0;padding-left:20px}li{margin:4px 0}
+.big{font-size:15px;font-weight:700}
+code{background:#21262d;padding:1px 5px;border-radius:4px;font-size:12px;color:#79c0ff}
+.foot{color:#6e7681;font-size:11.5px;margin-top:30px;text-align:center}
+</style></head><body><div class="wrap">
+
+<h1>9:25 竞价扫描 · 收盘反查报告</h1>
+<div class="sub">交易日 T=20260914｜候选池基准日=20260911（上一交易日）｜生成时间 15:45 后｜数据源：akshare(东财)+腾讯行情+9:25竞价快照</div>
+
+<div class="cards">
+<div class="card"><div class="k">交易日</div><div class="v">09/14</div></div>
+<div class="card"><div class="k">候选池总数</div><div class="v">40</div></div>
+<div class="card hi"><div class="k">今日晋级涨停</div><div class="v" style="color:#f85149">11</div></div>
+<div class="card hi"><div class="k">晋级率</div><div class="v" style="color:#f85149">27.5%</div></div>
+<div class="card warn"><div class="k">扫描筛出（✅通过）</div><div class="v">0</div></div>
+<div class="card"><div class="k">筛出命中封板</div><div class="v">0</div></div>
+<div class="card warn"><div class="k">过滤误杀</div><div class="v" style="color:#e3b341">6 / 放弃26</div></div>
+<div class="card"><div class="k">当日涨停池</div><div class="v">55</div></div>
+</div>
+
+<div class="note alert">
+<b>⚠️ 本日扫描链路状态：报告缺失 → 规则检验为「推演级」</b><br/>
+① <code>zt_925_report_20260914.html</code> 不存在（9:25 报告生成链路已于本日整体下线），<code>scan.*</code> 全空，<b>无实际执行的过滤结果</b>。<br/>
+② 但 <code>zt_925_capture_20260914.json</code> 竞价快照存在（09:25:08 落盘，10 项来源腾讯），本报告据此<b>按 zt_925_report_gen.py 原有 judge() 逻辑复算</b>开盘价区间判定，标记为「推演级」。<br/>
+③ 因此本文所有「筛出/放弃/误杀」结论均为<b>规则推演值，不是当日实际执行结果</b>。弱勢日判定成立：上证 -0.542%、深成 -1.026%、创业板 -1.286%。
+</div>
+
+<h2>1. 数据口径说明</h2>
+<div class="note">
+• <b>涨停池</b>：TDX 涨停池返回空（MCP 未接入）→ 降级 akshare(东财) <b>55 只</b>（source=tdx_screener）。<br/>
+• <b>口径对比</b>：17:00 流水线文件 <code>zt_1700_data_20260914.json</code> 本时点尚未产出（15:45，流水线 17:00 才跑），本日无交叉口径可比。近两日池子为 9/11=40 只、9/10=35 只，今日 55 只，<b>情绪较上周五回升 37.5%</b>。<br/>
+• <b>行情源</b>：TDX MCP 未接入 → 腾讯 qt.gtimg.cn <b>40/40 全量到手</b>（存 <code>zt_925_close_20260914.json</code>），收盘涨跌幅为腾讯口径。<br/>
+• <b>竞价快照</b>：40/40 全覆盖；<code>market.scanned=False</code>（腾讯源无全市场快照），板块合力无法取全市场真值，本文用<b>候选池内同行业开盘&gt;+1% 只数作代理</b>，已在判定理由中标注。<br/>
+• 候选池 <code>date=20260911</code> == T_PREV ✅（交易日历校验通过，非算术推算），data_quality 四维全 ok。
+</div>
+
+<h2>2. 扫描筛出标的 vs 实际收盘</h2>
+<div class="note danger">
+<b>今日 ✅ 通过标的数 = 0。</b>弱勢日分支下：「&gt;+5%」8 只全部放弃、「+3~5%」4 只因买一档挂单/合力不足未达"优秀"门槛，「≤+1%」18 只放弃 → <b>无一只进入 ✅ 通过</b>，故筛出命中数为 0（无标的可命中，非"筛出全错"）。
+</div>
+<div class="scroll"><table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>开盘涨幅</th><th>竞价判定（推演）</th><th>今日收盘</th><th>最高</th><th>换手</th><th>结果</th></tr>
+<tr><td>605069</td><td>正和生态</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td><td class="l">⚠️ 一字但封单不足</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="r">2.25%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>002912</td><td>中新赛克</td><td class="c">S</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td><td class="l">🔒 一字晋级候选</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="r">1.06%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>002560</td><td>通达股份</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+9.01%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.03%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.03%</span></td>
+<td class="r">12.42%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>600088</td><td>中视传媒</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+7.99%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="r">10.78%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>002585</td><td>双星新材</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+7.63%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.04%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.04%</span></td>
+<td class="r">11.45%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>600876</td><td>凯盛新能</td><td class="c">A</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+6.21%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="r">10.41%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>603439</td><td>三力制药</td><td class="c">D</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+5.02%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+9.97%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+9.97%</span></td>
+<td class="r">7.79%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>000993</td><td>闽东电力</td><td class="c">S</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+4.54%</span></td><td class="l">⚠️ 优秀(条件未足)</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.01%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.01%</span></td>
+<td class="r">12.25%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>000980</td><td>众泰汽车</td><td class="c">B</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+4.25%</span></td><td class="l">⚠️ 优秀(条件未足)</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+9.91%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+9.91%</span></td>
+<td class="r">10.28%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>000823</td><td>超声电子</td><td class="c">D</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+1.12%</span></td><td class="l">⚠️ 谨慎</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.01%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.01%</span></td>
+<td class="r">19.25%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>605058</td><td>澳弘电子</td><td class="c">C</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-1.89%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="r">11.21%</td>
+<td class="c" style="color:#3fb950">✅ 命中封板</td></tr><tr><td>002790</td><td>瑞尔特</td><td class="c">S</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+9.99%</span></td><td class="l">🔒 一字晋级候选</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-9.99%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+9.99%</span></td>
+<td class="r">30.63%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·跌停</td></tr><tr><td>300563</td><td>神宇股份</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+7.09%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+2.44%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+7.38%</span></td>
+<td class="r">23.26%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>001232</td><td>嘉立创</td><td class="c">D</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+6.34%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+8.33%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="r">27.08%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>002161</td><td>远 望 谷</td><td class="c">S</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+5.35%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-9.95%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+5.35%</span></td>
+<td class="r">14.20%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>605011</td><td>杭州热电</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+4.05%</span></td><td class="l">⚠️ 优秀(条件未足)</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+6.67%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+9.98%</span></td>
+<td class="r">9.88%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·未封</td></tr><tr><td>603336</td><td>宏辉果蔬</td><td class="c">D</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+3.57%</span></td><td class="l">⚠️ 优秀(条件未足)</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+2.97%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.01%</span></td>
+<td class="r">11.31%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·未封</td></tr><tr><td>600207</td><td>安彩高科</td><td class="c">A</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+2.83%</span></td><td class="l">⚠️ 谨慎</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+3.24%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+8.30%</span></td>
+<td class="r">8.81%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·未封</td></tr><tr><td>603938</td><td>三孚股份</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+2.46%</span></td><td class="l">⚠️ 谨慎</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+0.81%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+3.41%</span></td>
+<td class="r">13.07%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·未封</td></tr><tr><td>605088</td><td>冠盛股份</td><td class="c">B</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+2.36%</span></td><td class="l">⚠️ 谨慎</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+1.16%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+6.72%</span></td>
+<td class="r">11.75%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·未封</td></tr><tr><td>002519</td><td>银河电子</td><td class="c">C</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+2.06%</span></td><td class="l">⚠️ 谨慎</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-0.63%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+4.28%</span></td>
+<td class="r">14.62%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·跌停</td></tr><tr><td>600410</td><td>华胜天成</td><td class="c">B</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+1.75%</span></td><td class="l">⚠️ 谨慎</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+1.36%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+3.70%</span></td>
+<td class="r">20.59%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·未封</td></tr><tr><td>600184</td><td>光电股份</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+1.05%</span></td><td class="l">⚠️ 谨慎</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+3.00%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+4.50%</span></td>
+<td class="r">12.61%</td>
+<td class="c" style="color:#e3b341">🔒/⚠️ 未执行·未封</td></tr><tr><td>002848</td><td>高斯贝尔</td><td class="c">A</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+0.98%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-3.35%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+9.97%</span></td>
+<td class="r">30.49%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>601199</td><td>江南水务</td><td class="c">C</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+0.46%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+4.95%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+5.56%</span></td>
+<td class="r">6.15%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>002218</td><td>拓日新能</td><td class="c">D</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+0.23%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-2.04%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+2.95%</span></td>
+<td class="r">12.76%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>603693</td><td>江苏新能</td><td class="c">B</td>
+<td class="r"><span style="color:#e6edf3;font-weight:600">+0.00%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-3.20%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+2.11%</span></td>
+<td class="r">3.78%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>000636</td><td>风华高科</td><td class="c">D</td>
+<td class="r"><span style="color:#e6edf3;font-weight:600">+0.00%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+5.20%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+8.06%</span></td>
+<td class="r">19.15%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>600967</td><td>内蒙一机</td><td class="c">C</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-0.07%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-4.47%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+4.74%</span></td>
+<td class="r">10.05%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>002242</td><td>九阳股份</td><td class="c">C</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-0.31%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-3.70%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+4.00%</span></td>
+<td class="r">5.14%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>605258</td><td>协和电子</td><td class="c">A</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-0.78%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+0.83%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+5.44%</span></td>
+<td class="r">14.49%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>603136</td><td>天目湖</td><td class="c">D</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-0.85%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+2.17%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.02%</span></td>
+<td class="r">19.77%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>603466</td><td>风语筑</td><td class="c">B+</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-0.98%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-2.34%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+2.41%</span></td>
+<td class="r">19.22%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>603936</td><td>博敏电子</td><td class="c">D</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-1.05%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+6.75%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+8.62%</span></td>
+<td class="r">23.96%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>603386</td><td>骏亚科技</td><td class="c">D</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-1.52%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+4.80%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+5.89%</span></td>
+<td class="r">12.70%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>002815</td><td>崇达技术</td><td class="c">D</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-2.14%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+5.18%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+6.23%</span></td>
+<td class="r">19.83%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>600237</td><td>铜峰电子</td><td class="c">D</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-2.39%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+6.72%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+9.54%</span></td>
+<td class="r">20.08%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>603421</td><td>鼎信通讯</td><td class="c">B+</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-2.49%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-6.48%</span></td><td class="r"><span style="color:#3fb950;font-weight:600">-0.25%</span></td>
+<td class="r">13.90%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>002902</td><td>铭普光磁</td><td class="c">B</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-3.08%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-3.05%</span></td><td class="r"><span style="color:#3fb950;font-weight:600">-0.32%</span></td>
+<td class="r">25.35%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr><tr><td>002201</td><td>九鼎新材</td><td class="c">D</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-5.23%</span></td><td class="l">❌ 放弃</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+1.17%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+8.21%</span></td>
+<td class="r">22.65%</td>
+<td class="c" style="color:#8b949e">❌ 规则放弃·未封</td></tr>
+</table></div>
+
+<h2>3. 候选池晋级完整清单（11 只）</h2>
+<div class="scroll"><table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>连板</th><th>首封时间</th><th>今日炸板</th><th>封单额</th><th>行业</th></tr>
+<tr><td>000993</td><td>闽东电力</td><td class="c">S</td>
+<td class="c">7</td><td class="c">4板</td>
+<td class="c">09:30:24</td><td class="c">2</td>
+<td class="r">0.90亿</td><td>电力</td></tr><tr><td>002912</td><td>中新赛克</td><td class="c">S</td>
+<td class="c">8</td><td class="c">3板</td>
+<td class="c">09:25:00</td><td class="c">0</td>
+<td class="r">2.50亿</td><td>国企改革</td></tr><tr><td>600876</td><td>凯盛新能</td><td class="c">A</td>
+<td class="c">—</td><td class="c">3板</td>
+<td class="c">09:59:20</td><td class="c">5</td>
+<td class="r">0.08亿</td><td>微小盘股</td></tr><tr><td>000823</td><td>超声电子</td><td class="c">D</td>
+<td class="c">—</td><td class="c">3板</td>
+<td class="c">09:40:48</td><td class="c">0</td>
+<td class="r">2.63亿</td><td>折叠屏</td></tr><tr><td>600088</td><td>中视传媒</td><td class="c">B+</td>
+<td class="c">—</td><td class="c">2板</td>
+<td class="c">09:30:13</td><td class="c">1</td>
+<td class="r">0.33亿</td><td>国企改革</td></tr><tr><td>002560</td><td>通达股份</td><td class="c">B+</td>
+<td class="c">—</td><td class="c">2板</td>
+<td class="c">09:30:09</td><td class="c">1</td>
+<td class="r">0.71亿</td><td>储能</td></tr><tr><td>002585</td><td>双星新材</td><td class="c">B+</td>
+<td class="c">—</td><td class="c">2板</td>
+<td class="c">09:30:39</td><td class="c">2</td>
+<td class="r">1.59亿</td><td>塑料</td></tr><tr><td>605069</td><td>正和生态</td><td class="c">B+</td>
+<td class="c">—</td><td class="c">2板</td>
+<td class="c">09:25:01</td><td class="c">0</td>
+<td class="r">0.39亿</td><td>机器人概念</td></tr><tr><td>000980</td><td>众泰汽车</td><td class="c">B</td>
+<td class="c">—</td><td class="c">2板</td>
+<td class="c">09:41:06</td><td class="c">2</td>
+<td class="r">1.34亿</td><td>昨日断板</td></tr><tr><td>605058</td><td>澳弘电子</td><td class="c">C</td>
+<td class="c">—</td><td class="c">2板</td>
+<td class="c">13:12:03</td><td class="c">7</td>
+<td class="r">0.29亿</td><td>储能</td></tr><tr><td>603439</td><td>三力制药</td><td class="c">D</td>
+<td class="c">—</td><td class="c">2板</td>
+<td class="c">09:51:01</td><td class="c">0</td>
+<td class="r">0.80亿</td><td>电商概念</td></tr>
+</table></div>
+<div class="note">
+首封 ≤09:31 的有 <b>4 只</b>（中新赛克 09:25:00、正和生态 09:25:01、通达股份 09:30:09、中视传媒 09:30:13），占晋级 36.4%。2 板 7 只（63.6%）、3 板 3 只、4 板 1 只（闽东电力）。<br/>
+<b>封单最强</b>：超声电子 2.63 亿、中新赛克 2.50 亿、双星新材 1.59 亿、众泰汽车 1.34 亿。<br/>
+炸板最惨：澳弘电子 7 次、凯盛新能 5 次（均收盘封死）；闽东电力/双星新材/众泰各 2 次。
+</div>
+
+<h2>4. 分级有效性检验</h2>
+<div class="scroll"><table>
+<tr><th>评级</th><th>池内只数</th><th>晋级</th><th>晋级率</th></tr>
+<tr><td class="c">S</td><td class="c">4</td><td class="c">2</td>
+<td class="c" style="color:#f85149">50.0%
+<div style="background:#f85149;height:5px;width:90px;border-radius:2px;margin-top:3px"></div></td></tr><tr><td class="c">A</td><td class="c">4</td><td class="c">1</td>
+<td class="c" style="color:#e6edf3">25.0%
+<div style="background:#f85149;height:5px;width:45px;border-radius:2px;margin-top:3px"></div></td></tr><tr><td class="c">B+</td><td class="c">10</td><td class="c">4</td>
+<td class="c" style="color:#f85149">40.0%
+<div style="background:#f85149;height:5px;width:72px;border-radius:2px;margin-top:3px"></div></td></tr><tr><td class="c">B</td><td class="c">5</td><td class="c">1</td>
+<td class="c" style="color:#e6edf3">20.0%
+<div style="background:#f85149;height:5px;width:36px;border-radius:2px;margin-top:3px"></div></td></tr><tr><td class="c">C</td><td class="c">5</td><td class="c">1</td>
+<td class="c" style="color:#e6edf3">20.0%
+<div style="background:#f85149;height:5px;width:36px;border-radius:2px;margin-top:3px"></div></td></tr><tr><td class="c">D</td><td class="c">12</td><td class="c">2</td>
+<td class="c" style="color:#e6edf3">16.7%
+<div style="background:#f85149;height:5px;width:30px;border-radius:2px;margin-top:3px"></div></td></tr>
+</table></div>
+<div class="scroll"><table>
+<tr><th>pre_score 分档</th><th>只数</th><th>晋级</th><th>晋级率</th></tr>
+<tr><td class='c'>8分</td><td class='c'>3</td><td class='c'>1</td><td class='c'>33.3%</td></tr><tr><td class='c'>7分</td><td class='c'>1</td><td class='c'>1</td><td class='c'>100.0%</td></tr>
+</table></div>
+<div class="note alert">
+<b>结论：细分层区分度不成立，粗分层 S 端有效 / 底部 D 端失守。</b><br/>
+• <b>S 50%(2/4) 居首</b>，但<u>未晋级 2 只均为跌停</u>：瑞尔特 −9.99%、远望谷 −9.95% → S 级内部方差极端（+10% vs −10%），晋级率掩盖了收益分布的<u>双峰</u>特征。<br/>
+• <b>B+ 40%(4/10) &gt; A 25%(1/4)</b> → 中部倒挂第 N 日延续（9/4、9/7、9/8、9/11 同型）。<br/>
+• <b>D 级 16.7%(2/12) 但两只封板且质地不差</b>：超声电子 3 板（封单 2.63 亿、零炸板）、三力制药 2 板 → 底部剔除能力本日<u>再次失守</u>（与 9/14 前 8 日的"连续有效"相反）。<br/>
+• pre_score 仅 4 只样本（8 分档 3 只 1 封、7 分档 1 只 1 封），<b>样本量不足，本日无统计意义</b>。<br/>
+• 真值提醒：本日 <b>查询集(candidates)只有 4 只</b>（占池 10%），晋级 11 只中仅 2 只在查询集内 → <b>查询覆盖率 18.2%</b>，覆盖率问题连续第 9 日存在。
+</div>
+
+<h2>5. 开盘价区间规则今日正反检验（推演级）</h2>
+<div class="scroll"><table>
+<tr><th>开盘分档</th><th>只数</th><th>晋级</th><th>晋级率</th></tr>
+<tr><td>一字(≥9.8%)</td><td class="c">3</td><td class="c">2</td>
+<td class="c" style="color:#f85149;font-weight:600">66.7%</td></tr><tr><td>>+5%</td><td class="c">8</td><td class="c">5</td>
+<td class="c" style="color:#f85149;font-weight:600">62.5%</td></tr><tr><td>+3~5%</td><td class="c">4</td><td class="c">2</td>
+<td class="c" style="color:#f85149;font-weight:600">50.0%</td></tr><tr><td>+1~3%</td><td class="c">7</td><td class="c">1</td>
+<td class="c" style="color:#3fb950;font-weight:600">14.3%</td></tr><tr><td>0~+1%</td><td class="c">5</td><td class="c">0</td>
+<td class="c" style="color:#3fb950;font-weight:600">0.0%</td></tr><tr><td><0%</td><td class="c">13</td><td class="c">1</td>
+<td class="c" style="color:#3fb950;font-weight:600">7.7%</td></tr>
+</table></div>
+<div class="note danger">
+<b>本日规则被完全打反：高开才是溢价来源，"弱勢日&gt;+5%放弃"发生单日最大规模误杀。</b><br/>
+• <b>&gt;+5% 放弃 → 误杀 5 只</b>：凯盛新能(+6.21开→+10.00封)、中视传媒(+7.99→+10.00)、通达股份(+9.01→+10.03)、双星新材(+7.63→+10.04)、三力制药(+5.02→+9.97)。该档 8 只中 <b>5 只封板（62.5%）</b>，为样本 9 日最高误判档。<br/>
+• <b>≤+1% 放弃 → 误杀 1 只</b>：澳弘电子(C级，开盘 −1.89% → 收盘 +10.00%，13:12 才首封，炸板 7 次）→ 低开→封板的"深水反转"型再次出现（9/11 鼎信通讯同型）。<br/>
+• <b>「一字但封单&lt;10万手」放弃 → 误杀 1 只</b>：正和生态（买一 25141 手 &lt; 10 万手门槛，开盘 09:25:01 一字 +10.00% → 收盘封死 +10.00%，2 板，零炸板）→ <b>该阈值累计第 4 次同型误杀</b>（9/3、9/4 国芳集团、9/14 正和生态）。<br/>
+• <b>反向证据（规则幸免）</b>：瑞尔特 一字 +9.99%、买一 33.1 万手 &gt; 门槛 → 通过"一字晋级候选" → <b>收盘 −9.99% 天地板（换手 30.63%，全池最高）</b>；远望谷 开盘 +5.35% 亦为⚠️观察 → 收 −9.95%。<b>即"通过/观察"组里也有 2 只跌停</b>。
+</div>
+<div class="scroll"><table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>开盘</th><th>收盘</th><th>板数</th><th>规则结论</th></tr>
+<tr><td>600876</td><td>凯盛新能</td><td class="c">A</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+6.21%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="c">3板</td><td style="color:#f85149">规则放弃 → 实际封板（误杀）</td></tr><tr><td>600088</td><td>中视传媒</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+7.99%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="c">2板</td><td style="color:#f85149">规则放弃 → 实际封板（误杀）</td></tr><tr><td>002560</td><td>通达股份</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+9.01%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.03%</span></td>
+<td class="c">2板</td><td style="color:#f85149">规则放弃 → 实际封板（误杀）</td></tr><tr><td>002585</td><td>双星新材</td><td class="c">B+</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+7.63%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.04%</span></td>
+<td class="c">2板</td><td style="color:#f85149">规则放弃 → 实际封板（误杀）</td></tr><tr><td>605058</td><td>澳弘电子</td><td class="c">C</td>
+<td class="r"><span style="color:#3fb950;font-weight:600">-1.89%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+10.00%</span></td>
+<td class="c">2板</td><td style="color:#f85149">规则放弃 → 实际封板（误杀）</td></tr><tr><td>603439</td><td>三力制药</td><td class="c">D</td>
+<td class="r"><span style="color:#f85149;font-weight:600">+5.02%</span></td><td class="r"><span style="color:#f85149;font-weight:600">+9.97%</span></td>
+<td class="c">2板</td><td style="color:#f85149">规则放弃 → 实际封板（误杀）</td></tr>
+</table></div>
+<div class="note">
+误杀率 <b>6/26 = 23.1%</b>（规则放弃但实际封板占放弃总数比）。另：⚠️/🔒 观察组 14 只中 <b>5 只封板</b>（闽东电力、中新赛克、正和生态、众泰汽车、超声电子），观察组命中率 35.7%。
+</div>
+
+<h2>6. 核心事实（仅陈述数据）</h2>
+<ul>
+<li>候选池 40 只（9/11 首板）→ 今日晋级涨停 <b>11 只，晋级率 27.5%</b>，为 9 日样本第 2 高（仅次于 9/7 的 31.7%）；当日全市场涨停 55 只，较 9/11（40 只）回升 37.5%。</li>
+<li>开盘涨幅与封板率呈<b>单调正相关</b>：一字 66.7% &gt; &gt;+5% 62.5% &gt; +3~5% 50% &gt; +1~3% 14.3% &gt; 0~+1% 0% &gt; 低开 7.7%。弱勢日开盘（指数集体低开）但个股<b>高开强者全天走强</b>，与规则设定的"弱勢日高开=风险"假设相反。</li>
+<li><b>S 级两极</b>：中新赛克 3 板封死(+10.00%，封单 2.50 亿，首封 09:25:00)、闽东电力 4 板封死(+10.01%)；瑞尔特(−9.99% 天地板，换手 30.63%)、远望谷(−9.95%) 双双跌停。ML 概率 TOP1 瑞尔特(0.798)、TOP3 远望谷(0.414) 均为跌停，<b>概率排序本日无效</b>。</li>
+<li>唯一低开封板：澳弘电子 −1.89% 开 → +10.00% 收（13:12 首封，炸板 7 次）。</li>
+<li>被放弃但封死 6 只，其中 5 只来自 &gt;+5% 档；被"一字封单不足"放弃但封死 1 只（正和生态）。</li>
+<li>⚠️/🔒 观察组 14 只贡献 5 只封板（35.7%），是今日实际产量所在；✅ 通过组为空。</li>
+<li>炸板数据：晋级 11 只中 7 只当日至少炸板 1 次（63.6%），凯盛新能 5 次、澳弘电子 7 次仍收封。</li>
+<li>行业分布（晋级 11 只）：国企改革 2、储能 2、其余电力/折叠屏/塑料/机器人/电商/昨日断板/微小盘各 1 → <b>无单一主线，分散型晋级日</b>。</li>
+</ul>
+
+<h2>7. 累积样本库状态</h2>
+<div class="note">
+<code>zt_925_review_history.json</code> 累计 <b>9 个交易日</b>（9/2、9/3、9/4、9/7、9/8、9/9、9/10、9/11、9/14）。<br/>
+<b>重校准条件核查（周五重训练参考）</b>：<br/>
+① 样本天数 9 &lt; 10 → <b>未达阈值</b>；<br/>
+② "A 级晋级率连续 ≥5 日 ≥ A+" → 本日 A 25% vs A+ 无样本（A+ 档本日池内为 0），连续性中断 → <b>未触发</b>；<br/>
+③ "&gt;+5% 区间误杀率 &gt;50% 连续" → 本日 &gt;+5% 档 8 只中 5 只封板（误杀率 62.5%），<b>单日已显著超阈</b>，需观察是否连续；<br/>
+④ 新增观察项：<b>「一字封单 &lt; 10 万手」放弃规则累计 4 次同型误杀</b>，且本日通过该门槛的瑞尔特反成天地板 → 阈值方向性可疑，建议重训练时单独剔除/重构该维度。
+</div>
+
+<h2>8. 本日降级说明</h2>
+<div class="note alert">
+本日为 9 日样本中<b>「报告缺失 + 快照存在」的特殊日型</b>：<code>zt_925_report_20260914.html</code> 未产出（9:25 链路已于本日下线），故本报告无"实际执行的筛选结果"可校验；所有区间规则检验均由竞价快照 + 原文规则逻辑复算得到，属<b>推演级</b>，与 9/4、9/7、9/8、9/9、9/10 的"纯降级（无快照、无推演）"日型不同。<br/>
+本报告<b>只读</b>：未修改 <code>zt_925_candidates.json</code> 与任何 <code>zt_925_report_*.html</code>。
+</div>
+
+<div class="foot">zt_925_review.py + 竞价快照规则复算 · 20260914 · 本文仅含客观数据与统计结论</div>
+</div></body></html>

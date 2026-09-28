@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026-07-01 09:45</title>
+<style>
+:root {
+  --bg: #1a1a2e;
+  --card-bg: #16213e;
+  --card-border: #0f3460;
+  --text: #e0e0e0;
+  --text-dim: #a0a0a0;
+  --red: #e74c3c;
+  --green: #27ae60;
+  --accent: #e94560;
+  --gold: #f39c12;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; padding: 24px; min-height: 100vh; }
+.header { text-align: center; padding: 32px 0; }
+.header h1 { font-size: 28px; color: var(--accent); margin-bottom: 8px; }
+.header .subtitle { color: var(--text-dim); font-size: 14px; }
+.header .timestamp { color: var(--gold); font-size: 12px; margin-top: 4px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+.card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 18px; }
+.card h3 { font-size: 15px; color: var(--accent); margin-bottom: 14px; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; }
+.index-card { text-align: center; }
+.index-card .name { font-size: 13px; color: var(--text-dim); margin-bottom: 6px; }
+.index-card .price { font-size: 22px; font-weight: bold; margin-bottom: 4px; }
+.index-card .change { font-size: 14px; font-weight: 600; }
+.index-card .extra { font-size: 11px; color: var(--text-dim); margin-top: 6px; line-height: 1.6; }
+.up { color: var(--red); }
+.down { color: var(--green); }
+.section-title { font-size: 18px; color: var(--accent); margin: 24px 0 14px; padding-left: 12px; border-left: 3px solid var(--accent); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 8px 12px; background: var(--card-border); color: var(--text-dim); font-weight: 500; font-size: 12px; }
+td { padding: 8px 12px; border-bottom: 1px solid rgba(15, 52, 96, 0.5); }
+tr:hover { background: rgba(233, 69, 96, 0.05); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+.tag-up { background: rgba(231, 76, 60, 0.15); color: var(--red); }
+.tag-down { background: rgba(39, 174, 96, 0.15); color: var(--green); }
+.tag-board { background: rgba(243, 156, 18, 0.15); color: var(--gold); }
+.mood-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+.mood-item { text-align: center; padding: 14px 8px; background: rgba(233, 69, 96, 0.05); border-radius: 8px; }
+.mood-item .val { font-size: 22px; font-weight: bold; margin-bottom: 4px; }
+.mood-item .label { font-size: 11px; color: var(--text-dim); }
+.verdict { padding: 16px; border-radius: 8px; margin-bottom: 10px; }
+.verdict.strong { background: rgba(231, 76, 60, 0.1); border: 1px solid rgba(231, 76, 60, 0.3); }
+.verdict.weak { background: rgba(39, 174, 96, 0.1); border: 1px solid rgba(39, 174, 96, 0.3); }
+.verdict.neutral { background: rgba(243, 156, 18, 0.1); border: 1px solid rgba(243, 156, 18, 0.3); }
+.verdict h4 { font-size: 14px; margin-bottom: 8px; }
+.verdict p { font-size: 13px; line-height: 1.7; color: var(--text-dim); }
+.warn { color: var(--gold); font-weight: 600; }
+.footer { text-align: center; padding: 20px; color: var(--text-dim); font-size: 11px; margin-top: 20px; border-top: 1px solid var(--card-border); }
+.signal-list { list-style: none; }
+.signal-list li { padding: 6px 0; border-bottom: 1px solid rgba(15, 52, 96, 0.3); font-size: 13px; }
+.signal-list li:last-child { border-bottom: none; }
+.stock-code { color: var(--text-dim); font-size: 11px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>A股早盘快报</h1>
+  <div class="subtitle">2026年7月1日 星期三 · 09:45 开盘15分钟快照</div>
+  <div class="timestamp">数据获取时间: 2026-07-01 15:30 | 此测试报告使用收盘数据模拟</div>
+</div>
+
+<!-- 核心指数 -->
+<h2 class="section-title">一、核心指数概览</h2>
+<div class="grid-4">
+  <div class="card index-card">
+    <div class="name">上证指数</div>
+    <div class="price">4,112.45</div>
+    <div class="change up">+0.44%</div>
+    <div class="extra">成交 16,985亿<br>高 4,143 | 低 4,088<br>振幅 1.36%</div>
+  </div>
+  <div class="card index-card">
+    <div class="name">深证成指</div>
+    <div class="price">16,119.17</div>
+    <div class="change down">-0.53%</div>
+    <div class="extra">成交 19,615亿<br>高 16,332 | 低 15,988<br>振幅 2.12%</div>
+  </div>
+  <div class="card index-card">
+    <div class="name">创业板指</div>
+    <div class="price">4,260.72</div>
+    <div class="change down">-1.89%</div>
+    <div class="extra">成交 9,885亿<br>高 4,362 | 低 4,222<br>振幅 3.21%</div>
+  </div>
+  <div class="card index-card">
+    <div class="name">科创50</div>
+    <div class="price">2,153.04</div>
+    <div class="change down">-2.48%</div>
+    <div class="extra">成交 2,323亿<br>高 2,255 | 低 2,120<br>振幅 6.11%</div>
+  </div>
+</div>
+
+<div style="font-size:13px; color:var(--text-dim); margin-bottom:16px;">
+  <strong>开盘定性：</strong>上证小幅高开震荡偏强，深市/创业板/科创板低开低走。<strong>市场严重分化</strong>——主板权重托指数，科技成长股承压。
+</div>
+
+<!-- 市场情绪 -->
+<h2 class="section-title">二、市场情绪仪表盘</h2>
+<div class="card">
+  <div class="mood-grid">
+    <div class="mood-item">
+      <div class="val" style="color:var(--red);">221</div>
+      <div class="label">涨停家数</div>
+    </div>
+    <div class="mood-item">
+      <div class="val" style="color:var(--green);">11</div>
+      <div class="label">跌停家数 <span style="color:var(--text-dim);">(含ST)</span></div>
+    </div>
+    <div class="mood-item">
+      <div class="val" style="color:var(--gold);">4.87万亿</div>
+      <div class="label">两市成交额</div>
+    </div>
+    <div class="mood-item">
+      <div class="val" style="color:var(--accent);">95%</div>
+      <div class="label">炸板率估算 <span style="color:var(--text-dim);">(涨停封板率)</span></div>
+    </div>
+  </div>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>解读</th></tr>
+    <tr><td>涨停/跌停比</td><td><span class="up">221</span> : <span class="down">11</span></td><td>约 20:1，情绪偏暖但结构分化</td></tr>
+    <tr><td>实际跌停（剔除ST）</td><td><span class="down">6家</span></td><td>卓郎智能、浙江众成、有研新材、快克智能、得邦照明、返利科技</td></tr>
+    <tr><td>北向资金</td><td>N/A</td><td>需盘中实时获取</td></tr>
+    <tr><td>主力资金上证</td><td><span class="down">-166.8亿</span></td><td>内资净流出</td></tr>
+    <tr><td>主力资金深证</td><td><span class="down">-297.3亿</span></td><td>深市流出更明显</td></tr>
+  </table>
+</div>
+
+<!-- 热点板块 -->
+<h2 class="section-title">三、热点板块 TOP5</h2>
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>#</th><th>板块</th><th>涨幅</th><th>成交额</th><th>换手率</th><th>领涨龙头</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>抗体</strong></td>
+        <td class="up">+9.97%</td>
+        <td>—</td>
+        <td>4.18%</td>
+        <td>三生国健 <span class="up">+10.17%</span>、神州细胞 <span class="up">+9.91%</span>、荣昌生物 <span class="up">+6.71%</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>保健品</strong></td>
+        <td class="up">+8.50%</td>
+        <td>—</td>
+        <td>1.44%</td>
+        <td>板块普涨，东阿阿胶 +1.50%</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>氟化工</strong></td>
+        <td class="up">+7.78%</td>
+        <td>—</td>
+        <td>7.40%</td>
+        <td>永和股份 <span class="up">+8.03%</span>、昊华科技 <span class="up">+7.46%</span>、中欣氟材 <span class="up">+7.36%</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>畜禽饲料</strong></td>
+        <td class="up">+7.71%</td>
+        <td>—</td>
+        <td>3.07%</td>
+        <td>大禹生物 <span class="up">+26.83%</span>、傲农生物 <span class="up">+10.07%</span>、新希望 <span class="up">+10.05%</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>综合类</strong></td>
+        <td class="up">+7.26%</td>
+        <td>—</td>
+        <td>2.73%</td>
+        <td>宁波富达 <span class="up">+10.06%</span>、东阳光 <span class="up">+10.01%</span>、鲁银投资 <span class="up">+10.00%</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 连板梯队 -->
+<h2 class="section-title">四、连板梯队</h2>
+<div class="card">
+  <div class="mood-grid">
+    <div class="mood-item">
+      <div class="val" style="color:var(--accent);">4板</div>
+      <div class="label">最高连板</div>
+    </div>
+    <div class="mood-item">
+      <div class="val">1只</div>
+      <div class="label">3板及以上</div>
+    </div>
+    <div class="mood-item">
+      <div class="val">3只</div>
+      <div class="label">2板</div>
+    </div>
+    <div class="mood-item">
+      <div class="val">-</div>
+      <div class="label">首板</div>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>梯队</th><th>股票</th><th>涨停原因</th><th>板型</th><th>封单</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag-board">4板</span></td>
+        <td><strong>太极实业</strong> <span class="stock-code">600667</span></td>
+        <td>DRAM封装/SK海力士合作 | 9天4板</td>
+        <td>换手板</td>
+        <td>2.63亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-board">3板</span></td>
+        <td><strong>多氟多</strong> <span class="stock-code">002407</span></td>
+        <td>锂电池/半导体级氢氟酸 | 3连板</td>
+        <td>换手板</td>
+        <td>8.13亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-board">2板</span></td>
+        <td><strong>水晶光电</strong> <span class="stock-code">002273</span></td>
+        <td>CPO/人形机器人/AI光学 | 一字板</td>
+        <td>一字板</td>
+        <td>5.70亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-board">2板</span></td>
+        <td><strong>埃斯顿</strong> <span class="stock-code">002747</span></td>
+        <td>人形机器人/特斯拉Optimus 3</td>
+        <td>换手板</td>
+        <td>2.75亿</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-board">2板</span></td>
+        <td><strong>恒尚节能</strong> <span class="stock-code">603137</span></td>
+        <td>并购存储芯片公司复牌 | 一字板</td>
+        <td>一字板</td>
+        <td>6.07亿</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 早盘异动 -->
+<h2 class="section-title">五、早盘异动信号</h2>
+<div class="grid-2">
+  <div class="card">
+    <h3>一字板强势股（集合竞价封板）</h3>
+    <ul class="signal-list">
+      <li><strong>水晶光电</strong> +10.01% — CPO/AI光学，一字板封死不动</li>
+      <li><strong>安洁科技</strong> +10.02% — 收购光模块芯片基座公司，一字板</li>
+      <li><strong>泰晶科技</strong> +10.01% — 晶振全系涨价10-30%，一字板</li>
+      <li><strong>圆通速递</strong> +10.03% — 中报预增69%-86%，一字板</li>
+      <li><strong>天富能源</strong> +10.06% — 天科合达科创板IPO受理，一字板</li>
+      <li><strong>韶能股份</strong> +10.09% — 中报预增62%-103%，一字板</li>
+      <li><strong>亚威股份</strong> +9.99% — 海力士存储芯片检测，一字板</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>高换手/大幅波动</h3>
+    <ul class="signal-list">
+      <li><strong>金宏气体</strong> <span class="up">+20.01%</span> — 电子特气，涨停打开4次，换手板</li>
+      <li><strong>争光股份</strong> <span class="up">+20.00%</span> — 盐湖提锂新材料，午后涨停</li>
+      <li><strong>卓郎智能</strong> <span class="down">-9.94%</span> — 跌停打开72次！机器人概念高位崩</li>
+      <li><strong>有研新材</strong> <span class="down">-10.00%</span> — 半导体材料尾盘跌停</li>
+      <li><strong>快克智能</strong> <span class="down">-10.00%</span> — 芯片/机器人概念尾盘杀跌</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 综合研判 -->
+<h2 class="section-title">六、综合研判</h2>
+
+<div class="verdict neutral">
+  <h4>市场定性：结构性分化（偏震荡）</h4>
+  <p>
+    上证微涨+0.44%，但创业板-1.89%、科创50-2.48%，主板与双创严重割裂。
+    涨停221家说明短线情绪不差，但跌停股集中在前期强势的科技成长方向（有研新材、快克智能等），
+    资金从高位科技股向低位周期/消费板块切换的迹象明显。
+  </p>
+</div>
+
+<div class="verdict" style="background:rgba(243,156,18,0.08);border:1px solid rgba(243,156,18,0.25);">
+  <h4>资金主线</h4>
+  <p>
+    <strong>最强方向：氟化工/电子气体</strong> — 多氟多3连板、金宏气体20cm、永太科技涨停，日本酸素氦气涨价+半导体级氢氟酸涨价双催化。<br>
+    <strong>第二主线：抗体/医药</strong> — 板块涨停近10%，三生国健+10%、神州细胞+10%，创新药情绪回暖。<br>
+    <strong>第三方向：饲料/农业</strong> — 大禹生物+27%、傲农生物涨停，畜禽价格预期改善。<br>
+    <strong>退潮方向：高位AI/机器人</strong> — 卓郎智能72次开板封跌停、有研新材尾盘跌停、快克智能-10%。
+  </p>
+</div>
+
+<div class="verdict" style="background:rgba(231,76,60,0.06);border:1px solid rgba(231,76,60,0.2);">
+  <h4><span class="warn">关键风险提示</span></h4>
+  <p>
+    1. 科创50年内涨幅+60%，今日-2.48%是获利盘集中兑现信号，高位科技股须警惕回调加速。<br>
+    2. 创业板主力净流出-106.8亿，深市净流出-297.3亿，内资在双创方向持续减仓。<br>
+    3. 跌停虽少（11家），但卓郎智能72次开板封死跌停极为异常，说明高位题材股流动性在恶化。<br>
+    4. 抗体板块9.97%属于事件驱动型脉冲，持续性待观察。
+  </p>
+</div>
+
+<div class="verdict neutral">
+  <h4>可操作性评估</h4>
+  <p>
+    <strong>主板方向</strong>：氟化工/电子气体具备基本面+涨价双催化，是目前最有持续性的方向。<br>
+    <strong>双创方向</strong>：高位股获利了结压力大，等回调企稳再评估。<br>
+    <strong>涨停板</strong>：首板较多（~200+），但一字板比例高，实际可参与的首板有限。<br>
+    <strong>整体</strong>：结构性行情而非普涨，选对方向吃肉、选错方向吃面，分化剧烈。
+  </p>
+</div>
+
+<div class="footer">
+  数据来源：通达信 MCP (tdx-connector) | 报告生成时间: 2026-07-01 20:52 CST<br>
+  本报告由自动化任务「早盘大盘分析报告 (9:45)」生成，仅供参考，不构成投资建议。
+</div>
+
+</body>
+</html>

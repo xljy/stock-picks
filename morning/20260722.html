@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026年7月22日 09:45</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.6; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.header { text-align: center; padding: 30px 20px; margin-bottom: 24px; background: linear-gradient(135deg, #161b22, #1a2332); border-radius: 12px; border: 1px solid #30363d; }
+.header h1 { font-size: 28px; color: #f0f6fc; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; color: #8b949e; }
+.header .timestamp { font-size: 12px; color: #484f58; margin-top: 6px; }
+.grid { display: grid; gap: 20px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card { background: #161b22; border-radius: 10px; border: 1px solid #30363d; padding: 20px; }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #21262d; }
+.card-header .icon { font-size: 20px; }
+.card-header h2 { font-size: 16px; color: #f0f6fc; font-weight: 600; }
+.up { color: #e93030; }
+.down { color: #229d45; }
+.neutral { color: #8b949e; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.badge-up { background: rgba(233,48,48,0.15); color: #e93030; }
+.badge-down { background: rgba(34,157,69,0.15); color: #229d45; }
+.badge-warn { background: rgba(210,153,34,0.15); color: #d29922; }
+.badge-info { background: rgba(88,166,255,0.15); color: #58a6ff; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 8px 12px; color: #8b949e; font-weight: 500; border-bottom: 1px solid #21262d; }
+td { padding: 8px 12px; border-bottom: 1px solid #21262d; font-variant-numeric: tabular-nums; }
+tr:hover { background: rgba(88,166,255,0.05); }
+.star { color: #d29922; }
+.tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; margin-right: 4px; background: rgba(88,166,255,0.12); color: #58a6ff; }
+.tag-green { background: rgba(34,157,69,0.12); color: #229d45; }
+.tag-red { background: rgba(233,48,48,0.12); color: #e93030; }
+.tag-warn { background: rgba(210,153,34,0.12); color: #d29922; }
+.verdict { padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+.verdict-strong { background: rgba(233,48,48,0.08); border: 1px solid rgba(233,48,48,0.25); }
+.verdict-weak { background: rgba(34,157,69,0.08); border: 1px solid rgba(34,157,69,0.25); }
+.verdict-mixed { background: rgba(210,153,34,0.08); border: 1px solid rgba(210,153,34,0.25); }
+.verdict h3 { font-size: 15px; margin-bottom: 8px; }
+.verdict p { font-size: 13px; color: #8b949e; }
+.index-card { text-align: center; padding: 10px; }
+.index-card .name { font-size: 12px; color: #8b949e; margin-bottom: 4px; }
+.index-card .price { font-size: 22px; font-weight: 700; margin-bottom: 2px; }
+.index-card .chg { font-size: 14px; font-weight: 600; }
+.index-card .trend { font-size: 11px; color: #6e7681; margin-top: 4px; }
+.stat-box { text-align: center; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; }
+.stat-box .value { font-size: 24px; font-weight: 700; }
+.stat-box .label { font-size: 12px; color: #8b949e; margin-top: 4px; }
+.section { margin-bottom: 24px; }
+.section-title { font-size: 14px; color: #58a6ff; font-weight: 600; margin-bottom: 8px; padding: 8px 12px; background: rgba(88,166,255,0.06); border-left: 3px solid #58a6ff; border-radius: 0 8px 8px 0; }
+.footer { text-align: center; padding: 20px; font-size: 11px; color: #484f58; }
+.recovery-card { padding: 10px 14px; border-radius: 6px; margin-bottom: 8px; border: 1px solid #21262d; background: rgba(255,255,255,0.02); }
+.recovery-card .r-name { font-weight: 600; }
+.recovery-card .r-detail { font-size: 12px; color: #8b949e; margin-top: 4px; }
+hr { border: none; border-top: 1px solid #21262d; margin: 16px 0; }
+@media (max-width: 768px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>A股早盘快报 — 2026年7月22日 09:45</h1>
+  <div class="subtitle">周三早盘数据分析报告 · 数据采集于约 09:41</div>
+  <div class="timestamp">数据源：通达信 MCP · 北向资金：N/A</div>
+</div>
+
+<!-- ============ 1. 核心指数概览 ============ -->
+<div class="section">
+  <div class="section-title">一、核心指数概览</div>
+  <div class="grid grid-4">
+    <div class="card index-card">
+      <div class="name">上证指数</div>
+      <div class="price">3862.47</div>
+      <div class="chg down">-0.05%</div>
+      <div class="trend">低开高走，开3839.67→现3862.47</div>
+    </div>
+    <div class="card index-card">
+      <div class="name">深证成指</div>
+      <div class="price">14267.26</div>
+      <div class="chg up">+0.02%</div>
+      <div class="trend">低开翻红，开14169.97→现14267.26</div>
+    </div>
+    <div class="card index-card">
+      <div class="name">创业板指</div>
+      <div class="price">3667.02</div>
+      <div class="chg down">-0.51%</div>
+      <div class="trend">低开震荡，开3644.98→现3667.02</div>
+    </div>
+    <div class="card index-card">
+      <div class="name">科创50</div>
+      <div class="price">1892.11</div>
+      <div class="chg down">-0.58%</div>
+      <div class="trend">低开高走，开1874.78→现1892.11</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-2">
+  <div>
+    <div class="card">
+      <table>
+        <tr>
+          <th>指数</th><th>开盘</th><th>最高</th><th>最低</th><th>昨收</th><th>成交额(亿)</th><th>主力净额(亿)</th>
+        </tr>
+        <tr>
+          <td>上证</td><td>3839.67</td><td>3863.49</td><td>3839.67</td><td>3864.37</td><td>2440</td><td class="down">-22.16</td>
+        </tr>
+        <tr>
+          <td>深证</td><td>14169.97</td><td>14331.55</td><td>14159.91</td><td>14264.29</td><td>2899</td><td class="up">+9.49</td>
+        </tr>
+        <tr>
+          <td>创业板</td><td>3644.98</td><td>3694.90</td><td>3643.51</td><td>3685.97</td><td>1311</td><td class="down">-9.90</td>
+        </tr>
+        <tr>
+          <td>科创50</td><td>1874.78</td><td>1916.12</td><td>1874.78</td><td>1903.16</td><td>379</td><td class="down">-18.47</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div>
+    <div class="verdict verdict-mixed">
+      <h3>市场定性：震荡偏弱·结构分化</h3>
+      <p>四大指数集体低开后逐步修复，深证率先翻红，上证微跌近收平。科创板跌幅居前（-0.58%），主力净流出18.47亿。深市、创业板有承接回拉，市场整体处于低开修复通道，但反弹力度有限。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2. 市场情绪仪表盘 ============ -->
+<div class="section">
+  <div class="section-title">二、市场情绪仪表盘</div>
+  <div class="grid grid-3">
+    <div class="card stat-box">
+      <div class="value up">2562</div>
+      <div class="label">上涨家数</div>
+    </div>
+    <div class="card stat-box">
+      <div class="value" style="color:#f0f6fc;">5/7</div>
+      <div class="label">涨停/跌停</div>
+      <div style="font-size:11px;color:#8b949e;margin-top:2px;">涨跌停比 0.71:1 偏空</div>
+    </div>
+    <div class="card stat-box">
+      <div class="value" style="color:#d29922;">66.7%</div>
+      <div class="label">炸板率</div>
+      <div style="font-size:11px;color:#8b949e;margin-top:2px;">炸10 / (涨停5+炸10)</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-3" style="margin-top:12px;">
+  <div class="card stat-box">
+    <div class="value" style="font-size:18px;color:#f0f6fc;">~7029亿</div>
+    <div class="label">预估全日成交额</div>
+    <div style="font-size:11px;color:#8b949e;">开盘15分钟合计</div>
+  </div>
+  <div class="card stat-box">
+    <div class="value" style="font-size:18px;color:#e93030;">3板</div>
+    <div class="label">最高连板</div>
+    <div style="font-size:11px;color:#8b949e;">美利云(算力租赁,一字板)</div>
+  </div>
+  <div class="card stat-box">
+    <div class="value" style="font-size:18px;color:#8b949e;">N/A</div>
+    <div class="label">北向资金</div>
+    <div style="font-size:11px;color:#484f58;">数据无法获取</div>
+  </div>
+</div>
+
+<!-- ============ 3. 热点板块 ============ -->
+<div class="section">
+  <div class="section-title">三、早盘热点主题</div>
+  <div class="card">
+    <table>
+      <tr>
+        <th>#</th><th>主题方向</th><th>代表个股</th><th>涨幅</th><th>催化逻辑</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><span class="badge badge-info">医疗器械</span></td>
+        <td>五洲医疗 / 药康生物 / 海圣医疗</td>
+        <td><span class="up">+20%/+17%/+15.6%</span></td>
+        <td style="font-size:12px;color:#8b949e;">CXO/CRO全线走强，医药防御属性凸显</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span class="badge badge-info">算力租赁</span></td>
+        <td>美利云(3板) / 群兴玩具(首板)</td>
+        <td><span class="up">+10%/+10%</span></td>
+        <td style="font-size:12px;color:#8b949e;">Kimi K3算力紧缺暂停新用户订阅</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span class="badge badge-info">先进封装/芯片</span></td>
+        <td>托伦斯 / 臻宝科技 / 铜牛信息</td>
+        <td><span class="up">+20%/+11%/+10%</span></td>
+        <td style="font-size:12px;color:#8b949e;">华为韬定律芯片预期+长鑫科技上市催化</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span class="badge badge-info">医药/CXO</span></td>
+        <td>药康生物 / 莱美药业 / 博瑞医药</td>
+        <td><span class="up">+17%/+15%/+5%</span></td>
+        <td style="font-size:12px;color:#8b949e;">CXO板块低位反弹，莱美药业连涨</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span class="badge badge-info">化学原料</span></td>
+        <td>长裕集团(2板) / 金牛化工</td>
+        <td><span class="up">+10%/+4.1%</span></td>
+        <td style="font-size:12px;color:#8b949e;">周期复苏+次新股情绪</td>
+      </tr>
+    </table>
+    <div style="margin-top:12px;font-size:12px;color:#8b949e;">
+      注意：涨停5只全部为一字板，主线方向尚未出现换手板确认。算力租赁逻辑最强（有实质催化），医疗器械暂时缺乏板块合力。
+    </div>
+  </div>
+</div>
+
+<!-- ============ 4. 早盘修复侦察 ============ -->
+<div class="section">
+  <div class="section-title">四、早盘修复侦察（超跌修复模式）</div>
+  <div class="card">
+    <div style="font-size:12px;color:#8b949e;margin-bottom:12px;">
+      扫描范围：昨日（07.21）跌幅超5%的非ST个股共128只，跌幅3%~7%共333只。
+      筛选条件：今早低开幅度温和（-1%~+2%）、价格高于开盘价、无恐慌抛售。
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★★</span> 世茂能源 <span class="tag tag-red">605028</span></div>
+      <div class="r-detail">昨-5.54% → 今<span class="up">+10.02%涨停</span> | 低开后封板，修复强度最高 | 现价24.37</div>
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★</span> 科力股份 <span class="tag">920088</span></div>
+      <div class="r-detail">昨-9.78% → 今<span class="up">+12.86%</span> | 北交所标的，弹性修复 | 现价56.00</div>
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★</span> 通源石油 <span class="tag tag-red">300164</span></div>
+      <div class="r-detail">昨-8.77% → 今<span class="up">+8.36%</span> | 油服板块超跌反弹 | 昨换手36%，轻度放量企稳 | 现价12.06</div>
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★</span> 潜能恒信 <span class="tag tag-red">300191</span></div>
+      <div class="r-detail">昨-7.66% → 今<span class="up">+6.03%</span> | 油服板块同步修复 | 现价27.98</div>
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★</span> 凯瑞德 <span class="tag">002072</span></div>
+      <div class="r-detail">昨-5.87% → 今<span class="up">+5.92%</span> | 低开翻红超5% | 现价6.62</div>
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★</span> 万邦医药 <span class="tag tag-red">301520</span></div>
+      <div class="r-detail">昨-12.01% → 今<span class="up">+5.52%</span> | 医药股超跌修复 | 昨换手60%巨量 | 现价49.49</div>
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★</span> 九洲集团 <span class="tag tag-red">300040</span></div>
+      <div class="r-detail">昨-5.12% → 今<span class="up">+5.09%</span> | 电力设备反弹 | 昨换手23.6% | 现价6.81</div>
+    </div>
+
+    <div class="recovery-card" style="border-left:3px solid #d29922;">
+      <div class="r-name"><span class="star">★★</span> 博瑞医药 <span class="tag">688166</span></div>
+      <div class="r-detail">昨-3.60% → 今<span class="up">+5.04%</span> | 医药+CXO方向持续修复 | 现价36.86</div>
+    </div>
+
+    <div style="margin-top:12px;font-size:12px;color:#8b949e;">
+      修复标的主题分布：油服（通源石油+潜能恒信）、医药（万邦医药+博瑞医药）、电力（九洲集团+世茂能源）。修复广度中等，油服方向出现2只联动修复，有一定板块特征。整体修复力度偏强（1只涨停级+7只翻红超5%）。
+    </div>
+  </div>
+</div>
+
+<!-- ============ 5. 连板梯队 ============ -->
+<div class="section">
+  <div class="section-title">五、连板梯队</div>
+  <div class="card">
+    <table>
+      <tr><th>梯队</th><th>个股</th><th>连板</th><th>主题</th><th>板型</th><th>封单额(亿)</th></tr>
+      <tr>
+        <td><span class="badge badge-up">3板</span></td>
+        <td>美利云 <span class="tag">000815</span></td>
+        <td>3天3板</td>
+        <td>算力租赁+数据中心+国企改革</td>
+        <td><span class="tag tag-red">一字板</span></td>
+        <td>0.98</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-up">2板</span></td>
+        <td>爱丽家居 <span class="tag">603221</span></td>
+        <td>2天2板</td>
+        <td>股权转让+并购存储测试</td>
+        <td><span class="tag tag-red">一字板</span></td>
+        <td>24.32</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-up">2板</span></td>
+        <td>长裕集团 <span class="tag">603407</span></td>
+        <td>5天3板</td>
+        <td>化学原料+次新+比亚迪概念</td>
+        <td><span class="tag tag-red">一字板</span></td>
+        <td>0.03</td>
+      </tr>
+    </table>
+    <div style="margin-top:12px;font-size:12px;color:#8b949e;">
+      连板梯队特征：最高3板（美利云），2板仅2只，首板2只（五洲医疗/群兴玩具全部一字板）。所有连板股均为开盘即一字板，无换手承接，实质可参与度为零。连板梯队极度单薄，昨日2板股信通电子/依依股份/立霸股份今日均一字跌停。
+    </div>
+	  <hr>
+    <div style="font-size:13px;">
+      <strong style="color:#8b949e;">跌停预警：</strong>
+      <span style="font-size:12px;">
+        晶华新材 <span class="badge badge-down">5连一字跌停</span>（人形机器人+业绩预增反转） |
+        甘咨询 <span class="badge badge-down">3连一字跌停</span>（算力租赁退潮） |
+        依依股份/信通电子/立霸股份 <span class="badge badge-down">2连一字跌停</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 6. 早盘异动信号 ============ -->
+<div class="section">
+  <div class="section-title">六、早盘异动信号</div>
+  <div class="grid grid-2">
+    <div class="card">
+      <div style="font-size:14px;color:#f0f6fc;margin-bottom:8px;">集合竞价异常</div>
+      <div style="font-size:12px;color:#8b949e;">
+        <div style="margin-bottom:8px;">
+          <span class="badge badge-up">一字涨停竞价</span>
+          <strong>五洲医疗(+20%)</strong> 09:25封板 — 医疗器械首板<br>
+          <strong>托伦斯(+20%)</strong> 高开未一字 — 先进封装/芯片<br>
+          <strong>群兴玩具(+10.02%)</strong> 09:25封板 — 算力租赁<br>
+          <strong>美利云(+10.03%)</strong> 09:25封板 — 3板算力
+        </div>
+        <div style="margin-bottom:8px;">
+          <span class="badge badge-down">一字跌停竞价</span>
+          <strong>晶华新材(-9.98%)</strong> 5连一字跌停 — 人形机器人退潮<br>
+          <strong>甘咨询(-9.99%)</strong> 3连一字跌停 — 算力租赁退潮<br>
+          <strong>依依股份/信通电子/立霸股份</strong> 2连一字跌停
+        </div>
+        <div>
+          <span class="badge badge-warn">值得注意</span>
+          探路者(-7.79%) 昨跌-7.23%今日继续重挫，无修复
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:14px;color:#f0f6fc;margin-bottom:8px;">开盘15分钟急拉/急跌</div>
+      <div style="font-size:12px;">
+        <div style="margin-bottom:8px;">
+          <span class="badge badge-up">急拉</span>
+          <strong>通源石油</strong> <span class="up">+8.36%</span> 昨跌-8.77%低开后急速拉升<br>
+          <strong>药康生物</strong> <span class="up">+17.09%</span> CXO龙头大幅拉升<br>
+          <strong>莱美药业</strong> <span class="up">+15.04%</span> 医药连涨加速<br>
+          <strong>博瑞医药</strong> <span class="up">+5.04%</span> 昨跌-3.6%今日大幅修复
+        </div>
+        <div>
+          <span class="badge badge-down">急跌</span>
+          <strong>智明达</strong> <span class="down">-11.97%</span> 昨跌-20%今日续跌<br>
+          <strong>安联锐视</strong> <span class="down">-5.02%</span> 昨跌-11.53%今日继续<br>
+          <strong>亿道信息</strong> <span class="down">-6.80%</span> 昨跌-10%连续重挫
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 7. 综合研判 ============ -->
+<div class="section">
+  <div class="section-title">七、综合研判</div>
+  <div class="card">
+    <div class="verdict verdict-mixed">
+      <h3>市场定性：震荡偏弱 · 冰点过渡阶段</h3>
+      <p>四大指数集体低开后逐步修复，深证率先翻红。涨停仅5只（全部一字板），跌停7只，涨跌停比0.71:1空头占优。炸板率66.7%极高。连板梯队单薄（最高3板且为一字板），昨日连板股集体崩跌。市场处于冰点→修复的过渡阶段，修复仅体现在指数层面，个股赚钱效应极弱。</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div>
+        <div style="font-size:14px;color:#d29922;margin-bottom:8px;">关键风险提示</div>
+        <ul style="font-size:13px;color:#8b949e;padding-left:20px;">
+          <li><strong>连板断板潮：</strong>昨日涨停的信通电子/依依股份/立霸股份今日均一字跌停，高位连板风险释放极度剧烈</li>
+          <li><strong>晶华新材5连一字跌停：</strong>人形机器人概念全面退潮，无任何承接</li>
+          <li><strong>涨停全部一字板：</strong>5只涨停无一换手板，市场无真实做多意愿，打板无法参与</li>
+          <li><strong>炸板率66.7%：</strong>昨日涨停股今日大部分回落，封板意愿极弱</li>
+          <li><strong>科创50主力流出-18.47亿：</strong>科技/芯片方向资金持续撤离</li>
+          <li><strong>AI算力分化剧烈：</strong>美利云/群兴玩具一字涨停 vs 甘咨询3连一字跌停，同题材冰火两重天</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:14px;color:#58a6ff;margin-bottom:8px;">积极信号</div>
+        <ul style="font-size:13px;color:#8b949e;padding-left:20px;">
+          <li><strong>2562家上涨：</strong>约50%+个股翻红，指数层面有一定承接</li>
+          <li><strong>四大指数全部低开高走：</strong>开盘恐慌后资金逐步介入</li>
+          <li><strong>医药/CXO方向走强：</strong>药康生物+17%/莱美药业+15%形成局部主线</li>
+          <li><strong>超跌修复有涨停级标的：</strong>世茂能源★★★涨停修复，油服方向联动修复</li>
+          <li><strong>跌停仅7只：</strong>与昨日几乎持平，未扩大</li>
+          <li><strong>Kimi算力催化真实：</strong>算力租赁方向有实质逻辑支撑</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <div style="font-size:14px;color:#f0f6fc;margin-bottom:8px;">可操作性评估</div>
+    <div style="font-size:13px;color:#8b949e;line-height:1.8;">
+      <strong>短线情绪：</strong>冰点（陈小群情绪周期定位）。涨停稀少+炸板率极高+连板断板潮，属于冰点期特征。<br>
+      <strong>参与难度：</strong>极高。涨停全部一字板，无换手介入机会。炸板率高表明今日封板意愿弱。<br>
+      <strong>超跌修复：</strong>修复广度中等（8只★级以上约6%），修复力度偏强（1只涨停级），油服方向出现板块联动，医药方向持续走强。整体修复质量尚可。<br>
+      <strong>安全边际：</strong>低。连板断板率100%（昨日2板全部跌停），任何追高操作风险极大。
+    </div>
+
+    <hr>
+
+    <div style="font-size:14px;color:#f0f6fc;margin-bottom:8px;">早盘修复标的整体评估</div>
+    <div style="font-size:13px;color:#8b949e;line-height:1.8;">
+      <strong>修复数量：</strong>昨日跌超5%的128只中，约95只今日翻红，翻红率约74%。但翻红超5%的仅8只，★级以上修复率约6.3%。<br>
+      <strong>修复力度分布：</strong>★★★涨停级1只（世茂能源），★★级7只，★级约87只。大部分为小幅回弹。<br>
+      <strong>板块效应：</strong>油服方向（通源石油+潜能恒信）出现2只联动修复，医药方向（万邦医药+博瑞医药+药康生物）多只修复走强，存在局部板块效应。<br>
+      <strong>结论：</strong>修复广度较高但深度不足，仅少数标的走出大阳线。油服和医药方向有板块联动迹象，后续需关注是否扩散。
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  A股早盘快报 · 2026年7月22日 09:45 | 数据源：通达信 MCP (tdx-connector) | 免责声明：本报告仅供研究参考，不构成投资建议<br>
+  注：板块排名数据仅通过个股涨幅聚类推定，非官方板块指数数据
+</div>
+
+</div>
+</body>
+</html>

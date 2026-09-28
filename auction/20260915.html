@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9:25竞价扫描 收盘反查 · 2026-09-15</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--tx:#e6edf3;--dim:#8b949e;--up:#f85149;--dn:#3fb950;--warn:#d29922;--acc:#58a6ff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Microsoft YaHei","Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.6;}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 18px 60px;}
+h1{font-size:20px;margin:0 0 4px;font-weight:700;letter-spacing:.5px;}
+.sub{color:var(--dim);font-size:12.5px;margin-bottom:18px;}
+h2{font-size:15.5px;margin:26px 0 10px;padding-left:9px;border-left:3px solid var(--acc);font-weight:700;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 6px;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px;}
+.card .k{color:var(--dim);font-size:11.5px;margin-bottom:3px;}
+.card .v{font-size:21px;font-weight:700;line-height:1.2;}
+.card .n{color:var(--dim);font-size:11px;margin-top:2px;}
+.card.hot{border-color:#7d2b28;}
+.card.cold{border-color:#1f5c34;}
+.card.warnc{border-color:#7a5800;}
+table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:12.8px;}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:center;white-space:nowrap;}
+th{background:#1c2128;color:#c9d1d9;font-weight:600;}
+td.l,th.l{text-align:left;}
+tr:nth-child(even) td{background:#12171e;}
+.up{color:var(--up);font-weight:700;}
+.dn{color:var(--dn);font-weight:700;}
+.dim{color:var(--dim);}
+.warn{color:var(--warn);}
+.tag{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11.5px;border:1px solid var(--line);}
+.tag.ok{background:#12261a;border-color:#2b6a3f;color:#56d364;}
+.tag.bad{background:#2a1416;border-color:#7d2b28;color:#ff7b72;}
+.tag.na{background:#1c2128;color:var(--dim);}
+.alert{background:#2a1f04;border:1px solid var(--warn);border-radius:8px;padding:11px 14px;margin:12px 0;font-size:13px;}
+.alert strong{color:var(--warn);}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 14px;margin:10px 0;font-size:13px;color:#c9d1d9;}
+ul{margin:6px 0 6px 4px;padding-left:20px;}
+li{margin:4px 0;}
+.foot{color:var(--dim);font-size:11.5px;margin-top:26px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>9:25 竞价扫描 · 收盘反查报告</h1>
+<div class="sub">交易日 T = 2026-09-15（akshare 交易日历确认，T_PREV = 2026-09-14） ｜ 生成时间 2026-09-15 17:0x ｜ 数据源：akshare-东财涨停池 + 腾讯 qt.gtimg.cn 行情</div>
+
+<div class="alert">
+<strong>⚠️ 本日反查为「重度降级 + 口径失真」双重状态，核心指标不可直接采信：</strong>
+<ul style="margin-bottom:0">
+<li><strong>降级原因</strong>：<code>zt_925_report_20260915.html</code> 不存在（9:25 链路已于 9/14 整体下线），且无当日快照 → <strong>扫描筛出、命中、误杀、开盘价区间规则检验全部无数据</strong>，本报告降级为「仅候选池晋级统计」。</li>
+<li><strong>口径失真原因</strong>：候选池 <code>zt_925_candidates.json</code> 的 date = <strong>20260911</strong>，而正确值应为 T_PREV = 20260914 → <strong>候选池非当日生成</strong>（9:10 预备任务已随链路删除）。池内 40 只均为 <strong>9/11 首板股</strong>，今日实测的是它们「第 2 个交易日之后」的续板情况。</li>
+<li><strong>实证</strong>：今日 4 只「晋级」全部是 9/14 已晋级的 11 只的子集（交集 4/4，连续封板：闽东电力 5 板、中新赛克 4 板、双星新材 3 板、澳弘电子 3 板）；9/14 未晋级的 29 只今日 <strong>0 只封板</strong> → 今日「晋级率 10%」几乎不含新增晋级信息，<strong>不可作为竞价晋级率样本</strong>。</li>
+</ul>
+</div>
+
+<h2>1. 报告头指标卡</h2>
+<div class="cards">
+  <div class="card"><div class="k">交易日</div><div class="v" style="font-size:17px">2026-09-15</div><div class="n">周二 · T_PREV 20260914</div></div>
+  <div class="card warnc"><div class="k">候选池总数</div><div class="v">40</div><div class="n" style="color:var(--warn)">⚠️ date=20260911 非当日生成</div></div>
+  <div class="card"><div class="k">今日晋级涨停</div><div class="v up">4</div><div class="n">全为 9/14 已晋级者续板</div></div>
+  <div class="card warnc"><div class="k">晋级率（失真）</div><div class="v warn">10.0%</div><div class="n">10日最低 · 口径无效</div></div>
+  <div class="card"><div class="k">扫描筛出数</div><div class="v dim">—</div><div class="n">报告缺失，无数据</div></div>
+  <div class="card"><div class="k">筛出命中封板</div><div class="v dim">—</div><div class="n">报告缺失，无数据</div></div>
+  <div class="card"><div class="k">过滤误杀</div><div class="v dim">—</div><div class="n">报告缺失，无数据</div></div>
+</div>
+
+<h2>2. 数据口径说明</h2>
+<div class="note">
+<ul>
+<li><strong>涨停池来源</strong>：TDX 涨停池接口返回 <code>HTTP 401 Unauthorized</code>（连接不可用）→ 降级 <strong>akshare <code>stock_zt_pool_em(20260915)</code>（东方财富口径）</strong>，共 <strong>32 只</strong>。</li>
+<li><strong>口径差异</strong>：常规差异存在于东财「收盘封板有效」与 TDX「盘中最严判定」之间（历史样本差 0~3 只）。今日 <code>zt_1700_data_20260915.json</code> <strong>尚未生成</strong>（17:00 流水线未落盘），无法做当日交叉核对。</li>
+<li><strong>行情兜底链</strong>：<code>mcp__tdx-connector__tdx_quotes</code> 未加载（TDX MCP 不可用）→ <code>akshare stock_zh_a_hist</code> 历史上受代理拦截 → 直接使用 <strong>腾讯 <code>qt.gtimg.cn</code></strong>，10/10 全部取到收盘数据，落盘 <code>zt_925_close_20260915.json</code>。</li>
+<li><strong>日期校验</strong>：脚本已按交易日历校验，抛出 <code>[WARN] 候选池date(20260911) != T-1(20260914)</code> → 已在报告与样本库中标注。</li>
+</ul>
+</div>
+
+<h2>3. 扫描筛出标的 vs 实际收盘</h2>
+<div class="note dim">
+当日 <code>zt_925_report_20260915.html</code> 不存在，且 <code>zt_925_capture_20260915.json</code> 亦不存在（无 9:25 快照可复算）→ <strong>本节无数据</strong>。开盘价过滤清单、最终观察清单、达标/放弃分组均无法重建。历史上该状态已连续出现（9/4、9/7、9/8、9/9、9/10、9/14、9/15），本反查的「规则检验」职能自 9/4 起长期空转。
+</div>
+
+<h2>4. 候选池晋级完整清单（今日封板）</h2>
+<table>
+<thead><tr>
+<th>代码</th><th class="l">名称</th><th>评级</th><th>连板</th><th>首封时间</th><th>今日炸板次数</th><th>封单额</th><th>今日开盘涨幅</th><th>今日收盘涨跌</th><th>结果</th><th>ML概率</th>
+</tr></thead>
+<tbody>
+<tr><td>000993</td><td class="l">闽东电力</td><td>S</td><td>5</td><td>09:30:54</td><td>28</td><td>1364.3 万</td><td class="up">+4.98%</td><td class="up">+10.02%</td><td><span class="tag ok">封板</span></td><td class="dim">0.371</td></tr>
+<tr><td>002912</td><td class="l">中新赛克</td><td>S</td><td>4</td><td>09:25:00</td><td>5</td><td>6310.4 万</td><td class="up">+10.02%</td><td class="up">+10.02%</td><td><span class="tag ok">封板</span></td><td class="dim">0.580</td></tr>
+<tr><td>002585</td><td class="l">双星新材</td><td>B+</td><td>3</td><td>09:36:21</td><td>1</td><td>15400.0 万</td><td class="up">+3.28%</td><td class="up">+10.04%</td><td><span class="tag ok">封板</span></td><td class="dim">—</td></tr>
+<tr><td>605058</td><td class="l">澳弘电子</td><td>C</td><td>3</td><td>09:37:05</td><td>38</td><td>575.9 万</td><td class="dn">−0.93%</td><td class="up">+9.99%</td><td><span class="tag ok">封板</span></td><td class="dim">—</td></tr>
+</tbody>
+</table>
+<div class="note">
+<strong>漏因分析（候选池 40 只中 36 只未封板）</strong>：本次无「漏报」概念——因候选池未刷新，36 只未封板中的 29 只本就已在 9/14 落榜，今日再度不封属正常；剩余 7 只为 9/14 晋级后今日断板（000823 / 000980 / 002560 / 600088 / 600876 / 603439 / 605069）。<strong>今日不存在被遗漏的「新晋级」标的</strong>：候选池 40 只中，9/14 未晋级的 29 只今日封板数为 <strong>0</strong>。
+</div>
+
+<h2>5. 分级有效性检验</h2>
+<table>
+<thead><tr><th>评级</th><th>今日 pool</th><th>今日晋级</th><th>今日晋级率</th><th>10日累计 pool</th><th>10日累计晋级</th><th>10日累计晋级率</th></tr></thead>
+<tbody>
+<tr><td>S</td><td>4</td><td class="up">2</td><td class="up">50.0%</td><td>49</td><td>19</td><td class="up">38.8%</td></tr>
+<tr><td>A+</td><td>0</td><td>—</td><td class="dim">n/a</td><td>74</td><td>14</td><td>18.9%</td></tr>
+<tr><td>A</td><td>4</td><td>0</td><td class="dn">0.0%</td><td>174</td><td>30</td><td>17.2%</td></tr>
+<tr><td>B+</td><td>10</td><td>1</td><td>10.0%</td><td>63</td><td>13</td><td>20.6%</td></tr>
+<tr><td>B</td><td>5</td><td>0</td><td class="dn">0.0%</td><td>73</td><td>14</td><td>19.2%</td></tr>
+<tr><td>C</td><td>5</td><td>1</td><td>20.0%</td><td>52</td><td>10</td><td>19.2%</td></tr>
+<tr><td>D</td><td>12</td><td>0</td><td class="dn">0.0%</td><td>71</td><td>6</td><td class="dn">8.5%</td></tr>
+</tbody>
+</table>
+<div class="note">
+<strong>结论（客观陈述）</strong>
+<ul>
+<li><strong>A+ 与 A 细分层：10 日无任何区分度</strong>。累计 A+ 18.9% vs A 17.2%，差 <strong>1.7pp</strong>；逐日胜负 <strong>A+ 胜 4 次 / A 胜 4 次 / 2 日 A+ 无样本</strong>，不存在任何连续方向（最长连续 2 日），<strong>未满足「A ≥ A+ 连续 5 日」的重校准触发条件</strong>。</li>
+<li><strong>中部塌陷是更稳定的事实</strong>：A+ / A / B+ / B / C 五档 10 日累计率全部落在 <strong>17.2%~20.6%</strong> 区间（极差 3.4pp），中部五档对结果基本无预测力。</li>
+<li><strong>两端仍有效</strong>：S 档 38.8%（最高，为中部均值 2.1 倍）；D 档 8.5%（最低，连续 10 日剔除方向正确）。</li>
+<li><strong>S 档内部今日极端两极</strong>：4 只 S 股中 2 只封板（闽东电力 5 板、中新赛克 4 板一字），2 只 <strong>跌停</strong>（瑞尔特 −10.02%、远望谷 −9.94%，均为连续第 2 日跌停）。</li>
+<li><strong>ML 概率排序连续第 2 日反向</strong>：瑞尔特 0.798（TOP1）→ −10.02%；中新赛克 0.580 → +10.02%；远望谷 0.414 → −9.94%；闽东电力 0.371（末位）→ +10.02%。4 只候选的概率序与收盘序完全无关。</li>
+</ul>
+</div>
+
+<h2>6. 开盘价区间规则今日正反检验</h2>
+<div class="note dim">当日扫描报告缺失 → <strong>无规则判定记录，无法执行正/反检验与误杀统计</strong>（连续第 7 个交易日该职能无数据）。以下仅列出可核实的开盘价客观事实，<strong>不构成规则结论</strong>：</div>
+<table>
+<thead><tr><th>代码</th><th class="l">名称</th><th>评级</th><th>今日开盘涨幅</th><th>今日收盘涨跌</th><th>最高价 / 涨停价</th><th>结果</th></tr></thead>
+<tbody>
+<tr><td>000993</td><td class="l">闽东电力</td><td>S</td><td class="up">+4.98%</td><td class="up">+10.02%</td><td>16.80 / 16.80</td><td><span class="tag ok">封板</span></td></tr>
+<tr><td>002912</td><td class="l">中新赛克</td><td>S</td><td class="up">+10.02%</td><td class="up">+10.02%</td><td>28.45 / 28.45</td><td><span class="tag ok">一字封板</span></td></tr>
+<tr><td>002585</td><td class="l">双星新材</td><td>B+</td><td class="up">+3.28%</td><td class="up">+10.04%</td><td>12.06 / 12.06</td><td><span class="tag ok">封板</span></td></tr>
+<tr><td>605058</td><td class="l">澳弘电子</td><td>C</td><td class="dn">−0.93%</td><td class="up">+9.99%</td><td>40.30 / 40.30</td><td><span class="tag ok">低开封板</span></td></tr>
+<tr><td>002848</td><td class="l">高斯贝尔</td><td>A</td><td class="dn">−1.56%</td><td class="up">+1.36%</td><td>16.16 / 16.20</td><td><span class="tag bad">触板未封</span></td></tr>
+<tr><td>605258</td><td class="l">协和电子</td><td>A</td><td class="dn">−1.23%</td><td class="up">+2.82%</td><td>36.96 / 38.57</td><td><span class="tag bad">未封</span></td></tr>
+<tr><td>600876</td><td class="l">凯盛新能</td><td>A</td><td class="dn">−3.34%</td><td class="dn">−6.06%</td><td>9.77 / 10.53</td><td><span class="tag bad">下跌</span></td></tr>
+<tr><td>600207</td><td class="l">安彩高科</td><td>A</td><td class="dn">−1.18%</td><td class="dn">−5.29%</td><td>5.08 / 5.61</td><td><span class="tag bad">下跌</span></td></tr>
+<tr><td>002790</td><td class="l">瑞尔特</td><td>S</td><td class="dn">−3.10%</td><td class="dn">−10.02%</td><td>8.19 / 9.22</td><td><span class="tag bad">跌停</span></td></tr>
+<tr><td>002161</td><td class="l">远望谷</td><td>S</td><td class="dn">−8.98%</td><td class="dn">−9.94%</td><td>6.74 / 7.96</td><td><span class="tag bad">跌停</span></td></tr>
+</tbody>
+</table>
+<div class="note">
+<strong>可观察的客观分布</strong>：今日 4 只封板标的开盘涨幅横跨 <strong>−0.93% ~ +10.02%</strong>（含低开、+3.28%、+4.98%、一字），而 6 只未封标的开盘集中在 <strong>−1.18% ~ −8.98%</strong>——但 A 档 4 只全部小幅低开（−1.18%~−3.34%）且全部未封，S 档低开 2 只中 1 封 1 跌停。<strong>开盘价单因子今日无判别力，方向不一致。</strong>
+</div>
+
+<h2>7. 核心事实列表（仅当日数据事实）</h2>
+<ul>
+<li>今日涨停池 <strong>32 只</strong>（东财口径），较 9/14 的 55 只 <strong>减少 23 只（−41.8%）</strong>，为 10 日样本内最低值（前低 9/10 的 35 只）。</li>
+<li>涨停池结构：首板 <strong>25 只（78.1%）</strong>、2 板 3 只、3 板 2 只、4 板 1 只、5 板 1 只（闽东电力，样本期最高连板）。</li>
+<li>封板质量：<strong>23/32（71.9%）盘中炸过板</strong>；首封时间 ≤09:30 仅 <strong>2 只</strong>（中新赛克 09:25:00、闽东电力 09:30:54）。</li>
+<li>今日封单额 TOP3：华正新材 2.92 亿（首板）、双星新材 1.54 亿（3 板）、大金重工 1.49 亿（首板）。</li>
+<li>候选池 40 只中 4 只封板，全部为 9/14 已封板标的的续板，无新增晋级。</li>
+<li>候选池内 S 档 4 只：2 只封板、<strong>2 只跌停</strong>，无中间状态。</li>
+<li>候选池内 A 档 4 只全部收阴或微红（+1.36% / +2.82% / −6.06% / −5.29%），0 只封板。</li>
+<li>ML 概率 TOP1（瑞尔特 0.798）连续第 2 个交易日跌停；概率末位（闽东电力 0.371）封 5 板。</li>
+<li>数据缺口：TDX 行情/涨停池接口 401 不可用；<code>zt_1700_data_20260915.json</code> 未生成；当日 9:25 报告与快照均不存在。</li>
+</ul>
+
+<h2>8. 累积样本库状态</h2>
+<div class="note">
+<ul>
+<li><code>zt_925_review_history.json</code> 累计 <strong>10 个交易日</strong>（20260902、0903、0904、0907、0908、0909、0910、0911、0914、0915）→ <strong>已触达「≥10 日」样本门槛</strong>。</li>
+<li>晋级率序列：15.7% → 16.7% → 15.2% → 31.7% → 18.9% → 20.3% → 18.8% → 20.0% → 27.5% → <strong>10.0%（本日，口径失真）</strong>。</li>
+<li><strong>脚本已写入的 20260915 样本（pool 40 / promoted 4 / rate 10.0%）应视为无效样本</strong>，原因是候选池 date=20260911 未刷新，测量的是 T−2 首板股的续板率而非隔日晋级率。</li>
+<li>重校准触发判定：<strong>两项显式条件均未满足</strong> —— ①「A 级晋级率连续 5 日 ≥ A+」实际为 A+/A 逐日 4:4 交替、最长连续 2 日；②「>5% 误杀率 >50%」因扫描报告连续 7 日缺失而<strong>从未产生可计算数据</strong>。</li>
+<li><strong>但样本已达 10 日门槛且中部五档 10 日累计率极差仅 3.4pp（17.2%~20.6%）、A+/A 胜负 4:4</strong>——「细分层无区分度」本身已构成持续性结论，建议在周五重训练中单独核查中部五档特征权重，并同时核查 ML 概率高分段（连续 2 日反向）。</li>
+</ul>
+</div>
+
+<div class="foot">
+报告由 <code>zt_925_review.py --date 20260915</code> 数据 + 收盘后行情补全生成 ｜ 只读操作，未修改 <code>zt_925_candidates.json</code> 与历史报告 ｜ 本报告仅陈述客观数据与统计结论，不含任何操作导向内容。
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026年7月15日 09:45</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --red: #e93030;
+    --green: #229d45;
+    --red-bg: rgba(233,48,48,0.08);
+    --green-bg: rgba(34,157,69,0.08);
+    --accent: #58a6ff;
+    --accent-bg: rgba(88,166,255,0.1);
+    --gold: #d2991d;
+    --gold-bg: rgba(210,153,29,0.1);
+    --orange: #db6d28;
+    --orange-bg: rgba(219,109,40,0.1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 32px 20px 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #e93030, #229d45);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .header .timestamp {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 28px 0 16px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    color: var(--text);
+  }
+
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 768px) { .index-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .index-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    transition: border-color 0.2s;
+  }
+  .index-card:hover { border-color: var(--accent); }
+  .index-card .name {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .index-card .price {
+    font-size: 26px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 4px;
+  }
+  .index-card .chg {
+    font-size: 15px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .index-card .meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .index-card .trend-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  .red { color: var(--red); }
+  .green { color: var(--green); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    font-size: 14px;
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-row .label { color: var(--text-secondary); }
+  .metric-row .value { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .gauge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+  }
+  .gauge-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+  }
+  .gauge-bar .fill-red {
+    background: var(--red);
+    border-radius: 4px 0 0 4px;
+  }
+  .gauge-bar .fill-green {
+    background: var(--green);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .sentiment-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    padding: 10px 8px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    font-variant-numeric: tabular-nums;
+  }
+  tr:hover td { background: rgba(88,166,255,0.03); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag-zheng { background: var(--red-bg); color: var(--red); }
+  .tag-die { background: var(--green-bg); color: var(--green); }
+  .tag-star { background: var(--gold-bg); color: var(--gold); }
+  .tag-neutral { background: rgba(139,148,158,0.15); color: var(--text-secondary); }
+  .tag-strong { background: var(--red-bg); color: var(--red); font-weight: 700; }
+  .tag-weak { background: var(--green-bg); color: var(--green); font-weight: 700; }
+
+  .recovery-stock {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .recovery-stock .stock-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 120px;
+  }
+  .recovery-stock .stock-name { font-weight: 700; font-size: 15px; }
+  .recovery-stock .stock-code { font-size: 12px; color: var(--text-muted); }
+  .recovery-stock .stock-detail {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+  .recovery-stock .stock-detail i { color: var(--text-muted); font-style: normal; margin-right: 4px; }
+  .recovery-stock .stars { font-size: 16px; }
+
+  .alert-item {
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .alert-warn { background: var(--orange-bg); border-left: 3px solid var(--orange); }
+  .alert-info { background: var(--accent-bg); border-left: 3px solid var(--accent); }
+  .alert-danger { background: var(--red-bg); border-left: 3px solid var(--red); }
+
+  .verdict-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-top: 16px;
+  }
+  .verdict-box h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  .verdict-item {
+    padding: 14px;
+    border-radius: 8px;
+    background: rgba(22,27,34,0.6);
+  }
+  .verdict-item h4 {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .verdict-item p {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px 0 12px;
+    color: var(--text-muted);
+    font-size: 11px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>A股早盘快报 — 2026年7月15日 09:45</h1>
+  <div class="subtitle">开盘15分钟盘中实时分析 · 周三</div>
+  <div class="timestamp">数据采集时间：2026-07-15 09:41~09:42 | 数据源：通达信(tdx-connector MCP)</div>
+</div>
+
+<!-- 1. 核心指数概览 -->
+<div class="section-title">一、核心指数概览</div>
+<div class="index-grid">
+  <div class="index-card">
+    <div class="name">上证指数</div>
+    <div class="price">3,958.96</div>
+    <div class="chg red">-0.21%</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">成交 2,466亿</div>
+    <div class="meta"><span>开 3,963.73</span><span>高 3,969.23</span><span>低 3,954.76</span></div>
+    <span class="tag tag-neutral trend-tag">低开震荡</span>
+  </div>
+  <div class="index-card">
+    <div class="name">深证成指</div>
+    <div class="price">14,815.93</div>
+    <div class="chg red">-0.73%</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">成交 2,954亿</div>
+    <div class="meta"><span>开 14,970.77</span><span>高 14,970.77</span><span>低 14,801.67</span></div>
+    <span class="tag tag-weak trend-tag">高开低走</span>
+  </div>
+  <div class="index-card">
+    <div class="name">创业板指</div>
+    <div class="price">3,824.07</div>
+    <div class="chg red">-0.70%</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">成交 1,241亿</div>
+    <div class="meta"><span>开 3,879.77</span><span>高 3,879.77</span><span>低 3,817.87</span></div>
+    <span class="tag tag-weak trend-tag">高开低走</span>
+  </div>
+  <div class="index-card">
+    <div class="name">科创50</div>
+    <div class="price">1,957.86</div>
+    <div class="chg red">-2.58%</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">成交 318亿</div>
+    <div class="meta"><span>开 2,021.58</span><span>高 2,028.65</span><span>低 1,950.94</span></div>
+    <span class="tag tag-weak trend-tag">高开大幅低走</span>
+  </div>
+</div>
+
+<!-- 2. 市场情绪仪表盘 -->
+<div class="section-title">二、市场情绪仪表盘</div>
+<div class="two-col">
+  <div class="card">
+    <h3>涨跌统计</h3>
+    <div class="metric-row">
+      <span class="label">涨停 / 跌停</span>
+      <span><b class="red">14</b> / <b class="green">9</b> 家</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">非ST涨停 / 非ST跌停</span>
+      <span><b class="red">14</b> / <b class="green">6</b> 家</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">炸板数 / 炸板率</span>
+      <span>10只 / <b style="color:#db6d28">41.7%</b></span>
+    </div>
+    <div class="metric-row">
+      <span class="label">涨跌停比（涨/跌）</span>
+      <span><b>14:9</b>&nbsp;&nbsp;<span style="font-size:11px;color:var(--text-muted);">≈1.56:1</span></span>
+    </div>
+    <div class="metric-row">
+      <span class="label">涨幅＞9%（非ST）</span>
+      <span class="red">14 只</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">跌幅＞9%（非ST）</span>
+      <span class="green">8 只</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">北向资金</span>
+      <span style="color:var(--text-muted)">N/A（无法获取）</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>情绪速评</h3>
+    <div style="display:flex;align-items:center;gap:12px;margin:14px 0;">
+      <span class="sentiment-badge" style="background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange);">⚠ 偏空</span>
+      <span style="font-size:13px;color:var(--text-secondary);">四大指数全绿·科创50重挫</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">指数一致性</span>
+      <span class="green">全线下跌，无一翻红</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">大/小盘风格</span>
+      <span>大盘股抗跌（上证-0.21%），科创板领跌（-2.58%）</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">板块轮动</span>
+      <span>医药/CXO爆发 vs 科技/半导体重挫</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">成交量</span>
+      <span>沪深合计约 5,420亿（开盘15分钟），量能中等</span>
+    </div>
+    <div class="metric-row">
+      <span class="label">情绪周期阶段</span>
+      <span>分歧偏弱 — 涨停分散无主线，跌停集中在商业航天/CPO</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3. 热点板块 TOP5 -->
+<div class="section-title">三、热点板块 TOP5</div>
+<div class="card" style="margin-bottom:16px;">
+  <table>
+    <thead>
+      <tr><th>排名</th><th>板块</th><th>今日表现</th><th>领涨股</th><th>逻辑</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag-strong">🥇 1</span></td>
+        <td style="font-weight:700;">CXO/创新药/生物制药</td>
+        <td class="red">全面爆发</td>
+        <td>迪哲医药-U +20% 涨停<br>博瑞医药 +18.73%<br>睿智医药 +16.05%</td>
+        <td style="font-size:12px;">康龙化成CDMO新签订单增超50%，一体化平台加速兑现；迪哲医药、哈药股份连板带动板块情绪</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-strong">🥈 2</span></td>
+        <td style="font-weight:700;">医疗器械</td>
+        <td class="red">强势</td>
+        <td>蓝帆医疗 +9.96% 炸板<br>热景生物 +9.54%</td>
+        <td style="font-size:12px;">跟随医药板块情绪扩散</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-strong">🥉 3</span></td>
+        <td style="font-weight:700;">化学制药</td>
+        <td class="red">强势</td>
+        <td>德源药业 +19.04%（北交所）<br>翰宇药业 +8.85%</td>
+        <td style="font-size:12px;">医药全产业链共振</td>
+      </tr>
+      <tr>
+        <td><span class="tag">4</span></td>
+        <td style="font-weight:700;">影视院线</td>
+        <td class="red">活跃</td>
+        <td>幸福蓝海 +11.86% 急拉<br>儒意电影 +9.96% 涨停</td>
+        <td style="font-size:12px;">消费十五五规划+暑期档预期</td>
+      </tr>
+      <tr>
+        <td><span class="tag">5</span></td>
+        <td style="font-weight:700;">光伏设备</td>
+        <td class="red">局部活跃</td>
+        <td>中利集团 +10.04% 涨停<br>爱旭股份 +9.99% 涨停</td>
+        <td style="font-size:12px;">个股驱动为主，未形成板块合力</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 4. 早盘修复侦察 -->
+<div class="section-title">四、早盘修复侦察（超跌修复模式）</div>
+<div class="card" style="margin-bottom:16px;">
+  <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">
+    📊 <b>扫描范围</b>：昨日跌幅＞5%非ST股票 156只 + 昨日跌幅3%~7%非ST股票 231只<br>
+    📊 <b>筛选逻辑</b>：昨大跌 → 今早价格企稳回升（低开不恐慌+分时有承接+未放量抛售）→ 主力资金未持续流出
+  </p>
+  <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">
+    昨日大跌池总量：387只（合并去重估算） | 初步修复信号：约15~20只 | 最终候选：以下5只
+  </p>
+
+  <div class="recovery-stock">
+    <div class="stock-info">
+      <span class="stock-name">九丰能源</span>
+      <span class="stock-code">605090 · 沪主板</span>
+    </div>
+    <div class="stock-detail">
+      <span><i>昨跌</i><span class="green">-5.70%</span></span>
+      <span><i>今开</i>38.52</span>
+      <span><i>现价</i><span class="red">41.40</span></span>
+      <span><i>今涨</i><span class="red">+5.08%</span></span>
+      <span><i>主力</i><span class="red">+1.37亿</span></span>
+    </div>
+    <span class="stars" style="color:var(--gold);">★★</span>
+  </div>
+
+  <div class="recovery-stock">
+    <div class="stock-info">
+      <span class="stock-name">灿瑞科技</span>
+      <span class="stock-code">688061 · 科创板</span>
+    </div>
+    <div class="stock-detail">
+      <span><i>昨跌</i><span class="green">-3.01%</span></span>
+      <span><i>今开</i>45.03</span>
+      <span><i>现价</i><span class="red">47.08</span></span>
+      <span><i>今涨</i><span class="red">+6.64%</span></span>
+      <span><i>主力</i><span class="red">+220万</span></span>
+    </div>
+    <span class="stars" style="color:var(--gold);">★★</span>
+  </div>
+
+  <div class="recovery-stock">
+    <div class="stock-info">
+      <span class="stock-name">能辉科技</span>
+      <span class="stock-code">301046 · 创业板</span>
+    </div>
+    <div class="stock-detail">
+      <span><i>昨跌</i><span class="green">-5.90%</span></span>
+      <span><i>今开</i>22.10</span>
+      <span><i>现价</i><span class="red">22.96</span></span>
+      <span><i>今涨</i><span class="red">+3.56%</span></span>
+      <span><i>主力</i><span class="green">-1082万</span></span>
+    </div>
+    <span class="stars" style="color:var(--gold);">★</span>
+  </div>
+
+  <div class="recovery-stock">
+    <div class="stock-info">
+      <span class="stock-name">胜通能源</span>
+      <span class="stock-code">001331 · 深主板</span>
+    </div>
+    <div class="stock-detail">
+      <span><i>昨跌</i><span class="green">-5.51%</span></span>
+      <span><i>今开</i>53.84</span>
+      <span><i>现价</i><span class="red">53.38</span></span>
+      <span><i>今涨</i><span class="red">+1.71%</span></span>
+      <span><i>主力</i><span class="green">-280万</span></span>
+    </div>
+    <span class="stars" style="color:var(--gold);">★</span>
+  </div>
+
+  <div class="recovery-stock">
+    <div class="stock-info">
+      <span class="stock-name">江山股份</span>
+      <span class="stock-code">600389 · 沪主板</span>
+    </div>
+    <div class="stock-detail">
+      <span><i>昨跌</i><span class="green">-6.06%</span></span>
+      <span><i>今开</i>17.39</span>
+      <span><i>现价</i><span class="red">17.89</span></span>
+      <span><i>今涨</i><span class="red">+1.30%</span></span>
+      <span><i>主力</i><span class="red">+488万</span></span>
+    </div>
+    <span class="stars" style="color:var(--gold);">★</span>
+  </div>
+
+  <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">
+    ★ 低开翻红 ≥+1% | ★★ 低开翻红 ≥+2% | ★★★ 低开涨停<br>
+    修复候选分散（燃气/半导体/光伏/化工），<b>未形成板块效应</b>
+  </p>
+</div>
+
+<!-- 5. 连板梯队 -->
+<div class="section-title">五、连板梯队</div>
+<div class="card" style="margin-bottom:16px;">
+  <table>
+    <thead>
+      <tr><th>梯队</th><th>股票</th><th>代码</th><th>连板天数</th><th>涨停原因</th><th>封板形态</th></tr>
+    </thead>
+    <tbody>
+      <tr style="background: rgba(210,153,29,0.05);">
+        <td><span class="tag" style="background:var(--gold-bg);color:var(--gold);font-weight:700;">5板</span></td>
+        <td style="font-weight:700;">艾艾精工</td>
+        <td>603580</td>
+        <td>2板（实际7天5板）</td>
+        <td style="font-size:12px;">控制权变更·上海誉升要约收购</td>
+        <td><span class="tag tag-zheng">一字板</span></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-zheng">4板</span></td>
+        <td style="font-weight:700;">哈药股份</td>
+        <td>600664</td>
+        <td>4板</td>
+        <td style="font-size:12px;">创新药·民营医院</td>
+        <td><span class="tag tag-zheng">换手板</span></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-zheng">2板</span></td>
+        <td>九安医疗</td>
+        <td>002432</td>
+        <td>2板</td>
+        <td style="font-size:12px;">AI投资·月之暗面/阶跃星辰</td>
+        <td><span class="tag tag-zheng">一字板</span></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-zheng">2板</span></td>
+        <td>世茂能源</td>
+        <td>605028</td>
+        <td>2板</td>
+        <td style="font-size:12px;">电力·用电负荷新高</td>
+        <td><span class="tag tag-zheng">换手板</span></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-zheng">2板</span></td>
+        <td>天普股份</td>
+        <td>605255</td>
+        <td>2板</td>
+        <td style="font-size:12px;">股权转让·汽车零部件</td>
+        <td><span class="tag tag-zheng">换手板</span></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-zheng">2板</span></td>
+        <td>贤丰控股</td>
+        <td>002141</td>
+        <td>2板</td>
+        <td style="font-size:12px;">元器件·PCB概念</td>
+        <td><span class="tag tag-zheng">换手板</span></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-zheng">2板</span></td>
+        <td>迪哲医药-U</td>
+        <td>688192</td>
+        <td>2板</td>
+        <td style="font-size:12px;">创新药·20%涨停</td>
+        <td><span class="tag tag-zheng">换手板</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:12px;padding:10px;border-radius:6px;background:var(--accent-bg);font-size:13px;">
+    📊 连板统计：<b>最高5板（艾艾精工）</b> | 4板1只 | 2板5只 | 首板7只<br>
+    非ST实质最高连板：<b>哈药股份 4板</b>（艾艾精工为一字板重组股，无换手参考价值）<br>
+    昨日连板9只中，<b>5只断板</b>（断板率 55.6%）
+  </div>
+</div>
+
+<!-- 6. 早盘异动信号 -->
+<div class="section-title">六、早盘异动信号</div>
+<div class="two-col">
+  <div class="card">
+    <h3>集合竞价异常</h3>
+    <div class="alert-item alert-warn">
+      <b>上峰材料 (000672)</b> 竞价+10%高开 → 现跌-0.82%<br>
+      <span style="font-size:12px;color:var(--text-secondary);">高开陷阱，竞价涨停开盘后直线回落，典型诱多</span>
+    </div>
+    <div class="alert-item alert-warn">
+      <b>神州高铁 (000008)</b> 竞价+10%高开 → 现仅+3.08%<br>
+      <span style="font-size:12px;color:var(--text-secondary);">竞价封涨停打开，机器人题材退潮</span>
+    </div>
+    <div class="alert-item alert-warn">
+      <b>通富微电 (002156)</b> 竞价+8%高开 → 现跌-1.63%<br>
+      <span style="font-size:12px;color:var(--text-secondary);">半导体高开后急速跳水，资金出逃明显</span>
+    </div>
+    <div class="alert-item alert-info">
+      <b>迪哲医药-U (688192)</b> 竞价+11.24% → 继续冲高至+20%涨停<br>
+      <span style="font-size:12px;color:var(--text-secondary);">医药龙头强势确认，未出现高开低走</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>开盘15分钟急拉</h3>
+    <div class="alert-item alert-info">
+      <b>铂力特 (688333)</b> 09:32急拉+8.2%<br>
+      <span style="font-size:12px;color:var(--text-secondary);">现价 110.52 (+11.01%)</span>
+    </div>
+    <div class="alert-item alert-info">
+      <b>睿智医药 (300149)</b> 09:32急拉+7.9%<br>
+      <span style="font-size:12px;color:var(--text-secondary);">现价 10.04 (+15.94%) 持续走强</span>
+    </div>
+    <div class="alert-item alert-info">
+      <b>灿瑞科技 (688061)</b> 09:37急拉+7.1%<br>
+      <span style="font-size:12px;color:var(--text-secondary);">现价 47.08 (+6.64%) 半导体少数逆势</span>
+    </div>
+    <div class="alert-item alert-info">
+      <b>幸福蓝海 (300528)</b> 09:31急拉+6.3%<br>
+      <span style="font-size:12px;color:var(--text-secondary);">现价 15.84 (+11.86%) 影视板块活跃</span>
+    </div>
+    <div class="alert-item alert-danger">
+      <b>商业航天/CPO多股一字跌停</b><br>
+      <span style="font-size:12px;color:var(--text-secondary);">德明利一字跌停(CPO)、航天工程3连跌停(商业航天)、雪龙集团3连跌停</span>
+    </div>
+  </div>
+</div>
+
+<!-- 7. 综合研判 -->
+<div class="section-title">七、综合研判</div>
+<div class="verdict-box">
+  <h2 style="color:var(--orange);">⚠ 弱势·结构性分化</h2>
+
+  <div class="verdict-grid">
+    <div class="verdict-item">
+      <h4>今日市场定性</h4>
+      <p style="color:var(--orange);">弱势分化 — 四大指数全线下跌，科创50 -2.58%领跌。但医药/CXO板块逆势爆发，呈现极端结构性行情。</p>
+    </div>
+    <div class="verdict-item">
+      <h4>可操作性评估</h4>
+      <p style="color:var(--orange);">偏低 — 涨停14家但一字板占3家，真实换手涨停仅11家，且分散在医药/光伏/影视/电力等多个方向，缺乏协同主线。</p>
+    </div>
+    <div class="verdict-item">
+      <h4>关键风险</h4>
+      <p style="color:var(--red);">① 商业航天持续退潮：航天工程3连跌停、雪龙集团3连跌停<br>② CPO/存储重挫：德明利一字跌停<br>③ 炸板率41.7%偏高，封板意愿弱</p>
+    </div>
+    <div class="verdict-item">
+      <h4>超跌修复评估</h4>
+      <p>修复候选5只（约5/387≈1.3%），★★级2只（九丰能源+5.08%/灿瑞科技+6.64%），★级3只。<br><span style="color:var(--text-secondary);font-size:13px;">修复标的极度分散（燃气/半导体/光伏/化工），未形成板块效应，修复广度很低。</span></p>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;padding:16px;border-radius:8px;background:rgba(219,109,40,0.08);border:1px solid rgba(219,109,40,0.2);">
+    <h4 style="color:var(--orange);margin-bottom:8px;">⚠ 重要警示</h4>
+    <ul style="font-size:13px;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+      <li><b>科创50高开+0.59%→暴跌-2.58%</b>，开盘15分钟内跌幅-3.17%，半导体/芯片资金恐慌出逃，科技方向情绪极度脆弱</li>
+      <li><b>德明利一字跌停</b>（CPO概念千元股），高估值科技股风险集中释放</li>
+      <li><b>医药板块爆发是今日唯一亮点</b>，但CXO/创新药属于超跌反弹性质（博瑞医药/睿智医药此前弱势），持续性需观察</li>
+      <li><b>连板股断板率55.6%</b>，昨日连板9只中航天工程/雪龙集团连续跌停，高位接力风险极高</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  数据源：tdx-connector MCP（通达信） | 采集时间：2026-07-15 09:41 ~ 09:42<br>
+  本报告基于客观数据生成，不构成任何投资建议。<br>
+  涨跌幅颜色：<span class="red">红涨(涨)</span> / <span class="green">绿跌(跌)</span>（A股惯例）
+</div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9:25竞价扫描收盘反查 · 2026-09-04</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--bd:#30363d;--tx:#e6edf3;--tx2:#8b949e;--up:#f85149;--dn:#3fb950;--ac:#58a6ff;--wn:#d29922}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;padding:24px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:22px;margin-bottom:4px}
+.sub{color:var(--tx2);font-size:13px;margin-bottom:18px}
+h2{font-size:16px;margin:26px 0 10px;padding-left:9px;border-left:3px solid var(--ac)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:6px}
+.card{background:var(--panel);border:1px solid var(--bd);border-radius:8px;padding:12px 14px}
+.card .k{color:var(--tx2);font-size:12px}
+.card .v{font-size:21px;font-weight:700;margin-top:2px}
+.card .v.up{color:var(--up)}.card .v.dn{color:var(--dn)}.card .v.ac{color:var(--ac)}.card .v.na{color:var(--tx2);font-size:15px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--bd);border-radius:8px;overflow:hidden;font-size:13px}
+th{background:#1c2129;color:var(--tx2);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--bd);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid #21262d;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.up{color:var(--up)}.dn{color:var(--dn)}.ac{color:var(--ac)}.tx2{color:var(--tx2)}
+.tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:600}
+.t-s{background:#3d1f00;color:#ffa657}.t-ap{background:#3d0000;color:#ff7b72}.t-a{background:#2d1a00;color:#e3b341}
+.t-b{background:#0d2818;color:#56d364}.t-c{background:#1c2129;color:#8b949e}.t-d{background:#1c2129;color:#6e7681}
+.t-ok{background:#0d2818;color:#56d364}.t-bad{background:#3d0000;color:#ff7b72}.t-wn{background:#2d1a00;color:#e3b341}
+.note{background:var(--panel);border:1px solid var(--bd);border-left:3px solid var(--wn);border-radius:6px;padding:11px 14px;margin:10px 0;color:var(--tx2);font-size:13px}
+.note b{color:var(--tx)}
+ul.f{margin:6px 0 0 18px}ul.f li{margin:5px 0}
+.bar{height:15px;background:#21262d;border-radius:3px;overflow:hidden;min-width:70px}
+.bar>i{display:block;height:100%;background:var(--up)}
+.ft{margin-top:28px;padding-top:12px;border-top:1px solid var(--bd);color:var(--tx2);font-size:12px}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>9:25 竞价打板扫描 · 收盘反查报告</h1>
+<div class="sub">交易日 2026-09-04（周五）｜ 候选池基准日 20260903（09:16 生成）｜ 生成时间 2026-09-04 15:45</div>
+
+<div class="note" style="border-left-color:var(--up)">
+<b>⚠ 今日降级说明</b>：<code>zt_925_report_20260904.html</code> 不存在 —— 9:25 竞价扫描任务未产出报告，本报告<b>降级为「仅候选池晋级统计」</b>。
+扫描筛出数 / 命中封板数 / 开盘价区间过滤误杀数三项<b>无数据（N/A）</b>，第 6 节规则正反检验同步跳过。
+候选池文件本身正常（status=ok，date=20260903 与交易日历 T_PREV 一致）。
+</div>
+
+<h2>1. 核心指标</h2>
+<div class="cards">
+<div class="card"><div class="k">候选池总数</div><div class="v">46</div></div>
+<div class="card"><div class="k">今日晋级涨停</div><div class="v up">7</div></div>
+<div class="card"><div class="k">晋级率</div><div class="v up">15.2%</div></div>
+<div class="card"><div class="k">当日全市场涨停</div><div class="v ac">39</div></div>
+<div class="card"><div class="k">扫描筛出数</div><div class="v na">N/A</div></div>
+<div class="card"><div class="k">筛出命中封板</div><div class="v na">N/A</div></div>
+<div class="card"><div class="k">过滤误杀</div><div class="v na">N/A</div></div>
+</div>
+
+<h2>2. 数据口径</h2>
+<table>
+<tr><th style="width:190px">项目</th><th>说明</th></tr>
+<tr><td>涨停池来源</td><td><b>TDX 返回空涨停池 → 已降级 akshare（东方财富）</b>，共 39 只。脚本日志：<code>[WARN] TDX 涨停池(20260904) 失败: TDX 返回空涨停池</code></td></tr>
+<tr><td>候选池来源</td><td><code>zt_925_candidates.json</code>，date=20260903，09:16:41 生成，status=ok，46 只（含 5 只重点候选 S/A+）</td></tr>
+<tr><td>交易日历校验</td><td>T=20260904，T_PREV=20260903（akshare 日历），与候选池 date 一致 ✓</td></tr>
+<tr><td>收盘精确涨跌幅</td><td>腾讯行情 qt.gtimg.cn 补齐 10 只（tdx_quotes 未加载 / akshare 历史接口被代理拦截），存 <code>zt_925_close_20260904.json</code></td></tr>
+<tr><td>口径差异</td><td>今日 17:00 流水线尚未运行，无 zt_1700_data_20260904.json 可比对；akshare 与 TDX 涨停数差异属已知正常现象</td></tr>
+</table>
+
+<h2>3. 重点候选（S/A+ 5只）实际收盘对照</h2>
+<div class="note">扫描未运行，此表为<b>假设性归因核对</b>：若扫描正常执行，这 5 只即查询集，实际封板 2 只 = 40%。<b>非规则命中率</b>，仅作候选池质量参考。</div>
+<table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>昨收</th><th>开盘</th><th>开盘涨幅</th><th>最高</th><th>收盘</th><th>收盘涨跌</th><th>换手%</th><th>结果</th></tr>
+<tr><td>605398</td><td>新炬网络</td><td><span class="tag t-s">S</span></td><td>8</td><td>24.24</td><td>26.66</td><td class="up">+9.98%</td><td>26.66</td><td>26.66</td><td class="up">+9.98%</td><td>2.52</td><td><span class="tag t-ok">封板</span>一字</td></tr>
+<tr><td>605577</td><td>龙版传媒</td><td><span class="tag t-ap">A+</span></td><td>1</td><td>14.14</td><td>14.22</td><td class="up">+0.57%</td><td>15.55</td><td>15.55</td><td class="up">+9.97%</td><td>7.27</td><td><span class="tag t-ok">封板</span>5连板</td></tr>
+<tr><td>601086</td><td>国芳集团</td><td><span class="tag t-ap">A+</span></td><td>4</td><td>12.21</td><td>11.78</td><td class="dn">-3.52%</td><td>13.42</td><td>12.65</td><td class="up">+3.60%</td><td>19.60</td><td><span class="tag t-wn">触板回落</span>最高+9.9%</td></tr>
+<tr><td>002059</td><td>云南旅游</td><td><span class="tag t-s">S</span></td><td>8</td><td>5.78</td><td>5.78</td><td class="tx2">0.00%</td><td>6.35</td><td>5.67</td><td class="dn">-1.90%</td><td>20.94</td><td><span class="tag t-bad">未封</span>冲高回落</td></tr>
+<tr><td>002909</td><td>集泰股份</td><td><span class="tag t-s">S</span></td><td>6</td><td>8.01</td><td>8.56</td><td class="up">+6.87%</td><td>8.57</td><td>7.21</td><td class="dn">-9.99%</td><td>37.84</td><td><span class="tag t-bad">跌停</span>高开天地板</td></tr>
+</table>
+
+<h2>4. 候选池晋级完整清单（7 只）</h2>
+<table>
+<tr><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>连板</th><th>首封时间</th><th>今日炸板</th><th>封单额(万)</th><th>开盘涨幅</th><th>收盘</th><th>涨跌</th><th>行业</th></tr>
+<tr><td>605577</td><td>龙版传媒</td><td><span class="tag t-ap">A+</span></td><td>1</td><td>5</td><td>09:31:09</td><td>2</td><td>8333.4</td><td class="up">+0.57%</td><td>15.55</td><td class="up">+9.97%</td><td>国企改革</td></tr>
+<tr><td>605398</td><td>新炬网络</td><td><span class="tag t-s">S</span></td><td>8</td><td>2</td><td>09:25:01</td><td>0</td><td>8390.7</td><td class="up">+9.98%</td><td>26.66</td><td class="up">+9.98%</td><td>短剧游戏</td></tr>
+<tr><td>600108</td><td>亚盛集团</td><td><span class="tag t-a">A</span></td><td class="tx2">—</td><td>2</td><td>09:36:23</td><td>1</td><td><b>15778.4</b></td><td class="up">+1.01%</td><td>4.36</td><td class="up">+10.10%</td><td>跨境电商</td></tr>
+<tr><td>605580</td><td>恒盛能源</td><td><span class="tag t-a">A</span></td><td class="tx2">—</td><td>2</td><td>09:25:01</td><td>0</td><td>10294.2</td><td class="up">+9.99%</td><td>22.47</td><td class="up">+9.99%</td><td>芯片</td></tr>
+<tr><td>603162</td><td>海通发展</td><td><span class="tag t-a">A</span></td><td class="tx2">—</td><td>2</td><td>09:38:40</td><td><b class="up">9</b></td><td>2550.1</td><td class="up">+0.98%</td><td>14.64</td><td class="up">+9.99%</td><td>基金增仓</td></tr>
+<tr><td>002403</td><td>爱仕达</td><td><span class="tag t-b">B</span></td><td class="tx2">—</td><td>2</td><td>09:31:33</td><td>0</td><td>8760.3</td><td class="up">+9.07%</td><td>11.28</td><td class="up">+10.05%</td><td>人形机器人</td></tr>
+<tr><td>600865</td><td>百大集团</td><td><span class="tag t-b">B</span></td><td class="tx2">—</td><td>2</td><td>13:52:54</td><td>2</td><td>2539.9</td><td class="dn">-2.52%</td><td>11.35</td><td class="up">+9.98%</td><td>新零售</td></tr>
+</table>
+
+<h2>5. 分级有效性检验</h2>
+<table>
+<tr><th>评级</th><th>池内只数</th><th>晋级</th><th>晋级率</th><th style="width:160px">分布</th></tr>
+<tr><td><span class="tag t-ap">A+</span></td><td>2</td><td>1</td><td class="up"><b>50.0%</b></td><td><div class="bar"><i style="width:50%"></i></div></td></tr>
+<tr><td><span class="tag t-s">S</span></td><td>3</td><td>1</td><td class="up">33.3%</td><td><div class="bar"><i style="width:33.3%"></i></div></td></tr>
+<tr><td><span class="tag t-b">B</span></td><td>8</td><td>2</td><td class="up">25.0%</td><td><div class="bar"><i style="width:25%"></i></div></td></tr>
+<tr><td><span class="tag t-a">A</span></td><td>15</td><td>3</td><td class="up">20.0%</td><td><div class="bar"><i style="width:20%"></i></div></td></tr>
+<tr><td><span class="tag t-b">B+</span></td><td>3</td><td>0</td><td class="tx2">0.0%</td><td><div class="bar"><i style="width:0%"></i></div></td></tr>
+<tr><td><span class="tag t-c">C</span></td><td>7</td><td>0</td><td class="tx2">0.0%</td><td><div class="bar"><i style="width:0%"></i></div></td></tr>
+<tr><td><span class="tag t-d">D</span></td><td>8</td><td>0</td><td class="tx2">0.0%</td><td><div class="bar"><i style="width:0%"></i></div></td></tr>
+</table>
+<div class="note">
+<b>客观结论：</b><br>
+① 头部排序 A+(50%) &gt; S(33%) &gt; A(20%) —— A+ 首次高于 A 级，与 9/3 方向一致、与 9/2（A级16.3% 反超 A+14.7%）相反；<br>
+② <b>B 级 25% 反超 A 级 20%</b>，分级在中部仍出现倒挂；<br>
+③ 底部 B+/C/D 合计 18 只 0 晋级，底部剔除能力稳定有效；<br>
+④ 三日对比：9/2 A+14.7%&lt;A16.3% → 9/3 A+33.3%&gt;A6.2% → 9/4 A+50%&gt;A20%，<b>方向两日一致但样本量极小（A+ 仅 2~3 只），仍不足以判定分级稳定</b>。
+</div>
+
+<h3 style="font-size:14px;margin:16px 0 8px;color:var(--tx2)">pre_score 分档（仅 S/A+ 5 只候选有分）</h3>
+<table>
+<tr><th>pre_score</th><th>池内</th><th>晋级</th><th>晋级率</th><th>样本</th></tr>
+<tr><td>1 分</td><td>1</td><td>1</td><td class="up">100%</td><td>龙版传媒（5连板，封死）</td></tr>
+<tr><td>8 分</td><td>2</td><td>1</td><td class="up">50.0%</td><td>新炬网络（封）/ 云南旅游（-1.90%）</td></tr>
+<tr><td>6 分</td><td>1</td><td>0</td><td class="dn">0%</td><td>集泰股份（-9.99% 跌停）</td></tr>
+<tr><td>4 分</td><td>1</td><td>0</td><td class="dn">0%</td><td>国芳集团（+3.60% 触板回落）</td></tr>
+</table>
+<div class="note">pre_score 与结果<b>非单调</b>：最低分档（1分）反而封板，8分档内部分化（一字封死 vs 冲高回落）。5 只样本量不足以支撑阈值校准。</div>
+
+<h2>6. 开盘价区间规则正反检验</h2>
+<div class="note">今日扫描报告缺失，<b>无实际过滤记录</b>，本节仅做<b>假设性推演</b>（不纳入规则统计）：<br>
+• <b>爱仕达 002403</b>：开盘 +9.07%（&gt;5% 区间），收盘封死 +10.05%、零炸板 —— 若规则生效将被放弃，构成潜在误杀；<br>
+• <b>恒盛能源 605580</b>：一字开盘 +9.99%，收盘封死、零炸板 —— 同类，一字候选规则（封单&lt;10万手放弃）是否在今日生效无法验证；<br>
+• <b>百大集团 600865</b>：开盘 -2.52%，午后 13:52 才首封 —— 属低开后被放弃的区间，属正确排除还是误杀，取决于当日规则版本，无法判定。<br>
+已有样本库（9/2、9/3）中的「一字&lt;10万手放弃」误杀累计 2 次（均为国芳集团 601086），今日该股未封板（+3.60%），该规则今日不构成误杀。
+</div>
+
+<h2>7. 核心事实列表</h2>
+<ul class="f">
+<li>候选池 46 只（9/3 首板池）→ 今日晋级涨停 7 只，晋级率 <b>15.2%</b>；三日晋级率 15.7% / 16.7% / 15.2%，波动区间 15%~17%。</li>
+<li>当日全市场涨停 39 只（akshare 东财口径），较昨日 46 只（同口径）减少 7 只。</li>
+<li>晋级 7 只中 <b>6 只为 2 连板</b>，仅龙版传媒为 5 连板（最高标）。</li>
+<li>封单额最高：亚盛集团 15778 万；最低：百大集团 2540 万（午后首封）。</li>
+<li>炸板次数：海通发展 <b>9 次</b>（极端反复），龙版传媒 / 百大集团各 2 次，亚盛集团 1 次，其余 0 次。</li>
+<li>晋级股开盘表现分化：2 只一字（新炬网络、恒盛能源）、1 只高开 +9.07%（爱仕达）、3 只平开/微幅高开（+0.57% ~ +1.01%）、1 只低开 -2.52%（百大集团，午后封板）。</li>
+<li>重点候选最大亏损个案：集泰股份 002909 开盘 +6.87% → 收盘 <b>-9.99% 跌停</b>，换手 37.84%，属高开天地板。</li>
+<li>国芳集团 601086 连续第 3 日进入候选，今日盘中最高 +9.9% 触板后回落收 +3.60%，未封板（前两日均封死）。</li>
+<li>行业分布：晋级 7 只分散在国企改革 / 短剧游戏 / 跨境电商 / 芯片 / 基金增仓 / 人形机器人 / 新零售，<b>无板块集中效应</b>。</li>
+<li>候选池行业集中度最高为液冷服务器（9 只），今日 0 晋级。</li>
+</ul>
+
+<h2>8. 累积样本库状态</h2>
+<table>
+<tr><th>交易日</th><th>候选池</th><th>当日涨停</th><th>晋级</th><th>晋级率</th><th>A+晋级</th><th>A晋级</th><th>扫描筛出</th><th>筛出命中</th><th>误杀</th></tr>
+<tr><td>2026-09-02</td><td>83</td><td>52</td><td>13</td><td>15.7%</td><td>5/34</td><td>8/49</td><td>5</td><td>1</td><td>3</td></tr>
+<tr><td>2026-09-03</td><td>54</td><td>46</td><td>9</td><td>16.7%</td><td>1/3</td><td>1/16</td><td>4</td><td>2</td><td>1</td></tr>
+<tr><td><b>2026-09-04</b></td><td>46</td><td>39</td><td>7</td><td>15.2%</td><td>1/2</td><td>3/15</td><td class="tx2">N/A</td><td class="tx2">N/A</td><td class="tx2">N/A</td></tr>
+</table>
+<div class="note">
+累积 <b>3 个交易日</b>（<code>zt_925_review_history.json</code>），距 10 日重校准阈值还差 7 日。<br>
+重校准触发条件当前状态：<br>
+• 「A 级晋级率连续 5 日 ≥ A+」—— 当前 A+ 已连续 2 日 ≥ A（9/3、9/4），<b>未达 5 日</b>；<br>
+• 「&gt;5% 误杀率 &gt; 50%」—— 9/2 为 3/5=60%（触发）、9/3 为 0/3=0%、9/4 无数据，<b>未连续触发</b>。<br>
+<b>结论：暂不触发重校准</b>，周五重训练无需调整分级阈值与开盘区间规则。
+</div>
+
+<div class="ft">
+数据来源：zt_925_review.py（涨停池=akshare 东财，TDX 降级）｜ 收盘精确涨跌=腾讯 qt.gtimg.cn ｜ 交易日历=zt_trade_cal.py（akshare）<br>
+本报告仅呈现客观数据与统计结论，不含任何买卖建议。反查为只读操作，未修改候选池与扫描报告。
+</div>
+
+</div></body></html>

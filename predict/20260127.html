@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>涨停次日预测 | 2026年01月27日</title>
+<style>
+:root {
+    --bg: #0a0e17;
+    --card: #111827;
+    --card2: #1a2332;
+    --border: #1e2d3d;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --accent: #3b82f6;
+    --red: #ef4444;
+    --green: #22c55e;
+    --orange: #f97316;
+    --yellow: #eab308;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, 'SF Pro', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+header {
+    text-align: center;
+    padding: 40px 0 30px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    border-bottom: 1px solid var(--border);
+    margin: -20px -20px 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+header .date {
+    font-size: 1.1rem;
+    color: var(--text2);
+}
+header .date span {
+    color: var(--accent);
+    font-weight: 600;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+.stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+.stat-card .label { font-size: 0.85rem; color: var(--text2); margin-bottom: 6px; }
+.stat-card .value { font-size: 1.8rem; font-weight: 700; }
+.stat-card .sub { font-size: 0.75rem; color: var(--text2); margin-top: 4px; }
+
+.section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.section h2 .icon { font-size: 1.3rem; }
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 12px;
+}
+.focus-card {
+    background: var(--card2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    transition: transform 0.2s;
+}
+.focus-card:hover { transform: translateY(-2px); }
+.focus-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.focus-grade {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.focus-name { font-weight: 600; font-size: 1rem; }
+.focus-code { color: var(--text2); font-size: 0.85rem; }
+.focus-prob { margin-left: auto; font-size: 1.1rem; font-weight: 700; }
+.focus-details { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.8rem; color: var(--text2); }
+
+.grade-dist {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 140px;
+    padding-top: 20px;
+}
+.grade-bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+}
+.grade-bar {
+    width: 100%;
+    border-radius: 6px 6px 0 0;
+    min-height: 4px;
+    transition: height 0.5s ease;
+}
+.grade-label {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.grade-count {
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    color: var(--text2);
+}
+
+.industry-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.industry-name { width: 80px; text-align: right; font-size: 0.85rem; color: var(--text2); }
+.industry-bar-bg {
+    flex: 1;
+    height: 20px;
+    background: var(--card2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.industry-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #8b5cf6);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+.industry-count { width: 30px; font-size: 0.85rem; color: var(--text2); }
+
+.table-wrap {
+    overflow-x: auto;
+    margin-top: 12px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+th {
+    background: var(--card2);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text2);
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+tr:hover { background: rgba(59,130,246,0.06); }
+.rank { color: var(--text2); font-size: 0.8rem; }
+.code { font-family: 'SF Mono', 'Consolas', monospace; color: var(--accent); }
+.name { font-weight: 500; }
+.prob { font-weight: 700; }
+.industry { color: var(--text2); font-size: 0.8rem; }
+.grade-cell { border-radius: 4px; text-align: center; }
+
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card2);
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(59,130,246,0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text2);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+}
+footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .focus-grid { grid-template-columns: 1fr; }
+    table { font-size: 0.78rem; }
+    td, th { padding: 6px 8px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+    <h1>📈 涨停次日预测</h1>
+    <div class="date">2026年01月27日 周二 | 首板数据自动分析</div>
+</header>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="label">今日首板</div>
+        <div class="value" style="color:var(--accent)">40</div>
+        <div class="sub">只股票涨停</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">重点标的</div>
+        <div class="value" style="color:var(--orange)">14</div>
+        <div class="sub">S/A+/A 级</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">最高概率</div>
+        <div class="value" style="color:var(--red)">31.5%</div>
+        <div class="sub">次日涨停概率</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">平均概率</div>
+        <div class="value" style="color:var(--yellow)">16.8%</div>
+        <div class="sub">基准率 16.5%</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="icon">🎯</span> 重点推荐</h2>
+    <div class="focus-grid">
+        <div class="focus-card" style="border-left: 4px solid #ff1744">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff1744">S</span>
+                <span class="focus-name">三维通信</span>
+                <span class="focus-code">SZ002115</span>
+                <span class="focus-prob" style="color:#ff1744">31.5%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 09:36</span>
+                <span>📊 封成比 10.8%</span>
+                <span>💰 118.3亿</span>
+                <span>🏭 通信服务</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff1744">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff1744">S</span>
+                <span class="focus-name">遥望科技</span>
+                <span class="focus-code">SZ002291</span>
+                <span class="focus-prob" style="color:#ff1744">28.2%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 09:35</span>
+                <span>📊 封成比 18.6%</span>
+                <span>💰 72.0亿</span>
+                <span>🏭 文化传媒</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff1744">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff1744">S</span>
+                <span class="focus-name">康强电子</span>
+                <span class="focus-code">SZ002119</span>
+                <span class="focus-prob" style="color:#ff1744">25.3%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 10:18</span>
+                <span>📊 封成比 5.3%</span>
+                <span>💰 92.9亿</span>
+                <span>🏭 半导体</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff6d00">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff6d00">A+</span>
+                <span class="focus-name">韩建河山</span>
+                <span class="focus-code">SH603616</span>
+                <span class="focus-prob" style="color:#ff6d00">24.6%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 09:35</span>
+                <span>📊 封成比 9.6%</span>
+                <span>💰 23.9亿</span>
+                <span>🏭 建筑材料</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff9100">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff9100">A</span>
+                <span class="focus-name">平潭发展</span>
+                <span class="focus-code">SZ000592</span>
+                <span class="focus-prob" style="color:#ff9100">19.4%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 10:13</span>
+                <span>📊 封成比 17.5%</span>
+                <span>💰 204.5亿</span>
+                <span>🏭 种植业与林业</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff9100">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff9100">A</span>
+                <span class="focus-name">棒杰股份</span>
+                <span class="focus-code">SZ002634</span>
+                <span class="focus-prob" style="color:#ff9100">18.9%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 09:40</span>
+                <span>📊 封成比 19.1%</span>
+                <span>💰 26.4亿</span>
+                <span>🏭 服装家纺</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff9100">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff9100">A</span>
+                <span class="focus-name">电科芯片</span>
+                <span class="focus-code">SH600877</span>
+                <span class="focus-prob" style="color:#ff9100">17.6%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 09:38</span>
+                <span>📊 封成比 21.0%</span>
+                <span>💰 293.4亿</span>
+                <span>🏭 半导体</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff9100">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff9100">A</span>
+                <span class="focus-name">肯特催化</span>
+                <span class="focus-code">SH603120</span>
+                <span class="focus-prob" style="color:#ff9100">17.0%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 11:19</span>
+                <span>📊 封成比 65.6%</span>
+                <span>💰 10.4亿</span>
+                <span>🏭 化学制品</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff9100">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff9100">A</span>
+                <span class="focus-name">圣晖集成</span>
+                <span class="focus-code">SH603163</span>
+                <span class="focus-prob" style="color:#ff9100">16.9%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 10:48</span>
+                <span>📊 封成比 14.5%</span>
+                <span>💰 101.6亿</span>
+                <span>🏭 建筑装饰</span>
+            </div>
+        </div><div class="focus-card" style="border-left: 4px solid #ff9100">
+            <div class="focus-header">
+                <span class="focus-grade" style="background:#ff9100">A</span>
+                <span class="focus-name">澄天伟业</span>
+                <span class="focus-code">SZ300689</span>
+                <span class="focus-prob" style="color:#ff9100">16.3%</span>
+            </div>
+            <div class="focus-details">
+                <span>🕐 10:29</span>
+                <span>📊 封成比 36.1%</span>
+                <span>💰 53.9亿</span>
+                <span>🏭 通信设备</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="icon">📊</span> 等级分布</h2>
+    <div class="grade-dist">
+        <div class="grade-bar-wrap">
+            <div class="grade-count">3</div>
+            <div class="grade-bar" style="height:12.0%;background:#ff1744"></div>
+            <div class="grade-label" style="color:#ff1744">S</div>
+        </div><div class="grade-bar-wrap">
+            <div class="grade-count">1</div>
+            <div class="grade-bar" style="height:4%;background:#ff6d00"></div>
+            <div class="grade-label" style="color:#ff6d00">A+</div>
+        </div><div class="grade-bar-wrap">
+            <div class="grade-count">10</div>
+            <div class="grade-bar" style="height:40.0%;background:#ff9100"></div>
+            <div class="grade-label" style="color:#ff9100">A</div>
+        </div><div class="grade-bar-wrap">
+            <div class="grade-count">25</div>
+            <div class="grade-bar" style="height:100.0%;background:#ffc400"></div>
+            <div class="grade-label" style="color:#ffc400">B+</div>
+        </div><div class="grade-bar-wrap">
+            <div class="grade-count">1</div>
+            <div class="grade-bar" style="height:4%;background:#aeea00"></div>
+            <div class="grade-label" style="color:#aeea00">B</div>
+        </div><div class="grade-bar-wrap">
+            <div class="grade-count">0</div>
+            <div class="grade-bar" style="height:4%;background:#69f0ae"></div>
+            <div class="grade-label" style="color:#69f0ae">C</div>
+        </div><div class="grade-bar-wrap">
+            <div class="grade-count">0</div>
+            <div class="grade-bar" style="height:4%;background:#90a4ae"></div>
+            <div class="grade-label" style="color:#90a4ae">D</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="icon">🏭</span> 行业分布 TOP10</h2>
+    <div class="industry-row">
+            <span class="industry-name">半导体</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:100.0%"></div></div>
+            <span class="industry-count">6</span>
+        </div><div class="industry-row">
+            <span class="industry-name">光伏设备</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:66.66666666666666%"></div></div>
+            <span class="industry-count">4</span>
+        </div><div class="industry-row">
+            <span class="industry-name">建筑装饰</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:50.0%"></div></div>
+            <span class="industry-count">3</span>
+        </div><div class="industry-row">
+            <span class="industry-name">通信设备</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:50.0%"></div></div>
+            <span class="industry-count">3</span>
+        </div><div class="industry-row">
+            <span class="industry-name">军工装备</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:50.0%"></div></div>
+            <span class="industry-count">3</span>
+        </div><div class="industry-row">
+            <span class="industry-name">化学制品</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:33.33333333333333%"></div></div>
+            <span class="industry-count">2</span>
+        </div><div class="industry-row">
+            <span class="industry-name">汽车零部件</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:33.33333333333333%"></div></div>
+            <span class="industry-count">2</span>
+        </div><div class="industry-row">
+            <span class="industry-name">通用设备</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:33.33333333333333%"></div></div>
+            <span class="industry-count">2</span>
+        </div><div class="industry-row">
+            <span class="industry-name">通信服务</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:16.666666666666664%"></div></div>
+            <span class="industry-count">1</span>
+        </div><div class="industry-row">
+            <span class="industry-name">文化传媒</span>
+            <div class="industry-bar-bg"><div class="industry-bar" style="width:16.666666666666664%"></div></div>
+            <span class="industry-count">1</span>
+        </div>
+</div>
+
+<div class="section">
+    <h2><span class="icon">📋</span> 完整排名</h2>
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterGrade('all')">全部</button>
+        <button class="filter-btn" onclick="filterGrade('S')">S级</button>
+        <button class="filter-btn" onclick="filterGrade('A+')" style="--c:#ff6d00">A+级</button>
+        <button class="filter-btn" onclick="filterGrade('A')">A级</button>
+        <button class="filter-btn" onclick="filterGrade('B+')">B+级</button>
+        <button class="filter-btn" onclick="filterGrade('B')">B级</button>
+    </div>
+    <div class="table-wrap" style="max-height:600px;overflow-y:auto">
+    <table id="rankTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>代码</th>
+                <th>名称</th>
+                <th>等级</th>
+                <th>涨停概率</th>
+                <th>封板时间</th>
+                <th>炸板</th>
+                <th>封成比</th>
+                <th>流通市值</th>
+                <th>换手率</th>
+                <th>连板</th>
+                <th>行业</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="grade-s">
+            <td class="rank">1</td>
+            <td class="code">SZ002115</td>
+            <td class="name">三维通信</td>
+            <td class="grade-cell" style="background:rgba(255,23,68,0.12);color:#ff1744;font-weight:700">S</td>
+            <td class="prob" style="color:#ff1744">31.5%</td>
+            <td>09:36</td>
+            <td>1</td>
+            <td>10.8%</td>
+            <td>118.3亿</td>
+            <td>16.9%</td>
+            <td>1</td>
+            <td class="industry">通信服务</td>
+        </tr><tr class="grade-s">
+            <td class="rank">2</td>
+            <td class="code">SZ002291</td>
+            <td class="name">遥望科技</td>
+            <td class="grade-cell" style="background:rgba(255,23,68,0.12);color:#ff1744;font-weight:700">S</td>
+            <td class="prob" style="color:#ff1744">28.2%</td>
+            <td>09:35</td>
+            <td>1</td>
+            <td>18.6%</td>
+            <td>72.0亿</td>
+            <td>21.1%</td>
+            <td>1</td>
+            <td class="industry">文化传媒</td>
+        </tr><tr class="grade-s">
+            <td class="rank">3</td>
+            <td class="code">SZ002119</td>
+            <td class="name">康强电子</td>
+            <td class="grade-cell" style="background:rgba(255,23,68,0.12);color:#ff1744;font-weight:700">S</td>
+            <td class="prob" style="color:#ff1744">25.3%</td>
+            <td>10:18</td>
+            <td>3</td>
+            <td>5.3%</td>
+            <td>92.9亿</td>
+            <td>34.0%</td>
+            <td>1</td>
+            <td class="industry">半导体</td>
+        </tr><tr class="grade-aplus">
+            <td class="rank">4</td>
+            <td class="code">SH603616</td>
+            <td class="name">韩建河山</td>
+            <td class="grade-cell" style="background:rgba(255,109,0,0.12);color:#ff6d00;font-weight:700">A+</td>
+            <td class="prob" style="color:#ff6d00">24.6%</td>
+            <td>09:35</td>
+            <td>0</td>
+            <td>9.6%</td>
+            <td>23.9亿</td>
+            <td>0.0%</td>
+            <td>1</td>
+            <td class="industry">建筑材料</td>
+        </tr><tr class="grade-a">
+            <td class="rank">5</td>
+            <td class="code">SZ000592</td>
+            <td class="name">平潭发展</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">19.4%</td>
+            <td>10:13</td>
+            <td>0</td>
+            <td>17.5%</td>
+            <td>204.5亿</td>
+            <td>16.7%</td>
+            <td>1</td>
+            <td class="industry">种植业与林业</td>
+        </tr><tr class="grade-a">
+            <td class="rank">6</td>
+            <td class="code">SZ002634</td>
+            <td class="name">棒杰股份</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">18.9%</td>
+            <td>09:40</td>
+            <td>0</td>
+            <td>19.1%</td>
+            <td>26.4亿</td>
+            <td>5.1%</td>
+            <td>1</td>
+            <td class="industry">服装家纺</td>
+        </tr><tr class="grade-a">
+            <td class="rank">7</td>
+            <td class="code">SH600877</td>
+            <td class="name">电科芯片</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">17.6%</td>
+            <td>09:38</td>
+            <td>0</td>
+            <td>21.0%</td>
+            <td>293.4亿</td>
+            <td>7.0%</td>
+            <td>1</td>
+            <td class="industry">半导体</td>
+        </tr><tr class="grade-a">
+            <td class="rank">8</td>
+            <td class="code">SH603120</td>
+            <td class="name">肯特催化</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">17.0%</td>
+            <td>11:19</td>
+            <td>0</td>
+            <td>65.6%</td>
+            <td>10.4亿</td>
+            <td>25.5%</td>
+            <td>1</td>
+            <td class="industry">化学制品</td>
+        </tr><tr class="grade-a">
+            <td class="rank">9</td>
+            <td class="code">SH603163</td>
+            <td class="name">圣晖集成</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">16.9%</td>
+            <td>10:48</td>
+            <td>0</td>
+            <td>14.5%</td>
+            <td>101.6亿</td>
+            <td>18.3%</td>
+            <td>1</td>
+            <td class="industry">建筑装饰</td>
+        </tr><tr class="grade-a">
+            <td class="rank">10</td>
+            <td class="code">SZ300689</td>
+            <td class="name">澄天伟业</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">16.3%</td>
+            <td>10:29</td>
+            <td>0</td>
+            <td>36.1%</td>
+            <td>53.9亿</td>
+            <td>17.1%</td>
+            <td>1</td>
+            <td class="industry">通信设备</td>
+        </tr><tr class="grade-a">
+            <td class="rank">11</td>
+            <td class="code">SZ002446</td>
+            <td class="name">盛路通信</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">16.2%</td>
+            <td>13:16</td>
+            <td>0</td>
+            <td>7.5%</td>
+            <td>105.6亿</td>
+            <td>17.1%</td>
+            <td>1</td>
+            <td class="industry">军工电子</td>
+        </tr><tr class="grade-a">
+            <td class="rank">12</td>
+            <td class="code">SH603052</td>
+            <td class="name">可川科技</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">16.1%</td>
+            <td>10:35</td>
+            <td>0</td>
+            <td>25.1%</td>
+            <td>106.0亿</td>
+            <td>13.3%</td>
+            <td>1</td>
+            <td class="industry">消费电子</td>
+        </tr><tr class="grade-a">
+            <td class="rank">13</td>
+            <td class="code">SH600475</td>
+            <td class="name">华光环能</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">16.1%</td>
+            <td>13:47</td>
+            <td>0</td>
+            <td>15.5%</td>
+            <td>202.5亿</td>
+            <td>10.4%</td>
+            <td>1</td>
+            <td class="industry">电力</td>
+        </tr><tr class="grade-a">
+            <td class="rank">14</td>
+            <td class="code">SH603061</td>
+            <td class="name">金海通</td>
+            <td class="grade-cell" style="background:rgba(255,145,0,0.10);color:#ff9100;font-weight:700">A</td>
+            <td class="prob" style="color:#ff9100">16.0%</td>
+            <td>10:48</td>
+            <td>0</td>
+            <td>5.0%</td>
+            <td>116.9亿</td>
+            <td>8.6%</td>
+            <td>1</td>
+            <td class="industry">半导体</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">15</td>
+            <td class="code">SZ002185</td>
+            <td class="name">华天科技</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.9%</td>
+            <td>13:57</td>
+            <td>0</td>
+            <td>7.2%</td>
+            <td>477.6亿</td>
+            <td>17.9%</td>
+            <td>1</td>
+            <td class="industry">半导体</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">16</td>
+            <td class="code">SH603396</td>
+            <td class="name">金辰股份</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.9%</td>
+            <td>14:06</td>
+            <td>0</td>
+            <td>7.0%</td>
+            <td>64.4亿</td>
+            <td>32.8%</td>
+            <td>1</td>
+            <td class="industry">光伏设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">17</td>
+            <td class="code">SH603121</td>
+            <td class="name">华培动力</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.8%</td>
+            <td>09:42</td>
+            <td>0</td>
+            <td>9.1%</td>
+            <td>81.9亿</td>
+            <td>8.3%</td>
+            <td>1</td>
+            <td class="industry">汽车零部件</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">18</td>
+            <td class="code">SH603916</td>
+            <td class="name">苏博特</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.7%</td>
+            <td>13:22</td>
+            <td>0</td>
+            <td>14.1%</td>
+            <td>57.5亿</td>
+            <td>26.3%</td>
+            <td>1</td>
+            <td class="industry">化学制品</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">19</td>
+            <td class="code">SH603488</td>
+            <td class="name">展鹏科技</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.7%</td>
+            <td>13:15</td>
+            <td>0</td>
+            <td>33.2%</td>
+            <td>30.9亿</td>
+            <td>11.9%</td>
+            <td>1</td>
+            <td class="industry">专用设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">20</td>
+            <td class="code">SH603212</td>
+            <td class="name">赛伍技术</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.7%</td>
+            <td>11:27</td>
+            <td>1</td>
+            <td>8.7%</td>
+            <td>76.4亿</td>
+            <td>29.8%</td>
+            <td>1</td>
+            <td class="industry">光伏设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">21</td>
+            <td class="code">SZ002150</td>
+            <td class="name">正泰电源</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.7%</td>
+            <td>13:27</td>
+            <td>0</td>
+            <td>8.2%</td>
+            <td>92.8亿</td>
+            <td>20.0%</td>
+            <td>1</td>
+            <td class="industry">光伏设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">22</td>
+            <td class="code">SZ300806</td>
+            <td class="name">斯迪克</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.7%</td>
+            <td>11:33</td>
+            <td>0</td>
+            <td>6.0%</td>
+            <td>158.3亿</td>
+            <td>16.1%</td>
+            <td>1</td>
+            <td class="industry">塑料制品</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">23</td>
+            <td class="code">SH600602</td>
+            <td class="name">云赛智联</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.6%</td>
+            <td>14:03</td>
+            <td>1</td>
+            <td>6.0%</td>
+            <td>238.2亿</td>
+            <td>20.8%</td>
+            <td>1</td>
+            <td class="industry">软件开发</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">24</td>
+            <td class="code">SH600391</td>
+            <td class="name">航发科技</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.6%</td>
+            <td>13:21</td>
+            <td>0</td>
+            <td>4.7%</td>
+            <td>175.4亿</td>
+            <td>17.0%</td>
+            <td>1</td>
+            <td class="industry">军工装备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">25</td>
+            <td class="code">SZ001267</td>
+            <td class="name">汇绿生态</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.4%</td>
+            <td>11:28</td>
+            <td>0</td>
+            <td>9.3%</td>
+            <td>170.3亿</td>
+            <td>13.6%</td>
+            <td>1</td>
+            <td class="industry">建筑装饰</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">26</td>
+            <td class="code">SZ002943</td>
+            <td class="name">宇晶股份</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.4%</td>
+            <td>13:06</td>
+            <td>0</td>
+            <td>4.5%</td>
+            <td>112.1亿</td>
+            <td>20.8%</td>
+            <td>1</td>
+            <td class="industry">通用设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">27</td>
+            <td class="code">SZ001311</td>
+            <td class="name">多利科技</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.3%</td>
+            <td>13:18</td>
+            <td>0</td>
+            <td>26.7%</td>
+            <td>35.1亿</td>
+            <td>15.0%</td>
+            <td>1</td>
+            <td class="industry">汽车零部件</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">28</td>
+            <td class="code">SH600172</td>
+            <td class="name">黄河旋风</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.3%</td>
+            <td>09:45</td>
+            <td>2</td>
+            <td>5.4%</td>
+            <td>91.4亿</td>
+            <td>29.8%</td>
+            <td>1</td>
+            <td class="industry">通用设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">29</td>
+            <td class="code">SH605288</td>
+            <td class="name">凯迪股份</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.2%</td>
+            <td>10:42</td>
+            <td>0</td>
+            <td>37.2%</td>
+            <td>92.3亿</td>
+            <td>6.7%</td>
+            <td>1</td>
+            <td class="industry">自动化设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">30</td>
+            <td class="code">SH603381</td>
+            <td class="name">永臻股份</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.2%</td>
+            <td>13:47</td>
+            <td>0</td>
+            <td>6.5%</td>
+            <td>33.2亿</td>
+            <td>17.5%</td>
+            <td>1</td>
+            <td class="industry">光伏设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">31</td>
+            <td class="code">SZ000738</td>
+            <td class="name">航发控制</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.2%</td>
+            <td>13:23</td>
+            <td>2</td>
+            <td>3.5%</td>
+            <td>346.3亿</td>
+            <td>16.0%</td>
+            <td>1</td>
+            <td class="industry">军工装备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">32</td>
+            <td class="code">SH688110</td>
+            <td class="name">东芯股份</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">15.2%</td>
+            <td>10:27</td>
+            <td>0</td>
+            <td>4.3%</td>
+            <td>677.7亿</td>
+            <td>15.0%</td>
+            <td>1</td>
+            <td class="industry">半导体</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">33</td>
+            <td class="code">SZ000659</td>
+            <td class="name">珠海中富</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">14.8%</td>
+            <td>14:56</td>
+            <td>0</td>
+            <td>19.0%</td>
+            <td>63.4亿</td>
+            <td>7.1%</td>
+            <td>1</td>
+            <td class="industry">包装印刷</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">34</td>
+            <td class="code">SH603929</td>
+            <td class="name">亚翔集成</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">14.8%</td>
+            <td>10:44</td>
+            <td>0</td>
+            <td>10.9%</td>
+            <td>319.2亿</td>
+            <td>6.8%</td>
+            <td>1</td>
+            <td class="industry">建筑装饰</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">35</td>
+            <td class="code">SZ002796</td>
+            <td class="name">世嘉科技</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">14.6%</td>
+            <td>10:47</td>
+            <td>2</td>
+            <td>3.0%</td>
+            <td>114.7亿</td>
+            <td>17.9%</td>
+            <td>1</td>
+            <td class="industry">通信设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">36</td>
+            <td class="code">SH603663</td>
+            <td class="name">三祥新材</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">14.6%</td>
+            <td>13:51</td>
+            <td>0</td>
+            <td>24.0%</td>
+            <td>175.3亿</td>
+            <td>12.7%</td>
+            <td>1</td>
+            <td class="industry">非金属材料</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">37</td>
+            <td class="code">SZ301396</td>
+            <td class="name">宏景科技</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">14.1%</td>
+            <td>14:04</td>
+            <td>0</td>
+            <td>6.2%</td>
+            <td>74.6亿</td>
+            <td>40.7%</td>
+            <td>1</td>
+            <td class="industry">IT服务</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">38</td>
+            <td class="code">SZ003031</td>
+            <td class="name">中瓷电子</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">13.8%</td>
+            <td>10:23</td>
+            <td>0</td>
+            <td>16.4%</td>
+            <td>288.4亿</td>
+            <td>6.3%</td>
+            <td>1</td>
+            <td class="industry">通信设备</td>
+        </tr><tr class="grade-bplus">
+            <td class="rank">39</td>
+            <td class="code">SH600893</td>
+            <td class="name">航发动力</td>
+            <td class="grade-cell" style="background:rgba(255,196,0,0.10);color:#ffc400;font-weight:700">B+</td>
+            <td class="prob" style="color:#ffc400">13.6%</td>
+            <td>13:48</td>
+            <td>0</td>
+            <td>3.0%</td>
+            <td>1348.3亿</td>
+            <td>6.3%</td>
+            <td>1</td>
+            <td class="industry">军工装备</td>
+        </tr><tr class="grade-b">
+            <td class="rank">40</td>
+            <td class="code">SH688702</td>
+            <td class="name">盛科通信-U</td>
+            <td class="grade-cell" style="background:rgba(174,234,0,0.10);color:#aeea00;font-weight:700">B</td>
+            <td class="prob" style="color:#aeea00">12.9%</td>
+            <td>14:01</td>
+            <td>0</td>
+            <td>4.9%</td>
+            <td>329.9亿</td>
+            <td>10.3%</td>
+            <td>1</td>
+            <td class="industry">半导体</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<footer>
+    <p>涨停次日ML预测系统 | 模型：RF+GBDT融合 · Isotonic校准 | AUC: 0.684</p>
+    <p style="margin-top:4px">⚠️ 仅供研究参考，不构成投资建议 | 数据来源：首板涨停数据</p>
+    <p style="margin-top:8px">上次更新：2026-05-30 22:34</p>
+</footer>
+</div>
+
+<script>
+function filterGrade(grade) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    const rows = document.querySelectorAll('#rankTable tbody tr');
+    rows.forEach(row => {
+        if (grade === 'all') {
+            row.style.display = '';
+        } else {
+            const cell = row.querySelector('.grade-cell');
+            row.style.display = cell && cell.textContent.trim() === grade ? '' : 'none';
+        }
+    });
+}
+</script>
+</body>
+</html>

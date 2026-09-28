@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026年09月22日 09:45</title>
+<style>
+  :root{
+    --bg:#0d1117; --bg2:#141a22; --card:#171e27; --card2:#1c242f;
+    --line:#28323f; --txt:#e6edf3; --txt2:#9fb0c3; --txt3:#6b7d90;
+    --up:#ff4d4f; --upbg:rgba(255,77,79,.13);
+    --dn:#00c07f; --dnbg:rgba(0,192,127,.13);
+    --warn:#ff9f1c; --warnbg:rgba(255,159,28,.10);
+    --blue:#4a9eff; --gold:#f7c948;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:"Microsoft YaHei","PingFang SC","Segoe UI",Roboto,sans-serif;
+    font-size:14px; line-height:1.65; padding:20px 16px 60px;
+  }
+  .wrap{max-width:1180px;margin:0 auto}
+  .up{color:var(--up)} .dn{color:var(--dn)} .flat{color:var(--txt2)}
+  .mono{font-family:Consolas,"Courier New",monospace}
+
+  /* header */
+  header{
+    background:linear-gradient(135deg,#182231 0%,#101820 100%);
+    border:1px solid var(--line); border-left:4px solid var(--up);
+    border-radius:10px; padding:18px 22px; margin-bottom:16px;
+  }
+  header h1{font-size:23px;letter-spacing:.5px}
+  header .sub{color:var(--txt2);font-size:12.5px;margin-top:7px}
+  .badges{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+  .badge{
+    font-size:11.5px;padding:4px 10px;border-radius:20px;
+    border:1px solid var(--line);background:var(--card2);color:var(--txt2);
+  }
+  .badge.ok{border-color:rgba(0,192,127,.45);color:#4fe0a8;background:rgba(0,192,127,.10)}
+  .badge.red{border-color:rgba(255,77,79,.45);color:#ff8a8c;background:var(--upbg)}
+
+  /* section */
+  section{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:10px; padding:16px 20px; margin-bottom:16px;
+  }
+  h2{
+    font-size:16.5px;margin-bottom:14px;padding-left:11px;
+    border-left:4px solid var(--blue); line-height:1.2;
+  }
+  h2 .tag{font-size:11.5px;color:var(--txt3);font-weight:400;margin-left:9px}
+  h3{font-size:13.5px;color:var(--blue);margin:14px 0 8px}
+
+  table{width:100%;border-collapse:collapse;font-size:12.8px}
+  th{
+    background:var(--card2);color:var(--txt2);font-weight:600;
+    padding:8px 9px;text-align:center;border-bottom:1px solid var(--line);
+    white-space:nowrap;font-size:12.2px;
+  }
+  td{padding:8px 9px;text-align:center;border-bottom:1px solid rgba(40,50,63,.6)}
+  tbody tr:hover{background:rgba(74,158,255,.055)}
+  td.l,th.l{text-align:left}
+  .nm{font-weight:600}
+
+  /* index cards */
+  .idx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px}
+  .idx{
+    background:var(--card2);border:1px solid var(--line);border-radius:9px;
+    padding:13px 15px;border-top:3px solid var(--up);
+  }
+  .idx.down{border-top-color:var(--dn)}
+  .idx .t{display:flex;justify-content:space-between;align-items:baseline}
+  .idx .n{font-size:14px;font-weight:600}
+  .idx .c{font-size:12px;color:var(--txt3)}
+  .idx .p{font-size:27px;font-weight:700;margin:6px 0 2px;letter-spacing:.5px}
+  .idx .pct{font-size:14px;font-weight:700;margin-left:8px}
+  .idx .meta{font-size:11.8px;color:var(--txt2);display:grid;grid-template-columns:1fr 1fr;gap:3px 10px;margin-top:8px}
+  .idx .shape{
+    margin-top:9px;font-size:11.5px;padding:3px 8px;border-radius:5px;
+    background:var(--upbg);color:#ff8a8c;display:inline-block;
+  }
+  .idx .shape.warn{background:var(--warnbg);color:#ffc069}
+
+  /* stat grid */
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:11px}
+  .stat{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+  .stat .k{font-size:11.5px;color:var(--txt3)}
+  .stat .v{font-size:21px;font-weight:700;margin-top:3px}
+  .stat .x{font-size:11.3px;color:var(--txt2);margin-top:2px}
+
+  /* alert module 2.5 */
+  .alert{
+    border:2px solid var(--warn);
+    background:linear-gradient(180deg,rgba(255,159,28,.10),rgba(255,159,28,.035));
+    border-radius:11px;padding:17px 20px;margin-bottom:16px;
+    box-shadow:0 0 0 1px rgba(255,159,28,.18),0 5px 22px rgba(255,159,28,.07);
+  }
+  .alert h2{border-left-color:var(--warn);color:#ffb84d}
+  .alert .concl{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+    gap:10px;margin:13px 0;
+  }
+  .alert .box{background:rgba(13,17,23,.55);border:1px solid rgba(255,159,28,.3);border-radius:8px;padding:11px 13px}
+  .alert .box .k{font-size:11.5px;color:#ffb84d}
+  .alert .box .v{font-size:15px;font-weight:700;margin-top:4px}
+  .chk{list-style:none;font-size:12.6px}
+  .chk li{padding:4px 0;border-bottom:1px dashed rgba(40,50,63,.7)}
+  .chk li:last-child{border:none}
+  .chk .yes{color:#4fe0a8;font-weight:700}
+  .chk .no{color:var(--txt3)}
+  .chk .half{color:#ffc069;font-weight:700}
+  .warnlist{font-size:12.5px;color:#ffd8a8;background:rgba(255,77,79,.08);
+    border-left:3px solid var(--up);border-radius:0 6px 6px 0;padding:9px 13px;margin-top:11px}
+  .warnlist li{margin-left:16px;padding:2px 0}
+
+  .note{font-size:11.6px;color:var(--txt3);margin-top:9px;line-height:1.6}
+  .kv{font-size:12.6px;color:var(--txt2);margin:5px 0}
+  .kv b{color:var(--txt)}
+  .pill{display:inline-block;font-size:11.3px;padding:2px 7px;border-radius:4px;margin-right:5px}
+  .pill.s{background:var(--upbg);color:#ff8a8c}
+  .pill.w{background:var(--warnbg);color:#ffc069}
+  .pill.g{background:rgba(74,158,255,.14);color:#8ec5ff}
+  .pill.k{background:rgba(107,125,144,.16);color:var(--txt2)}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:800px){.two-col{grid-template-columns:1fr}}
+  footer{
+    text-align:center;color:var(--txt3);font-size:11.6px;
+    margin-top:22px;padding-top:16px;border-top:1px solid var(--line);line-height:1.9;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>A股早盘快报 — 2026年09月22日 09:45</h1>
+  <div class="sub">
+    时间锚定：开盘后约 25 分钟（9:55 窗口）｜<b>实际数据快照：2026-09-22 10:07:00 ~ 10:09:00（TDX 实时盘中）</b><br>
+    数据时效性以本时间戳为准（实际执行略晚于锚定窗口，全文为 10:07—10:09 动态盘中值，非收盘值）
+  </div>
+  <div class="badges">
+    <span class="badge ok">✔ TDX MCP 连通性自检：首次探测即成功（000001/setcode=1），全程未降级</span>
+    <span class="badge">数据源：tdx-connector（指数/板块/情绪/连板/异动/修复池）</span>
+    <span class="badge">模块8承接段：腾讯批量实时接口（脚本自动追加）</span>
+    <span class="badge red">北向资金：N/A（2024-08-19 起停止盘中披露）</span>
+  </div>
+</header>
+
+<!-- ============ 1 核心指数 ============ -->
+<section>
+  <h2>1 · 核心指数概览 <span class="tag">数据时间 10:07:00—10:07:06（TDX）</span></h2>
+  <div class="idx-grid">
+
+    <div class="idx">
+      <div class="t"><span class="n">上证指数</span><span class="c">000001 · 沪</span></div>
+      <div class="p up">3963.01<span class="pct up">+0.33%</span></div>
+      <div class="meta">
+        <span>今开 <b class="up">3963.81 (+0.35%)</b></span>
+        <span>昨收 3949.91</span>
+        <span>最高 <b class="up">3967.38 (+0.44%)</b></span>
+        <span>最低 3955.63 (+0.14%)</span>
+        <span>成交额 <b>4067.92 亿</b></span>
+        <span>量比 2.70</span>
+        <span>涨跌家数 <b class="up">1136</b> / <b class="dn">1142</b> / 平76</span>
+        <span>主力净额 <b class="up">+49.74 亿</b></span>
+      </div>
+      <div class="shape warn">高开窄幅震荡 · 现价距开盘 −0.02%、距日内高 −0.11%（高位窄幅整理）</div>
+    </div>
+
+    <div class="idx">
+      <div class="t"><span class="n">深证成指</span><span class="c">399001 · 深</span></div>
+      <div class="p up">13882.26<span class="pct up">+1.11%</span></div>
+      <div class="meta">
+        <span>今开 <b class="up">13858.62 (+0.94%)</b></span>
+        <span>昨收 13730.02</span>
+        <span>最高 <b class="up">13914.21 (+1.34%)</b></span>
+        <span>最低 13850.52 (+0.88%)</span>
+        <span>成交额 <b>4511.67 亿</b></span>
+        <span>量比 2.89</span>
+        <span>涨跌家数 <b class="up">1379</b> / <b class="dn">1450</b> / 平102</span>
+        <span>主力净额 <b class="up">+97.09 亿</b></span>
+      </div>
+      <div class="shape">高开高走 · 现价高于开盘 +0.18%、距日内高 −0.23%（高位区间运行）</div>
+    </div>
+
+    <div class="idx">
+      <div class="t"><span class="n">创业板指</span><span class="c">399006 · 创</span></div>
+      <div class="p up">3457.96<span class="pct up">+1.72%</span></div>
+      <div class="meta">
+        <span>今开 <b class="up">3446.33 (+1.37%)</b></span>
+        <span>昨收 3399.59</span>
+        <span>最高 <b class="up">3472.47 (+2.14%)</b></span>
+        <span>最低 3440.90 (+1.21%)</span>
+        <span>成交额 <b>2148.62 亿</b></span>
+        <span>量比 2.97</span>
+        <span>涨跌家数 <b class="up">826</b> / <b class="dn">546</b> / 平33</span>
+        <span>主力净额 <b class="up">+47.74 亿</b></span>
+      </div>
+      <div class="shape">高开高走后小幅回落 · 现价高于开盘 +0.34%、距日内高 −0.42%（冲高回落但守开盘）</div>
+    </div>
+
+    <div class="idx down">
+      <div class="t"><span class="n">科创50</span><span class="c">000688 · 科</span></div>
+      <div class="p up">1697.26<span class="pct up">+2.40%</span></div>
+      <div class="meta">
+        <span>今开 <b class="up">1699.05 (+2.51%)</b></span>
+        <span>昨收 1657.48</span>
+        <span>最高 <b class="up">1707.67 (+3.03%)</b></span>
+        <span>最低 1690.53 (+1.99%)</span>
+        <span>成交额 <b>511.78 亿</b></span>
+        <span>量比 3.05</span>
+        <span>涨跌家数 <b class="up">475</b> / <b class="dn">135</b> / 平7</span>
+        <span>主力净额 <b class="up">+35.61 亿</b></span>
+      </div>
+      <div class="shape warn">高开冲高回落 · <b>现价低于开盘 −0.11%</b>、距日内高 −0.61%（涨幅最大但回落最深）</div>
+    </div>
+
+  </div>
+  <div class="note">
+    四大指数 <b>全部高开、全部红盘</b>，均线位置：沪指站 3930 上方、深成指站 13800 上方、创业板指站 3440 上方、科创50 站 1690 上方。四大指数今日主力净额：沪 +49.74 亿 / 深 +97.09 亿 / 创 +47.74 亿 / 科 +35.61 亿，<b>合计约 +230.2 亿全部净流入</b>。<br>
+    形态分叉：深、创现价高于开盘价（承接良好），沪基本持平，科创50 现价略跌破开盘价（高开被兑现）。<b>指数内部结构：科创50 弹性最大但回落压力也最大。</b>
+  </div>
+</section>
+
+<!-- ============ 2 市场情绪 ============ -->
+<section>
+  <h2>2 · 市场情绪仪表盘 <span class="tag">10:07—10:09</span></h2>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="k">全市场涨跌比</div>
+      <div class="v up">2515 <span style="font-size:14px;color:var(--txt3)">:</span> <span class="dn">2592</span></div>
+      <div class="x">上涨占比 <b>48.9%</b>｜平 178｜比值 0.97 : 1<br>（沪 1136/1142 · 深 1379/1450）</div>
+    </div>
+    <div class="stat">
+      <div class="k">涨停 / 跌停</div>
+      <div class="v up">38 <span style="font-size:15px;color:var(--txt3)">/</span> <span class="dn">2</span></div>
+      <div class="x">跌停均为 ST（*ST亚士 / *ST西旅）<br>非 ST 跌停 <b>0 家</b></div>
+    </div>
+    <div class="stat">
+      <div class="k">炸板 / 炸板率</div>
+      <div class="v warn">15 <span style="font-size:14px;color:var(--warn)">· 28.3%</span></div>
+      <div class="x">炸板率 = 15/(38+15)<br>昨日 25.0% → 今日 28.3%（小幅抬升）</div>
+    </div>
+    <div class="stat">
+      <div class="k">两市成交额（10:07）</div>
+      <div class="v">8580 亿</div>
+      <div class="x">沪 4067.92 + 深 4511.67 亿<br>近5日全日均值 <b>1.877 万亿</b></div>
+    </div>
+    <div class="stat">
+      <div class="k">全日量能外推</div>
+      <div class="v up">≈ 2.14 万亿</div>
+      <div class="x">按首小时约 40% 成交占比外推<br>较近5日均值 <b class="up">+14%</b>（放量）</div>
+    </div>
+    <div class="stat">
+      <div class="k">北向资金</div>
+      <div class="v flat">N/A</div>
+      <div class="x">2024-08-19 起停止盘中披露<br>无盘中增量数据</div>
+    </div>
+  </div>
+
+  <h3>昨日涨停股今日表现（溢价）</h3>
+  <div class="kv">
+    昨日（09-21）涨停 <b>104 只</b>；今日按涨幅降序展示前 80 只：<b class="up">均值约 +3.9%、红盘 75%</b>。
+    计入未展示的 24 只后，<b>全样本估算均值约 +2.3%</b>。
+  </div>
+  <div class="note">
+    ⚠️ 口径提示：该榜单按今日涨幅降序输出，<b>属偏乐观的有偏样本</b>，前 80 只均值（+3.9%）系统性高于全样本。以 +2.3%（全样本估算）作为昨涨停溢价参考值，仍为 <b class="up">正值</b>，打板资金整体处于获利状态（前一日 09-21 为 +3.56%，今日小幅收窄）。
+  </div>
+
+  <h3>历史涨跌停序列（用于极端检测）</h3>
+  <table>
+    <thead><tr><th class="l">日期</th><th>涨停家数</th><th>跌停家数</th><th>炸板率</th><th>最高连板</th><th class="l">备注</th></tr></thead>
+    <tbody>
+      <tr><td class="l">09-17</td><td>18</td><td>0</td><td>37.9%</td><td>—</td><td class="l">高潮次日情绪断崖</td></tr>
+      <tr><td class="l">09-18</td><td>45</td><td>0</td><td>25.0%</td><td>4板</td><td class="l">修复/反包</td></tr>
+      <tr><td class="l">09-21</td><td>43</td><td>1</td><td>25.0%</td><td>5板</td><td class="l">发酵期</td></tr>
+      <tr><td class="l"><b>09-22（盘中）</b></td><td><b class="up">38</b></td><td><b class="dn">2</b></td><td><b>28.3%</b></td><td><b>6板</b></td><td class="l">本次</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    09-16 单日涨跌停家数历史记录缺失，标 N/A。序列判定：<b>无连续 3 日涨停 &gt; 100 家</b>（最高 45 家）、<b>无连续 3 日跌停 &gt; 50 家</b>（最高 2 家）→ <b>不构成连涨/连跌极端前置</b>。
+  </div>
+</section>
+
+<!-- ============ 2.5 情绪周期与反转预警 ============ -->
+<div class="alert">
+  <h2>2.5 · 情绪周期定位与极端反转预警 <span class="tag" style="color:#ffb84d">⚠️ 警戒模块 · 客观定位，不构成买卖指令</span></h2>
+
+  <h3 style="color:#ffb84d">第一步 · 情绪周期定位（陈小群钟摆 6 指标）</h3>
+  <table>
+    <thead>
+      <tr><th class="l">指标</th><th>实际值（10:09）</th><th>冰点</th><th>修复</th><th>发酵</th><th>高潮</th><th>分歧</th><th>退潮</th><th>匹配阶段</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="l">涨停数</td><td><b>38</b></td><td>&lt;20</td><td><b>20-50</b></td><td>50-80</td><td>&gt;80</td><td>50-80</td><td>&lt;30</td><td class="up">修复</td></tr>
+      <tr><td class="l">跌停数</td><td><b>2</b></td><td>&gt;50</td><td>20-50</td><td><b>&lt;10</b></td><td><b>&lt;10</b></td><td>10-30</td><td>&gt;30</td><td class="up">发酵 / 高潮</td></tr>
+      <tr><td class="l">连板高度</td><td><b>6 板</b></td><td>≤2</td><td>2-3</td><td>3-4</td><td><b>≥5</b></td><td>断板</td><td>0-1</td><td class="up">高潮</td></tr>
+      <tr><td class="l">炸板率</td><td><b>28.3%</b></td><td>&gt;50%</td><td>30-50%</td><td><b>&lt;20%</b></td><td>&lt;20%</td><td>&gt;30%</td><td>&gt;40%</td><td>临界（修复下沿/发酵未达）</td></tr>
+      <tr><td class="l">昨涨停溢价</td><td><b class="up">+2.3%（正）</b></td><td>负</td><td>0附近</td><td><b>正</b></td><td><b>正且扩大</b></td><td>收窄</td><td>负</td><td class="up">发酵</td></tr>
+      <tr><td class="l">成交量</td><td><b class="up">放量 +14%</b></td><td>地量</td><td>温和放量</td><td><b>放量</b></td><td>天量</td><td>缩量</td><td>缩量</td><td class="up">发酵</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="color:#ffd8a8">
+    匹配统计：<b>发酵期 3/6（最高）</b>｜高潮期 2.5/6｜修复期 2/6｜分歧期 1/6｜退潮期 0/6。
+  </div>
+
+  <div class="concl">
+    <div class="box"><div class="k">📍 情绪周期定位</div><div class="v up">发酵期（延续·偏温和）</div>
+      <div class="note" style="color:#ffd8a8;margin-top:5px">最高板升至 6 板、跌停仅 2 家、溢价为正、量能放大 — 伴局部高潮特征；但涨停 38 家低于发酵区间 50-80，属<b>结构性发酵</b>而非全面高潮</div>
+    </div>
+    <div class="box"><div class="k">🔄 反转风险</div><div class="v up">无明显极端</div>
+      <div class="note" style="color:#ffd8a8;margin-top:5px">无连续 3 日涨停&gt;100 / 无连续 3 日跌停&gt;50，<b>历史极端概率表不适用</b></div>
+    </div>
+    <div class="box"><div class="k">✅ 已确认反转信号</div><div class="v">底部修复 <b class="up">4/5</b>　｜　顶部反转 <b class="dn">0/6</b></div>
+      <div class="note" style="color:#ffd8a8;margin-top:5px">底部清单前置条件（连跌）不成立，仅作结构参考；顶部清单前置（连涨）部分成立，0 项确认</div>
+    </div>
+  </div>
+
+  <h3 style="color:#ffb84d">第二步 · 连跌 / 连涨极端检测</h3>
+  <div class="kv">
+    · 涨停序列（09-17→09-22）：<b>18 → 45 → 43 → 38（盘中）</b>，最高 45 家，<b>未出现连续 3 日 &gt;100 家</b> → 无连涨极端<br>
+    · 跌停序列（09-17→09-22）：<b>0 → 0 → 1 → 2</b>，最高 2 家，<b>未出现连续 3 日 &gt;50 家</b> → 无连跌极端<br>
+    · 结论：<b>既无底部反转（连跌）前置，也无顶部反转（连涨）前置</b>，当前处于常态波动区间。
+  </div>
+
+  <h3 style="color:#ffb84d">第三步 · 反转确认信号检查清单</h3>
+  <div class="two-col">
+    <div>
+      <div class="kv"><b>底部反转信号（连跌后反弹确认）</b>　<span class="pill s">4/5 ✅</span></div>
+      <ul class="chk">
+        <li><span class="yes">✅</span> 跌停家数骤降：跌停仅 <b>2 家</b>（&lt;15）</li>
+        <li><span class="yes">✅</span> 首板出现且封住：首板 <b>19 只</b>，多只一字/T字封板</li>
+        <li><span class="yes">✅</span> 昨日涨停今日正溢价：<b class="up">+2.3%</b></li>
+        <li><span class="yes">✅</span> 板块联动：半导体(165涨20跌)、出版业/广告营销、医药链 3 板块以上同步走强</li>
+        <li><span class="half">⚠️</span> 地量后放量：量能放大 +14%，但前 5 日并非地量，<b>半确认</b></li>
+      </ul>
+      <div class="note" style="color:#ffd8a8">注：「连跌后」前置条件并不成立（无极端连跌），以上仅作结构性强度参考。</div>
+    </div>
+    <div>
+      <div class="kv"><b>顶部反转信号（连涨后分歧确认）</b>　<span class="pill g">0/6</span></div>
+      <ul class="chk">
+        <li><span class="no">✗</span> 高标断板：6 板华瓷股份仍一字封住，<b>未断板</b></li>
+        <li><span class="no">✗</span> 涨停家数骤降：38 家，未出现 &gt;80→&lt;50 的骤降</li>
+        <li><span class="no">✗</span> 跌停异常增加：仅 2 家，且均为 ST</li>
+        <li><span class="no">✗</span> 炸板率飙升：28.3%，未达 &gt;40%</li>
+        <li><span class="no">✗</span> 板块分化：医药/半导体/传媒/PCB 上游多线共振，暂无显著分化</li>
+        <li><span class="no">✗</span> 放量滞涨：放量 +14% 但指数普涨（+0.33%~+2.40%），<b>未滞涨</b></li>
+      </ul>
+      <div class="note" style="color:#ffd8a8">仅「放量」单项符合，指数未滞涨，不足以触发顶部确认。</div>
+    </div>
+  </div>
+
+  <h3 style="color:#ffb84d">第四步 · 概率统计参考</h3>
+  <div class="note" style="color:#ffd8a8">
+    当前 <b>不满足</b>历史极端概率表的任何触发场景（无连 3 日跌停&gt;50、无连 3 日涨停&gt;100），
+    因此「第4天反弹概率60%」等统计值<b>本次不适用</b>，不作外推引用。
+  </div>
+
+  <div class="warnlist">
+    <b>⚠️ 关键提醒（务必阅读）</b>
+    <ol>
+      <li>反转靠<b>确认信号</b>，不靠预测。不要因"已跌很多"就预判反弹，不要因"已涨很多"就预判见顶。</li>
+      <li>至少 <b>2 个确认信号</b>同时出现才具备动手条件；单一信号可能是噪音。</li>
+      <li>外部催化（基本面利空/利好、政策、突发事件）会显著改变反转概率与时间。</li>
+      <li>极端可以更极端：连跌 5 天的可以跌到第 7 天，连涨 5 天的可以涨到第 7 天。</li>
+      <li>反转不等于立刻反向：冰点后可能横盘震荡数日再修复，高潮后可能高位震荡数日再退潮。</li>
+    </ol>
+  </div>
+
+  <div class="concl" style="margin-bottom:0">
+    <div class="box"><div class="k">⚠️ 操作提醒（现状描述）</div>
+      <div class="note" style="color:#ffd8a8;margin-top:4px">
+        处于<b>发酵期偏温和</b>：赚钱效应为正（昨涨停溢价 +2.3%）、亏钱效应极低（非ST跌停 0 家）、量能放大。<br>
+        结构性特征：涨停家数未同步放大（38 家）+ 炸板率抬升至 28.3% + 指数高开后尾段小幅回落 → <b>资金向少数主线集中</b>，二线跟风股分化。
+      </div>
+    </div>
+    <div class="box"><div class="k">📊 历史参考</div>
+      <div class="v" style="font-size:14px">本次极端程度：<b>未触发</b>（常态区间）</div>
+      <div class="note" style="color:#ffd8a8;margin-top:4px">历史反转概率表不适用。可参照前一轮节奏：88 家→39 家约 4 日退潮，本轮 45→43→38 属温和自然衰减，暂无加速迹象。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3 热点板块 ============ -->
+<section>
+  <h2>3 · 热点板块 TOP5 <span class="tag">涨幅榜 10:07 · 成交额/主力 10:09</span></h2>
+  <table>
+    <thead>
+      <tr><th>排名</th><th class="l">板块</th><th>涨幅</th><th>板块成交额</th><th>主力净额</th><th>涨/跌家数</th><th class="l">领涨股</th><th class="l">驱动逻辑</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>1</b></td><td class="l nm up">玻璃玻纤</td><td class="up"><b>+3.24%</b></td><td>184.4 亿</td><td class="up">+11.84 亿</td><td>9 / 7</td>
+        <td class="l"><b>宏和科技</b> <span class="up">+10.00%</span><br><span style="font-size:11px;color:var(--txt3)">（菲利华 +4.92% · 山东玻纤 +3.57%）</span></td>
+        <td class="l">电子布/低介电玻纤 — PCB 上游涨价传导</td>
+      </tr>
+      <tr>
+        <td><b>2</b></td><td class="l nm up">出版业</td><td class="up"><b>+3.18%</b></td><td>48.9 亿</td><td class="up">+1.31 亿</td><td>29 / 0</td>
+        <td class="l"><b>新华文轩</b> <span class="up">+10.01%</span> <span class="pill s">3板一字</span><br><span style="font-size:11px;color:var(--txt3)">（内蒙新华 +9.98% 5板 · 新华传媒 +9.93% 2板一字）</span></td>
+        <td class="l">出版传媒资产整合 + 界面财联社注入预期</td>
+      </tr>
+      <tr>
+        <td><b>3</b></td><td class="l nm up">半导体</td><td class="up"><b>+2.63%</b></td><td><b>1379.6 亿</b></td><td class="up"><b>+76.82 亿</b></td><td>165 / 20</td>
+        <td class="l"><b>聚辰股份</b> <span class="up">+12.17%</span><br><span style="font-size:11px;color:var(--txt3)">（摩尔线程-U +11.89% · 先导基电 +10.01%）</span></td>
+        <td class="l">存储/CPU 国产替代 — 长鑫 G5 DRAM 量产；费半涨超4%</td>
+      </tr>
+      <tr>
+        <td><b>4</b></td><td class="l nm up">广告营销</td><td class="up"><b>+2.33%</b></td><td>105.3 亿</td><td class="up">+11.01 亿</td><td>29 / 2</td>
+        <td class="l"><b>智度股份</b> <span class="up">+9.45%</span><br><span style="font-size:11px;color:var(--txt3)">（引力传媒 +9.98% · 华媒控股 +9.93% 2板一字）</span></td>
+        <td class="l">AI 智能体/虚拟数字人 + 文化产权交易</td>
+      </tr>
+      <tr>
+        <td><b>5</b></td><td class="l nm up">元器件</td><td class="up"><b>+2.23%</b></td><td><b>664.1 亿</b></td><td class="up">+36.30 亿</td><td>54 / 12</td>
+        <td class="l"><b>逸豪新材</b> <span class="up">+13.24%</span><br><span style="font-size:11px;color:var(--txt3)">（贤丰控股 +10.07% · 广合科技 +10.00%）</span></td>
+        <td class="l">PCB/铜箔/CCL 涨价 + 算力硬件需求</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <b>第 6-10 位：</b>云服务 +1.91%、电池 +1.89%、非金属材料 +1.84%、通信设备 +1.82%、电子化学品 +1.79%。<br>
+    <b>主线归并：</b>①<b>算力硬件链</b>（半导体 1379.6亿 + 元器件 664.1亿 + 玻璃玻纤 184.4亿 + 通信设备 + 电子化学品）主力合计净流入约 <b class="up">+125 亿</b>；②<b>传媒出版链</b>（出版业 + 广告营销）成交 154.2 亿、主力 +12.3 亿，两板块均收 29 家上涨。③医药链（哈药股份 2板、南华生物 4板、新华制药 T字）延续 09-21 强度但未进前 5。
+  </div>
+</section>
+
+<!-- ============ 4 早盘修复侦察 ============ -->
+<section>
+  <h2>4 · 早盘修复侦察（超跌修复模式） <span class="tag">客观数据 · 不给买卖建议</span></h2>
+  <div class="stat-grid" style="margin-bottom:14px">
+    <div class="stat"><div class="k">第一步 · 昨日大跌池（跌幅 &gt;3%）</div><div class="v">101 只</div><div class="x">其中昨日跌 &gt;5%：22 只</div></div>
+    <div class="stat"><div class="k">第二步 · 今日修复（池内翻红）</div><div class="v up">63 只</div><div class="x">占池 <b>62.4%</b>（修复面较广）</div></div>
+    <div class="stat"><div class="k">第三步 · 通过三重条件+主力验证</div><div class="v up">5 只</div><div class="x">★★ 2 只 · ★ 3 只 · <b>无 ★★★</b></div></div>
+  </div>
+
+  <h3>修复候选列表（温和开盘 + 守开盘价 + 主力未净流出）</h3>
+  <table>
+    <thead>
+      <tr><th class="l">代码</th><th class="l">名称</th><th>昨日跌幅</th><th>今日开盘</th><th>现价</th><th>今日涨幅</th><th>主力净额</th><th>修复强度</th><th class="l">备注</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="l mono">603082</td><td class="l nm">北自科技</td>
+        <td class="dn">−4.03%</td><td class="dn">49.03 (−0.61%)</td><td>53.10</td><td class="up"><b>+7.64%</b></td>
+        <td class="up">+6544 万</td><td class="up"><b>★★</b></td>
+        <td class="l">低开翻红 · 换手 22.2%（高活跃）· 智能物流/机器人</td>
+      </tr>
+      <tr>
+        <td class="l mono">688004</td><td class="l nm">博汇科技</td>
+        <td class="dn">−3.80%</td><td class="dn">33.60 (−0.97%)</td><td>35.80</td><td class="up"><b>+5.51%</b></td>
+        <td class="up">+2472 万</td><td class="up"><b>★★</b></td>
+        <td class="l">低开翻红 · 数据安全/传媒监管 · 日内最低 32.34 后拉起</td>
+      </tr>
+      <tr>
+        <td class="l mono">688227</td><td class="l nm">品高股份</td>
+        <td class="dn">−3.30%</td><td class="up">76.00 (+1.27%)</td><td>79.14</td><td class="up"><b>+5.45%</b></td>
+        <td class="up">+2779 万</td><td class="up">★</td>
+        <td class="l">温和高开翻红 · 云/信创 · 5日涨幅 +18.6%</td>
+      </tr>
+      <tr>
+        <td class="l mono">688195</td><td class="l nm">腾景科技</td>
+        <td class="dn">−4.70%</td><td class="up">193.00 (+1.53%)</td><td>199.84</td><td class="up"><b>+5.12%</b></td>
+        <td class="up">+9187 万</td><td class="up">★</td>
+        <td class="l">温和高开翻红 · 光学元件/CPO 链 · 主力流入最多</td>
+      </tr>
+      <tr>
+        <td class="l mono">688630</td><td class="l nm">芯碁微装</td>
+        <td class="dn">−3.85%</td><td class="up">430.50 (+1.80%)</td><td>439.35</td><td class="up"><b>+3.89%</b></td>
+        <td class="up">+3450 万</td><td class="up">★</td>
+        <td class="l">温和高开翻红 · 直写光刻/半导体设备 · 开盘后最低 426.88 未破昨收</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    修复强度口径：★★ = 低开翻红 ≥ +2%｜★ = 温和开盘（−1%~+2%）翻红 ≥ +1%｜★★★ = 低开涨停（<b>本次无</b>）。<br>
+    <b>被剔除标的（主力净流出）：</b>利扬芯片 688135（昨 −12.76%，今日 +7.78%，主力 <b class="dn">−2913 万</b> 净流出）。<br>
+    <b>排除规则：</b>ST 股（*ST禾信 +14.71% 等）、上市不足 10 日新股（C沈鼓 等）不计入。<br>
+    <b>板块效应：</b>5 只候选中 <b>4 只为科创板硬科技</b>（半导体设备/光学/信创/数据安全），与今日半导体（+2.63%、165涨20跌）、元器件（+2.23%）主线方向一致 → <b>呈局部板块共振，但集中于科创板而非全市场扩散</b>。<br>
+    <b>补充观察：</b>昨日跌幅 &gt;5% 的 22 只中，今日仅 8 只翻红（36.4%），其中最能修复的是利扬芯片（+7.78%）但主力净流出；真正「昨日重挫 + 今日主力回补」的标的稀缺。
+  </div>
+</section>
+
+<!-- ============ 5 连板梯队 ============ -->
+<section>
+  <h2>5 · 连板梯队 <span class="tag">10:09 · 涨停池 38 只</span></h2>
+  <div class="stat-grid" style="margin-bottom:14px">
+    <div class="stat"><div class="k">最高连板</div><div class="v up">6 板</div><div class="x">华瓷股份 001216（一字 · 6天6板）</div></div>
+    <div class="stat"><div class="k">连板股总数</div><div class="v">21 只</div><div class="x">占涨停池 55.3%</div></div>
+    <div class="stat"><div class="k">首板家数</div><div class="v">19 只</div><div class="x">占涨停池 50.0%</div></div>
+    <div class="stat"><div class="k">梯队断层</div><div class="v dn">无断层</div><div class="x">6→5→4→3→2 连续可接</div></div>
+  </div>
+  <table>
+    <thead><tr><th>梯队</th><th>家数</th><th class="l">个股（代码 · 板型 · 封单）</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b class="up">6 板</b></td><td>1</td>
+        <td class="l"><b>华瓷股份</b> 001216 <span class="pill s">一字板</span> 6天6板 · 封单 4.83 亿 · 跨境电商/MLCC 粉体</td>
+      </tr>
+      <tr>
+        <td><b class="up">5 板</b></td><td>1</td>
+        <td class="l"><b>内蒙新华</b> 603230 <span class="pill w">换手板</span> 5天5板 · 封单 1.37 亿 · 出版业（开板 3 次）</td>
+      </tr>
+      <tr>
+        <td><b class="up">4 板</b></td><td>1</td>
+        <td class="l"><b>南华生物</b> 000504 <span class="pill s">一字板</span> 4天4板 · 封单 5.82 亿 · 干细胞/医疗服务</td>
+      </tr>
+      <tr>
+        <td><b>3 板</b></td><td>3</td>
+        <td class="l">
+          <b>新华文轩</b> 601811 <span class="pill s">一字</span> 封单 2.38 亿 · 出版业<br>
+          <b>三羊马</b> 001317 <span class="pill w">换手</span> 封单 1.14 亿 · 机器人/无人物流<br>
+          <b>博通集成</b> 603068 封单 0（09:56 刚封）· 半导体/CPU
+        </td>
+      </tr>
+      <tr>
+        <td><b>2 板</b></td><td>13</td>
+        <td class="l">
+          新华传媒 600825（一字·44.76亿封单）· 哈药股份 600664 · 泰慕士 001234 · 华媒控股 000607（一字）· 新华制药 000756（T字）· 华远控股 600743（一字）· 我爱我家 000560（换手）· 奥佳华 002614（一字）· 艾艾精工 603580（换手）· 南威软件 603636（一字）· 爱普股份 603020（换手）· 延华智能 002178（换手）· 美盈森 002303（T字，5天3板）
+        </td>
+      </tr>
+      <tr>
+        <td>首板</td><td>19</td>
+        <td class="l" style="color:var(--txt2);font-size:12.2px">
+          中国长城 · 瑞芯微 · 宏和科技 · 综艺股份 · 禾盛新材 · 先导基电 · 贤丰控股 · 齐心集团 · 二六三 · 引力传媒 · 智度股份 · 天沃科技 · 爱丽家居 · 箭牌家居 · 梦天家居 · 伟时电子 · 联合精密 · 旋极信息(+20%) · 五洲医疗(+19.24%)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <b>晋级/断板观察：</b>昨日最高标（09-21 为 5 板华瓷股份）今日 <b>成功晋级 6 板、一字封住未断板</b>；昨日 4 板同列的 <b>双星新材未出现在今日涨停/连板池</b>（已断板）。<br>
+    <b>封单强度排序：</b>新华传媒 44.76 亿 &gt; 中国长城 21.93 亿 &gt; 瑞芯微 11.79 亿 &gt; 宏和科技 9.92 亿 &gt; 综艺股份 6.39 亿 &gt; 哈药股份 6.31 亿。<br>
+    <b>打板环境：</b>38 只涨停中一字板 11 只（华瓷/南华生物/新华文轩/新华传媒/华媒控股/华远控股/奥佳华/禾盛新材/综艺股份/南威软件/……），封板质量整体尚可；但炸板池 15 只、炸板率 28.3%，其中广合科技涨停打开 <b>22 次</b>、爱普股份 7 次、我爱我家 8 次 — 高位换手板分歧明显。
+  </div>
+</section>
+
+<!-- ============ 6 早盘异动 ============ -->
+<section>
+  <h2>6 · 早盘异动信号 <span class="tag">集合竞价 + 开盘后 1 小时</span></h2>
+
+  <div class="stat-grid" style="margin-bottom:14px">
+    <div class="stat"><div class="k">大幅高开（≥ +4%）</div><div class="v up">68 家</div><div class="x">含 2 只新股（N中塑 +418%、N世纪 +315%）</div></div>
+    <div class="stat"><div class="k">大幅低开（≤ −4%）</div><div class="v dn">9 家</div><div class="x">高开 : 低开 = <b>7.6 : 1</b>（竞价明显偏多）</div></div>
+    <div class="stat"><div class="k">高开回落实体为负</div><div class="v warn">12 家</div><div class="x">竞价情绪高于盘中承接</div></div>
+    <div class="stat"><div class="k">低开后向上修复</div><div class="v up">6 家</div><div class="x">实体经济转正</div></div>
+  </div>
+
+  <h3>① 集合竞价异常 — 高开回落型（诱多风险）</h3>
+  <table>
+    <thead><tr><th class="l">代码</th><th class="l">名称</th><th>开盘</th><th>实体涨幅</th><th>现价</th><th>现涨幅</th></tr></thead>
+    <tbody>
+      <tr><td class="l mono">600448</td><td class="l nm">华纺股份</td><td class="up">+7.97%</td><td class="dn"><b>−13.81%</b></td><td>3.62</td><td class="dn">−6.94%</td></tr>
+      <tr><td class="l mono">600301</td><td class="l nm">华锡有色</td><td class="up">+9.97%</td><td class="dn"><b>−10.83%</b></td><td>48.89</td><td class="dn">−2.16%</td></tr>
+      <tr><td class="l mono">600281</td><td class="l nm">华阳新材</td><td class="up">+9.44%</td><td class="dn"><b>−10.64%</b></td><td>4.87</td><td class="dn">−2.21%</td></tr>
+      <tr><td class="l mono">601086</td><td class="l nm">国芳集团</td><td class="up">+6.17%</td><td class="dn"><b>−6.56%</b></td><td>17.53</td><td class="dn">−0.79%</td></tr>
+      <tr><td class="l mono">601123</td><td class="l nm">马矿股份</td><td class="up">+4.81%</td><td class="dn"><b>−6.44%</b></td><td>19.30</td><td class="dn">−1.84%</td></tr>
+      <tr><td class="l mono">002436</td><td class="l nm">兴森科技</td><td class="up">+8.84%</td><td class="dn">−4.70%</td><td>45.98</td><td class="up">+3.72%</td></tr>
+      <tr><td class="l mono">300110</td><td class="l nm">华仁药业</td><td class="up">+9.42%</td><td class="dn">−4.17%</td><td>3.46</td><td class="up">+5.17%</td></tr>
+      <tr><td class="l mono">688047</td><td class="l nm">龙芯中科</td><td class="up">+9.96%</td><td class="dn">−3.72%</td><td>110.68</td><td class="up">+5.83%</td></tr>
+      <tr><td class="l mono">300017</td><td class="l nm">网宿科技</td><td class="up">+7.83%</td><td class="dn">−3.54%</td><td>15.81</td><td class="up">+4.08%</td></tr>
+      <tr><td class="l mono">688008</td><td class="l nm">澜起科技</td><td class="up">+9.47%</td><td class="dn">−0.80%</td><td>228.40</td><td class="up">+8.71%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>② 低开恐慌 / 低开后修复</h3>
+  <table>
+    <thead><tr><th class="l">代码</th><th class="l">名称</th><th>开盘</th><th>实体涨幅</th><th>现价</th><th>现涨幅</th><th class="l">形态</th></tr></thead>
+    <tbody>
+      <tr><td class="l mono">603378</td><td class="l nm">*ST亚士</td><td class="dn">−10.00%</td><td>0.00%</td><td>5.31</td><td class="dn">−10.00%</td><td class="l">一字跌停未打开</td></tr>
+      <tr><td class="l mono">000610</td><td class="l nm">*ST西旅</td><td class="dn">−9.98%</td><td>0.00%</td><td>7.58</td><td class="dn">−9.98%</td><td class="l">跌停（打开 6 次）</td></tr>
+      <tr><td class="l mono">600499</td><td class="l nm">科达制造</td><td class="dn">−4.56%</td><td class="dn">−5.63%</td><td>12.06</td><td class="dn">−9.93%</td><td class="l">低开低走 · 逼近跌停</td></tr>
+      <tr><td class="l mono">605198</td><td class="l nm">安德利</td><td class="dn">−4.50%</td><td class="dn">−3.43%</td><td>71.28</td><td class="dn">−7.78%</td><td class="l">低开低走（昨日跌停）</td></tr>
+      <tr><td class="l mono">002836</td><td class="l nm">新宏泽</td><td class="dn">−7.76%</td><td class="up"><b>+1.72%</b></td><td>11.24</td><td class="dn">−6.18%</td><td class="l">低开翻红（未收复）</td></tr>
+      <tr><td class="l mono">002124</td><td class="l nm">天邦食品</td><td class="dn">−6.52%</td><td class="up">+0.93%</td><td>2.16</td><td class="dn">−6.09%</td><td class="l">低开企稳</td></tr>
+      <tr><td class="l mono">002321</td><td class="l nm">华英农业</td><td class="dn">−6.52%</td><td class="up">+0.93%</td><td>2.17</td><td class="dn">−5.65%</td><td class="l">低开企稳</td></tr>
+      <tr><td class="l mono">603248</td><td class="l nm">锡华科技</td><td class="dn">−4.95%</td><td class="up">+0.74%</td><td>23.22</td><td class="dn">−4.25%</td><td class="l">昨日高标断板后低开企稳</td></tr>
+    </tbody>
+  </table>
+
+  <h3>③ 开盘后 1 小时急拉（涨幅居前）</h3>
+  <div class="kv">
+    · <b>科创板 20% 板：</b>五洲医疗 <span class="up">+19.35%</span>（医疗器械，开 +5.62% 后实体 +12.87%）｜光云科技 <span class="up">+14.46%</span>（开 +8.94%）｜*ST禾信 <span class="up">+14.71%</span>（ST）｜逸豪新材 <span class="up">+13.24%</span>（铜箔）｜聚辰股份 <span class="up">+12.17%</span>（存储）｜摩尔线程-U <span class="up">+11.89%</span><br>
+    · <b>主板/中小板急拉：</b>鼎阳科技 +9.58%｜联合光电 +9.68%｜金丹科技 +9.72%｜北自科技 +7.64%｜利扬芯片 +7.78%<br>
+    · <b>新股：</b>N中塑 +418.09%（开盘即 +384%）｜N世纪 +314.81%
+  </div>
+  <h3>④ 开盘后急跌 / 破位</h3>
+  <div class="kv">
+    · 华纺股份 −6.94%（开 +7.97% 后一路下杀，实体 −13.81%）｜科达制造 −9.93%｜安德利 −7.78%｜荣丰控股 −7.70%（昨 −8.03%）｜新宏泽 −6.18%｜天邦食品 −6.09%｜华英农业 −5.65%｜菲林格尔 −5.55%
+  </div>
+</section>
+
+<!-- ============ 7 综合研判 ============ -->
+<section>
+  <h2>7 · 综合研判 <span class="tag">先看结论</span></h2>
+
+  <div class="stat-grid" style="margin-bottom:14px">
+    <div class="stat"><div class="k">今日市场定性</div><div class="v up">偏强（指数） / 中性（个股）</div><div class="x">四大指数全红，但宽度 2515:2592 略偏空</div></div>
+    <div class="stat"><div class="k">情绪周期位置</div><div class="v warn">发酵期（温和）</div><div class="x">涨停 38、最高 6 板、跌停 2 家</div></div>
+    <div class="stat"><div class="k">可操作性评估</div><div class="v warn">结构性（主线集中）</div><div class="x">赚钱效应为正，但跟风股分化</div></div>
+  </div>
+
+  <h3>① 一句话定性</h3>
+  <div class="kv">
+    <b>指数强、个股中性：四大指数全部高开全红（科创50 +2.40% 领涨），主力资金合计净流入约 +230 亿，量能放大 +14% — 但全市场上涨家数占比仅 48.9%，涨幅集中在算力硬件链（半导体+元器件+玻璃玻纤）与传媒出版链两条主线，属于典型的「指数权重强 + 结构性行情」格局。</b>
+  </div>
+
+  <h3>② 情绪周期与明日演化预判</h3>
+  <div class="kv">
+    · <b>当前 = 发酵期（温和）</b>：6 指标中 3 项匹配发酵（跌停极低 / 溢价为正 / 放量），另 2 项带高潮特征（6 板高度、跌停 2 家），但涨停家数 38 家低于发酵区间 50-80。<br>
+    · <b>近年演化参照</b>：09-17（18家）→ 09-18（45家）→ 09-21（43家）→ 09-22（38家），属 <b>高位温和衰减</b>，未出现加速退潮信号（跌停仍仅 2 家、溢价仍为正、最高板仍晋级）。<br>
+    · <b>明日关键观察点（非预测）</b>：<br>
+    　① 6 板华瓷股份能否继续一字/换手封板 → 决定高标是否断板；<br>
+    　② 涨停家数能否回到 45 家以上，或跌破 30 家 → 决定发酵能否延续；<br>
+    　③ 炸板率是否升破 40% → 当前 28.3%，是情绪温度的关键阈值；<br>
+    　④ 半导体/元器件主线的主力净流入（今日 +76.82 亿 / +36.30 亿）能否延续。<br>
+    · <b>风险提示</b>：科创50 现价已略跌破开盘价（−0.11%）、距日内高 −0.61%，四指数中回落最深 → 高位科技股下午存在兑现压力；若午后炸板率进一步抬升，需警惕分歧加大。
+  </div>
+
+  <h3>③ 关键风险提示</h3>
+  <ul class="chk" style="font-size:12.8px">
+    <li><b>宽度与指数背离</b>：指数普涨但上涨家数占比仅 48.9%（2515:2592），赚钱效应集中于少数主线，二线跟风股与题材边缘股持续性弱。</li>
+    <li><b>高开回落实体为负 12 家</b>：华纺股份/华锡有色/华阳新材/国芳集团/马矿股份等竞价高开后大幅回落，早盘冲高兑现特征明显。</li>
+    <li><b>高位换手板分歧</b>：广合科技涨停打开 22 次、我爱我家 8 次、爱普股份 7 次，封板质量不及一字板，次日承接存在不确定性。</li>
+    <li><b>科创50 回落最深</b>：涨幅最大（+2.40%）但现价已跌破开盘价，弹性与风险同源。</li>
+    <li><b>T+1 制度约束</b>：本报告为 10:07—10:09 盘中快照，午后至少还有 2.5 小时交易时段，所有盘中数据（尤其涨停/炸板/主力净额）均可能发生显著变化，<b>不可据早盘数据等同于收盘结果</b>。</li>
+    <li><b>数据时效</b>：模块 1-7 数据来自 TDX MCP 10:07—10:09 快照；实际执行时间略晚于任务锚定的 9:55 窗口，已如实标注。</li>
+  </ul>
+
+  <h3>④ 可操作性评估</h3>
+  <div class="kv">
+    · <b>市场层面</b>：无极端情绪（既不冰点也不高潮），主线清晰（算力硬件链 + 传媒出版链），量能放大为正向信号 → <b>具备结构性操作环境，但非全面普涨环境</b>。<br>
+    · <b>情绪层面</b>：昨涨停溢价 +2.3% 为正、非 ST 跌停 0 家 → 打板资金处于获利状态，但炸板率小幅抬升至 28.3% 提示分歧在积累。<br>
+    · <b>约束条件</b>：本模块仅做客观数据定位，<b>不输出任何操作指令</b>；请结合个人仓位、止损纪律与午后实时变化独立判断。
+  </div>
+
+  <h3>⑤ 早盘修复标的整体评估</h3>
+  <div class="kv">
+    · <b>修复数量</b>：昨日跌 &gt;3% 池 101 只，今日翻红 63 只（62.4%，修复面较广）；昨日跌 &gt;5% 池 22 只，今日翻红仅 8 只（36.4%，重挫股修复难度大）。<br>
+    · <b>修复力度</b>：通过三重条件+主力验证 5 只（★★ 2 / ★ 3，<b>无 ★★★ 低开涨停</b>）；最强为北自科技 +7.64%（低开 −0.61% → 翻红，换手 22.2%）、博汇科技 +5.51%（低开 −0.97% → 翻红）。<br>
+    · <b>是否形成板块效应</b>：<b>形成局部共振，但非全市场扩散</b> — 5 只候选中 4 只为科创板硬科技（半导体设备/光学/信创/数据安全），与今日半导体（+2.63%）、元器件（+2.23%）主线同向；但科创板以外（主板/中小板）未见群体性超跌修复。<br>
+    · <b>质地提示</b>：利扬芯片虽修复幅度最大（+7.78%），但主力净额 <b class="dn">−2913 万</b>净流出，未通过主力验证，已剔除。
+  </div>
+</section>
+
+<footer>
+  <b>免责声明</b><br>
+  本报告由自动化流程生成，数据来源于通达信（tdx-connector）实时行情快照，采集时间 2026-09-22 10:07:00—10:09:00；<br>
+  模块 8「盘中承接扫描」数据来自腾讯批量实时接口。北向资金、09-16 历史涨跌停家数等无法获取字段均标注 N/A。<br>
+  全部内容为客观数据与市场状态描述，<b>不构成任何投资建议、买卖指令或收益承诺</b>。盘中数据随交易时段实时变化，请以交易所最终收盘数据为准。<br>
+  投资有风险，决策需谨慎。<br><br>
+  <span style="color:#4a5a6b">A股早盘快报 · 生成时间 2026-09-22 10:10 (GMT+8)</span>
+</footer>
+
+</div>
+
+<!-- 盘中承接扫描 2026-09-22 10:09:10 -->
+<section style='margin:24px 0;border-top:2px solid #09f;padding-top:12px;'><h2>盘中承接扫描（2026-09-22 10:09:10）</h2><p>实时扫描「近3日涨停 × ML评分」观察池，命中 <b>30</b> 只符合承接形态。</p><table border='1' cellspacing='0' cellpadding='4'><tr><th>代码</th><th>名称</th><th>承接分</th><th>涨跌幅</th><th>现价</th><th>均价线</th><th>量比</th><th>ML评级</th><th>行业</th></tr><tr><td>600640</td><td>国脉文化</td><td>100</td><td>+6.86%</td><td>13.40</td><td>12.41</td><td>12.9</td><td>A</td><td>国企改革</td></tr><tr><td>002713</td><td>东易日盛</td><td>100</td><td>+1.27%</td><td>11.19</td><td>11.04</td><td>2.6</td><td>A</td><td>算力租赁</td></tr><tr><td>002869</td><td>金溢科技</td><td>100</td><td>+3.17%</td><td>17.58</td><td>16.62</td><td>18.0</td><td>A+</td><td>微小盘股</td></tr><tr><td>603258</td><td>电魂网络</td><td>100</td><td>+6.41%</td><td>15.10</td><td>13.71</td><td>21.9</td><td>A+</td><td>微小盘股</td></tr><tr><td>600613</td><td>神奇制药</td><td>100</td><td>+0.97%</td><td>9.34</td><td>9.29</td><td>5.9</td><td>A+</td><td>活跃小盘非融</td></tr><tr><td>603289</td><td>泰瑞机器</td><td>100</td><td>+4.95%</td><td>11.03</td><td>10.38</td><td>11.2</td><td>A+</td><td>活跃小盘非融</td></tr><tr><td>600721</td><td>百花医药</td><td>100</td><td>+6.39%</td><td>13.99</td><td>13.06</td><td>6.9</td><td>A</td><td>创新药</td></tr><tr><td>002161</td><td>远 望 谷</td><td>100</td><td>-0.28%</td><td>7.14</td><td>7.12</td><td>2.3</td><td>A</td><td>芯片</td></tr><tr><td>603353</td><td>和顺石油</td><td>100</td><td>+6.77%</td><td>49.53</td><td>46.60</td><td>4.4</td><td>A</td><td>芯片</td></tr><tr><td>300642</td><td>透景生命</td><td>100</td><td>+0.05%</td><td>20.36</td><td>20.19</td><td>6.8</td><td>A</td><td>创新药</td></tr><tr><td>688026</td><td>洁特生物</td><td>100</td><td>+4.72%</td><td>26.41</td><td>24.43</td><td>8.9</td><td>A</td><td>微小盘股</td></tr><tr><td>002965</td><td>祥鑫科技</td><td>100</td><td>+1.80%</td><td>33.88</td><td>33.15</td><td>3.6</td><td>A</td><td>人形机器人</td></tr><tr><td>688292</td><td>浩瀚深度</td><td>100</td><td>+1.26%</td><td>22.45</td><td>22.10</td><td>2.6</td><td>A</td><td>微小盘股</td></tr><tr><td>003041</td><td>真爱美家</td><td>100</td><td>+0.86%</td><td>43.61</td><td>43.13</td><td>2.9</td><td>B+</td><td>跨境电商</td></tr><tr><td>001211</td><td>双枪科技</td><td>100</td><td>+1.03%</td><td>26.52</td><td>26.17</td><td>2.8</td><td>B+</td><td>跨境电商</td></tr><tr><td>002029</td><td>七 匹 狼</td><td>100</td><td>+0.76%</td><td>9.23</td><td>9.14</td><td>3.6</td><td>B</td><td>跨境电商</td></tr><tr><td>002246</td><td>北化股份</td><td>100</td><td>+3.92%</td><td>27.30</td><td>25.96</td><td>7.7</td><td>B+</td><td>国企改革</td></tr><tr><td>688175</td><td>高凌信息</td><td>100</td><td>+4.55%</td><td>22.98</td><td>21.79</td><td>3.4</td><td>B</td><td>微小盘股</td></tr><tr><td>000532</td><td>华金资本</td><td>100</td><td>+1.61%</td><td>14.49</td><td>13.97</td><td>6.9</td><td>B</td><td>国企改革</td></tr><tr><td>002667</td><td>*ST威领</td><td>100</td><td>+6.28%</td><td>23.19</td><td>22.01</td><td>6.0</td><td>B</td><td>ST板块</td></tr><tr><td>002963</td><td>豪尔赛</td><td>100</td><td>+4.51%</td><td>23.64</td><td>22.30</td><td>5.4</td><td>C</td><td>微小盘股</td></tr><tr><td>601579</td><td>会稽山</td><td>100</td><td>+3.52%</td><td>37.39</td><td>35.93</td><td>4.5</td><td>C</td><td>电商概念</td></tr><tr><td>600857</td><td>宁波中百</td><td>100</td><td>+4.49%</td><td>24.46</td><td>23.10</td><td>4.8</td><td>C</td><td>电商概念</td></tr><tr><td>605566</td><td>福莱蒽特</td><td>100</td><td>+3.98%</td><td>31.65</td><td>30.13</td><td>6.0</td><td>D</td><td>活跃小盘非融</td></tr><tr><td>002755</td><td>奥赛康</td><td>100</td><td>+1.20%</td><td>12.60</td><td>12.39</td><td>7.7</td><td>D</td><td>创新药</td></tr><tr><td>603009</td><td>北特科技</td><td>94</td><td>+0.37%</td><td>49.12</td><td>49.07</td><td>1.4</td><td>D</td><td>汽车零部</td></tr><tr><td>605058</td><td>澳弘电子</td><td>90</td><td>+6.50%</td><td>51.58</td><td>46.54</td><td>3.9</td><td>S</td><td>元件</td></tr><tr><td>003001</td><td>中岩大地</td><td>90</td><td>+3.40%</td><td>21.59</td><td>20.77</td><td>2.6</td><td>A+</td><td>专业工程</td></tr><tr><td>603316</td><td>诚邦股份</td><td>90</td><td>+2.34%</td><td>18.79</td><td>18.46</td><td>8.0</td><td>A+</td><td>存储芯片</td></tr><tr><td>603120</td><td>肯特催化</td><td>90</td><td>+0.18%</td><td>62.10</td><td>62.10</td><td>2.5</td><td>A+</td><td>芯片</td></tr></table></section>
+</body>
+</html>

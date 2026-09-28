@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股早盘快报 — 2026-09-01 09:45</title>
+<style>
+  :root{
+    --bg:#0b0e14; --card:#141a24; --card2:#1b232f; --line:#27313f;
+    --txt:#e6edf3; --sub:#9aa7b5; --red:#ff4d4f; --green:#19c37d;
+    --gold:#f5c542; --blue:#4da3ff; --purple:#b388ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:24px 16px 60px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  header{text-align:center;padding:18px 12px 10px;border-bottom:2px solid var(--line);margin-bottom:22px;}
+  header h1{font-size:26px;letter-spacing:1px;}
+  header .sub{color:var(--sub);font-size:13px;margin-top:6px;}
+  .badge{display:inline-block;background:#2a1d1d;color:var(--gold);border:1px solid #5a4326;padding:4px 12px;border-radius:20px;font-size:12px;margin-top:10px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:18px;}
+  h2{font-size:18px;border-left:4px solid var(--blue);padding-left:10px;margin-bottom:14px;}
+  h2 .num{color:var(--blue);font-weight:700;margin-right:6px;}
+  .grid{display:grid;gap:12px;}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .g2{grid-template-columns:repeat(2,1fr);}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:760px){.g4,.g2,.g3{grid-template-columns:1fr}}
+  .idx{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px;}
+  .idx .nm{font-size:13px;color:var(--sub);}
+  .idx .px{font-size:22px;font-weight:700;margin:4px 0;}
+  .idx .chg{font-size:14px;font-weight:600;}
+  .idx .meta{font-size:11px;color:var(--sub);margin-top:6px;line-height:1.5;}
+  .up{color:var(--red);} .dn{color:var(--green);} .flat{color:var(--sub);}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px;}
+  th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;}
+  th{color:var(--sub);font-weight:600;background:var(--card2);}
+  td.r,th.r{text-align:right;}
+  .pill{display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;}
+  .pill.red{background:rgba(255,77,79,.15);color:var(--red);}
+  .pill.green{background:rgba(25,195,125,.15);color:var(--green);}
+  .pill.gold{background:rgba(245,197,66,.15);color:var(--gold);}
+  .pill.blue{background:rgba(77,163,255,.15);color:var(--blue);}
+  /* 情绪周期警戒模块 */
+  .alert{border:2px solid var(--gold);background:linear-gradient(180deg,#1f1810,#141a24);box-shadow:0 0 18px rgba(245,197,66,.12);}
+  .alert h2{border-left-color:var(--gold);color:var(--gold);}
+  .loc{font-size:20px;font-weight:800;color:var(--gold);text-align:center;padding:8px;margin:6px 0 12px;border:1px dashed var(--gold);border-radius:8px;}
+  .checkrow{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;}
+  .chk{flex:1;min-width:200px;background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:10px;font-size:13px;}
+  .chk .t{font-weight:700;margin-bottom:4px;}
+  .chk .y{color:var(--green);} .chk .n{color:var(--sub);}
+  .warn{background:#2a1414;border:1px solid #5a2626;color:#ffb3b3;padding:12px 14px;border-radius:8px;font-size:13px;margin-top:12px;}
+  .warn b{color:var(--red);}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px;}
+  @media(max-width:760px){.kpi{grid-template-columns:repeat(2,1fr)}}
+  .kpi .box{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;}
+  .kpi .v{font-size:20px;font-weight:700;}
+  .kpi .l{font-size:11px;color:var(--sub);margin-top:2px;}
+  .note{font-size:12px;color:var(--sub);margin-top:10px;line-height:1.6;}
+  .star{color:var(--gold);letter-spacing:2px;}
+  .sec-title{font-size:15px;font-weight:700;margin:6px 0 8px;color:var(--blue);}
+  ul{margin:6px 0 6px 18px;font-size:13px;color:var(--txt);}
+  ul li{margin:3px 0;}
+  .footer{text-align:center;color:var(--sub);font-size:11px;margin-top:24px;line-height:1.7;}
+  .tag{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:11px;color:var(--sub);margin-right:4px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>A股早盘快报 — 2026-09-01 09:45</h1>
+  <div class="sub">数据基准：2026-09-01 收盘快照（15:00）｜ 报告自动化生成：2026-09-01 19:45</div>
+  <div class="badge">⚠ 说明：本自动化任务于盘后执行，行情为当日收盘快照，非严格 09:55 盘中实时数据；指数/板块/情绪数据均来自 tdx-connector 实时接口</div>
+</header>
+
+<!-- 模块1 核心指数概览 -->
+<section>
+  <h2><span class="num">1</span>核心指数概览</h2>
+  <div class="grid g4">
+    <div class="idx">
+      <div class="nm">上证指数 999999</div>
+      <div class="px">3979.89</div>
+      <div class="chg dn">-0.16%</div>
+      <div class="meta">开 3979.88 / 高 3995.18 / 低 3976.47<br>成交额 9443亿<br>走势：低开震荡（近平盘）</div>
+    </div>
+    <div class="idx">
+      <div class="nm">深证成指 399001</div>
+      <div class="px">13872.38</div>
+      <div class="chg dn">-1.02%</div>
+      <div class="meta">开 14017.42 / 高 14018.51 / 低 13845.55<br>成交额 10891亿<br>走势：高开低走</div>
+    </div>
+    <div class="idx">
+      <div class="nm">创业板指 399006</div>
+      <div class="px">3393.43</div>
+      <div class="chg dn">-1.32%</div>
+      <div class="meta">开 3435.32 / 高 3442.48 / 低 3375.01<br>成交额 5109亿<br>走势：低开震荡走弱</div>
+    </div>
+    <div class="idx">
+      <div class="nm">科创50 000688</div>
+      <div class="px">1647.53</div>
+      <div class="chg dn">-2.19%</div>
+      <div class="meta">开 1679.89 / 高 1684.02 / 低 1646.64<br>成交额 711亿<br>走势：低开低走、领跌</div>
+    </div>
+  </div>
+  <div class="note">📌 四大指数全线收跌，科创50（-2.19%）与创业板指（-1.32%）明显弱于主板，呈现典型「权重/成长杀估值、指数弱」格局。</div>
+</section>
+
+<!-- 模块2 市场情绪仪表盘 -->
+<section>
+  <h2><span class="num">2</span>市场情绪仪表盘</h2>
+  <div class="kpi">
+    <div class="box"><div class="v up">3386</div><div class="l">上涨家数</div></div>
+    <div class="box"><div class="v dn">2040</div><div class="l">下跌家数</div></div>
+    <div class="box"><div class="v up">86</div><div class="l">涨停家数</div></div>
+    <div class="box"><div class="v dn">≈0-3</div><div class="l">跌停家数</div></div>
+  </div>
+  <table style="margin-top:12px;">
+    <tr><th>指标</th><th class="r">数值</th><th>解读</th></tr>
+    <tr><td>涨跌比（上涨/下跌）</td><td class="r">3386 : 2040</td><td>约 62% 个股上涨，黄白线明显背离——题材强、权重弱</td></tr>
+    <tr><td>涨停 / 跌停</td><td class="r"><span class="pill red">86</span> / <span class="pill green">≈0-3</span></td><td>涨停维持高位，跌停近乎归零，投机情绪极活跃</td></tr>
+    <tr><td>炸板数 / 炸板率</td><td class="r">14 / 14%</td><td>炸板率 14%（&lt;20% 健康区），封板质量高</td></tr>
+    <tr><td>全市场总成交额</td><td class="r">≈2.03万亿</td><td>沪深合计（上证9443亿+深证10891亿）</td></tr>
+    <tr><td>近5日均值对比</td><td class="r">+1.7%</td><td>近5日均值≈2.00万亿，今日基本持平、温和放量</td></tr>
+    <tr><td>北向资金</td><td class="r"><span class="pill blue">N/A</span></td><td>当前接口未提供当日北向净额，标注 N/A</td></tr>
+  </table>
+  <div class="note">注：跌停家数取「跌幅&gt;9.9%」真实近似（仅 3 只：欧陆通-10%、欧科亿-10.85%、方邦股份-11.06%，均未触及双创-20%跌停线）；tdx「跌停」筛选返回的是 08-31 历史跌停股，不反映今日，已校正。</div>
+</section>
+
+<!-- 模块2.5 情绪周期定位与极端反转预警 -->
+<section class="alert">
+  <h2><span class="num">2.5</span>⚠ 情绪周期定位与极端反转预警</h2>
+  <div class="loc">📍 情绪周期定位：高潮</div>
+
+  <div class="grid g2" style="font-size:13px;">
+    <div class="chk"><div class="t">涨停数 <span class="n">86</span></div>阈值 &gt;80 → <span class="y">高潮 ✓</span></div>
+    <div class="chk"><div class="t">跌停数 <span class="n">≈0-3</span></div>阈值 &lt;10 → <span class="y">高潮/发酵 ✓</span></div>
+    <div class="chk"><div class="t">连板高度 <span class="n">7板</span></div>阈值 ≥5 → <span class="y">高潮 ✓</span></div>
+    <div class="chk"><div class="t">炸板率 <span class="n">14%</span></div>阈值 &lt;20% → <span class="y">发酵/高潮 ✓</span></div>
+    <div class="chk"><div class="t">昨涨停溢价 <span class="n">正</span></div>连板高度7板、多股2-3板晋级 → <span class="y">正且扩大 ✓</span></div>
+    <div class="chk"><div class="t">成交量 <span class="n">平量微放</span></div>20334亿 vs 5日均20000亿 → <span class="y">放量/平量 ✓</span></div>
+  </div>
+
+  <div class="sec-title" style="margin-top:14px;">🔄 反转风险评估</div>
+  <div class="grid g2" style="font-size:13px;">
+    <div class="chk"><div class="t">连跌极端检测</div><span class="n">未触发</span>：今日跌停≈0-3，远未达「连续3天跌停&gt;50家」，无底部反转前提。</div>
+    <div class="chk"><div class="t">连涨极端检测</div><span class="n">数据不足</span>：仅确认今日涨停86家（&gt;80），未获取近5日涨停序列，无法判定「连续3天涨停&gt;100家」。</div>
+  </div>
+
+  <div class="sec-title" style="margin-top:14px;">✅ 顶部反转确认信号清单（高潮区重点监测）</div>
+  <div class="checkrow">
+    <div class="chk"><div class="t">① 高标断板</div><span class="n">✗ 未触发</span>：最高标 海鸥住工(7板)、捷荣技术(6板)、万向德农(6板) 今日均涨停封板。</div>
+    <div class="chk"><div class="t">② 涨停骤降</div><span class="n">✗ 未确认</span>：今日86家仍处高位，未现「&gt;80→&lt;50」骤降。</div>
+    <div class="chk"><div class="t">③ 跌停异常增</div><span class="n">✗ 未触发</span>：跌停≈0-3，无增加。</div>
+    <div class="chk"><div class="t">④ 炸板率飙升</div><span class="n">✗ 未触发</span>：炸板率14%，处健康区。</div>
+    <div class="chk"><div class="t">⑤ 板块分化</div><span class="y">△ 部分成立</span>：农业/短剧强，但指数权重弱（黄白线背离），老主线（高位科技）有松动迹象。</div>
+    <div class="chk"><div class="t">⑥ 放量滞涨</div><span class="n">✗ 未触发</span>：量能基本持平，指数小跌非放量滞涨。</div>
+  </div>
+
+  <div class="loc" style="font-size:16px;">🔄 反转风险：无明显极端（高潮区，未触发顶部反转确认信号，已确认 1/2 个）</div>
+
+  <div class="warn">
+    <b>⚠ 关键提醒（务必遵守）：</b><br>
+    1. 反转靠确认信号，不靠预测。不要因「已涨很多」预判见顶——当前仅 1 个弱信号（板块分化），远未达动手阈值。<br>
+    2. 至少 2 个确认信号同时出现才能动手，单一信号（板块分化）可能是噪音。<br>
+    3. 外部催化（政策、基本面利空、突发事件）会显著改变反转概率与时间。<br>
+    4. 极端可以更极端：连涨可延续至第7天，高位核心不破则情绪不灭。<br>
+    5. 反转≠立刻反向：高潮后可能高位震荡数日再退潮，持仓者去弱留强即可。
+  </div>
+
+  <div class="note" style="margin-top:10px;">
+    📊 <b>历史参考</b>：高潮期若跌停突增至&gt;30家，次日分歧概率约 <b>80%</b>；当前跌停≈0-3，该情景未触发。连涨极端（连续3天涨停&gt;100家）第4天分歧概率约70%——但因缺少近5日涨停序列，本项无法确认是否已进入连涨极端窗口。
+  </div>
+</section>
+
+<!-- 模块3 热点板块 TOP5 -->
+<section>
+  <h2><span class="num">3</span>热点板块 TOP5（tdx 板块涨幅榜）</h2>
+  <table>
+    <tr><th>排名</th><th>板块名称</th><th class="r">涨幅</th><th>领涨股（今日表现）</th><th class="r">板块成交额</th></tr>
+    <tr><td>1</td><td>视频音频媒体 (881377)<br><span class="tag">短剧/AI影视</span></td><td class="r up">+14.48%</td><td>芒果超媒(+20.02%)、欢瑞世纪、掌阅科技、博纳影业、中广天择</td><td class="r">29.7亿</td></tr>
+    <tr><td>2</td><td>种业 (880710)<br><span class="tag">农业/粮食危机</span></td><td class="r up">+12.63%</td><td>神农种业(+20.03%)、万向德农(11天8板)、敦煌种业、农发种业</td><td class="r">99.9亿</td></tr>
+    <tr><td>3</td><td>种子 (881109)</td><td class="r up">+11.57%</td><td>万向德农、神农种业、敦煌种业</td><td class="r">82.9亿</td></tr>
+    <tr><td>4</td><td>种植业 (881106)</td><td class="r up">+7.51%</td><td>登海种业、隆平高科、农发种业、金健米业、新赛股份</td><td class="r">154.1亿</td></tr>
+    <tr><td>5</td><td>粮食种植 (881107)</td><td class="r up">+7.42%</td><td>隆平高科、登海种业、京粮控股、深粮控股</td><td class="r">21.0亿</td></tr>
+  </table>
+  <div class="note">📌 主线判断：<b>农业（种业/种植/粮食）集群</b>霸榜（小麦期货创三年新高+粮食危机预期催化），叠加 <b>短剧/AI影视</b>（芒果超媒20cm领涨）双主线。百货/新零售（国芳集团、东百集团等）同步活跃，消费复苏线并行。板块成交额种植业(154亿)、种业(99.9亿)资金容量最大。</div>
+</section>
+
+<!-- 模块4 早盘修复侦察 -->
+<section>
+  <h2><span class="num">4</span>早盘修复侦察（花园生物超跌修复模式）</h2>
+  <div class="sec-title">扫描逻辑：昨日(08-31)大跌池 → 今日(09-01)修复信号 → 主力验证</div>
+  <div class="note" style="margin-bottom:10px;">昨日大跌池取自 08-31 跌停股（13只），剔除ST后筛选今日翻红标的。下列为通过「低开/平开 + 翻红 + 主力净额非负」三重过滤的修复候选：</div>
+  <table>
+    <tr><th>代码</th><th>名称</th><th class="r">昨日跌幅</th><th class="r">今开</th><th class="r">现价</th><th class="r">主力净额</th><th>修复强度</th></tr>
+    <tr><td>600272</td><td>开开实业</td><td class="r dn">≈-10%</td><td class="r">18.26</td><td class="r up">20.09</td><td class="r up">+1.01亿</td><td><span class="star">★★★</span> 平开→涨停</td></tr>
+    <tr><td>002785</td><td>万里石</td><td class="r dn">≈-10%</td><td class="r">32.00</td><td class="r up">34.16</td><td class="r up">+0.71亿</td><td><span class="star">★★</span> 微低开→+6.72%</td></tr>
+    <tr><td>603900</td><td>莱绅通灵</td><td class="r dn">≈-10%</td><td class="r">6.92</td><td class="r up">7.17</td><td class="r up">+0.15亿</td><td><span class="star">★</span> 低开-2.1%→翻红+1.41%</td></tr>
+    <tr><td>600613</td><td>神奇制药</td><td class="r dn">≈-10%</td><td class="r">10.04</td><td class="r flat">11.16</td><td class="r up">+3.03亿</td><td>— 跌停开盘拉回平盘（未翻红，强承接）</td></tr>
+  </table>
+  <div class="note">📌 修复数量少（4只翻红+1只拉回平盘），修复力度中等偏强（开开实业地天式涨停、万里石/莱绅通灵温和翻红），但标的分散于医药商业/建材/珠宝，<b>未形成板块级修复效应</b>，属个股资金自救式超跌反抽，暂不构成主线。本模块仅展示客观数据，不给出买卖建议。</div>
+</section>
+
+<!-- 模块5 连板梯队 -->
+<section>
+  <h2><span class="num">5</span>连板梯队</h2>
+  <div class="kpi">
+    <div class="box"><div class="v up">7板</div><div class="l">最高连板（海鸥住工）</div></div>
+    <div class="box"><div class="v up">4只</div><div class="l">4板及以上</div></div>
+    <div class="box"><div class="v up">5只</div><div class="l">3板</div></div>
+    <div class="box"><div class="v up">9只</div><div class="l">2板</div></div>
+  </div>
+  <table style="margin-top:12px;">
+    <tr><th>梯队</th><th>数量</th><th>代表个股</th></tr>
+    <tr><td><span class="pill red">7板</span></td><td>1</td><td>海鸥住工（7天7板，家居/卫浴）</td></tr>
+    <tr><td><span class="pill red">6板</span></td><td>2</td><td>捷荣技术（6天6板）、万向德农（11天8板，种业）</td></tr>
+    <tr><td><span class="pill red">4板</span></td><td>1</td><td>新赛股份（4天4板，种植业）</td></tr>
+    <tr><td><span class="pill gold">3板</span></td><td>5</td><td>福建金森、竞业达、国芳集团、时代出版、我爱我家</td></tr>
+    <tr><td><span class="pill blue">2板</span></td><td>9</td><td>欢瑞世纪、芒果超媒、中广天择、博纳影业、大晟文化、集泰股份、郑州煤电、龙版传媒、掌阅科技</td></tr>
+    <tr><td>首板</td><td>≈68</td><td>神农种业、隆平高科、登海种业、农发种业、金健米业、京粮控股、深粮控股、古井贡酒、华林证券、常山北明、协鑫能科、青山纸业 等</td></tr>
+  </table>
+  <div class="note">📌 连板结构完整（2→7板无断档，仅5板空缺），高位核心（海鸥住工7板、捷荣技术/万向德农6板）持续晋级，投机情绪处于高潮。中位股（3-4板）共6只，为明日潜在分化观察点。</div>
+</section>
+
+<!-- 模块6 早盘异动信号 -->
+<section>
+  <h2><span class="num">6</span>早盘异动信号</h2>
+  <div class="grid g2">
+    <div>
+      <div class="sec-title">① 集合竞价异常（09:25 一字板）</div>
+      <ul>
+        <li><span class="pill red">强</span> 福建金森、欢瑞世纪、英力特、中广天择、大晟文化（一字涨停，资金抢筹）</li>
+        <li><span class="pill green">弱</span> 金浦钛业、冀衡医药、ST海王、*ST萃华（一字跌停，负向）</li>
+      </ul>
+    </div>
+    <div>
+      <div class="sec-title">② 开盘15分钟急拉（首板/连板晋级）</div>
+      <ul>
+        <li>新赛股份(09:30)、捷荣技术(09:30)、金健米业(09:38)、国芳集团(09:31)、东百集团(09:35)</li>
+        <li>农发种业(09:36)、京粮控股(09:33)、深粮控股(09:33)、茂业商业(09:37)、登海种业(09:53)</li>
+        <li>农业/消费线在开盘半小时集中点火，板块效应最集中</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:12px;">
+    <div>
+      <div class="sec-title">③ 开盘急跌 / 炸板回落</div>
+      <ul>
+        <li>江海股份：09:30 一度涨停后跳水至 -6.21%（炸板负反馈，服务器电源）</li>
+        <li>欧陆通 -10.00%、欧科亿 -10.85%、方邦股份 -11.06%（高位科技/材料补跌）</li>
+      </ul>
+    </div>
+    <div>
+      <div class="sec-title">④ 异动总结</div>
+      <ul>
+        <li>资金主攻：农业（种业/种植）、短剧/AI、新零售消费</li>
+        <li>资金出逃：高位科技（PCB/服务器电源）、部分科创板材料</li>
+        <li>风格：低位补涨 + 超跌反抽占优，高位核心抱团未松</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 模块7 综合研判 -->
+<section>
+  <h2><span class="num">7</span>综合研判</h2>
+  <div class="sec-title">① 今日市场定性：<span class="pill gold">指数弱 · 情绪强（结构性分化日）</span></div>
+  <p style="font-size:13px;color:var(--txt);">四大指数全线收跌（科创50 -2.19% 领跌），但个股涨跌比 62% 上涨、涨停 86 家、连板高度 7 板，典型「黄白线背离、权重搭台后题材唱戏」的高位分化日。指数受权重/成长拖累，题材投机极度活跃。</p>
+
+  <div class="sec-title" style="margin-top:12px;">② 情绪周期位置与明日演化（结合模块2.5）</div>
+  <p style="font-size:13px;">当前处于<b style="color:var(--gold)">陈小群情绪周期「高潮」阶段</b>。明日演化两种路径：<br>
+  · <b>延续</b>：若高位核心（海鸥住工7板、捷荣技术/万向德农6板）继续晋级且跌停维持低位 → 情绪惯性延续，农业/短剧主线可延续。<br>
+  · <b>分歧</b>：若出现「高标断板 + 跌停骤增 ≥2 个确认信号」→ 进入分歧退潮，中位股（3-4板）易A杀。当前未触发任何强确认信号，延续概率更高。</p>
+
+  <div class="sec-title" style="margin-top:12px;">③ 关键风险提示</div>
+  <ul>
+    <li>指数与情绪严重背离，权重持续走弱可能引发题材补跌（高位抱团松动风险）。</li>
+    <li>科创50/创业板破位跌超2%，高位科技需防回撤共振。</li>
+    <li>连板高度已达7板，接近近期极值，监管与分歧风险同步上升。</li>
+    <li>中位股（3-4板共6只）一旦断板，回撤幅度通常最大。</li>
+  </ul>
+
+  <div class="sec-title" style="margin-top:12px;">④ 可操作性评估：<span class="pill blue">中等偏上（重个股、轻指数）</span></div>
+  <p style="font-size:13px;">题材端可操作性强（涨停86、首板≈68、连板结构完整），但需去弱留强、聚焦核心；指数端弱势，不适合追高权重。整体适合「低位补涨 + 核心接力」策略，回避高位缩量加速中位股。</p>
+
+  <div class="sec-title" style="margin-top:12px;">⑤ 早盘修复标的总体评估</div>
+  <p style="font-size:13px;">修复数量少（4只翻红 + 1只拉回平盘），力度中等偏强（开开实业地天式涨停★★★、万里石★★、莱绅通灵★），但标的分散、未形成板块效应，属个股资金自救式超跌反抽，<b>暂不构成主线级修复</b>。</p>
+</section>
+
+<!-- 模块8 盘中承接扫描：由 intraday_scan.py 自动追加到此位置 -->
+
+<footer>
+  <div>数据来源：tdx-connector 通达信 MCP（指数/板块/情绪/个股行情）｜ 盘中承接扫描：intraday_scan.py（腾讯批量行情）</div>
+  <div>⚠ 本报告仅为市场数据客观呈现与情绪框架分析，不构成任何投资建议。行情基准 2026-09-01 15:00 收盘快照，自动化生成于 19:45。</div>
+</footer>
+
+</div>
+
+<!-- 盘中承接扫描 2026-09-01 19:54:02 -->
+<section style='margin:24px 0;border-top:2px solid #09f;padding-top:12px;'><h2>盘中承接扫描（2026-09-01 19:54:02）</h2><p>实时扫描「近3日涨停 × ML评分」观察池，命中 <b>30</b> 只符合承接形态。</p><table border='1' cellspacing='0' cellpadding='4'><tr><th>代码</th><th>名称</th><th>承接分</th><th>涨跌幅</th><th>现价</th><th>均价线</th><th>量比</th><th>ML评级</th><th>行业</th></tr><tr><td>002534</td><td>西子洁能</td><td>100</td><td>+2.24%</td><td>16.89</td><td>16.22</td><td>4.3</td><td>S</td><td>数据中心</td></tr><tr><td>002354</td><td>天娱数科</td><td>100</td><td>+4.11%</td><td>8.36</td><td>7.94</td><td>2.6</td><td>S</td><td>芯片</td></tr><tr><td>603900</td><td>莱绅通灵</td><td>100</td><td>+1.41%</td><td>7.17</td><td>7.09</td><td>1.7</td><td>S</td><td>黄金概念</td></tr><tr><td>600654</td><td>中安科</td><td>100</td><td>+3.87%</td><td>3.49</td><td>3.33</td><td>1.8</td><td>S</td><td>人工智能</td></tr><tr><td>300378</td><td>鼎捷数智</td><td>100</td><td>+2.65%</td><td>39.56</td><td>38.27</td><td>2.6</td><td>A+</td><td>芯片</td></tr><tr><td>002918</td><td>蒙娜丽莎</td><td>100</td><td>+1.83%</td><td>11.71</td><td>11.41</td><td>2.1</td><td>A+</td><td>活跃小盘非融</td></tr><tr><td>601330</td><td>绿色动力</td><td>100</td><td>+2.05%</td><td>7.97</td><td>7.76</td><td>5.6</td><td>A+</td><td>国企改革</td></tr><tr><td>301151</td><td>冠龙节能</td><td>100</td><td>+3.81%</td><td>21.53</td><td>20.29</td><td>4.7</td><td>A+</td><td>微小盘股</td></tr><tr><td>002279</td><td>久其软件</td><td>100</td><td>+2.15%</td><td>7.12</td><td>6.94</td><td>1.9</td><td>A+</td><td>人工智能</td></tr><tr><td>000059</td><td>华锦股份</td><td>100</td><td>+3.98%</td><td>6.01</td><td>5.74</td><td>1.8</td><td>A</td><td>国企改革</td></tr><tr><td>002952</td><td>亚世光电</td><td>100</td><td>-0.47%</td><td>21.34</td><td>21.34</td><td>1.7</td><td>A</td><td>活跃小盘非融</td></tr><tr><td>688152</td><td>麒麟信安</td><td>100</td><td>+4.15%</td><td>39.11</td><td>36.68</td><td>1.7</td><td>A</td><td>微小盘股</td></tr><tr><td>002165</td><td>红 宝 丽</td><td>100</td><td>+6.05%</td><td>9.11</td><td>8.29</td><td>1.5</td><td>A</td><td>新材料</td></tr><tr><td>603559</td><td>中通国脉</td><td>100</td><td>+3.61%</td><td>10.92</td><td>10.46</td><td>3.2</td><td>A</td><td>数据中心</td></tr><tr><td>603016</td><td>新宏泰</td><td>100</td><td>+2.49%</td><td>32.92</td><td>31.99</td><td>1.7</td><td>A</td><td>电网设备</td></tr><tr><td>000798</td><td>中水渔业</td><td>100</td><td>+3.95%</td><td>10.00</td><td>9.55</td><td>1.6</td><td>B</td><td>活跃小盘非融</td></tr><tr><td>601222</td><td>林洋能源</td><td>100</td><td>+3.43%</td><td>6.03</td><td>5.78</td><td>1.5</td><td>B</td><td>人工智能</td></tr><tr><td>000626</td><td>远大控股</td><td>100</td><td>+5.79%</td><td>9.32</td><td>8.85</td><td>2.1</td><td>B</td><td>跨境电商</td></tr><tr><td>002757</td><td>南兴股份</td><td>100</td><td>+1.89%</td><td>17.81</td><td>17.42</td><td>2.6</td><td>B</td><td>算力租赁</td></tr><tr><td>603029</td><td>天鹅股份</td><td>100</td><td>+3.68%</td><td>17.45</td><td>16.65</td><td>2.1</td><td>D</td><td>活跃小盘非融</td></tr><tr><td>603236</td><td>移远通信</td><td>100</td><td>+1.54%</td><td>62.59</td><td>60.80</td><td>2.0</td><td>D</td><td>芯片</td></tr><tr><td>000017</td><td>深中华A</td><td>94</td><td>+4.82%</td><td>11.75</td><td>10.96</td><td>1.4</td><td>A+</td><td>黄金概念</td></tr><tr><td>600689</td><td>上海三毛</td><td>94</td><td>+2.63%</td><td>11.72</td><td>11.35</td><td>1.3</td><td>A</td><td>活跃小盘非融</td></tr><tr><td>001376</td><td>百通能源</td><td>94</td><td>+1.33%</td><td>11.45</td><td>11.30</td><td>1.2</td><td>B</td><td>活跃小盘非融</td></tr><tr><td>000567</td><td>海德股份</td><td>94</td><td>+3.05%</td><td>7.09</td><td>6.85</td><td>1.3</td><td>B</td><td>储能</td></tr><tr><td>002486</td><td>嘉麟杰</td><td>94</td><td>+3.33%</td><td>3.10</td><td>2.98</td><td>1.4</td><td>C</td><td>活跃小盘非融</td></tr><tr><td>603269</td><td>海鸥股份</td><td>90</td><td>+3.85%</td><td>25.34</td><td>24.52</td><td>4.2</td><td>A+</td><td>高盛持股</td></tr><tr><td>000712</td><td>锦龙股份</td><td>90</td><td>+4.01%</td><td>13.50</td><td>12.03</td><td>3.1</td><td>A+</td><td>算力租赁</td></tr><tr><td>600227</td><td>赤天化</td><td>90</td><td>+2.58%</td><td>5.17</td><td>5.08</td><td>1.8</td><td>A+</td><td>摩根中国A股基金持股</td></tr><tr><td>600691</td><td>潞化科技</td><td>90</td><td>+4.02%</td><td>3.36</td><td>3.08</td><td>3.8</td><td>A+</td><td>扣非亏损</td></tr></table></section>
+</body>
+</html>

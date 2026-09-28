@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A股盘前简报 · 2026-09-18（基准日 09-17）</title>
+<style>
+:root{--bg:#f4f6f8;--card:#ffffff;--bd:#e2e6eb;--tx:#1f2328;--mu:#5b6472;--dim:#98a1ae;--up:#d92d20;--dn:#047857;--neu:#a16207}
+*{box-sizing:border-box}
+body{margin:0;padding:24px 18px 60px;background:var(--bg);color:var(--tx);
+ font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.65;
+ -webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto}
+h1{font-size:22px;font-weight:600;margin:0 0 6px;color:#111418}
+h2{font-size:16px;font-weight:600;margin:30px 0 12px;padding-left:10px;border-left:3px solid var(--up);color:#111418}
+h3{font-size:14px;font-weight:600;margin:18px 0 8px;color:#111418}
+.sub{color:var(--mu);font-size:13px;margin-bottom:4px}
+.warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:8px;padding:10px 14px;margin:14px 0;font-size:13px}
+.verdict{background:linear-gradient(180deg,#fffdf4,#ffffff);border:1px solid #f0d9a0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.verdict .big{font-size:17px;font-weight:600;color:#8a5305;line-height:1.5}
+.verdict .sm{font-size:13px;color:var(--mu);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.kpi .l{font-size:12px;color:var(--mu)}
+.kpi .v{font-size:26px;font-weight:600;line-height:1.3;color:#111418}
+.kpi .n{font-size:11px;color:var(--dim)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin:12px 0;overflow-x:auto;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--mu);font-weight:600;padding:7px 9px;border-bottom:1px solid var(--bd);white-space:nowrap;background:#fafbfc}
+td{padding:7px 9px;border-bottom:1px solid #eef1f4;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.up{color:var(--up)}.dn{color:var(--dn)}.neu{color:var(--neu)}.mu{color:var(--mu)}
+.tag{display:inline-block;padding:1px 7px;border-radius:5px;font-size:11px;margin-right:4px;border:1px solid}
+.t-up{background:#fef3f2;border-color:#fbcdc8;color:#b42318}
+.t-dn{background:#ecfdf5;border-color:#a7e8cd;color:#047857}
+.t-neu{background:#fffbeb;border-color:#fde68a;color:#92400e}
+.stages{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.stage{text-align:center;padding:9px 4px;border-radius:8px;background:#f1f3f6;border:1px solid var(--bd);color:#5b6472;font-size:13px}
+.stage.on{background:#fff7e6;border:1.5px solid #e0a82e;color:#8a5305;font-weight:600}
+.stage.prev{background:#f8fafc;border:1px dashed #cbd5e1;color:#64748b}
+.stage.past{background:#f1f3f6;border:1px solid #e2e6ea;color:#8a94a3}
+ul{margin:8px 0;padding-left:20px}
+li{margin:6px 0}
+.foot{margin-top:36px;padding-top:14px;border-top:1px solid var(--bd);color:var(--mu);font-size:12px}
+.src{font-size:11px;color:var(--dim);margin-top:6px}
+.obs li{line-height:1.75}
+.sig{font-family:Consolas,Monaco,monospace;font-size:12px;color:#374151;background:#eef1f4;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>A股盘前简报 · 2026-09-18（周五）</h1>
+<div class="sub">基准日：<b>2026-09-17（周四）收盘</b> · 生成时间：2026-09-18 07:00 GMT+8</div>
+<div class="sub">外盘口径：<b>2026-09-17 美东收盘</b>（北京时间 09-18 凌晨）</div>
+
+<div class="warn">
+⚠️ <b>生成时（07:00）TDX 实时源不可用，为连续第 6 个交易日</b>——tdx_quotes / tdx_screener / wenda_news_query 当时均未挂载（精确查名与关键词搜索均返回 0 结果），已按降级链取数。<br>
+以下 A 股数据来源为 <b>东财 push2delay（行情/行业/概念/资金流）+ 东财 push2ex（涨跌停池）+ 东财 datacenter（两融）+ 腾讯行情</b>，隔夜外盘与消息面来源为 <b>WebSearch</b>；<b>均为第三方接口来源，非实盘接口</b>。<br>
+<span class="neu">08:20 补记：TDX 已恢复连接，断线 6 日的根因已定位为 Clash Verge 路由，并已完成交叉校验 —— 见文末「附 · 08:20 补记」。</span>
+</div>
+
+<h2>1 · 一句话定性</h2>
+<div class="verdict">
+  <div class="big">分歧段主线失焦 —— 09-16 的"单主线抽血式放量"一日即散：涨停 89 → 47 腰斩、炸板率 11.0% → 29.9%、最高板 6 → 5，但跌停仅 1 只、两市成交 1.82 万亿未破位，属"情绪总量回落 + 主线集中度崩塌"的结构性分歧，<span class="dn">尚不构成恐慌式退潮</span>。</div>
+  <div class="sm">恶化的不是情绪绝对水平，而是<b>广度与高度的同时塌陷</b>：行业上涨数 415 → 276/496，涨停题材摊薄到农业、汽车、医药、地产、航运、传媒 6 条互不相关的线上，科技单主线（半导体/CPO）的资金侧出现单日 353.7 亿的反向摆动（电子 +227.03 亿 → -126.68 亿）。指数层面跌幅均 &lt;0.7%，跌幅温和与结构剧烈并存。</div>
+</div>
+
+<h2>2 · 情绪周期定位</h2>
+<div class="stages">
+  <div class="stage past">冰点<br><span style="font-size:11px">09-15 附近</span></div>
+  <div class="stage past">修复<br><span style="font-size:11px">未确认</span></div>
+  <div class="stage past">发酵<br><span style="font-size:11px">09-16 初段</span></div>
+  <div class="stage">高潮<br><span style="font-size:11px">未到达</span></div>
+  <div class="stage on">分歧<br><span style="font-size:11px">09-17 当前位置</span></div>
+  <div class="stage prev">退潮<br><span style="font-size:11px">待验证</span></div>
+</div>
+<div class="card">
+  <p style="margin:0 0 10px;color:var(--mu);font-size:13px">路径：退潮（09-11～09-15）→ 冰点附近（09-15，成交 1.61 万亿为年内新低）→ 发酵初段（09-16，涨停 89 的 V 型反包）→ <b class="neu">分歧（09-17）</b>。</p>
+  <table>
+    <thead><tr><th>证据项</th><th>09-11</th><th>09-14</th><th>09-15</th><th>09-16</th><th>09-17（基准）</th><th>方向</th></tr></thead>
+    <tbody>
+      <tr><td>涨停家数</td><td>35</td><td>40</td><td>55</td><td>89</td><td><b>47</b></td><td class="dn">转弱（-47.2%）</td></tr>
+      <tr><td>跌停家数</td><td>11</td><td>21</td><td>16</td><td>4</td><td><b>1</b></td><td class="up">转强</td></tr>
+      <tr><td>炸板家数 / 炸板率</td><td>—</td><td>—</td><td>— / 35.3%</td><td>11 / 11.0%</td><td><b>20 / 29.9%</b></td><td class="dn">转弱</td></tr>
+      <tr><td>连板家数（≥2 板）</td><td>—</td><td>7</td><td>11</td><td>12</td><td><b>9</b></td><td class="dn">转弱</td></tr>
+      <tr><td>最高板</td><td>—</td><td>4</td><td>5</td><td>6</td><td><b>5</b>（4 板空缺）</td><td class="dn">转弱</td></tr>
+      <tr><td>两市成交额</td><td>1.65 万亿</td><td>1.97 万亿</td><td>1.61 万亿</td><td>1.84 万亿</td><td><b>1.82 万亿</b></td><td class="mu">持平（-160 亿）</td></tr>
+      <tr><td>行业上涨数</td><td>—</td><td>32 / 496</td><td>297 / 496</td><td>415 / 496</td><td><b>276 / 496</b></td><td class="dn">转弱</td></tr>
+      <tr><td>涨跌家数（沪深）</td><td>949 / 4243</td><td>619 / 4619</td><td>3126 / 2224</td><td>3935 / 1149</td><td><b>2528 / 2594</b></td><td class="dn">转弱</td></tr>
+      <tr><td>主力资金（电子行业）</td><td>—</td><td>—</td><td>—</td><td>+227.03 亿</td><td><b>-126.68 亿</b></td><td class="dn">反向摆动 353.7 亿</td></tr>
+    </tbody>
+  </table>
+  <h3>判定为"分歧"而非"退潮"的依据</h3>
+  <ul>
+    <li><b>恐慌盘未扩散</b>：跌停家数从 4 只进一步降到 <b>1 只</b>，是全表最反直觉的一项——涨停腰斩的同时跌停几乎归零，说明资金不是夺门而出，而是"不再接力"。</li>
+    <li><b>量能未破位</b>：两市成交 1.82 万亿，仅比 09-16 缩 160 亿，仍高于 09-15 的年内次低 1.61 万亿，未出现退潮段典型的缩量真空。</li>
+    <li><b>梯队未崩</b>：连板家数 12 → 9，最高板 6 → 5，昨日 12 家连板中 5 家封板（晋级率 41.7%），仍在正常分歧区间内。</li>
+    <li><b>恶化的核心是集中度</b>：09-16 的放量是靠半导体/CPO 单一主线抽血完成（电子 +227.03 亿，占当日主力净流入 163.18 亿的绝对主力），09-17 该主线资金反手流出后，没有出现第二条等量级承接主线，涨停从 89 摊薄成 47 只、分散到 6 条互不相关的题材线。</li>
+  </ul>
+  <h3>结构瑕疵（明确记录，不做解读外推）</h3>
+  <ul>
+    <li>5 板澳弘电子（605058，元件/PCB）<b>开板 23 次</b>、换手 15.81%——高度板质量差，属"卡位型"而非"共识型"高标。</li>
+    <li>次高梯队 3 板三家（中晶科技/半导体、华瓷股份/家居用品、锡华科技/风电设备）分属三个不相关行业，缺乏同题材聚集。</li>
+    <li>2 板 5 家中，万向德农（种植业）、世联行（房地产服务）、中岩大地（专业工程）均为低位补涨属性。</li>
+  </ul>
+</div>
+
+<h2>3 · 盘面关键数据（09-17 收盘）</h2>
+<div class="grid">
+  <div class="kpi"><div class="l">上证指数</div><div class="v">3875.60</div><div class="n"><span class="dn">-0.41%</span> · 成交 8687.7 亿</div></div>
+  <div class="kpi"><div class="l">深证成指</div><div class="v">13409.91</div><div class="n"><span class="dn">-0.33%</span> · 成交 9543.6 亿</div></div>
+  <div class="kpi"><div class="l">创业板指</div><div class="v">3298.31</div><div class="n"><span class="dn">-0.40%</span> · 成交 4432.3 亿</div></div>
+  <div class="kpi"><div class="l">科创50</div><div class="v">1606.29</div><div class="n"><span class="dn">-0.61%</span> · 成交 854.4 亿</div></div>
+</div>
+<div class="grid">
+  <div class="kpi"><div class="l">涨停 / 跌停</div><div class="v"><span class="up">47</span> <span class="mu" style="font-size:18px">/</span> <span class="dn">1</span></div><div class="n">前日 89 / 4</div></div>
+  <div class="kpi"><div class="l">炸板家数 / 炸板率</div><div class="v">20 <span class="mu" style="font-size:18px">/</span> 29.9%</div><div class="n">前日 11 / 11.0%</div></div>
+  <div class="kpi"><div class="l">两市成交额（沪深）</div><div class="v">1.82<span style="font-size:16px"> 万亿</span></div><div class="n">前日 1.84 万亿 · 媒体含北交所 18365 亿</div></div>
+  <div class="kpi"><div class="l">最高板 / 连板家数</div><div class="v">5 <span class="mu" style="font-size:18px">/</span> 9</div><div class="n">前日 6 / 12</div></div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">其他指数</h3>
+  <table>
+    <thead><tr><th>指数</th><th>收盘</th><th>涨跌幅</th><th>指数</th><th>收盘</th><th>涨跌幅</th></tr></thead>
+    <tbody>
+      <tr><td>上证50</td><td>2844.23</td><td class="dn">-0.74%</td><td>沪深300</td><td>4460.16</td><td class="dn">-0.45%</td></tr>
+      <tr><td>中证500</td><td>7654.98</td><td class="dn">-0.37%</td><td>中证1000</td><td>7548.82</td><td class="dn">-0.51%</td></tr>
+      <tr><td>中证红利</td><td>5473.85</td><td class="dn">-0.54%</td><td>北证50</td><td>—</td><td class="dn">-1.37%</td></tr>
+      <tr><td>恒生指数</td><td>24604.29</td><td class="dn">-0.44%</td><td>恒生科技</td><td>4310.74</td><td class="dn">-0.34%</td></tr>
+    </tbody>
+  </table>
+  <p class="src">涨跌家数分市场（东财口径）：上证 1062 涨 / 1205 跌 / 85 平 · 深证（含创业板）1466 / 1389 / 79 · 创业板 746 / 636 / 24 · 科创50 12 / 38 / 0。沪深合计 2528 涨 / 2594 跌；媒体全市场口径（含北交所）超 2800 只下跌。</p>
+  <p class="src">成交额口径：媒体披露"全市场成交额 18365 亿元，较上日缩量 160 亿元"，含北交所；本简报 1.82 万亿为沪深两市口径（8687.7 + 9543.6）。</p>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">连板梯队（09-17 收盘）</h3>
+  <table>
+    <thead><tr><th>板数</th><th>标的</th><th>代码</th><th>行业/题材</th><th>开板次数</th><th>换手率</th><th>成交额</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag t-up">5板</span></td><td><b>澳弘电子</b></td><td>605058</td><td>元件 / PCB</td><td class="neu">23 次</td><td>15.81%</td><td>10.81 亿</td></tr>
+      <tr><td><span class="tag t-up">3板</span></td><td>中晶科技</td><td>003026</td><td>半导体</td><td>2 次</td><td>10.54%</td><td>5.61 亿</td></tr>
+      <tr><td><span class="tag t-up">3板</span></td><td>华瓷股份</td><td>001216</td><td>家居用品</td><td>0 次</td><td>11.37%</td><td>5.53 亿</td></tr>
+      <tr><td><span class="tag t-up">3板</span></td><td>锡华科技</td><td>603248</td><td>风电设备</td><td>0 次</td><td class="neu">33.89%</td><td>4.92 亿</td></tr>
+      <tr><td><span class="tag t-neu">2板</span></td><td>内蒙新华</td><td>603230</td><td>出版</td><td>0 次</td><td>1.68%</td><td>0.73 亿</td></tr>
+      <tr><td><span class="tag t-neu">2板</span></td><td>世联行</td><td>002285</td><td>房地产服务</td><td>6 次</td><td>6.52%</td><td>3.37 亿</td></tr>
+      <tr><td><span class="tag t-neu">2板</span></td><td>中岩大地</td><td>003001</td><td>专业工程</td><td>11 次</td><td>31.79%</td><td>7.15 亿</td></tr>
+      <tr><td><span class="tag t-neu">2板</span></td><td>共达电声</td><td>002655</td><td>消费电子</td><td>0 次</td><td>10.10%</td><td>14.51 亿</td></tr>
+      <tr><td><span class="tag t-neu">2板</span></td><td>万向德农</td><td>600371</td><td>种植业</td><td>6 次</td><td>27.29%</td><td>11.48 亿</td></tr>
+    </tbody>
+  </table>
+  <p class="src">4 板空缺，梯队断档。昨日（09-16）12 家连板中 5 家封板，晋级率 41.7%；09-16 的 6 板闽东电力已断板。口径：东财 push2ex 涨停池，非实盘接口。</p>
+</div>
+
+<h2>4 · 板块结构</h2>
+<div class="card">
+  <h3 style="margin-top:0"><span class="tag t-up">走强</span>昨日（09-17）领涨方向</h3>
+  <table>
+    <thead><tr><th>板块（行业口径）</th><th>涨幅</th><th>涨/跌家数</th><th>成交额</th><th>领涨</th></tr></thead>
+    <tbody>
+      <tr><td>种子</td><td class="up">+7.86%</td><td>10 / 0</td><td>76.2 亿</td><td>敦煌种业</td></tr>
+      <tr><td>视频媒体</td><td class="up">+6.58%</td><td>1 / 0</td><td>25.5 亿</td><td>芒果超媒</td></tr>
+      <tr><td>房产租赁经纪</td><td class="up">+5.28%</td><td>2 / 1</td><td>14.5 亿</td><td>世联行</td></tr>
+      <tr><td>其他养殖</td><td class="up">+5.13%</td><td>3 / 0</td><td>6.3 亿</td><td>华英农业</td></tr>
+      <tr><td>种植业</td><td class="up">+5.06%</td><td>21 / 0</td><td>137.1 亿</td><td>敦煌种业</td></tr>
+      <tr><td>汽车经销商</td><td class="up">+3.96%</td><td>6 / 0</td><td>3.2 亿</td><td>上海物贸</td></tr>
+      <tr><td>跨境电商</td><td class="up">+3.47%</td><td>7 / 1</td><td>27.6 亿</td><td>跨境通</td></tr>
+      <tr><td>快递</td><td class="up">+3.32%</td><td>4 / 0</td><td>15.0 亿</td><td>申通快递</td></tr>
+      <tr><td>房地产综合服务</td><td class="up">+3.26%</td><td>1 / 0</td><td>0.5 亿</td><td>珠江股份</td></tr>
+      <tr><td>其他种植业</td><td class="up">+3.13%</td><td>5 / 0</td><td>45.2 亿</td><td>亚盛集团</td></tr>
+      <tr><td>教育运营及其他</td><td class="up">+3.11%</td><td>1 / 1</td><td>11.7 亿</td><td>ST豆神</td></tr>
+      <tr><td>商用载客车</td><td class="up">+3.05%</td><td>4 / 1</td><td>9.1 亿</td><td>安凯客车</td></tr>
+      <tr><td>人工景区</td><td class="up">+2.91%</td><td>5 / 0</td><td>10.7 亿</td><td>大连圣亚</td></tr>
+    </tbody>
+  </table>
+  <p class="src">概念口径同步走强：昨日打二板以上表现 +6.71%、昨日连板（含一字）+4.13%、转基因 +3.68%、昨日连板 +3.60%、粮食概念 +3.26%、重组蛋白 +2.61%、CRO +2.56%、电子纸 +2.52%、农业种植 +2.25%、汽车整车 +1.88%、托育服务 +1.51%。</p>
+
+  <h3><span class="tag t-dn">承压</span>昨日（09-17）领跌方向</h3>
+  <table>
+    <thead><tr><th>板块（行业口径）</th><th>跌幅</th><th>涨/跌家数</th><th>成交额</th><th>领跌</th></tr></thead>
+    <tbody>
+      <tr><td>白银</td><td class="dn">-6.00%</td><td>0 / 3</td><td>60.4 亿</td><td>兴业银锡</td></tr>
+      <tr><td>贵金属</td><td class="dn">-5.35%</td><td>0 / 13</td><td>242.9 亿</td><td>恒邦股份</td></tr>
+      <tr><td>黄金</td><td class="dn">-5.15%</td><td>0 / 10</td><td>182.5 亿</td><td>恒邦股份</td></tr>
+      <tr><td>电能综合服务</td><td class="dn">-2.65%</td><td>1 / 14</td><td>34.8 亿</td><td>郴电国际</td></tr>
+      <tr><td>稀土</td><td class="dn">-2.60%</td><td>0 / 4</td><td>37.1 亿</td><td>北方稀土</td></tr>
+      <tr><td>铅锌</td><td class="dn">-2.49%</td><td>0 / 11</td><td>37.8 亿</td><td>中金岭南</td></tr>
+      <tr><td>印制电路板</td><td class="dn">-2.41%</td><td>11 / 37</td><td>1055.4 亿</td><td>澳弘电子</td></tr>
+      <tr><td>铜</td><td class="dn">-2.37%</td><td>2 / 15</td><td>243.0 亿</td><td>精艺股份</td></tr>
+      <tr><td>油气及炼化工程</td><td class="dn">-2.37%</td><td>0 / 6</td><td>15.6 亿</td><td>海油工程</td></tr>
+      <tr><td>林业</td><td class="dn">-2.31%</td><td>1 / 3</td><td>38.2 亿</td><td>*ST景谷</td></tr>
+      <tr><td>元件</td><td class="dn">-2.25%</td><td>13 / 54</td><td>1308.2 亿</td><td>澳弘电子</td></tr>
+      <tr><td>钨</td><td class="dn">-2.18%</td><td>0 / 4</td><td>75.5 亿</td><td>厦门钨业</td></tr>
+      <tr><td>火力发电</td><td class="dn">-2.12%</td><td>1 / 32</td><td>113.8 亿</td><td>华电B股</td></tr>
+      <tr><td>油服工程</td><td class="dn">-2.03%</td><td>2 / 12</td><td>32.7 亿</td><td>*ST准油</td></tr>
+    </tbody>
+  </table>
+  <p class="src">概念口径同步承压：被动元件 -2.00%、黄金概念 -2.00%、MLCC -1.96%、复合集流体 -1.79%、资源开采 -1.61%、小金属 -1.59%、EDA -1.57%、超超临界发电 -1.42%、PCB -1.40%、稀土永磁 -1.19%、有机硅 -1.17%、华为海思 -1.15%。</p>
+
+  <h3>三条线位置</h3>
+  <table>
+    <thead><tr><th>线索</th><th>位置</th><th>依据（09-17）</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>资源品</b><br><span class="mu" style="font-size:12px">煤炭 / 有色 / 石油石化 / 贵金属</span></td>
+        <td class="dn">全线走弱，跌幅最深处</td>
+        <td>贵金属 -5.35%（0 涨 13 跌）、白银 -6.00%、黄金 -5.15%；工业金属链条同步下行：铜 -2.37%、铅锌 -2.49%、稀土 -2.60%、钨 -2.18%、工业金属 -1.75%、有色金属 -1.75%；石油石化受原油连续两日下跌（09-16 WTI -3.21%、09-17 WTI -1.31%）压制，油气及炼化工程 -2.37%、油服工程 -2.03%；国内期货端焦煤主连 -2.51%、原油主连 -5.28%。<br><span class="neu">背离记录</span>：A 股贵金属 09-17 的 -5.35% 发生在隔夜现货黄金 +1.64%、现货白银 +3.1% 的背景下，方向相反。</td>
+      </tr>
+      <tr>
+        <td><b>科技</b><br><span class="mu" style="font-size:12px">存储 / 光通信 / CPO / 半导体</span></td>
+        <td class="dn">资金侧全面转出，内部仅面板/光学逆势</td>
+        <td>电子行业主力 -126.68 亿（前 +227.03 亿），元件 -80.96 亿、印制电路板 -62.98 亿、半导体 -47.55 亿、半导体材料 -24.57 亿、通信设备 -18.43 亿、被动元件 -17.98 亿；存储芯片概念主力 -103.65 亿。<br><span class="up">逆势分支</span>：面板 +1.55%（主力 +23.09 亿）、光学光电子 +0.90%（+20.24 亿）、显示技术 +23.06 亿、MiniLED +24.44 亿、MicroLED +22.92 亿、OLED +22.36 亿、电子纸 +20.13 亿；通信线缆侧亨通光电 +4.72%（主力 +8.82 亿）、中天科技 +3.41%（+6.56 亿）；玻纤侧玻璃玻纤 +1.70%（+10.28 亿）、玻纤制造 +1.87%（+7.58 亿）。</td>
+      </tr>
+      <tr>
+        <td><b>防御（红利）</b></td>
+        <td class="mu">未成避风港</td>
+        <td>中证红利 -0.54%，弱于上证 -0.41%；电力链领跌（火力发电 -2.12%、电能综合服务 -2.65%、电力 -1.60% 附近）；非银与证券同步走弱（证券 -0.96%）。防御线在 09-17 没有承接从科技撤出的资金，资金去向是汽车链与医药链，而非红利。</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>5 · 资金流</h2>
+<div class="card">
+  <h3 style="margin-top:0">行业主力净额（09-17，亿元）</h3>
+  <table>
+    <thead><tr><th>净流入 TOP12</th><th>净额</th><th>板块涨幅</th><th>净流出 TOP12</th><th>净额</th><th>板块涨幅</th></tr></thead>
+    <tbody>
+      <tr><td>汽车</td><td class="up">+37.08</td><td class="up">+1.35%</td><td>电子</td><td class="dn">-126.68</td><td class="dn">-0.30%</td></tr>
+      <tr><td>汽车零部件</td><td class="up">+30.40</td><td class="up">+1.33%</td><td>元件</td><td class="dn">-80.96</td><td class="dn">-2.25%</td></tr>
+      <tr><td>面板</td><td class="up">+23.09</td><td class="up">+1.55%</td><td>有色金属</td><td class="dn">-65.73</td><td class="dn">-1.75%</td></tr>
+      <tr><td>光学光电子</td><td class="up">+20.24</td><td class="up">+0.90%</td><td>印制电路板</td><td class="dn">-62.98</td><td class="dn">-2.41%</td></tr>
+      <tr><td>底盘与发动机系统</td><td class="up">+18.10</td><td class="up">+1.48%</td><td>半导体</td><td class="dn">-47.55</td><td class="dn">-0.28%</td></tr>
+      <tr><td>医药生物</td><td class="up">+15.76</td><td class="up">+0.88%</td><td>工业金属</td><td class="dn">-34.26</td><td class="dn">-1.57%</td></tr>
+      <tr><td>医疗研发外包</td><td class="up">+13.43</td><td class="up">+1.98%</td><td>电力设备</td><td class="dn">-32.68</td><td class="dn">-0.37%</td></tr>
+      <tr><td>通用设备</td><td class="up">+13.15</td><td class="up">+0.25%</td><td>计算机</td><td class="dn">-31.40</td><td class="dn">-0.40%</td></tr>
+      <tr><td>医疗服务</td><td class="up">+12.59</td><td class="up">+1.34%</td><td>基础化工</td><td class="dn">-28.20</td><td class="dn">-0.17%</td></tr>
+      <tr><td>建筑材料</td><td class="up">+10.46</td><td class="up">+0.40%</td><td>铜</td><td class="dn">-27.07</td><td class="dn">-2.37%</td></tr>
+      <tr><td>玻璃玻纤</td><td class="up">+10.28</td><td class="up">+1.70%</td><td>半导体材料</td><td class="dn">-24.57</td><td class="dn">-0.34%</td></tr>
+      <tr><td>玻纤制造</td><td class="up">+7.58</td><td class="up">+1.87%</td><td>电池</td><td class="dn">-21.82</td><td class="dn">-0.93%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>个股主力净额</h3>
+  <table>
+    <thead><tr><th>净流入</th><th>代码</th><th>涨跌幅</th><th>净额</th><th>净流出</th><th>代码</th><th>涨跌幅</th><th>净额</th></tr></thead>
+    <tbody>
+      <tr><td>沐曦股份-U</td><td>688802</td><td class="up">+14.44%</td><td class="up">+29.29 亿</td><td>长鑫科技</td><td>688825</td><td class="dn">-2.96%</td><td class="dn">-21.10 亿</td></tr>
+      <tr><td>京东方Ａ</td><td>000725</td><td class="up">+5.50%</td><td class="up">+19.88 亿</td><td>生益科技</td><td>600183</td><td class="dn">-5.47%</td><td class="dn">-16.81 亿</td></tr>
+      <tr><td>山子高科</td><td>000981</td><td class="up">+9.85%</td><td class="up">+9.68 亿</td><td>永鼎股份</td><td>600105</td><td class="dn">-0.18%</td><td class="dn">-12.25 亿</td></tr>
+      <tr><td>天孚通信</td><td>300394</td><td class="up">+3.41%</td><td class="up">+9.36 亿</td><td>紫金矿业</td><td>601899</td><td class="dn">-3.95%</td><td class="dn">-11.83 亿</td></tr>
+      <tr><td>亨通光电</td><td>600487</td><td class="up">+4.72%</td><td class="up">+8.82 亿</td><td>沪电股份</td><td>002463</td><td class="dn">-3.38%</td><td class="dn">-9.91 亿</td></tr>
+      <tr><td>N沈鼓</td><td>601091</td><td class="up">+373.80%</td><td class="up">+8.65 亿</td><td>有研新材</td><td>600206</td><td class="dn">-2.09%</td><td class="dn">-9.22 亿</td></tr>
+      <tr><td>中材科技</td><td>002080</td><td class="up">+5.03%</td><td class="up">+7.38 亿</td><td>中际旭创</td><td>300308</td><td class="dn">-1.30%</td><td class="dn">-9.20 亿</td></tr>
+      <tr><td>中天科技</td><td>600522</td><td class="up">+3.41%</td><td class="up">+6.56 亿</td><td>光迅科技</td><td>002281</td><td class="up">+3.24%</td><td class="dn">-9.12 亿</td></tr>
+      <tr><td>宏和科技</td><td>603256</td><td class="up">+1.33%</td><td class="up">+6.00 亿</td><td>华正新材</td><td>603186</td><td class="dn">-9.45%</td><td class="dn">-7.24 亿</td></tr>
+      <tr><td>摩尔线程-U</td><td>688795</td><td class="up">+8.68%</td><td class="up">+5.86 亿</td><td>紫光股份</td><td>000938</td><td class="dn">-3.47%</td><td class="dn">-7.16 亿</td></tr>
+      <tr><td>中国船舶</td><td>600150</td><td class="up">+3.10%</td><td class="up">+5.38 亿</td><td>中国巨石</td><td>600176</td><td class="dn">-0.51%</td><td class="dn">-7.05 亿</td></tr>
+      <tr><td>东山精密</td><td>002384</td><td class="up">+0.80%</td><td class="up">+5.33 亿</td><td>风华高科</td><td>000636</td><td class="dn">-3.29%</td><td class="dn">-6.96 亿</td></tr>
+      <tr><td>光智科技</td><td>300489</td><td class="up">+6.25%</td><td class="up">+5.30 亿</td><td>长电科技</td><td>600584</td><td class="dn">-2.59%</td><td class="dn">-6.58 亿</td></tr>
+      <tr><td>招商轮船</td><td>601872</td><td class="up">+10.02%</td><td class="up">+5.13 亿</td><td>有研硅</td><td>688432</td><td class="up">+1.74%</td><td class="dn">-6.47 亿</td></tr>
+      <tr><td>药明康德</td><td>603259</td><td class="up">+1.76%</td><td class="up">+4.94 亿</td><td>金安国纪</td><td>002636</td><td class="dn">-3.66%</td><td class="dn">-6.36 亿</td></tr>
+      <tr><td>先导基电</td><td>600641</td><td class="up">+10.01%</td><td class="up">+4.91 亿</td><td>宁德时代</td><td>300750</td><td class="dn">-0.39%</td><td class="dn">-6.34 亿</td></tr>
+    </tbody>
+  </table>
+  <p class="src"><span class="neu">价涨资金出（背离记录）</span>：光迅科技 +3.24% 但主力 -9.12 亿；永鼎股份 -0.18% 但主力 -12.25 亿；有研硅 +1.74% 但主力 -6.47 亿。三只均属 09-16 的科技强势股，方向在 09-17 反手。</p>
+
+  <h3>融资融券（T+2 披露，<span class="neu">最新为 09-16，非昨日数据</span>）</h3>
+  <table>
+    <thead><tr><th>日期</th><th>融资余额</th><th>融资买入</th><th>融资偿还</th><th>融资净买入</th><th>融券余额</th><th>两融余额</th></tr></thead>
+    <tbody>
+      <tr><td><b>2026-09-16</b></td><td><b>26075.4 亿</b></td><td>1694.9 亿</td><td>1602.4 亿</td><td class="up"><b>+92.5 亿</b></td><td>292.6 亿</td><td>26368.0 亿</td></tr>
+      <tr><td>2026-09-15</td><td>25982.9 亿</td><td>1350.0 亿</td><td>1343.7 亿</td><td class="up">+5.7 亿</td><td>291.8 亿</td><td>26274.7 亿</td></tr>
+      <tr><td>2026-09-14</td><td>25976.6 亿</td><td>1302.5 亿</td><td>1351.9 亿</td><td class="dn">-49.4 亿</td><td>292.0 亿</td><td>26268.5 亿</td></tr>
+      <tr><td>2026-09-11</td><td>26025.9 亿</td><td>1598.7 亿</td><td>1744.7 亿</td><td class="dn">-145.9 亿</td><td>290.3 亿</td><td>26316.3 亿</td></tr>
+      <tr><td>2026-09-10</td><td>26171.9 亿</td><td>1363.1 亿</td><td>1385.2 亿</td><td class="dn">-22.1 亿</td><td>291.8 亿</td><td>26463.7 亿</td></tr>
+    </tbody>
+  </table>
+  <p class="src">沪深两市口径（交易所披露）：09-16 上交所融资余额 13331.97 亿（+47.56 亿）、深交所 12659.92 亿（+44.23 亿），合计 25991.89 亿（+91.79 亿），与上表 26075.4 亿 / +92.5 亿的差异来自北交所。融资余额已连续 2 个交易日净增，且幅度从 +5.7 亿放大到 +92.5 亿。</p>
+
+  <h3>融资个股明细（09-16）</h3>
+  <table>
+    <thead><tr><th>融资净买入 TOP</th><th>代码</th><th>当日涨跌</th><th>融资净买入</th><th>融资净卖出 TOP</th><th>代码</th><th>当日涨跌</th><th>融资净卖出</th></tr></thead>
+    <tbody>
+      <tr><td>宁德时代</td><td>300750</td><td class="dn">-3.44%</td><td class="up">+6.67 亿</td><td>星网锐捷</td><td>002396</td><td class="up">+10.00%</td><td class="dn">-3.05 亿</td></tr>
+      <tr><td>中国巨石</td><td>600176</td><td class="up">+0.64%</td><td class="up">+4.59 亿</td><td>精智达</td><td>688627</td><td class="up">+7.45%</td><td class="dn">-1.58 亿</td></tr>
+      <tr><td>风华高科</td><td>000636</td><td class="up">+1.86%</td><td class="up">+2.94 亿</td><td>中际旭创</td><td>300308</td><td class="up">+5.07%</td><td class="dn">-1.57 亿</td></tr>
+      <tr><td>新易盛</td><td>300502</td><td class="up">+6.72%</td><td class="up">+2.48 亿</td><td>山子高科</td><td>000981</td><td class="dn">-9.27%</td><td class="dn">-1.40 亿</td></tr>
+      <tr><td>国瓷材料</td><td>300285</td><td class="up">+2.51%</td><td class="up">+2.46 亿</td><td>鹏鼎控股</td><td>002938</td><td class="up">+1.10%</td><td class="dn">-1.25 亿</td></tr>
+      <tr><td>长川科技</td><td>300604</td><td class="up">+0.85%</td><td class="up">+1.95 亿</td><td>德明利</td><td>001309</td><td class="up">+3.89%</td><td class="dn">-1.15 亿</td></tr>
+      <tr><td>兴森科技</td><td>002436</td><td class="up">+4.75%</td><td class="up">+1.86 亿</td><td>海光信息</td><td>688041</td><td class="up">+4.67%</td><td class="dn">-1.13 亿</td></tr>
+      <tr><td>国际复材</td><td>301526</td><td class="up">+0.79%</td><td class="up">+1.76 亿</td><td>中国船舶</td><td>600150</td><td class="dn">-0.97%</td><td class="dn">-1.11 亿</td></tr>
+      <tr><td>长电科技</td><td>600584</td><td class="up">+4.02%</td><td class="up">+1.66 亿</td><td>东方财富</td><td>300059</td><td class="up">+1.21%</td><td class="dn">-1.04 亿</td></tr>
+      <tr><td>云南锗业</td><td>002428</td><td class="up">+4.79%</td><td class="up">+1.65 亿</td><td>长芯博创</td><td>300548</td><td class="up">+12.95%</td><td class="dn">-1.02 亿</td></tr>
+      <tr><td>中天科技</td><td>600522</td><td class="up">+1.91%</td><td class="up">+1.52 亿</td><td>江苏银行</td><td>600919</td><td class="dn">-1.54%</td><td class="dn">-0.98 亿</td></tr>
+      <tr><td>科翔股份</td><td>300903</td><td class="up">+2.31%</td><td class="up">+1.51 亿</td><td>阳光电源</td><td>300274</td><td class="up">+0.95%</td><td class="dn">-0.96 亿</td></tr>
+      <tr><td>中船特气</td><td>688146</td><td class="up">+3.33%</td><td class="up">+1.51 亿</td><td>长鑫科技</td><td>688825</td><td class="up">+1.62%</td><td class="dn">-0.87 亿</td></tr>
+      <tr><td>太极实业</td><td>600667</td><td class="up">+6.98%</td><td class="up">+1.46 亿</td><td>剑桥科技</td><td>603083</td><td class="up">+3.34%</td><td class="dn">-0.82 亿</td></tr>
+      <tr><td>杰普特</td><td>688025</td><td class="up">+12.81%</td><td class="up">+1.43 亿</td><td>泛微网络</td><td>603039</td><td class="dn">-0.55%</td><td class="dn">-0.85 亿</td></tr>
+    </tbody>
+  </table>
+  <p class="src">口径说明：已剔除场内 ETF（51/58/15/16/56/11/50 前缀）。<span class="neu">错配记录</span>：09-16 融资盘集中买入电子/半导体/PCB 链（中国巨石、风华高科、国瓷材料、长川科技、兴森科技、长电科技、中天科技、科翔股份、中船特气、太极实业、杰普特），而 09-17 这批标的多为下跌（风华高科 -3.29%、国瓷材料 -3.16%、长电科技 -2.59%、中国巨石 -0.51%、有研硅 +1.74% 但主力净流出 6.47 亿）；同时 09-16 的净卖出榜里出现当日涨停的星网锐捷与上涨 5.07% 的中际旭创——上涨中减仓。</p>
+  <p class="src"><b>结论：结构性筛选，而非全面撤退。</b>依据：融资余额连续 2 日净增且增幅放大（+5.7 亿 → +92.5 亿）；主力资金是"从电子单链切向汽车/医药/面板"，行业净流入榜仍有 12 个行业为正；两市成交额 1.82 万亿持平。"撤退"只发生在电子/元件/PCB/有色四条链上，"筛选"体现在资金对面板、光学、通信线缆、玻纤、汽车、医药的定向流入。</p>
+</div>
+
+<h2>6 · 美股映射表（09-17 美东收盘）</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>美股标的</th><th>涨跌幅</th><th>收盘/水平</th><th>A 股映射方向</th></tr></thead>
+    <tbody>
+      <tr><td>纳斯达克综合</td><td class="up">+1.69%</td><td>26418.30</td><td>成长股/科技整体风险偏好</td></tr>
+      <tr><td>标普500</td><td class="up">+1.14%</td><td>7637.76</td><td>—（科技板块领涨 +2.20%）</td></tr>
+      <tr><td>道琼斯工业</td><td class="up">+0.61%</td><td>51778.04</td><td>—（金融、必需消费为唯二下跌板块）</td></tr>
+      <tr><td><b>费城半导体指数</b></td><td class="up"><b>+3.14%</b></td><td>11599.49</td><td><b>半导体设备 / 材料 / 零部件 / 存储</b></td></tr>
+      <tr><td>Arm</td><td class="up">+8.0%</td><td>—</td><td>芯片 IP / 设计服务</td></tr>
+      <tr><td>英特尔</td><td class="up">+7.67%</td><td>—</td><td>CPU / 服务器整机 / 先进封装</td></tr>
+      <tr><td>AMD</td><td class="up">+6.36%</td><td>545.09</td><td>AI 算力 / 国产 CPU</td></tr>
+      <tr><td>闪迪</td><td class="up">+6.21%</td><td>—</td><td>存储模组 / 封测</td></tr>
+      <tr><td>美光科技</td><td class="up">+5.50%</td><td>977.50</td><td><b>存储芯片（DRAM / NAND）</b></td></tr>
+      <tr><td>迈威尔科技</td><td class="up">+4.81%</td><td>—</td><td><b>光通信 / CPO / 交换芯片</b></td></tr>
+      <tr><td>SK海力士（ADR）</td><td class="up">约 +4%</td><td>—</td><td>HBM / 存储（韩股正股 -0.80%）</td></tr>
+      <tr><td>希捷科技</td><td class="up">约 +2%</td><td>—</td><td>存储 / 硬盘</td></tr>
+      <tr><td>高通</td><td class="up">+2.09%</td><td>—</td><td>消费电子 / 射频 / 车规芯片</td></tr>
+      <tr><td>英伟达</td><td class="up">+2.54%</td><td>219.34</td><td>CPO / 铜缆 / 液冷 / PCB / 服务器</td></tr>
+      <tr><td>亚马逊 / 特斯拉</td><td class="up">+2.13% / +2.27%</td><td>—</td><td>云计算资本开支 / 汽车链 / 人形机器人</td></tr>
+      <tr><td>微软 / 苹果 / Meta / 谷歌</td><td class="up">+1.52% / +1.38% / +1.34% / +1.30%</td><td>—</td><td>云资本开支 / 消费电子 / 应用端</td></tr>
+      <tr><td><b>Lumentum</b></td><td class="dn"><b>-2.81%</b></td><td>893.61</td><td><b>光模块（高位回吐，与前日 +9.59% 反向）</b></td></tr>
+      <tr><td>纳斯达克中国金龙</td><td class="up">+0.16%</td><td>5743.62</td><td>中概 / 港股（冷热不均：盛美半导体 +4%、中通快递 +3%、小鹏 +2.5%；哔哩哔哩 -3.36%、拼多多 -1.31%）</td></tr>
+      <tr><td>现货黄金</td><td class="up">+1.64%</td><td>4341.5 美元/盎司</td><td>贵金属 / 黄金股（A 股前一日 -5.35%）</td></tr>
+      <tr><td>现货白银</td><td class="up">+3.1%</td><td>65.2 美元/盎司</td><td>白银 / 有色（A 股前一日 -6.00%）</td></tr>
+      <tr><td>COMEX 铜</td><td class="up">+1.61%</td><td>6.614 美元/磅</td><td>铜 / 工业金属（A 股前一日 -2.37%）</td></tr>
+      <tr><td>WTI 原油</td><td class="dn">-1.31%</td><td>101.09 美元/桶</td><td>油气开采 / 油服 / 油运（连续第 2 日利空映射）</td></tr>
+      <tr><td>布伦特原油</td><td class="dn">-1.77% ~ -1.82%</td><td>103.90 ~ 103.96 美元/桶</td><td>炼化 / 精细化工（成本端边际改善）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>利率与汇率</h3>
+  <table>
+    <thead><tr><th>品种</th><th>水平</th><th>变化</th></tr></thead>
+    <tbody>
+      <tr><td>美债 2 年期</td><td>4.677%</td><td class="dn">回落（决议夜曾创 2024/7 以来新高 4.737%）</td></tr>
+      <tr><td>美债 10 年期</td><td>4.944%</td><td class="dn">回落，重回 5% 下方（决议夜最高 5.023%）</td></tr>
+      <tr><td>美债 30 年期</td><td>5.304%</td><td class="dn">回落</td></tr>
+      <tr><td>美元指数</td><td>100.21</td><td class="mu">基本持平，略回落</td></tr>
+      <tr><td>离岸人民币</td><td>6.7037</td><td class="up">升值（前值 6.7118）</td></tr>
+      <tr><td>富时中国 A50 期指（夜盘）</td><td>14372.5</td><td class="up">+0.37%</td></tr>
+    </tbody>
+  </table>
+  <p class="src">欧股：富时100 +1.19% / 德国DAX +0.70% / 法国CAC40 +0.57%。亚太（09-17 收盘）：日经225 +0.33% 报 64136.25（任天堂 +4.29%、三菱重工 +4.01%、铠侠 -1.77%）；韩国KOSPI -0.04% 报 6715.41（三星电子 -0.39%、SK海力士 -0.80%）。</p>
+</div>
+
+<h2>7 · 今日观察点</h2>
+<div class="card">
+  <ol class="obs">
+    <li><b>量能阈值</b>——两市成交（沪深口径）基准 <span class="sig">1.82 万亿</span>。
+      <br>低于 <span class="sig">1.70 万亿</span> → 分歧转退潮；站上 <span class="sig">1.95 万亿</span> → 增量入场确认，分歧转一致。中间区间视为分歧延续。媒体含北交所口径基准为 18365 亿。</li>
+
+    <li><b>高度风向标</b>——澳弘电子（605058，5 板）：昨日开板 23 次、换手 15.81%、成交 10.81 亿。封板 → 高度到 6 板；断板 → 本轮高度定格在 5 板。
+      <br>宽度同步看 3 板三家的晋级数量：中晶科技（003026，半导体）、华瓷股份（001216，家居用品）、锡华科技（603248，风电设备，昨换手 33.89%）。</li>
+
+    <li><b>科技线止跌确认</b>——观察 09-17 净流出第一梯队能否止血：长鑫科技（688825，-2.96%，主力 -21.10 亿）、生益科技（600183，-5.47%，-16.81 亿）、沪电股份（002463，-3.38%，-9.91 亿）。
+      <br>可验证指标：电子行业主力净额能否从 <span class="sig">-126.68 亿</span> 收窄；面板/光学能否从单点扩散为板块——京东方Ａ（000725，+5.50%，主力 +19.88 亿）为起点，参考面板行业 +23.09 亿、光学光电子 +20.24 亿、MiniLED +24.44 亿、OLED +22.36 亿。</li>
+
+    <li><b>事件映射首日承接</b>——09-17 华为全联接大会发布「昇腾960 超节点」：单超节点 4096 卡（上代 1024 卡）、FP8 8EFLOPS / FP4 16EFLOPS、1PB HBM、全液冷；<b>全球首个采用 NPO（近封装光学）技术的超节点</b>，Hi-ONE 光引擎单引擎 7.2T；用 5500 个 Hi-ONE 模块替代原需的 4.8 万颗 800G 光模块，系统功耗降低超 550kW；多超节点互联最大集群 100 万卡；昇腾960DT 提前至 2027Q1 就绪。
+      <br>映射确定性排序：光引擎/光器件/光模块 &gt; 液冷与散热 &gt; 国产算力芯片与整机 &gt; 存储（HBM/模组）&gt; PCB/覆铜板。
+      <br>参照 09-17 承接样本：天孚通信（300394，+3.41%，主力 +9.36 亿）、太辰光（300570，+4.65%，+3.57 亿）、沃格光电（603773，+2.59% 但曾炸板）、亨通光电（600487，+4.72%，+8.82 亿）、中天科技（600522，+3.41%，+6.56 亿）；反面样本：中际旭创（300308，-1.30%，-9.20 亿）、光迅科技（002281，+3.24% 但 -9.12 亿）。
+      <br>同时注意美股光互联内部已分化：迈威尔 +4.81% 但 Lumentum -2.81%。</li>
+
+    <li><b>隔夜背离修复方向</b>——A 股贵金属 09-17 为 <span class="sig">-5.35%</span>（0 涨 13 跌）、白银 -6.00%，而隔夜现货金 +1.64%、现货银 +3.1%、COMEX 铜 +1.61%。观察 09-18 是向上修复还是修复失败。
+      <br>原油连续第 2 日下跌（-3.21% → -1.31%），油气开采/油服/油运继续承压；成本敏感的下游（航空、物流、炼化、精细化工）为边际受益方向。</li>
+
+    <li><b>关键价位</b>——上证 <span class="sig">3875.60</span>（上方 3891.60 未确认，3900 为整数关口）；深成 <span class="sig">13409.91</span>；创业板 <span class="sig">3298.31</span>；科创50 <span class="sig">1606.29</span>（跌破 1600 视为科技线破位信号）；中证红利 <span class="sig">5473.85</span>（-0.54%，弱于大盘，防御未启动）。</li>
+
+    <li><b>事件时点</b>——日本央行今日公布利率决议，行长记者会日本时间 15:30；国新办 09-18 就第 140 届广交会举行发布会（商务部部长助理张力及广东省、广州市负责人）。休市安排已公布：9 月 25 日 — 9 月 27 日休市，9 月 28 日起照常开市；10 月 1 日 — 10 月 7 日休市，10 月 8 日起照常开市。</li>
+  </ol>
+</div>
+
+<h2>附 · 消息面与催化（09-17 ～ 09-18）</h2>
+<div class="card">
+  <h3 style="margin-top:0">产业催化</h3>
+  <ul>
+    <li><b>华为昇腾960 超节点</b>（09-17，全联接大会 2026 上海）：参数见观察点 4。同时升级鲲鹏超节点（最高 4096 节点、256TB 统一内存池），发布 OceanStor M900 集群。截至目前昇腾910C 超节点累计部署超 1000 套，昇腾950 超节点已商用。</li>
+    <li><b>黄仁勋</b>（09-17，苏格兰 AI 峰会）：预计明年（2027 年）英伟达销售的芯片数量将是今年的两倍；当前瓶颈不是需求，而是把芯片生产出来的能力。</li>
+    <li><b>韩国半导体零部件交期</b>：交货周期大幅延长，部分设备商等待超 40 个月，已影响三星、SK海力士扩产计划。</li>
+    <li><b>特斯拉 Optimus</b>：团队 09-16 落地宁波，09-17 启动新一轮机器人业务量产审厂，重点评估 Optimus 量产独家性与一致性；计划 2026 年下线约 5 万台。</li>
+    <li><b>AI 制药三则</b>：诺和诺德与 Anthropic 合作，用其 AI 模型及 Claude Science 支持药物发现；字节跳动拆分的 AI 制药公司 Anew Labs 相关进展；09-17 A 股 AI 制药股活跃（百普赛斯一度涨超 15%，泓博医药、义翘神州、华大智造、透景生命涨幅居前）。</li>
+    <li><b>云计算涨价</b>：Nebius 宣布 10 月 1 日起上调按需算力价格，H100 +17%、B200 +19%、B300 +21%；AMD EPYC Genoa CPU 费率上调 25%。</li>
+  </ul>
+  <h3>政策与宏观</h3>
+  <ul>
+    <li><b>中美经贸</b>：中美经贸团队正就 300 亿美元相互降低关税安排等议题保持密切交流，后续将适时发布进展（新华社）。王毅 09-17 同美国国务卿鲁比奥通电话，双方着重就两国高层交往深入讨论。</li>
+    <li><b>香港金管局</b>：上调基准利率 25 个基点至 4.25%（跟随美联储）。</li>
+    <li><b>央行</b>：开展 1620 亿元 7 天期逆回购（利率 1.40%，与上期持平），同时开展 6000 亿元隔夜逆回购。</li>
+    <li><b>证监会</b>：发布《关于资本市场支持构建房地产发展新模式的意见》，提出持续推进不动产私募投资基金试点。</li>
+    <li><b>商务部</b>：介绍智能家居消费行动方案，聚焦产品互联互通、适老化使用与回收焕新；就欧委会《公共采购法》草案中的"欧洲优先"条款表达关切。</li>
+    <li><b>印度</b>：对原产于或进口自中国的铜缆作出反倾销肯定性终裁，建议征收 5 年反倾销税（部分中国生产商 0 美元/吨，其他 86 美元/吨）。</li>
+    <li><b>ETF 资金</b>（09-16）：整体净流入 145.17 亿元，其中股票型 ETF 净流入 49.67 亿元、宽基型 ETF 净流入 63.64 亿元；南方中证1000ETF +18.11 亿、南方中证500ETF +14.83 亿居前。09-17 ETF 端：港股医疗 ETF 领涨 3.12%、粮食 ETF 涨 3.02%，黄金股 ETF 领跌 4.45%。</li>
+    <li><b>回购</b>：近一周超 130 家上市公司发布回购预案或实施进展公告。</li>
+  </ul>
+</div>
+
+<h2>附 · 08:20 补记：TDX 已恢复 + 根因定位 + 交叉校验</h2>
+<div class="card">
+  <h3 style="margin-top:0">断线 6 个交易日的根因：Clash Verge 路由</h3>
+  <p style="margin:8px 0;color:var(--mu);font-size:13px">
+    本机运行 <b>Clash Verge Rev</b>（clash-verge.exe + verge-mihomo.exe）。其订阅共 1109 条规则，<b>txmcp.tdx.com.cn 无专属匹配</b>，落入兜底链：
+    <span class="sig">MATCH → "⚓️其他流量"(select) → 默认首项 "🔰国外流量"（境外节点）</span>。境外出口 IP 访问通达信服务端返回 <b>401 Unauthorized</b> —— 即 tdx-connector 时好时坏、最终连续 6 个交易日无法挂载的成因。
+  </p>
+  <p style="margin:8px 0;color:var(--mu);font-size:13px">
+    09-11 已在 <span class="sig">profiles/robVAXldOzsf.yaml</span> 以 <span class="sig">prepend</span> 加入 <span class="sig">DOMAIN-SUFFIX,tdx.com.cn,DIRECT</span>（连同 eastmoney / gtimg / sina）；<b>09-18 08:05</b> 重新完成 OAuth 授权后连接器恢复。Clash sidecar 日志实证：
+  </p>
+  <table>
+    <thead><tr><th>时间</th><th>目标</th><th>命中规则</th></tr></thead>
+    <tbody>
+      <tr><td>09-18 08:05:36</td><td>auth.tdx.com.cn:443</td><td class="dn">DomainSuffix(tdx.com.cn) → <b>DIRECT</b></td></tr>
+      <tr><td>09-17 17:00:37</td><td>txmcp.tdx.com.cn:3001</td><td class="dn">DomainSuffix(tdx.com.cn) → <b>DIRECT</b></td></tr>
+    </tbody>
+  </table>
+
+  <h3>排除项（已实测，均非元凶）</h3>
+  <ul>
+    <li><b>TUN 模式未开启</b>：<span class="sig">tun.enable = false</span>，本机仅 1 张物理网卡（Realtek PCIe GbE），不构成三层流量劫持；<span class="sig">stack: gvisor</span> 因此不生效。</li>
+    <li><b>fake-ip 未生效到系统 DNS</b>：dns_config 虽为 <span class="sig">enhanced-mode: fake-ip</span> / <span class="sig">198.18.0.1/16</span>，但实际解析 txmcp.tdx.com.cn → 124.221.61.242 / 121.5.179.215（真实 IP，非 198.18.x.x）。</li>
+    <li><b>非全局模式</b>：<span class="sig">mode = rule</span>，不存在全量代理。</li>
+    <li><b>两条代理链路均可穿透</b>：CONNECT 测试经 7897（Clash mixed-port）与 8452 访问 txmcp.tdx.com.cn:3001 均返回 <span class="sig">200 Connection established</span>；直连 TCP 51 ms。</li>
+    <li><b>8452 ≠ Clash</b>：环境变量 HTTP(S)_PROXY = 127.0.0.1:8452 属 WorkBuddy 自带 sandbox-cli，不是 Clash 端口，勿混淆。</li>
+  </ul>
+
+  <h3>残留缺口（09-18 已补）</h3>
+  <p style="margin:8px 0;color:var(--mu);font-size:13px">
+    <b>aiweb.icfqs.com</b>（通达信 MCP 卡片 / 智能图说域名）此前<b>不在</b>直连清单内，仅因 "⚓️其他流量" 组当前恰好选中 "🚀直接连接" 才走直连。已追加 <span class="sig">DOMAIN-SUFFIX,icfqs.com,DIRECT</span>，需重载 Clash 配置生效。当前该组选中 <span class="sig">🚀直接连接</span>；若切回境外节点，icfqs 卡片与部分问小达接口会失败。
+  </p>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">交叉校验：降级链数据 vs TDX 实盘（均为 09-17 收盘）</h3>
+  <table>
+    <thead><tr><th>指标</th><th>本简报（降级链）</th><th>TDX 实盘</th><th>结论</th></tr></thead>
+    <tbody>
+      <tr><td>上证指数</td><td>3875.60 / -0.41%</td><td>3875.604 / -0.411%</td><td class="dn">一致</td></tr>
+      <tr><td>深证成指</td><td>13409.91 / -0.33%</td><td>13409.908 / -0.333%</td><td class="dn">一致</td></tr>
+      <tr><td>创业板指</td><td>3298.31 / -0.40%</td><td>3298.310 / -0.398%</td><td class="dn">一致</td></tr>
+      <tr><td>科创50</td><td>1606.29 / -0.61%</td><td>1606.287 / -0.612%</td><td class="dn">一致</td></tr>
+      <tr><td>上证成交额</td><td>8687.7 亿</td><td>8687.73 亿</td><td class="dn">一致</td></tr>
+      <tr><td>深成成交额</td><td>9543.6 亿</td><td>9543.61 亿</td><td class="dn">一致</td></tr>
+      <tr><td>科创50 成交额</td><td>854.4 亿</td><td>854.38 亿</td><td class="dn">一致</td></tr>
+      <tr><td>创业板成交额</td><td>4432.3 亿</td><td><b>4466.47 亿</b></td><td class="neu">差 34.17 亿（0.77%）</td></tr>
+      <tr><td>上证涨跌家数</td><td>1062 / 1205 / 85</td><td>1062 / 1205 / 85</td><td class="dn">一致</td></tr>
+      <tr><td>深证涨跌家数</td><td>1466 / 1389 / 79</td><td>1466 / 1389 / 79</td><td class="dn">一致</td></tr>
+      <tr><td>创业板涨跌家数</td><td>746 / 636 / 24</td><td>746 / 636 / 24</td><td class="dn">一致</td></tr>
+      <tr><td>涨停家数</td><td>47（东财 push2ex 池）</td><td><b>49</b>（通达信 880863 板块）</td><td class="neu">差 2 只（池口径）</td></tr>
+      <tr><td>科创50 涨跌家数</td><td>12 / 38（<b>成分</b>口径）</td><td>265 / 340 / 12（<b>全科创板</b>）</td><td class="neu">口径不同，非误差</td></tr>
+    </tbody>
+  </table>
+
+  <h3>TDX 独有的指数级主力资金（本简报未含，补录）</h3>
+  <table>
+    <thead><tr><th>指数</th><th>主力资金净流入</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td>上证指数</td><td class="dn">-126.66 亿</td><td>—</td></tr>
+      <tr><td>深证成指</td><td class="dn">-100.78 亿</td><td>—</td></tr>
+      <tr><td>创业板指</td><td class="dn">-44.31 亿</td><td>—</td></tr>
+      <tr><td>科创50</td><td class="up">+21.38 亿</td><td>四大指数中唯一为正；口径可能为全科创板，留意</td></tr>
+    </tbody>
+  </table>
+  <p class="src">口径存疑记录：本简报第 5 节「电子行业 -126.68 亿」与 TDX「上证指数主力 -126.66 亿」数值极为接近。经回溯原始数据（flow_20260917.json 的 <span class="sig">ind_out[0]</span> = 电子 / -0.3% / -126.68 亿）确认为<b>巧合</b>——前者为东财全市场电子行业口径，后者为 TDX 上证指数成分合计，两个独立来源、两个不同指标，<b>不作为数据错误的证据</b>，仅记录备查。</p>
+  <p class="src"><b>校验结论</b>：点位、涨跌幅、涨跌家数、主要成交额<b>全部一致</b>；差异仅出现在创业板成交额（0.77%）与涨停家数（池口径 2 只）。此前记录的「降级链与 TDX 完全一致」修正为：<b>点位与涨跌家数完全一致，成交额与涨跌停家数存在 ≤1% 的口径差异</b>。</p>
+</div>
+
+<div class="foot">
+  <b>数据源状态</b>：生成时（07:00）TDX 实时源不可用（连续第 6 个交易日，tdx_quotes / tdx_screener / wenda_news_query 未挂载）；<b>08:05 已恢复</b>，根因与交叉校验见上方「附 · 08:20 补记」。A 股数据来自东财 push2delay（指数/行业/概念/资金流）、东财 push2ex（涨跌停池）、东财 datacenter（两融）、腾讯行情；隔夜外盘与消息面来自 WebSearch。<b>均为第三方接口来源，非实盘接口。</b>
+  <div class="src">降级链脚本：scripts/market_fetch.py · market_extra.py &lt;YYYYMMDD&gt; · margin_detail.py &lt;YYYY-MM-DD&gt; · fund_flow.py。经 09-18 08:20 与 TDX 实盘交叉校验：<b>点位、涨跌幅、涨跌家数完全一致</b>，成交额与涨跌停家数存在 ≤1% 的口径差异（明细见「附 · 08:20 补记」）。</div>
+  <div class="src" style="margin-top:8px">口径提示：① 涨跌停家数为东财 push2ex 池口径，与媒体（含北交所、"涨跌幅 &gt; 9%"统计）存在系统性偏差；② 成交额 1.82 万亿为沪深两市口径，媒体"全市场 18365 亿"含北交所；③ 两融为 T+2 日历日披露，截至 09-16，非昨日数据；④ 涨跌家数分市场口径中深市已含创业板，不可再相加。</div>
+  <div class="src" style="margin-top:8px">本简报仅提供行情数据、催化逻辑、产业链位置、板块强弱、情绪周期位置、资金流向与可验证的观察指标，不构成任何操作建议。</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>涨停预测 | 睿哥</title>
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --card2:#1c2030; --border:#30363d;
+  --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --ok:#3fb950;
+  --up:#ff4d4f; --down:#2ed573; --amber:#d29922;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding:20px 16px 48px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+  max-width:1100px;margin:0 auto;min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+.nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+.nav a{font-size:.85em;padding:6px 14px;border:1px solid var(--border);border-radius:6px;transition:all .2s;}
+.nav a:hover{background:rgba(88,166,255,.1);}
+.nav a.active{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600;}
+.hero{text-align:center;padding:28px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:26px;}
+.hero h1{font-size:2em;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+.hero .sub{color:var(--dim);font-size:.9em;}
+section{margin-bottom:34px;}
+section h2{font-size:1.12em;color:var(--accent);margin-bottom:16px;padding-bottom:9px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:2px 10px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 14px;text-align:center;color:var(--text);transition:all .18s;position:relative;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(88,166,255,.12);}
+.card.off{opacity:.42;cursor:not-allowed;}
+.card .icon{font-size:1.7em;}
+.card .name{font-size:.98em;color:#fff;font-weight:600;margin-top:6px;}
+.card .tm{font-size:.75em;color:var(--dim);margin-top:2px;}
+.card .badge{display:inline-block;margin-top:9px;font-size:.7em;padding:2px 9px;border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(139,148,158,.1);color:var(--dim);border:1px solid var(--border);}
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+table{border-collapse:collapse;width:100%;font-size:.86em;min-width:640px;}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.92em;position:sticky;top:0;}
+tbody tr:hover{background:rgba(88,166,255,.05);}
+td.dt{text-align:left;padding-left:14px;color:var(--text);font-weight:600;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.85em;margin-left:4px;}
+.dot{display:inline-block;width:26px;height:20px;line-height:20px;border-radius:5px;
+  font-size:.72em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.16);color:var(--ok);border:1px solid rgba(63,185,80,.32);}
+.dot.n{background:rgba(139,148,158,.07);color:#4a5260;border:1px solid var(--border);}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:11px 14px;color:var(--text);font-size:.9em;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);}
+.foot{text-align:center;margin-top:40px;padding-top:18px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.82em;line-height:1.9;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html" class="active">🎯 涨停预测</a></div><div class="hero"><h1>🎯 涨停预测</h1><div class="sub">ML 次日涨停概率 · S/A+/A 分级 · 每日 17:00 自动归档</div></div><section><h2>🗂️ 历史记录<span class="tag">共 116 期</span></h2><div class="list"><a href="./20260924.html">2026-09-24 周四</a><a href="./20260923.html">2026-09-23 周三</a><a href="./20260922.html">2026-09-22 周二</a><a href="./20260921.html">2026-09-21 周一</a><a href="./20260918.html">2026-09-18 周五</a><a href="./20260917.html">2026-09-17 周四</a><a href="./20260916.html">2026-09-16 周三</a><a href="./20260915.html">2026-09-15 周二</a><a href="./20260914.html">2026-09-14 周一</a><a href="./20260911.html">2026-09-11 周五</a><a href="./20260910.html">2026-09-10 周四</a><a href="./20260909.html">2026-09-09 周三</a><a href="./20260908.html">2026-09-08 周二</a><a href="./20260907.html">2026-09-07 周一</a><a href="./20260904.html">2026-09-04 周五</a><a href="./20260903.html">2026-09-03 周四</a><a href="./20260902.html">2026-09-02 周三</a><a href="./20260901.html">2026-09-01 周二</a><a href="./20260831.html">2026-08-31 周一</a><a href="./20260828.html">2026-08-28 周五</a><a href="./20260827.html">2026-08-27 周四</a><a href="./20260826.html">2026-08-26 周三</a><a href="./20260825.html">2026-08-25 周二</a><a href="./20260824.html">2026-08-24 周一</a><a href="./20260821.html">2026-08-21 周五</a><a href="./20260820.html">2026-08-20 周四</a><a href="./20260819.html">2026-08-19 周三</a><a href="./20260818.html">2026-08-18 周二</a><a href="./20260817.html">2026-08-17 周一</a><a href="./20260814.html">2026-08-14 周五</a><a href="./20260813.html">2026-08-13 周四</a><a href="./20260812.html">2026-08-12 周三</a><a href="./20260811.html">2026-08-11 周二</a><a href="./20260810.html">2026-08-10 周一</a><a href="./20260807.html">2026-08-07 周五</a><a href="./20260806.html">2026-08-06 周四</a><a href="./20260805.html">2026-08-05 周三</a><a href="./20260804.html">2026-08-04 周二</a><a href="./20260803.html">2026-08-03 周一</a><a href="./20260731.html">2026-07-31 周五</a><a href="./20260730.html">2026-07-30 周四</a><a href="./20260729.html">2026-07-29 周三</a><a href="./20260728.html">2026-07-28 周二</a><a href="./20260727.html">2026-07-27 周一</a><a href="./20260724.html">2026-07-24 周五</a><a href="./20260723.html">2026-07-23 周四</a><a href="./20260722.html">2026-07-22 周三</a><a href="./20260721.html">2026-07-21 周二</a><a href="./20260720.html">2026-07-20 周一</a><a href="./20260717.html">2026-07-17 周五</a><a href="./20260716.html">2026-07-16 周四</a><a href="./20260715.html">2026-07-15 周三</a><a href="./20260714.html">2026-07-14 周二</a><a href="./20260713.html">2026-07-13 周一</a><a href="./20260710.html">2026-07-10 周五</a><a href="./20260709.html">2026-07-09 周四</a><a href="./20260708.html">2026-07-08 周三</a><a href="./20260707.html">2026-07-07 周二</a><a href="./20260706.html">2026-07-06 周一</a><a href="./20260703.html">2026-07-03 周五</a><a href="./20260702.html">2026-07-02 周四</a><a href="./20260701.html">2026-07-01 周三</a><a href="./20260630.html">2026-06-30 周二</a><a href="./20260629.html">2026-06-29 周一</a><a href="./20260626.html">2026-06-26 周五</a><a href="./20260625.html">2026-06-25 周四</a><a href="./20260624.html">2026-06-24 周三</a><a href="./20260623.html">2026-06-23 周二</a><a href="./20260622.html">2026-06-22 周一</a><a href="./20260619.html">2026-06-19 周五</a><a href="./20260618.html">2026-06-18 周四</a><a href="./20260617.html">2026-06-17 周三</a><a href="./20260616.html">2026-06-16 周二</a><a href="./20260615.html">2026-06-15 周一</a><a href="./20260612.html">2026-06-12 周五</a><a href="./20260611.html">2026-06-11 周四</a><a href="./20260610.html">2026-06-10 周三</a><a href="./20260609.html">2026-06-09 周二</a><a href="./20260608.html">2026-06-08 周一</a><a href="./20260605.html">2026-06-05 周五</a><a href="./20260604.html">2026-06-04 周四</a><a href="./20260603.html">2026-06-03 周三</a><a href="./20260602.html">2026-06-02 周二</a><a href="./20260601.html">2026-06-01 周一</a><a href="./20260529.html">2026-05-29 周五</a><a href="./20260528.html">2026-05-28 周四</a><a href="./20260527.html">2026-05-27 周三</a><a href="./20260526.html">2026-05-26 周二</a><a href="./20260525.html">2026-05-25 周一</a><a href="./20260506.html">2026-05-06 周三</a><a href="./20260303.html">2026-03-03 周二</a><a href="./20260302.html">2026-03-02 周一</a><a href="./20260225.html">2026-02-25 周三</a><a href="./20260224.html">2026-02-24 周二</a><a href="./20260213.html">2026-02-13 周五</a><a href="./20260212.html">2026-02-12 周四</a><a href="./20260211.html">2026-02-11 周三</a><a href="./20260210.html">2026-02-10 周二</a><a href="./20260209.html">2026-02-09 周一</a><a href="./20260206.html">2026-02-06 周五</a><a href="./20260205.html">2026-02-05 周四</a><a href="./20260204.html">2026-02-04 周三</a><a href="./20260203.html">2026-02-03 周二</a><a href="./20260202.html">2026-02-02 周一</a><a href="./20260130.html">2026-01-30 周五</a><a href="./20260129.html">2026-01-29 周四</a><a href="./20260128.html">2026-01-28 周三</a><a href="./20260127.html">2026-01-27 周二</a><a href="./20260126.html">2026-01-26 周一</a><a href="./20260123.html">2026-01-23 周五</a><a href="./20260122.html">2026-01-22 周四</a><a href="./20260121.html">2026-01-21 周三</a><a href="./20260120.html">2026-01-20 周二</a><a href="./20260119.html">2026-01-19 周一</a><a href="./20260116.html">2026-01-16 周五</a><a href="./20260115.html">2026-01-15 周四</a></div></section><div class="foot">数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>⚠️ 仅供研究参考，不构成投资建议</div>
+</body>
+</html>

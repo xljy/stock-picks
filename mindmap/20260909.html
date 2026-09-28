@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>涨停题材思维导图 2026-09-09</title>
+<style>
+:root{
+  --bg:#0d1117; --bg2:#121924; --card:#171f2b; --card2:#1d2635;
+  --line:#26324a; --txt:#e6edf3; --txt2:#9fb0c6; --txt3:#6b7d94;
+  --up:#ff4d4f; --down:#00c853; --acc:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg); color:var(--txt); overflow:hidden;
+  font-family:"Microsoft YaHei","PingFang SC","Segoe UI",system-ui,sans-serif;
+  font-size:13px;
+}
+.app{display:flex;flex-direction:column;height:100vh}
+
+/* ---------- header ---------- */
+header{
+  display:flex;align-items:center;gap:18px;padding:10px 18px;
+  background:linear-gradient(90deg,#131c2b,#0f1622);
+  border-bottom:1px solid var(--line);flex-shrink:0;flex-wrap:wrap;
+}
+h1{font-size:16px;font-weight:700;letter-spacing:.5px}
+h1 span{color:var(--acc)}
+.stats{display:flex;gap:8px;flex-wrap:wrap}
+.stat{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:4px 11px;display:flex;align-items:baseline;gap:6px;
+}
+.stat b{font-size:15px;font-weight:700}
+.stat i{font-style:normal;font-size:11px;color:var(--txt3)}
+.stat.hot b{color:var(--up)}
+.stat.warn b{color:#f59e0b}
+
+/* ---------- layout ---------- */
+.body{display:flex;flex:1;min-height:0}
+aside{
+  width:212px;background:var(--bg2);border-right:1px solid var(--line);
+  overflow-y:auto;padding:12px;flex-shrink:0;
+}
+aside.right{border-right:none;border-left:1px solid var(--line);width:300px}
+main{flex:1;position:relative;overflow:hidden;background:
+  radial-gradient(circle at 30% 20%,#16202f 0%,#0d1117 60%);cursor:grab}
+main.drag{cursor:grabbing}
+#stage{width:100%;height:100%;display:block}
+
+.sec{font-size:11px;color:var(--txt3);margin:14px 0 7px;letter-spacing:1px;
+  text-transform:uppercase;font-weight:700}
+.sec:first-child{margin-top:0}
+.btn{
+  display:block;width:100%;text-align:left;background:var(--card);color:var(--txt);
+  border:1px solid var(--line);border-radius:7px;padding:7px 10px;margin-bottom:5px;
+  cursor:pointer;font-size:12px;transition:.15s;font-family:inherit;
+}
+.btn:hover{background:var(--card2);border-color:var(--acc)}
+.btn.on{background:#1b2b4a;border-color:var(--acc);color:#cfe0ff}
+.chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--txt2);
+  padding:5px 2px;cursor:pointer;user-select:none}
+.chk input{accent-color:var(--acc);cursor:pointer}
+input[type=text]{
+  width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
+  border-radius:7px;padding:7px 10px;font-size:12px;font-family:inherit;outline:none;
+}
+input[type=text]:focus{border-color:var(--acc)}
+
+.ti{display:flex;align-items:center;gap:7px;padding:4px 2px;font-size:12px;
+  cursor:pointer;border-radius:5px;user-select:none}
+.ti:hover{background:#1a2333}
+.ti .dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.ti .n{flex:1;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ti .c{color:var(--txt3);font-size:11px}
+.ti.off{opacity:.35}
+
+/* ---------- right panel ---------- */
+#detail{padding:12px}
+.empty{color:var(--txt3);font-size:12px;line-height:1.9;padding:8px 0}
+.dt-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px}
+.dt-h b{font-size:17px}
+.dt-h code{font-size:11px;color:var(--txt3);font-family:Consolas,monospace}
+.dt-sub{font-size:11px;color:var(--txt2);margin-bottom:12px}
+.kv{display:grid;grid-template-columns:66px 1fr;gap:5px 8px;font-size:12px;margin-bottom:12px}
+.kv dt{color:var(--txt3)}
+.kv dd{color:var(--txt)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{background:#1e2a3d;border:1px solid #2c3d57;color:#a9c2e6;
+  border-radius:5px;padding:2px 7px;font-size:11px}
+.reason{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);
+  border-radius:6px;padding:9px 11px;font-size:12px;line-height:1.75;color:var(--txt2)}
+.rk{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12px}
+.rk .r{width:16px;color:var(--txt3);font-size:11px;text-align:right}
+.rk .nm{width:78px;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rk .bar{flex:1;height:7px;background:#1c2739;border-radius:4px;overflow:hidden}
+.rk .bar i{display:block;height:100%;background:linear-gradient(90deg,#4f8cff,#ff4d4f);border-radius:4px}
+.rk .v{width:24px;text-align:right;color:var(--txt3);font-size:11px}
+
+.tabs{display:flex;gap:4px;margin-bottom:10px}
+.tab{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);
+  border-radius:7px;padding:6px;font-size:12px;cursor:pointer;color:var(--txt2)}
+.tab.on{background:#1b2b4a;border-color:var(--acc);color:#cfe0ff}
+.hide{display:none}
+
+/* ---------- svg ---------- */
+.node{cursor:pointer}
+.node rect{transition:.15s}
+.node:hover rect.nd{stroke:#8ab4ff;stroke-width:2}
+.node.dim{opacity:.25}
+path.lk{fill:none;stroke-width:1.6;transition:.15s}
+path.lk.hi{stroke-width:3}
+text{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;
+  -webkit-user-select:none;user-select:none}
+.ti-sel{background:#1b2b4a !important}
+#tip{position:absolute;pointer-events:none;background:#0b1220;border:1px solid var(--line);
+  border-radius:6px;padding:5px 9px;font-size:11px;color:var(--txt);opacity:0;
+  transition:opacity .12s;white-space:nowrap;z-index:9}
+.zoom{position:absolute;right:14px;bottom:14px;display:flex;gap:6px;z-index:5}
+.zoom button{width:30px;height:30px;border-radius:7px;background:var(--card);
+  border:1px solid var(--line);color:var(--txt);cursor:pointer;font-size:15px}
+.zoom button:hover{border-color:var(--acc)}
+mark{background:#ffd166;color:#111;padding:0 2px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>涨停题材思维导图 <span>2026-09-09</span></h1>
+    <div class="stats" id="stats"></div>
+  </header>
+  <div class="body">
+    <aside>
+      <div class="sec">视图</div>
+      <button class="btn" id="bFit">自适应视图</button>
+      <button class="btn" id="b100">实际大小 (1:1)</button>
+      <button class="btn" id="bExpand">全部展开</button>
+      <button class="btn" id="bCollapse2">仅展开到题材</button>
+      <button class="btn" id="bCollapse1">仅展开到主题域</button>
+      <div class="sec">显示</div>
+      <label class="chk"><input type="checkbox" id="cCross"> 交叉题材(副归属)</label>
+      <label class="chk"><input type="checkbox" id="cLone"> 隐藏单只题材</label>
+      <label class="chk"><input type="checkbox" id="cLabel" checked> 显示个股副信息</label>
+      <div class="sec">搜索</div>
+      <input type="text" id="q" placeholder="股票名 / 代码 / 题材">
+      <div class="sec">主题域筛选</div>
+      <div id="themes"></div>
+      <div class="sec">导出</div>
+      <button class="btn" id="bSvg">下载 SVG</button>
+      <button class="btn" id="bPng">下载 PNG</button>
+    </aside>
+    <main id="main">
+      <svg id="stage"></svg>
+      <div id="tip"></div>
+      <div class="zoom">
+        <button id="zIn">+</button><button id="zOut">−</button>
+      </div>
+    </main>
+    <aside class="right">
+      <div style="padding:12px 12px 0">
+        <div class="tabs">
+          <div class="tab on" id="tDetail">个股详情</div>
+          <div class="tab" id="tRank">题材强度榜</div>
+        </div>
+      </div>
+      <div id="detail"><div class="empty">点击任一股票节点<br>查看涨停原因与盘口数据</div></div>
+      <div id="rank" class="hide" style="padding:0 12px 12px"></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const DATA = {"meta": {"date": "2026-09-09", "generated_at": "2026-09-09 19:23:52", "zt_count": 49, "zb_count": 27, "max_lb": 5, "theme_count": 11, "topic_count": 32, "source": "tdx"}, "themes": [{"name": "周期·资源", "color": "#eab308", "count": 13, "max_lb": 3, "seal_amt": 772671600.0, "topics": [{"name": "农用化工", "count": 2, "max_lb": 3, "seal_amt": 184733000.0, "stocks": [{"code": "002470", "name": "金正大", "price": 2.78, "chg": 9.88, "lb": 3, "lb_stat": "7天4板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 175404700.0, "seal_ratio": 59.2272, "zt_amount_wan": 29615.56, "turnover": 3.242213726043701, "float_mv": 9134372954.26, "amount": 296155888.0, "industry": "农化制品", "reason_tags": ["农用化工", "国企改革", "乡村振兴"], "reason_text": "小麦期货创三年新高I1、老牌肥料企业；公司的主营业务为常规复合肥、新型肥料、磷肥以及土壤调理剂等植物所需全系列产品的研产销； 2、公司拟6亿元投建年产10万吨磷酸铁电池正极前驱体材料项目，形成磷矿—磷酸—磷化工产品—新能源材料综合利用的磷化工全产业链", "domain": "周期·资源", "topic": "农用化工", "industry_full": "农化制品"}, {"code": "000912", "name": "泸天化", "price": 5.2, "chg": 9.94, "lb": 2, "lb_stat": "2天2板", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:00", "last_time": "10:11:39", "open_times": 4, "seal_amt": 9328300.0, "seal_ratio": 1.2127, "zt_amount_wan": 65209.82, "turnover": 9.434304237365723, "float_mv": 8153600000.0, "amount": 767886016.0, "industry": "农化制品", "reason_tags": ["国企改革", "乡村振兴", "农用化工", "整体上市"], "reason_text": "泰国糖产量可能降至1000万吨以下；秘鲁鱼粉价格大幅上涨I公司主营业务包括尿素、复合肥等化肥类产品；甲醇装置处于同行业先进水平，子公司绿源醇从事甲醇业务，拥有甲醇产能70万吨/年", "domain": "周期·资源", "topic": "农用化工", "industry_full": "农化制品"}]}, {"name": "橡胶", "count": 2, "max_lb": 2, "seal_amt": 125568800.0, "stocks": [{"code": "002068", "name": "黑猫股份", "price": 10.01, "chg": 10.0, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "13:10:42", "last_time": "13:10:42", "open_times": 0, "seal_amt": 57003000.0, "seal_ratio": 4.5746, "zt_amount_wan": 11268.16, "turnover": 16.936256408691406, "float_mv": 7357408268.21, "amount": 1192876352.0, "industry": "橡胶", "reason_tags": ["国企改革", "节能环保", "锂电池概念", "超级电容", "橡胶"], "reason_text": "沙特多处能源设施遭袭起火I国内炭黑行业龙头；公司介孔碳产品已进入中试阶段，目前中试产品已送客户试样推广，主要用于硅碳负极材料及电容炭领域", "domain": "周期·资源", "topic": "橡胶", "industry_full": "橡胶"}, {"code": "603650", "name": "彤程新材", "price": 65.22, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:41:29", "last_time": "13:58:47", "open_times": 3, "seal_amt": 68565800.0, "seal_ratio": 3.1387, "zt_amount_wan": 79724.27, "turnover": 5.450028896331787, "float_mv": 40083356835.36, "amount": 2156858320.0, "industry": "橡胶", "reason_tags": ["芯片", "存储芯片", "高分红股", "橡胶"], "reason_text": "此前多家晶圆厂加速验证导入公司子公司北京科华的KrF光刻胶", "domain": "周期·资源", "topic": "橡胶", "industry_full": "橡胶"}]}, {"name": "化学制品", "count": 2, "max_lb": 2, "seal_amt": 65647900.0, "stocks": [{"code": "605077", "name": "华康股份", "price": 13.78, "chg": 9.98, "lb": 2, "lb_stat": "2天2板", "board_type": "换手板(涨停)", "first_time": "09:33:56", "last_time": "09:53:08", "open_times": 4, "seal_amt": 53113600.0, "seal_ratio": 11.3397, "zt_amount_wan": 11172.0, "turnover": 11.35167407989502, "float_mv": 4126140962.8399997, "amount": 457738080.0, "industry": "化学制品", "reason_tags": ["活跃小盘非融", "电商概念", "食品加工"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司拟购买豫鑫糖醇100%股权，表示标的为行业内木糖醇生产能力与工艺水平均处于领先地位、市场竞争力较强的两家企业", "domain": "周期·资源", "topic": "化学制品", "industry_full": "化学制品"}, {"code": "000565", "name": "渝三峡Ａ", "price": 7.19, "chg": 9.94, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:42:51", "last_time": "13:24:03", "open_times": 1, "seal_amt": 12534300.0, "seal_ratio": 4.5177, "zt_amount_wan": 17291.16, "turnover": 8.899659156799316, "float_mv": 3117528061.8, "amount": 270737856.0, "industry": "化学制品", "reason_tags": ["微小盘股", "微盘精选", "化学制品"], "reason_text": "沙特多处能源设施遭袭起火I1、重庆国资委旗下，我国涂料行业龙头； 2、公司重防腐涂料打破外资垄断，曾为天宫一号、神舟九号、长征二号F火箭等军工航天工程提供配套，获国家航天科工集团授牌", "domain": "周期·资源", "topic": "化学制品", "industry_full": "化学制品"}]}, {"name": "工业金属", "count": 1, "max_lb": 2, "seal_amt": 104290600.0, "stocks": [{"code": "002295", "name": "精艺股份", "price": 11.58, "chg": 9.97, "lb": 2, "lb_stat": "2天2板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 104290600.0, "seal_ratio": 123.4964, "zt_amount_wan": 8444.83, "turnover": 2.9120917320251465, "float_mv": 2899943791.5, "amount": 84449026.0, "industry": "工业金属", "reason_tags": ["微小盘股", "储能", "工业金属"], "reason_text": "伦敦金属交易所（LME）三个月期铜触及每吨14617美元的历史新高I公司签订阴极铜采购合同，累计金额达21.86亿元", "domain": "周期·资源", "topic": "工业金属", "industry_full": "工业金属"}]}, {"name": "焦炭加工", "count": 1, "max_lb": 2, "seal_amt": 62596700.0, "stocks": [{"code": "600792", "name": "云煤能源", "price": 4.92, "chg": 10.07, "lb": 2, "lb_stat": "2天2板", "board_type": "换手板(涨停)", "first_time": "10:49:08", "last_time": "10:50:26", "open_times": 0, "seal_amt": 62596700.0, "seal_ratio": 11.032, "zt_amount_wan": 6242.99, "turnover": 10.390586853027344, "float_mv": 5460824112.0, "amount": 539145008.0, "industry": "焦炭Ⅱ", "reason_tags": ["国企改革", "摩根中国A股基金持股", "焦炭加工", "云南自贸区", "石墨电极"], "reason_text": "云南省大型的焦炭生产与焦化工企业之一；旗下拥有焦炉气制甲醇，产能10万吨/年", "domain": "周期·资源", "topic": "焦炭加工", "industry_full": "焦炭Ⅱ"}]}, {"name": "煤炭开采", "count": 1, "max_lb": 1, "seal_amt": 96365600.0, "stocks": [{"code": "600403", "name": "大有能源", "price": 7.48, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:57:05", "last_time": "10:45:20", "open_times": 1, "seal_amt": 96365600.0, "seal_ratio": 8.6169, "zt_amount_wan": 33075.66, "turnover": 6.253478527069092, "float_mv": 17883276766.960003, "amount": 1083284272.0, "industry": "煤炭开采", "reason_tags": ["国企改革", "煤炭开采", "摩根中国A股基金持股", "焦煤"], "reason_text": "河南能源集团旗下煤炭企业；此前河南省委、省政府决定对间接控股股东河南能源集团和中国平煤神马控股集团实施战略重组", "domain": "周期·资源", "topic": "煤炭开采", "industry_full": "煤炭开采"}]}, {"name": "金属新材料", "count": 1, "max_lb": 1, "seal_amt": 67248400.0, "stocks": [{"code": "600255", "name": "鑫科材料", "price": 3.89, "chg": 9.89, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:46:55", "last_time": "09:59:52", "open_times": 1, "seal_amt": 67248400.0, "seal_ratio": 11.0496, "zt_amount_wan": 41400.14, "turnover": 8.662296295166016, "float_mv": 7025911654.95, "amount": 595074368.0, "industry": "金属新材", "reason_tags": ["国企改革", "消费电子概念", "金属新材料", "铜缆高速连接"], "reason_text": "1、公司预计上半年净利润同比增长103%-153%，报告期内，公司持续进行产品结构调整，增加高附加值产品销量；同时，公司强化库存周转与生产组织安排，叠加铜价上涨因素，有效扩大了盈利空间，推动主要子公司安徽鑫科铜业有限公司经营业绩同比增长明显； 2、公司布局高速铜连接领域，产品涵盖800G-1.6T的ACC/AEC高速铜连接，并在研1.6T及3.2T高速铜连接项目，为AI与算力中心提供连接解决方案", "domain": "周期·资源", "topic": "金属新材料", "industry_full": "金属新材料"}]}, {"name": "动力煤", "count": 1, "max_lb": 1, "seal_amt": 49156200.0, "stocks": [{"code": "600121", "name": "郑州煤电", "price": 5.7, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:54:19", "last_time": "10:55:46", "open_times": 0, "seal_amt": 49156200.0, "seal_ratio": 4.0124, "zt_amount_wan": 17085.52, "turnover": 17.640233993530273, "float_mv": 6944948616.6, "amount": 1165089408.0, "industry": "煤炭开采", "reason_tags": ["动力煤", "国企改革", "机器人概念"], "reason_text": "1、实控人河南省国资委；公司是郑州煤炭龙头，拥有部分火电业务，参股公司复晟铝业（持股40%）拥有氧化铝粉产能； 2、两大煤矿有望注入公司，未来或新增可采储量16.2亿吨", "domain": "周期·资源", "topic": "动力煤", "industry_full": "煤炭开采"}]}, {"name": "贵金属", "count": 1, "max_lb": 1, "seal_amt": 9912000.0, "stocks": [{"code": "002155", "name": "湖南黄金", "price": 28.45, "chg": 10.02, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "13:53:54", "last_time": "15:00:00", "open_times": 52, "seal_amt": 9912000.0, "seal_ratio": 0.2353, "zt_amount_wan": 114923.78, "turnover": 9.474299430847168, "float_mv": 44453094188.65, "amount": 4053062624.0, "industry": "贵金属", "reason_tags": ["周期股", "贵金属", "国企改革"], "reason_text": "1、公司拟收购黄金天岳及中南冶炼合计100%股权，相关评估范围保有金金属资源量111.54吨。  2、公司拥有黄金、锑、钨采选、冶炼及深加工完整产业链，具备100吨年黄金及2.5万吨年精锑冶炼产能。  3、公司上半年营业收入320.29亿元，同比增长12.63%，总毛利率增加0.85个百分点。", "domain": "周期·资源", "topic": "贵金属", "industry_full": "贵金属"}]}, {"name": "装饰建材", "count": 1, "max_lb": 1, "seal_amt": 7152400.0, "stocks": [{"code": "002377", "name": "国创高新", "price": 3.15, "chg": 10.14, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:34:18", "last_time": "14:49:15", "open_times": 6, "seal_amt": 7152400.0, "seal_ratio": 1.3212, "zt_amount_wan": 20660.41, "turnover": 19.698863983154297, "float_mv": 2748210951.15, "amount": 528317056.0, "industry": "炼化及贸", "reason_tags": ["微小盘股", "互联金融", "武汉规划", "装饰建材"], "reason_text": "沙特多处能源设施遭袭起火I公司主要从事路面改性沥青系列产品", "domain": "周期·资源", "topic": "装饰建材", "industry_full": "炼化及贸易"}]}]}, {"name": "消费·新零售", "color": "#ec4899", "count": 9, "max_lb": 5, "seal_amt": 835714300.0, "topics": [{"name": "新零售", "count": 5, "max_lb": 5, "seal_amt": 638377900.0, "stocks": [{"code": "600865", "name": "百大集团", "price": 15.11, "chg": 9.97, "lb": 5, "lb_stat": "5天5板", "board_type": "换手板(涨停)", "first_time": "09:32:11", "last_time": "09:47:21", "open_times": 2, "seal_amt": 59781200.0, "seal_ratio": 5.5967, "zt_amount_wan": 26029.85, "turnover": 18.789051055908203, "float_mv": 5684991174.76, "amount": 1038728608.0, "industry": "一般零售", "reason_tags": ["新零售", "创投概念", "信托业务"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司主要从事百货零售、酒店服务、物业管理业务", "domain": "消费·新零售", "topic": "新零售", "industry_full": "一般零售"}, {"code": "000759", "name": "中百集团", "price": 8.47, "chg": 10.0, "lb": 3, "lb_stat": "3天3板", "board_type": "换手板(涨停)", "first_time": "09:33:18", "last_time": "09:59:18", "open_times": 1, "seal_amt": 167944900.0, "seal_ratio": 10.6571, "zt_amount_wan": 24870.63, "turnover": 28.37491226196289, "float_mv": 5553830031.75, "amount": 1541911504.0, "industry": "一般零售", "reason_tags": ["新零售", "跨境电商", "国企改革", "微信概念"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I以商业零售为主业的大型连锁企业", "domain": "消费·新零售", "topic": "新零售", "industry_full": "一般零售"}, {"code": "000523", "name": "红棉股份", "price": 4.36, "chg": 10.1, "lb": 2, "lb_stat": "2天2板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 345851800.0, "seal_ratio": 319.1771, "zt_amount_wan": 10835.73, "turnover": 1.3846906423568726, "float_mv": 7825406715.440001, "amount": 108357676.0, "industry": "综合Ⅱ", "reason_tags": ["国企改革", "新零售", "粤港澳", "电商概念", "工业大麻"], "reason_text": "泰国糖产量可能降至1000万吨以下；秘鲁鱼粉价格大幅上涨I全资子公司华糖食品已建立“红棉” 、 “广氏” 、 “双喜” 等食品饮料品牌体系", "domain": "消费·新零售", "topic": "新零售", "industry_full": "综合Ⅱ"}, {"code": "601579", "name": "会稽山", "price": 25.3, "chg": 10.0, "lb": 1, "lb_stat": "4天2板", "board_type": "换手板(涨停)", "first_time": "09:51:10", "last_time": "13:38:07", "open_times": 4, "seal_amt": 41153000.0, "seal_ratio": 4.8969, "zt_amount_wan": 22128.39, "turnover": 6.927977085113525, "float_mv": 12130424247.7, "amount": 819278144.0, "industry": "非白酒", "reason_tags": ["新零售", "电商概念", "酿酒", "高分红股"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I国内龙头黄酒供应商；公司在生产黄酒的同时，也利用黄酒生产过程产生的醪糟作为原料，通过蒸馏生产糟烧白酒，并一直有销售糟烧白酒等副产品的传统", "domain": "消费·新零售", "topic": "新零售", "industry_full": "非白酒"}, {"code": "603900", "name": "莱绅通灵", "price": 7.45, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "13:52:10", "last_time": "13:52:13", "open_times": 0, "seal_amt": 23647000.0, "seal_ratio": 8.1482, "zt_amount_wan": 7110.95, "turnover": 11.366243362426758, "float_mv": 2553292608.0, "amount": 274873568.0, "industry": "饰品", "reason_tags": ["活跃小盘非融", "微盘精选", "新零售"], "reason_text": "Comex黄金期货重返4700美元上方I公司主营珠宝饰品、工艺美术品等，与蓝精灵 IP 联名，用18K金、天然贝母、珐琅等工艺打造珠宝，借热门 IP 拓展业务", "domain": "消费·新零售", "topic": "新零售", "industry_full": "饰品"}]}, {"name": "旅游", "count": 1, "max_lb": 3, "seal_amt": 35255900.0, "stocks": [{"code": "000978", "name": "桂林旅游", "price": 8.81, "chg": 9.99, "lb": 3, "lb_stat": "3天3板", "board_type": "换手板(涨停)", "first_time": "09:47:21", "last_time": "13:06:24", "open_times": 0, "seal_amt": 35255900.0, "seal_ratio": 3.2825, "zt_amount_wan": 11230.02, "turnover": 26.043439865112305, "float_mv": 4124150970.03, "amount": 1009111008.0, "industry": "旅游及景", "reason_tags": ["国企改革", "低空经济", "虚拟数字人", "高盛持股", "旅游"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司主营为游船客运、景区旅游业务", "domain": "消费·新零售", "topic": "旅游", "industry_full": "旅游及景区"}]}, {"name": "家居用品", "count": 1, "max_lb": 2, "seal_amt": 152075100.0, "stocks": [{"code": "002790", "name": "瑞尔特", "price": 7.69, "chg": 10.01, "lb": 2, "lb_stat": "2天2板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 152075100.0, "seal_ratio": 89.0144, "zt_amount_wan": 17084.34, "turnover": 8.521891593933105, "float_mv": 2004763775.0, "amount": 170843793.0, "industry": "家居用品", "reason_tags": ["微小盘股", "电商概念", "家居用品"], "reason_text": "改革完善房地产融资制度，国家金融监督管理总局印发五个管理办法；个人住房贷款最长期限延长至40年I公司注册地位于福建厦门海沧区，专注于卫浴配件产品和智能卫浴产品", "domain": "消费·新零售", "topic": "家居用品", "industry_full": "家居用品"}]}, {"name": "电商概念", "count": 1, "max_lb": 1, "seal_amt": 5309600.0, "stocks": [{"code": "002162", "name": "悦心健康", "price": 4.51, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:00", "last_time": "14:09:57", "open_times": 10, "seal_amt": 5309600.0, "seal_ratio": 1.0683, "zt_amount_wan": 25855.52, "turnover": 12.000399589538574, "float_mv": 4141630510.71, "amount": 491451008.0, "industry": "家居用品", "reason_tags": ["机器人概念", "电商概念", "人工智能", "健康中国", "医美概念"], "reason_text": "上海10月起住院分娩费用全额报销I子公司悦心多宝与金矢机器人成立合资公司，将专注于研发、生产、销售适用于医疗康复养老领域机器人。", "domain": "消费·新零售", "topic": "电商概念", "industry_full": "家居用品"}]}, {"name": "跨境电商", "count": 1, "max_lb": 1, "seal_amt": 4695800.0, "stocks": [{"code": "600778", "name": "友好集团", "price": 6.64, "chg": 9.93, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "10:05:08", "last_time": "10:05:08", "open_times": 0, "seal_amt": 4695800.0, "seal_ratio": 1.6086, "zt_amount_wan": 16346.82, "turnover": 14.126343727111816, "float_mv": 2066466816.48, "amount": 285223952.0, "industry": "一般零售", "reason_tags": ["活跃小盘非融", "跨境电商", "新零售"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I新疆商业流通龙头；公司经营业态包括百货商场、购物中心、大型综合超市、标准超市、超市便利店等", "domain": "消费·新零售", "topic": "跨境电商", "industry_full": "一般零售"}]}]}, {"name": "农业·食品链", "color": "#84cc16", "count": 7, "max_lb": 2, "seal_amt": 454228600.0, "topics": [{"name": "农产品加工", "count": 4, "max_lb": 2, "seal_amt": 328992300.0, "stocks": [{"code": "000930", "name": "中粮科技", "price": 6.41, "chg": 9.95, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "09:32:12", "last_time": "09:32:12", "open_times": 0, "seal_amt": 137798300.0, "seal_ratio": 24.353, "zt_amount_wan": 22059.31, "turnover": 4.755376815795898, "float_mv": 11898902018.47, "amount": 556141696.0, "industry": "农产品加", "reason_tags": ["国企改革", "农产品加工", "节能环保", "央企改革", "生物质能"], "reason_text": "泰国糖产量可能降至1000万吨以下；秘鲁鱼粉价格大幅上涨I中粮集团旗下，控股子公司中粮黑龙江酿酒有限公司设计产能5000吨/年，共有“东方春”、“老古”、“忠良工匠”、“百战”、“东北大粮仓”，5个系列共25款白酒产品在全国近18个省均有销售", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}, {"code": "605198", "name": "安德利", "price": 77.0, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:31:50", "last_time": "10:14:53", "open_times": 1, "seal_amt": 68591600.0, "seal_ratio": 22.5416, "zt_amount_wan": 16829.89, "turnover": 1.4607298374176025, "float_mv": 20831272000.0, "amount": 302336880.0, "industry": "农产品加", "reason_tags": ["人民币贬值受益", "乡村振兴", "饮料乳品", "苹果期货"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司拟收购甬强科技事项尚在推进中，交易完成后将形成浓缩果汁与电子信息互连材料双主业格局；标的公司主营覆铜板材料，已完成M4至M9全系列高速板材产品布局", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}, {"code": "000019", "name": "深粮控股", "price": 8.46, "chg": 10.01, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:05:33", "last_time": "14:37:36", "open_times": 4, "seal_amt": 61400100.0, "seal_ratio": 10.2535, "zt_amount_wan": 30029.11, "turnover": 17.006591796875, "float_mv": 3521127353.2200003, "amount": 581275008.0, "industry": "农产品加", "reason_tags": ["活跃小盘非融", "国企改革", "农产品加工"], "reason_text": "泰国糖产量可能降至1000万吨以下I深圳国资委控股的农产品集团旗下，主营茶及天然植物精深加工为主的食品原料（配料）生产、研发和销售，并同时拥有粮油储备、粮油贸易、粮油加工等粮油流通及粮油储备服务业务", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}, {"code": "000972", "name": "中基健康", "price": 4.37, "chg": 10.08, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:34:15", "last_time": "09:36:36", "open_times": 1, "seal_amt": 61202300.0, "seal_ratio": 29.9984, "zt_amount_wan": 16130.89, "turnover": 6.05305814743042, "float_mv": 3370509240.23, "amount": 202316898.0, "industry": "农产品加", "reason_tags": ["微小盘股", "国企改革", "新零售", "农产品加工"], "reason_text": "1、据2026年8月29日公告，公司主要从事大包装番茄酱、小包装番茄制品及番茄红素等番茄相关产品生产销售。 2、据2026年6月26日公告，公司推进加工番茄引种示范，落实示范地8251.9亩，并开展新品种实验种植。 3、据2026年8月4日公告，公司子公司红色番茄拟投资820万元建设210g、400g小罐直灌酱后包装生产线项目，切入C端消费市场，满足电商及“一人食”等新消费场景需求。 4、据2026年6月26日公告，公司控股股东为新疆生产建设兵团第六师国有资产经营有限责任公司，持续推进国企改革、重整及番茄产业链补强。", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}]}, {"name": "种植业", "count": 2, "max_lb": 1, "seal_amt": 112359800.0, "stocks": [{"code": "600359", "name": "新农开发", "price": 8.76, "chg": 10.05, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:33:15", "last_time": "09:37:12", "open_times": 4, "seal_amt": 59850100.0, "seal_ratio": 17.4979, "zt_amount_wan": 20287.2, "turnover": 10.234501838684082, "float_mv": 3342052303.2, "amount": 335687760.0, "industry": "种植业", "reason_tags": ["微小盘股", "国企改革", "种业", "种植业"], "reason_text": "泰国糖产量可能降至1000万吨以下I新疆生产建设兵团农一师旗下；主营产品涉及棉花（包括长绒棉、陆地棉、彩色棉、抗虫棉），皮棉销量1.35万吨、棉种销量5306吨", "domain": "农业·食品链", "topic": "种植业", "industry_full": "种植业"}, {"code": "600540", "name": "新赛股份", "price": 7.21, "chg": 10.08, "lb": 1, "lb_stat": "10天6板", "board_type": "换手板(涨停)", "first_time": "09:56:42", "last_time": "13:18:18", "open_times": 1, "seal_amt": 52509700.0, "seal_ratio": 3.9055, "zt_amount_wan": 34278.93, "turnover": 32.07535171508789, "float_mv": 4191727881.6, "amount": 1291393680.0, "industry": "种植业", "reason_tags": ["国企改革", "风电", "种植业", "一带一路", "股东减持"], "reason_text": "泰国糖产量可能降至1000万吨以下I公司农业主要产品为棉籽、葵花籽、菜籽及其他油料作物，立足于新疆棉花产业，聚焦棉业全产业链", "domain": "农业·食品链", "topic": "种植业", "industry_full": "种植业"}]}, {"name": "渔业", "count": 1, "max_lb": 1, "seal_amt": 12876500.0, "stocks": [{"code": "000798", "name": "中水渔业", "price": 12.67, "chg": 9.98, "lb": 1, "lb_stat": "4天3板", "board_type": "换手板(涨停)", "first_time": "10:24:24", "last_time": "14:50:00", "open_times": 14, "seal_amt": 12876500.0, "seal_ratio": 1.0758, "zt_amount_wan": 30409.39, "turnover": 25.82280158996582, "float_mv": 4635144806.04, "amount": 1150095136.0, "industry": "渔业", "reason_tags": ["昨日断板", "国企改革", "渔业"], "reason_text": "泰国糖产量可能降至1000万吨以下I中国农业发展集团旗下，主营远洋水产品，有金枪饺子、金枪鱼圈等预制食品", "domain": "农业·食品链", "topic": "渔业", "industry_full": "渔业"}]}]}, {"name": "电力设备·新能源", "color": "#22c55e", "count": 5, "max_lb": 1, "seal_amt": 270385600.0, "topics": [{"name": "电网设备", "count": 3, "max_lb": 1, "seal_amt": 242097300.0, "stocks": [{"code": "600869", "name": "远东股份", "price": 24.93, "chg": 10.02, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "14:27:21", "last_time": "14:27:21", "open_times": 0, "seal_amt": 155199200.0, "seal_ratio": 1.9911, "zt_amount_wan": 108601.81, "turnover": 14.088030815124512, "float_mv": 55328463957.78, "amount": 7371147008.0, "industry": "电网设备", "reason_tags": ["液冷服务器", "非周期股"], "reason_text": "山东、广东等地液冷产线满产运行，核心设备CDU订单已排至2026年底I1、公司具备覆盖芯片级、机柜级、系统级的AIDC液冷全栈解决方案，并取得全球领先人工智能芯片公司等供应商编码； 2、公司1至8月智能电池储能及算力AI业务累计中标或签约千万元以上合同40.66亿元，同比增长154.02%，其中8月合同2.55亿元，同比增长1629.48%； 3、公司人形机器人线缆已应用于优必选产品，并送样智元机器人，采用高柔韧性材料，具备抗弯折和扭转性能", "domain": "电力设备·新能源", "topic": "电网设备", "industry_full": "电网设备"}, {"code": "002498", "name": "汉缆股份", "price": 7.08, "chg": 9.94, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:59:33", "last_time": "10:00:18", "open_times": 1, "seal_amt": 70674700.0, "seal_ratio": 6.7462, "zt_amount_wan": 69521.92, "turnover": 4.447809219360352, "float_mv": 23553715680.0, "amount": 1030267072.0, "industry": "电网设备", "reason_tags": ["中标", "储能", "电网设备", "一带一路", "海洋经济"], "reason_text": "海上风电产业所需海缆产品的主要供应商之一", "domain": "电力设备·新能源", "topic": "电网设备", "industry_full": "电网设备"}, {"code": "600192", "name": "长城电工", "price": 7.89, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:32:39", "last_time": "11:30:00", "open_times": 1, "seal_amt": 16223400.0, "seal_ratio": 6.6611, "zt_amount_wan": 12091.98, "turnover": 6.987832069396973, "float_mv": 3485391720.0, "amount": 237057143.0, "industry": "电网设备", "reason_tags": ["微小盘股", "国企改革", "风电", "电网设备"], "reason_text": "1.公司目前具备核电开关设备IE级的设计及制造资质，部分产品已应用漳州核电厂； 2、西部地区电力设备龙头企业，主要包括低压开关成套设备、高中低压电器元件及关键零部件、智能低压成套配电装置及母线槽等电工电器类产品", "domain": "电力设备·新能源", "topic": "电网设备", "industry_full": "电网设备"}]}, {"name": "电力", "count": 2, "max_lb": 1, "seal_amt": 28288300.0, "stocks": [{"code": "000993", "name": "闽东电力", "price": 11.47, "chg": 9.97, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "10:54:39", "last_time": "10:54:39", "open_times": 0, "seal_amt": 23288700.0, "seal_ratio": 6.9766, "zt_amount_wan": 23754.03, "turnover": 6.3549981117248535, "float_mv": 5252703188.85, "amount": 327480752.0, "industry": "电力", "reason_tags": ["国企改革", "风电", "创投概念", "绿色电力", "电力", "钼金属"], "reason_text": "1、福建省最大的电力股份制企业；公司主营业务为电力生产与开发，主要以水电、风电、光伏为主； 2、持股海交所7.4%，海交所提供不良资产处置服务", "domain": "电力设备·新能源", "topic": "电力", "industry_full": "电力"}, {"code": "605162", "name": "新中港", "price": 11.23, "chg": 9.99, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "11:04:32", "last_time": "14:54:17", "open_times": 5, "seal_amt": 4999600.0, "seal_ratio": 0.6876, "zt_amount_wan": 20627.38, "turnover": 14.619662284851074, "float_mv": 4973164072.53, "amount": 697972960.0, "industry": "电力", "reason_tags": ["储能", "节能环保", "摩根中国A股基金持股", "电力", "虚拟电厂"], "reason_text": "1、公司已于2026年5月向绍兴弗迪电池有限公司供汽，供热量增加明显，随着客户产能爬坡，供汽量有望持续提升。  2、公司100MW电网侧储能项目可参与调频、调峰、黑启动等辅助服务，独立储能纳入容量电价补偿范围。  3、公司主要向全市150多家企业供热，并向工业企业供应压缩空气、向电网公司供应上网电力。", "domain": "电力设备·新能源", "topic": "电力", "industry_full": "电力"}]}]}, {"name": "交运·物流", "color": "#38bdf8", "count": 3, "max_lb": 1, "seal_amt": 248477700.0, "topics": [{"name": "航运港口", "count": 3, "max_lb": 1, "seal_amt": 248477700.0, "stocks": [{"code": "603162", "name": "海通发展", "price": 15.43, "chg": 9.98, "lb": 1, "lb_stat": "5天3板", "board_type": "", "first_time": "09:58:18", "last_time": "09:58:18", "open_times": 0, "seal_amt": 128561200.0, "seal_ratio": 12.5238, "zt_amount_wan": 22216.73, "turnover": 15.748826026916504, "float_mv": 6518190164.82, "amount": 977358272.0, "industry": "航运港口", "reason_tags": ["一带一路", "首日破发", "航运港口"], "reason_text": "沙特—中国VLCC航线日收益较一年前上涨超过10倍I公司地处福建福州，主要从事国内沿海以及国际远洋的干散货运输业务，公司运营的航线遍布30余个国家和地区的200余个港口，为客户提供矿石、煤炭、化肥等多种货物的海上运输", "domain": "交运·物流", "topic": "航运港口", "industry_full": "航运港口"}, {"code": "601872", "name": "招商轮船", "price": 20.99, "chg": 10.01, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:55:20", "last_time": "14:52:23", "open_times": 16, "seal_amt": 82100300.0, "seal_ratio": 2.0549, "zt_amount_wan": 137357.94, "turnover": 2.3573853969573975, "float_mv": 169484563156.97998, "amount": 3892801792.0, "industry": "航运港口", "reason_tags": ["周期股", "国企改革", "航运港口"], "reason_text": "沙特—中国VLCC航线日收益较一年前上涨超过10倍I招商局集团旗下，主要从事国际原油、国际与国内干散货、国内滚装等海运业务", "domain": "交运·物流", "topic": "航运港口", "industry_full": "航运港口"}, {"code": "002040", "name": "南 京 港", "price": 9.98, "chg": 10.03, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:11:45", "last_time": "10:26:54", "open_times": 2, "seal_amt": 37816200.0, "seal_ratio": 10.7135, "zt_amount_wan": 21744.72, "turnover": 7.276309967041016, "float_mv": 4851032941.1, "amount": 344393200.0, "industry": "航运港口", "reason_tags": ["国企改革", "自由贸易港", "航运港口", "江苏自贸区"], "reason_text": "沙特—中国VLCC航线日收益较一年前上涨超过10倍I我国内河最大的石油、液体化工产品中转储存的港口运输企业", "domain": "交运·物流", "topic": "航运港口", "industry_full": "航运港口"}]}]}, {"name": "半导体·芯片", "color": "#a855f7", "count": 3, "max_lb": 1, "seal_amt": 201393600.0, "topics": [{"name": "芯片", "count": 1, "max_lb": 1, "seal_amt": 101894800.0, "stocks": [{"code": "603186", "name": "华正新材", "price": 212.06, "chg": 10.0, "lb": 1, "lb_stat": "3天2板", "board_type": "换手板(涨停)", "first_time": "10:03:23", "last_time": "13:58:38", "open_times": 2, "seal_amt": 101894800.0, "seal_ratio": 2.1261, "zt_amount_wan": 110920.1, "turnover": 14.414056777954102, "float_mv": 33248997247.08, "amount": 4658624512.0, "industry": "元件", "reason_tags": ["非周期股", "芯片", "元器件", "华为概念"], "reason_text": "松下宣布上调覆铜板（CCL）价格，部分产品涨幅最高达到30%I公司已将AI算力赛道纳入五年战略重点，Extreme Low-loss等级覆铜板已批量供货AI服务器、交换机、数据中心等核心场景", "domain": "半导体·芯片", "topic": "芯片", "industry_full": "元件"}]}, {"name": "半导体", "count": 1, "max_lb": 1, "seal_amt": 53601100.0, "stocks": [{"code": "002077", "name": "大港股份", "price": 13.74, "chg": 10.01, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:32:06", "last_time": "13:23:06", "open_times": 11, "seal_amt": 53601100.0, "seal_ratio": 4.6943, "zt_amount_wan": 68357.33, "turnover": 14.319376945495605, "float_mv": 7973988568.62, "amount": 1129163504.0, "industry": "半导体", "reason_tags": ["芯片", "国企改革", "先进封装", "创投概念", "存储芯片", "半导体"], "reason_text": "全资子公司上海旻艾定位于中高端IC测试，主打12英寸、8英寸的CP服务以及QFP、BGA、DIP、SOP、QFN等封装芯片测试，产品类型包括存储芯片等多个类型", "domain": "半导体·芯片", "topic": "半导体", "industry_full": "半导体"}]}, {"name": "元件", "count": 1, "max_lb": 1, "seal_amt": 45897700.0, "stocks": [{"code": "603328", "name": "依顿电子", "price": 12.1, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "13:05:51", "last_time": "13:05:51", "open_times": 0, "seal_amt": 45897700.0, "seal_ratio": 8.8166, "zt_amount_wan": 11446.72, "turnover": 4.309056282043457, "float_mv": 12081155593.1, "amount": 502327008.0, "industry": "元件", "reason_tags": ["CPO概念", "国企改革", "元器件"], "reason_text": "松下宣布上调覆铜板（CCL）价格，部分产品涨幅最高达到30%I1、印制电路板行业内的重要品牌之一；公司的印制电路板具有高精度、高密度、高可靠性的特点，已广泛应用于汽车电子、新能源及电源、计算机与通讯、工控医疗、多媒体与显示等领域； 2、公司是苹果的间接供应商，目前进入苹果产业链的产品主要用于电源系统及模块，键盘使用，数据线连接器等", "domain": "半导体·芯片", "topic": "元件", "industry_full": "元件"}]}]}, {"name": "机器人·高端制造", "color": "#f97316", "count": 3, "max_lb": 1, "seal_amt": 148674500.0, "topics": [{"name": "通用设备", "count": 1, "max_lb": 1, "seal_amt": 75357900.0, "stocks": [{"code": "603308", "name": "应流股份", "price": 46.3, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:01:45", "last_time": "10:03:00", "open_times": 2, "seal_amt": 75357900.0, "seal_ratio": 5.1554, "zt_amount_wan": 36943.7, "turnover": 4.334065914154053, "float_mv": 33726490542.3, "amount": 1429703264.0, "industry": "通用设备", "reason_tags": ["非周期股", "风电", "通用设备"], "reason_text": "公司为燃气轮机高温合金叶片及核心零部件供应商", "domain": "机器人·高端制造", "topic": "通用设备", "industry_full": "通用设备"}]}, {"name": "机器人概念", "count": 1, "max_lb": 1, "seal_amt": 52503400.0, "stocks": [{"code": "002046", "name": "国机精工", "price": 59.44, "chg": 9.99, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:08:09", "last_time": "11:02:30", "open_times": 2, "seal_amt": 52503400.0, "seal_ratio": 4.1137, "zt_amount_wan": 50354.0, "turnover": 4.050900936126709, "float_mv": 31506520437.28, "amount": 1252215680.0, "industry": "通用设备", "reason_tags": ["芯片", "国企改革", "风电", "机器人概念", "第三代半导体"], "reason_text": "1、培育钻石产业链核心玩家，以“设备+产品”双轮驱动布局；子公司三磨所是超硬材料行业引领者，其六面顶压机市占率超 60%，为黄河旋风、力量钻石等头部企业供货； 2、中国航空航天轴承领域领先企业，曾为嫦娥一号、嫦娥二号、长征二号捆绑式大推力火箭、长征四号甲等项目提供配套轴承及相关研发服务", "domain": "机器人·高端制造", "topic": "机器人概念", "industry_full": "通用设备"}]}, {"name": "航海装备", "count": 1, "max_lb": 1, "seal_amt": 20813200.0, "stocks": [{"code": "601890", "name": "亚星锚链", "price": 10.08, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:15:26", "last_time": "14:53:47", "open_times": 4, "seal_amt": 20813200.0, "seal_ratio": 1.5309, "zt_amount_wan": 86781.74, "turnover": 14.058345794677734, "float_mv": 9670752000.0, "amount": 1335611104.0, "industry": "航海装备", "reason_tags": ["风电", "国防军工", "高端装备", "航海装备", "海洋经济"], "reason_text": "中报业绩兑现行业景气上行I公司为世界锚链行业内最大的、专业化从事船用锚链和海洋系泊链的生产企业，拟建设深远海系泊项目", "domain": "机器人·高端制造", "topic": "航海装备", "industry_full": "航海装备"}]}]}, {"name": "AI算力·光通信", "color": "#4f8cff", "count": 2, "max_lb": 3, "seal_amt": 242964600.0, "topics": [{"name": "光纤概念", "count": 1, "max_lb": 3, "seal_amt": 154023800.0, "stocks": [{"code": "603042", "name": "华脉科技", "price": 18.67, "chg": 10.02, "lb": 3, "lb_stat": "3天3板", "board_type": "一字板(涨停)", "first_time": "09:25:02", "last_time": "09:25:02", "open_times": 0, "seal_amt": 154023800.0, "seal_ratio": 180.5643, "zt_amount_wan": 8530.14, "turnover": 2.1885569095611572, "float_mv": 3897676006.6400003, "amount": 85302857.0, "industry": "通信设备", "reason_tags": ["光纤概念", "芯片", "华为概念"], "reason_text": "高盛上调行业龙头目标价I1、公司预计上半年预盈1600万-2100万元，同比扭亏为盈，本次业绩变动主要受益于通信行业光纤光缆市场价格持续走高，公司产品毛利有所提升； 2、信息通信网络基础设施解决方案提供商；公司主要产品覆盖了从局端OLT到用户端ONU的全系列ODN及无线通信网络建设产品，包括ODN物理连接及保护设备、光无源器件、光缆等光通信产品及微波无源器件、POI多路接入等无线通信网络建设产品", "domain": "AI算力·光通信", "topic": "光纤概念", "industry_full": "通信设备"}]}, {"name": "通信设备", "count": 1, "max_lb": 1, "seal_amt": 88940800.0, "stocks": [{"code": "603421", "name": "鼎信通讯", "price": 6.63, "chg": 9.95, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:30:21", "last_time": "09:35:57", "open_times": 1, "seal_amt": 88940800.0, "seal_ratio": 49.7209, "zt_amount_wan": 9281.2, "turnover": 4.136899948120117, "float_mv": 4324023087.93, "amount": 176790298.0, "industry": "通信设备", "reason_tags": ["芯片", "储能", "华为概念", "物联网", "虚拟电厂", "通信设备"], "reason_text": "公司深耕智能电网，拥有电能计量、配电自动化、中低压数字化全矩阵产品，参与国标制定，具备芯片-方案-系统垂直整合能力", "domain": "AI算力·光通信", "topic": "通信设备", "industry_full": "通信设备"}]}]}, {"name": "汽车·出行", "color": "#fb7185", "count": 2, "max_lb": 2, "seal_amt": 190065300.0, "topics": [{"name": "汽车零部件", "count": 2, "max_lb": 2, "seal_amt": 190065300.0, "stocks": [{"code": "000980", "name": "众泰汽车", "price": 2.02, "chg": 9.78, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "09:30:12", "last_time": "09:30:51", "open_times": 1, "seal_amt": 115358400.0, "seal_ratio": 32.9025, "zt_amount_wan": 18659.67, "turnover": 3.442103147506714, "float_mv": 10185821394.78, "amount": 347256832.0, "industry": "汽车零部", "reason_tags": ["百度概念", "扣非亏损", "汽车零部件", "无实控人"], "reason_text": "汽车整车制造企业，拥有众泰、江南、君马等自主品牌；25年大幅减亏", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "600698", "name": "湖南天雁", "price": 8.38, "chg": 9.97, "lb": 1, "lb_stat": "4天2板", "board_type": "换手板(涨停)", "first_time": "09:51:48", "last_time": "10:46:06", "open_times": 0, "seal_amt": 74706900.0, "seal_ratio": 8.822, "zt_amount_wan": 24807.4, "turnover": 12.16845989227295, "float_mv": 6959185589.580001, "amount": 822155280.0, "industry": "汽车零部", "reason_tags": ["国企改革", "高铁", "节能环保", "新能源车", "汽车零部件", "国六概念"], "reason_text": "中报业绩兑现行业景气上行I公司间接控股股东将变更为兵器装备集团汽车业务分立的中央企业", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}]}]}, {"name": "医药·医疗", "color": "#14b8a6", "count": 1, "max_lb": 2, "seal_amt": 78077500.0, "topics": [{"name": "创新药", "count": 1, "max_lb": 2, "seal_amt": 78077500.0, "stocks": [{"code": "002349", "name": "精华制药", "price": 9.26, "chg": 9.98, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "09:50:27", "last_time": "09:50:27", "open_times": 0, "seal_amt": 78077500.0, "seal_ratio": 6.9173, "zt_amount_wan": 27112.45, "turnover": 14.97119426727295, "float_mv": 7539315208.08, "amount": 1083827408.0, "industry": "中药Ⅱ", "reason_tags": ["创新药", "国企改革", "电解液"], "reason_text": "国内首款AI辅助研发原创药获批上市I公司正柴胡饮颗粒近期被国家中医药管理局中医疫病防治专家委员会纳入《新冠病毒感染者居家中医药干预指南》", "domain": "医药·医疗", "topic": "创新药", "industry_full": "中药Ⅱ"}]}]}, {"name": "地产·建筑", "color": "#94a3b8", "count": 1, "max_lb": 1, "seal_amt": 13181300.0, "topics": [{"name": "房地产开发", "count": 1, "max_lb": 1, "seal_amt": 13181300.0, "stocks": [{"code": "000909", "name": "*ST数源", "price": 5.01, "chg": 10.11, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "10:12:27", "last_time": "10:12:27", "open_times": 0, "seal_amt": 13181300.0, "seal_ratio": 30.1143, "zt_amount_wan": 1494.73, "turnover": 0.0, "float_mv": 0.0, "amount": 0.0, "industry": "", "reason_tags": ["ST板块", "国企改革", "房地产开发"], "reason_text": "公司预计上半年亏损1000万元-1700万元", "domain": "地产·建筑", "topic": "房地产开发", "industry_full": ""}]}]}], "ladder": {"5": [{"code": "600865", "name": "百大集团", "price": 15.11, "chg": 9.97, "lb": 5, "lb_stat": "5天5板", "board_type": "换手板(涨停)", "first_time": "09:32:11", "last_time": "09:47:21", "open_times": 2, "seal_amt": 59781200.0, "seal_ratio": 5.5967, "zt_amount_wan": 26029.85, "turnover": 18.789051055908203, "float_mv": 5684991174.76, "amount": 1038728608.0, "industry": "一般零售", "reason_tags": ["新零售", "创投概念", "信托业务"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司主要从事百货零售、酒店服务、物业管理业务", "domain": "消费·新零售", "topic": "新零售", "industry_full": "一般零售"}], "3": [{"code": "002470", "name": "金正大", "price": 2.78, "chg": 9.88, "lb": 3, "lb_stat": "7天4板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 175404700.0, "seal_ratio": 59.2272, "zt_amount_wan": 29615.56, "turnover": 3.242213726043701, "float_mv": 9134372954.26, "amount": 296155888.0, "industry": "农化制品", "reason_tags": ["农用化工", "国企改革", "乡村振兴"], "reason_text": "小麦期货创三年新高I1、老牌肥料企业；公司的主营业务为常规复合肥、新型肥料、磷肥以及土壤调理剂等植物所需全系列产品的研产销； 2、公司拟6亿元投建年产10万吨磷酸铁电池正极前驱体材料项目，形成磷矿—磷酸—磷化工产品—新能源材料综合利用的磷化工全产业链", "domain": "周期·资源", "topic": "农用化工", "industry_full": "农化制品"}, {"code": "000759", "name": "中百集团", "price": 8.47, "chg": 10.0, "lb": 3, "lb_stat": "3天3板", "board_type": "换手板(涨停)", "first_time": "09:33:18", "last_time": "09:59:18", "open_times": 1, "seal_amt": 167944900.0, "seal_ratio": 10.6571, "zt_amount_wan": 24870.63, "turnover": 28.37491226196289, "float_mv": 5553830031.75, "amount": 1541911504.0, "industry": "一般零售", "reason_tags": ["新零售", "跨境电商", "国企改革", "微信概念"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I以商业零售为主业的大型连锁企业", "domain": "消费·新零售", "topic": "新零售", "industry_full": "一般零售"}, {"code": "603042", "name": "华脉科技", "price": 18.67, "chg": 10.02, "lb": 3, "lb_stat": "3天3板", "board_type": "一字板(涨停)", "first_time": "09:25:02", "last_time": "09:25:02", "open_times": 0, "seal_amt": 154023800.0, "seal_ratio": 180.5643, "zt_amount_wan": 8530.14, "turnover": 2.1885569095611572, "float_mv": 3897676006.6400003, "amount": 85302857.0, "industry": "通信设备", "reason_tags": ["光纤概念", "芯片", "华为概念"], "reason_text": "高盛上调行业龙头目标价I1、公司预计上半年预盈1600万-2100万元，同比扭亏为盈，本次业绩变动主要受益于通信行业光纤光缆市场价格持续走高，公司产品毛利有所提升； 2、信息通信网络基础设施解决方案提供商；公司主要产品覆盖了从局端OLT到用户端ONU的全系列ODN及无线通信网络建设产品，包括ODN物理连接及保护设备、光无源器件、光缆等光通信产品及微波无源器件、POI多路接入等无线通信网络建设产品", "domain": "AI算力·光通信", "topic": "光纤概念", "industry_full": "通信设备"}, {"code": "000978", "name": "桂林旅游", "price": 8.81, "chg": 9.99, "lb": 3, "lb_stat": "3天3板", "board_type": "换手板(涨停)", "first_time": "09:47:21", "last_time": "13:06:24", "open_times": 0, "seal_amt": 35255900.0, "seal_ratio": 3.2825, "zt_amount_wan": 11230.02, "turnover": 26.043439865112305, "float_mv": 4124150970.03, "amount": 1009111008.0, "industry": "旅游及景", "reason_tags": ["国企改革", "低空经济", "虚拟数字人", "高盛持股", "旅游"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司主营为游船客运、景区旅游业务", "domain": "消费·新零售", "topic": "旅游", "industry_full": "旅游及景区"}], "2": [{"code": "000523", "name": "红棉股份", "price": 4.36, "chg": 10.1, "lb": 2, "lb_stat": "2天2板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 345851800.0, "seal_ratio": 319.1771, "zt_amount_wan": 10835.73, "turnover": 1.3846906423568726, "float_mv": 7825406715.440001, "amount": 108357676.0, "industry": "综合Ⅱ", "reason_tags": ["国企改革", "新零售", "粤港澳", "电商概念", "工业大麻"], "reason_text": "泰国糖产量可能降至1000万吨以下；秘鲁鱼粉价格大幅上涨I全资子公司华糖食品已建立“红棉” 、 “广氏” 、 “双喜” 等食品饮料品牌体系", "domain": "消费·新零售", "topic": "新零售", "industry_full": "综合Ⅱ"}, {"code": "002790", "name": "瑞尔特", "price": 7.69, "chg": 10.01, "lb": 2, "lb_stat": "2天2板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 152075100.0, "seal_ratio": 89.0144, "zt_amount_wan": 17084.34, "turnover": 8.521891593933105, "float_mv": 2004763775.0, "amount": 170843793.0, "industry": "家居用品", "reason_tags": ["微小盘股", "电商概念", "家居用品"], "reason_text": "改革完善房地产融资制度，国家金融监督管理总局印发五个管理办法；个人住房贷款最长期限延长至40年I公司注册地位于福建厦门海沧区，专注于卫浴配件产品和智能卫浴产品", "domain": "消费·新零售", "topic": "家居用品", "industry_full": "家居用品"}, {"code": "000930", "name": "中粮科技", "price": 6.41, "chg": 9.95, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "09:32:12", "last_time": "09:32:12", "open_times": 0, "seal_amt": 137798300.0, "seal_ratio": 24.353, "zt_amount_wan": 22059.31, "turnover": 4.755376815795898, "float_mv": 11898902018.47, "amount": 556141696.0, "industry": "农产品加", "reason_tags": ["国企改革", "农产品加工", "节能环保", "央企改革", "生物质能"], "reason_text": "泰国糖产量可能降至1000万吨以下；秘鲁鱼粉价格大幅上涨I中粮集团旗下，控股子公司中粮黑龙江酿酒有限公司设计产能5000吨/年，共有“东方春”、“老古”、“忠良工匠”、“百战”、“东北大粮仓”，5个系列共25款白酒产品在全国近18个省均有销售", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}, {"code": "000980", "name": "众泰汽车", "price": 2.02, "chg": 9.78, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "09:30:12", "last_time": "09:30:51", "open_times": 1, "seal_amt": 115358400.0, "seal_ratio": 32.9025, "zt_amount_wan": 18659.67, "turnover": 3.442103147506714, "float_mv": 10185821394.78, "amount": 347256832.0, "industry": "汽车零部", "reason_tags": ["百度概念", "扣非亏损", "汽车零部件", "无实控人"], "reason_text": "汽车整车制造企业，拥有众泰、江南、君马等自主品牌；25年大幅减亏", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "002295", "name": "精艺股份", "price": 11.58, "chg": 9.97, "lb": 2, "lb_stat": "2天2板", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 104290600.0, "seal_ratio": 123.4964, "zt_amount_wan": 8444.83, "turnover": 2.9120917320251465, "float_mv": 2899943791.5, "amount": 84449026.0, "industry": "工业金属", "reason_tags": ["微小盘股", "储能", "工业金属"], "reason_text": "伦敦金属交易所（LME）三个月期铜触及每吨14617美元的历史新高I公司签订阴极铜采购合同，累计金额达21.86亿元", "domain": "周期·资源", "topic": "工业金属", "industry_full": "工业金属"}, {"code": "002349", "name": "精华制药", "price": 9.26, "chg": 9.98, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "09:50:27", "last_time": "09:50:27", "open_times": 0, "seal_amt": 78077500.0, "seal_ratio": 6.9173, "zt_amount_wan": 27112.45, "turnover": 14.97119426727295, "float_mv": 7539315208.08, "amount": 1083827408.0, "industry": "中药Ⅱ", "reason_tags": ["创新药", "国企改革", "电解液"], "reason_text": "国内首款AI辅助研发原创药获批上市I公司正柴胡饮颗粒近期被国家中医药管理局中医疫病防治专家委员会纳入《新冠病毒感染者居家中医药干预指南》", "domain": "医药·医疗", "topic": "创新药", "industry_full": "中药Ⅱ"}, {"code": "600792", "name": "云煤能源", "price": 4.92, "chg": 10.07, "lb": 2, "lb_stat": "2天2板", "board_type": "换手板(涨停)", "first_time": "10:49:08", "last_time": "10:50:26", "open_times": 0, "seal_amt": 62596700.0, "seal_ratio": 11.032, "zt_amount_wan": 6242.99, "turnover": 10.390586853027344, "float_mv": 5460824112.0, "amount": 539145008.0, "industry": "焦炭Ⅱ", "reason_tags": ["国企改革", "摩根中国A股基金持股", "焦炭加工", "云南自贸区", "石墨电极"], "reason_text": "云南省大型的焦炭生产与焦化工企业之一；旗下拥有焦炉气制甲醇，产能10万吨/年", "domain": "周期·资源", "topic": "焦炭加工", "industry_full": "焦炭Ⅱ"}, {"code": "002068", "name": "黑猫股份", "price": 10.01, "chg": 10.0, "lb": 2, "lb_stat": "2天2板", "board_type": "", "first_time": "13:10:42", "last_time": "13:10:42", "open_times": 0, "seal_amt": 57003000.0, "seal_ratio": 4.5746, "zt_amount_wan": 11268.16, "turnover": 16.936256408691406, "float_mv": 7357408268.21, "amount": 1192876352.0, "industry": "橡胶", "reason_tags": ["国企改革", "节能环保", "锂电池概念", "超级电容", "橡胶"], "reason_text": "沙特多处能源设施遭袭起火I国内炭黑行业龙头；公司介孔碳产品已进入中试阶段，目前中试产品已送客户试样推广，主要用于硅碳负极材料及电容炭领域", "domain": "周期·资源", "topic": "橡胶", "industry_full": "橡胶"}, {"code": "605077", "name": "华康股份", "price": 13.78, "chg": 9.98, "lb": 2, "lb_stat": "2天2板", "board_type": "换手板(涨停)", "first_time": "09:33:56", "last_time": "09:53:08", "open_times": 4, "seal_amt": 53113600.0, "seal_ratio": 11.3397, "zt_amount_wan": 11172.0, "turnover": 11.35167407989502, "float_mv": 4126140962.8399997, "amount": 457738080.0, "industry": "化学制品", "reason_tags": ["活跃小盘非融", "电商概念", "食品加工"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司拟购买豫鑫糖醇100%股权，表示标的为行业内木糖醇生产能力与工艺水平均处于领先地位、市场竞争力较强的两家企业", "domain": "周期·资源", "topic": "化学制品", "industry_full": "化学制品"}, {"code": "000912", "name": "泸天化", "price": 5.2, "chg": 9.94, "lb": 2, "lb_stat": "2天2板", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:00", "last_time": "10:11:39", "open_times": 4, "seal_amt": 9328300.0, "seal_ratio": 1.2127, "zt_amount_wan": 65209.82, "turnover": 9.434304237365723, "float_mv": 8153600000.0, "amount": 767886016.0, "industry": "农化制品", "reason_tags": ["国企改革", "乡村振兴", "农用化工", "整体上市"], "reason_text": "泰国糖产量可能降至1000万吨以下；秘鲁鱼粉价格大幅上涨I公司主营业务包括尿素、复合肥等化肥类产品；甲醇装置处于同行业先进水平，子公司绿源醇从事甲醇业务，拥有甲醇产能70万吨/年", "domain": "周期·资源", "topic": "农用化工", "industry_full": "农化制品"}], "1": [{"code": "600869", "name": "远东股份", "price": 24.93, "chg": 10.02, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "14:27:21", "last_time": "14:27:21", "open_times": 0, "seal_amt": 155199200.0, "seal_ratio": 1.9911, "zt_amount_wan": 108601.81, "turnover": 14.088030815124512, "float_mv": 55328463957.78, "amount": 7371147008.0, "industry": "电网设备", "reason_tags": ["液冷服务器", "非周期股"], "reason_text": "山东、广东等地液冷产线满产运行，核心设备CDU订单已排至2026年底I1、公司具备覆盖芯片级、机柜级、系统级的AIDC液冷全栈解决方案，并取得全球领先人工智能芯片公司等供应商编码； 2、公司1至8月智能电池储能及算力AI业务累计中标或签约千万元以上合同40.66亿元，同比增长154.02%，其中8月合同2.55亿元，同比增长1629.48%； 3、公司人形机器人线缆已应用于优必选产品，并送样智元机器人，采用高柔韧性材料，具备抗弯折和扭转性能", "domain": "电力设备·新能源", "topic": "电网设备", "industry_full": "电网设备"}, {"code": "603162", "name": "海通发展", "price": 15.43, "chg": 9.98, "lb": 1, "lb_stat": "5天3板", "board_type": "", "first_time": "09:58:18", "last_time": "09:58:18", "open_times": 0, "seal_amt": 128561200.0, "seal_ratio": 12.5238, "zt_amount_wan": 22216.73, "turnover": 15.748826026916504, "float_mv": 6518190164.82, "amount": 977358272.0, "industry": "航运港口", "reason_tags": ["一带一路", "首日破发", "航运港口"], "reason_text": "沙特—中国VLCC航线日收益较一年前上涨超过10倍I公司地处福建福州，主要从事国内沿海以及国际远洋的干散货运输业务，公司运营的航线遍布30余个国家和地区的200余个港口，为客户提供矿石、煤炭、化肥等多种货物的海上运输", "domain": "交运·物流", "topic": "航运港口", "industry_full": "航运港口"}, {"code": "603186", "name": "华正新材", "price": 212.06, "chg": 10.0, "lb": 1, "lb_stat": "3天2板", "board_type": "换手板(涨停)", "first_time": "10:03:23", "last_time": "13:58:38", "open_times": 2, "seal_amt": 101894800.0, "seal_ratio": 2.1261, "zt_amount_wan": 110920.1, "turnover": 14.414056777954102, "float_mv": 33248997247.08, "amount": 4658624512.0, "industry": "元件", "reason_tags": ["非周期股", "芯片", "元器件", "华为概念"], "reason_text": "松下宣布上调覆铜板（CCL）价格，部分产品涨幅最高达到30%I公司已将AI算力赛道纳入五年战略重点，Extreme Low-loss等级覆铜板已批量供货AI服务器、交换机、数据中心等核心场景", "domain": "半导体·芯片", "topic": "芯片", "industry_full": "元件"}, {"code": "600403", "name": "大有能源", "price": 7.48, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:57:05", "last_time": "10:45:20", "open_times": 1, "seal_amt": 96365600.0, "seal_ratio": 8.6169, "zt_amount_wan": 33075.66, "turnover": 6.253478527069092, "float_mv": 17883276766.960003, "amount": 1083284272.0, "industry": "煤炭开采", "reason_tags": ["国企改革", "煤炭开采", "摩根中国A股基金持股", "焦煤"], "reason_text": "河南能源集团旗下煤炭企业；此前河南省委、省政府决定对间接控股股东河南能源集团和中国平煤神马控股集团实施战略重组", "domain": "周期·资源", "topic": "煤炭开采", "industry_full": "煤炭开采"}, {"code": "603421", "name": "鼎信通讯", "price": 6.63, "chg": 9.95, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:30:21", "last_time": "09:35:57", "open_times": 1, "seal_amt": 88940800.0, "seal_ratio": 49.7209, "zt_amount_wan": 9281.2, "turnover": 4.136899948120117, "float_mv": 4324023087.93, "amount": 176790298.0, "industry": "通信设备", "reason_tags": ["芯片", "储能", "华为概念", "物联网", "虚拟电厂", "通信设备"], "reason_text": "公司深耕智能电网，拥有电能计量、配电自动化、中低压数字化全矩阵产品，参与国标制定，具备芯片-方案-系统垂直整合能力", "domain": "AI算力·光通信", "topic": "通信设备", "industry_full": "通信设备"}, {"code": "601872", "name": "招商轮船", "price": 20.99, "chg": 10.01, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:55:20", "last_time": "14:52:23", "open_times": 16, "seal_amt": 82100300.0, "seal_ratio": 2.0549, "zt_amount_wan": 137357.94, "turnover": 2.3573853969573975, "float_mv": 169484563156.97998, "amount": 3892801792.0, "industry": "航运港口", "reason_tags": ["周期股", "国企改革", "航运港口"], "reason_text": "沙特—中国VLCC航线日收益较一年前上涨超过10倍I招商局集团旗下，主要从事国际原油、国际与国内干散货、国内滚装等海运业务", "domain": "交运·物流", "topic": "航运港口", "industry_full": "航运港口"}, {"code": "603308", "name": "应流股份", "price": 46.3, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:01:45", "last_time": "10:03:00", "open_times": 2, "seal_amt": 75357900.0, "seal_ratio": 5.1554, "zt_amount_wan": 36943.7, "turnover": 4.334065914154053, "float_mv": 33726490542.3, "amount": 1429703264.0, "industry": "通用设备", "reason_tags": ["非周期股", "风电", "通用设备"], "reason_text": "公司为燃气轮机高温合金叶片及核心零部件供应商", "domain": "机器人·高端制造", "topic": "通用设备", "industry_full": "通用设备"}, {"code": "600698", "name": "湖南天雁", "price": 8.38, "chg": 9.97, "lb": 1, "lb_stat": "4天2板", "board_type": "换手板(涨停)", "first_time": "09:51:48", "last_time": "10:46:06", "open_times": 0, "seal_amt": 74706900.0, "seal_ratio": 8.822, "zt_amount_wan": 24807.4, "turnover": 12.16845989227295, "float_mv": 6959185589.580001, "amount": 822155280.0, "industry": "汽车零部", "reason_tags": ["国企改革", "高铁", "节能环保", "新能源车", "汽车零部件", "国六概念"], "reason_text": "中报业绩兑现行业景气上行I公司间接控股股东将变更为兵器装备集团汽车业务分立的中央企业", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "002498", "name": "汉缆股份", "price": 7.08, "chg": 9.94, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:59:33", "last_time": "10:00:18", "open_times": 1, "seal_amt": 70674700.0, "seal_ratio": 6.7462, "zt_amount_wan": 69521.92, "turnover": 4.447809219360352, "float_mv": 23553715680.0, "amount": 1030267072.0, "industry": "电网设备", "reason_tags": ["中标", "储能", "电网设备", "一带一路", "海洋经济"], "reason_text": "海上风电产业所需海缆产品的主要供应商之一", "domain": "电力设备·新能源", "topic": "电网设备", "industry_full": "电网设备"}, {"code": "605198", "name": "安德利", "price": 77.0, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:31:50", "last_time": "10:14:53", "open_times": 1, "seal_amt": 68591600.0, "seal_ratio": 22.5416, "zt_amount_wan": 16829.89, "turnover": 1.4607298374176025, "float_mv": 20831272000.0, "amount": 302336880.0, "industry": "农产品加", "reason_tags": ["人民币贬值受益", "乡村振兴", "饮料乳品", "苹果期货"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I公司拟收购甬强科技事项尚在推进中，交易完成后将形成浓缩果汁与电子信息互连材料双主业格局；标的公司主营覆铜板材料，已完成M4至M9全系列高速板材产品布局", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}, {"code": "603650", "name": "彤程新材", "price": 65.22, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:41:29", "last_time": "13:58:47", "open_times": 3, "seal_amt": 68565800.0, "seal_ratio": 3.1387, "zt_amount_wan": 79724.27, "turnover": 5.450028896331787, "float_mv": 40083356835.36, "amount": 2156858320.0, "industry": "橡胶", "reason_tags": ["芯片", "存储芯片", "高分红股", "橡胶"], "reason_text": "此前多家晶圆厂加速验证导入公司子公司北京科华的KrF光刻胶", "domain": "周期·资源", "topic": "橡胶", "industry_full": "橡胶"}, {"code": "600255", "name": "鑫科材料", "price": 3.89, "chg": 9.89, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:46:55", "last_time": "09:59:52", "open_times": 1, "seal_amt": 67248400.0, "seal_ratio": 11.0496, "zt_amount_wan": 41400.14, "turnover": 8.662296295166016, "float_mv": 7025911654.95, "amount": 595074368.0, "industry": "金属新材", "reason_tags": ["国企改革", "消费电子概念", "金属新材料", "铜缆高速连接"], "reason_text": "1、公司预计上半年净利润同比增长103%-153%，报告期内，公司持续进行产品结构调整，增加高附加值产品销量；同时，公司强化库存周转与生产组织安排，叠加铜价上涨因素，有效扩大了盈利空间，推动主要子公司安徽鑫科铜业有限公司经营业绩同比增长明显； 2、公司布局高速铜连接领域，产品涵盖800G-1.6T的ACC/AEC高速铜连接，并在研1.6T及3.2T高速铜连接项目，为AI与算力中心提供连接解决方案", "domain": "周期·资源", "topic": "金属新材料", "industry_full": "金属新材料"}, {"code": "000019", "name": "深粮控股", "price": 8.46, "chg": 10.01, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:05:33", "last_time": "14:37:36", "open_times": 4, "seal_amt": 61400100.0, "seal_ratio": 10.2535, "zt_amount_wan": 30029.11, "turnover": 17.006591796875, "float_mv": 3521127353.2200003, "amount": 581275008.0, "industry": "农产品加", "reason_tags": ["活跃小盘非融", "国企改革", "农产品加工"], "reason_text": "泰国糖产量可能降至1000万吨以下I深圳国资委控股的农产品集团旗下，主营茶及天然植物精深加工为主的食品原料（配料）生产、研发和销售，并同时拥有粮油储备、粮油贸易、粮油加工等粮油流通及粮油储备服务业务", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}, {"code": "000972", "name": "中基健康", "price": 4.37, "chg": 10.08, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:34:15", "last_time": "09:36:36", "open_times": 1, "seal_amt": 61202300.0, "seal_ratio": 29.9984, "zt_amount_wan": 16130.89, "turnover": 6.05305814743042, "float_mv": 3370509240.23, "amount": 202316898.0, "industry": "农产品加", "reason_tags": ["微小盘股", "国企改革", "新零售", "农产品加工"], "reason_text": "1、据2026年8月29日公告，公司主要从事大包装番茄酱、小包装番茄制品及番茄红素等番茄相关产品生产销售。 2、据2026年6月26日公告，公司推进加工番茄引种示范，落实示范地8251.9亩，并开展新品种实验种植。 3、据2026年8月4日公告，公司子公司红色番茄拟投资820万元建设210g、400g小罐直灌酱后包装生产线项目，切入C端消费市场，满足电商及“一人食”等新消费场景需求。 4、据2026年6月26日公告，公司控股股东为新疆生产建设兵团第六师国有资产经营有限责任公司，持续推进国企改革、重整及番茄产业链补强。", "domain": "农业·食品链", "topic": "农产品加工", "industry_full": "农产品加工"}, {"code": "600359", "name": "新农开发", "price": 8.76, "chg": 10.05, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:33:15", "last_time": "09:37:12", "open_times": 4, "seal_amt": 59850100.0, "seal_ratio": 17.4979, "zt_amount_wan": 20287.2, "turnover": 10.234501838684082, "float_mv": 3342052303.2, "amount": 335687760.0, "industry": "种植业", "reason_tags": ["微小盘股", "国企改革", "种业", "种植业"], "reason_text": "泰国糖产量可能降至1000万吨以下I新疆生产建设兵团农一师旗下；主营产品涉及棉花（包括长绒棉、陆地棉、彩色棉、抗虫棉），皮棉销量1.35万吨、棉种销量5306吨", "domain": "农业·食品链", "topic": "种植业", "industry_full": "种植业"}, {"code": "002077", "name": "大港股份", "price": 13.74, "chg": 10.01, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "09:32:06", "last_time": "13:23:06", "open_times": 11, "seal_amt": 53601100.0, "seal_ratio": 4.6943, "zt_amount_wan": 68357.33, "turnover": 14.319376945495605, "float_mv": 7973988568.62, "amount": 1129163504.0, "industry": "半导体", "reason_tags": ["芯片", "国企改革", "先进封装", "创投概念", "存储芯片", "半导体"], "reason_text": "全资子公司上海旻艾定位于中高端IC测试，主打12英寸、8英寸的CP服务以及QFP、BGA、DIP、SOP、QFN等封装芯片测试，产品类型包括存储芯片等多个类型", "domain": "半导体·芯片", "topic": "半导体", "industry_full": "半导体"}, {"code": "600540", "name": "新赛股份", "price": 7.21, "chg": 10.08, "lb": 1, "lb_stat": "10天6板", "board_type": "换手板(涨停)", "first_time": "09:56:42", "last_time": "13:18:18", "open_times": 1, "seal_amt": 52509700.0, "seal_ratio": 3.9055, "zt_amount_wan": 34278.93, "turnover": 32.07535171508789, "float_mv": 4191727881.6, "amount": 1291393680.0, "industry": "种植业", "reason_tags": ["国企改革", "风电", "种植业", "一带一路", "股东减持"], "reason_text": "泰国糖产量可能降至1000万吨以下I公司农业主要产品为棉籽、葵花籽、菜籽及其他油料作物，立足于新疆棉花产业，聚焦棉业全产业链", "domain": "农业·食品链", "topic": "种植业", "industry_full": "种植业"}, {"code": "002046", "name": "国机精工", "price": 59.44, "chg": 9.99, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:08:09", "last_time": "11:02:30", "open_times": 2, "seal_amt": 52503400.0, "seal_ratio": 4.1137, "zt_amount_wan": 50354.0, "turnover": 4.050900936126709, "float_mv": 31506520437.28, "amount": 1252215680.0, "industry": "通用设备", "reason_tags": ["芯片", "国企改革", "风电", "机器人概念", "第三代半导体"], "reason_text": "1、培育钻石产业链核心玩家，以“设备+产品”双轮驱动布局；子公司三磨所是超硬材料行业引领者，其六面顶压机市占率超 60%，为黄河旋风、力量钻石等头部企业供货； 2、中国航空航天轴承领域领先企业，曾为嫦娥一号、嫦娥二号、长征二号捆绑式大推力火箭、长征四号甲等项目提供配套轴承及相关研发服务", "domain": "机器人·高端制造", "topic": "机器人概念", "industry_full": "通用设备"}, {"code": "600121", "name": "郑州煤电", "price": 5.7, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:54:19", "last_time": "10:55:46", "open_times": 0, "seal_amt": 49156200.0, "seal_ratio": 4.0124, "zt_amount_wan": 17085.52, "turnover": 17.640233993530273, "float_mv": 6944948616.6, "amount": 1165089408.0, "industry": "煤炭开采", "reason_tags": ["动力煤", "国企改革", "机器人概念"], "reason_text": "1、实控人河南省国资委；公司是郑州煤炭龙头，拥有部分火电业务，参股公司复晟铝业（持股40%）拥有氧化铝粉产能； 2、两大煤矿有望注入公司，未来或新增可采储量16.2亿吨", "domain": "周期·资源", "topic": "动力煤", "industry_full": "煤炭开采"}, {"code": "603328", "name": "依顿电子", "price": 12.1, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "13:05:51", "last_time": "13:05:51", "open_times": 0, "seal_amt": 45897700.0, "seal_ratio": 8.8166, "zt_amount_wan": 11446.72, "turnover": 4.309056282043457, "float_mv": 12081155593.1, "amount": 502327008.0, "industry": "元件", "reason_tags": ["CPO概念", "国企改革", "元器件"], "reason_text": "松下宣布上调覆铜板（CCL）价格，部分产品涨幅最高达到30%I1、印制电路板行业内的重要品牌之一；公司的印制电路板具有高精度、高密度、高可靠性的特点，已广泛应用于汽车电子、新能源及电源、计算机与通讯、工控医疗、多媒体与显示等领域； 2、公司是苹果的间接供应商，目前进入苹果产业链的产品主要用于电源系统及模块，键盘使用，数据线连接器等", "domain": "半导体·芯片", "topic": "元件", "industry_full": "元件"}, {"code": "601579", "name": "会稽山", "price": 25.3, "chg": 10.0, "lb": 1, "lb_stat": "4天2板", "board_type": "换手板(涨停)", "first_time": "09:51:10", "last_time": "13:38:07", "open_times": 4, "seal_amt": 41153000.0, "seal_ratio": 4.8969, "zt_amount_wan": 22128.39, "turnover": 6.927977085113525, "float_mv": 12130424247.7, "amount": 819278144.0, "industry": "非白酒", "reason_tags": ["新零售", "电商概念", "酿酒", "高分红股"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I国内龙头黄酒供应商；公司在生产黄酒的同时，也利用黄酒生产过程产生的醪糟作为原料，通过蒸馏生产糟烧白酒，并一直有销售糟烧白酒等副产品的传统", "domain": "消费·新零售", "topic": "新零售", "industry_full": "非白酒"}, {"code": "002040", "name": "南 京 港", "price": 9.98, "chg": 10.03, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:11:45", "last_time": "10:26:54", "open_times": 2, "seal_amt": 37816200.0, "seal_ratio": 10.7135, "zt_amount_wan": 21744.72, "turnover": 7.276309967041016, "float_mv": 4851032941.1, "amount": 344393200.0, "industry": "航运港口", "reason_tags": ["国企改革", "自由贸易港", "航运港口", "江苏自贸区"], "reason_text": "沙特—中国VLCC航线日收益较一年前上涨超过10倍I我国内河最大的石油、液体化工产品中转储存的港口运输企业", "domain": "交运·物流", "topic": "航运港口", "industry_full": "航运港口"}, {"code": "603900", "name": "莱绅通灵", "price": 7.45, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "13:52:10", "last_time": "13:52:13", "open_times": 0, "seal_amt": 23647000.0, "seal_ratio": 8.1482, "zt_amount_wan": 7110.95, "turnover": 11.366243362426758, "float_mv": 2553292608.0, "amount": 274873568.0, "industry": "饰品", "reason_tags": ["活跃小盘非融", "微盘精选", "新零售"], "reason_text": "Comex黄金期货重返4700美元上方I公司主营珠宝饰品、工艺美术品等，与蓝精灵 IP 联名，用18K金、天然贝母、珐琅等工艺打造珠宝，借热门 IP 拓展业务", "domain": "消费·新零售", "topic": "新零售", "industry_full": "饰品"}, {"code": "000993", "name": "闽东电力", "price": 11.47, "chg": 9.97, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "10:54:39", "last_time": "10:54:39", "open_times": 0, "seal_amt": 23288700.0, "seal_ratio": 6.9766, "zt_amount_wan": 23754.03, "turnover": 6.3549981117248535, "float_mv": 5252703188.85, "amount": 327480752.0, "industry": "电力", "reason_tags": ["国企改革", "风电", "创投概念", "绿色电力", "电力", "钼金属"], "reason_text": "1、福建省最大的电力股份制企业；公司主营业务为电力生产与开发，主要以水电、风电、光伏为主； 2、持股海交所7.4%，海交所提供不良资产处置服务", "domain": "电力设备·新能源", "topic": "电力", "industry_full": "电力"}, {"code": "601890", "name": "亚星锚链", "price": 10.08, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:15:26", "last_time": "14:53:47", "open_times": 4, "seal_amt": 20813200.0, "seal_ratio": 1.5309, "zt_amount_wan": 86781.74, "turnover": 14.058345794677734, "float_mv": 9670752000.0, "amount": 1335611104.0, "industry": "航海装备", "reason_tags": ["风电", "国防军工", "高端装备", "航海装备", "海洋经济"], "reason_text": "中报业绩兑现行业景气上行I公司为世界锚链行业内最大的、专业化从事船用锚链和海洋系泊链的生产企业，拟建设深远海系泊项目", "domain": "机器人·高端制造", "topic": "航海装备", "industry_full": "航海装备"}, {"code": "600192", "name": "长城电工", "price": 7.89, "chg": 10.04, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:32:39", "last_time": "11:30:00", "open_times": 1, "seal_amt": 16223400.0, "seal_ratio": 6.6611, "zt_amount_wan": 12091.98, "turnover": 6.987832069396973, "float_mv": 3485391720.0, "amount": 237057143.0, "industry": "电网设备", "reason_tags": ["微小盘股", "国企改革", "风电", "电网设备"], "reason_text": "1.公司目前具备核电开关设备IE级的设计及制造资质，部分产品已应用漳州核电厂； 2、西部地区电力设备龙头企业，主要包括低压开关成套设备、高中低压电器元件及关键零部件、智能低压成套配电装置及母线槽等电工电器类产品", "domain": "电力设备·新能源", "topic": "电网设备", "industry_full": "电网设备"}, {"code": "000909", "name": "*ST数源", "price": 5.01, "chg": 10.11, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "10:12:27", "last_time": "10:12:27", "open_times": 0, "seal_amt": 13181300.0, "seal_ratio": 30.1143, "zt_amount_wan": 1494.73, "turnover": 0.0, "float_mv": 0.0, "amount": 0.0, "industry": "", "reason_tags": ["ST板块", "国企改革", "房地产开发"], "reason_text": "公司预计上半年亏损1000万元-1700万元", "domain": "地产·建筑", "topic": "房地产开发", "industry_full": ""}, {"code": "000798", "name": "中水渔业", "price": 12.67, "chg": 9.98, "lb": 1, "lb_stat": "4天3板", "board_type": "换手板(涨停)", "first_time": "10:24:24", "last_time": "14:50:00", "open_times": 14, "seal_amt": 12876500.0, "seal_ratio": 1.0758, "zt_amount_wan": 30409.39, "turnover": 25.82280158996582, "float_mv": 4635144806.04, "amount": 1150095136.0, "industry": "渔业", "reason_tags": ["昨日断板", "国企改革", "渔业"], "reason_text": "泰国糖产量可能降至1000万吨以下I中国农业发展集团旗下，主营远洋水产品，有金枪饺子、金枪鱼圈等预制食品", "domain": "农业·食品链", "topic": "渔业", "industry_full": "渔业"}, {"code": "000565", "name": "渝三峡Ａ", "price": 7.19, "chg": 9.94, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:42:51", "last_time": "13:24:03", "open_times": 1, "seal_amt": 12534300.0, "seal_ratio": 4.5177, "zt_amount_wan": 17291.16, "turnover": 8.899659156799316, "float_mv": 3117528061.8, "amount": 270737856.0, "industry": "化学制品", "reason_tags": ["微小盘股", "微盘精选", "化学制品"], "reason_text": "沙特多处能源设施遭袭起火I1、重庆国资委旗下，我国涂料行业龙头； 2、公司重防腐涂料打破外资垄断，曾为天宫一号、神舟九号、长征二号F火箭等军工航天工程提供配套，获国家航天科工集团授牌", "domain": "周期·资源", "topic": "化学制品", "industry_full": "化学制品"}, {"code": "002155", "name": "湖南黄金", "price": 28.45, "chg": 10.02, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "13:53:54", "last_time": "15:00:00", "open_times": 52, "seal_amt": 9912000.0, "seal_ratio": 0.2353, "zt_amount_wan": 114923.78, "turnover": 9.474299430847168, "float_mv": 44453094188.65, "amount": 4053062624.0, "industry": "贵金属", "reason_tags": ["周期股", "贵金属", "国企改革"], "reason_text": "1、公司拟收购黄金天岳及中南冶炼合计100%股权，相关评估范围保有金金属资源量111.54吨。  2、公司拥有黄金、锑、钨采选、冶炼及深加工完整产业链，具备100吨年黄金及2.5万吨年精锑冶炼产能。  3、公司上半年营业收入320.29亿元，同比增长12.63%，总毛利率增加0.85个百分点。", "domain": "周期·资源", "topic": "贵金属", "industry_full": "贵金属"}, {"code": "002377", "name": "国创高新", "price": 3.15, "chg": 10.14, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "10:34:18", "last_time": "14:49:15", "open_times": 6, "seal_amt": 7152400.0, "seal_ratio": 1.3212, "zt_amount_wan": 20660.41, "turnover": 19.698863983154297, "float_mv": 2748210951.15, "amount": 528317056.0, "industry": "炼化及贸", "reason_tags": ["微小盘股", "互联金融", "武汉规划", "装饰建材"], "reason_text": "沙特多处能源设施遭袭起火I公司主要从事路面改性沥青系列产品", "domain": "周期·资源", "topic": "装饰建材", "industry_full": "炼化及贸易"}, {"code": "002162", "name": "悦心健康", "price": 4.51, "chg": 10.0, "lb": 1, "lb_stat": "1天1板", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:00", "last_time": "14:09:57", "open_times": 10, "seal_amt": 5309600.0, "seal_ratio": 1.0683, "zt_amount_wan": 25855.52, "turnover": 12.000399589538574, "float_mv": 4141630510.71, "amount": 491451008.0, "industry": "家居用品", "reason_tags": ["机器人概念", "电商概念", "人工智能", "健康中国", "医美概念"], "reason_text": "上海10月起住院分娩费用全额报销I子公司悦心多宝与金矢机器人成立合资公司，将专注于研发、生产、销售适用于医疗康复养老领域机器人。", "domain": "消费·新零售", "topic": "电商概念", "industry_full": "家居用品"}, {"code": "605162", "name": "新中港", "price": 11.23, "chg": 9.99, "lb": 1, "lb_stat": "1天1板", "board_type": "换手板(涨停)", "first_time": "11:04:32", "last_time": "14:54:17", "open_times": 5, "seal_amt": 4999600.0, "seal_ratio": 0.6876, "zt_amount_wan": 20627.38, "turnover": 14.619662284851074, "float_mv": 4973164072.53, "amount": 697972960.0, "industry": "电力", "reason_tags": ["储能", "节能环保", "摩根中国A股基金持股", "电力", "虚拟电厂"], "reason_text": "1、公司已于2026年5月向绍兴弗迪电池有限公司供汽，供热量增加明显，随着客户产能爬坡，供汽量有望持续提升。  2、公司100MW电网侧储能项目可参与调频、调峰、黑启动等辅助服务，独立储能纳入容量电价补偿范围。  3、公司主要向全市150多家企业供热，并向工业企业供应压缩空气、向电网公司供应上网电力。", "domain": "电力设备·新能源", "topic": "电力", "industry_full": "电力"}, {"code": "600778", "name": "友好集团", "price": 6.64, "chg": 9.93, "lb": 1, "lb_stat": "1天1板", "board_type": "", "first_time": "10:05:08", "last_time": "10:05:08", "open_times": 0, "seal_amt": 4695800.0, "seal_ratio": 1.6086, "zt_amount_wan": 16346.82, "turnover": 14.126343727111816, "float_mv": 2066466816.48, "amount": 285223952.0, "industry": "一般零售", "reason_tags": ["活跃小盘非融", "跨境电商", "新零售"], "reason_text": "7部门印发关于推动商品消费扩容升级的实施意见I新疆商业流通龙头；公司经营业态包括百货商场、购物中心、大型综合超市、标准超市、超市便利店等", "domain": "消费·新零售", "topic": "跨境电商", "industry_full": "一般零售"}]}, "rank": [{"name": "新零售", "count": 7, "max_lb": 5, "seal_amt": 704276000.0, "theme": "消费·新零售"}, {"name": "芯片", "count": 6, "max_lb": 3, "seal_amt": 519529700.0, "theme": "半导体·芯片"}, {"name": "风电", "count": 6, "max_lb": 1, "seal_amt": 240696300.0, "theme": "电力设备·新能源"}, {"name": "电商概念", "count": 5, "max_lb": 2, "seal_amt": 597503100.0, "theme": "消费·新零售"}, {"name": "储能", "count": 4, "max_lb": 2, "seal_amt": 268905700.0, "theme": "电力设备·新能源"}, {"name": "创投概念", "count": 3, "max_lb": 5, "seal_amt": 136671000.0, "theme": "金融·多元"}, {"name": "华为概念", "count": 3, "max_lb": 3, "seal_amt": 344859400.0, "theme": "AI算力·光通信"}, {"name": "农产品加工", "count": 3, "max_lb": 2, "seal_amt": 260400700.0, "theme": "农业·食品链"}, {"name": "航运港口", "count": 3, "max_lb": 1, "seal_amt": 248477700.0, "theme": "交运·物流"}, {"name": "机器人概念", "count": 3, "max_lb": 1, "seal_amt": 106969200.0, "theme": "机器人·高端制造"}, {"name": "农用化工", "count": 2, "max_lb": 3, "seal_amt": 184733000.0, "theme": "周期·资源"}, {"name": "跨境电商", "count": 2, "max_lb": 3, "seal_amt": 172640700.0, "theme": "消费·新零售"}, {"name": "汽车零部件", "count": 2, "max_lb": 2, "seal_amt": 190065300.0, "theme": "汽车·出行"}, {"name": "橡胶", "count": 2, "max_lb": 2, "seal_amt": 125568800.0, "theme": "周期·资源"}, {"name": "元器件", "count": 2, "max_lb": 1, "seal_amt": 147792500.0, "theme": "AI算力·光通信"}, {"name": "存储芯片", "count": 2, "max_lb": 1, "seal_amt": 122166900.0, "theme": "半导体·芯片"}, {"name": "种植业", "count": 2, "max_lb": 1, "seal_amt": 112359800.0, "theme": "农业·食品链"}, {"name": "虚拟电厂", "count": 2, "max_lb": 1, "seal_amt": 93940400.0, "theme": "电力设备·新能源"}, {"name": "海洋经济", "count": 2, "max_lb": 1, "seal_amt": 91487900.0, "theme": "交运·物流"}, {"name": "电网设备", "count": 2, "max_lb": 1, "seal_amt": 86898100.0, "theme": "电力设备·新能源"}, {"name": "电力", "count": 2, "max_lb": 1, "seal_amt": 28288300.0, "theme": "电力设备·新能源"}, {"name": "微信概念", "count": 1, "max_lb": 3, "seal_amt": 167944900.0, "theme": "消费·新零售"}, {"name": "光纤概念", "count": 1, "max_lb": 3, "seal_amt": 154023800.0, "theme": "AI算力·光通信"}, {"name": "低空经济", "count": 1, "max_lb": 3, "seal_amt": 35255900.0, "theme": "机器人·高端制造"}, {"name": "虚拟数字人", "count": 1, "max_lb": 3, "seal_amt": 35255900.0, "theme": "AI算力·光通信"}, {"name": "旅游", "count": 1, "max_lb": 3, "seal_amt": 35255900.0, "theme": "消费·新零售"}, {"name": "工业大麻", "count": 1, "max_lb": 2, "seal_amt": 345851800.0, "theme": "其他题材"}, {"name": "家居用品", "count": 1, "max_lb": 2, "seal_amt": 152075100.0, "theme": "消费·新零售"}, {"name": "生物质能", "count": 1, "max_lb": 2, "seal_amt": 137798300.0, "theme": "环保·公用"}, {"name": "百度概念", "count": 1, "max_lb": 2, "seal_amt": 115358400.0, "theme": "其他题材"}, {"name": "工业金属", "count": 1, "max_lb": 2, "seal_amt": 104290600.0, "theme": "周期·资源"}, {"name": "创新药", "count": 1, "max_lb": 2, "seal_amt": 78077500.0, "theme": "医药·医疗"}, {"name": "电解液", "count": 1, "max_lb": 2, "seal_amt": 78077500.0, "theme": "电力设备·新能源"}, {"name": "焦炭加工", "count": 1, "max_lb": 2, "seal_amt": 62596700.0, "theme": "周期·资源"}, {"name": "石墨电极", "count": 1, "max_lb": 2, "seal_amt": 62596700.0, "theme": "周期·资源"}, {"name": "锂电池概念", "count": 1, "max_lb": 2, "seal_amt": 57003000.0, "theme": "电力设备·新能源"}, {"name": "超级电容", "count": 1, "max_lb": 2, "seal_amt": 57003000.0, "theme": "电力设备·新能源"}, {"name": "食品加工", "count": 1, "max_lb": 2, "seal_amt": 53113600.0, "theme": "消费·新零售"}, {"name": "液冷服务器", "count": 1, "max_lb": 1, "seal_amt": 155199200.0, "theme": "AI算力·光通信"}, {"name": "煤炭开采", "count": 1, "max_lb": 1, "seal_amt": 96365600.0, "theme": "周期·资源"}], "cross": []};
+const LONE = '其他/独立';
+
+/* ============ 树构建 ============ */
+function buildTree(){
+  const root = {id:'root', type:'root', name:DATA.meta.date,
+    sub:`${DATA.meta.zt_count}家涨停 · 最高${DATA.meta.max_lb}板`,
+    sub2:`炸板${DATA.meta.zb_count??'-'}家 · ${DATA.meta.theme_count}个主题域 · ${DATA.meta.topic_count}个细分题材`,
+    children:[], color:'#4f8cff'};
+  DATA.themes.forEach((th,ti)=>{
+    const tn = {id:'t'+ti, type:'theme', name:th.name, color:th.color,
+      count:th.count, max_lb:th.max_lb, children:[], raw:th};
+    th.topics.forEach((tp,pi)=>{
+      const pn = {id:`t${ti}_${pi}`, type:'topic', name:tp.name, color:th.color,
+        count:tp.count, max_lb:tp.max_lb, children:[], parent:tn, raw:tp, collapsed:true};
+      tp.stocks.forEach((s,si)=>{
+        pn.children.push({id:`t${ti}_${pi}_${si}`, type:'stock', name:s.name,
+          color:th.color, raw:s, parent:pn, children:[]});
+      });
+      tn.children.push(pn);
+    });
+    root.children.push(tn);
+  });
+  return root;
+}
+
+/* ============ 布局 ============ */
+const NW=[218,206,196,214], NH=[80,50,38,42], COLX=[36,300,556,802], RG=9, TG=20;
+let ROOT=buildTree(), FLAT=[], VW=1100, VH=800;
+
+function layout(){
+  FLAT=[]; let y=0;
+  (function walk(n,d){
+    n.depth=d; n.x=COLX[d]; n.w=NW[d]; n.h=NH[d]; FLAT.push(n);
+    if(n.collapsed || !n.children.length){
+      n.y=y+n.h/2; y+=n.h+RG;
+    }else{
+      n.children.forEach(c=>walk(c,d+1));
+      const f=n.children[0], l=n.children[n.children.length-1];
+      n.y=(f.y+l.y)/2;
+      if(d===1) y+=TG;
+      if(d===2) y+=4;
+    }
+  })(ROOT,0);
+  VH=Math.max(y,600); VW=COLX[3]+NW[3]+40;
+}
+
+/* ============ 渲染 ============ */
+const NS='http://www.w3.org/2000/svg';
+const svg=document.getElementById('stage');
+let TX=0,TY=0,SC=1;
+
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function lbColor(n){const l=n.raw?n.raw.lb:1;
+  return l>=5?'#a21caf':l>=4?'#dc2626':l>=3?'#ef4444':l>=2?'#f59e0b':'#4b5b70';}
+function fmtYi(v){v=v/1e8; return v>=1?v.toFixed(2)+'亿':(v*10000>=1?Math.round(v*10000)+'万':'0');}
+function fmtTime(t){return t?t.slice(0,5):'--';}
+function esc(s){return String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+function nodeBody(n){
+  const g=el('g',{class:'node','data-id':n.id});
+  const r=el('rect',{class:'nd',x:n.x,y:n.y-n.h/2,width:n.w,height:n.h,rx:9,
+    fill:'#171f2b',stroke:n.color,'stroke-width':n.type==='root'?2:1.4,
+    'stroke-opacity':n.type==='stock'?.45:.9});
+  if(n.type==='theme'||n.type==='topic'||n.type==='root'){
+    r.setAttribute('fill',hexA(n.color,n.type==='topic'?.07:.13));
+  }
+  g.appendChild(r);
+  // 左侧色条
+  if(n.type!=='root'){
+    g.appendChild(el('rect',{x:n.x,y:n.y-n.h/2,width:3.5,height:n.h,rx:2,
+      fill:n.color,'fill-opacity':n.type==='stock'?.65:1}));
+  }
+
+  if(n.type==='root'){
+    g.appendChild(txt(n.x+14,n.y-16,n.name,15,'#fff',700));
+    g.appendChild(txt(n.x+14,n.y+5,n.sub,12,'#ff6b6d',700));
+    g.appendChild(txt(n.x+14,n.y+23,n.sub2,10.5,'#6b7d94'));
+  }
+  else if(n.type==='theme'){
+    g.appendChild(txt(n.x+14,n.y-7,n.name,14,'#e6edf3',700));
+    g.appendChild(txt(n.x+14,n.y+13,`${n.count}家 · 最高${n.max_lb}板`,11,'#9fb0c6'));
+    g.appendChild(badgeR(n.x+n.w-10,n.y,`${n.count}`,n.color));
+  }
+  else if(n.type==='topic'){
+    g.appendChild(txt(n.x+13,n.y+1,n.name,12.5,'#dbe6f2',600));
+    g.appendChild(badgeR(n.x+n.w-10,n.y,`${n.count}`,hexA(n.color,.9),true));
+  }
+  else{
+    const s=n.raw;
+    g.appendChild(txt(n.x+12,n.y-6,s.name,13.5,'#e6edf3',700));
+    g.appendChild(badgeR(n.x+n.w-10,n.y-6,`${s.lb}板`,lbColor(n)));
+    if(SHOWLABEL){
+      const bt=s.board_type?s.board_type.replace('(涨停)',''):'';
+      g.appendChild(txt(n.x+12,n.y+13,
+        `封单${fmtYi(s.seal_amt)} · ${bt||s.lb_stat||''} · ${fmtTime(s.first_time)}`,
+        10.5,'#6b7d94'));
+    }
+  }
+  return g;
+}
+function txt(x,y,s,size,fill,weight){
+  const t=el('text',{x,y,'font-size':size,fill});
+  if(weight)t.setAttribute('font-weight',weight);
+  t.textContent=s; return t;
+}
+function badgeR(x,y,s,color,small){
+  const w=String(s).length*(small?8:9)+14, h=small?17:19;
+  const g=el('g',{});
+  g.appendChild(el('rect',{x:x-w,y:y-h/2,width:w,height:h,rx:h/2,fill:color,'fill-opacity':.19,
+    stroke:color,'stroke-opacity':.75,'stroke-width':1}));
+  g.appendChild(txt(x-w/2,y+4,s,small?10.5:11.5,color,700)).setAttribute('text-anchor','middle');
+  return g;
+}
+function hexA(h,a){
+  const n=parseInt(h.slice(1),16);
+  return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;
+}
+
+function render(){
+  svg.innerHTML='';
+  const defs=el('defs',{}); svg.appendChild(defs);
+  const gL=el('g',{id:'links'}), gN=el('g',{id:'nodes'});
+  svg.appendChild(gL); svg.appendChild(gN);
+  FLAT.forEach(n=>{
+    if(!n.parent) return;
+    const x1=n.parent.x+n.parent.w, y1=n.parent.y, x2=n.x, y2=n.y;
+    const dx=Math.max((x2-x1)/2, 26);
+    const p=el('path',{class:'lk',id:'p_'+n.id,
+      d:`M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`,
+      stroke:n.color,'stroke-opacity':n.type==='stock'?.32:.55});
+    gL.appendChild(p);
+  });
+  FLAT.forEach(n=>{const g=nodeBody(n); gN.appendChild(g);});
+  applyFilter();
+  fit();
+}
+function transform(){
+  document.getElementById('links').setAttribute('transform',`translate(${TX},${TY}) scale(${SC})`);
+  document.getElementById('nodes').setAttribute('transform',`translate(${TX},${TY}) scale(${SC})`);
+}
+
+/* ============ 交互 ============ */
+let SHOWLABEL=true, HIDE_LONE=false, SHOW_CROSS=false;
+const main=document.getElementById('main'), tip=document.getElementById('tip');
+
+function fit(){
+  const W=main.clientWidth||1000, H=main.clientHeight||700;
+  let s = Math.min((W-40)/VW, (H-40)/VH);
+  s = Math.min(Math.max(s, 0.4), 1.4);
+  SC=s; TX=Math.max(20,(W-VW*s)/2); TY=Math.max(12,(H-VH*s)/2);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('width',W); svg.setAttribute('height',H);
+  transform();
+}
+function set100(){
+  const r=main.getBoundingClientRect();
+  const W=r.width||1000, H=r.height||700;
+  SC=1; TX=Math.max(0,(W-VW)/2); TY=Math.max(0,(H-VH)/2);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('width',W); svg.setAttribute('height',H);
+  transform();
+}
+function zoom(f){
+  const r=main.getBoundingClientRect();
+  const cx=r.width/2, cy=r.height/2;
+  TX=cx-(cx-TX)*f; TY=cy-(cy-TY)*f; SC*=f; transform();
+}
+main.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.12:1/1.12);},{passive:false});
+let drag=null;
+main.addEventListener('mousedown',e=>{if(e.target.closest('.node'))return;
+  drag={x:e.clientX-TX,y:e.clientY-TY};main.classList.add('drag');});
+window.addEventListener('mousemove',e=>{if(drag){TX=e.clientX-drag.x;TY=e.clientY-drag.y;transform();}});
+window.addEventListener('mouseup',()=>{drag=null;main.classList.remove('drag');});
+
+svg.addEventListener('click',e=>{
+  const g=e.target.closest('.node'); if(!g) return;
+  const n=FLAT.find(x=>x.id===g.dataset.id); if(!n) return;
+  if(n.type==='stock'){ showDetail(n.raw); return; }
+  n.collapsed=!n.collapsed; layout(); render(); transform();
+});
+svg.addEventListener('mousemove',e=>{
+  const g=e.target.closest('.node');
+  if(!g){tip.style.opacity=0;
+    document.querySelectorAll('path.lk.hi').forEach(p=>p.classList.remove('hi'));return;}
+  const n=FLAT.find(x=>x.id===g.dataset.id); if(!n){return;}
+  // 高亮祖先链
+  document.querySelectorAll('path.lk.hi').forEach(p=>p.classList.remove('hi'));
+  let c=n; while(c.parent){const p=document.getElementById('p_'+c.id); if(p)p.classList.add('hi'); c=c.parent;}
+  const r=main.getBoundingClientRect();
+  let t='';
+  if(n.type==='stock'){const s=n.raw;
+    t=`${s.name} ${s.code} · ${s.lb}板 · 封单${fmtYi(s.seal_amt)} · 换手${s.turnover.toFixed(1)}%`;}
+  else if(n.type==='topic') t=`${n.name} · ${n.count}家 · 最高${n.max_lb}板`;
+  else if(n.type==='theme') t=`${n.name} · ${n.count}家 · 最高${n.max_lb}板`;
+  else t=`${DATA.meta.date} 涨停${DATA.meta.zt_count}家`;
+  tip.textContent=t; tip.style.opacity=1;
+  tip.style.left=Math.min(e.clientX-r.left+14, r.width-260)+'px';
+  tip.style.top=(e.clientY-r.top+16)+'px';
+});
+svg.addEventListener('mouseleave',()=>{tip.style.opacity=0;});
+
+/* ---- 右侧详情 ---- */
+function showDetail(s){
+  document.getElementById('tDetail').click();
+  const d=document.getElementById('detail');
+  const ind=s.industry_full||s.industry||'-';
+  const tags=(s.reason_tags||[]).filter(t=>t);
+  d.innerHTML=`
+    <div class="dt-h"><b>${esc(s.name)}</b><code>${s.code}</code>
+      <span style="background:${lbColor({raw:s})};color:#fff;border-radius:5px;
+        padding:2px 8px;font-size:11px;font-weight:700">${s.lb}板</span></div>
+    <div class="dt-sub">${(+s.price).toFixed(2)} 元　
+      <span style="color:var(--up)">+${(+s.chg).toFixed(2)}%</span>　${esc(ind)}　${esc(s.lb_stat||'')}</div>
+    <dl class="kv">
+      <dt>板型</dt><dd>${esc(s.board_type||'-')}</dd>
+      <dt>首封</dt><dd>${fmtTime(s.first_time)}　末封 ${fmtTime(s.last_time)}</dd>
+      <dt>炸板</dt><dd>${s.open_times} 次</dd>
+      <dt>封单</dt><dd>${fmtYi(s.seal_amt)}　封成比 ${(+s.seal_ratio).toFixed(1)}</dd>
+      <dt>成交额</dt><dd>${fmtYi(s.amount)}</dd>
+      <dt>换手率</dt><dd>${(+s.turnover).toFixed(2)}%</dd>
+      <dt>流通市值</dt><dd>${fmtYi(s.float_mv)}</dd>
+      <dt>所属题材</dt><dd>${esc(s.topic||'-')}</dd>
+    </dl>
+    <div class="tags">${tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')||'<span class="tag">-</span>'}</div>
+    <div class="reason">${esc(s.reason_text||'暂无涨停原因')}</div>`;
+}
+
+/* ---- 题材强度榜 ---- */
+function showRank(){
+  const r=document.getElementById('rank');
+  const mx=Math.max(...DATA.rank.map(x=>x.count));
+  r.innerHTML=`<div class="sec" style="margin-top:0">细分题材 · 涨停家数</div>`+
+    DATA.rank.map((x,i)=>`
+      <div class="rk">
+        <div class="r">${i+1}</div>
+        <div class="nm" title="${esc(x.name)}">${esc(x.name)}</div>
+        <div class="bar"><i style="width:${x.count/mx*100}%"></i></div>
+        <div class="v">${x.count}</div>
+      </div>`).join('');
+}
+
+/* ---- 主题域筛选 ---- */
+const themeState={};
+function initThemes(){
+  const box=document.getElementById('themes');
+  box.innerHTML=DATA.themes.map((t,i)=>`
+    <div class="ti" data-i="${i}">
+      <div class="dot" style="background:${t.color}"></div>
+      <div class="n">${esc(t.name)}</div><div class="c">${t.count}</div>
+    </div>`).join('');
+  box.querySelectorAll('.ti').forEach(d=>{
+    d.onclick=()=>{const i=d.dataset.i;
+      themeState[i]=!themeState[i]; d.classList.toggle('off',!!themeState[i]);
+      applyFilter();};
+  });
+}
+function applyFilter(){
+  FLAT.forEach(n=>{
+    const g=document.querySelector(`.node[data-id="${n.id}"]`);
+    const p=document.getElementById('p_'+n.id);
+    let dim=false;
+    if(n.type==='theme'&&themeState[n.raw?DATA.themes.indexOf(n.raw):-1]) dim=true;
+    else if(n.parentType) {}
+    if(n.type==='topic'&&themeState[n.parent?DATA.themes.indexOf(n.parent.raw):-1]) dim=true;
+    if(n.type==='stock'&&themeState[n.parent&&n.parent.parent?DATA.themes.indexOf(n.parent.parent.raw):-1]) dim=true;
+    if(HIDE_LONE&&n.type==='topic'&&n.count===1) dim=true;
+    if(g)g.classList.toggle('dim',dim);
+    if(p)p.style.opacity=dim?.06:'';
+  });
+  if(Q){highlight(Q);}
+}
+
+/* ---- 搜索 ---- */
+let Q='';
+function highlight(q){
+  Q=q=q.trim();
+  document.querySelectorAll('.node').forEach(g=>g.classList.remove('dim'));
+  if(!q){applyFilter();return;}
+  FLAT.forEach(n=>{
+    if(n.type==='root')return;
+    const s=n.raw;
+    let hit=false;
+    if(n.type==='stock') hit=s.name.includes(q)||s.code.includes(q)||
+      (s.reason_text||'').includes(q)||(s.reason_tags||[]).some(t=>t.includes(q));
+    else hit=n.name.includes(q);
+    const g=document.querySelector(`.node[data-id="${n.id}"]`);
+    if(g)g.classList.toggle('dim',!hit);
+  });
+}
+document.getElementById('q').addEventListener('input',e=>highlight(e.target.value));
+
+/* ---- 工具按钮 ---- */
+function setAll(c){FLAT.forEach(n=>{if(n.type!=='stock')n.collapsed=c;});layout();render();transform();}
+document.getElementById('bFit').onclick=fit;
+document.getElementById('b100').onclick=set100;
+document.getElementById('bExpand').onclick=()=>setAll(false);
+document.getElementById('bCollapse2').onclick=()=>{setAll(false);
+  FLAT.forEach(n=>{if(n.type==='topic')n.collapsed=true;});layout();render();transform();};
+document.getElementById('bCollapse1').onclick=()=>{setAll(true);};
+document.getElementById('cCross').onchange=e=>{
+  SHOW_CROSS=e.target.checked;
+  location.hash='cross'; // 交叉题材需服务端重建，提示用户
+  if(SHOW_CROSS) alert('交叉题材需在生成时开启：python build_mindmap.py --cross');
+  e.target.checked=false;
+};
+document.getElementById('cLone').onchange=e=>{HIDE_LONE=e.target.checked;applyFilter();};
+document.getElementById('cLabel').onchange=e=>{SHOWLABEL=e.target.checked;render();transform();};
+document.getElementById('zIn').onclick=()=>zoom(1.2);
+document.getElementById('zOut').onclick=()=>zoom(1/1.2);
+
+document.getElementById('tDetail').onclick=()=>{
+  document.getElementById('tDetail').classList.add('on');
+  document.getElementById('tRank').classList.remove('on');
+  document.getElementById('detail').classList.remove('hide');
+  document.getElementById('rank').classList.add('hide');};
+document.getElementById('tRank').onclick=()=>{
+  document.getElementById('tRank').classList.add('on');
+  document.getElementById('tDetail').classList.remove('on');
+  document.getElementById('detail').classList.add('hide');
+  document.getElementById('rank').classList.remove('hide');};
+
+/* ---- 导出 ---- */
+function svgBlob(){
+  const c=svg.cloneNode(true);
+  c.setAttribute('xmlns',NS);
+  c.setAttribute('width',VW); c.setAttribute('height',VH);
+  c.setAttribute('viewBox',`0 0 ${VW} ${VH}`);
+  c.querySelector('#links').setAttribute('transform','translate(0,0) scale(1)');
+  c.querySelector('#nodes').setAttribute('transform','translate(0,0) scale(1)');
+  const st=document.createElement('style');
+  st.textContent='text{font-family:"Microsoft YaHei",sans-serif}';
+  c.insertBefore(st,c.firstChild);
+  return new XMLSerializer().serializeToString(c);
+}
+document.getElementById('bSvg').onclick=()=>{
+  const b=new Blob([svgBlob()],{type:'image/svg+xml'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);
+  a.download=`涨停思维导图_${DATA.meta.date}.svg`;a.click();};
+document.getElementById('bPng').onclick=()=>{
+  const img=new Image();
+  img.onload=()=>{const cv=document.createElement('canvas');
+    cv.width=VW*2;cv.height=VH*2;const cx=cv.getContext('2d');
+    cx.fillStyle='#0d1117';cx.fillRect(0,0,cv.width,cv.height);
+    cx.scale(2,2);cx.drawImage(img,0,0);
+    cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);
+      a.download=`涨停思维导图_${DATA.meta.date}.png`;a.click();});};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svgBlob());};
+
+/* ---- 顶部统计 ---- */
+function initStats(){
+  const m=DATA.meta;
+  const zb=m.zb_count!=null?Math.round(m.zb_count/(m.zb_count+m.zt_count)*100):null;
+  const degraded = m.source && m.source.indexOf('akshare') >= 0;
+  const s=[
+    ['涨停',m.zt_count,'hot'],['最高板',m.max_lb+'板','hot'],
+    ['炸板',m.zb_count!=null?m.zb_count:'-',''],
+    ['炸板率',zb!=null?zb+'%':'-',zb!=null&&zb>35?'warn':''],
+    ['主题域',m.theme_count,''],['细分题材',m.topic_count,''],
+    ['数据源', degraded?'东财降级':'TDX', degraded?'warn':''],
+  ];
+  document.getElementById('stats').innerHTML=s.map(([k,v,c])=>
+    `<div class="stat ${c}"><i>${k}</i><b>${v}</b></div>`).join('');
+}
+
+/* ---- go ---- */
+initStats(); initThemes(); showRank();
+layout(); render(); fit();
+window.addEventListener('resize',fit);
+</script>
+</body>
+</html>
