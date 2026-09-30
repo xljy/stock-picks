@@ -45,16 +45,7 @@ li{margin:4px 0;}
 <div class="wrap">
 
 <h1>9:25 竞价扫描 · 收盘反查报告</h1>
-<div class="sub">交易日 T = 2026-09-15（akshare 交易日历确认，T_PREV = 2026-09-14） ｜ 生成时间 2026-09-15 17:0x ｜ 数据源：akshare-东财涨停池 + 腾讯 qt.gtimg.cn 行情</div>
 
-<div class="alert">
-<strong>⚠️ 本日反查为「重度降级 + 口径失真」双重状态，核心指标不可直接采信：</strong>
-<ul style="margin-bottom:0">
-<li><strong>降级原因</strong>：<code>zt_925_report_20260915.html</code> 不存在（9:25 链路已于 9/14 整体下线），且无当日快照 → <strong>扫描筛出、命中、误杀、开盘价区间规则检验全部无数据</strong>，本报告降级为「仅候选池晋级统计」。</li>
-<li><strong>口径失真原因</strong>：候选池 <code>zt_925_candidates.json</code> 的 date = <strong>20260911</strong>，而正确值应为 T_PREV = 20260914 → <strong>候选池非当日生成</strong>（9:10 预备任务已随链路删除）。池内 40 只均为 <strong>9/11 首板股</strong>，今日实测的是它们「第 2 个交易日之后」的续板情况。</li>
-<li><strong>实证</strong>：今日 4 只「晋级」全部是 9/14 已晋级的 11 只的子集（交集 4/4，连续封板：闽东电力 5 板、中新赛克 4 板、双星新材 3 板、澳弘电子 3 板）；9/14 未晋级的 29 只今日 <strong>0 只封板</strong> → 今日「晋级率 10%」几乎不含新增晋级信息，<strong>不可作为竞价晋级率样本</strong>。</li>
-</ul>
-</div>
 
 <h2>1. 报告头指标卡</h2>
 <div class="cards">
@@ -172,5 +163,14 @@ li{margin:4px 0;}
 </div>
 
 </div>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--metatail:start--><section class="rpt-meta"><div class="rpt-meta-h">📡 数据源与口径声明</div><div class="sub">交易日 T = 2026-09-15（akshare 交易日历确认，T_PREV = 2026-09-14） ｜ 生成时间 2026-09-15 17:0x ｜ 数据源：akshare-东财涨停池 + 腾讯 qt.gtimg.cn 行情</div>
+
+<div class="alert">
+<strong>⚠️ 本日反查为「重度降级 + 口径失真」双重状态，核心指标不可直接采信：</strong>
+<ul style="margin-bottom:0">
+<li><strong>降级原因</strong>：<code>zt_925_report_20260915.html</code> 不存在（9:25 链路已于 9/14 整体下线），且无当日快照 → <strong>扫描筛出、命中、误杀、开盘价区间规则检验全部无数据</strong>，本报告降级为「仅候选池晋级统计」。</li>
+<li><strong>口径失真原因</strong>：候选池 <code>zt_925_candidates.json</code> 的 date = <strong>20260911</strong>，而正确值应为 T_PREV = 20260914 → <strong>候选池非当日生成</strong>（9:10 预备任务已随链路删除）。池内 40 只均为 <strong>9/11 首板股</strong>，今日实测的是它们「第 2 个交易日之后」的续板情况。</li>
+<li><strong>实证</strong>：今日 4 只「晋级」全部是 9/14 已晋级的 11 只的子集（交集 4/4，连续封板：闽东电力 5 板、中新赛克 4 板、双星新材 3 板、澳弘电子 3 板）；9/14 未晋级的 29 只今日 <strong>0 只封板</strong> → 今日「晋级率 10%」几乎不含新增晋级信息，<strong>不可作为竞价晋级率样本</strong>。</li>
+</ul>
+</div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

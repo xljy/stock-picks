@@ -58,16 +58,7 @@ li{margin:4px 0;font-size:12.5px}
 </div>
 <div class="note">筛出4只中含1只「一字晋级候选」（集泰股份，按规则不计入有效标的）；若仅算3只非一字有效标的，命中 1/3 = 33.3%。</div>
 
-<h2>2. 数据口径说明</h2>
-<div class="box">
-<ul>
-<li><b>涨停池</b>：akshare <code>stock_zt_pool_em(20260903)</code>，东财收盘口径，共 <b>44</b> 只。该接口只判定「是否封板/连板数/炸板次数/封单资金」，不提供精确收盘涨跌幅。</li>
-<li><b>收盘精确涨跌幅</b>：原定用 <code>tdx_quotes</code> 补齐，本次 <b>tdx-connector 工具未加载（不可调用）</b>；akshare <code>stock_zh_a_hist</code> 因东财 push2his 域名被本机代理拦截失败。已降级使用 <b>腾讯行情 qt.gtimg.cn</b> 取收盘价/涨跌幅/最高最低，共取 8 只，落盘 <code>zt_925_close_20260903.json</code>。</li>
-<li><b>口径差</b>：akshare 东财涨停池（44只）与 17:00 流水线 tdx 口径涨停数可能存在 ±2~3 只差异（尾盘无有效封单 / ST 口径），属正常。</li>
-<li><b>候选池</b>：<code>zt_925_candidates.json</code> date=20260902，all_stocks=54，candidates（进入9:25查询集）=10。反查全程只读，未修改任何源文件。</li>
-<li><b>解析修复</b>：<code>zt_925_review.py</code> 原按 <code>&lt;h2&gt;开盘价过滤结果</code> 前缀锚定解析，今日报告 h2 带「5. 」序号前缀导致解析为空；且最终清单节标题已改为「7. 最终观察清单」且由表格改为 &lt;ul&gt; 文本块。已改为 h2 关键字模糊匹配 + ul/li 解析，脚本已更新。</li>
-</ul>
-</div>
+
 
 <h2>3. 扫描筛出标的 vs 实际收盘</h2>
 <div class="rpt-scroll"><table>
@@ -177,5 +168,14 @@ li{margin:4px 0;font-size:12.5px}
 数据来源：zt_925_review_20260903.json（脚本交叉）｜zt_925_close_20260903.json（腾讯行情收盘补充）｜zt_925_report_20260903.html（9:25 扫描报告，只读）<br>
 生成脚本：zt_925_review.py（本次修复 h2 关键字解析 + ul/li 最终清单解析）｜本报告仅呈现客观数据与统计结论，不含任何操作建议。
 </div>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--metatail:start--><section class="rpt-meta"><h2>2. 数据口径说明</h2>
+<div class="box">
+<ul>
+<li><b>涨停池</b>：akshare <code>stock_zt_pool_em(20260903)</code>，东财收盘口径，共 <b>44</b> 只。该接口只判定「是否封板/连板数/炸板次数/封单资金」，不提供精确收盘涨跌幅。</li>
+<li><b>收盘精确涨跌幅</b>：原定用 <code>tdx_quotes</code> 补齐，本次 <b>tdx-connector 工具未加载（不可调用）</b>；akshare <code>stock_zh_a_hist</code> 因东财 push2his 域名被本机代理拦截失败。已降级使用 <b>腾讯行情 qt.gtimg.cn</b> 取收盘价/涨跌幅/最高最低，共取 8 只，落盘 <code>zt_925_close_20260903.json</code>。</li>
+<li><b>口径差</b>：akshare 东财涨停池（44只）与 17:00 流水线 tdx 口径涨停数可能存在 ±2~3 只差异（尾盘无有效封单 / ST 口径），属正常。</li>
+<li><b>候选池</b>：<code>zt_925_candidates.json</code> date=20260902，all_stocks=54，candidates（进入9:25查询集）=10。反查全程只读，未修改任何源文件。</li>
+<li><b>解析修复</b>：<code>zt_925_review.py</code> 原按 <code>&lt;h2&gt;开盘价过滤结果</code> 前缀锚定解析，今日报告 h2 带「5. 」序号前缀导致解析为空；且最终清单节标题已改为「7. 最终观察清单」且由表格改为 &lt;ul&gt; 文本块。已改为 h2 关键字模糊匹配 + ul/li 解析，脚本已更新。</li>
+</ul>
+</div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

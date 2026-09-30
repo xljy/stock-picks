@@ -56,17 +56,7 @@
   候选池 <code>date=20260924</code> 与交易日历 <code>T_PREV=20260924</code> <strong>匹配</strong>（9/25 中秋休市，9/24 首板股的下一交易日即 9/28），口径正确；但 <code>prepare_time=2026-09-28 11:12:56</code> 晚于 9:25 竞价窗口，说明上游 9:25 链路今日未在盘前产出，池子为盘后补生成。
 </div>
 
-<h2>1. 数据口径与溯源</h2>
-<div class="card">
-<div class="rpt-scroll"><table>
-<tr><th style="width:150px">环节</th><th style="width:190px">实际数据源</th><th>溯源字段 / 状态</th></tr>
-<tr><td>数据源自检</td><td>非TDX 主源</td><td><code>primary</code>：indices / quote / kline_day / emotion <strong>全 ok</strong>；<code>tdx.ok=false</code>（HTTP 401 Unauthorized）→ 结论「主源可用；TDX 兜底不可用」</td></tr>
-<tr><td>交易日确认</td><td>zt_trade_cal.py</td><td><code>T=20260928　T_PREV=20260924　来源=akshare日历</code>（真实交易日历，无算术推算）</td></tr>
-<tr><td>涨停池（33 只）</td><td>akshare / 东财 push2ex</td><td>脚本日志：<code>[WARN] TDX 涨停池(20260928) 失败: HTTP 401</code> → <code>[WARN] TDX 涨停池为空，降级 akshare(eastmoney)</code>。<strong>涨停池来源已降级</strong>，非 TDX 口径</td></tr>
-<tr><td>收盘行情</td><td>腾讯 qt.gtimg.cn</td><td><code>src="tencent qt.gtimg.cn"</code>，<code>tdx_fallback=false</code>，<code>tdx_client_ok=false</code>，<code>tdx_enriched_fields=[]</code> → <strong>主力净额(main_net)/chg10/PE 补缺字段缺失</strong>（TDX 不可用），报告中不展示该三项</td></tr>
-</table></div>
-<p class="muted" style="margin-top:8px">说明：本次<strong>未触发 TDX 兜底</strong>（主源全程可用），TDX 401 仅导致「补缺字段」缺失。涨停池 33 只为东财收盘口径，若与 17:00 流水线的涨停数不一致属正常口径差异。</p>
-</div>
+
 
 <h2>2. 扫描筛出标的 vs 实际收盘</h2>
 <div class="card">
@@ -184,5 +174,15 @@
 </div>
 
 </div>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--metatail:start--><section class="rpt-meta"><h2>1. 数据口径与溯源</h2>
+<div class="card">
+<div class="rpt-scroll"><table>
+<tr><th style="width:150px">环节</th><th style="width:190px">实际数据源</th><th>溯源字段 / 状态</th></tr>
+<tr><td>数据源自检</td><td>非TDX 主源</td><td><code>primary</code>：indices / quote / kline_day / emotion <strong>全 ok</strong>；<code>tdx.ok=false</code>（HTTP 401 Unauthorized）→ 结论「主源可用；TDX 兜底不可用」</td></tr>
+<tr><td>交易日确认</td><td>zt_trade_cal.py</td><td><code>T=20260928　T_PREV=20260924　来源=akshare日历</code>（真实交易日历，无算术推算）</td></tr>
+<tr><td>涨停池（33 只）</td><td>akshare / 东财 push2ex</td><td>脚本日志：<code>[WARN] TDX 涨停池(20260928) 失败: HTTP 401</code> → <code>[WARN] TDX 涨停池为空，降级 akshare(eastmoney)</code>。<strong>涨停池来源已降级</strong>，非 TDX 口径</td></tr>
+<tr><td>收盘行情</td><td>腾讯 qt.gtimg.cn</td><td><code>src="tencent qt.gtimg.cn"</code>，<code>tdx_fallback=false</code>，<code>tdx_client_ok=false</code>，<code>tdx_enriched_fields=[]</code> → <strong>主力净额(main_net)/chg10/PE 补缺字段缺失</strong>（TDX 不可用），报告中不展示该三项</td></tr>
+</table></div>
+<p class="muted" style="margin-top:8px">说明：本次<strong>未触发 TDX 兜底</strong>（主源全程可用），TDX 401 仅导致「补缺字段」缺失。涨停池 33 只为东财收盘口径，若与 17:00 流水线的涨停数不一致属正常口径差异。</p>
+</div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

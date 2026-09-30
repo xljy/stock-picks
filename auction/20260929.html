@@ -55,17 +55,7 @@ li{margin:3px 0}
   <div class="kpi"><div class="lab">过滤误杀(推演)</div><div class="val">7</div><div class="sub2">放弃 8 只中 7 只封死 = 87.5%</div></div>
 </div>
 
-<h2>1. 数据口径与本次实际数据源</h2>
-<div class="card">
-<div class="rpt-scroll"><table>
-<tr><th style="width:22%">环节</th><th style="width:20%">本次实际源</th><th>说明</th></tr>
-<tr><td>涨停池（只数/封板判定）</td><td>akshare 东财 push2ex</td><td>57 只。脚本内 TDX 涨停池探测失败 → 自动降级东财。<b>未触发 TDX 兜底</b>（TDX 在本会话不可用：CODEBUDDY_MCP_CONFIG 中无 tdx 连接器）</td></tr>
-<tr><td>收盘行情（33 只涨跌幅）</td><td>tencent qt.gtimg.cn</td><td><code>src=tencent</code> <code>tdx_fallback=false</code> <code>fallback_errors=null</code>；<code>tdx_probed=true</code> 但 <code>tdx_client_ok=false</code>、<code>tdx_enriched_fields=[]</code> → <b>主力净额(main_net)/chg10/PE 三项 TDX 补缺缺失</b>，报告中不展示该三项</td></tr>
-<tr><td>开盘涨幅（区间规则推演）</td><td>zt_925_capture_20260929_intraday.json</td><td>快照时刻 09:32:58，<b>非 9:25 竞价时点</b>；open/open_pct 为当日开盘价不随时间变化，可做区间判定；盘中 pct 仅作参考不入统计</td></tr>
-<tr><td>交易日历</td><td>zt_trade_cal.py / akshare</td><td>T=20260929 T_PREV=20260928（非算术推算）</td></tr>
-</table></div>
-<div class="note">口径差异提示：东财涨停池 57 只；17:00 流水线 <code>zt_1700_data_20260929.json</code> 尚未生成（当前 15:47），本次无法与其交叉核对涨停数。</div>
-</div>
+
 
 <h2>2. 上游链路状态</h2>
 <div class="card">
@@ -208,5 +198,15 @@ li{margin:3px 0}
 本报告仅为客观数据统计与规则检验，不含任何操作建议。数据来源：涨停池 akshare/东财 push2ex，收盘行情 腾讯 qt.gtimg.cn，开盘快照 本地 capture(TDX 本会话不可用，无兜底)。生成脚本 zt_925_review.py + 本地推演复算。
 </div>
 </div>
-<!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+<!--metatail:start--><section class="rpt-meta"><h2>1. 数据口径与本次实际数据源</h2>
+<div class="card">
+<div class="rpt-scroll"><table>
+<tr><th style="width:22%">环节</th><th style="width:20%">本次实际源</th><th>说明</th></tr>
+<tr><td>涨停池（只数/封板判定）</td><td>akshare 东财 push2ex</td><td>57 只。脚本内 TDX 涨停池探测失败 → 自动降级东财。<b>未触发 TDX 兜底</b>（TDX 在本会话不可用：CODEBUDDY_MCP_CONFIG 中无 tdx 连接器）</td></tr>
+<tr><td>收盘行情（33 只涨跌幅）</td><td>tencent qt.gtimg.cn</td><td><code>src=tencent</code> <code>tdx_fallback=false</code> <code>fallback_errors=null</code>；<code>tdx_probed=true</code> 但 <code>tdx_client_ok=false</code>、<code>tdx_enriched_fields=[]</code> → <b>主力净额(main_net)/chg10/PE 三项 TDX 补缺缺失</b>，报告中不展示该三项</td></tr>
+<tr><td>开盘涨幅（区间规则推演）</td><td>zt_925_capture_20260929_intraday.json</td><td>快照时刻 09:32:58，<b>非 9:25 竞价时点</b>；open/open_pct 为当日开盘价不随时间变化，可做区间判定；盘中 pct 仅作参考不入统计</td></tr>
+<tr><td>交易日历</td><td>zt_trade_cal.py / akshare</td><td>T=20260929 T_PREV=20260928（非算术推算）</td></tr>
+</table></div>
+<div class="note">口径差异提示：东财涨停池 57 只；17:00 流水线 <code>zt_1700_data_20260929.json</code> 尚未生成（当前 15:47），本次无法与其交叉核对涨停数。</div>
+</div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
 </html>

@@ -153,13 +153,11 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
   th,td{padding:9px 9px;}
   .totop{right:12px;bottom:12px;}
 }
-</style>
+.rpt-meta{margin:34px 0 10px;padding:14px 16px;border:1px solid #e3e7ec;border-radius:10px;background:#fafbfc;color:#5f6873;font-size:12.5px;line-height:1.8}.rpt-meta-h{font-weight:600;font-size:13px;color:#6b7480;margin:0 0 8px}.rpt-meta h2,.rpt-meta h3,.rpt-meta h4{font-size:13.5px;color:#5f6873;margin:10px 0 6px;border:0;padding:0;background:none}.rpt-meta table{font-size:12.5px;margin:4px 0}.rpt-meta th,.rpt-meta td{padding:4px 7px}.rpt-meta ul,.rpt-meta ol{margin:6px 0 0;padding-left:18px}.rpt-meta code{font-size:12px}.rpt-meta hr{display:none}</style>
 </head>
 <body>
 <div class="nav"><a href="../index.html">🏠 首页</a><a href="./index.html">⚡ 套利日报 列表</a><a href="../index.html#archive">🗂️ 历史归档</a></div><div class="hero"><h1>⚡ 套利日报</h1><div class="sub">2026-09-29 周二 · 归档自 20260929-1443-daily.md</div></div><div class="doc"><h3>⏰ 数据基准：9月29日（周二）盘中数据（14:43-14:58）</h3>
-<h3>📡 数据源</h3>
-<div class="tbl"><table><thead><tr><th>维度</th><th>实际源</th><th>TDX兜底</th></tr></thead><tbody><tr><td>指数 indices</td><td>腾讯 qt.gtimg.cn</td><td>否</td></tr><tr><td>情绪 emotion</td><td>东财 push2ex</td><td>否</td></tr><tr><td>板块 sectors</td><td>同花顺(akshare)</td><td>否</td></tr><tr><td>候选池 rank10d</td><td>新浪spot + 腾讯qfq日K本地计算</td><td>否</td></tr><tr><td>个股行情 quote</td><td>腾讯 qt.gtimg.cn</td><td>否</td></tr><tr><td>资金 fundflow</td><td>同花顺(akshare)</td><td>否</td></tr><tr><td>K线 kline</td><td>腾讯前复权</td><td>否</td></tr></tbody></table></div>
-<ul><li><strong>TDX兜底：不可用</strong>（<code>tdx_client_ok=false</code>；原因：<code>CODEBUDDY_MCP_CONFIG.mcpServers 中找不到任何 tdx 连接器</code>，定时会话未注入）</li><li><strong>指数级主力资金：缺失</strong> → 铁律2「上证 main_net &lt; -200亿」闸门<strong>未生效（非通过）</strong></li><li><strong>个股 main_net：全部为 null</strong> → 资金判定改用 <code>net</code>（同花顺<strong>全单净额</strong>，阈值不可直接套用）</li><li>主源零失败、零降级（<code>fallback_errors=null</code>）</li></ul>
+
 <hr>
 <h2>大盘形势</h2>
 <div class="tbl"><table><thead><tr><th>指数</th><th>现价</th><th>涨跌幅</th><th>成交额</th><th>主力净额(main_net)</th><th>判定</th></tr></thead><tbody><tr><td>上证指数</td><td>3835.04</td><td>&lt;span style="color:#FF0000"&gt;+0.30%&lt;/span&gt;</td><td>6063.7亿</td><td>缺失(TDX不可用)</td><td>✅</td></tr><tr><td>深证成指</td><td>12912.21</td><td>&lt;span style="color:#FF0000"&gt;+0.42%&lt;/span&gt;</td><td>6814.9亿</td><td>缺失</td><td>✅</td></tr><tr><td>创业板指</td><td>3144.72</td><td>&lt;span style="color:#FF0000"&gt;+0.16%&lt;/span&gt;</td><td>3246.7亿</td><td>缺失</td><td>⚠️ 谨慎</td></tr></tbody></table></div>
@@ -204,6 +202,8 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
 <h3>操作铁律</h3>
 <ol><li>14:55 买、-5% 止损、高开3%走、10:30 定生死</li><li>只买1-2只板块龙头，总投入≤10万，5万不动</li><li>距离涨停&lt;2%不买；&gt;6%降档</li><li>缩量优先，放量过大降推荐度</li><li>5分钟均线全✅才买入</li><li>每笔推荐必须记录，次日复盘</li></ol>
 <hr>
-<p><em>本报告由自动化流程生成，仅为数据与规则执行结果，不构成投资建议。</em></p></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 双视角 17:15 · 主板接力 17:20 · 二波 21:00 · 周报 周五 23:00<br>主板接力（10cm 一进二/二进三）为专题类：交易日定时生成，不计入每日类计数<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div>
+<p><em>本报告由自动化流程生成，仅为数据与规则执行结果，不构成投资建议。</em></p></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 双视角 17:15 · 主板接力 17:20 · 二波 21:00 · 周报 周五 23:00<br>主板接力（10cm 一进二/二进三）为专题类：交易日定时生成，不计入每日类计数<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div><!--metatail:start--><section class="rpt-meta"><h3>📡 数据源</h3>
+<div class="tbl"><table><thead><tr><th>维度</th><th>实际源</th><th>TDX兜底</th></tr></thead><tbody><tr><td>指数 indices</td><td>腾讯 qt.gtimg.cn</td><td>否</td></tr><tr><td>情绪 emotion</td><td>东财 push2ex</td><td>否</td></tr><tr><td>板块 sectors</td><td>同花顺(akshare)</td><td>否</td></tr><tr><td>候选池 rank10d</td><td>新浪spot + 腾讯qfq日K本地计算</td><td>否</td></tr><tr><td>个股行情 quote</td><td>腾讯 qt.gtimg.cn</td><td>否</td></tr><tr><td>资金 fundflow</td><td>同花顺(akshare)</td><td>否</td></tr><tr><td>K线 kline</td><td>腾讯前复权</td><td>否</td></tr></tbody></table></div>
+<ul><li><strong>TDX兜底：不可用</strong>（<code>tdx_client_ok=false</code>；原因：<code>CODEBUDDY_MCP_CONFIG.mcpServers 中找不到任何 tdx 连接器</code>，定时会话未注入）</li><li><strong>指数级主力资金：缺失</strong> → 铁律2「上证 main_net &lt; -200亿」闸门<strong>未生效（非通过）</strong></li><li><strong>个股 main_net：全部为 null</strong> → 资金判定改用 <code>net</code>（同花顺<strong>全单净额</strong>，阈值不可直接套用）</li><li>主源零失败、零降级（<code>fallback_errors=null</code>）</li></ul></section><!--metatail:end-->
 </body>
 </html>
