@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html data-wb-theme="light" lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>二波扫描 20260930</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4f6f8;color:#1f2328;font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+line-height:1.62;padding:30px 18px 70px}
+.wrap{max-width:1400px;margin:0 auto}
+h1{font-size:27px;color:#1f2328;letter-spacing:-.5px}
+h2{font-size:18px;color:#1f2328;margin:34px 0 10px;padding-left:11px;border-left:4px solid #4f8cff}
+h3{font-size:13.5px;color:#5b6570;margin:18px 0 8px;font-weight:600}
+.meta{color:#5b6570;font-size:12.5px;margin-top:6px}
+.hero{background:linear-gradient(135deg,#ffffff,#e7f1fc);border:1px solid #d8dee4;border-radius:13px;
+padding:21px 25px;margin:19px 0}
+.hero .tl{font-size:18px;color:#9a3412;font-weight:700;margin-bottom:9px}
+.hero p{color:#5b6570;font-size:13.5px;margin-top:7px}
+.hero b{color:#1f2328}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
+.kpi{background:#ffffff;border:1px solid #d8dee4;border-radius:10px;padding:12px 14px}
+.k-l{font-size:11.5px;color:#5b6570}
+.k-v{font-size:22px;font-weight:800;letter-spacing:-.5px;margin-top:2px}
+.k-s{font-size:11px;color:#5b6570}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;color:#5b6570;font-weight:600;font-size:11.5px;padding:8px;border-bottom:1px solid #d8dee4;white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid #d8dee4;white-space:nowrap}
+tbody tr:hover{background:#ffffff}
+tr.srow{background:#ffffff}tr.arow{background:#ffffff}
+.tw{overflow-x:auto;border:1px solid #d8dee4;border-radius:10px}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-family:ui-monospace,Consolas,monospace}
+.mono{font-family:ui-monospace,Consolas,monospace;background:#eef1f4;padding:1px 5px;border-radius:4px;font-size:11.5px}
+.up{color:#cf222e}.dn{color:#1a7f37}.mut{color:#5b6570}
+.g{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:800}
+.gS{background:#fdecea;color:#cf222e}.gA{background:#fdf0e2;color:#9a3412}
+.gB{background:#e7f1fc;color:#0a66c2}.gC{background:#eef1f4;color:#5b6570}
+.st{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700}
+.st0{background:#fdecea;color:#cf222e}.st1{background:#fdf0e2;color:#9a3412}
+.st2{background:#e6f6ec;color:#1a7f37}.st3{background:#eef1f4;color:#5b6570}
+.pb{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700;
+background:#e7f1fc;color:#0a66c2}
+.pl{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700;
+background:#f2ecfd;color:#7c3aed}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:12px;margin-top:10px}
+.cd{background:#ffffff;border:1px solid #d8dee4;border-radius:11px;padding:14px 16px}
+.cd.bS{border-color:#d8dee4}.cd.bA{border-color:#d8dee4}
+.cd-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
+border-bottom:1px solid #d8dee4;padding-bottom:8px;margin-bottom:8px}
+.cd-n{font-size:15px;color:#1f2328;font-weight:700}
+.cd-c{font-size:11px;color:#5b6570;font-family:ui-monospace,monospace}
+.cd-t{font-size:11.5px;color:#5b6570;margin-top:2px}
+.sc{text-align:right;flex-shrink:0}
+.sc-v{font-size:23px;font-weight:800;color:#1f2328;line-height:1.05}
+.ct{font-size:10.5px;color:#5b6570}
+.kv{display:flex;justify-content:space-between;font-size:12px;padding:2.5px 0;border-bottom:1px dashed #d8dee4}
+.kv:last-child{border-bottom:none}
+.kv i{color:#5b6570;font-style:normal}
+.kv b{color:#1f2328;font-weight:600;font-family:ui-monospace,Consolas,monospace}
+.cb{margin-top:8px;padding-top:7px;border-top:1px solid #d8dee4}
+.cb-r{display:flex;align-items:center;gap:7px;font-size:11px;margin:3px 0}
+.cb-l{width:132px;color:#5b6570;flex-shrink:0;text-align:right}
+.cb-b{width:70px;height:8px;background:#eef1f4;border-radius:3px;position:relative;flex-shrink:0}
+.cb-b i{position:absolute;top:0;height:100%;border-radius:3px}
+.cb-v{color:#1f2328;font-family:ui-monospace,monospace}
+.note{font-size:12.5px;color:#5b6570;margin-top:9px;line-height:1.72}
+.warn{background:#ffffff;border:1px solid #d8dee4;border-left:4px solid #ffb020;border-radius:10px;
+padding:15px 19px;margin:13px 0;font-size:13px;color:#9a3412}
+.warn b{color:#9a3412}
+.card{background:#ffffff;border:1px solid #d8dee4;border-radius:11px;padding:16px 19px;margin:12px 0}
+.card ul{list-style:none;font-size:13px}
+.card li{padding:5px 0 5px 19px;position:relative;color:#1f2328}
+.card li::before{content:"-";position:absolute;left:5px;color:#0a66c2;font-weight:700}
+.dt{width:100%;font-size:12.5px;border-collapse:collapse}
+.dt td{padding:5px 8px;border-bottom:1px solid #d8dee4}
+.foot{margin-top:42px;padding-top:17px;border-top:1px solid #d8dee4;color:#5b6570;font-size:12px}
+</style><!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head><body><div class="wrap">
+
+<h1>二波扫描 · 20260930</h1>
+<div class="meta">窗口 二板后第 2~4 个交易日（T+k） &nbsp;·&nbsp; 生成 2026-09-30 21:00 &nbsp;·&nbsp; 实时快照 2026-09-30 16:14<br>
+数据：本地二板面板 + 腾讯前复权日K/实时快照 &nbsp;·&nbsp; 二板面板 13/13 个交易日文件（最新 20260930） &nbsp;·&nbsp;
+评分模型：wave2_model.json（4256 个历史观察点）</div>
+
+<div class="hero">
+<div class="tl">窗口内 14 只候选：断板 9 只 / 连板 5 只；报告展示 14 只</div>
+<p><b>「二波」的适用池是断板股。</b>T+1 涨停的票走的是连板路径，按定义不构成回踩二波。
+但要注意：<b>连板股的 10 日续涨率（52.1%）其实高于断板股（44.0%）</b>——
+两条路径不是优劣关系，而是两种不同的形态，因此报告把两张清单分开列。</p>
+<p><b>关键：只有 S 级（≥P90）有效，A/B/C 全是噪声。</b>
+把扫描器在最近 25 个交易日原样回放一遍（689 个输出）、再用真实后续行情检验：
+<b>S 级 64.9% 的「10日内再涨≥10%」命中率，全样本基准 42.8%（提升 22pct）；
+而 A 级 42.0%、B 级 37.9%、C 级 40.8%——全部与基准无异甚至更低。</b>
+样本外 AUC 0.554 也印证了这一点：模型是弱信号，优势高度集中在最高分位。
+<b>所以这份报告只看 S 级那一小撮，其余仅作记录。</b></p>
+</div>
+
+<div class="grid">
+<div class="kpi"><div class="k-l">S 级 (P90+)</div><div class="k-v" style="color:#cf222e">0</div><div class="k-s">回放命中 65%</div></div>
+<div class="kpi"><div class="k-l">A 级 (P75+)</div><div class="k-v" style="color:#9a3412">1</div><div class="k-s">≈基准，无优势</div></div>
+<div class="kpi"><div class="k-l">B 级 (P50+)</div><div class="k-v" style="color:#0a66c2">2</div><div class="k-s">≈基准，无优势</div></div>
+<div class="kpi"><div class="k-l">C 级 (&lt;P50)</div><div class="k-v" style="color:#5b6570">11</div><div class="k-s">≈基准</div></div>
+<div class="kpi"><div class="k-l">断板路径</div><div class="k-v">9</div><div class="k-s">10日续涨率 44.0%</div></div>
+<div class="kpi"><div class="k-l">连板路径</div><div class="k-v">5</div><div class="k-s">10日续涨率 52.1%</div></div>
+</div>
+
+<div class="card"><h3 style="margin-top:0">近 10 个交易日「距二板日」天数分布</h3>
+<div class="grid" style="margin:0"><div class="kpi"><div class="k-l">T+0</div><div class="k-v">6</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+1</div><div class="k-v">7</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+2</div><div class="k-v">3</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+3</div><div class="k-v">8</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+4</div><div class="k-v">3</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+5</div><div class="k-v">17</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+6</div><div class="k-v">14</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+7</div><div class="k-v">8</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+8</div><div class="k-v">5</div><div class="k-s">二板事件</div></div><div class="kpi"><div class="k-l">T+9</div><div class="k-v">9</div><div class="k-s">二板事件</div></div></div>
+<div class="note">T+0 = 当日二板，T+1 = 断板确认日。只输出 T+2~T+4（即二板后第2~4天）。</div>
+</div>
+
+<h2>清单 A：断板路径（二波适用池）</h2>
+<div class="tw"><div class="rpt-scroll"><table>
+<thead><tr><th>股票</th><th>路径</th><th>状态</th><th>T+k</th><th>评分</th><th>档位命中率</th>
+<th>前高</th><th>现价</th><th>距前高</th><th>回踩深度</th><th>今日</th><th>5日线</th>
+<th>封单/流通%</th><th>开板</th><th>换手%</th><th>市值亿</th><th>量比</th><th>缩量比</th><th>题材</th>
+</tr></thead><tbody><tr class=""><td><b style="color:#1f2328">江淮汽车</b><div class="cd-c">SH600418</div></td><td><span class="pb pb">断板</span></td><td><span class="st st0">已破前高</span></td><td class="num">T+4</td><td><span class="g gB">B</span> <span class="num" style="font-size:13px;color:#1f2328">67</span></td><td class="num" style="color:#9a3412;font-weight:700">45.5%</td><td class="num">23.45</td><td class="num">27.47</td><td class="num up">+17.1%</td><td class="num dn">-2.5%</td><td class="num up">+5.49%</td><td class="num">25.02</td><td class="num">0.15</td><td class="num">0</td><td class="num">13.3</td><td class="num">528.6</td><td class="num">1.46</td><td class="num">0.89</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">尊界+华为合作+玛莎拉蒂合作传闻</td></tr><tr class=""><td><b style="color:#e6edf3">上工申贝</b><div class="cd-c">SH600843</div></td><td><span class="pb pb">断板</span></td><td><span class="st st3">回踩中</span></td><td class="num">T+3</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">41</span></td><td class="num" style="color:#9a3412;font-weight:700">47.9%</td><td class="num">8.37</td><td class="num">7.58</td><td class="num dn">-9.4%</td><td class="num dn">-10.4%</td><td class="num dn">-1.30%</td><td class="num">7.82</td><td class="num">0.34</td><td class="num">0</td><td class="num">15.6</td><td class="num">39.3</td><td class="num">0.66</td><td class="num">0.84</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">缝制设备+机器人缝制+轻型飞机</td></tr><tr class=""><td><b style="color:#e6edf3">吉鑫科技</b><div class="cd-c">SH601218</div></td><td><span class="pb pb">断板</span></td><td><span class="st st0">已破前高</span></td><td class="num">T+2</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">36</span></td><td class="num" style="color:#9a3412;font-weight:700">39.9%</td><td class="num">6.05</td><td class="num">6.08</td><td class="num up">+0.5%</td><td class="num dn">-5.0%</td><td class="num dn">-0.82%</td><td class="num">5.75</td><td class="num">0.46</td><td class="num">1</td><td class="num">35.2</td><td class="num">58.6</td><td class="num">1.27</td><td class="num">1.08</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">风电铸件+风电轴承+半年报增长</td></tr><tr class=""><td><b style="color:#e6edf3">东方中科</b><div class="cd-c">SZ002819</div></td><td><span class="pb pb">断板</span></td><td><span class="st st3">破位</span></td><td class="num">T+3</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">20</span></td><td class="num" style="color:#9a3412;font-weight:700">41.6%</td><td class="num">26.66</td><td class="num">23.73</td><td class="num dn">-11.0%</td><td class="num dn">-11.8%</td><td class="num dn">-3.85%</td><td class="num">24.86</td><td class="num">1.55</td><td class="num">2</td><td class="num">15.7</td><td class="num">63.0</td><td class="num">0.94</td><td class="num">1.37</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">网络分析仪+半导体测试+具身智能</td></tr><tr class=""><td><b style="color:#e6edf3">大业股份</b><div class="cd-c">SH603278</div></td><td><span class="pb pb">断板</span></td><td><span class="st st3">回踩中</span></td><td class="num">T+2</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">20</span></td><td class="num" style="color:#9a3412;font-weight:700">41.6%</td><td class="num">10.78</td><td class="num">10.27</td><td class="num dn">-4.7%</td><td class="num dn">-6.0%</td><td class="num dn">-2.75%</td><td class="num">10.06</td><td class="num">1.21</td><td class="num">0</td><td class="num">38.0</td><td class="num">36.8</td><td class="num">1.95</td><td class="num">1.20</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">人形机器人+胎圈钢丝+全球销售</td></tr><tr class=""><td><b style="color:#e6edf3">康强电子</b><div class="cd-c">SZ002119</div></td><td><span class="pb pb">断板</span></td><td><span class="st st3">破位</span></td><td class="num">T+3</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">7</span></td><td class="num" style="color:#9a3412;font-weight:700">36.2%</td><td class="num">29.61</td><td class="num">25.80</td><td class="num dn">-12.9%</td><td class="num dn">-14.1%</td><td class="num dn">-8.74%</td><td class="num">28.06</td><td class="num">1.29</td><td class="num">1</td><td class="num">38.4</td><td class="num">111.1</td><td class="num">1.04</td><td class="num">0.95</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">半导体封装材料+存储芯片+产能扩建</td></tr><tr class=""><td><b style="color:#e6edf3">澳弘电子</b><div class="cd-c">SH605058</div></td><td><span class="pb pb">断板</span></td><td><span class="st st3">回踩中</span></td><td class="num">T+4</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">6</span></td><td class="num" style="color:#9a3412;font-weight:700">36.2%</td><td class="num">58.60</td><td class="num">53.64</td><td class="num dn">-8.5%</td><td class="num dn">-13.0%</td><td class="num dn">-10.00%</td><td class="num">57.24</td><td class="num">0.53</td><td class="num">0</td><td class="num">51.0</td><td class="num">83.8</td><td class="num">0.68</td><td class="num">0.76</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">PCB+HDI板+AI服务器电源+泰国基地</td></tr><tr class=""><td><b style="color:#e6edf3">集泰股份</b><div class="cd-c">SZ002909</div></td><td><span class="pb pb">断板</span></td><td><span class="st st3">破位</span></td><td class="num">T+3</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">5</span></td><td class="num" style="color:#9a3412;font-weight:700">36.2%</td><td class="num">8.29</td><td class="num">6.71</td><td class="num dn">-19.1%</td><td class="num dn">-19.8%</td><td class="num dn">-4.82%</td><td class="num">7.41</td><td class="num">2.83</td><td class="num">2</td><td class="num">33.1</td><td class="num">31.5</td><td class="num">1.06</td><td class="num">0.92</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">PCB三防漆+液冷硅油+胶粘剂涂料+新能源用胶</td></tr><tr class=""><td><b style="color:#e6edf3">华茂股份</b><div class="cd-c">SZ000850</div></td><td><span class="pb pb">断板</span></td><td><span class="st st3">破位</span></td><td class="num">T+3</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">0</span></td><td class="num" style="color:#9a3412;font-weight:700">36.2%</td><td class="num">5.12</td><td class="num">4.17</td><td class="num dn">-18.6%</td><td class="num dn">-18.6%</td><td class="num dn">-9.94%</td><td class="num">4.74</td><td class="num">3.31</td><td class="num">0</td><td class="num">2.7</td><td class="num">48.3</td><td class="num">2.77</td><td class="num">8.03</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">纺织主业+矿业整合+国企改革+“华”字辈</td></tr></tbody></table></div></div>
+<div class="note"><b style="color:#1f2328">评分</b>= 模型概率在 4256 个历史观察点中的分位数（0~100）。
+<b style="color:#1f2328">档位命中率</b>= 该分位档历史上「此后10日内再涨≥10%」的实际比例。
+<b style="color:#1f2328">缩量比</b>=回踩段日均量÷二板日成交量。<b style="color:#1f2328">距前高</b>=现价÷二板日最高价-1，模型权重最大的单一变量。</div>
+
+<h2>清单 B：连板路径（非二波，仅列示）</h2>
+<div class="tw"><div class="rpt-scroll"><table>
+<thead><tr><th>股票</th><th>路径</th><th>状态</th><th>T+k</th><th>评分</th><th>档位命中率</th>
+<th>前高</th><th>现价</th><th>距前高</th><th>回踩深度</th><th>今日</th><th>5日线</th>
+<th>封单/流通%</th><th>开板</th><th>换手%</th><th>市值亿</th><th>量比</th><th>缩量比</th><th>题材</th>
+</tr></thead><tbody><tr class="arow"><td><b style="color:#1f2328">襄阳轴承</b><div class="cd-c">SZ000678</div></td><td><span class="pb pl">连板</span></td><td><span class="st st1">连板延续</span></td><td class="num">T+2</td><td><span class="g gA">A</span> <span class="num" style="font-size:13px;color:#1f2328">76</span></td><td class="num" style="color:#9a3412;font-weight:700">49.2%</td><td class="num">10.65</td><td class="num">12.89</td><td class="num up">+21.0%</td><td class="num dn">+0.4%</td><td class="num up">+9.98%</td><td class="num">10.75</td><td class="num">1.56</td><td class="num">1</td><td class="num">13.9</td><td class="num">49.0</td><td class="num">5.44</td><td class="num">0.27</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">机器人轴承+汽车轴承+湖北国资</td></tr><tr class=""><td><b style="color:#e6edf3">福建水泥</b><div class="cd-c">SH600802</div></td><td><span class="pb pl">连板</span></td><td><span class="st st1">连板延续</span></td><td class="num">T+3</td><td><span class="g gB">B</span> <span class="num" style="font-size:13px;color:#1f2328">55</span></td><td class="num" style="color:#9a3412;font-weight:700">46.1%</td><td class="num">6.62</td><td class="num">7.24</td><td class="num up">+9.4%</td><td class="num dn">-5.6%</td><td class="num up">+4.32%</td><td class="num">6.82</td><td class="num">2.51</td><td class="num">0</td><td class="num">22.0</td><td class="num">30.3</td><td class="num">1.70</td><td class="num">1.37</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">海峡两岸+福建国资+水泥</td></tr><tr class=""><td><b style="color:#e6edf3">金辰股份</b><div class="cd-c">SH603396</div></td><td><span class="pb pl">连板</span></td><td><span class="st st1">连板后回落</span></td><td class="num">T+3</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">21</span></td><td class="num" style="color:#9a3412;font-weight:700">41.6%</td><td class="num">35.64</td><td class="num">33.50</td><td class="num dn">-6.0%</td><td class="num dn">-6.3%</td><td class="num dn">-5.05%</td><td class="num">35.20</td><td class="num">1.48</td><td class="num">0</td><td class="num">13.6</td><td class="num">49.4</td><td class="num">2.68</td><td class="num">1.74</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">半导体装备+玻璃基封装+光伏设备</td></tr><tr class=""><td><b style="color:#e6edf3">天威视讯</b><div class="cd-c">SZ002238</div></td><td><span class="pb pl">连板</span></td><td><span class="st st1">连板后回落</span></td><td class="num">T+4</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">13</span></td><td class="num" style="color:#9a3412;font-weight:700">37.3%</td><td class="num">7.66</td><td class="num">7.08</td><td class="num dn">-7.6%</td><td class="num dn">-10.8%</td><td class="num dn">-5.85%</td><td class="num">7.66</td><td class="num">1.92</td><td class="num">0</td><td class="num">4.2</td><td class="num">61.5</td><td class="num">1.37</td><td class="num">5.85</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">文化传媒+AI应用+数据中心</td></tr><tr class=""><td><b style="color:#e6edf3">雪龙集团</b><div class="cd-c">SH603949</div></td><td><span class="pb pl">连板</span></td><td><span class="st st1">连板后回落</span></td><td class="num">T+3</td><td><span class="g gC">C</span> <span class="num" style="font-size:13px;color:#1f2328">11</span></td><td class="num" style="color:#9a3412;font-weight:700">37.3%</td><td class="num">16.90</td><td class="num">18.41</td><td class="num up">+8.9%</td><td class="num dn">-0.5%</td><td class="num dn">-9.98%</td><td class="num">17.94</td><td class="num">2.22</td><td class="num">0</td><td class="num">7.1</td><td class="num">35.5</td><td class="num">4.82</td><td class="num">2.23</td><td style="max-width:210px;overflow:hidden;text-overflow:ellipsis">商用车热管理+新能源风扇+间接投资宇树科技</td></tr></tbody></table></div></div>
+<div class="note">这类 T+1 已涨停，按定义不走回踩二波。单列是为了不把它们与二波逻辑混为一谈。</div>
+
+<h2>候选详情（评分最高的 24 只，两条路径混合）</h2>
+<div class="cards">
+<div class="cd bA">
+  <div class="cd-h">
+    <div><div class="cd-n">襄阳轴承 <span class="cd-c">SZ000678</span></div>
+      <div class="cd-t">机器人轴承+汽车轴承+湖北国资 · 汽车零部件</div>
+      <div class="cd-t">二板日 20260928（T+2） · <span class="pl">连板</span>
+        <span class="st st1">连板延续</span></div></div>
+    <div class="sc"><div class="sc-v">76</div>
+      <span class="g gA">A</span>
+      <div class="ct">P70-80 · 历史命中 49%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>10.65 / 10.65 / 10.45</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">10.69 （+0.4%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="up">12.89 （+21.0%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>10.75 / 9.83</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>0.27</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>8.78% / 49.0亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.47</span></div><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style="left:50%;width:33%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.31</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style="left:50%;width:26%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.24</span></div><div class="cb-r"><span class="cb-l">距二板日天数</span><span class="cb-b"><i style="left:50%;width:6%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.06</span></div></div>
+</div>
+<div class="cd bB">
+  <div class="cd-h">
+    <div><div class="cd-n">江淮汽车 <span class="cd-c">SH600418</span></div>
+      <div class="cd-t">尊界+华为合作+玛莎拉蒂合作传闻 · 汽车整车</div>
+      <div class="cd-t">二板日 20260923（T+4） · <span class="pb">断板</span>
+        <span class="st st0">已破前高</span></div></div>
+    <div class="sc"><div class="sc-v">67</div>
+      <span class="g gB">B</span>
+      <div class="ct">P60-70 · 历史命中 46%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>23.45 / 23.45 / 21.97</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">22.87 （-2.5%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="up">27.47 （+17.1%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>25.02 / 22.35</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>0.89</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>16.53% / 528.6亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style="left:50%;width:50%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.25</span></div><div class="cb-r"><span class="cb-l">二板日首封时间</span><span class="cb-b"><i style=";width:41%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.20</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style="left:50%;width:27%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.14</span></div><div class="cb-r"><span class="cb-l">距二板日天数</span><span class="cb-b"><i style=";width:12%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.06</span></div></div>
+</div>
+<div class="cd bB">
+  <div class="cd-h">
+    <div><div class="cd-n">福建水泥 <span class="cd-c">SH600802</span></div>
+      <div class="cd-t">海峡两岸+福建国资+水泥 · 建筑材料</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pl">连板</span>
+        <span class="st st1">连板延续</span></div></div>
+    <div class="sc"><div class="sc-v">55</div>
+      <span class="g gB">B</span>
+      <div class="ct">P50-60 · 历史命中 46%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>6.62 / 6.62 / 5.80</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">6.25 （-5.6%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="up">7.24 （+9.4%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>6.82 / 6.27</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>1.37</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>16.76% / 30.3亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">二板日首封时间</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.18</span></div><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style="left:50%;width:32%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.11</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style="left:50%;width:30%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.11</span></div><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style=";width:11%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.04</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">上工申贝 <span class="cd-c">SH600843</span></div>
+      <div class="cd-t">缝制设备+机器人缝制+轻型飞机 · 专用设备</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pb">断板</span>
+        <span class="st st3">回踩中</span></div></div>
+    <div class="sc"><div class="sc-v">41</div>
+      <span class="g gC">C</span>
+      <div class="ct">P40-50 · 历史命中 48%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>8.37 / 8.37 / 7.20</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">7.50 （-10.4%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">7.58 （-9.4%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>7.82 / 7.34</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>0.84</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>14.10% / 39.3亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.21</span></div><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style="left:50%;width:19%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.08</span></div><div class="cb-r"><span class="cb-l">站上5日线</span><span class="cb-b"><i style="left:50%;width:9%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.04</span></div><div class="cb-r"><span class="cb-l">站上二板日开盘价</span><span class="cb-b"><i style="left:50%;width:9%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.04</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">吉鑫科技 <span class="cd-c">SH601218</span></div>
+      <div class="cd-t">风电铸件+风电轴承+半年报增长 · 风电设备</div>
+      <div class="cd-t">二板日 20260928（T+2） · <span class="pb">断板</span>
+        <span class="st st0">已破前高</span></div></div>
+    <div class="sc"><div class="sc-v">36</div>
+      <span class="g gC">C</span>
+      <div class="ct">P30-40 · 历史命中 40%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>6.05 / 6.05 / 5.50</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">5.75 （-5.0%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="up">6.08 （+0.5%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>5.75 / 5.60</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>1.08</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>1.43% / 58.6亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">二板日首封时间</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.18</span></div><div class="cb-r"><span class="cb-l">距二板日天数</span><span class="cb-b"><i style="left:50%;width:16%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.06</span></div><div class="cb-r"><span class="cb-l">站上二板日开盘价</span><span class="cb-b"><i style="left:50%;width:11%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.04</span></div><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:10%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.04</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">金辰股份 <span class="cd-c">SH603396</span></div>
+      <div class="cd-t">半导体装备+玻璃基封装+光伏设备 · 光伏设备</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pl">连板</span>
+        <span class="st st1">连板后回落</span></div></div>
+    <div class="sc"><div class="sc-v">21</div>
+      <span class="g gC">C</span>
+      <div class="ct">P20-30 · 历史命中 42%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>35.64 / 35.64 / 32.77</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">33.40 （-6.3%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">33.50 （-6.0%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>35.20 / 31.72</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>1.74</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>24.03% / 49.4亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.15</span></div><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:48%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.15</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:38%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.12</span></div><div class="cb-r"><span class="cb-l">站上5日线</span><span class="cb-b"><i style="left:50%;width:13%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.04</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">东方中科 <span class="cd-c">SZ002819</span></div>
+      <div class="cd-t">网络分析仪+半导体测试+具身智能 · 通用设备</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pb">断板</span>
+        <span class="st st3">破位</span></div></div>
+    <div class="sc"><div class="sc-v">20</div>
+      <span class="g gC">C</span>
+      <div class="ct">P20-30 · 历史命中 42%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>26.66 / 26.66 / 26.10</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">23.52 （-11.8%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">23.73 （-11.0%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>24.86 / 23.21</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>1.37</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>-5.05% / 63.0亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.23</span></div><div class="cb-r"><span class="cb-l">站上二板日开盘价</span><span class="cb-b"><i style=";width:20%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.09</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:19%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.09</span></div><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style="left:50%;width:10%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.05</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">大业股份 <span class="cd-c">SH603278</span></div>
+      <div class="cd-t">人形机器人+胎圈钢丝+全球销售 · 通用设备</div>
+      <div class="cd-t">二板日 20260928（T+2） · <span class="pb">断板</span>
+        <span class="st st3">回踩中</span></div></div>
+    <div class="sc"><div class="sc-v">20</div>
+      <span class="g gC">C</span>
+      <div class="ct">P20-30 · 历史命中 42%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>10.78 / 10.78 / 10.19</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">10.13 （-6.0%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">10.27 （-4.7%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>10.06 / 9.55</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>1.20</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>5.11% / 36.8亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">二板日首封时间</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.13</span></div><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:48%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.13</span></div><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style=";width:26%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.07</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:24%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.06</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">天威视讯 <span class="cd-c">SZ002238</span></div>
+      <div class="cd-t">文化传媒+AI应用+数据中心 · 文化传媒</div>
+      <div class="cd-t">二板日 20260923（T+4） · <span class="pl">连板</span>
+        <span class="st st1">连板后回落</span></div></div>
+    <div class="sc"><div class="sc-v">13</div>
+      <span class="g gC">C</span>
+      <div class="ct">P10-20 · 历史命中 37%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>7.66 / 7.66 / 7.66</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">6.83 （-10.8%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">7.08 （-7.6%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>7.66 / 7.04</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>5.85</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>17.59% / 61.5亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.18</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:39%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.14</span></div><div class="cb-r"><span class="cb-l">站上二板日开盘价</span><span class="cb-b"><i style=";width:26%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.09</span></div><div class="cb-r"><span class="cb-l">距二板日天数</span><span class="cb-b"><i style=";width:16%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.06</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">雪龙集团 <span class="cd-c">SH603949</span></div>
+      <div class="cd-t">商用车热管理+新能源风扇+间接投资宇树科技 · 汽车零部件</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pl">连板</span>
+        <span class="st st1">连板后回落</span></div></div>
+    <div class="sc"><div class="sc-v">11</div>
+      <span class="g gC">C</span>
+      <div class="ct">P10-20 · 历史命中 37%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>16.90 / 16.90 / 16.90</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">16.82 （-0.5%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="up">18.41 （+8.9%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>17.94 / 15.92</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>2.23</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>-5.33% / 35.5亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.40</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:29%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.24</span></div><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style="left:50%;width:13%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.11</span></div><div class="cb-r"><span class="cb-l">二板日首封时间</span><span class="cb-b"><i style="left:50%;width:5%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.04</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">康强电子 <span class="cd-c">SZ002119</span></div>
+      <div class="cd-t">半导体封装材料+存储芯片+产能扩建 · 半导体</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pb">断板</span>
+        <span class="st st3">破位</span></div></div>
+    <div class="sc"><div class="sc-v">7</div>
+      <span class="g gC">C</span>
+      <div class="ct">P0-10 · 历史命中 36%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>29.61 / 29.61 / 28.52</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">25.44 （-14.1%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">25.80 （-12.9%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>28.06 / 26.34</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>0.95</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>11.58% / 111.1亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.27</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:39%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.21</span></div><div class="cb-r"><span class="cb-l">站上二板日开盘价</span><span class="cb-b"><i style=";width:17%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.09</span></div><div class="cb-r"><span class="cb-l">回踩幅度</span><span class="cb-b"><i style=";width:9%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.05</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">澳弘电子 <span class="cd-c">SH605058</span></div>
+      <div class="cd-t">PCB+HDI板+AI服务器电源+泰国基地 · 元件</div>
+      <div class="cd-t">二板日 20260923（T+4） · <span class="pb">断板</span>
+        <span class="st st3">回踩中</span></div></div>
+    <div class="sc"><div class="sc-v">6</div>
+      <span class="g gC">C</span>
+      <div class="ct">P0-10 · 历史命中 36%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>58.60 / 58.60 / 52.63</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">51.01 （-13.0%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">53.64 （-8.5%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>57.24 / 52.84</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>0.76</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>9.89% / 83.8亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.24</span></div><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:40%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.19</span></div><div class="cb-r"><span class="cb-l">二板日首封时间</span><span class="cb-b"><i style=";width:29%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.14</span></div><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style="left:50%;width:16%;background:#ff5252"></i></span><span class="cb-v" style="color:#ff5252">+0.08</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">集泰股份 <span class="cd-c">SZ002909</span></div>
+      <div class="cd-t">PCB三防漆+液冷硅油+胶粘剂涂料+新能源用胶 · 化学制品</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pb">断板</span>
+        <span class="st st3">破位</span></div></div>
+    <div class="sc"><div class="sc-v">5</div>
+      <span class="g gC">C</span>
+      <div class="ct">P0-10 · 历史命中 36%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>8.29 / 8.29 / 7.67</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">6.65 （-19.8%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">6.71 （-19.1%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>7.41 / 7.03</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>0.92</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>21.24% / 31.5亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.37</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:15%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.11</span></div><div class="cb-r"><span class="cb-l">站上二板日开盘价</span><span class="cb-b"><i style=";width:12%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.09</span></div><div class="cb-r"><span class="cb-l">回踩幅度</span><span class="cb-b"><i style=";width:11%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.08</span></div></div>
+</div>
+<div class="cd bC">
+  <div class="cd-h">
+    <div><div class="cd-n">华茂股份 <span class="cd-c">SZ000850</span></div>
+      <div class="cd-t">纺织主业+矿业整合+国企改革+“华”字辈 · 纺织制造</div>
+      <div class="cd-t">二板日 20260924（T+3） · <span class="pb">断板</span>
+        <span class="st st3">破位</span></div></div>
+    <div class="sc"><div class="sc-v">0</div>
+      <span class="g gC">C</span>
+      <div class="ct">P0-10 · 历史命中 36%</div></div>
+  </div>
+  <div class="kv"><i>二板日 高/收/开</i><b>5.12 / 5.12 / 5.12</b></div>
+  <div class="kv"><i>回踩最低 / 幅度</i><b class="dn">4.17 （-18.6%）</b></div>
+  <div class="kv"><i>现价 / 距前高</i><b class="dn">4.17 （-18.6%）</b></div>
+  <div class="kv"><i>5日线 / 10日线</i><b>4.74 / 4.46</b></div>
+  <div class="kv"><i>回踩段缩量比</i><b>8.03</b></div>
+  <div class="kv"><i>二板日 主力净额占比 / 流通市值</i><b>57.20% / 48.3亿</b></div>
+  <div class="cb"><div class="cb-r"><span class="cb-l">距二板日高点</span><span class="cb-b"><i style=";width:50%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.36</span></div><div class="cb-r"><span class="cb-l">当日涨跌幅</span><span class="cb-b"><i style=";width:32%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.24</span></div><div class="cb-r"><span class="cb-l">当日量比</span><span class="cb-b"><i style=";width:23%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.16</span></div><div class="cb-r"><span class="cb-l">站上二板日开盘价</span><span class="cb-b"><i style=";width:13%;background:#22c55e"></i></span><span class="cb-v" style="color:#22c55e">-0.09</span></div></div>
+</div></div>
+<div class="note">卡片底部为<b style="color:#1f2328">评分贡献条</b>：显示该股在模型里得分/扣分最多的 4 个变量，
+红条=加分项，绿条=扣分项，数值为「标准化值 × 模型系数」。
+<b style="color:#1f2328">路径徽标</b>为蓝色=断板、紫色=连板。</div>
+
+<h2>评分模型</h2>
+<div class="card">
+<h3 style="margin-top:0">模型质量</h3>
+<div class="grid" style="margin:8px 0">
+<div class="kpi"><div class="k-l">训练集 AUC</div><div class="k-v">0.603</div><div class="k-s">前70% 时序</div></div>
+<div class="kpi"><div class="k-l">样本外 AUC</div><div class="k-v">0.554</div><div class="k-s">后30% 时序</div></div>
+<div class="kpi"><div class="k-l">样本外 Top20% 命中</div><div class="k-v" style="color:#cf222e">56.5%</div><div class="k-s">基准 45.1%</div></div>
+<div class="kpi"><div class="k-l">观察点总数</div><div class="k-v">4256</div><div class="k-s">1489 条二板事件 × T+2/3/4</div></div>
+</div>
+<div class="note"><b style="color:#9a3412">必须正视：AUC 0.554 属于弱信号。</b>
+模型有边际，但不是「选出就能涨」。它的价值在于把候选从「全部二板」收敛到值得看的一小撮。
+回放验证进一步显示，<b>这个边际几乎全部来自 S 级（前 10%），中间的 75% 区间基本没有区分度</b>。</div>
+
+<h3>端到端回放验证（最近 25 个交易日，共 689 个扫描输出）</h3><div class="rpt-scroll"><table class="dt"><thead><tr><th>等级</th><th>样本</th><th>10日内再涨≥10%</th><th>此后10日最高涨幅</th><th>此后10日最低</th></tr></thead><tbody><tr class="srow"><td>S 级</td><td class="num">74</td><td class="num" style="font-weight:700;color:#cf222e">64.9%</td><td class="num">+17.24%</td><td class="num dn">-15.26%</td></tr><tr><td>A 级</td><td class="num">119</td><td class="num" style="font-weight:700;color:#1f2328">42.0%</td><td class="num">+11.63%</td><td class="num dn">-13.76%</td></tr><tr><td>B 级</td><td class="num">190</td><td class="num" style="font-weight:700;color:#1a7f37">37.9%</td><td class="num">+11.03%</td><td class="num dn">-12.99%</td></tr><tr><td>C 级</td><td class="num">306</td><td class="num" style="font-weight:700;color:#1f2328">40.8%</td><td class="num">+10.09%</td><td class="num dn">-11.04%</td></tr><tr><td>全样本基准</td><td class="num">689</td><td class="num" style="font-weight:700">42.8%</td><td class="num">--</td><td class="num">--</td></tr></tbody></table></div>
+<div class="note">回放方式：把 wave2_scan.py 对最近 25 个交易日逐日以 <span class="mono">--date</span> 原样执行，
+收集全部扫描输出，再用真实后续行情计算命中率。
+<b style="color:#9a3412">注意：模型训练样本覆盖同一时期，因此上表是样本内结果，实际样本外表现会更低
+（以样本外 AUC 0.554 为准）。</b>它主要用于验证「扫描器的特征计算与校准模型一致、分级方向正确」。</div>
+
+<h3>分位档历史表现（全样本回看）</h3>
+<div class="rpt-scroll"><table class="dt"><thead><tr><th>分位档</th><th>样本</th><th>10日内再涨≥10%</th><th>此后10日最高涨幅均值</th></tr></thead>
+<tbody><tr class="srow"><td>P90-P100</td><td class="num">426</td><td class="num" style="font-weight:700;color:#cf222e">68.8%</td><td class="num">+20.89%</td></tr><tr><td>P80-P90</td><td class="num">426</td><td class="num" style="font-weight:700;color:#1f2328">50.0%</td><td class="num">+13.03%</td></tr><tr><td>P70-P80</td><td class="num">425</td><td class="num" style="font-weight:700;color:#1f2328">49.2%</td><td class="num">+13.83%</td></tr><tr><td>P60-P70</td><td class="num">426</td><td class="num" style="font-weight:700;color:#1f2328">45.5%</td><td class="num">+13.16%</td></tr><tr><td>P50-P60</td><td class="num">425</td><td class="num" style="font-weight:700;color:#1f2328">46.1%</td><td class="num">+11.64%</td></tr><tr><td>P40-P50</td><td class="num">426</td><td class="num" style="font-weight:700;color:#1f2328">47.9%</td><td class="num">+12.19%</td></tr><tr><td>P30-P40</td><td class="num">426</td><td class="num" style="font-weight:700;color:#1a7f37">39.9%</td><td class="num">+10.85%</td></tr><tr><td>P20-P30</td><td class="num">425</td><td class="num" style="font-weight:700;color:#1a7f37">41.6%</td><td class="num">+11.25%</td></tr><tr><td>P10-P20</td><td class="num">426</td><td class="num" style="font-weight:700;color:#1a7f37">37.3%</td><td class="num">+10.70%</td></tr><tr><td>P0-P10</td><td class="num">425</td><td class="num" style="font-weight:700;color:#1a7f37">36.2%</td><td class="num">+9.47%</td></tr></tbody></table></div>
+<div class="note">从 P00 到 P90 基本单调（36.2% → 68.8%），但<b style="color:#1f2328">增量几乎全部集中在 P90 以上</b>。
+这就是本报告只标 S/A 两级的原因。</div>
+
+<h3>模型系数（标准化，正=提高再涨概率）</h3>
+<div class="rpt-scroll"><table class="dt"><thead><tr><th>特征</th><th>系数</th><th></th><th>方向</th></tr></thead>
+<tbody><tr><td>距二板日高点</td><td class="num" style="color:#cf222e;font-weight:700">+0.2182</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:83%;background:#ff5252;border-radius:3px"></i></div></td><td class="mut">越大越好</td></tr><tr><td>当日量比</td><td class="num" style="color:#22c55e;font-weight:700">-0.1534</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:58%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>当日涨跌幅</td><td class="num" style="color:#ff5252;font-weight:700">+0.1481</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:56%;background:#ff5252;border-radius:3px"></i></div></td><td class="mut">越大越好</td></tr><tr><td>二板日首封时间</td><td class="num" style="color:#22c55e;font-weight:700">-0.0628</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:24%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>站上二板日开盘价</td><td class="num" style="color:#ff5252;font-weight:700">+0.0601</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:23%;background:#ff5252;border-radius:3px"></i></div></td><td class="mut">越大越好</td></tr><tr><td>距二板日天数</td><td class="num" style="color:#22c55e;font-weight:700">-0.0468</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:18%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>回踩幅度</td><td class="num" style="color:#ff5252;font-weight:700">+0.0403</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:15%;background:#ff5252;border-radius:3px"></i></div></td><td class="mut">越大越好</td></tr><tr><td>流通市值</td><td class="num" style="color:#22c55e;font-weight:700">-0.0373</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:14%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>站上5日线</td><td class="num" style="color:#22c55e;font-weight:700">-0.0299</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:11%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>二板日主力净额占比</td><td class="num" style="color:#22c55e;font-weight:700">-0.0079</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:3%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>二板日换手</td><td class="num" style="color:#22c55e;font-weight:700">-0.0049</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:2%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>二板日开板次数</td><td class="num" style="color:#22c55e;font-weight:700">-0.0041</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:2%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>二板日封单/流通</td><td class="num" style="color:#22c55e;font-weight:700">-0.0021</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:1%;background:#22c55e;border-radius:3px"></i></div></td><td class="mut">越小越好</td></tr><tr><td>回踩段缩量比</td><td class="num" style="color:#ff5252;font-weight:700">+0.0018</td><td><div style="height:7px;background:#eef1f4;border-radius:3px;width:150px"><i style="display:block;height:100%;width:1%;background:#ff5252;border-radius:3px"></i></div></td><td class="mut">越大越好</td></tr></tbody></table></div>
+<div class="note">
+<b style="color:#1f2328">反直觉但重要的一条：</b>在 T+2~T+4 这个观察点，
+<b>二板日的封单强度、封板时间、开板次数对「后续还能不能再涨」几乎没有预测力</b>（系数都在 ±0.07 以内）。
+封单质量是预测「次日能否连板」的强因子，但它到 T+2 之后已经失效——
+<b>此时真正决定后续的是「当前位置」和「当前动能」</b>，而不是两天前的封单。
+<br><b style="color:#1f2328">另一个反直觉点：当日量比系数为负。</b>
+即缩量上行（惜售）比放量上行更容易续涨，这与「量价齐升」的直觉相反，但与二板日「低换手更好」的结论一致。
+</div>
+</div>
+
+<h2>局限</h2>
+<div class="warn">
+<b>使用前必须知道：</b><br>
+1. <b>这是概率筛选，不是确定性信号。</b>样本外 AUC 仅 0.554，即使最高分位也只有约 69% 的命中率，
+意味着三成以上不会走出预期形态。<br>
+2. <b>只有 S 级（P90+）有实测优势。</b>回放里 S 级 64.9% vs 基准 42.8%，但 A 级 42.0%、B 级 37.9%、C 级 40.8%
+——<b>中间 90% 的分位区间都没有区分度</b>。这份报告请只看 S 级那一撮。<br>
+3. <b>上述回放是样本内结果</b>（模型训练覆盖同期），实际样本外以 AUC 0.554 为准，会更低。<br>
+4. <b>标签是「盘中最高涨幅≥10%」，不是可落袋收益。</b>能否在实际卖点兑现是另一回事。<br>
+5. <b>回测样本期 2026-01~09（单边偏强市）。</b>系统性下跌时所有概率下移。<br>
+6. <b>依赖本地二板面板。</b>若当日面板未生成，仍可用历史面板扫描，但 T+k 会顺延。<br>
+7. <b>价格已用前复权换算回实际盘面价</b>，区间内有除权时可能与软件显示有细微差异。<br>
+<b>本报告只呈现客观数据与概率评分，不构成任何操作建议。</b>
+</div>
+
+<div class="foot">
+扫描程序：二波扫描/wave2_scan.py &nbsp;·&nbsp; 评分模型：_回测/calibrate_wave2.py →
+wave2_model.json &nbsp;·&nbsp; 上游回测：_回测/analyze.py（1489 条二板事件前瞻回测） &nbsp;·&nbsp;
+涨=红 跌=绿（A股口径）
+</div>
+</div><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body></html>
