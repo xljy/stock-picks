@@ -35,7 +35,7 @@
   .muted{color:#5b6570;font-size:12px}
   .src{font-size:12px;color:#5b6570;margin-bottom:10px}
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div class="wrap">
 
@@ -58,20 +58,20 @@
 
 <h2>1. 数据口径与溯源</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th style="width:150px">环节</th><th style="width:190px">实际数据源</th><th>溯源字段 / 状态</th></tr>
 <tr><td>数据源自检</td><td>非TDX 主源</td><td><code>primary</code>：indices / quote / kline_day / emotion <strong>全 ok</strong>；<code>tdx.ok=false</code>（HTTP 401 Unauthorized）→ 结论「主源可用；TDX 兜底不可用」</td></tr>
 <tr><td>交易日确认</td><td>zt_trade_cal.py</td><td><code>T=20260928　T_PREV=20260924　来源=akshare日历</code>（真实交易日历，无算术推算）</td></tr>
 <tr><td>涨停池（33 只）</td><td>akshare / 东财 push2ex</td><td>脚本日志：<code>[WARN] TDX 涨停池(20260928) 失败: HTTP 401</code> → <code>[WARN] TDX 涨停池为空，降级 akshare(eastmoney)</code>。<strong>涨停池来源已降级</strong>，非 TDX 口径</td></tr>
 <tr><td>收盘行情</td><td>腾讯 qt.gtimg.cn</td><td><code>src="tencent qt.gtimg.cn"</code>，<code>tdx_fallback=false</code>，<code>tdx_client_ok=false</code>，<code>tdx_enriched_fields=[]</code> → <strong>主力净额(main_net)/chg10/PE 补缺字段缺失</strong>（TDX 不可用），报告中不展示该三项</td></tr>
-</table>
+</table></div>
 <p class="muted" style="margin-top:8px">说明：本次<strong>未触发 TDX 兜底</strong>（主源全程可用），TDX 401 仅导致「补缺字段」缺失。涨停池 33 只为东财收盘口径，若与 17:00 流水线的涨停数不一致属正常口径差异。</p>
 </div>
 
 <h2>2. 扫描筛出标的 vs 实际收盘</h2>
 <div class="card">
 <p class="muted">当日扫描报告不存在，<code>scan.final_picks</code> / <code>open_band</code> / <code>killed_but_up</code> 全为空，本表无数据。以下改为呈现<strong>查询集 8 只（S 级 7 + A+ 级 1）的竞价预判 vs 实际收盘</strong>，用于检验高分端的实际区分度。</p>
-<table style="margin-top:10px">
+<div class="rpt-scroll"><table style="margin-top:10px">
 <tr><th>代码</th><th>名称</th><th>评级</th><th>ML概率</th><th class="num">开盘涨幅</th><th class="num">收盘涨幅</th><th class="num">换手%</th><th>结果</th></tr>
 <tr><td>600825</td><td>新华传媒</td><td><span class="tag s">S</span></td><td class="num">0.874</td><td class="num up">+10.04%</td><td class="num up">+10.04%</td><td class="num">0.48</td><td><span class="tag hit">一字封板（5板）</span></td></tr>
 <tr><td>001234</td><td>泰慕士</td><td><span class="tag s">S</span></td><td class="num">0.874</td><td class="num dn">-10.00%</td><td class="num dn">-10.00%</td><td class="num">11.64</td><td><span class="tag miss">一字跌停</span></td></tr>
@@ -81,13 +81,13 @@
 <tr><td>603949</td><td>雪龙集团</td><td><span class="tag s">S</span></td><td class="num">0.355</td><td class="num up">+10.00%</td><td class="num up">+10.00%</td><td class="num">7.80</td><td><span class="tag hit">一字封板（3板）</span></td></tr>
 <tr><td>002614</td><td>奥佳华</td><td><span class="tag s">S</span></td><td class="num">0.308</td><td class="num up">+9.60%</td><td class="num up">+2.04%</td><td class="num">42.87</td><td>高开炸板（换手最高）</td></tr>
 <tr><td>603500</td><td>祥和实业</td><td><span class="tag aplus">A+</span></td><td class="num">0.234</td><td class="num dn">-0.29%</td><td class="num dn">-4.13%</td><td class="num">8.53</td><td>未晋级</td></tr>
-</table>
+</table></div>
 <p class="muted" style="margin-top:8px">S 级 7 只收盘均值 <strong class="dn">-0.93%</strong>；S+A+ 共 8 只均值 <strong class="dn">-1.33%</strong>。行情源为腾讯 qt.gtimg.cn（主源），主力净额/PE 因 TDX 401 缺失。</p>
 </div>
 
 <h2>3. 候选池晋级完整清单（7 只）</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>代码</th><th>名称</th><th>评级</th><th>题材</th><th class="num">连板</th><th>首封时间</th><th class="num">今日炸板</th><th class="num">封单额(万)</th><th class="num">pre_score</th></tr>
 <tr><td>600825</td><td>新华传媒</td><td><span class="tag s">S</span></td><td>出版业</td><td class="num">5</td><td>09:25:01</td><td class="num">0</td><td class="num">238615.5</td><td class="num">8</td></tr>
 <tr><td>603949</td><td>雪龙集团</td><td><span class="tag s">S</span></td><td>活跃小盘非融</td><td class="num">3</td><td>09:30:00</td><td class="num">1</td><td class="num">5084.2</td><td class="num">8</td></tr>
@@ -96,13 +96,13 @@
 <tr><td>603278</td><td>大业股份</td><td>A</td><td>人形机器人</td><td class="num">2</td><td>09:30:24</td><td class="num">1</td><td class="num">4474.9</td><td class="num">—</td></tr>
 <tr><td>000678</td><td>襄阳轴承</td><td>B</td><td>一带一路</td><td class="num">2</td><td>09:30:27</td><td class="num">1</td><td class="num">7618.7</td><td class="num">—</td></tr>
 <tr><td>601218</td><td>吉鑫科技</td><td>B</td><td>风电</td><td class="num">2</td><td>14:26:14</td><td class="num">1</td><td class="num">2676.0</td><td class="num">—</td></tr>
-</table>
+</table></div>
 <p class="muted" style="margin-top:8px">结构：2板 3 只、3板 3 只、5板 1 只；首封 ≤09:31 共 5 只（71.4%）；炸板过的 5 只（71.4%）；封单最强 新华传媒 23.86 亿（占全池绝对主导）；最晚首封 吉鑫科技 14:26。</p>
 </div>
 
 <h2>4. 分级有效性检验</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>评级</th><th class="num">候选数</th><th class="num">晋级数</th><th class="num">晋级率</th><th>今日排序</th></tr>
 <tr><td>B</td><td class="num">6</td><td class="num">2</td><td class="num"><strong>33.3%</strong></td><td>1</td></tr>
 <tr><td><span class="tag s">S</span></td><td class="num">7</td><td class="num">2</td><td class="num"><strong>28.6%</strong></td><td>2</td></tr>
@@ -111,7 +111,7 @@
 <tr><td><span class="tag aplus">A+</span></td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td>并列末位</td></tr>
 <tr><td>B+</td><td class="num">7</td><td class="num">0</td><td class="num">0.0%</td><td>并列末位</td></tr>
 <tr><td>D</td><td class="num">5</td><td class="num">0</td><td class="num">0.0%</td><td>并列末位</td></tr>
-</table>
+</table></div>
 <p style="margin-top:10px"><strong>客观结论：</strong></p>
 <ul>
 <li><strong>S 级首次未能登顶</strong>：B 级 33.3% 反超 S 级 28.6%，为 11 日样本中 S 级首次未排第一（此前 S 在 9/9、9/10…均居前）。</li>
@@ -120,12 +120,12 @@
 <li><strong>S 级内部两极分化达到样本期最剧烈</strong>：7 只中 2 只一字涨停（+10.04%、+10.00%）、2 只跌停（-10.00%、-9.97%）、1 只近天地板（-8.99%），极差 20 个百分点。</li>
 </ul>
 <h3 style="font-size:14px;margin:14px 0 6px">pre_score 分档</h3>
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>pre_score</th><th class="num">候选数</th><th class="num">晋级数</th><th class="num">晋级率</th></tr>
 <tr><td>8</td><td class="num">6</td><td class="num">2</td><td class="num">33.3%</td></tr>
 <tr><td>7</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td></tr>
 <tr><td>4</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td></tr>
-</table>
+</table></div>
 <p class="muted" style="margin-top:6px">仅 8 只标的有 pre_score（覆盖 15.4%）；8 分档 33.3% 为今日最高档，与 9/9、9/10 的「最高档崩塌」相反，7 分档 0/1。样本过小，不构成单调性证据。</p>
 </div>
 
@@ -156,7 +156,7 @@
 
 <h2>7. 累积样本库状态</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>日期</th><th class="num">候选池</th><th class="num">晋级</th><th class="num">晋级率</th><th class="num">全市场涨停</th><th>备注</th></tr>
 <tr><td>2026-09-02</td><td class="num">83</td><td class="num">13</td><td class="num">15.7%</td><td class="num">52</td><td>基线</td></tr>
 <tr><td>2026-09-03</td><td class="num">54</td><td class="num">9</td><td class="num">16.7%</td><td class="num">46</td><td></td></tr>
@@ -169,7 +169,7 @@
 <tr><td>2026-09-14</td><td class="num">40</td><td class="num">11</td><td class="num"><strong>27.5%</strong></td><td class="num">55</td><td>快照复算（推演级）</td></tr>
 <tr><td>2026-09-15</td><td class="num">40</td><td class="num">4</td><td class="num"><strong>10.0%</strong></td><td class="num">32</td><td>候选池未刷新，口径无效</td></tr>
 <tr style="background:#fdf6f6"><td><strong>2026-09-28</strong></td><td class="num">52</td><td class="num">7</td><td class="num"><strong>13.5%</strong></td><td class="num">33</td><td>降级（本报告）</td></tr>
-</table>
+</table></div>
 <p class="muted" style="margin-top:8px"><code>zt_925_review_history.json</code> 累计 <strong>11 个交易日</strong>。晋级率区间 10.0% ~ 31.7%，均值约 18.9%。注：history 各日仅存 a_plus/a 晋级计数，未存 grade_stats，跨日分级聚合需另算。</p>
 <p style="margin-top:10px"><strong>重校准条件检查：</strong></p>
 <ul>

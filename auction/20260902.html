@@ -28,7 +28,7 @@
   .small { font-size:12px; color:#5b6570; }
   .kv { color:#9a3412; font-weight:bold; }
 </style>
-<!--rp:start--><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.85}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.85}img{max-width:100%;height:auto}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div class="container">
 
@@ -48,20 +48,20 @@
 
 <h2>一、扫描筛出 5 只 vs 实际收盘</h2>
 <div class="card">
-  <table>
+  <div class="rpt-scroll"><table>
     <tr><th>代码</th><th>名称</th><th>开盘涨幅</th><th>竞价判定</th><th>今日收盘</th><th>结果</th></tr>
     <tr><td>600830</td><td>香溢融通</td><td class="up">+3.47%</td><td><span class="badge hit">优秀</span></td><td class="up">+9.97% 涨停</td><td><span class="badge hit">✅ 命中(2板)</span></td></tr>
     <tr><td>603221</td><td>爱丽家居</td><td class="up">+4.75%</td><td><span class="badge hit">优秀</span></td><td class="up">+9.23%（触板33.61后开板）</td><td><span class="badge caution">⚠️ 差一分</span></td></tr>
     <tr><td>000019</td><td>深粮控股</td><td class="up">+2.02%</td><td><span class="badge hit">最佳</span></td><td class="down">-9.34%</td><td><span class="badge miss">❌ 近乎跌停</span></td></tr>
     <tr><td>002084</td><td>海鸥住工</td><td class="up">+0.85%</td><td><span class="badge caution">勉强</span></td><td class="up">+1.42%（盘中炸板回落）</td><td><span class="badge miss">❌</span></td></tr>
     <tr><td>002015</td><td>协鑫能科</td><td class="neutral">0.00%</td><td><span class="badge caution">勉强</span></td><td class="down">-2.12%</td><td><span class="badge miss">❌</span></td></tr>
-  </table>
+  </table></div>
   <p><b>筛出 5 只 → 1 封板、1 触板未封、3 失败（其中深粮控股 -9.34% 近跌停）。</b></p>
 </div>
 
 <h2>二、候选池 13 只晋级清单（漏掉的都在这里）</h2>
 <div class="card">
-  <table>
+  <div class="rpt-scroll"><table>
     <tr><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>连板</th><th>首封时间</th><th>今日炸板</th><th>封单(万)</th><th>9:25扫描为何漏</th></tr>
     <tr><td>003005</td><td>竞业达</td><td>A+</td><td>5</td><td class="up">4板</td><td>09:25</td><td>0</td><td>18,073</td><td>一字+10%开，被"&gt;+7%放弃"误杀</td></tr>
     <tr><td>601086</td><td>国芳集团</td><td>A+</td><td>5</td><td class="up">4板</td><td>09:25</td><td>0</td><td>30,606</td><td>一字+10%开，被"&gt;+7%放弃"误杀</td></tr>
@@ -76,25 +76,25 @@
     <tr><td>000635</td><td>英力特</td><td>A</td><td>—</td><td class="up">2板</td><td>09:25</td><td>0</td><td>9,330</td><td>A级，查询覆盖不到</td></tr>
     <tr><td>002104</td><td>恒宝股份</td><td>A</td><td>—</td><td class="up">2板</td><td>10:19</td><td>1</td><td>9,196</td><td>A级，查询覆盖不到</td></tr>
     <tr><td>600828</td><td>茂业商业</td><td>A</td><td>—</td><td class="up">2板</td><td>09:25</td><td>1</td><td>6,394</td><td>A级，查询覆盖不到</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <h2>三、分级有效性检验（今日样本）</h2>
 <div class="card">
-  <table>
+  <div class="rpt-scroll"><table>
     <tr><th>分组</th><th>池内</th><th>晋级</th><th>晋级率</th><th>结论</th></tr>
     <tr><td>A+ 级</td><td>34</td><td>5</td><td>14.7%</td><td class="kv">劣于 A 级 → 分级失效</td></tr>
     <tr><td>A 级</td><td>49</td><td>8</td><td class="up">16.3%</td><td>A级命中反超A+</td></tr>
     <tr><td>pre_score=5</td><td>6</td><td>3</td><td class="up">50.0%</td><td>高分段有效</td></tr>
     <tr><td>pre_score=4</td><td>10</td><td>1</td><td>10.0%</td><td>—</td></tr>
     <tr><td>pre_score=3</td><td>18</td><td>1</td><td>5.6%</td><td>—</td></tr>
-  </table>
+  </table></div>
   <p class="small">异常点：A+ 级里 pre_score=3 的龙版传媒（3板）晋级，A 级 8 只晋级说明 A/B 切分线本身没有把龙头装进 A+。pre_score 高分档（5分档 50%）仍有区分度，问题出在 A+ 准入过宽 / A 级未参与竞价扫描。</p>
 </div>
 
 <h2>四、开盘价区间规则 · 今日正反检验</h2>
 <div class="card">
-  <table>
+  <div class="rpt-scroll"><table>
     <tr><th>开盘涨幅</th><th>规则判定</th><th>标的</th><th>实际收盘</th><th>规则对错</th></tr>
     <tr><td class="up">+10.01%（一字）</td><td><span class="badge miss">放弃</span></td><td>竞业达 / 国芳集团</td><td class="up">双双封死 4板</td><td class="kv">❌ 错杀</td></tr>
     <tr><td class="up">+9.99%</td><td><span class="badge miss">放弃</span></td><td>福建金森</td><td class="down">-5.19%（开板跳水，主力净流出2.0亿）</td><td><span class="badge hit">✅ 正确排除</span></td></tr>
@@ -103,7 +103,7 @@
     <tr><td class="up">+2.02%</td><td><span class="badge hit">最佳</span></td><td>深粮控股</td><td class="down">-9.34%</td><td class="kv">❌ 放行进坑</td></tr>
     <tr><td class="up">+4.75%</td><td><span class="badge hit">优秀</span></td><td>爱丽家居</td><td class="up">+9.23% 触板未封</td><td><span class="badge caution">△ 半对</span></td></tr>
     <tr><td class="up">+3.47%</td><td><span class="badge hit">优秀</span></td><td>香溢融通</td><td class="up">2板封死</td><td><span class="badge hit">✅ 唯一全对</span></td></tr>
-  </table>
+  </table></div>
   <p><b>静态区间规则今日检验：</b>">5% 放弃"错杀 3 只封死票（竞业达/国芳/小方），同时正确排除 2 只炸板票（福建金森/新赛）；"+1~3% 最佳"放进深粮控股直接 -9.34%。<span class="kv">静态盈亏比区间在今天这种低开弱势日无区分度。</span></p>
   <p class="small">区分高低开的关键不在涨幅数值，而在：①一字板竞价封单强度（国芳 27.6万手 vs 新赛 144手、福建金森 448手）②是否秒板 ③昨日是否本身就是高标（4板 vs 首板）。新赛/福建金森竞价买一仅百余手，一字开板风险极高。</p>
 </div>

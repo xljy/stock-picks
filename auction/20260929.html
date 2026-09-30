@@ -40,7 +40,7 @@ li{margin:3px 0}
 .bar>i{display:block;height:100%;background:var(--up)}
 .foot{color:var(--tx2);font-size:12px;margin-top:24px;border-top:1px solid var(--bd);padding-top:10px}
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div class="wrap">
 <h1>9:25 竞价打板扫描 · 收盘反查</h1>
@@ -57,13 +57,13 @@ li{margin:3px 0}
 
 <h2>1. 数据口径与本次实际数据源</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th style="width:22%">环节</th><th style="width:20%">本次实际源</th><th>说明</th></tr>
 <tr><td>涨停池（只数/封板判定）</td><td>akshare 东财 push2ex</td><td>57 只。脚本内 TDX 涨停池探测失败 → 自动降级东财。<b>未触发 TDX 兜底</b>（TDX 在本会话不可用：CODEBUDDY_MCP_CONFIG 中无 tdx 连接器）</td></tr>
 <tr><td>收盘行情（33 只涨跌幅）</td><td>tencent qt.gtimg.cn</td><td><code>src=tencent</code> <code>tdx_fallback=false</code> <code>fallback_errors=null</code>；<code>tdx_probed=true</code> 但 <code>tdx_client_ok=false</code>、<code>tdx_enriched_fields=[]</code> → <b>主力净额(main_net)/chg10/PE 三项 TDX 补缺缺失</b>，报告中不展示该三项</td></tr>
 <tr><td>开盘涨幅（区间规则推演）</td><td>zt_925_capture_20260929_intraday.json</td><td>快照时刻 09:32:58，<b>非 9:25 竞价时点</b>；open/open_pct 为当日开盘价不随时间变化，可做区间判定；盘中 pct 仅作参考不入统计</td></tr>
 <tr><td>交易日历</td><td>zt_trade_cal.py / akshare</td><td>T=20260929 T_PREV=20260928（非算术推算）</td></tr>
-</table>
+</table></div>
 <div class="note">口径差异提示：东财涨停池 57 只；17:00 流水线 <code>zt_1700_data_20260929.json</code> 尚未生成（当前 15:47），本次无法与其交叉核对涨停数。</div>
 </div>
 
@@ -80,7 +80,7 @@ li{margin:3px 0}
 
 <h2>3. 候选池晋级完整清单（10 只）</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>连板</th><th>首封时间</th><th>今日炸板</th><th>封单额</th><th>开盘涨幅</th><th>收盘</th></tr>
 <tr><td>600825</td><td>新华传媒</td><td>A+</td><td>5</td><td>6</td><td>09:25:00</td><td>0</td><td>18.53 亿</td><td class="up">+10.06%</td><td class="up">+10.06%</td></tr>
 <tr><td>603949</td><td>雪龙集团</td><td>A</td><td>—</td><td>4</td><td>09:25:01</td><td>0</td><td>1.46 亿</td><td class="up">+10.01%</td><td class="up">+10.01%</td></tr>
@@ -92,13 +92,13 @@ li{margin:3px 0}
 <tr><td>600241</td><td>时代万恒</td><td>B</td><td>—</td><td>2</td><td>09:25:02</td><td>0</td><td>0.91 亿</td><td class="up">+9.95%</td><td class="up">+9.95%</td></tr>
 <tr><td>600488</td><td>津药药业</td><td>C</td><td>—</td><td>2</td><td>09:30:06</td><td>1</td><td>0.46 亿</td><td class="up">+7.82%</td><td class="up">+10.05%</td></tr>
 <tr><td>301190</td><td>善水科技</td><td>D</td><td>—</td><td>2</td><td>09:46:33</td><td>2</td><td>0.47 亿</td><td class="up">+4.21%</td><td class="up">+20.00%</td></tr>
-</table>
+</table></div>
 <div class="note">结构：6 板 1 / 4 板 1 / 3 板 1 / 2 板 7；首封 ≤09:30:02 共 5 只（50%）；一字开盘 5 只全部封死且 0 炸板。善水科技为 20cm 创业板标的（+20.00%）。</div>
 </div>
 
 <h2>4. 分级有效性检验</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>评级</th><th>池内</th><th>晋级</th><th>晋级率</th><th>分布</th><th>收盘均值</th><th>收盘区间</th></tr>
 <tr><td>A+</td><td>1</td><td>1</td><td class="up">100.0%</td><td><div class="bar"><i style="width:100%"></i></div></td><td class="up">+10.06%</td><td>+10.06 ~ +10.06</td></tr>
 <tr><td>B</td><td>8</td><td>3</td><td class="up">37.5%</td><td><div class="bar"><i style="width:37.5%"></i></div></td><td class="up">+1.87%</td><td>+9.98 ~ −10.00</td></tr>
@@ -106,7 +106,7 @@ li{margin:3px 0}
 <tr><td>B+</td><td>10</td><td>3</td><td class="up">30.0%</td><td><div class="bar"><i style="width:30%"></i></div></td><td class="up">+4.43%</td><td>+10.05 ~ −0.89</td></tr>
 <tr><td>D</td><td>4</td><td>1</td><td class="up">25.0%</td><td><div class="bar"><i style="width:25%"></i></div></td><td class="up">+4.74%</td><td>+20.00 ~ −3.85</td></tr>
 <tr><td>A</td><td>7</td><td>1</td><td class="down">14.3%</td><td><div class="bar"><i style="width:14.3%"></i></div></td><td class="down">−2.04%</td><td>+10.01 ~ −10.00</td></tr>
-</table>
+</table></div>
 <div class="note">
 <b>客观结论：</b>① A+ 100% 但仅 1 样本，无统计意义；② <b>A 级 14.3% 全档垫底</b>，且收盘均值 −2.04% 为全池最差（含会稽山 −9.99%、金辰股份 −10.00% 两只跌停），A 级低于 B/C/D 四档 → 本日分级<b>中部与底部全面倒挂</b>；③ D 级 25% 与收盘均值 +4.74%（最强）并存 → 底部剔除能力今日失效；④ pre_stats 仅 5 分档 1 只（样本不足），pre_score 分档无区分度可判。<br>
 与 12 日累计对比：累计 S 38.8% &gt; B+ 20.6% &gt; B 19.2% ≈ C 19.2% &gt; A+ 18.9% &gt; A 17.2% &gt; D 8.5%，今日 A 垫底与累计序一致，但 D 端（累计最低 8.5%）今日跃升至 25% 属异常。
@@ -115,7 +115,7 @@ li{margin:3px 0}
 
 <h2>5. 开盘价区间规则 · 今日正反检验（推演级）</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>开盘区间</th><th>只数</th><th>封板</th><th>封板率</th><th>分布</th><th>规则动作</th><th>判定</th></tr>
 <tr><td>一字（开盘=涨停价）</td><td>5</td><td>5</td><td class="up">100.0%</td><td><div class="bar"><i style="width:100%"></i></div></td><td>放弃</td><td><span class="tag miss">误杀 5</span></td></tr>
 <tr><td>&gt;+5%</td><td>3</td><td>2</td><td class="up">66.7%</td><td><div class="bar"><i style="width:66.7%"></i></div></td><td>放弃</td><td><span class="tag miss">误杀 2</span> / 排除正确 1</td></tr>
@@ -123,7 +123,7 @@ li{margin:3px 0}
 <tr><td>+1~3%</td><td>5</td><td>0</td><td class="flat">0.0%</td><td><div class="bar"><i style="width:1%"></i></div></td><td>达标</td><td><span class="tag">0 命中</span></td></tr>
 <tr><td>0~+1%</td><td>4</td><td>0</td><td class="flat">0.0%</td><td><div class="bar"><i style="width:1%"></i></div></td><td>勉强</td><td><span class="tag">0 命中</span></td></tr>
 <tr><td>&lt;0%（低开）</td><td>12</td><td>0</td><td class="flat">0.0%</td><td><div class="bar"><i style="width:1%"></i></div></td><td>放弃</td><td><span class="tag hit">排除全对 12</span></td></tr>
-</table>
+</table></div>
 <div class="note">
 <b>规则检验：</b><br>
 • <b>「&gt;+5% 及一字放弃」误杀 7/8 = 87.5%</b>，为 12 日样本期最高（此前最高 9/14 的 62.5%）。误杀标的：新华传媒(+10.06 一字,6板)、襄阳轴承(+10.05 一字,3板)、雪龙集团(+10.01 一字,4板)、深物业A(+9.98 一字,2板)、时代万恒(+9.95 一字,2板)、津药药业(+7.82,2板)、九阳股份(+6.97,2板)。<br>
@@ -136,7 +136,7 @@ li{margin:3px 0}
 
 <h2>6. 候选池 33 只 · 开盘 vs 收盘全表</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>代码</th><th>名称</th><th>评级</th><th>开盘涨幅</th><th>收盘涨跌</th><th>盘中最高</th><th>是否封板</th><th>区间判定</th></tr>
 <tr><td>301190</td><td>善水科技</td><td>D</td><td class="up">+4.21%</td><td class="up">+20.00%</td><td class="up">+20.00%</td><td><span class="tag hit">封</span></td><td>+3~5% 达标</td></tr>
 <tr><td>600825</td><td>新华传媒</td><td>A+</td><td class="up">+10.06%</td><td class="up">+10.06%</td><td class="up">+10.06%</td><td><span class="tag hit">封</span></td><td>一字 放弃</td></tr>
@@ -171,7 +171,7 @@ li{margin:3px 0}
 <tr><td>601579</td><td>会稽山</td><td>A</td><td class="down">−0.98%</td><td class="down">−9.99%</td><td class="down">−0.98%</td><td>—</td><td>低开 放弃</td></tr>
 <tr><td>603396</td><td>金辰股份</td><td>A</td><td class="down">−1.76%</td><td class="down">−10.00%</td><td class="up">+0.13%</td><td>—</td><td>低开 放弃</td></tr>
 <tr><td>001368</td><td>通达创智</td><td>B</td><td class="down">−4.98%</td><td class="down">−10.00%</td><td class="down">−4.98%</td><td>—</td><td>低开 放弃</td></tr>
-</table>
+</table></div>
 <div class="note">收盘行情源：腾讯 qt.gtimg.cn，33/33 全部取到（servertime 20260929 15:47）。主力净额/chg10/PE 因 TDX 不可用未补缺，表内不列。</div>
 </div>
 
@@ -193,14 +193,14 @@ li{margin:3px 0}
 
 <h2>8. 累积样本库状态</h2>
 <div class="card">
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>指标</th><th>值</th></tr>
 <tr><td>累计交易日</td><td><b>12</b>（20260902 起，含本日）</td></tr>
 <tr><td>累计候选池 / 累计晋级</td><td>641 / 123 = <b>19.2%</b></td></tr>
 <tr><td>逐日晋级率</td><td>15.7 / 16.7 / 15.2 / 31.7 / 18.9 / 20.3 / 18.8 / 20.0 / 27.5 / 10.0 / 13.5 / <b>30.3</b></td></tr>
 <tr><td>有效 scan 统计日</td><td>3 / 12（9/2、9/3、9/11），其余 9 日因报告缺失降级为推演或空</td></tr>
 <tr><td>累计分级（12 日）</td><td>S 38.8% &gt; B+ 20.6% &gt; B 19.2% ≈ C 19.2% &gt; A+ 18.9% &gt; A 17.2% &gt; D 8.5%</td></tr>
-</table>
+</table></div>
 <div class="note">重校准条件检查：样本已 ≥10 日。①「A 级晋级率连续 5 日 ≥ A+」：今日 A 14.3% &lt; A+ 100%，<b>不成立</b>，且 A/A+ 长期交替无连续方向 → 未触发。②「&gt;5% 误杀率 &gt;50%」：今日推演值 87.5% 超阈，但为推演级且需连续触发；样本期内仅 9/14(62.5%)、今日(87.5%) 两日可算，<b>连续性不足，未触发</b>。</div>
 </div>
 

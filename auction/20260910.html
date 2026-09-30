@@ -42,7 +42,7 @@ ul.facts li:last-child{border-bottom:none}
 .foot{margin-top:30px;padding-top:14px;border-top:1px solid #d8dee4;color:#5b6570;font-size:12px}
 .degrade{display:inline-block;background:rgba(210,153,34,.16);color:#9a3412;border:1px solid rgba(210,153,34,.4);padding:2px 10px;border-radius:5px;font-size:12px;font-weight:600;margin-left:8px}
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 <div class="wrap">
 
@@ -63,18 +63,18 @@ ul.facts li:last-child{border-bottom:none}
 <div class="note red"><strong>降级说明：</strong>当日 <code>zt_925_report_20260910.html</code> 与 <code>zt_925_capture_20260910.json</code> 均不存在，9:25 扫描任务未产出报告。本报告<strong>降级为「仅候选池晋级统计」</strong>，开盘价区间规则的正反检验与误杀统计无法执行（scan.* 全空）。这是<strong>连续第 5 个交易日降级</strong>（9/4、9/7、9/8、9/9、9/10）。</div>
 
 <h2>1. 数据口径说明</h2>
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>项目</th><th>口径 / 来源</th><th>说明</th></tr>
 <tr><td>涨停池</td><td>akshare 东财 stock_zt_pool_em(20260910)</td><td class="up">35 只</td></tr>
 <tr><td>TDX 涨停池</td><td>tdx-connector</td><td class="flat">返回空 → 已降级东财</td></tr>
 <tr><td>候选池</td><td>zt_925_candidates.json（date=20260909）</td><td>48 只，data_quality：封成比=数据缺失(常数列)，其余 3 维 ok</td></tr>
 <tr><td>收盘精确涨跌</td><td>腾讯 qt.gtimg.cn（TDX MCP 未连接时的兜底源）</td><td>48/48 全部取到，存 zt_925_close_20260910.json</td></tr>
 <tr><td>口径差异</td><td>东财 35 只 vs 9/9 的 48 只</td><td>环比降温 27%，与 17:00 流水线 zt_1700_data 若不一致属正常口径差</td></tr>
-</table>
+</table></div>
 
 <h2>2. 扫描筛出标的 vs 实际收盘</h2>
 <div class="note">当日扫描报告缺失，无 final_picks / killed_but_up 数据，本节为空。下表为<strong>候选池内 ML 概率前 6 只（candidates）</strong>的收盘实际，作为「本应被扫描查询覆盖的高分标的」的对照。</div>
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>代码</th><th>名称</th><th>评级</th><th>pre_score</th><th>ML概率</th><th>开盘涨幅</th><th>收盘涨跌</th><th>是否封板</th></tr>
 <tr><td>000759</td><td>中百集团</td><td>S</td><td>4</td><td>0.314</td><td class="up">+5.67%</td><td class="up">+2.60%</td><td><span class="tag t-no">未封</span></td></tr>
 <tr><td>600865</td><td>百大集团</td><td>S</td><td>2</td><td>0.269</td><td class="up">+8.80%</td><td class="dn">-3.04%</td><td><span class="tag t-no">未封</span></td></tr>
@@ -82,11 +82,11 @@ ul.facts li:last-child{border-bottom:none}
 <tr><td>603042</td><td>华脉科技</td><td>A+</td><td>5</td><td>0.259</td><td class="dn">-0.96%</td><td class="dn">-10.02%</td><td><span class="tag t-no">跌停</span></td></tr>
 <tr><td>605198</td><td>安德利</td><td>A+</td><td>2</td><td>0.250</td><td class="up">+4.64%</td><td class="dn">-1.71%</td><td><span class="tag t-no">未封</span></td></tr>
 <tr><td>000523</td><td>红棉股份</td><td>A+</td><td>4</td><td>0.243</td><td class="up">+10.09%</td><td class="up">+2.29%</td><td><span class="tag t-no">一字炸板</span></td></tr>
-</table>
+</table></div>
 <div class="note"><strong>ML 概率 6 只全军覆没</strong>：0 晋级，收盘均值 <span class="dn">-3.27%</span>，仅 2 红 4 绿。概率最高的两只（中百 0.314、百大 0.269）分别为 +2.60% / -3.04%，概率排序与实际结果无正向关系。</div>
 
 <h2>3. 候选池晋级完整清单（9 只）</h2>
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>代码</th><th>名称</th><th>评级</th><th>连板数</th><th>首封时间</th><th>最后封板</th><th>炸板次数</th><th>封单额</th><th>收盘涨跌</th><th>所属行业</th></tr>
 <tr><td>000978</td><td>桂林旅游</td><td>B</td><td>4</td><td>09:25:00</td><td>09:38:03</td><td>1</td><td>0.70 亿</td><td class="up">+9.99%</td><td>旅游及景区</td></tr>
 <tr><td>002790</td><td>瑞尔特</td><td>A</td><td>3</td><td>09:25:00</td><td>09:25:00</td><td>0</td><td class="up">3.73 亿</td><td class="up">+10.01%</td><td>家居用品</td></tr>
@@ -97,11 +97,11 @@ ul.facts li:last-child{border-bottom:none}
 <tr><td>000993</td><td>闽东电力</td><td>C</td><td>2</td><td>09:33:51</td><td>09:47:42</td><td>1</td><td>1.22 亿</td><td class="up">+10.03%</td><td>电力</td></tr>
 <tr><td>603421</td><td>鼎信通讯</td><td>B+</td><td>2</td><td>09:41:36</td><td>09:41:36</td><td>0</td><td>0.65 亿</td><td class="up">+9.95%</td><td>通信设备</td></tr>
 <tr><td>000565</td><td>渝三峡Ａ</td><td>B</td><td>2</td><td>09:41:39</td><td>09:41:39</td><td>0</td><td>0.49 亿</td><td class="up">+10.01%</td><td>化学制品</td></tr>
-</table>
+</table></div>
 <div class="note blue">结构事实：2 板 6 只（66.7%）、3 板 2 只、4 板 1 只；首封时间 09:25:00–09:30:45 共 6 只（66.7%）；炸板 5 只（55.6%），长城电工炸 3 次最多；封单最强 瑞尔特 3.73 亿（一字、0 炸板）。行业分散，无单一主线（旅游/家居/种植/炼化/焦炭/电网/电力/通信/化工各 1）。</div>
 
 <h2>4. 分级有效性检验</h2>
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>评级</th><th>池内数量</th><th>晋级数</th><th>晋级率</th><th>可视化</th><th>收盘均值</th></tr>
 <tr><td>S</td><td>2</td><td>0</td><td class="dn">0.0%</td><td><div class="grade-bar"><div class="bar" style="width:0px"></div></div></td><td class="dn">-0.22%</td></tr>
 <tr><td>A+</td><td>4</td><td>0</td><td class="dn">0.0%</td><td><div class="grade-bar"><div class="bar" style="width:0px"></div></div></td><td class="dn">-4.79%</td></tr>
@@ -110,7 +110,7 @@ ul.facts li:last-child{border-bottom:none}
 <tr><td>B</td><td>7</td><td>3</td><td class="up">42.9%</td><td><div class="grade-bar"><div class="bar" style="width:215px;background:#f85149"></div></div></td><td class="up">+4.83%</td></tr>
 <tr><td>C</td><td>7</td><td>1</td><td>14.3%</td><td><div class="grade-bar"><div class="bar" style="width:72px"></div></div></td><td class="dn">-0.26%</td></tr>
 <tr><td>D</td><td>2</td><td>1</td><td class="up">50.0%</td><td><div class="grade-bar"><div class="bar" style="width:250px;background:#f85149"></div></div></td><td class="up">+4.49%</td></tr>
-</table>
+</table></div>
 
 <div class="note red"><strong>分级今日完全失效，且是 7 日样本中最严重的一次：</strong>
 <ul class="facts" style="margin-top:6px">
@@ -122,7 +122,7 @@ ul.facts li:last-child{border-bottom:none}
 
 <h2>5. 开盘价区间规则 · 今日正反检验（推演级）</h2>
 <div class="note">扫描报告缺失，无真实「通过/放弃」判定记录。下表按候选池 48 只的<strong>实际开盘涨幅分档 × 实际封板结果</strong>推演，用于评估规则阈值本身在当前市场环境下的对错，<strong>不等同于当日实际规则执行结果</strong>。</div>
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>开盘涨幅区间</th><th>只数</th><th>封板数</th><th>封板率</th><th>红盘数</th><th>若规则「&gt;5% 放弃」</th></tr>
 <tr><td>一字 ≥ +9.8%</td><td>6</td><td>4</td><td class="up">66.7%</td><td>6</td><td><span class="tag t-no">误杀 4</span></td></tr>
 <tr><td>+7% ~ +9.8%</td><td>4</td><td>2</td><td class="up">50.0%</td><td>2</td><td><span class="tag t-no">误杀 2</span></td></tr>
@@ -132,7 +132,7 @@ ul.facts li:last-child{border-bottom:none}
 <tr><td>0 ~ +1%</td><td>7</td><td>0</td><td class="dn">0.0%</td><td>3</td><td>—</td></tr>
 <tr><td>-3% ~ 0</td><td>11</td><td>1</td><td>9.1%</td><td>3</td><td>—</td></tr>
 <tr><td>&lt; -3%</td><td>4</td><td>0</td><td class="dn">0.0%</td><td>1</td><td>—</td></tr>
-</table>
+</table></div>
 <div class="note">
 <ul class="facts">
 <li><strong>高端开口的单调性成立</strong>：一字档 66.7% &gt; +7~9.8% 50% &gt; +5~7% 0%，开盘涨幅越高封板率越高，与 9/2「弱势低开日无区分度」的情形相反——今日属于「高开有溢价」的环境。</li>
@@ -155,7 +155,7 @@ ul.facts li:last-child{border-bottom:none}
 </ul>
 
 <h2>7. 累积样本库状态</h2>
-<table>
+<div class="rpt-scroll"><table>
 <tr><th>日期</th><th>候选池</th><th>涨停池</th><th>晋级</th><th>晋级率</th><th>A+晋级</th><th>A晋级</th><th>扫描筛出</th><th>命中封板</th><th>误杀</th></tr>
 <tr><td>20260902</td><td>83</td><td>52</td><td>13</td><td>15.7%</td><td>5</td><td>8</td><td>5</td><td>1</td><td>3</td></tr>
 <tr><td>20260903</td><td>54</td><td>46</td><td>9</td><td>16.7%</td><td>1</td><td>1</td><td>4</td><td>2</td><td>1</td></tr>
@@ -164,7 +164,7 @@ ul.facts li:last-child{border-bottom:none}
 <tr><td>20260908</td><td>95</td><td>73</td><td>18</td><td>18.9%</td><td>4</td><td>3</td><td class="flat">0</td><td class="flat">0</td><td class="flat">—</td></tr>
 <tr><td>20260909</td><td>74</td><td>48</td><td>15</td><td class="up">20.3%</td><td>1</td><td>4</td><td class="flat">0</td><td class="flat">0</td><td class="flat">—</td></tr>
 <tr style="background:#ffffff"><td><strong>20260910</strong></td><td>48</td><td>35</td><td>9</td><td>18.8%</td><td class="dn"><strong>0</strong></td><td>3</td><td class="flat">0</td><td class="flat">0</td><td class="flat">—</td></tr>
-</table>
+</table></div>
 <div class="note">累计 <strong>7 个交易日</strong>，未达 10 日重校准阈值。<strong>重校准条件检查</strong>：
 <ul class="facts" style="margin-top:6px">
 <li>样本天数 7 &lt; 10 → <span class="tag t-n">未触发</span></li>

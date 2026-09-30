@@ -133,7 +133,7 @@ tr:last-child td { border-bottom:none; }
   .grid-2, .grid-4 { grid-template-columns:1fr; }
 }
 </style>
-<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
 <body>
 
 <div class="header">
@@ -218,7 +218,7 @@ tr:last-child td { border-bottom:none; }
   <!-- 3. 热点板块 -->
   <div class="card">
     <h2><span class="icon">03</span> 热点概念板块 TOP5</h2>
-    <table>
+    <div class="rpt-scroll"><table>
       <tr><th>排名</th><th>板块名称</th><th>涨幅</th><th>成交额</th><th>主力净额</th><th>领涨特征</th></tr>
       <tr>
         <td>#1</td>
@@ -260,7 +260,7 @@ tr:last-child td { border-bottom:none; }
         <td class="na">N/A</td>
         <td>立新能源3板换手、华银电力2板换手</td>
       </tr>
-    </table>
+    </table></div>
     <div style="font-size:11px;color:var(--text-secondary);margin-top:8px;">注：板块排行数据通过概念板块指数实时行情 + 领涨个股分布综合推断。tdx_screener 板块排名接口返回个股而非板块指数，故 #4/#5 为估算值。</div>
   </div>
 </div>
@@ -272,7 +272,7 @@ tr:last-child td { border-bottom:none; }
     <b>扫描说明：</b>昨日（07.17 周四）全市场跌超5%个股多达 <b>2231只</b>（⚠️ 此数据取自07.17而非07.18周五，可能存在数据滞后）。今日早盘筛选具有修复信号的个股：低开幅度合理、开盘后有承接、非恐慌抛售、主力资金未大幅流出。
   </div>
 
-  <table>
+  <div class="rpt-scroll"><table>
     <tr><th>代码</th><th>名称</th><th>昨跌幅</th><th>今开盘</th><th>现价</th><th>今涨跌</th><th>主力净额</th><th>修复强度</th><th>板块</th></tr>
     <tr>
       <td>300220</td><td>金运激光</td><td class="down">-5.05%</td><td class="na">N/A</td><td>9.80</td><td class="up">+2.30%</td><td class="na">N/A</td><td><span class="star">★★</span> 翻红≥2%</td><td>激光设备</td>
@@ -295,7 +295,7 @@ tr:last-child td { border-bottom:none; }
     <tr>
       <td>300209</td><td>行云科技</td><td class="down">-5.00%</td><td class="na">N/A</td><td>26.84</td><td class="up">+19.98%</td><td class="na">N/A</td><td><span class="star">★★★</span> 涨停修复</td><td>IT服务/AI</td>
     </tr>
-  </table>
+  </table></div>
   <div style="margin-top:12px; padding:10px 14px; border-radius:6px; background:rgba(0,0,0,0.018); font-size:12px;">
     <b>修复总评：</b>在2231只昨日大跌股中，今日早盘约68%（3350/4928）的整体市场回暖推动广泛修复。但从扫描的前3页（30只）样本看：
     <br>• ★★★级 1只（行云科技涨停，但该股数据存疑 - 昨跌幅仅-5%而非-5.00%）
@@ -317,7 +317,7 @@ tr:last-child td { border-bottom:none; }
     <span class="tag" style="font-size:13px;padding:6px 14px;background:rgba(0,0,0,0.030);">首板 3只(Non-ST)</span>
   </div>
 
-  <table>
+  <div class="rpt-scroll"><table>
     <tr><th>梯队</th><th>代码</th><th>名称</th><th>现价</th><th>板型</th><th>涨停原因/题材</th><th>封单金额</th></tr>
     <tr style="background:rgba(240,185,11,0.04);">
       <td><b>5板</b></td>
@@ -333,7 +333,7 @@ tr:last-child td { border-bottom:none; }
     <tr><td><b>2板</b></td><td>600722</td><td>金牛化工</td><td class="up">9.38 (+10%)</td><td>换手板</td><td style="font-size:12px;">风电+国企改革+煤化工</td><td>0.33亿</td></tr>
     <tr><td><b>2板</b></td><td>003001</td><td>中岩大地</td><td class="up">21.52 (+10%)</td><td>一字板</td><td style="font-size:12px;">跨界并购PCB刀具企业(7天4板)</td><td>0.11亿</td></tr>
     <tr><td><b>2板</b></td><td>600744</td><td>华银电力</td><td class="up">6.56 (+10%)</td><td>换手板</td><td style="font-size:12px;">风电+国企改革+核电</td><td>0</td></tr>
-  </table>
+  </table></div>
   <div style="font-size:12px;color:var(--text-secondary);margin-top:10px;">
     ⚠️ 艾艾精工5板为重组一字板（10天8板），实质最高换手板为<b>立新能源3板</b>。2板6只中一字板占3只（九安/共进/中岩），真实换手2板仅3只。
   </div>
@@ -345,29 +345,29 @@ tr:last-child td { border-bottom:none; }
     <h2><span class="icon">06</span> 早盘异动信号</h2>
 
     <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:var(--red);">集合竞价异常高开</div>
-    <table>
+    <div class="rpt-scroll"><table>
       <tr><th>代码</th><th>名称</th><th>竞价</th><th>现价</th><th>方向</th></tr>
       <tr><td>301536</td><td>星宸科技</td><td class="up">+20%一字</td><td>110.22</td><td>一字封死</td></tr>
       <tr><td>002432</td><td>九安医疗</td><td class="up">+10%一字</td><td>87.12</td><td>一字封死</td></tr>
       <tr><td>000815</td><td>美利云</td><td class="up">+10%一字</td><td>13.33</td><td>一字封死</td></tr>
-    </table>
+    </table></div>
 
     <div style="font-size:13px;font-weight:700;margin:14px 0 8px;color:var(--green);">竞价异常低开</div>
-    <table>
+    <div class="rpt-scroll"><table>
       <tr><th>代码</th><th>名称</th><th>竞价</th><th>现价</th><th>状态</th></tr>
       <tr><td>603683</td><td>晶华新材</td><td class="down">-10%一字</td><td>20.70</td><td>3连跌停(人形机器人退潮)</td></tr>
       <tr><td>603127</td><td>昭衍新药</td><td class="down">-10%一字</td><td>43.14</td><td>2连跌停(CXO)</td></tr>
       <tr><td>600664</td><td>哈药股份</td><td class="down">-10%一字</td><td>4.80</td><td>跌停(前期医药龙头断板)</td></tr>
-    </table>
+    </table></div>
 
     <div style="font-size:13px;font-weight:700;margin:14px 0 8px;color:var(--yellow);">开盘15分钟急拉/急跌</div>
-    <table>
+    <div class="rpt-scroll"><table>
       <tr><th>代码</th><th>名称</th><th>现价</th><th>涨跌</th><th>备注</th></tr>
       <tr><td>300209</td><td>行云科技</td><td>26.84</td><td class="up">+19.98%</td><td>高开高走，几乎涨停</td></tr>
       <tr><td>688702</td><td>盛科通信-U</td><td>360.00</td><td class="up">+15.01%</td><td>半导体芯片急拉</td></tr>
       <tr><td>603519</td><td>立霸股份</td><td>16.92</td><td class="up">+5.09%</td><td>触及涨停后炸板2次，回落</td></tr>
       <tr><td>300795</td><td>米奥会展</td><td>12.58</td><td class="up">+20.04%</td><td>T字涨停开板3次后回封</td></tr>
-    </table>
+    </table></div>
   </div>
 
   <!-- 7. 综合研判 -->
