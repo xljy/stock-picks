@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A股早盘快报 — 2026-10-06 09:45（国庆休市版）</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#ffffff; --border:#d8dee4; --text:#1f2328; --muted:#5b6570;
+  --up:#cf222e; --down:#1a7f37; --flat:#6e7781; --accent:#0969da;
+  --warn-bg:#fff8e6; --warn-bd:#f0b429; --alert-bg:#fff2f0; --alert-bd:#cf222e;
+  --soft:#f6f8fa;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Helvetica,Arial,sans-serif;
+  font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 18px 60px}
+header{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px;
+  box-shadow:0 1px 2px rgba(27,31,36,.04)}
+h1{margin:0 0 6px;font-size:22px;font-weight:700;letter-spacing:.2px}
+h1 .tag{font-size:12px;font-weight:600;color:#fff;background:#8250df;padding:2px 8px;border-radius:6px;vertical-align:middle;margin-left:8px}
+.sub{color:var(--muted);font-size:13px}
+.sub b{color:var(--text)}
+.meta-line{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:12.5px;color:var(--muted)}
+.meta-line span{margin-right:16px;display:inline-block}
+
+.holiday{background:var(--alert-bg);border:2px solid var(--alert-bd);border-radius:10px;padding:14px 18px;margin-bottom:14px}
+.holiday .h-title{color:var(--alert-bd);font-weight:700;font-size:15px;margin-bottom:6px}
+.holiday .h-body{font-size:13px;color:#4a1a19}
+.holiday .h-body b{color:var(--alert-bd)}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:14px;
+  box-shadow:0 1px 2px rgba(27,31,36,.04)}
+.sec-title{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:700;margin:0 0 14px}
+.sec-title .no{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;
+  background:#0969da;color:#fff;font-size:13px;font-weight:700;flex:0 0 auto}
+.sec-title .cap{color:var(--muted);font-size:12px;font-weight:500;margin-left:auto}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap}
+th{background:var(--soft);color:var(--muted);font-weight:600;font-size:12px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+tbody tr:hover{background:#fbfcfd}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.flat{color:var(--flat)}
+.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:12.5px}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:4px}
+.kpi{background:var(--soft);border:1px solid var(--border);border-radius:9px;padding:10px 12px}
+.kpi .k{font-size:11.5px;color:var(--muted);margin-bottom:3px}
+.kpi .v{font-size:19px;font-weight:700;line-height:1.2}
+.kpi .n{font-size:11.5px;color:var(--muted);margin-top:2px}
+
+/* 警戒模块 2.5 */
+.warn{background:var(--warn-bg);border:2px solid var(--warn-bd);border-radius:12px;padding:18px 20px;margin-bottom:14px;
+  box-shadow:0 2px 8px rgba(240,180,41,.14)}
+.warn .sec-title .no{background:#bc4c00}
+.warn-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:14px}
+@media(max-width:760px){.warn-grid{grid-template-columns:1fr}}
+.warn-box{background:#fffdf7;border:1px solid #f0d9a0;border-radius:10px;padding:12px 14px}
+.warn-box h4{margin:0 0 8px;font-size:13.5px;font-weight:700}
+.chk{list-style:none;margin:0;padding:0;font-size:13px}
+.chk li{padding:3px 0;display:flex;gap:8px;align-items:flex-start}
+.chk .y{color:#1a7f37;font-weight:700;flex:0 0 auto}
+.chk .x{color:#8250df;font-weight:700;flex:0 0 auto}
+.chk .h{color:#bc4c00;font-weight:700;flex:0 0 auto}
+.verdict{font-size:13.5px;line-height:1.9}
+.verdict .lab{display:inline-block;min-width:92px;color:var(--muted)}
+.verdict .val{font-weight:700}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.amber{background:#fff1c2;color:#7a4b00;border:1px solid #f0b429}
+.pill.green{background:#e6f4ea;color:#1a7f37;border:1px solid #9fd6ab}
+.pill.red{background:#ffe9e5;color:#cf222e;border:1px solid #f3b0a6}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px;padding:9px 12px;background:var(--soft);border-left:3px solid var(--border);border-radius:0 6px 6px 0}
+.note b{color:var(--text)}
+.na{color:#8250df;font-weight:600}
+
+.bars{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+.bar-row{display:grid;grid-template-columns:120px 1fr 68px;gap:10px;align-items:center;font-size:13px}
+.bar-track{background:#eef1f4;border-radius:5px;height:16px;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px}
+.bar-row .val{text-align:right;font-weight:600}
+
+.tag-list{display:flex;flex-wrap:wrap;gap:6px}
+.tag2{background:var(--soft);border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-size:12px}
+.tag2 b{color:var(--up)}
+
+footer{margin-top:22px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:12px;
+  font-size:12px;color:var(--muted);line-height:1.8}
+footer b{color:var(--text)}
+</style>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}.rpt-nav{position:sticky;top:0;z-index:60;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 6px;margin:0 0 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #d8dee4;font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.6}.rpt-nav a{font-size:.86em;padding:6px 14px;border:1px solid #d8dee4;border-radius:8px;color:#1f2328;background:#fff;text-decoration:none;transition:all .2s;white-space:nowrap}.rpt-nav a:hover{background:rgba(10,102,194,.08);border-color:#0a66c2;text-decoration:none}.rpt-nav a.active{background:#0a66c2;color:#fff;border-color:#0a66c2;font-weight:600}.rpt-nav.canvas{position:static;margin:0;border-radius:0;border-left:0;border-right:0;border-top:0;box-shadow:0 2px 10px rgba(0,0,0,.08);flex:0 0 auto}body:has(>.rpt-nav.canvas){display:flex;flex-direction:column;height:100vh;overflow:hidden;padding:0}body:has(>.rpt-nav.canvas)>.app{flex:1 1 0;min-height:0;height:auto}@media(max-width:760px){.rpt-nav{padding:8px 4px;gap:5px;margin-bottom:16px}.rpt-nav a{padding:5px 10px;font-size:.8em}}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<body><!--rptnav:start--><div class="rpt-nav"><a href="../index.html">🏠 首页</a><a href="../index.html#latest">📅 最新</a><a href="../index.html#archive">🗂️ 历史归档</a><a href="../morning/index.html" class="active" title="早盘大盘 列表">📈 早盘大盘</a></div><!--rptnav:end-->
+<div class="wrap">
+<header>
+<h1>A股早盘快报 — 2026-10-06 09:45<span class="tag">国庆休市版</span></h1>
+<div class="sub">数据基准：<b>2026-09-30（周三）收盘</b> · 节前最后一个交易日 · 下一交易日 <b>2026-10-08（周四）</b></div>
+<div class="meta-line"><span>生成时间：2026-10-06 10:00</span><span>主源：腾讯行情 / 新浪宽度 / 同花顺板块 / 东财涨停池</span><span>TDX 兜底：<b class="na">本会话未注入（tdx_client_ok=false）</b></span><span>归档：本页不上线（非交易日）</span></div>
+</header>
+<div class="holiday"><div class="h-title">⛔ 今日休市 —— 无盘中行情，本报告为「节前收官复盘」</div><div class="h-body"><b>国庆休市连续第 4 个交易日</b>（10-01 / 10-02 / 10-05 / 10-06 均休市）。<br>经 akshare 交易日历（覆盖 1990-12-19 ~ 2026-12-31）判定：<b>2026-10-06（周二）非交易日</b>，国庆假期休市 <b>10-01 ~ 10-07</b>，<b>10-08（周四）恢复交易</b>。因此 <b>模块1/2/3/5 为 09-30 收盘快照</b>；<b>模块4（早盘修复）/ 模块6（早盘异动）/ 模块8（盘中承接）无当日数据，标注 N/A</b>，不套用隔日旧数据冒充盘中。</div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">1</span>核心指数概览<span class="cap">基准日 2026-09-30 收盘 · 四大宽基 + 参考指数</span></div>
+<div class="rpt-scroll"><table>
+<thead><tr><th>指数</th><th>收盘</th><th>涨跌幅</th><th>开盘涨幅</th><th>日内高/低</th><th>成交额(亿)</th><th>指数级主力净额</th><th style="text-align:left">走势判断</th></tr></thead>
+<tbody>
+<tr><td><b>上证指数</b> <span class="mono" style="color:#5b6570">000001</span></td><td class="mono">3842.19</td><td class="up">+0.31%</td><td class="up">+0.23%</td><td class="mono" style="color:#5b6570">3851.22 / 3833.09</td><td class="mono">6794.0</td><td class="na">N/A</td><td style="text-align:left;color:#5b6570">高开震荡收阳，尾段回补部分涨幅</td></tr>
+<tr><td><b>深证成指</b> <span class="mono" style="color:#5b6570">399001</span></td><td class="mono">12887.62</td><td class="down">-0.11%</td><td class="up">+0.44%</td><td class="mono" style="color:#5b6570">12966.45 / 12854.78</td><td class="mono">7586.2</td><td class="na">N/A</td><td style="text-align:left;color:#5b6570">高开冲高后回落翻绿</td></tr>
+<tr><td><b>创业板指</b> <span class="mono" style="color:#5b6570">399006</span></td><td class="mono">3135.28</td><td class="down">-0.23%</td><td class="up">+0.70%</td><td class="mono" style="color:#5b6570">3173.36 / 3125.49</td><td class="mono">3662.4</td><td class="na">N/A</td><td style="text-align:left;color:#5b6570">高开低走，全天最弱的宽基之一</td></tr>
+<tr><td><b>科创50</b> <span class="mono" style="color:#5b6570">000688</span></td><td class="mono">1530.01</td><td class="down">-2.51%</td><td class="up">+0.46%</td><td class="mono" style="color:#5b6570">1578.96 / 1526.79</td><td class="mono">718.8</td><td class="na">N/A</td><td style="text-align:left;color:#5b6570">高开低走重挫，全场最弱</td></tr>
+</tbody></table></div>
+
+<div class="tag-list" style="margin-top:10px"><span class="tag2">上证50 2,823.28 <b>+0.47%</b></span><span class="tag2">中证500 7,435.16 <b>-0.06%</b></span><span class="tag2">北证50 1,039.61 <b>+0.70%</b></span></div>
+<div class="note" style="border-left-color:#bf8700;background:#fffdf5"><b>核心矛盾：</b>权重与主板收红（上证 +0.31%、上证50 +0.47%），双创全线翻绿且 <b>科创50 −2.51%</b> 领跌 —— 节前资金在「低估值权重/医药」与「高估值硬科技」之间明显分化，科创50 是全场唯一大幅走弱的宽基。</div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">2</span>市场情绪仪表盘<span class="cap">基准日 2026-09-30 收盘（emotion 池子=data_date 20260930）</span></div>
+<div class="kpis">
+<div class="kpi"><div class="k">涨 / 跌 / 平</div><div class="v">2566 / 2824 / 181</div><div class="n">上涨占比 46.06%</div></div>
+<div class="kpi"><div class="k">涨停家数</div><div class="v">52</div><div class="n">emotion 口径</div></div>
+<div class="kpi"><div class="k">跌停家数</div><div class="v">9</div><div class="n">较 09-28 的 56 大幅收敛</div></div>
+<div class="kpi"><div class="k">炸板率</div><div class="v">18.75%</div><div class="n">炸板 12 只</div></div>
+<div class="kpi"><div class="k">最高连板</div><div class="v">7 板</div><div class="n">新华传媒（出版）</div></div>
+<div class="kpi"><div class="k">昨涨停溢价</div><div class="v">+1.31%</div><div class="n">中位 −0.34% · 红盘 48.2%</div></div>
+</div>
+<div class="rpt-scroll"><table style="margin-top:14px">
+<thead><tr><th>交易日</th><th>涨停</th><th>跌停</th><th>炸板</th><th>炸板率</th><th>最高连板</th></tr></thead>
+<tbody>
+<tr><td class="mono">2026-09-23</td><td class="mono">51</td><td class="mono">13</td><td class="mono">26</td><td class="mono">33.77%</td><td class="mono">4</td></tr>
+<tr><td class="mono">2026-09-24</td><td class="mono">52</td><td class="mono">13</td><td class="mono">10</td><td class="mono">16.13%</td><td class="mono">5</td></tr>
+<tr><td class="mono">2026-09-28</td><td class="mono">33</td><td class="mono">56</td><td class="mono">11</td><td class="mono">25.00%</td><td class="mono">5</td></tr>
+<tr><td class="mono">2026-09-29</td><td class="mono">57</td><td class="mono">10</td><td class="mono">8</td><td class="mono">12.31%</td><td class="mono">6</td></tr>
+<tr style="background:#fff8e6;font-weight:600"><td class="mono">2026-09-30</td><td class="mono">52</td><td class="mono">9</td><td class="mono">12</td><td class="mono">18.75%</td><td class="mono">7</td></tr>
+</tbody></table></div>
+<div class="note"><b>北向资金：</b><span class="na">不可获取</span> —— 沪深港通自 2024-08-19 起停止盘中/当日净买入披露，主源亦无覆盖，不以旧数据替代。<br><b>口径说明：</b>涨停/跌停/炸板家数一律取 <b>emotion</b> 结果；breadth 的 buckets 仅按 ±9.8% 阈值估算（本次估出「涨停 75 / 跌停 20」），<b>不等价、已弃用</b>。<br><b>漂移提示：</b>该池子为 09-30 全日收盘终值（非盘中快照），与盘中实时家数存在天然差异。</div>
+</div>
+<div class="warn">
+<div class="sec-title"><span class="no">2.5</span>情绪周期定位与极端反转预警<span class="cap">陈小群六指标钟摆 · 客观定位，不构成买卖指令</span></div>
+<div class="verdict" style="margin-bottom:14px"><div><span class="lab">📍 情绪周期定位：</span><span class="val">发酵期（修复延续 · 高标晋级 7 板 · 缩量收敛）</span> <span class="pill amber">发酵</span></div><div><span class="lab">🔄 反转风险：</span><span class="val">底部修复信号 4/5 确认 · 顶部反转信号 0.5/6（弱）</span> <span class="pill green">偏修复</span></div><div><span class="lab">✅ 已确认信号：</span><span class="val">底部 4 项（跌停骤降 / 首板封住 / 昨涨停正溢价 / 板块联动）</span></div><div><span class="lab">📊 历史参考：</span><span class="val">近 5 日无连续 3 日涨停&gt;100、亦无连续 3 日跌停&gt;50 → <b>极端反转概率表不适用</b></span></div></div>
+<div class="warn-grid">
+<div class="warn-box"><h4>① 六指标匹配（09-30 收盘）</h4><div class="rpt-scroll"><table><tbody><tr><td style="color:#5b6570">涨停数 52</td><td style="text-align:right;color:#bf8700;font-weight:600">发酵档(50-80) / 分歧档(50-80)</td></tr><tr><td style="color:#5b6570">跌停数 9</td><td style="text-align:right;color:#1a7f37;font-weight:600">发酵档(&lt;10) / 高潮档(&lt;10)</td></tr><tr><td style="color:#5b6570">连板高度 7板</td><td style="text-align:right;color:#cf222e;font-weight:600">高潮档(≥5)</td></tr><tr><td style="color:#5b6570">炸板率 18.75%</td><td style="text-align:right;color:#1a7f37;font-weight:600">发酵档(&lt;20%) / 高潮档(&lt;20%)</td></tr><tr><td style="color:#5b6570">昨涨停溢价 +1.31%</td><td style="text-align:right;color:#1a7f37;font-weight:600">发酵档（正）</td></tr><tr><td style="color:#5b6570">成交量 缩量17%</td><td style="text-align:right;color:#6e7781;font-weight:600">退潮档（缩量）</td></tr></tbody></table></div><div style="margin-top:8px;font-size:12.5px;color:#5b6570">4 项落在「发酵档」，1 项「高潮」（高度），1 项「退潮」（量能）→ 综合定 <b>发酵期</b>，量能与高度呈轻微背离。</div></div><div class="warn-box"><h4>② 反转确认清单</h4><div style="font-weight:600;font-size:12.5px;margin:2px 0 4px">底部反转（连跌后修复确认）— 4/5</div><ul class="chk"><li><span class="y">✓</span><span>跌停家数骤降：56（09-28）→ 10 → <b>9</b>，已降至 &lt;15</span></li><li><span class="y">✓</span><span>首板封住：首板 40 只（占 77%），炸板率仅 18.75%</span></li><li><span class="y">✓</span><span>昨涨停正溢价：09-29 涨停股 09-30 均值 <b>+1.31%</b>（红盘 48.2%）</span></li><li><span class="y">✓</span><span>板块联动：医药链六板块同步走强</span></li><li><span class="x">✗</span><span>地量后放量：<b>缩量 17%</b>，未确认</span></li></ul><div style="font-weight:600;font-size:12.5px;margin:8px 0 4px">顶部反转（连涨后分歧确认）— 0.5/6</div><ul class="chk"><li><span class="x">✗</span><span>高标断板：新华传媒 7 板一字封住 19.88 亿，未断</span></li><li><span class="x">✗</span><span>涨停骤降：52 家，前置「&gt;80」不成立</span></li><li><span class="x">✗</span><span>跌停异常增加：9 家，远低于 30</span></li><li><span class="x">✗</span><span>炸板率飙升：18.75%，未及 40%</span></li><li><span class="h">△</span><span>板块分化：科创50 −2.51% vs 主板/医药强（半确认）</span></li><li><span class="x">✗</span><span>放量滞涨：缩量，不成立</span></li></ul></div></div>
+<div class="note" style="background:#fff2f0;border-left-color:#cf222e;margin-top:14px"><b>⚠️ 关键提醒（客观纪律，非操作建议）：</b><br>1. 反转靠确认信号、不靠预测。跌得多不等于要反弹，涨得多不等于要见顶。<br>2. 至少 <b>2 个确认信号</b>同时出现才具备指向性，单一信号可能是噪音。<br>3. 长假是最大的外生变量：<b>10-01~10-07 共 7 天休市</b>，期间外盘、政策、事件可显著改变节后开盘的初始条件，本页的节前状态在 10-08 开盘前 <b>参考价值有限</b>。<br>4. 极端可以更极端：连涨的第 6、7 天仍可能继续；反转也不等于立刻反向（可能先横盘震荡）。<br>5. 本模块只做客观定位，<b>不含任何操作指令</b>。</div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">3</span>热点板块 TOP5<span class="cap">同花顺行业 · 基准日 09-30 收盘</span></div>
+<div class="rpt-scroll"><table>
+<thead><tr><th>板块</th><th>涨幅</th><th>上涨/下跌家数</th><th>净流入(亿)</th><th style="text-align:left">领涨股</th></tr></thead>
+<tbody>
+<tr><td><b>生物制品</b></td><td class="up">+4.63%</td><td class="mono">53涨 / 2跌</td><td class="up">+14.36</td><td style="text-align:left">康希诺 +20.00%</td></tr>
+<tr><td><b>医疗服务</b></td><td class="up">+3.11%</td><td class="mono">50涨 / 6跌</td><td class="up">+20.08</td><td style="text-align:left">南模生物 +19.87%</td></tr>
+<tr><td><b>白酒</b></td><td class="up">+2.82%</td><td class="mono">19涨 / 0跌</td><td class="up">+16.07</td><td style="text-align:left">金徽酒 +9.99%</td></tr>
+<tr><td><b>种植业与林业</b></td><td class="up">+2.43%</td><td class="mono">23涨 / 6跌</td><td class="up">-0.07</td><td style="text-align:left">海南橡胶 +10.02%</td></tr>
+<tr><td><b>化学制药</b></td><td class="up">+2.11%</td><td class="mono">140涨 / 16跌</td><td class="up">+37.95</td><td style="text-align:left">键凯科技 +11.09%</td></tr>
+</tbody></table></div>
+<div style="margin-top:12px;font-size:12.5px;color:#5b6570;font-weight:600">行业资金净流入 TOP10（同花顺全单净额口径，非 TDX main_net）</div>
+<div class="bars">
+<div class="bar-row"><span>银行</span><span class="bar-track"><span class="bar-fill" style="width:100.0%;background:#cf222e"></span></span><span class="val up">+56.26</span></div>
+<div class="bar-row"><span>化学制药</span><span class="bar-track"><span class="bar-fill" style="width:67.5%;background:#cf222e"></span></span><span class="val up">+37.95</span></div>
+<div class="bar-row"><span>医疗服务</span><span class="bar-track"><span class="bar-fill" style="width:35.7%;background:#cf222e"></span></span><span class="val up">+20.08</span></div>
+<div class="bar-row"><span>白酒</span><span class="bar-track"><span class="bar-fill" style="width:28.6%;background:#cf222e"></span></span><span class="val up">+16.07</span></div>
+<div class="bar-row"><span>生物制品</span><span class="bar-track"><span class="bar-fill" style="width:25.5%;background:#cf222e"></span></span><span class="val up">+14.36</span></div>
+<div class="bar-row"><span>中药</span><span class="bar-track"><span class="bar-fill" style="width:18.7%;background:#cf222e"></span></span><span class="val up">+10.54</span></div>
+<div class="bar-row"><span>钢铁</span><span class="bar-track"><span class="bar-fill" style="width:12.6%;background:#cf222e"></span></span><span class="val up">+7.08</span></div>
+<div class="bar-row"><span>机场航运</span><span class="bar-track"><span class="bar-fill" style="width:12.3%;background:#cf222e"></span></span><span class="val up">+6.92</span></div>
+<div class="bar-row"><span>医疗器械</span><span class="bar-track"><span class="bar-fill" style="width:9.9%;background:#cf222e"></span></span><span class="val up">+5.56</span></div>
+<div class="bar-row"><span>汽车整车</span><span class="bar-track"><span class="bar-fill" style="width:7.0%;background:#cf222e"></span></span><span class="val up">+3.92</span></div>
+</div>
+<div class="note"><b>主线判定：医药链单核驱动</b> —— 生物制品(+4.63%)、医疗服务(+3.11%)、化学制药(+2.11%)、医疗器械(+1.15%)、中药(+1.21%)、医药商业(+1.07%) 六板块同向走强，其中化学制药 +37.95 亿、医疗服务 +20.08 亿为全市场资金净流入前列。白酒(+2.82%)为节前避险式补涨。<br><b>反面：</b>科创50 权重端（半导体/硬科技）明显承压，是全市场唯一大幅走弱的宽基，与医药形成两极分化。<br><b>口径提示：</b>「净流入」为同花顺全单净额，与通达信主力净额口径不同；TDX 本次不可用，故未提供 main_net。</div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">4</span>早盘修复侦察（超跌修复模式）<span class="cap">需盘中数据</span></div>
+<div class="note" style="background:#faf5ff;border-left-color:#8250df"><b><span class="na">N/A —— 今日休市，无盘中数据。</span></b><br>该模块依赖「今早低开幅度 / 开盘 15 分钟承接 / 分时走势」等盘中字段。休市日不存在当日盘中序列，按数据红线 <b>不用 09-30 旧数据冒充今日盘中</b>。节后首个交易日（10-08）恢复本模块正常采集。</div>
+<div style="margin-top:12px;font-size:12.5px;color:#5b6570;font-weight:600">节前强势结构参考 — 近 10 日涨幅榜前列（09-30 口径）</div>
+<div class="rpt-scroll"><table style="margin-top:8px">
+<thead><tr><th>代码</th><th>名称</th><th>10日涨幅</th><th style="text-align:left">行业</th></tr></thead>
+<tbody>
+<tr><td class="mono">688137</td><td><b>近岸蛋白</b></td><td class="up">+108.03%</td><td style="text-align:left;color:#5b6570">生物制品</td></tr>
+<tr><td class="mono">301190</td><td><b>善水科技</b></td><td class="up">+97.42%</td><td style="text-align:left;color:#5b6570">化学原料</td></tr>
+<tr><td class="mono">688175</td><td><b>高凌信息</b></td><td class="up">+72.97%</td><td style="text-align:left;color:#5b6570">通信设备</td></tr>
+<tr><td class="mono">301560</td><td><b>众捷股份</b></td><td class="up">+68.64%</td><td style="text-align:left;color:#5b6570">汽车零部件</td></tr>
+<tr><td class="mono">688265</td><td><b>南模生物</b></td><td class="up">+66.57%</td><td style="text-align:left;color:#5b6570">医疗服务</td></tr>
+<tr><td class="mono">688185</td><td><b>康希诺</b></td><td class="up">+62.28%</td><td style="text-align:left;color:#5b6570">生物制品</td></tr>
+<tr><td class="mono">301047</td><td><b>义翘神州</b></td><td class="up">+59.00%</td><td style="text-align:left;color:#5b6570">生物制品</td></tr>
+<tr><td class="mono">301218</td><td><b>华是科技</b></td><td class="up">+58.45%</td><td style="text-align:left;color:#5b6570">IT服务</td></tr>
+<tr><td class="mono">301080</td><td><b>百普赛斯</b></td><td class="up">+56.38%</td><td style="text-align:left;color:#5b6570">生物制品</td></tr>
+<tr><td class="mono">688315</td><td><b>诺禾致源</b></td><td class="up">+48.76%</td><td style="text-align:left;color:#5b6570">医疗服务</td></tr>
+</tbody></table></div>
+<div class="note">近 10 日强势榜 <b>医药链霸榜</b>（生物制品 4 只 / 医疗服务 2 只），与模块3 医药单核主线互相印证；但该榜为 09-30 口径，<b>节后需重新刷新池子</b>（用户铁律：选股池=全市场 10 日涨幅前 150，排除 ST）。</div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">5</span>连板梯队<span class="cap">基准日 09-30 收盘 · 涨停池 52 只</span></div>
+<div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eaeef2"><div style="flex:0 0 52px"><span class="pill" style="background:#cf222e;color:#fff;border:none">7板</span></div><div style="flex:1;display:flex;flex-wrap:wrap;gap:7px"><span class="tag2"><b>新华传媒</b> <span class="mono" style="color:#5b6570">600825</span> · 出版 · 19.88亿封单·一字</span></div></div>
+<div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eaeef2"><div style="flex:0 0 52px"><span class="pill" style="background:#e8590c;color:#fff;border:none">4板</span></div><div style="flex:1;display:flex;flex-wrap:wrap;gap:7px"><span class="tag2"><b>襄阳轴承</b> <span class="mono" style="color:#5b6570">000678</span> · 汽车零部件 · 0.67亿</span></div></div>
+<div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eaeef2"><div style="flex:0 0 52px"><span class="pill" style="background:#d97706;color:#fff;border:none">3板</span></div><div style="flex:1;display:flex;flex-wrap:wrap;gap:7px"><span class="tag2"><b>九阳股份</b> <span class="mono" style="color:#5b6570">002242</span> · 小家电 · 1.65亿·炸板1次</span><span class="tag2"><b>时代万恒</b> <span class="mono" style="color:#5b6570">600241</span> · 电池 · 1.42亿</span><span class="tag2"><b>善水科技</b> <span class="mono" style="color:#5b6570">301190</span> · 化学原料 · 1.06亿·炸板1次</span><span class="tag2"><b>深物业A</b> <span class="mono" style="color:#5b6570">000011</span> · 房地产开发 · 0.40亿·炸板2次</span></div></div>
+<div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eaeef2"><div style="flex:0 0 52px"><span class="pill" style="background:#6e7781;color:#fff;border:none">2板</span></div><div style="flex:1;display:flex;flex-wrap:wrap;gap:7px"><span class="tag2"><b>园林股份</b> <span class="mono" style="color:#5b6570">605303</span> · 基础建设 · 1.75亿</span><span class="tag2"><b>均瑶健康</b> <span class="mono" style="color:#5b6570">605388</span> · 饮料乳品 · 0.77亿</span><span class="tag2"><b>紫竹高科</b> <span class="mono" style="color:#5b6570">002058</span> · 电池 · 0.69亿</span><span class="tag2"><b>上海洗霸</b> <span class="mono" style="color:#5b6570">603200</span> · 环境治理 · 0.48亿·炸板2次</span><span class="tag2"><b>传艺科技</b> <span class="mono" style="color:#5b6570">002866</span> · 消费电子 · 0.35亿·炸板2次</span><span class="tag2"><b>亚邦股份</b> <span class="mono" style="color:#5b6570">603188</span> · 化学制品 · 0.26亿</span></div></div>
+<div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0"><div style="flex:0 0 52px"><span class="pill" style="background:#f6f8fa;color:#5b6570;border:1px solid #d8dee4">首板</span></div><div style="flex:1;color:#5b6570">40 只（占涨停池 <b>77%</b>），炸板率 18.75% —— 首板封板质量尚可</div></div>
+<div class="note" style="margin-top:10px"><b>梯队结构：</b>7 板 1 只（新华传媒，出版，一字封单 19.88 亿）→ <b>5 板、6 板完全断层</b> → 4 板 1 只 → 3 板 4 只 → 2 板 6 只。<br><b>客观特征：</b>高度集中在单一高标（孤峰），腰部（2-3板）合计仅 10 只偏薄，缺乏中间层衔接 —— 结构上属于「高标扛旗 + 首板量大」的典型修复期形态。</div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">6</span>早盘异动信号<span class="cap">集合竞价 / 开盘 15 分钟</span></div>
+<div class="note" style="background:#faf5ff;border-left-color:#8250df"><b><span class="na">N/A —— 今日休市，无集合竞价、无开盘 15 分钟序列。</span></b>该模块全部字段（open_pct、急拉/急跌）来自当日盘中行情，休市日为空集，不以节前数据填充。</div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">7</span>综合研判<span class="cap">客观陈述，不含操作指令</span></div>
+<div class="verdict"><div><span class="lab">今日定性：</span><span class="val"><span class="pill green">休市</span> 无当日行情；节前收官（09-30）为「<b>指数分化 + 缩量 + 医药单核</b>」</span></div><div><span class="lab">情绪周期：</span><span class="val">发酵期（修复延续）—— 自 09-28 暴跌（跌停 56）后连续 2 日修复，跌停收敛至 9，高标晋级 7 板</span></div><div><span class="lab">反转判定：</span><span class="val">底部修复信号 4/5（缺「地量放量」）；顶部反转 0.5/6，未达 2 项门槛 → 无极端反转确认</span></div><div><span class="lab">量能状态：</span><span class="val">两市 14,380 亿，较 5 日均值 17,332 亿 <b>缩量约 17%</b> —— 节前持币避险特征</span></div><div><span class="lab">结构特征：</span><span class="val">主板/权重红、双创绿；<b>科创50 −2.51%</b>；医药链六板块同向走强；白酒避险补涨</span></div></div>
+<div class="note" style="margin-top:14px"><b>节后（10-08）观察清单（客观维度，非操作建议）：</b><br>① <b>科创50 能否止跌</b> —— 节前 2 个交易日连续走弱且跌幅最大，是当前最弱的一环；<br>② <b>新华传媒 7 板高度的延续性</b> —— 5/6 板断层，若高标断板则情绪中枢下移；<br>③ <b>医药链单核能否扩散</b> —— 六板块同步走强但高度集中，需观察是否外溢到其他方向；<br>④ <b>长假外生变量</b> —— 7 天休市期间外盘/政策/事件会影响 10-08 开盘的初始条件，节前状态参考价值衰减；<br>⑤ <b>量能</b> —— 缩量 17% 后，节后首日量能是否回补，是判断资金回流的直接口径。</div>
+<div class="note" style="border-left-color:#cf222e;background:#fff2f0"><b>已剔除/未提供项（数据红线）：</b>指数级 main_net（TDX 不可用，全项 N/A）；北向资金（源已停止披露，N/A）；模块4/6/8 当日盘中字段（休市，N/A）。<b>本报告不含任何估算或推测数据。</b></div>
+</div>
+<div class="card">
+<div class="sec-title"><span class="no">8</span>盘中承接扫描（近3日涨停 × ML评分观察池）<span class="cap">需盘中行情</span></div>
+<div class="note" style="background:#faf5ff;border-left-color:#8250df"><b><span class="na">N/A —— 今日休市，未执行盘中承接扫描。</span></b><br>该段依赖腾讯实时行情计算「价格≥分时均价线 / 量比 / 涨跌幅健康区」等盘中形态分。休市日实时接口返回的是 09-30 收盘静态值，若照常输出会把上一交易日收盘态误标为「盘中承接」，属误导，故本次<b>不执行 intraday_scan.py</b>，留待 10-08 恢复。</div>
+</div>
+<footer><b>数据溯源：</b>指数/个股行情 ← 腾讯 qt.gtimg.cn（servertime 20260930）；全市场宽度 ← 新浪全市场快照(akshare)；行业板块/资金 ← 同花顺(akshare)；涨停池/炸板 ← 东财 push2ex；交易日历 ← akshare tool_trade_date_hist_sina。<br><b>TDX 兜底状态：</b>tdx_probed=true，tdx_client_ok=false（本 headless 会话未注入 tdx 连接器，属设计行为）→ 本次 <b>未触发兜底，非链路故障</b>；受影响字段仅「指数级 main_net」，已标 N/A。<br><b>免责声明：</b>本报告为自动化生成的客观数据汇总，基准日为 2026-09-30 收盘、编制于 2026-10-06 国庆休市期间，<b>不构成任何投资建议</b>；所有数据来自第三方公开接口，可能存在延迟或误差，请以交易所与券商终端为准。</footer>
+</div>
+<!--metatail:start--><section class="rpt-meta"><div class="rpt-meta-h">📡 数据源与口径声明</div><div class="note"><b>两市成交额：</b>沪 6,794.0 亿 + 深 7,586.2 亿 = <b>14,380.2 亿</b>（新浪全市场口径含北交所 14,498.5 亿）；较 09-22~09-29 的 5 日全日均值 17,331.7 亿 <b>缩量约 17%</b>。<br><b>指数级主力净额</b>为 TDX 专属字段，本会话 TDX 未注入（tdx_probed=true / tdx_client_ok=false）→ <b>全项 N/A，不做估算</b>。</div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+</html>
