@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>每周复盘 2026-10-09 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#ffffff; --card2:#eef1f4; --border:#d8dee4;
+  --text:#1f2328; --dim:#5b6570; --accent:#0a66c2; --ok:#1a7f37;
+  --up:#d1242f; --down:#1a7f37; --amber:#9a6700;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{
+  background:var(--bg);color:var(--text);
+  font-size:16px;line-height:1.8;letter-spacing:.012em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
+    "Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  padding:0 18px 64px;max-width:1140px;margin:0 auto;min-height:100vh;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px;}
+::-webkit-scrollbar-thumb:hover{background:#b1bac4;}
+::-webkit-scrollbar-track{background:transparent;}
+
+/* ---- 顶部导航（吸顶） ---- */
+.nav{position:sticky;top:0;z-index:50;display:flex;gap:8px;justify-content:center;
+  flex-wrap:wrap;padding:12px 8px;margin-bottom:24px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);}
+.nav a{font-size:.88em;padding:7px 15px;border:1px solid var(--border);border-radius:8px;
+  transition:all .2s;color:var(--text);background:var(--card);}
+.nav a:hover{background:rgba(10,102,194,.08);border-color:var(--accent);text-decoration:none;}
+.nav a.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
+
+.hero{text-align:center;padding:30px 16px 26px;border-bottom:1px solid var(--border);
+  margin-bottom:32px;}
+.hero h1{font-size:1.75em;line-height:1.4;color:#111418;margin-bottom:10px;letter-spacing:.02em;}
+.hero .sub{color:var(--dim);font-size:.92em;line-height:1.8;}
+section{margin-bottom:44px;}
+section h2{font-size:1.15em;color:var(--accent);margin-bottom:18px;padding-bottom:11px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;
+  flex-wrap:wrap;line-height:1.6;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:3px 11px;}
+.hint{margin-top:12px;font-size:.82em;color:var(--dim);line-height:1.9;}
+
+/* ---- 卡片 ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:18px 14px 16px;text-align:center;color:var(--text);transition:all .18s;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 6px 22px rgba(10,102,194,.16);text-decoration:none;}
+.card.off{opacity:.4;}
+.card .icon{font-size:1.75em;line-height:1;}
+.card .name{font-size:1em;color:#111418;font-weight:600;margin-top:8px;}
+.card .tm{font-size:.78em;color:var(--dim);margin-top:3px;}
+.card .badge{display:inline-block;margin-top:10px;font-size:.72em;padding:3px 10px;
+  border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(154,165,177,.1);color:var(--dim);border:1px solid var(--border);}
+
+/* ---- 表格 ---- */
+.tblwrap{overflow-x:auto;overscroll-behavior-x:contain;border:1px solid var(--border);
+  border-radius:12px;background:var(--card);}
+.tblwrap.scroll{max-height:76vh;overflow-y:auto;}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:.9em;min-width:660px;
+  font-variant-numeric:tabular-nums;}
+th,td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--border);
+  white-space:nowrap;line-height:1.55;}
+thead th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.94em;
+  position:sticky;top:0;z-index:2;}
+tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
+tbody tr:hover{background:rgba(10,102,194,.06);}
+tbody tr:last-child td{border-bottom:0;}
+td.dt{text-align:left;padding-left:16px;color:var(--text);font-weight:600;
+  position:sticky;left:0;z-index:1;background:var(--card);}
+tbody tr:nth-child(even) td.dt{background:#fafbfc;}
+tbody tr:hover td.dt{background:#eaf2fb;}
+thead th:first-child{left:0;z-index:3;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
+.dot{display:inline-block;min-width:30px;height:24px;line-height:22px;border-radius:6px;
+  font-size:.8em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.18);color:var(--ok);border:1px solid rgba(63,185,80,.35);}
+.dot.y:hover{background:rgba(63,185,80,.35);text-decoration:none;}
+.dot.n{background:#f1f3f5;color:#aab4bd;border:1px solid var(--border);}
+
+/* ---- 分类列表 ---- */
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:13px 15px;color:var(--text);font-size:.92em;line-height:1.65;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+.pill{display:inline-block;background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:11px 22px;font-size:.95em;color:var(--text);transition:all .18s;}
+.pill:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.foot{text-align:center;margin-top:54px;padding-top:22px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.84em;line-height:2;}
+
+/* ---- md 正文（复盘/周报/预判/套利日报 由 .md 渲染） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  max-width:880px;margin:0 auto;padding:34px 40px 42px;font-size:1.02em;line-height:1.95;}
+.doc h1{font-size:1.5em;color:#111418;margin:4px 0 20px;padding-bottom:12px;line-height:1.5;
+  border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.22em;color:var(--accent);margin:36px 0 16px;display:block;border:0;
+  padding:0 0 0 12px;border-left:3px solid var(--accent);line-height:1.6;}
+.doc h3{font-size:1.08em;color:#24292f;margin:26px 0 12px;line-height:1.6;}
+.doc h4,.doc h5,.doc h6{font-size:1em;color:var(--text);margin:20px 0 10px;}
+.doc p{margin:13px 0;}
+.doc ul,.doc ol{margin:13px 0;padding-left:24px;}
+.doc li{margin:7px 0;}
+.doc li>ul,.doc li>ol{margin:6px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:30px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(10,102,194,.06);
+  margin:16px 0;padding:12px 18px;color:#454f5b;border-radius:0 8px 8px 0;font-size:.97em;}
+.doc blockquote p{margin:5px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:5px;
+  padding:2px 7px;font-family:Consolas,"Courier New",monospace;font-size:.92em;
+  color:#9a3412;word-break:break-word;}
+.doc pre{background:#f6f8fa;border:1px solid var(--border);border-radius:10px;
+  padding:14px 18px;overflow-x:auto;margin:16px 0;line-height:1.7;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);font-size:.94em;}
+.doc strong{color:#111418;font-weight:600;}
+.doc .tbl{overflow-x:auto;overscroll-behavior-x:contain;border:1px solid var(--border);
+  border-radius:10px;margin:18px 0;}
+.doc table{min-width:0;font-size:.96em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:10px 13px;line-height:1.7;}
+.doc thead th{background:var(--card2);color:var(--dim);}
+.doc tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
+
+/* ---- 回到顶部 ---- */
+.totop{position:fixed;right:18px;bottom:18px;z-index:60;width:42px;height:42px;
+  border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--dim);
+  display:flex;align-items:center;justify-content:center;font-size:1.05em;
+  box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.totop:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;}
+
+@media (max-width:700px){
+  body{padding:0 12px 56px;font-size:15.5px;}
+  .nav{padding:10px 4px;gap:6px;}
+  .nav a{padding:6px 11px;font-size:.84em;}
+  .hero{padding:22px 8px 20px;margin-bottom:24px;}
+  .hero h1{font-size:1.45em;}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;}
+  .list{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+  .doc{padding:22px 18px 30px;font-size:1em;line-height:1.9;}
+  .doc h2{margin-top:28px;}
+  th,td{padding:9px 9px;}
+  .totop{right:12px;bottom:12px;}
+}
+.rpt-meta{margin:34px 0 10px;padding:14px 16px;border:1px solid #e3e7ec;border-radius:10px;background:#fafbfc;color:#5f6873;font-size:12.5px;line-height:1.8}.rpt-meta-h{font-weight:600;font-size:13px;color:#6b7480;margin:0 0 8px}.rpt-meta h2,.rpt-meta h3,.rpt-meta h4{font-size:13.5px;color:#5f6873;margin:10px 0 6px;border:0;padding:0;background:none}.rpt-meta table{font-size:12.5px;margin:4px 0}.rpt-meta th,.rpt-meta td{padding:4px 7px}.rpt-meta ul,.rpt-meta ol{margin:6px 0 0;padding-left:18px}.rpt-meta code{font-size:12px}.rpt-meta hr{display:none}.rpt-nav{position:sticky;top:0;z-index:60;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 6px;margin:0 0 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #d8dee4;font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.6}.rpt-nav a{font-size:.86em;padding:6px 14px;border:1px solid #d8dee4;border-radius:8px;color:#1f2328;background:#fff;text-decoration:none;transition:all .2s;white-space:nowrap}.rpt-nav a:hover{background:rgba(10,102,194,.08);border-color:#0a66c2;text-decoration:none}.rpt-nav a.active{background:#0a66c2;color:#fff;border-color:#0a66c2;font-weight:600}.rpt-nav.canvas{position:static;margin:0;border-radius:0;border-left:0;border-right:0;border-top:0;box-shadow:0 2px 10px rgba(0,0,0,.08);flex:0 0 auto}body:has(>.rpt-nav.canvas){display:flex;flex-direction:column;height:100vh;overflow:hidden;padding:0}body:has(>.rpt-nav.canvas)>.app{flex:1 1 0;min-height:0;height:auto}@media(max-width:760px){.rpt-nav{padding:8px 4px;gap:5px;margin-bottom:16px}.rpt-nav a{padding:5px 10px;font-size:.8em}}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}</style>
+</head>
+<body>
+<!--rptnav:start--><div class="rpt-nav"><a href="../index.html">🏠 首页</a><a href="../index.html#latest">📅 最新</a><a href="../index.html#archive">🗂️ 历史归档</a><a href="../weekly/index.html" class="active" title="每周复盘 列表">📅 每周复盘</a></div><!--rptnav:end--><div class="hero"><h1>📅 每周复盘</h1><div class="sub">2026-10-09 周五 · 归档自 2026-W41.md</div></div><div class="doc"><blockquote></blockquote>
+<hr>
+<h2>一、本周市场概览</h2>
+<p><strong>指数（两个交易日）</strong></p>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>日期</th><th>上证</th><th>深成</th><th>创业板指</th><th>两市成交额</th></tr></thead><tbody><tr><td>10-08</td><td>3811.90 <strong>-0.79%</strong></td><td>12620.90 <strong>-2.07%</strong></td><td>3036.66 <strong>-3.15%</strong></td><td>1.68 万亿（放量 2441 亿）</td></tr><tr><td>10-09</td><td>3813.79 +0.05%</td><td>12641.86 +0.17%</td><td>3043.33 +0.22%</td><td><strong>1.92 万亿</strong>（放量约 2224 亿）</td></tr></tbody></table></div></div>
+<p>10-09 三大指数盘中探底回升（创业板指盘中一度跌超 3%），收盘集体翻红。</p>
+<p><strong>情绪序列</strong></p>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>日期</th><th>涨停 / 跌停</th><th>炸板率</th><th>上涨占比</th><th>最高板</th><th>连板家数</th></tr></thead><tbody><tr><td>10-08</td><td>43 / 13</td><td><strong>42.67%</strong></td><td><strong>30.48%</strong></td><td>8 板（新华传媒 600825）</td><td>—</td></tr><tr><td>10-09</td><td><strong>69</strong> / 8</td><td><strong>16.87%</strong></td><td><strong>59.15%</strong></td><td>9 板（同一只）</td><td>12（首板占 82.6%）</td></tr></tbody></table></div></div>
+<p>10-08 首封时间集中在午后 4 家；10-09 午后首封 40/69 = <strong>58.0%</strong>，3 板断层（0 家）。</p>
+<p><strong>主线两次切换</strong></p>
+<ul><li>10-08：涨的是<strong>电池（+3.44%，涨停 8 家，为当日最大集群）</strong>、油气开采及服务 +3.60%、港口航运 +2.04%、煤炭/燃气/电力/银行同向走强（银行净流入 39.42 亿居首）；领跌 CPO / 光通信 / 半导体 / 存储（源杰科技、长光华芯 20cm 跌停，东山精密跌停）。催化：七部门《新型电池产业发展"十五五"规划》（9/28 印发）；中东霍尔木兹海峡封锁表态、布油破 102 美元；大摩 10/1 报告称美对华光模块限制或走 FCC"65% 美国含量"规则。</li><li>10-09：切向<strong>影视院线 +7.23% / 文化传媒 +5.78% / 贵金属 +5.27% / 种植业 +4.87% / 软件开发 +4.00% / 游戏 +3.49% / 证券 +2.32% / 电池 +2.16%</strong>；领跌元件、风电设备、电子化学品、PCB。催化：谷歌云 Gemini Agent、Meta 无摄像头 AI 眼镜、爱奇艺称 AI 短剧爆发、国内首部 AI 超写实院线电影《三星堆：未来往事》定档 10/23。</li></ul>
+<p><strong>情绪周期定位（客观描述）</strong>：10-08 为<strong>退潮期二次下杀</strong>——宽度 30.48%、炸板率 42.67%、高度与宽度严重背离（8 板孤票 vs 宽度腰斩）；10-09 转为<strong>修复期第 1 日</strong>，但呈「<strong>宽度修复、高度断层</strong>」的偏弱形态：宽度 +28.7pct、炸板率腰斩，而连板仅 12 家、3 板断层、首板 82.6%、午后首封 58%。</p>
+<p><strong>资金口径警告</strong>：两日 <code>main_net</code>（通达信主力）均因自动化会话 TDX 未注入而缺失，个股资金为同花顺<strong>全单 net</strong>，与既有 1 亿 / 5000 万主力阈值<strong>不可比</strong>。10-09 涨停股普遍全单净流出（新华传媒 −6.26 亿、东岳硅材 −4.17 亿、九阳股份 −3.63 亿）。</p>
+<hr>
+<h2>二、本周思维方法进展</h2>
+<ol><li><strong>长假后首个交易日 = 假期增量信息的一次性定价日</strong>：10/1 大摩 FCC 报告 + 光芯片降价传闻在节前 A 股盘面无任何前兆，靠外部扫描才补上；节前判断方向对（有下台阶风险）但<strong>低估幅度</strong>（创业板 −3.15%、科创50 −4.82%）。</li><li><strong>上涨方向必须先分"进攻逻辑"与"避险逻辑"</strong>：10-08 油气/煤炭/银行/电力同涨，实质是资金从高位科技撤出后的防御搬家，判据看涨停家数与封单厚度，不看板块涨幅。</li><li><strong>修复质量指纹已成型</strong>：放量 + 宽度修复 + 炸板率腰斩 + <strong>高度断层</strong> + 首板&gt;80% + <strong>午后首封&gt;50%</strong>，前三项是"宽度腿"、后三项是"高度腿"，必须分两条独立读。</li><li><strong>退潮后的修复由"隔夜外部新催化"启动，不是"超跌反弹"</strong>：10-09 领涨是传媒/AI 应用，而前期超跌的 CPO/PCB/存储继续跌停潮，默认假设"资金回流超跌强势方向"不成立。</li><li><strong>宽度要分层读</strong>：10-09 涨&gt;5% 仅 325 家（5.8%），涨 0~5% 有 2971 家 → 59.15% 是温和普涨，不是攻击性上涨。</li><li><strong>"盘中探底回升"与"收盘翻红"是两件事</strong>：10-09 创业板盘中 −3% 收 +0.22%，只记录收盘会丢掉路径信息。</li><li><strong>靠猜单位的下游启发式是定时炸弹</strong>：<code>换手率 = fv*100 if fv&lt;1 else fv</code> 把本就是百分数的源列放大 100 倍（新华传媒显示 54%，真值 0.54%），影响 1180 行中的 23 行（1.95%），只在连续一字板上静默出错。<strong>单位必须由上游口径定义，不许下游猜。</strong></li><li><strong>闸门字段必须回溯到可用源</strong>：pick 的 Q1/Q2 读 <code>chg10</code>/<code>main_net</code>，这两个字段仅 TDX 补缺提供 → 自动化会话 150/150 全在 Q1 被拒 = 结构性零候选；改为 chg10←rank10d、资金←同花顺 net 兜底后才出候选。</li><li><strong>台账对同一 pick_date 重跑不刷新</strong>：10-09 计入 5 条（首轮未过 Q4 的 top5）而最终报告 3 只，其中 688122/300142 的 <code>board</code> 字段仍为 null。</li><li><strong>对照实验是定位问题的最快路径</strong>（本周跨工作区任务反复验证）：两机同参数跑同一工具并排比，凡不一样的项才是差异源；同参数跨版本比会得出假结论。</li></ol>
+<hr>
+<h2>三、仍存在的主要盲区</h2>
+<ol><li><strong>资金口径断裂（连续第 3 周）</strong>：两日 <code>main_net</code> 全缺，本周两个最硬结论（涨停≠资金留场、板块涨幅≠龙头资金流入）都建立在同花顺全单 <code>net</code> 弱口径上。</li><li><strong>样本量与验证闸门</strong>：滚动胜率台账累计 15 条、已平仓仅 1 笔（胜率 0.0%、平均 −5.43%），距"滚动 20 笔胜率站上 42%"的升级闸门还差一个数量级，任何胜率读数都无统计意义。</li><li><strong>评分卡与资金口径不匹配</strong>：pick 的资金 score 分母按 5000 万<strong>主力</strong>口径缩放，用全单 net 代入会系统性偏高，尚未按口径切换分母。</li><li><strong>人工字典维护</strong>：<code>board_map.json</code> 按同花顺 F10 申万行业逐个补（本周补 5 只），「装修建材」不在 90 表内需降级取二级；扩展排名池 #6–#20 仍标「待判定」。</li><li><strong>数据可信度的历史遗留</strong>：换手率 ×100 已修并重训（AUC 0.6812），但<strong>旧二波报告与历史面板未回溯</strong>，哪些结论带偏差未标注；<code>predict</code> 报告 77 处 <code>SZ</code>/<code>SH</code> 前缀仍未处理（pick 侧已由 <code>code6()</code> 免疫）。</li><li><strong>自动化健康度未闭环验证</strong>：<code>54f476b7</code> 收盘复盘 10-01 起连败 3 次，10-05 改 <code>model_id</code> 后的 10-08 实跑结果本周日志未记录；<code>66ae1a1c</code> 盘前简报仍靠开机补跑。</li><li><strong>节假日顺延未校验法定假日</strong>：<code>next_date=20261012</code> 标注 <code>next_date_verified=false</code>，周末顺延有、法定假日无。</li></ol>
+<hr>
+<h2>四、下周关注方向（客观事实）</h2>
+<ul><li><strong>日历</strong>：下周一 <strong>2026-10-12</strong> 为交易日。10/12 中国 9 月金融数据；<strong>10/13 FCC 光模块新规生效</strong>（3.2T 及以上需 65% 美国物料占比，大摩判断短期冲击 800G/1.6T 有限、关注执行细则与豁免）；10/14 中美 9 月 CPI + 2026 人工智能产业大会（济南，至 10/16）+ 世界储能大会（宁德）；10/15 中国社融/信贷 + 阶跃 Step 5 Preview 开源；<strong>10/16 股指期货交割日</strong>。</li><li><strong>三季报</strong>：截至 10/9 全市场 61 家预告、40 家预喜；下周 39 家披露，10/13 有研新材（600206）为沪市首份；东岳硅材（300821）预增 19050%~19750% 为当前增幅最大。</li><li><strong>AI 应用/传媒</strong>：《三星堆：未来往事》10/23 上映、国庆档票房 11.65 亿、AI 短剧上半年规模超 220 亿（均为公开报道口径）。</li><li><strong>电池</strong>：《新型电池产业发展"十五五"规划》延续发酵，时代万恒 5 连板、紫竹高科 4 连板；10/14–16 世界储能大会。</li><li><strong>油价/航运</strong>：布油 102~104 美元区间，霍尔木兹通行量降至 7 艘/日（7/23 以来最低），TD3C 航线 TCE 132.68 万美元/天；10/13 OPEC 月报、10/14 IEA 月报。</li><li><strong>盯的量</strong>：修复能否延续的可核验变量＝成交额是否守住 1.9 万亿、炸板率能否维持 20% 下方、3 板断层是否修复、午后首封占比能否回落到 50% 以下。</li><li><strong>外部约束</strong>：10Y 美债 5.2%~5.4% 区间，10/27–28 美联储 FOMC 暂停概率约 77%（CME FedWatch，公开口径）。</li></ul>
+<hr>
+<h2>五、改进建议</h2>
+<ol><li><strong>把"隔夜外部催化"固定进盘前扫描清单</strong>：至少加两项——"海外 AI 新品/发布会（模型、Agent、终端）"、"长假/周末累积的政策与研究报告扫描"。本周两天的主线都由盘面之外的增量信息决定，而复盘清单里此前没有这两项的固定位置，属于结构性漏项而非偶然失误。</li><li><strong>给同花顺全单 <code>net</code> 单独标定一套阈值，并让 pick 的资金 score 分母随口径切换</strong>。自动化会话 <code>main_net</code> 缺失已是常态，与其每周重复标注"不可比"，不如把替代口径的阈值一次标定清楚。</li><li><strong>对全链路做一次"单位/口径启发式"专项审计</strong>。换手率 ×100 潜伏多年、只在 1.95% 样本上静默出错，说明同类写法可能还有；审计范围应包括各生成器的单位换算、百分数处理与跨源字段对齐，并同步标注哪些历史面板尚未回溯重跑。</li></ol></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 双视角 17:15 · 主板接力 17:20 · <b>短线选股 18:30</b> · 二波 21:00 · 周报 周五 23:00<br>主板接力（10cm 一进二/二进三）为专题类：交易日定时生成，不计入每日类计数<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div><!--metatail:start--><section class="rpt-meta"><div class="rpt-meta-h">📡 数据源与口径声明</div><p>数据源：本地 <code>YYYY-MM-DD.md</code> 日志（10-05 / 10-06 / 10-07 / 10-08 / 10-09 共 5 份）；行情口径沿用各日志原口径（腾讯 qt.gtimg.cn / 东财 push2ex / 新浪宽度快照 / 同花顺行业，非 TDX 主源，<code>main_net</code> 缺失）。<br>本周交易日：<strong>2 天</strong>（10-08 周四、10-09 周五）。10-01~10-07 国庆中秋假期全休市，10-05~10-07 三个任务日均为交易日历闸门中止（预期行为），无盘中数据。下周关注方向的事件日历来自公开检索（10-09 检索，非实盘接口）。</p></section><!--metatail:end-->
+</body>
+</html>
