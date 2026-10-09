@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>盘中预判 2026-10-09 · 睿哥 A股短线日报</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#ffffff; --card2:#eef1f4; --border:#d8dee4;
+  --text:#1f2328; --dim:#5b6570; --accent:#0a66c2; --ok:#1a7f37;
+  --up:#d1242f; --down:#1a7f37; --amber:#9a6700;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{
+  background:var(--bg);color:var(--text);
+  font-size:16px;line-height:1.8;letter-spacing:.012em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
+    "Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  padding:0 18px 64px;max-width:1140px;margin:0 auto;min-height:100vh;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px;}
+::-webkit-scrollbar-thumb:hover{background:#b1bac4;}
+::-webkit-scrollbar-track{background:transparent;}
+
+/* ---- 顶部导航（吸顶） ---- */
+.nav{position:sticky;top:0;z-index:50;display:flex;gap:8px;justify-content:center;
+  flex-wrap:wrap;padding:12px 8px;margin-bottom:24px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);}
+.nav a{font-size:.88em;padding:7px 15px;border:1px solid var(--border);border-radius:8px;
+  transition:all .2s;color:var(--text);background:var(--card);}
+.nav a:hover{background:rgba(10,102,194,.08);border-color:var(--accent);text-decoration:none;}
+.nav a.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
+
+.hero{text-align:center;padding:30px 16px 26px;border-bottom:1px solid var(--border);
+  margin-bottom:32px;}
+.hero h1{font-size:1.75em;line-height:1.4;color:#111418;margin-bottom:10px;letter-spacing:.02em;}
+.hero .sub{color:var(--dim);font-size:.92em;line-height:1.8;}
+section{margin-bottom:44px;}
+section h2{font-size:1.15em;color:var(--accent);margin-bottom:18px;padding-bottom:11px;
+  border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;
+  flex-wrap:wrap;line-height:1.6;}
+.tag{font-size:.72em;font-weight:400;color:var(--dim);border:1px solid var(--border);
+  border-radius:20px;padding:3px 11px;}
+.hint{margin-top:12px;font-size:.82em;color:var(--dim);line-height:1.9;}
+
+/* ---- 卡片 ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:18px 14px 16px;text-align:center;color:var(--text);transition:all .18s;}
+.card.ok:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 6px 22px rgba(10,102,194,.16);text-decoration:none;}
+.card.off{opacity:.4;}
+.card .icon{font-size:1.75em;line-height:1;}
+.card .name{font-size:1em;color:#111418;font-weight:600;margin-top:8px;}
+.card .tm{font-size:.78em;color:var(--dim);margin-top:3px;}
+.card .badge{display:inline-block;margin-top:10px;font-size:.72em;padding:3px 10px;
+  border-radius:20px;}
+.badge.ok{background:rgba(63,185,80,.14);color:var(--ok);border:1px solid rgba(63,185,80,.3);}
+.badge.off{background:rgba(154,165,177,.1);color:var(--dim);border:1px solid var(--border);}
+
+/* ---- 表格 ---- */
+.tblwrap{overflow-x:auto;overscroll-behavior-x:contain;border:1px solid var(--border);
+  border-radius:12px;background:var(--card);}
+.tblwrap.scroll{max-height:76vh;overflow-y:auto;}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:.9em;min-width:660px;
+  font-variant-numeric:tabular-nums;}
+th,td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--border);
+  white-space:nowrap;line-height:1.55;}
+thead th{background:var(--card2);color:var(--dim);font-weight:600;font-size:.94em;
+  position:sticky;top:0;z-index:2;}
+tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
+tbody tr:hover{background:rgba(10,102,194,.06);}
+tbody tr:last-child td{border-bottom:0;}
+td.dt{text-align:left;padding-left:16px;color:var(--text);font-weight:600;
+  position:sticky;left:0;z-index:1;background:var(--card);}
+tbody tr:nth-child(even) td.dt{background:#fafbfc;}
+tbody tr:hover td.dt{background:#eaf2fb;}
+thead th:first-child{left:0;z-index:3;}
+td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
+.dot{display:inline-block;min-width:30px;height:24px;line-height:22px;border-radius:6px;
+  font-size:.8em;font-weight:600;}
+.dot.y{background:rgba(63,185,80,.18);color:var(--ok);border:1px solid rgba(63,185,80,.35);}
+.dot.y:hover{background:rgba(63,185,80,.35);text-decoration:none;}
+.dot.n{background:#f1f3f5;color:#aab4bd;border:1px solid var(--border);}
+
+/* ---- 分类列表 ---- */
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
+.list a{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:13px 15px;color:var(--text);font-size:.92em;line-height:1.65;transition:all .18s;}
+.list a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+.pill{display:inline-block;background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:11px 22px;font-size:.95em;color:var(--text);transition:all .18s;}
+.pill:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.foot{text-align:center;margin-top:54px;padding-top:22px;border-top:1px solid var(--border);
+  color:var(--dim);font-size:.84em;line-height:2;}
+
+/* ---- md 正文（复盘/周报/预判/套利日报 由 .md 渲染） ---- */
+.doc{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  max-width:880px;margin:0 auto;padding:34px 40px 42px;font-size:1.02em;line-height:1.95;}
+.doc h1{font-size:1.5em;color:#111418;margin:4px 0 20px;padding-bottom:12px;line-height:1.5;
+  border-bottom:1px solid var(--border);}
+.doc h2{font-size:1.22em;color:var(--accent);margin:36px 0 16px;display:block;border:0;
+  padding:0 0 0 12px;border-left:3px solid var(--accent);line-height:1.6;}
+.doc h3{font-size:1.08em;color:#24292f;margin:26px 0 12px;line-height:1.6;}
+.doc h4,.doc h5,.doc h6{font-size:1em;color:var(--text);margin:20px 0 10px;}
+.doc p{margin:13px 0;}
+.doc ul,.doc ol{margin:13px 0;padding-left:24px;}
+.doc li{margin:7px 0;}
+.doc li>ul,.doc li>ol{margin:6px 0;}
+.doc hr{border:0;border-top:1px solid var(--border);margin:30px 0;}
+.doc blockquote{border-left:3px solid var(--accent);background:rgba(10,102,194,.06);
+  margin:16px 0;padding:12px 18px;color:#454f5b;border-radius:0 8px 8px 0;font-size:.97em;}
+.doc blockquote p{margin:5px 0;}
+.doc code{background:var(--card2);border:1px solid var(--border);border-radius:5px;
+  padding:2px 7px;font-family:Consolas,"Courier New",monospace;font-size:.92em;
+  color:#9a3412;word-break:break-word;}
+.doc pre{background:#f6f8fa;border:1px solid var(--border);border-radius:10px;
+  padding:14px 18px;overflow-x:auto;margin:16px 0;line-height:1.7;}
+.doc pre code{background:none;border:0;padding:0;color:var(--text);font-size:.94em;}
+.doc strong{color:#111418;font-weight:600;}
+.doc .tbl{overflow-x:auto;overscroll-behavior-x:contain;border:1px solid var(--border);
+  border-radius:10px;margin:18px 0;}
+.doc table{min-width:0;font-size:.96em;}
+.doc th,.doc td{white-space:normal;text-align:left;padding:10px 13px;line-height:1.7;}
+.doc thead th{background:var(--card2);color:var(--dim);}
+.doc tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
+
+/* ---- 回到顶部 ---- */
+.totop{position:fixed;right:18px;bottom:18px;z-index:60;width:42px;height:42px;
+  border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--dim);
+  display:flex;align-items:center;justify-content:center;font-size:1.05em;
+  box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.totop:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;}
+
+@media (max-width:700px){
+  body{padding:0 12px 56px;font-size:15.5px;}
+  .nav{padding:10px 4px;gap:6px;}
+  .nav a{padding:6px 11px;font-size:.84em;}
+  .hero{padding:22px 8px 20px;margin-bottom:24px;}
+  .hero h1{font-size:1.45em;}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;}
+  .list{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+  .doc{padding:22px 18px 30px;font-size:1em;line-height:1.9;}
+  .doc h2{margin-top:28px;}
+  th,td{padding:9px 9px;}
+  .totop{right:12px;bottom:12px;}
+}
+.rpt-meta{margin:34px 0 10px;padding:14px 16px;border:1px solid #e3e7ec;border-radius:10px;background:#fafbfc;color:#5f6873;font-size:12.5px;line-height:1.8}.rpt-meta-h{font-weight:600;font-size:13px;color:#6b7480;margin:0 0 8px}.rpt-meta h2,.rpt-meta h3,.rpt-meta h4{font-size:13.5px;color:#5f6873;margin:10px 0 6px;border:0;padding:0;background:none}.rpt-meta table{font-size:12.5px;margin:4px 0}.rpt-meta th,.rpt-meta td{padding:4px 7px}.rpt-meta ul,.rpt-meta ol{margin:6px 0 0;padding-left:18px}.rpt-meta code{font-size:12px}.rpt-meta hr{display:none}.rpt-nav{position:sticky;top:0;z-index:60;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 6px;margin:0 0 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #d8dee4;font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.6}.rpt-nav a{font-size:.86em;padding:6px 14px;border:1px solid #d8dee4;border-radius:8px;color:#1f2328;background:#fff;text-decoration:none;transition:all .2s;white-space:nowrap}.rpt-nav a:hover{background:rgba(10,102,194,.08);border-color:#0a66c2;text-decoration:none}.rpt-nav a.active{background:#0a66c2;color:#fff;border-color:#0a66c2;font-weight:600}.rpt-nav.canvas{position:static;margin:0;border-radius:0;border-left:0;border-right:0;border-top:0;box-shadow:0 2px 10px rgba(0,0,0,.08);flex:0 0 auto}body:has(>.rpt-nav.canvas){display:flex;flex-direction:column;height:100vh;overflow:hidden;padding:0}body:has(>.rpt-nav.canvas)>.app{flex:1 1 0;min-height:0;height:auto}@media(max-width:760px){.rpt-nav{padding:8px 4px;gap:5px;margin-bottom:16px}.rpt-nav a{padding:5px 10px;font-size:.8em}}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}</style>
+</head>
+<body>
+<!--rptnav:start--><div class="rpt-nav"><a href="../index.html">🏠 首页</a><a href="../index.html#latest">📅 最新</a><a href="../index.html#archive">🗂️ 历史归档</a><a href="../prejudge/index.html" class="active" title="盘中预判 列表">⏱️ 盘中预判</a></div><!--rptnav:end--><div class="hero"><h1>⏱️ 盘中预判</h1><div class="sub">2026-10-09 周五 · 归档自 20261009-1035-prejudgment.md</div></div><div class="doc"><h3>⏰ 数据基准：10月9日（周五）盘中实时数据（10:35-10:50），需14:50二次确认</h3>
+
+<hr>
+<h2>一、大盘形势</h2>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>指数</th><th>当前涨跌幅</th><th>点位</th><th>日内高/低</th><th>成交额</th><th>主力净额(main_net)</th><th>判定</th></tr></thead><tbody><tr><td>上证指数</td><td><strong>-0.99%</strong></td><td>3774.04</td><td>3809.60 / 3761.07</td><td>4480 亿</td><td>缺失(TDX不可用)</td><td>⚠️ 权重护盘</td></tr><tr><td>深证成指</td><td><strong>-1.94%</strong></td><td>12376.16</td><td>12560.74 / 12278.78</td><td>5059 亿</td><td>缺失</td><td>❌ 弱势</td></tr><tr><td><strong>创业板指</strong></td><td><strong>-2.39%</strong></td><td><strong>2963.99</strong></td><td>3022.73 / 2932.80</td><td>2457 亿</td><td>缺失</td><td><strong>❌ 铁律1 触发</strong></td></tr><tr><td>科创50</td><td><strong>-3.28%</strong></td><td>1408.50</td><td>—</td><td>450 亿</td><td>缺失</td><td>❌ 重挫</td></tr><tr><td>中证500</td><td>-1.95%</td><td>7107.32</td><td>—</td><td>1646 亿</td><td>缺失</td><td>❌</td></tr><tr><td>沪深300</td><td>-1.17%</td><td>4259.89</td><td>—</td><td>2382 亿</td><td>缺失</td><td>⚠️</td></tr><tr><td>中小100</td><td>-2.15%</td><td>7637.33</td><td>—</td><td>643 亿</td><td>缺失</td><td>❌</td></tr></tbody></table></div></div>
+<ul><li><strong>两市成交额约 9539 亿</strong>（10:47，沪4480+深5059）vs 10/8 同期 8952 亿 → <strong>放量约 6.6%，放量下跌</strong></li><li><strong>多点采样复核（方法论要求）创业板指</strong>：-2.554%(10:44) → -2.657%(10:45) → -2.639% → -2.576% → -2.343%(10:47) → -2.401% → <strong>-2.39%(10:47:48)</strong> → <strong>稳定在 -2.34%~-2.66% 区间，非临界值，铁律1 判定稳固</strong></li><li>创业板指自日内高 3022.73 回落至 2963.99 = <strong>-1.94%</strong>；自日内低 2932.80 反弹 +1.06%</li><li><strong>铁律1（创业板指跌&gt;1%）→ ❌ 触发，今日不做套利</strong></li><li><strong>铁律2（上证 main_net &lt; -200亿）→ ⚠️ 未生效</strong>：TDX 不可用，指数级主力净额缺失，该闸门本轮跳过（如实标注，不臆造）</li><li>宽度极差：<strong>沪深创科合计 创科 221涨 vs 1754跌（1 : 7.94）</strong>，仅 4 只平盘</li></ul>
+<hr>
+<h2>二、情绪过滤结果</h2>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>指标</th><th>数值</th><th>基准日</th><th>口径</th><th>判定</th></tr></thead><tbody><tr><td>涨停家数</td><td><strong>27 家</strong></td><td>20261009</td><td>东财 push2ex(盘中)</td><td>较 10/8(42家) <strong>-36%</strong> ⚠️</td></tr><tr><td>炸板家数</td><td>9 家</td><td>20261009</td><td>同上</td><td>—</td></tr><tr><td><strong>炸板率</strong></td><td><strong>25.0%</strong></td><td>20261009</td><td>同上</td><td>✅ &lt;40%，未触发</td></tr><tr><td><strong>20cm涨停家数</strong></td><td><strong>3 家</strong></td><td>20261009</td><td>创科涨停</td><td>⚠️ 连续低位区(9/28起 0→4→3→2→3)</td></tr><tr><td>最高连板</td><td><strong>9 板</strong>（600825 新华传媒·出版）</td><td>20261009</td><td>同上</td><td>独苗高标，梯队断层</td></tr><tr><td>跌停家数</td><td><strong>11 家</strong></td><td>20261009</td><td>同上</td><td>✅ &lt;50</td></tr></tbody></table></div></div>
+<ul><li><strong>闸门判定：❌ 未触发</strong>（20cm涨停 3家&lt;5 <strong>且</strong> 炸板率 25.0%&lt;40% → AND 不成立）→ 情绪闸门通过</li><li>连板高度 9板 &gt; 2板 → 不做减半处理</li><li>⚠️ <strong>盘中漂移提示</strong>：本轮两次采样间 涨停 28→27、炸板 8→9，盘中实时情绪存在漂移；情绪数据基准日=20261009，为<strong>盘中未定型</strong>状态</li><li>20cm涨停 3家：300530 领湃科技(电池·二板)、300821 东岳硅材(化学制品·首板)、300111 向日葵(化学制药·首板)</li></ul>
+<hr>
+<h2>三、候选池硬过滤（10日涨幅前60 → 通过32只）</h2>
+<p>执行 <code>rank10d --n 60</code> 得创业板+科创板10日涨幅前60，逐票硬过滤后<strong>通过 32 只、淘汰 28 只</strong>。</p>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>淘汰原因</th><th>计数</th></tr></thead><tbody><tr><td><strong>冲高回落&gt;2%</strong></td><td><strong>22</strong>（主导项，占池 36.7%）</td></tr><tr><td>换手&gt;15%</td><td>3</td></tr><tr><td>涨停买不进</td><td>3</td></tr><tr><td>当前涨幅&gt;15%</td><td>3</td></tr><tr><td>10日涨幅&gt;80%</td><td>1</td></tr><tr><td>超高价&gt;250元</td><td>1</td></tr><tr><td>当前下跌</td><td>1</td></tr></tbody></table></div></div>
+<p><strong>淘汰明细（28只）</strong>：301190善水科技(10日+131.99%/回落3.52%)、301560众捷股份(回落3.19%)、301513尚水智能(换手39.08%/回落3.33%)、688499利元亨(回落4.54%)、688399硕世生物(回落2.61%)、300340科恒股份(回落2.48%)、300915海融科技(回落3.05%)、300489光智科技(价&gt;250/回落5.99%)、300110华仁药业(回落2.13%)、688099晶晨股份(回落4.94%)、300369绿盟科技(回落3.73%)、688608恒玄科技(回落4.66%)、301118恒光股份(回落4.56%)、688360德马科技(回落2.04%)、300019硅宝科技(回落2.31%)、300045华力创通(回落6.49%)、301238瑞泰新材(回落2.13%)、688049炬芯科技(回落5.81%)、301658首航新能(回落4.13%)、301059金三江(回落5.54%)、688213思特威-W(回落2.26%)、300805电声股份(回落3.82%)、688806泰诺麦博-U(换手29.89%)、301449天溯计量(换手15.28%)、688606奥泰生物(当前-0.10%)、300530领湃科技(20.02%涨停)、300111向日葵(19.87%涨停)、300821东岳硅材(20.01%涨停)</p>
+<blockquote><p>⚠️ 「冲高回落&gt;2%」单条件淘汰率 36.7%，叠加后总淘汰 46.7% —— 与本策略历史规律一致，<strong>该条件权重高于主力资金门槛</strong>。</p></blockquote>
+<hr>
+<h2>四、板块分析</h2>
+<h3>行业板块涨幅排行 Top20（同花顺）</h3>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>排名</th><th>板块</th><th>涨跌幅</th><th>净流入(亿)</th><th>涨/跌家数</th><th>领涨股</th><th>判定</th></tr></thead><tbody><tr><td>1</td><td>种植业与林业</td><td><strong>+1.36%</strong></td><td>6.99</td><td>16/13</td><td>秋乐种业 +10.01%</td><td>⚠️ 最弱Top1</td></tr><tr><td>2</td><td>贵金属</td><td>+1.23%</td><td>8.25</td><td>9/4</td><td>西部黄金 +4.02%</td><td>防御</td></tr><tr><td>3</td><td>煤炭开采加工</td><td>+1.17%</td><td>7.25</td><td>27/7</td><td>安泰集团 +9.88%</td><td>防御</td></tr><tr><td>4</td><td>中药</td><td>+0.64%</td><td>11.97</td><td>42/25</td><td>ST万邦 +8.90%</td><td>弱</td></tr><tr><td>5</td><td>零售</td><td>+0.42%</td><td>2.48</td><td>36/35</td><td>汇嘉时代 +10.05%</td><td>弱</td></tr><tr><td>6</td><td>机场航运</td><td>+0.29%</td><td>0.40</td><td>8/1</td><td>华夏航空 +0.81%</td><td>弱</td></tr><tr><td>7</td><td>证券</td><td>+0.23%</td><td>2.19</td><td>33/13</td><td>华鑫股份 +5.24%</td><td>护盘</td></tr><tr><td>8</td><td>公路铁路运输</td><td>+0.15%</td><td>3.59</td><td>17/12</td><td>皖通高速 +3.83%</td><td>弱</td></tr><tr><td>9</td><td>保险</td><td>+0.07%</td><td>2.96</td><td>3/2</td><td>中国平安 +0.44%</td><td>弱</td></tr><tr><td>10</td><td>影视院线</td><td>+0.03%</td><td>2.66</td><td>9/10</td><td>上海电影 +3.25%</td><td>弱</td></tr><tr><td>12</td><td>银行</td><td>-0.05%</td><td>14.09</td><td>15/23</td><td>苏州银行 +1.81%</td><td>护盘</td></tr><tr><td>15</td><td>化学制药</td><td>-0.29%</td><td>-3.54</td><td>67/89</td><td>向日葵 +19.86%</td><td>弱</td></tr><tr><td>18</td><td><strong>电池</strong></td><td><strong>-0.41%</strong></td><td>4.68</td><td>36/69</td><td>领湃科技 +19.98%</td><td>❌ 由10/8第1退至第18</td></tr></tbody></table></div></div>
+<p><strong>关键结论</strong>：<strong>Top1 仅 +1.36%（历史级弱势榜首）</strong>；<strong>半导体 / 元件 / 通信设备 / 医疗器械 / 化学制品 / 生物制品 全部跌出 Top20</strong>；10/8 的领头羊「电池」由 #1 跌至 <strong>#18（-0.41%）</strong> → <strong>昨日最强板块次日退潮，主线跨日衰减规律再次验证</strong>；市场仅剩<strong>资源+高股息防御风格</strong>（贵金属/煤炭/银行/保险/公路铁路）在勉强维持。</p>
+<h3>候选票板块合力评级</h3>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>板块</th><th>池内强势票数(涨幅&gt;3%)</th><th>板块排名</th><th>合力评级</th><th>情绪周期(10:35初判)</th><th>判定</th></tr></thead><tbody><tr><td>医疗器械</td><td>2只(301234 +4.20%/301087 +9.05%)</td><td>未入Top20</td><td>⭐⭐⭐</td><td>退潮期</td><td>❌ &lt;⭐⭐⭐⭐</td></tr><tr><td>电池</td><td>2只(301152 +4.19%/688567 +3.39%)</td><td>#18 (-0.41%)</td><td>⭐⭐⭐</td><td>退潮期</td><td>❌</td></tr><tr><td>生物制品</td><td>1只(688137 +6.01%)</td><td>#19 (-0.46%)</td><td>⭐⭐</td><td>退潮期</td><td>❌</td></tr><tr><td>化学制药</td><td>0只(3只均&lt;3%)</td><td>#15 (-0.29%)</td><td>⭐⭐</td><td>退潮期</td><td>❌</td></tr><tr><td>化学制品</td><td>1只</td><td>未入Top20</td><td>⭐⭐</td><td>退潮期</td><td>❌</td></tr><tr><td>风电设备</td><td>1只(300850 +6.62%)</td><td>未入Top20</td><td>⭐⭐</td><td>退潮期</td><td>❌</td></tr><tr><td>食品加工</td><td>0只</td><td>未入Top20</td><td>⭐⭐</td><td>退潮期</td><td>❌</td></tr></tbody></table></div></div>
+<p>→ <strong>池内无任何板块达到 ⭐⭐⭐⭐，铁律4 独立否决。</strong></p>
+<h3>板块情绪周期（10:35初判）</h3>
+<p><strong>退潮期</strong> —— 依据：①创业板指 -2.39%、科创50 -3.28%，指数加速下行；②创科宽度 1:7.94；③涨停家数较昨日 -36%；④20cm涨停仅 3 家且均为首板/二板，连板梯队仅 9板新华传媒一枝独苗；⑤昨日最强板块「电池」今日跌至 #18；⑥22只池内票冲高回落&gt;2%。</p>
+<blockquote><p>⚠️ 10:35 仅有 1 小时数据，情绪周期判断不完整，标注为「10:35初判」。</p></blockquote>
+<hr>
+<h2>五、组合A（主线推荐预判）</h2>
+<p><strong>组合A：0 只</strong></p>
+<p>判定依据（双重否决）：</p>
+<ol><li><strong>铁律1 触发</strong>：创业板指 -2.39% &lt; -1% → 全流程终止</li><li><strong>资金门槛否决</strong>：硬过滤通过的 <strong>32 只中，无一只主力净额 ≥ 1亿</strong>（池内最高为 688122西部超导 <strong>+0.39亿</strong>）</li></ol>
+<hr>
+<h2>六、组合B（弹性博弈预判）</h2>
+<p><strong>组合B：0 只</strong></p>
+<p>判定依据：</p>
+<ol><li><strong>铁律1 触发</strong>（同上）</li><li><strong>资金门槛否决</strong>：组合B 要求 main_net &gt; 5000万；<strong>硬过滤32只中最高仅 +0.39亿（688122），无一只达标</strong> → 不降标</li></ol>
+<hr>
+<h2>七、★ 交叉验证：候选池 ∩ 主力净额门槛名单</h2>
+<blockquote><p>本轮最高性价比过滤器（TDX 不可用，改用东财 push2delay <strong>f62 主力净额</strong>替代口径，与 1亿/5000万 阈值概念同源）</p></blockquote>
+<p><strong>全市场创业板+科创板 f62 ≥ 5000万 仅 13 只</strong>：</p>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>代码</th><th>名称</th><th>f62主力净额</th><th>涨幅</th><th>换手</th><th>PE(TTM)</th><th>行业</th><th>是否在池内</th></tr></thead><tbody><tr><td>300750</td><td>宁德时代</td><td><strong>+11.58亿</strong></td><td>+2.68%</td><td>0.55%</td><td>15.74</td><td>电池</td><td>❌ 未入前60</td></tr><tr><td><strong>300821</strong></td><td><strong>东岳硅材</strong></td><td><strong>+5.59亿</strong></td><td><strong>+20.01%</strong></td><td>12.06%</td><td>24.00</td><td>化学制品</td><td>✅ <strong>涨停买不进</strong></td></tr><tr><td><strong>300111</strong></td><td><strong>向日葵</strong></td><td><strong>+2.22亿</strong></td><td><strong>+19.87%</strong></td><td>14.04%</td><td>-184.83</td><td>化学制药</td><td>✅ <strong>涨停买不进</strong></td></tr><tr><td>301205</td><td>联特科技</td><td>+1.83亿</td><td>+6.10%</td><td>9.16%</td><td>1854.08</td><td>通信设备</td><td>❌ 未入前60</td></tr><tr><td><strong>688099</strong></td><td><strong>晶晨股份</strong></td><td><strong>+1.32亿</strong></td><td>+4.50%</td><td>5.95%</td><td>34.25</td><td>半导体</td><td>✅ <strong>回落4.94%被形态否</strong></td></tr><tr><td>300964</td><td>本川智能</td><td>+0.80亿</td><td>+7.25%</td><td>12.33%</td><td>90.64</td><td>元件</td><td>❌</td></tr><tr><td>300613</td><td>富瀚微</td><td>+0.78亿</td><td>-0.12%</td><td>5.27%</td><td>24.07</td><td>半导体</td><td>❌</td></tr><tr><td>301292</td><td>海科新源</td><td>+0.74亿</td><td>+4.63%</td><td>16.28%</td><td>16.26</td><td>电池</td><td>❌</td></tr><tr><td>301536</td><td>星宸科技</td><td>+0.71亿</td><td>+2.97%</td><td>6.59%</td><td>28.55</td><td>半导体</td><td>❌</td></tr><tr><td>300373</td><td>扬杰科技</td><td>+0.60亿</td><td>+3.14%</td><td>2.04%</td><td>29.44</td><td>半导体</td><td>❌</td></tr><tr><td>300981</td><td>中红医疗</td><td>+0.56亿</td><td>+19.98%</td><td>7.31%</td><td>31.58</td><td>医疗器械</td><td>❌</td></tr><tr><td>300661</td><td>圣邦股份</td><td>+0.53亿</td><td>-2.69%</td><td>1.36%</td><td>76.36</td><td>半导体</td><td>❌</td></tr><tr><td>688018</td><td>乐鑫科技</td><td>+0.50亿</td><td>-1.94%</td><td>1.66%</td><td>40.45</td><td>半导体</td><td>❌</td></tr></tbody></table></div></div>
+<h3>🔴 核心结论：<strong>硬过滤32只 ∩ 主力≥5000万名单（13只）= 0 只</strong></h3>
+<ul><li>池内仅 3 只进入主力名单，且<strong>全部被独立条件否决</strong>：东岳硅材/向日葵（涨停买不进）、晶晨股份（日内回落 4.94%）</li><li>硬过滤32只的 f62 全部 &lt; 5000万（最高 688122西部超导 +0.39亿 / 301087可孚医疗 +0.35亿 / 301487盟固利 +0.22亿 / 300850新强联 +0.22亿；其中 12 只为<strong>净流出</strong>）</li><li><strong>主力资金最强的 13 只中，8 只根本不在 10 日涨幅前60 池内</strong>（含宁德时代+11.58亿、联特科技+1.83亿）→ <strong>「池子与当日资金主线错位」的结构性瓶颈第 22 个交易日</strong></li><li>半导体集群异常：13只名单中 <strong>6 只为半导体</strong>（晶晨股份/富瀚微/星宸科技/扬杰科技/圣邦股份/乐鑫科技），但<strong>半导体板块未入涨幅Top20，且6只中4只飘绿</strong>（富瀚微-0.12%/圣邦-2.69%/乐鑫-1.94%/全志-1.26%）→ <strong>逆势承接属分歧，非合力</strong></li></ul>
+<hr>
+<h2>八、缩量预检（池内高资金票，10:35口径 ×3.69）</h2>
+<blockquote><p>10:35 已交易 65/240 分钟 → 预估全天量 = 当日累计 × 3.69（不可沿用 ×6.5 外推）</p></blockquote>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>代码</th><th>今日1小时量(股)</th><th>昨日全天量(股)</th><th>1小时/昨日全天</th><th>估算全天/昨日</th><th>判定</th></tr></thead><tbody><tr><td>688122 西部超导</td><td>10,124,226</td><td>11,436,679</td><td>88.5%</td><td><strong>3.27x</strong></td><td>⚠️ 放量过大</td></tr><tr><td>300850 新强联</td><td>226,040</td><td>254,752</td><td>88.7%</td><td><strong>3.27x</strong></td><td>⚠️ 放量过大</td></tr><tr><td>301087 可孚医疗</td><td>48,190</td><td>25,222</td><td>191.1%</td><td><strong>7.05x</strong></td><td>⚠️ 放量过大</td></tr><tr><td>688137 近岸蛋白</td><td>6,052,234</td><td>8,346,359</td><td>72.5%</td><td>2.68x</td><td>⚠️ 放量过大</td></tr><tr><td>301234 五洲医疗</td><td>19,133</td><td>25,683</td><td>74.5%</td><td>2.75x</td><td>⚠️ 放量过大</td></tr><tr><td>300717 华信新材</td><td>42,270</td><td>57,540</td><td>73.5%</td><td>2.71x</td><td>⚠️ 放量过大</td></tr><tr><td>301152 天力锂能</td><td>75,796</td><td>114,001</td><td>66.5%</td><td>2.45x</td><td>⚠️ 放量过大</td></tr><tr><td>301487 盟固利</td><td>278,554</td><td>498,101</td><td>55.9%</td><td>2.06x</td><td>⚠️ 放量过大</td></tr></tbody></table></div></div>
+<p>→ <strong>池内高资金票 100% 触发「放量过大」告警</strong>（连 1 小时原始占比都远超常态 27%），进一步印证<strong>放量下跌</strong>格局。</p>
+<hr>
+<h2>九、盘中走势形态评估 &amp; 次日套利成功率预判评分</h2>
+<p><strong>不适用</strong> —— 最终候选票为 0 只（铁律1 与资金门槛双重否决），无标的可进入形态评估与评分环节。</p>
+<p>评分维度（大盘/板块/资金/K线形态/催化）在本次运行中的实测值：</p>
+<ul><li>大盘维度：创业板指 -2.39% → <strong>5分</strong>（&lt;0）</li><li>板块维度：池内最高 ⭐⭐⭐ → <strong>5分</strong>（&lt;⭐⭐⭐）</li><li>资金维度：池内最高 main_net +0.39亿 → <strong>0分</strong>（但 &gt;0 给10分，最高为10分）</li><li>催化维度：无板块级催化 → 0分</li></ul>
+<hr>
+<h2>十、下午关注事项</h2>
+<p><strong>可能在午盘/下午加速的标的（当前涨幅适中但资金逆势）</strong></p>
+<ul><li><strong>半导体集群</strong>：688099晶晨股份(+1.32亿，唯一板块资金过亿)、300613富瀚微(+0.78亿)、301536星宸科技(+0.71亿)、300373扬杰科技(+0.60亿)、300661圣邦股份(+0.53亿)、688018乐鑫科技(+0.50亿) —— <strong>主力在指数重挫中逆势承接，是今日唯一具备资金合力的方向</strong>；但板块未入Top20且半数飘绿，属分歧承接，<strong>不构成合力信号</strong></li></ul>
+<p><strong>有冲高回落风险的标的（当前涨幅已高）</strong></p>
+<ul><li><strong>300821东岳硅材</strong>：+20.01% 涨停，f62 <strong>+5.59亿</strong>（今日创科资金第二强），换手 12.06% → <strong>高位炸板风险</strong></li><li><strong>300111向日葵</strong>：+19.87% 涨停，f62 <strong>+2.22亿</strong>，PE(TTM) <strong>-184.83（亏损）</strong>，换手 14.04% → 已近换手上限</li><li><strong>300530领湃科技</strong>：+20.02% 二板涨停，但 f62 仅 +0.12亿 → <strong>资金与涨幅背离</strong></li><li>池内 <strong>22 只已冲高回落&gt;2%</strong>（晶晨股份 -4.94%、炬芯科技 -5.81%、金三江 -5.54%、光智科技 -5.99%、华力创通 -6.49%）</li></ul>
+<p><strong>11:30-14:50 需观察的关键信号</strong></p>
+<ol><li><strong>创业板指能否收复 3006.29（-1% 线）</strong> → 需自现价上行 +1.43%，是 14:45 Version 启动的唯一前置条件</li><li>炸板率是否破 40%（现 25.0%，距线 15pct）</li><li>跌停家数是否由 11 家快速放大（放量下跌中的加速信号）</li><li>20cm涨停能否由 3 家回升（连续低位区是否延续）</li><li>昨日最强「电池」板块（现 #18, -0.41%）午后能否止跌回暖</li><li>半导体集群主力净额能否由「个股分散」转为「板块协同」</li><li>TDX 若恢复 → 须用 main_net 复核铁律2 指数级闸门</li></ol>
+<hr>
+<h2>十一、10:35→14:50 风险提示</h2>
+<ul><li><strong>数据局限</strong>：10:35 仅 1 小时、13 根 5分钟K线；午盘和下午可能有重大变化；20cm涨停家数等在 10:35 对 14:45 无预测力（历史存活率仅 13.3%）</li><li><strong>资金数据截至 10:35</strong>：14:45 时可能完全不同（10/8 实证：富信科技 10:35 主力 +9296万 → 14:45 跌破 5000万）</li><li><strong>资金口径</strong>：TDX 不可用 → <code>main_net</code> 全缺，本轮改用东财 push2delay <strong>f62 主力净额</strong>替代（与1亿/5000万阈值概念同源）；已用同花顺 <code>fundflow</code> 全单净额交叉参考（口径不同，阈值不可直接套用）</li><li><strong>铁律2 未生效</strong>：指数级主力资金缺失，上证 main_net &lt; -200亿 闸门本轮未检验</li><li>所有推荐标注「需14:50二次确认走势形态」后才可执行买入；<strong>本轮无推荐，该条不适用</strong></li><li>与 14:45 盘中版的关系：10:35 版给方向，14:45 版给最终确认</li></ul>
+<hr>
+<h2>十二、注意事项</h2>
+<ul><li>操作铁律：14:55 买、-5% 止损、高开3%走、10:30 定生死、连亏2次停手3天</li><li>默认 5万/只，仅大盘不好减半至 2.5万/只</li><li>本轮判定：<strong>铁律1（创业板指跌&gt;1%）触发 → 不做</strong>；叠加<strong>铁律4（板块合力&lt;⭐⭐⭐⭐）</strong>与<strong>资金门槛（无一只达5000万）</strong>三重否决</li></ul>
+<hr>
+<h2>★ 今日总结</h2>
+<p><strong>❌ 铁律1 触发，今日不做套利。组合A 0 只 / 组合B 0 只，无「需14:50二次确认」标的，空仓。</strong></p>
+<div class="tbl"><div class="rpt-scroll"><table><thead><tr><th>项目</th><th>结果</th></tr></thead><tbody><tr><td>时间校验</td><td>✓ 2026-10-09（周五）10:44-10:52，A股盘中时段</td></tr><tr><td>数据源</td><td>主源全绿无降级；TDX 兜底不可用（main_net 缺失，铁律2 未生效）</td></tr><tr><td>大盘</td><td>❌ <strong>铁律1 触发</strong>：创业板指 -2.39%（采样 -2.34%~-2.66%）；科创50 -3.28%；两市 9539亿放量下跌；创科宽度 1:7.94</td></tr><tr><td>情绪</td><td>✅ 闸门未触发（20cm 3家&lt;5 但 炸板率 25.0%&lt;40%，AND不成立）</td></tr><tr><td>硬过滤</td><td>60 → <strong>32 只通过</strong>（淘汰22只因冲高回落&gt;2%、3只换手&gt;15%、3只涨停、3只涨幅&gt;15%等）</td></tr><tr><td>板块</td><td>Top1 仅 +1.36%（历史级弱）；半导体/元件/通信设备/医疗器械全线跌出Top20；电池由#1退至#18 → <strong>无板块达⭐⭐⭐⭐</strong></td></tr><tr><td>情绪周期</td><td><strong>退潮期</strong>（10:35初判）</td></tr><tr><td>资金交叉验证</td><td>全市场创科 f62≥5000万 仅 <strong>13 只</strong> ∩ 池内 32 只 = <strong>0 只</strong></td></tr><tr><td>组合A</td><td><strong>0 只</strong></td></tr><tr><td>组合B</td><td><strong>0 只</strong></td></tr><tr><td>结构性瓶颈</td><td><strong>第 22 个交易日</strong>（池子与当日资金主线持续错位）</td></tr></tbody></table></div></div>
+<hr>
+<p><em>本报告由「创业板/科创板套利」自动化任务生成 · 10:35 盘中预判版 · 不构成投资建议</em></p></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 双视角 17:15 · 主板接力 17:20 · <b>短线选股 18:30</b> · 二波 21:00 · 周报 周五 23:00<br>主板接力（10cm 一进二/二进三）为专题类：交易日定时生成，不计入每日类计数<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div><!--metatail:start--><section class="rpt-meta"><h3>📡 数据源：主源全绿无降级（指数=腾讯 qt.gtimg.cn｜个股=腾讯｜10日涨幅=新浪spot+腾讯前复权日K｜情绪=东财 push2ex(akshare)｜板块=同花顺(akshare)｜主力净额=东财 push2delay f62 替代口径）｜TDX兜底：<strong>否</strong>（<code>tdx_client_ok=false</code>，本会话未注入 tdx 连接器，属自动化设计行为，非链路故障）｜指数级主力资金：<strong>缺失</strong>（main_net 全为 null，铁律2 闸门未生效）</h3></section><!--metatail:end-->
+</body>
+</html>
