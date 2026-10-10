@@ -102,7 +102,7 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
 .foot{text-align:center;margin-top:54px;padding-top:22px;border-top:1px solid var(--border);
   color:var(--dim);font-size:.84em;line-height:2;}
 
-/* ---- md 正文（复盘/周报/预判/套利日报 由 .md 渲染） ---- */
+/* ---- md 正文（复盘/周报/预判/午后大盘 由 .md 渲染） ---- */
 .doc{background:var(--card);border:1px solid var(--border);border-radius:12px;
   max-width:880px;margin:0 auto;padding:34px 40px 42px;font-size:1.02em;line-height:1.95;}
 .doc h1{font-size:1.5em;color:#111418;margin:4px 0 20px;padding-bottom:12px;line-height:1.5;
@@ -195,7 +195,7 @@ td.dt .w{color:var(--dim);font-weight:400;font-size:.82em;margin-left:5px;}
 <h2>八、注意事项</h2>
 <ul><li>操作铁律：<strong>14:55买、-5%止损、高开≥3%直接走、10:30定生死、连亏2次停手3天</strong></li><li>仓位：<strong>默认5万/只</strong>；本次两只均因「距涨停&gt;6% + 放量」<strong>双降档 → 统一 2.5万/只</strong>（降档下限即半仓，不叠加至1.25万）；两只合计5万（占总资金约20%）</li><li>大盘档位为"⚠️谨慎"（创业板指+0.26%），非"积极做"档，<strong>不建议超配</strong></li><li>结构性瓶颈：<strong>20cm涨停连续第19个交易日&lt;5家</strong>；但今日 Top2 板块（元件、电池）均含大量创科票（12只/25只涨幅&gt;3%），<strong>为近19日少见的"最强板块有创科参与"形态，属松动迹象，待14:45确认</strong></li><li>本报告不构成投资建议</li></ul>
 <hr>
-<p><em>数据源：腾讯(指数/个股/K线)、新浪+腾讯K线(10日涨幅本地计算)、同花顺akshare(板块)、东财push2ex(情绪)、东财push2delay(主力净额f62)。TDX兜底本次不可用。</em></p></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 预判 10:35 · 套利 14:43 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 双视角 17:15 · 主板接力 17:20 · <b>短线选股 18:30</b> · 二波 21:00 · 周报 周五 23:00<br>主板接力（10cm 一进二/二进三）为专题类：交易日定时生成，不计入每日类计数<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div><!--metatail:start--><section class="rpt-meta"><h3>📡 数据源：indices/quote/kline = tencent；rank10d = sina-spot + tencent-qfqday（本地计算）；sectors/emotion = 同花顺(akshare) / eastmoney-push2ex</h3>
+<p><em>数据源：腾讯(指数/个股/K线)、新浪+腾讯K线(10日涨幅本地计算)、同花顺akshare(板块)、东财push2ex(情绪)、东财push2delay(主力净额f62)。TDX兜底本次不可用。</em></p></div><a class="totop" href="#" title="回到顶部">↑</a><div class="foot">自动归档：盘前 07:00 · 早盘 09:55 · 午后大盘 14:43 · 竞价 15:45<br>情绪/预测 17:00 · 导图 17:05 · 双视角 17:15 · 主板接力 17:20 · <b>短线选股 18:30</b> · 二波 21:00 · 周报 周五 23:00<br>主板接力（10cm 一进二/二进三）为专题类：交易日定时生成，不计入每日类计数<br>数据来源：非TDX主源优先（腾讯/新浪/同花顺/东财），通达信仅作兜底补缺<br>© 2026 睿哥 &nbsp;·&nbsp; ⚠️ 仅供研究参考，不构成投资建议</div><!--metatail:start--><section class="rpt-meta"><h3>📡 数据源：indices/quote/kline = tencent；rank10d = sina-spot + tencent-qfqday（本地计算）；sectors/emotion = 同花顺(akshare) / eastmoney-push2ex</h3>
 <ul><li><strong>TDX 兜底：不可用</strong>（自动化会话未注入 tdx 连接器，<code>tdx_client_ok=false</code>，报错"mcpServers 中找不到任何 tdx 连接器"）→ <strong>无任何维度走 TDX 兜底</strong>（<code>tdx_fallback=false</code>）</li><li><strong>⚠️ 指数级主力资金（main_net）：缺失</strong> —— 铁律2「指数级主力资金闸门（上证&lt;-200亿）」<strong>本次未生效</strong></li><li><strong>⚠️ 主力净额替代方案</strong>：因 TDX 不可用，<code>quote/fundflow</code> 的 <code>main_net</code> 全部为 null。本次采用 <strong>①东财 push2delay 延时节点 f62（主力净额口径，与阈值概念同源）</strong> 为资金判据，<strong>②同花顺"全单净额"(<code>net</code>)</strong> 作方向交叉验证。二者同向者采信，<strong>符号冲突者一律降级/剔除</strong></li><li>情绪口径：<code>emotion</code> 主源 = eastmoney-push2ex（盘中实时，data_date=20260929），非 TDX 口径</li></ul></section><!--metatail:end-->
 </body>
 </html>
