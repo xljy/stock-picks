@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html data-wb-theme="light" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>涨停题材思维导图 2026-10-27</title>
+<style>
+:root{
+  --bg:#f4f6f8; --bg2:#eef1f4; --card:#ffffff; --card2:#eef1f4;
+  --line:#d8dee4; --txt:#1f2328; --txt2:#5b6570; --txt3:#5b6570;
+  --up:#cf222e; --down:#1a7f37; --acc:#0a66c2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg); color:var(--txt); overflow:hidden;
+  font-family:"Microsoft YaHei","PingFang SC","Segoe UI",system-ui,sans-serif;
+  font-size:13px;
+}
+.app{display:flex;flex-direction:column;height:100vh}
+
+/* ---------- header ---------- */
+header{
+  display:flex;align-items:center;gap:18px;padding:10px 18px;
+  background:linear-gradient(90deg,#e7f1fc,#f4f6f8);
+  border-bottom:1px solid var(--line);flex-shrink:0;flex-wrap:wrap;
+}
+h1{font-size:16px;font-weight:700;letter-spacing:.5px}
+h1 span{color:var(--acc)}
+.stats{display:flex;gap:8px;flex-wrap:wrap}
+.stat{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:4px 11px;display:flex;align-items:baseline;gap:6px;
+}
+.stat b{font-size:15px;font-weight:700}
+.stat i{font-style:normal;font-size:11px;color:var(--txt3)}
+.stat.hot b{color:var(--up)}
+.stat.warn b{color:#9a3412}
+
+/* ---------- layout ---------- */
+.body{display:flex;flex:1;min-height:0}
+aside{
+  width:212px;background:var(--bg2);border-right:1px solid var(--line);
+  overflow-y:auto;padding:12px;flex-shrink:0;
+}
+aside.right{border-right:none;border-left:1px solid var(--line);width:300px}
+main{flex:1;position:relative;overflow:hidden;background:radial-gradient(circle at 30% 20%,#e7f1fc 0%,#f4f6f8 60%);cursor:grab}
+main.drag{cursor:grabbing}
+#stage{width:100%;height:100%;display:block}
+
+.sec{font-size:11px;color:var(--txt3);margin:14px 0 7px;letter-spacing:1px;
+  text-transform:uppercase;font-weight:700}
+.sec:first-child{margin-top:0}
+.btn{
+  display:block;width:100%;text-align:left;background:var(--card);color:var(--txt);
+  border:1px solid var(--line);border-radius:7px;padding:7px 10px;margin-bottom:5px;
+  cursor:pointer;font-size:12px;transition:.15s;font-family:inherit;
+}
+.btn:hover{background:var(--card2);border-color:var(--acc)}
+.btn.on{background:#e7f1fc;border-color:var(--acc);color:#0a66c2}
+.chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--txt2);
+  padding:5px 2px;cursor:pointer;user-select:none}
+.chk input{accent-color:var(--acc);cursor:pointer}
+.hint{font-size:11px;color:var(--txt3);line-height:1.65;padding:0 2px 7px 26px}
+input[type=text]{
+  width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);
+  border-radius:7px;padding:7px 10px;font-size:12px;font-family:inherit;outline:none;
+}
+input[type=text]:focus{border-color:var(--acc)}
+
+.ti{display:flex;align-items:center;gap:7px;padding:4px 2px;font-size:12px;
+  cursor:pointer;border-radius:5px;user-select:none}
+.ti:hover{background:#e7f1fc}
+.ti .dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.ti .n{flex:1;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ti .c{color:var(--txt3);font-size:11px}
+.ti.off{opacity:.35}
+
+/* ---------- right panel ---------- */
+#detail{padding:12px}
+.empty{color:var(--txt3);font-size:12px;line-height:1.9;padding:8px 0}
+.dt-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px}
+.dt-h b{font-size:17px}
+.dt-h code{font-size:11px;color:var(--txt3);font-family:Consolas,monospace}
+.dt-sub{font-size:11px;color:var(--txt2);margin-bottom:12px}
+.kv{display:grid;grid-template-columns:66px 1fr;gap:5px 8px;font-size:12px;margin-bottom:12px}
+.kv dt{color:var(--txt3)}
+.kv dd{color:var(--txt)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{background:#e7f1fc;border:1px solid #d8dee4;color:#0a66c2;
+  border-radius:5px;padding:2px 7px;font-size:11px}
+.reason{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);
+  border-radius:6px;padding:9px 11px;font-size:12px;line-height:1.75;color:var(--txt2)}
+.rk{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12px}
+.rk .r{width:16px;color:var(--txt3);font-size:11px;text-align:right}
+.rk .nm{width:78px;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rk .bar{flex:1;height:7px;background:#e7f1fc;border-radius:4px;overflow:hidden}
+.rk .bar i{display:block;height:100%;background:linear-gradient(90deg,#4f8cff,#ff4d4f);border-radius:4px}
+.rk .v{width:24px;text-align:right;color:var(--txt3);font-size:11px}
+
+.tabs{display:flex;gap:4px;margin-bottom:10px}
+.tab{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);
+  border-radius:7px;padding:6px;font-size:12px;cursor:pointer;color:var(--txt2)}
+.tab.on{background:#e7f1fc;border-color:var(--acc);color:#0a66c2}
+.hide{display:none}
+
+/* ---------- svg ---------- */
+.node{cursor:pointer}
+.node rect{transition:.15s}
+.node:hover rect.nd{stroke:#8ab4ff;stroke-width:2}
+.node.dim{opacity:.25}
+path.lk{fill:none;stroke-width:1.6;transition:.15s}
+path.lk.hi{stroke-width:3}
+text{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;
+  -webkit-user-select:none;user-select:none}
+.ti-sel{background:#e7f1fc !important}
+#tip{position:absolute;pointer-events:none;background:#e7f1fc;border:1px solid var(--line);
+  border-radius:6px;padding:5px 9px;font-size:11px;color:var(--txt);opacity:0;
+  transition:opacity .12s;white-space:nowrap;z-index:9}
+.zoom{position:absolute;right:14px;bottom:14px;display:flex;gap:6px;z-index:5}
+.zoom button{width:30px;height:30px;border-radius:7px;background:var(--card);
+  border:1px solid var(--line);color:var(--txt);cursor:pointer;font-size:15px}
+.zoom button:hover{border-color:var(--acc)}
+mark{background:#ffd166;color:#111;padding:0 2px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>涨停题材思维导图 <span>2026-10-27</span></h1>
+    <div class="stats" id="stats"></div>
+  </header>
+  <div class="body">
+    <aside>
+      <div class="sec">视图</div>
+      <button class="btn" id="bFit">自适应视图</button>
+      <button class="btn" id="b100">实际大小 (1:1)</button>
+      <button class="btn" id="bExpand">全部展开</button>
+      <button class="btn" id="bCollapse2">仅展开到题材</button>
+      <button class="btn" id="bCollapse1">仅展开到主题域</button>
+      <div class="sec">显示</div>
+      <label class="chk"><input type="checkbox" id="cCross" checked> 交叉题材(副归属)</label>
+      <div class="hint">虚线框 = 该股在其它题材下的副归属；悬停可见它主属哪个题材</div>
+      <label class="chk"><input type="checkbox" id="cLone"> 隐藏单只题材</label>
+      <label class="chk"><input type="checkbox" id="cLabel" checked> 显示个股副信息</label>
+      <div class="sec">搜索</div>
+      <input type="text" id="q" placeholder="股票名 / 代码 / 题材">
+      <div class="sec">主题域筛选</div>
+      <div id="themes"></div>
+      <div class="sec">导出</div>
+      <button class="btn" id="bSvg">下载 SVG</button>
+      <button class="btn" id="bPng">下载 PNG</button>
+    </aside>
+    <main id="main">
+      <svg id="stage"></svg>
+      <div id="tip"></div>
+      <div class="zoom">
+        <button id="zIn">+</button><button id="zOut">−</button>
+      </div>
+    </main>
+    <aside class="right">
+      <div style="padding:12px 12px 0">
+        <div class="tabs">
+          <div class="tab on" id="tDetail">个股详情</div>
+          <div class="tab" id="tRank">题材强度榜</div>
+        </div>
+      </div>
+      <div id="detail"><div class="empty">点击任一股票节点<br>查看涨停原因与盘口数据</div></div>
+      <div id="rank" class="hide" style="padding:0 12px 12px"></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const DATA = {"meta": {"date": "2026-10-27", "generated_at": "2026-10-27 17:15:37", "zt_count": 41, "zb_count": 28, "max_lb": 5, "theme_count": 11, "topic_count": 28, "x_on": true, "x_total": 38, "x_stock_count": 25, "x_dropped": 74, "source": "eastmoney-push2ex+同花顺补缺 41 只"}, "themes": [{"name": "消费·新零售", "color": "#ec4899", "count": 13, "max_lb": 5, "seal_amt": 873464334.0, "topics": [{"name": "一般零售", "count": 5, "max_lb": 5, "seal_amt": 637459738.0, "stocks": [{"code": "600838", "name": "上海九百", "price": 13.31, "chg": 10.0, "lb": 5, "lb_stat": "5/5", "board_type": "换手板(涨停)", "first_time": "09:30:26", "last_time": "09:30:26", "open_times": 0, "seal_amt": 150186047.0, "seal_ratio": 0.0, "zt_amount_wan": 39426.096, "turnover": 7.486432075500488, "float_mv": 5335739167.110001, "amount": 394260960.0, "industry": "一般零售", "reason_tags": ["商贸零售", "商业地产", "洗染服务"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "000058", "name": "深 赛 格", "price": 7.87, "chg": 10.069930076599121, "lb": 1, "lb_stat": "1/1", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 400730169.0, "seal_ratio": 0.0, "zt_amount_wan": 5901.8704, "turnover": 0.7615416646003723, "float_mv": 7749898125.7300005, "amount": 59018704.0, "industry": "一般零售", "reason_tags": ["布局半导体检测", "罗山基地", "检验检测", "电子市场"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "601086", "name": "国芳集团", "price": 12.62, "chg": 10.026155471801758, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "14:52:06", "last_time": "14:52:06", "open_times": 0, "seal_amt": 56436640.0, "seal_ratio": 0.0, "zt_amount_wan": 119714.2128, "turnover": 14.899805068969727, "float_mv": 8404919999.999999, "amount": 1197142128.0, "industry": "一般零售", "reason_tags": ["连锁零售", "消费场景", "区域优势"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "600828", "name": "茂业商业", "price": 4.47, "chg": 10.098522186279297, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:40:42", "last_time": "09:40:42", "open_times": 0, "seal_amt": 19133388.0, "seal_ratio": 0.0, "zt_amount_wan": 11811.2558, "turnover": 1.5669115781784058, "float_mv": 7739180009.07, "amount": 118112558.0, "industry": "一般零售", "reason_tags": ["百货零售", "全渠道运营", "自有物业"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "600785", "name": "新华百货", "price": 13.9, "chg": 9.968354225158691, "lb": 1, "lb_stat": "3/2", "board_type": "换手板(涨停)", "first_time": "14:50:56", "last_time": "14:55:32", "open_times": 1, "seal_amt": 10973494.0, "seal_ratio": 0.0, "zt_amount_wan": 82273.656, "turnover": 19.85569190979004, "float_mv": 4390784708.8, "amount": 822736560.0, "industry": "一般零售", "reason_tags": ["零售促销", "股份回购", "硬折扣"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}], "xs": [], "xc": 0}, {"name": "家电零部", "count": 2, "max_lb": 1, "seal_amt": 51301018.0, "stocks": [{"code": "601956", "name": "东贝集团", "price": 5.54, "chg": 9.920635223388672, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:33:58", "last_time": "09:40:43", "open_times": 1, "seal_amt": 33752560.0, "seal_ratio": 0.0, "zt_amount_wan": 14201.4964, "turnover": 4.1508989334106445, "float_mv": 3443755908.6, "amount": 142014964.0, "industry": "家电零部", "reason_tags": ["汽车零部件", "机器人电机", "制冷压缩机"], "reason_text": "", "domain": "消费·新零售", "topic": "家电零部", "industry_full": "家电零部"}, {"code": "002011", "name": "盾安环境", "price": 11.37, "chg": 9.961315155029297, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:30:06", "last_time": "09:30:45", "open_times": 1, "seal_amt": 17548458.0, "seal_ratio": 0.0, "zt_amount_wan": 31269.2608, "turnover": 2.597456216812134, "float_mv": 12069431257.74, "amount": 312692608.0, "industry": "家电零部", "reason_tags": ["数据中心温控", "半导体温控", "汽车热管理"], "reason_text": "", "domain": "消费·新零售", "topic": "家电零部", "industry_full": "家电零部"}], "xs": [], "xc": 0}, {"name": "休闲食品", "count": 1, "max_lb": 2, "seal_amt": 43950901.0, "stocks": [{"code": "002820", "name": "桂发祥", "price": 11.21, "chg": 10.00981330871582, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:11:54", "last_time": "10:11:54", "open_times": 0, "seal_amt": 43950901.0, "seal_ratio": 0.0, "zt_amount_wan": 37673.448, "turnover": 17.855607986450195, "float_mv": 2251733586.9500003, "amount": 376734480.0, "industry": "休闲食品", "reason_tags": ["休闲食品", "非遗麻花", "全国拓展"], "reason_text": "", "domain": "消费·新零售", "topic": "休闲食品", "industry_full": "休闲食品"}], "xs": [], "xc": 0}, {"name": "饼干食品", "count": 1, "max_lb": 2, "seal_amt": 31827676.0, "stocks": [{"code": "001219", "name": "青岛食品", "price": 14.98, "chg": 9.985315322875977, "lb": 2, "lb_stat": "2/2", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:00", "last_time": "09:38:00", "open_times": 1, "seal_amt": 31827676.0, "seal_ratio": 0.0, "zt_amount_wan": 22117.2383, "turnover": 7.769644260406494, "float_mv": 2849158550.0, "amount": 221172383.0, "industry": "休闲食品", "reason_tags": ["三季报增长", "饼干食品", "渠道拓展"], "reason_text": "", "domain": "消费·新零售", "topic": "饼干食品", "industry_full": "休闲食品"}], "xs": [], "xc": 0}, {"name": "绿色食品", "count": 1, "max_lb": 2, "seal_amt": 16831826.0, "stocks": [{"code": "001318", "name": "阳光乳业", "price": 13.31, "chg": 10.0, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:11:54", "last_time": "14:20:24", "open_times": 4, "seal_amt": 16831826.0, "seal_ratio": 0.0, "zt_amount_wan": 55721.9472, "turnover": 15.535035133361816, "float_mv": 3762204600.0, "amount": 557219472.0, "industry": "饮料乳品", "reason_tags": ["乳制品", "绿色食品", "冷链物流", "“羊”字辈"], "reason_text": "", "domain": "消费·新零售", "topic": "绿色食品", "industry_full": "饮料乳品"}], "xs": [], "xc": 0}, {"name": "免税退税", "count": 1, "max_lb": 1, "seal_amt": 35344768.0, "stocks": [{"code": "002187", "name": "广百股份", "price": 5.92, "chg": 10.037175178527832, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:43:30", "last_time": "13:28:30", "open_times": 2, "seal_amt": 35344768.0, "seal_ratio": 0.0, "zt_amount_wan": 20923.3886, "turnover": 5.118494987487793, "float_mv": 4149296227.36, "amount": 209233886.0, "industry": "一般零售", "reason_tags": ["百货零售", "免税退税", "新零售业态"], "reason_text": "", "domain": "消费·新零售", "topic": "免税退税", "industry_full": "一般零售"}], "xs": [], "xc": 0}, {"name": "服装家纺", "count": 1, "max_lb": 1, "seal_amt": 34889856.0, "stocks": [{"code": "601566", "name": "九牧王", "price": 10.32, "chg": 10.021322250366211, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:31:27", "last_time": "13:12:54", "open_times": 1, "seal_amt": 34889856.0, "seal_ratio": 0.0, "zt_amount_wan": 29827.0608, "turnover": 5.082379341125488, "float_mv": 5930255388.0, "amount": 298270608.0, "industry": "服装家纺", "reason_tags": ["羊毛羊绒", "男裤", "太空裤", "海峡两岸"], "reason_text": "", "domain": "消费·新零售", "topic": "服装家纺", "industry_full": "服装家纺"}], "xs": [], "xc": 0}, {"name": "冰雪旅游", "count": 1, "max_lb": 1, "seal_amt": 21858551.0, "stocks": [{"code": "000888", "name": "峨眉山Ａ", "price": 10.1, "chg": 10.0217866897583, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:29:06", "last_time": "13:03:45", "open_times": 1, "seal_amt": 21858551.0, "seal_ratio": 0.0, "zt_amount_wan": 51433.3248, "turnover": 9.878958702087402, "float_mv": 5321822330.2, "amount": 514333248.0, "industry": "旅游及景", "reason_tags": ["景区索道", "文旅产业", "冰雪旅游"], "reason_text": "", "domain": "消费·新零售", "topic": "冰雪旅游", "industry_full": "旅游及景区"}], "xs": [], "xc": 0}]}, {"name": "汽车·出行", "color": "#fb7185", "count": 9, "max_lb": 4, "seal_amt": 429400457.0, "topics": [{"name": "汽车零部件", "count": 7, "max_lb": 4, "seal_amt": 408069073.0, "stocks": [{"code": "000678", "name": "襄阳轴承", "price": 16.01, "chg": 10.034364700317383, "lb": 4, "lb_stat": "4/4", "board_type": "换手板(涨停)", "first_time": "09:34:09", "last_time": "09:36:48", "open_times": 1, "seal_amt": 128141750.0, "seal_ratio": 0.0, "zt_amount_wan": 149186.5744, "turnover": 20.57141876220703, "float_mv": 7358384869.97, "amount": 1491865744.0, "industry": "汽车零部", "reason_tags": ["机器人轴承", "汽车轴承", "“羊”字辈"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "002708", "name": "光洋股份", "price": 17.22, "chg": 10.031949043273926, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:30:03", "last_time": "09:30:03", "open_times": 0, "seal_amt": 170138025.0, "seal_ratio": 0.0, "zt_amount_wan": 33916.616, "turnover": 3.86814546585083, "float_mv": 8775834644.22, "amount": 339166160.0, "industry": "汽车零部", "reason_tags": ["人形机器人", "PCB", "汽车零部件", "“羊”字辈"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "605333", "name": "沪光股份", "price": 19.91, "chg": 10.0, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:21:27", "last_time": "14:50:42", "open_times": 2, "seal_amt": 4738918.0, "seal_ratio": 0.0, "zt_amount_wan": 37027.024, "turnover": 4.176628589630127, "float_mv": 9239044483.460001, "amount": 370270240.0, "industry": "汽车零部", "reason_tags": ["具身智能", "机器人量产", "汽车线束"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "002284", "name": "亚太股份", "price": 9.67, "chg": 10.01137638092041, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:30:06", "last_time": "14:49:00", "open_times": 4, "seal_amt": 61259450.0, "seal_ratio": 0.0, "zt_amount_wan": 47765.5504, "turnover": 6.789174556732178, "float_mv": 7080261325.16, "amount": 477655504.0, "industry": "汽车零部", "reason_tags": ["股权受让", "业绩增长", "汽车制动", "机器人模组"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "603037", "name": "凯众股份", "price": 11.87, "chg": 10.009267807006836, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "13:01:47", "last_time": "13:01:47", "open_times": 0, "seal_amt": 22634903.0, "seal_ratio": 0.0, "zt_amount_wan": 25060.7183, "turnover": 8.182324409484863, "float_mv": 3159201413.99, "amount": 250607183.0, "industry": "汽车零部", "reason_tags": ["机器人零部件", "汽车减震", "拟收购拓盛"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "603758", "name": "秦安股份", "price": 10.73, "chg": 10.051281929016113, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:33:15", "last_time": "09:33:42", "open_times": 1, "seal_amt": 20081195.0, "seal_ratio": 0.0, "zt_amount_wan": 13373.0606, "turnover": 2.95182728767395, "float_mv": 4647335205.77, "amount": 133730606.0, "industry": "汽车零部", "reason_tags": ["柔性压力传感器", "参投墨现科技", "真空镀膜", "汽车零部件"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "600626", "name": "申达股份", "price": 3.94, "chg": 10.055866241455078, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "13:24:30", "last_time": "14:46:12", "open_times": 5, "seal_amt": 1074832.0, "seal_ratio": 0.0, "zt_amount_wan": 24458.783, "turnover": 4.8048601150512695, "float_mv": 5203733987.98, "amount": 244587830.0, "industry": "汽车零部", "reason_tags": ["汽车内饰", "整车配套", "中报扭亏", "上海国资"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}], "xs": ["300539", "601956"], "xc": 2}, {"name": "商用车", "count": 1, "max_lb": 1, "seal_amt": 18091224.0, "stocks": [{"code": "600303", "name": "曙光股份", "price": 3.11, "chg": 9.893993377685547, "lb": 1, "lb_stat": "3/2", "board_type": "换手板(涨停)", "first_time": "09:32:42", "last_time": "10:48:12", "open_times": 1, "seal_amt": 18091224.0, "seal_ratio": 0.0, "zt_amount_wan": 25025.2483, "turnover": 12.079277992248535, "float_mv": 2107062976.2099998, "amount": 250252483.0, "industry": "商用车", "reason_tags": ["汽车车桥", "新能源客车", "军用方舱"], "reason_text": "", "domain": "汽车·出行", "topic": "商用车", "industry_full": "商用车"}], "xs": [], "xc": 0}, {"name": "汽车电子", "count": 1, "max_lb": 1, "seal_amt": 3240160.0, "stocks": [{"code": "603376", "name": "大明电子", "price": 26.3, "chg": 9.995817184448242, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:48:01", "last_time": "09:59:37", "open_times": 2, "seal_amt": 3240160.0, "seal_ratio": 0.0, "zt_amount_wan": 9179.7962, "turnover": 11.042804718017578, "float_mv": 841621040.0, "amount": 91797962.0, "industry": "汽车零部", "reason_tags": ["汽车电子", "驾驶辅助", "新能源车型"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车电子", "industry_full": "汽车零部件"}], "xs": [], "xc": 0}, {"name": "新能源车", "count": 0, "max_lb": 1, "seal_amt": 10911387.0, "stocks": [], "xs": ["603370", "603376"], "cross_only": true, "xc": 2}]}, {"name": "AI算力·光通信", "color": "#4f8cff", "count": 4, "max_lb": 4, "seal_amt": 217520276.0, "topics": [{"name": "软件开发", "count": 1, "max_lb": 4, "seal_amt": 114816800.0, "stocks": [{"code": "603528", "name": "多伦科技", "price": 9.85, "chg": 10.055866241455078, "lb": 4, "lb_stat": "4/4", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:01", "last_time": "14:49:13", "open_times": 1, "seal_amt": 114816800.0, "seal_ratio": 0.0, "zt_amount_wan": 80998.0208, "turnover": 11.652510643005371, "float_mv": 6953411790.349999, "amount": 809980208.0, "industry": "软件开发", "reason_tags": ["交通机器人", "具身智能", "智慧交通"], "reason_text": "", "domain": "AI算力·光通信", "topic": "软件开发", "industry_full": "软件开发"}], "xs": [], "xc": 0}, {"name": "AI应用", "count": 1, "max_lb": 2, "seal_amt": 46116153.0, "stocks": [{"code": "002093", "name": "国脉科技", "price": 7.93, "chg": 9.986129760742188, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:30:51", "last_time": "09:39:45", "open_times": 2, "seal_amt": 46116153.0, "seal_ratio": 0.0, "zt_amount_wan": 52508.2752, "turnover": 6.627661228179932, "float_mv": 7989475000.0, "amount": 525082752.0, "industry": "教育", "reason_tags": ["AI应用", "养老AI", "身联网", "通信服务"], "reason_text": "", "domain": "AI算力·光通信", "topic": "AI应用", "industry_full": "教育"}], "xs": [], "xc": 0}, {"name": "光通信", "count": 1, "max_lb": 2, "seal_amt": 11210704.0, "stocks": [{"code": "301314", "name": "科瑞思", "price": 67.37, "chg": 20.003562927246094, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "13:46:48", "last_time": "13:53:30", "open_times": 1, "seal_amt": 11210704.0, "seal_ratio": 0.0, "zt_amount_wan": 56332.0192, "turnover": 30.242666244506836, "float_mv": 2016583043.6100001, "amount": 563320192.0, "industry": "通信设备", "reason_tags": ["重大重组", "光通信", "磁性元器件"], "reason_text": "", "domain": "AI算力·光通信", "topic": "光通信", "industry_full": "通信设备"}], "xs": ["301479"], "xc": 1}, {"name": "通信设备", "count": 1, "max_lb": 1, "seal_amt": 45376619.0, "stocks": [{"code": "300504", "name": "天邑股份", "price": 17.69, "chg": 20.013566970825195, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "11:12:18", "last_time": "11:12:18", "open_times": 0, "seal_amt": 45376619.0, "seal_ratio": 0.0, "zt_amount_wan": 43854.0944, "turnover": 11.949780464172363, "float_mv": 3895713434.8700004, "amount": 438540944.0, "industry": "通信设备", "reason_tags": ["三季报扭亏", "通信设备", "MPO跳线"], "reason_text": "", "domain": "AI算力·光通信", "topic": "通信设备", "industry_full": "通信设备"}], "xs": [], "xc": 0}, {"name": "AI", "count": 0, "max_lb": 2, "seal_amt": 85219947.0, "stocks": [], "xs": ["002093", "002724", "600715"], "cross_only": true, "xc": 3}, {"name": "数据中心", "count": 0, "max_lb": 1, "seal_amt": 127352329.0, "stocks": [], "xs": ["002249", "002011"], "cross_only": true, "xc": 2}]}, {"name": "电力设备·新能源", "color": "#22c55e", "count": 4, "max_lb": 1, "seal_amt": 185083287.0, "topics": [{"name": "电机Ⅱ", "count": 3, "max_lb": 1, "seal_amt": 142293527.0, "stocks": [{"code": "002249", "name": "大洋电机", "price": 7.7, "chg": 10.0, "lb": 1, "lb_stat": "4/2", "board_type": "换手板(涨停)", "first_time": "09:56:57", "last_time": "14:55:30", "open_times": 1, "seal_amt": 109803871.0, "seal_ratio": 0.0, "zt_amount_wan": 141898.8704, "turnover": 10.161813735961914, "float_mv": 14417724267.1, "amount": 1418988704.0, "industry": "电机Ⅱ", "reason_tags": ["机器人关节", "电机业务", "数据中心风机", "“羊”字辈"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, {"code": "002823", "name": "凯中精密", "price": 13.49, "chg": 10.032626152038574, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "11:05:33", "last_time": "13:20:03", "open_times": 1, "seal_amt": 24818429.0, "seal_ratio": 0.0, "zt_amount_wan": 30204.5952, "turnover": 10.283206939697266, "float_mv": 3008805728.37, "amount": 302045952.0, "industry": "电机Ⅱ", "reason_tags": ["精密零组件", "机器人布局", "汽车连接器"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, {"code": "603370", "name": "华新精科", "price": 30.81, "chg": 9.996429443359375, "lb": 1, "lb_stat": "4/2", "board_type": "换手板(涨停)", "first_time": "10:51:48", "last_time": "11:05:27", "open_times": 1, "seal_amt": 7671227.0, "seal_ratio": 0.0, "zt_amount_wan": 31869.6224, "turnover": 12.713977813720703, "float_mv": 2602018589.43, "amount": 318696224.0, "industry": "电机Ⅱ", "reason_tags": ["人形机器人", "关节电机铁芯", "新能源车铁芯"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}], "xs": [], "xc": 0}, {"name": "光伏玻璃", "count": 1, "max_lb": 1, "seal_amt": 42789760.0, "stocks": [{"code": "002623", "name": "亚玛顿", "price": 18.78, "chg": 10.017574310302734, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "13:19:18", "last_time": "13:19:18", "open_times": 0, "seal_amt": 42789760.0, "seal_ratio": 0.0, "zt_amount_wan": 23268.0089, "turnover": 6.723258018493652, "float_mv": 3617706671.6400003, "amount": 232680089.0, "industry": "光伏设备", "reason_tags": ["玻璃基板", "光伏玻璃", "钙钛矿玻璃"], "reason_text": "", "domain": "电力设备·新能源", "topic": "光伏玻璃", "industry_full": "光伏设备"}], "xs": [], "xc": 0}]}, {"name": "机器人·高端制造", "color": "#f97316", "count": 3, "max_lb": 4, "seal_amt": 178534906.0, "topics": [{"name": "机器人钢丝绳", "count": 1, "max_lb": 4, "seal_amt": 24825675.0, "stocks": [{"code": "603028", "name": "赛福天", "price": 10.33, "chg": 10.010649681091309, "lb": 4, "lb_stat": "4/4", "board_type": "一字板(涨停)", "first_time": "09:25:02", "last_time": "15:00:00", "open_times": 1, "seal_amt": 24825675.0, "seal_ratio": 0.0, "zt_amount_wan": 30196.912, "turnover": 10.30882740020752, "float_mv": 2929228516.0, "amount": 301969120.0, "industry": "通用设备", "reason_tags": ["机器人钢丝绳", "高端特种钢索"], "reason_text": "", "domain": "机器人·高端制造", "topic": "机器人钢丝绳", "industry_full": "通用设备"}], "xs": ["000678", "603528", "001331", "605333", "002249", "002284", "601956", "301479", "002823", "603037"], "xc": 10}, {"name": "商业航天", "count": 1, "max_lb": 1, "seal_amt": 81068349.0, "stocks": [{"code": "001400", "name": "江顺科技", "price": 80.28, "chg": 10.002740859985352, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:35:18", "last_time": "09:35:18", "open_times": 0, "seal_amt": 81068349.0, "seal_ratio": 0.0, "zt_amount_wan": 14819.557, "turnover": 5.838725566864014, "float_mv": 2586139920.0, "amount": 148195570.0, "industry": "专用设备", "reason_tags": ["3D打印", "液冷", "商业航天", "铝挤压模具"], "reason_text": "", "domain": "机器人·高端制造", "topic": "商业航天", "industry_full": "专用设备"}], "xs": [], "xc": 0}, {"name": "人形机器人", "count": 1, "max_lb": 1, "seal_amt": 72640882.0, "stocks": [{"code": "301682", "name": "宏明电子", "price": 102.1, "chg": 20.004701614379883, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:55:24", "last_time": "13:49:33", "open_times": 2, "seal_amt": 72640882.0, "seal_ratio": 0.0, "zt_amount_wan": 71366.3632, "turnover": 23.657865524291992, "float_mv": 3102547414.0, "amount": 713663632.0, "industry": "军工电子", "reason_tags": ["精密零组件", "人形机器人", "特种电容"], "reason_text": "", "domain": "机器人·高端制造", "topic": "人形机器人", "industry_full": "军工电子"}], "xs": ["002708", "603370"], "xc": 2}]}, {"name": "周期·资源", "color": "#eab308", "count": 2, "max_lb": 1, "seal_amt": 67634669.0, "topics": [{"name": "塑料", "count": 1, "max_lb": 1, "seal_amt": 40267248.0, "stocks": [{"code": "300539", "name": "横河精密", "price": 19.68, "chg": 20.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:04:51", "last_time": "10:04:51", "open_times": 0, "seal_amt": 40267248.0, "seal_ratio": 0.0, "zt_amount_wan": 47350.7456, "turnover": 11.441157341003418, "float_mv": 4299386024.16, "amount": 473507456.0, "industry": "塑料", "reason_tags": ["减速器", "精密模具", "汽车零部件"], "reason_text": "", "domain": "周期·资源", "topic": "塑料", "industry_full": "塑料"}], "xs": [], "xc": 0}, {"name": "水泥", "count": 1, "max_lb": 1, "seal_amt": 27367421.0, "stocks": [{"code": "002205", "name": "国统股份", "price": 11.4, "chg": 10.038609504699707, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:49:57", "last_time": "10:49:57", "open_times": 0, "seal_amt": 27367421.0, "seal_ratio": 0.0, "zt_amount_wan": 12942.0267, "turnover": 6.328102111816406, "float_mv": 2118612799.2, "amount": 129420267.0, "industry": "水泥", "reason_tags": ["PCCP管道", "风电混塔", "央企控股"], "reason_text": "", "domain": "周期·资源", "topic": "水泥", "industry_full": "水泥"}], "xs": [], "xc": 0}]}, {"name": "交运·物流", "color": "#38bdf8", "count": 2, "max_lb": 1, "seal_amt": 37022356.0, "topics": [{"name": "集装箱物流", "count": 1, "max_lb": 1, "seal_amt": 31461196.0, "stocks": [{"code": "603565", "name": "中谷物流", "price": 12.58, "chg": 9.965035438537598, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:31:15", "last_time": "13:34:42", "open_times": 2, "seal_amt": 31461196.0, "seal_ratio": 0.0, "zt_amount_wan": 39212.408, "turnover": 1.4894860982894897, "float_mv": 26418793835.74, "amount": 392124080.0, "industry": "航运港口", "reason_tags": ["三季报增长", "股权激励", "集装箱物流"], "reason_text": "", "domain": "交运·物流", "topic": "集装箱物流", "industry_full": "航运港口"}], "xs": [], "xc": 0}, {"name": "汽车物流", "count": 1, "max_lb": 1, "seal_amt": 5561160.0, "stocks": [{"code": "603813", "name": "原尚股份", "price": 24.2, "chg": 10.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:34:15", "last_time": "10:34:15", "open_times": 0, "seal_amt": 5561160.0, "seal_ratio": 0.0, "zt_amount_wan": 4667.2479, "turnover": 1.8857306241989136, "float_mv": 2541363000.0, "amount": 46672479.0, "industry": "物流", "reason_tags": ["汽车物流", "仓储资源"], "reason_text": "", "domain": "交运·物流", "topic": "汽车物流", "industry_full": "物流"}], "xs": [], "xc": 0}, {"name": "物流", "count": 0, "max_lb": 2, "seal_amt": 16831826.0, "stocks": [], "xs": ["001318"], "cross_only": true, "xc": 1}]}, {"name": "环保·公用", "color": "#2dd4bf", "count": 1, "max_lb": 2, "seal_amt": 87783420.0, "topics": [{"name": "燃气Ⅱ", "count": 1, "max_lb": 2, "seal_amt": 87783420.0, "stocks": [{"code": "001331", "name": "胜通能源", "price": 38.52, "chg": 9.99428939819336, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:39:18", "last_time": "13:34:00", "open_times": 3, "seal_amt": 87783420.0, "seal_ratio": 0.0, "zt_amount_wan": 71645.7984, "turnover": 6.690078258514404, "float_mv": 11010331458.0, "amount": 716457984.0, "industry": "燃气Ⅱ", "reason_tags": ["工业机器人", "LNG运贸"], "reason_text": "", "domain": "环保·公用", "topic": "燃气Ⅱ", "industry_full": "燃气Ⅱ"}], "xs": [], "xc": 0}]}, {"name": "半导体·芯片", "color": "#a855f7", "count": 1, "max_lb": 1, "seal_amt": 33423792.0, "topics": [{"name": "光学光电子", "count": 1, "max_lb": 1, "seal_amt": 33423792.0, "stocks": [{"code": "301479", "name": "弘景光电", "price": 56.15, "chg": 20.004274368286133, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:57:06", "last_time": "14:55:36", "open_times": 9, "seal_amt": 33423792.0, "seal_ratio": 0.0, "zt_amount_wan": 74230.28, "turnover": 19.166017532348633, "float_mv": 4003546208.7999997, "amount": 742302800.0, "industry": "光学光电", "reason_tags": ["机器人视觉", "全景相机", "光通信"], "reason_text": "", "domain": "半导体·芯片", "topic": "光学光电子", "industry_full": "光学光电子"}], "xs": [], "xc": 0}, {"name": "半导体", "count": 0, "max_lb": 1, "seal_amt": 418278627.0, "stocks": [], "xs": ["000058", "002011"], "cross_only": true, "xc": 2}]}, {"name": "其他题材", "color": "#64748b", "count": 1, "max_lb": 1, "seal_amt": 32546452.0, "topics": [{"name": "三季报增长", "count": 1, "max_lb": 1, "seal_amt": 32546452.0, "stocks": [{"code": "002724", "name": "海洋王", "price": 13.09, "chg": 10.0, "lb": 1, "lb_stat": "8/7", "board_type": "换手板(涨停)", "first_time": "10:07:42", "last_time": "14:55:18", "open_times": 6, "seal_amt": 32546452.0, "seal_ratio": 0.0, "zt_amount_wan": 209011.4224, "turnover": 28.849712371826172, "float_mv": 7415200803.01, "amount": 2090114224.0, "industry": "照明设备", "reason_tags": ["三季报增长", "专业照明", "AI智慧照明", "“羊”字辈"], "reason_text": "", "domain": "其他题材", "topic": "三季报增长", "industry_full": "照明设备"}], "xs": ["001219", "603565"], "xc": 2}, {"name": "“羊”字辈", "count": 0, "max_lb": 4, "seal_amt": 457461924.0, "stocks": [], "xs": ["000678", "002708", "001318", "002249", "002724"], "cross_only": true, "xc": 5}, {"name": "具身智能", "count": 0, "max_lb": 4, "seal_amt": 119555718.0, "stocks": [], "xs": ["603528", "605333"], "cross_only": true, "xc": 2}, {"name": "精密零组件", "count": 0, "max_lb": 1, "seal_amt": 97459311.0, "stocks": [], "xs": ["301682", "002823"], "cross_only": true, "xc": 2}, {"name": "百货零售", "count": 0, "max_lb": 1, "seal_amt": 54478156.0, "stocks": [], "xs": ["002187", "600828"], "cross_only": true, "xc": 2}]}, {"name": "传媒·电子", "color": "#f472b6", "count": 1, "max_lb": 1, "seal_amt": 6557342.0, "topics": [{"name": "游戏运营", "count": 1, "max_lb": 1, "seal_amt": 6557342.0, "stocks": [{"code": "600715", "name": "文投控股", "price": 1.87, "chg": 10.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:41:25", "last_time": "14:56:10", "open_times": 5, "seal_amt": 6557342.0, "seal_ratio": 0.0, "zt_amount_wan": 46857.3856, "turnover": 8.876708984375, "float_mv": 5352636090.67, "amount": 468573856.0, "industry": "游戏Ⅱ", "reason_tags": ["AI漫剧", "游戏运营", "影院运营"], "reason_text": "", "domain": "传媒·电子", "topic": "游戏运营", "industry_full": "游戏Ⅱ"}], "xs": [], "xc": 0}]}], "ladder": {"5": [{"code": "600838", "name": "上海九百", "price": 13.31, "chg": 10.0, "lb": 5, "lb_stat": "5/5", "board_type": "换手板(涨停)", "first_time": "09:30:26", "last_time": "09:30:26", "open_times": 0, "seal_amt": 150186047.0, "seal_ratio": 0.0, "zt_amount_wan": 39426.096, "turnover": 7.486432075500488, "float_mv": 5335739167.110001, "amount": 394260960.0, "industry": "一般零售", "reason_tags": ["商贸零售", "商业地产", "洗染服务"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}], "4": [{"code": "000678", "name": "襄阳轴承", "price": 16.01, "chg": 10.034364700317383, "lb": 4, "lb_stat": "4/4", "board_type": "换手板(涨停)", "first_time": "09:34:09", "last_time": "09:36:48", "open_times": 1, "seal_amt": 128141750.0, "seal_ratio": 0.0, "zt_amount_wan": 149186.5744, "turnover": 20.57141876220703, "float_mv": 7358384869.97, "amount": 1491865744.0, "industry": "汽车零部", "reason_tags": ["机器人轴承", "汽车轴承", "“羊”字辈"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "603528", "name": "多伦科技", "price": 9.85, "chg": 10.055866241455078, "lb": 4, "lb_stat": "4/4", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:01", "last_time": "14:49:13", "open_times": 1, "seal_amt": 114816800.0, "seal_ratio": 0.0, "zt_amount_wan": 80998.0208, "turnover": 11.652510643005371, "float_mv": 6953411790.349999, "amount": 809980208.0, "industry": "软件开发", "reason_tags": ["交通机器人", "具身智能", "智慧交通"], "reason_text": "", "domain": "AI算力·光通信", "topic": "软件开发", "industry_full": "软件开发"}, {"code": "603028", "name": "赛福天", "price": 10.33, "chg": 10.010649681091309, "lb": 4, "lb_stat": "4/4", "board_type": "一字板(涨停)", "first_time": "09:25:02", "last_time": "15:00:00", "open_times": 1, "seal_amt": 24825675.0, "seal_ratio": 0.0, "zt_amount_wan": 30196.912, "turnover": 10.30882740020752, "float_mv": 2929228516.0, "amount": 301969120.0, "industry": "通用设备", "reason_tags": ["机器人钢丝绳", "高端特种钢索"], "reason_text": "", "domain": "机器人·高端制造", "topic": "机器人钢丝绳", "industry_full": "通用设备"}], "2": [{"code": "002708", "name": "光洋股份", "price": 17.22, "chg": 10.031949043273926, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:30:03", "last_time": "09:30:03", "open_times": 0, "seal_amt": 170138025.0, "seal_ratio": 0.0, "zt_amount_wan": 33916.616, "turnover": 3.86814546585083, "float_mv": 8775834644.22, "amount": 339166160.0, "industry": "汽车零部", "reason_tags": ["人形机器人", "PCB", "汽车零部件", "“羊”字辈"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "001331", "name": "胜通能源", "price": 38.52, "chg": 9.99428939819336, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:39:18", "last_time": "13:34:00", "open_times": 3, "seal_amt": 87783420.0, "seal_ratio": 0.0, "zt_amount_wan": 71645.7984, "turnover": 6.690078258514404, "float_mv": 11010331458.0, "amount": 716457984.0, "industry": "燃气Ⅱ", "reason_tags": ["工业机器人", "LNG运贸"], "reason_text": "", "domain": "环保·公用", "topic": "燃气Ⅱ", "industry_full": "燃气Ⅱ"}, {"code": "002093", "name": "国脉科技", "price": 7.93, "chg": 9.986129760742188, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:30:51", "last_time": "09:39:45", "open_times": 2, "seal_amt": 46116153.0, "seal_ratio": 0.0, "zt_amount_wan": 52508.2752, "turnover": 6.627661228179932, "float_mv": 7989475000.0, "amount": 525082752.0, "industry": "教育", "reason_tags": ["AI应用", "养老AI", "身联网", "通信服务"], "reason_text": "", "domain": "AI算力·光通信", "topic": "AI应用", "industry_full": "教育"}, {"code": "002820", "name": "桂发祥", "price": 11.21, "chg": 10.00981330871582, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:11:54", "last_time": "10:11:54", "open_times": 0, "seal_amt": 43950901.0, "seal_ratio": 0.0, "zt_amount_wan": 37673.448, "turnover": 17.855607986450195, "float_mv": 2251733586.9500003, "amount": 376734480.0, "industry": "休闲食品", "reason_tags": ["休闲食品", "非遗麻花", "全国拓展"], "reason_text": "", "domain": "消费·新零售", "topic": "休闲食品", "industry_full": "休闲食品"}, {"code": "001219", "name": "青岛食品", "price": 14.98, "chg": 9.985315322875977, "lb": 2, "lb_stat": "2/2", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:00", "last_time": "09:38:00", "open_times": 1, "seal_amt": 31827676.0, "seal_ratio": 0.0, "zt_amount_wan": 22117.2383, "turnover": 7.769644260406494, "float_mv": 2849158550.0, "amount": 221172383.0, "industry": "休闲食品", "reason_tags": ["三季报增长", "饼干食品", "渠道拓展"], "reason_text": "", "domain": "消费·新零售", "topic": "饼干食品", "industry_full": "休闲食品"}, {"code": "001318", "name": "阳光乳业", "price": 13.31, "chg": 10.0, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:11:54", "last_time": "14:20:24", "open_times": 4, "seal_amt": 16831826.0, "seal_ratio": 0.0, "zt_amount_wan": 55721.9472, "turnover": 15.535035133361816, "float_mv": 3762204600.0, "amount": 557219472.0, "industry": "饮料乳品", "reason_tags": ["乳制品", "绿色食品", "冷链物流", "“羊”字辈"], "reason_text": "", "domain": "消费·新零售", "topic": "绿色食品", "industry_full": "饮料乳品"}, {"code": "301314", "name": "科瑞思", "price": 67.37, "chg": 20.003562927246094, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "13:46:48", "last_time": "13:53:30", "open_times": 1, "seal_amt": 11210704.0, "seal_ratio": 0.0, "zt_amount_wan": 56332.0192, "turnover": 30.242666244506836, "float_mv": 2016583043.6100001, "amount": 563320192.0, "industry": "通信设备", "reason_tags": ["重大重组", "光通信", "磁性元器件"], "reason_text": "", "domain": "AI算力·光通信", "topic": "光通信", "industry_full": "通信设备"}, {"code": "605333", "name": "沪光股份", "price": 19.91, "chg": 10.0, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:21:27", "last_time": "14:50:42", "open_times": 2, "seal_amt": 4738918.0, "seal_ratio": 0.0, "zt_amount_wan": 37027.024, "turnover": 4.176628589630127, "float_mv": 9239044483.460001, "amount": 370270240.0, "industry": "汽车零部", "reason_tags": ["具身智能", "机器人量产", "汽车线束"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}], "1": [{"code": "000058", "name": "深 赛 格", "price": 7.87, "chg": 10.069930076599121, "lb": 1, "lb_stat": "1/1", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 400730169.0, "seal_ratio": 0.0, "zt_amount_wan": 5901.8704, "turnover": 0.7615416646003723, "float_mv": 7749898125.7300005, "amount": 59018704.0, "industry": "一般零售", "reason_tags": ["布局半导体检测", "罗山基地", "检验检测", "电子市场"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "002249", "name": "大洋电机", "price": 7.7, "chg": 10.0, "lb": 1, "lb_stat": "4/2", "board_type": "换手板(涨停)", "first_time": "09:56:57", "last_time": "14:55:30", "open_times": 1, "seal_amt": 109803871.0, "seal_ratio": 0.0, "zt_amount_wan": 141898.8704, "turnover": 10.161813735961914, "float_mv": 14417724267.1, "amount": 1418988704.0, "industry": "电机Ⅱ", "reason_tags": ["机器人关节", "电机业务", "数据中心风机", "“羊”字辈"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, {"code": "001400", "name": "江顺科技", "price": 80.28, "chg": 10.002740859985352, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:35:18", "last_time": "09:35:18", "open_times": 0, "seal_amt": 81068349.0, "seal_ratio": 0.0, "zt_amount_wan": 14819.557, "turnover": 5.838725566864014, "float_mv": 2586139920.0, "amount": 148195570.0, "industry": "专用设备", "reason_tags": ["3D打印", "液冷", "商业航天", "铝挤压模具"], "reason_text": "", "domain": "机器人·高端制造", "topic": "商业航天", "industry_full": "专用设备"}, {"code": "301682", "name": "宏明电子", "price": 102.1, "chg": 20.004701614379883, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:55:24", "last_time": "13:49:33", "open_times": 2, "seal_amt": 72640882.0, "seal_ratio": 0.0, "zt_amount_wan": 71366.3632, "turnover": 23.657865524291992, "float_mv": 3102547414.0, "amount": 713663632.0, "industry": "军工电子", "reason_tags": ["精密零组件", "人形机器人", "特种电容"], "reason_text": "", "domain": "机器人·高端制造", "topic": "人形机器人", "industry_full": "军工电子"}, {"code": "002284", "name": "亚太股份", "price": 9.67, "chg": 10.01137638092041, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:30:06", "last_time": "14:49:00", "open_times": 4, "seal_amt": 61259450.0, "seal_ratio": 0.0, "zt_amount_wan": 47765.5504, "turnover": 6.789174556732178, "float_mv": 7080261325.16, "amount": 477655504.0, "industry": "汽车零部", "reason_tags": ["股权受让", "业绩增长", "汽车制动", "机器人模组"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "601086", "name": "国芳集团", "price": 12.62, "chg": 10.026155471801758, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "14:52:06", "last_time": "14:52:06", "open_times": 0, "seal_amt": 56436640.0, "seal_ratio": 0.0, "zt_amount_wan": 119714.2128, "turnover": 14.899805068969727, "float_mv": 8404919999.999999, "amount": 1197142128.0, "industry": "一般零售", "reason_tags": ["连锁零售", "消费场景", "区域优势"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "300504", "name": "天邑股份", "price": 17.69, "chg": 20.013566970825195, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "11:12:18", "last_time": "11:12:18", "open_times": 0, "seal_amt": 45376619.0, "seal_ratio": 0.0, "zt_amount_wan": 43854.0944, "turnover": 11.949780464172363, "float_mv": 3895713434.8700004, "amount": 438540944.0, "industry": "通信设备", "reason_tags": ["三季报扭亏", "通信设备", "MPO跳线"], "reason_text": "", "domain": "AI算力·光通信", "topic": "通信设备", "industry_full": "通信设备"}, {"code": "002623", "name": "亚玛顿", "price": 18.78, "chg": 10.017574310302734, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "13:19:18", "last_time": "13:19:18", "open_times": 0, "seal_amt": 42789760.0, "seal_ratio": 0.0, "zt_amount_wan": 23268.0089, "turnover": 6.723258018493652, "float_mv": 3617706671.6400003, "amount": 232680089.0, "industry": "光伏设备", "reason_tags": ["玻璃基板", "光伏玻璃", "钙钛矿玻璃"], "reason_text": "", "domain": "电力设备·新能源", "topic": "光伏玻璃", "industry_full": "光伏设备"}, {"code": "300539", "name": "横河精密", "price": 19.68, "chg": 20.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:04:51", "last_time": "10:04:51", "open_times": 0, "seal_amt": 40267248.0, "seal_ratio": 0.0, "zt_amount_wan": 47350.7456, "turnover": 11.441157341003418, "float_mv": 4299386024.16, "amount": 473507456.0, "industry": "塑料", "reason_tags": ["减速器", "精密模具", "汽车零部件"], "reason_text": "", "domain": "周期·资源", "topic": "塑料", "industry_full": "塑料"}, {"code": "002187", "name": "广百股份", "price": 5.92, "chg": 10.037175178527832, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:43:30", "last_time": "13:28:30", "open_times": 2, "seal_amt": 35344768.0, "seal_ratio": 0.0, "zt_amount_wan": 20923.3886, "turnover": 5.118494987487793, "float_mv": 4149296227.36, "amount": 209233886.0, "industry": "一般零售", "reason_tags": ["百货零售", "免税退税", "新零售业态"], "reason_text": "", "domain": "消费·新零售", "topic": "免税退税", "industry_full": "一般零售"}, {"code": "601566", "name": "九牧王", "price": 10.32, "chg": 10.021322250366211, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:31:27", "last_time": "13:12:54", "open_times": 1, "seal_amt": 34889856.0, "seal_ratio": 0.0, "zt_amount_wan": 29827.0608, "turnover": 5.082379341125488, "float_mv": 5930255388.0, "amount": 298270608.0, "industry": "服装家纺", "reason_tags": ["羊毛羊绒", "男裤", "太空裤", "海峡两岸"], "reason_text": "", "domain": "消费·新零售", "topic": "服装家纺", "industry_full": "服装家纺"}, {"code": "601956", "name": "东贝集团", "price": 5.54, "chg": 9.920635223388672, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:33:58", "last_time": "09:40:43", "open_times": 1, "seal_amt": 33752560.0, "seal_ratio": 0.0, "zt_amount_wan": 14201.4964, "turnover": 4.1508989334106445, "float_mv": 3443755908.6, "amount": 142014964.0, "industry": "家电零部", "reason_tags": ["汽车零部件", "机器人电机", "制冷压缩机"], "reason_text": "", "domain": "消费·新零售", "topic": "家电零部", "industry_full": "家电零部"}, {"code": "301479", "name": "弘景光电", "price": 56.15, "chg": 20.004274368286133, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:57:06", "last_time": "14:55:36", "open_times": 9, "seal_amt": 33423792.0, "seal_ratio": 0.0, "zt_amount_wan": 74230.28, "turnover": 19.166017532348633, "float_mv": 4003546208.7999997, "amount": 742302800.0, "industry": "光学光电", "reason_tags": ["机器人视觉", "全景相机", "光通信"], "reason_text": "", "domain": "半导体·芯片", "topic": "光学光电子", "industry_full": "光学光电子"}, {"code": "002724", "name": "海洋王", "price": 13.09, "chg": 10.0, "lb": 1, "lb_stat": "8/7", "board_type": "换手板(涨停)", "first_time": "10:07:42", "last_time": "14:55:18", "open_times": 6, "seal_amt": 32546452.0, "seal_ratio": 0.0, "zt_amount_wan": 209011.4224, "turnover": 28.849712371826172, "float_mv": 7415200803.01, "amount": 2090114224.0, "industry": "照明设备", "reason_tags": ["三季报增长", "专业照明", "AI智慧照明", "“羊”字辈"], "reason_text": "", "domain": "其他题材", "topic": "三季报增长", "industry_full": "照明设备"}, {"code": "603565", "name": "中谷物流", "price": 12.58, "chg": 9.965035438537598, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:31:15", "last_time": "13:34:42", "open_times": 2, "seal_amt": 31461196.0, "seal_ratio": 0.0, "zt_amount_wan": 39212.408, "turnover": 1.4894860982894897, "float_mv": 26418793835.74, "amount": 392124080.0, "industry": "航运港口", "reason_tags": ["三季报增长", "股权激励", "集装箱物流"], "reason_text": "", "domain": "交运·物流", "topic": "集装箱物流", "industry_full": "航运港口"}, {"code": "002205", "name": "国统股份", "price": 11.4, "chg": 10.038609504699707, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:49:57", "last_time": "10:49:57", "open_times": 0, "seal_amt": 27367421.0, "seal_ratio": 0.0, "zt_amount_wan": 12942.0267, "turnover": 6.328102111816406, "float_mv": 2118612799.2, "amount": 129420267.0, "industry": "水泥", "reason_tags": ["PCCP管道", "风电混塔", "央企控股"], "reason_text": "", "domain": "周期·资源", "topic": "水泥", "industry_full": "水泥"}, {"code": "002823", "name": "凯中精密", "price": 13.49, "chg": 10.032626152038574, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "11:05:33", "last_time": "13:20:03", "open_times": 1, "seal_amt": 24818429.0, "seal_ratio": 0.0, "zt_amount_wan": 30204.5952, "turnover": 10.283206939697266, "float_mv": 3008805728.37, "amount": 302045952.0, "industry": "电机Ⅱ", "reason_tags": ["精密零组件", "机器人布局", "汽车连接器"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, {"code": "603037", "name": "凯众股份", "price": 11.87, "chg": 10.009267807006836, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "13:01:47", "last_time": "13:01:47", "open_times": 0, "seal_amt": 22634903.0, "seal_ratio": 0.0, "zt_amount_wan": 25060.7183, "turnover": 8.182324409484863, "float_mv": 3159201413.99, "amount": 250607183.0, "industry": "汽车零部", "reason_tags": ["机器人零部件", "汽车减震", "拟收购拓盛"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "000888", "name": "峨眉山Ａ", "price": 10.1, "chg": 10.0217866897583, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:29:06", "last_time": "13:03:45", "open_times": 1, "seal_amt": 21858551.0, "seal_ratio": 0.0, "zt_amount_wan": 51433.3248, "turnover": 9.878958702087402, "float_mv": 5321822330.2, "amount": 514333248.0, "industry": "旅游及景", "reason_tags": ["景区索道", "文旅产业", "冰雪旅游"], "reason_text": "", "domain": "消费·新零售", "topic": "冰雪旅游", "industry_full": "旅游及景区"}, {"code": "603758", "name": "秦安股份", "price": 10.73, "chg": 10.051281929016113, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:33:15", "last_time": "09:33:42", "open_times": 1, "seal_amt": 20081195.0, "seal_ratio": 0.0, "zt_amount_wan": 13373.0606, "turnover": 2.95182728767395, "float_mv": 4647335205.77, "amount": 133730606.0, "industry": "汽车零部", "reason_tags": ["柔性压力传感器", "参投墨现科技", "真空镀膜", "汽车零部件"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, {"code": "600828", "name": "茂业商业", "price": 4.47, "chg": 10.098522186279297, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:40:42", "last_time": "09:40:42", "open_times": 0, "seal_amt": 19133388.0, "seal_ratio": 0.0, "zt_amount_wan": 11811.2558, "turnover": 1.5669115781784058, "float_mv": 7739180009.07, "amount": 118112558.0, "industry": "一般零售", "reason_tags": ["百货零售", "全渠道运营", "自有物业"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "600303", "name": "曙光股份", "price": 3.11, "chg": 9.893993377685547, "lb": 1, "lb_stat": "3/2", "board_type": "换手板(涨停)", "first_time": "09:32:42", "last_time": "10:48:12", "open_times": 1, "seal_amt": 18091224.0, "seal_ratio": 0.0, "zt_amount_wan": 25025.2483, "turnover": 12.079277992248535, "float_mv": 2107062976.2099998, "amount": 250252483.0, "industry": "商用车", "reason_tags": ["汽车车桥", "新能源客车", "军用方舱"], "reason_text": "", "domain": "汽车·出行", "topic": "商用车", "industry_full": "商用车"}, {"code": "002011", "name": "盾安环境", "price": 11.37, "chg": 9.961315155029297, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:30:06", "last_time": "09:30:45", "open_times": 1, "seal_amt": 17548458.0, "seal_ratio": 0.0, "zt_amount_wan": 31269.2608, "turnover": 2.597456216812134, "float_mv": 12069431257.74, "amount": 312692608.0, "industry": "家电零部", "reason_tags": ["数据中心温控", "半导体温控", "汽车热管理"], "reason_text": "", "domain": "消费·新零售", "topic": "家电零部", "industry_full": "家电零部"}, {"code": "600785", "name": "新华百货", "price": 13.9, "chg": 9.968354225158691, "lb": 1, "lb_stat": "3/2", "board_type": "换手板(涨停)", "first_time": "14:50:56", "last_time": "14:55:32", "open_times": 1, "seal_amt": 10973494.0, "seal_ratio": 0.0, "zt_amount_wan": 82273.656, "turnover": 19.85569190979004, "float_mv": 4390784708.8, "amount": 822736560.0, "industry": "一般零售", "reason_tags": ["零售促销", "股份回购", "硬折扣"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, {"code": "603370", "name": "华新精科", "price": 30.81, "chg": 9.996429443359375, "lb": 1, "lb_stat": "4/2", "board_type": "换手板(涨停)", "first_time": "10:51:48", "last_time": "11:05:27", "open_times": 1, "seal_amt": 7671227.0, "seal_ratio": 0.0, "zt_amount_wan": 31869.6224, "turnover": 12.713977813720703, "float_mv": 2602018589.43, "amount": 318696224.0, "industry": "电机Ⅱ", "reason_tags": ["人形机器人", "关节电机铁芯", "新能源车铁芯"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, {"code": "600715", "name": "文投控股", "price": 1.87, "chg": 10.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:41:25", "last_time": "14:56:10", "open_times": 5, "seal_amt": 6557342.0, "seal_ratio": 0.0, "zt_amount_wan": 46857.3856, "turnover": 8.876708984375, "float_mv": 5352636090.67, "amount": 468573856.0, "industry": "游戏Ⅱ", "reason_tags": ["AI漫剧", "游戏运营", "影院运营"], "reason_text": "", "domain": "传媒·电子", "topic": "游戏运营", "industry_full": "游戏Ⅱ"}, {"code": "603813", "name": "原尚股份", "price": 24.2, "chg": 10.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:34:15", "last_time": "10:34:15", "open_times": 0, "seal_amt": 5561160.0, "seal_ratio": 0.0, "zt_amount_wan": 4667.2479, "turnover": 1.8857306241989136, "float_mv": 2541363000.0, "amount": 46672479.0, "industry": "物流", "reason_tags": ["汽车物流", "仓储资源"], "reason_text": "", "domain": "交运·物流", "topic": "汽车物流", "industry_full": "物流"}, {"code": "603376", "name": "大明电子", "price": 26.3, "chg": 9.995817184448242, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:48:01", "last_time": "09:59:37", "open_times": 2, "seal_amt": 3240160.0, "seal_ratio": 0.0, "zt_amount_wan": 9179.7962, "turnover": 11.042804718017578, "float_mv": 841621040.0, "amount": 91797962.0, "industry": "汽车零部", "reason_tags": ["汽车电子", "驾驶辅助", "新能源车型"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车电子", "industry_full": "汽车零部件"}, {"code": "600626", "name": "申达股份", "price": 3.94, "chg": 10.055866241455078, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "13:24:30", "last_time": "14:46:12", "open_times": 5, "seal_amt": 1074832.0, "seal_ratio": 0.0, "zt_amount_wan": 24458.783, "turnover": 4.8048601150512695, "float_mv": 5203733987.98, "amount": 244587830.0, "industry": "汽车零部", "reason_tags": ["汽车内饰", "整车配套", "中报扭亏", "上海国资"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}]}, "rank": [{"name": "“羊”字辈", "count": 5, "max_lb": 4, "seal_amt": 457461924.0, "theme": "其他题材"}, {"name": "汽车零部件", "count": 4, "max_lb": 2, "seal_amt": 264239028.0, "theme": "汽车·出行"}, {"name": "人形机器人", "count": 3, "max_lb": 2, "seal_amt": 250450134.0, "theme": "机器人·高端制造"}, {"name": "三季报增长", "count": 3, "max_lb": 2, "seal_amt": 95835324.0, "theme": "其他题材"}, {"name": "具身智能", "count": 2, "max_lb": 4, "seal_amt": 119555718.0, "theme": "其他题材"}, {"name": "光通信", "count": 2, "max_lb": 2, "seal_amt": 44634496.0, "theme": "AI算力·光通信"}, {"name": "精密零组件", "count": 2, "max_lb": 1, "seal_amt": 97459311.0, "theme": "其他题材"}, {"name": "百货零售", "count": 2, "max_lb": 1, "seal_amt": 54478156.0, "theme": "其他题材"}, {"name": "商贸零售", "count": 1, "max_lb": 5, "seal_amt": 150186047.0, "theme": "其他题材"}, {"name": "商业地产", "count": 1, "max_lb": 5, "seal_amt": 150186047.0, "theme": "其他题材"}, {"name": "洗染服务", "count": 1, "max_lb": 5, "seal_amt": 150186047.0, "theme": "其他题材"}, {"name": "机器人轴承", "count": 1, "max_lb": 4, "seal_amt": 128141750.0, "theme": "机器人·高端制造"}, {"name": "汽车轴承", "count": 1, "max_lb": 4, "seal_amt": 128141750.0, "theme": "其他题材"}, {"name": "交通机器人", "count": 1, "max_lb": 4, "seal_amt": 114816800.0, "theme": "机器人·高端制造"}, {"name": "智慧交通", "count": 1, "max_lb": 4, "seal_amt": 114816800.0, "theme": "其他题材"}, {"name": "机器人钢丝绳", "count": 1, "max_lb": 4, "seal_amt": 24825675.0, "theme": "机器人·高端制造"}, {"name": "高端特种钢索", "count": 1, "max_lb": 4, "seal_amt": 24825675.0, "theme": "其他题材"}, {"name": "PCB", "count": 1, "max_lb": 2, "seal_amt": 170138025.0, "theme": "AI算力·光通信"}, {"name": "工业机器人", "count": 1, "max_lb": 2, "seal_amt": 87783420.0, "theme": "机器人·高端制造"}, {"name": "LNG运贸", "count": 1, "max_lb": 2, "seal_amt": 87783420.0, "theme": "其他题材"}, {"name": "AI应用", "count": 1, "max_lb": 2, "seal_amt": 46116153.0, "theme": "AI算力·光通信"}, {"name": "养老AI", "count": 1, "max_lb": 2, "seal_amt": 46116153.0, "theme": "AI算力·光通信"}, {"name": "身联网", "count": 1, "max_lb": 2, "seal_amt": 46116153.0, "theme": "其他题材"}, {"name": "通信服务", "count": 1, "max_lb": 2, "seal_amt": 46116153.0, "theme": "其他题材"}, {"name": "休闲食品", "count": 1, "max_lb": 2, "seal_amt": 43950901.0, "theme": "消费·新零售"}, {"name": "非遗麻花", "count": 1, "max_lb": 2, "seal_amt": 43950901.0, "theme": "其他题材"}, {"name": "全国拓展", "count": 1, "max_lb": 2, "seal_amt": 43950901.0, "theme": "其他题材"}, {"name": "饼干食品", "count": 1, "max_lb": 2, "seal_amt": 31827676.0, "theme": "消费·新零售"}, {"name": "渠道拓展", "count": 1, "max_lb": 2, "seal_amt": 31827676.0, "theme": "其他题材"}, {"name": "乳制品", "count": 1, "max_lb": 2, "seal_amt": 16831826.0, "theme": "其他题材"}, {"name": "绿色食品", "count": 1, "max_lb": 2, "seal_amt": 16831826.0, "theme": "消费·新零售"}, {"name": "冷链物流", "count": 1, "max_lb": 2, "seal_amt": 16831826.0, "theme": "交运·物流"}, {"name": "重大重组", "count": 1, "max_lb": 2, "seal_amt": 11210704.0, "theme": "其他题材"}, {"name": "磁性元器件", "count": 1, "max_lb": 2, "seal_amt": 11210704.0, "theme": "AI算力·光通信"}, {"name": "机器人量产", "count": 1, "max_lb": 2, "seal_amt": 4738918.0, "theme": "机器人·高端制造"}, {"name": "汽车线束", "count": 1, "max_lb": 2, "seal_amt": 4738918.0, "theme": "其他题材"}, {"name": "布局半导体检测", "count": 1, "max_lb": 1, "seal_amt": 400730169.0, "theme": "半导体·芯片"}, {"name": "罗山基地", "count": 1, "max_lb": 1, "seal_amt": 400730169.0, "theme": "其他题材"}, {"name": "检验检测", "count": 1, "max_lb": 1, "seal_amt": 400730169.0, "theme": "其他题材"}, {"name": "电子市场", "count": 1, "max_lb": 1, "seal_amt": 400730169.0, "theme": "其他题材"}], "cross": [{"code": "000678", "name": "襄阳轴承", "tag": "机器人轴承", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 4, "seal_amt": 128141750.0}, {"code": "000678", "name": "襄阳轴承", "tag": "“羊”字辈", "theme": "其他题材", "topic": "“羊”字辈", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 4, "seal_amt": 128141750.0}, {"code": "603528", "name": "多伦科技", "tag": "交通机器人", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "AI算力·光通信", "main_topic": "软件开发", "lb": 4, "seal_amt": 114816800.0}, {"code": "603528", "name": "多伦科技", "tag": "具身智能", "theme": "其他题材", "topic": "具身智能", "main_domain": "AI算力·光通信", "main_topic": "软件开发", "lb": 4, "seal_amt": 114816800.0}, {"code": "002708", "name": "光洋股份", "tag": "人形机器人", "theme": "机器人·高端制造", "topic": "人形机器人", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 2, "seal_amt": 170138025.0}, {"code": "002708", "name": "光洋股份", "tag": "“羊”字辈", "theme": "其他题材", "topic": "“羊”字辈", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 2, "seal_amt": 170138025.0}, {"code": "001331", "name": "胜通能源", "tag": "工业机器人", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "环保·公用", "main_topic": "燃气Ⅱ", "lb": 2, "seal_amt": 87783420.0}, {"code": "002093", "name": "国脉科技", "tag": "养老AI", "theme": "AI算力·光通信", "topic": "AI", "main_domain": "AI算力·光通信", "main_topic": "AI应用", "lb": 2, "seal_amt": 46116153.0}, {"code": "001219", "name": "青岛食品", "tag": "三季报增长", "theme": "其他题材", "topic": "三季报增长", "main_domain": "消费·新零售", "main_topic": "饼干食品", "lb": 2, "seal_amt": 31827676.0}, {"code": "001318", "name": "阳光乳业", "tag": "冷链物流", "theme": "交运·物流", "topic": "物流", "main_domain": "消费·新零售", "main_topic": "绿色食品", "lb": 2, "seal_amt": 16831826.0}, {"code": "001318", "name": "阳光乳业", "tag": "“羊”字辈", "theme": "其他题材", "topic": "“羊”字辈", "main_domain": "消费·新零售", "main_topic": "绿色食品", "lb": 2, "seal_amt": 16831826.0}, {"code": "605333", "name": "沪光股份", "tag": "具身智能", "theme": "其他题材", "topic": "具身智能", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 2, "seal_amt": 4738918.0}, {"code": "605333", "name": "沪光股份", "tag": "机器人量产", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 2, "seal_amt": 4738918.0}, {"code": "000058", "name": "深 赛 格", "tag": "布局半导体检测", "theme": "半导体·芯片", "topic": "半导体", "main_domain": "消费·新零售", "main_topic": "一般零售", "lb": 1, "seal_amt": 400730169.0}, {"code": "002249", "name": "大洋电机", "tag": "机器人关节", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "电力设备·新能源", "main_topic": "电机Ⅱ", "lb": 1, "seal_amt": 109803871.0}, {"code": "002249", "name": "大洋电机", "tag": "数据中心风机", "theme": "AI算力·光通信", "topic": "数据中心", "main_domain": "电力设备·新能源", "main_topic": "电机Ⅱ", "lb": 1, "seal_amt": 109803871.0}, {"code": "002249", "name": "大洋电机", "tag": "“羊”字辈", "theme": "其他题材", "topic": "“羊”字辈", "main_domain": "电力设备·新能源", "main_topic": "电机Ⅱ", "lb": 1, "seal_amt": 109803871.0}, {"code": "301682", "name": "宏明电子", "tag": "精密零组件", "theme": "其他题材", "topic": "精密零组件", "main_domain": "机器人·高端制造", "main_topic": "人形机器人", "lb": 1, "seal_amt": 72640882.0}, {"code": "002284", "name": "亚太股份", "tag": "机器人模组", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 1, "seal_amt": 61259450.0}, {"code": "300539", "name": "横河精密", "tag": "汽车零部件", "theme": "汽车·出行", "topic": "汽车零部件", "main_domain": "周期·资源", "main_topic": "塑料", "lb": 1, "seal_amt": 40267248.0}, {"code": "002187", "name": "广百股份", "tag": "百货零售", "theme": "其他题材", "topic": "百货零售", "main_domain": "消费·新零售", "main_topic": "免税退税", "lb": 1, "seal_amt": 35344768.0}, {"code": "601956", "name": "东贝集团", "tag": "汽车零部件", "theme": "汽车·出行", "topic": "汽车零部件", "main_domain": "消费·新零售", "main_topic": "家电零部", "lb": 1, "seal_amt": 33752560.0}, {"code": "601956", "name": "东贝集团", "tag": "机器人电机", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "消费·新零售", "main_topic": "家电零部", "lb": 1, "seal_amt": 33752560.0}, {"code": "301479", "name": "弘景光电", "tag": "机器人视觉", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "半导体·芯片", "main_topic": "光学光电子", "lb": 1, "seal_amt": 33423792.0}, {"code": "301479", "name": "弘景光电", "tag": "光通信", "theme": "AI算力·光通信", "topic": "光通信", "main_domain": "半导体·芯片", "main_topic": "光学光电子", "lb": 1, "seal_amt": 33423792.0}, {"code": "002724", "name": "海洋王", "tag": "AI智慧照明", "theme": "AI算力·光通信", "topic": "AI", "main_domain": "其他题材", "main_topic": "三季报增长", "lb": 1, "seal_amt": 32546452.0}, {"code": "002724", "name": "海洋王", "tag": "“羊”字辈", "theme": "其他题材", "topic": "“羊”字辈", "main_domain": "其他题材", "main_topic": "三季报增长", "lb": 1, "seal_amt": 32546452.0}, {"code": "603565", "name": "中谷物流", "tag": "三季报增长", "theme": "其他题材", "topic": "三季报增长", "main_domain": "交运·物流", "main_topic": "集装箱物流", "lb": 1, "seal_amt": 31461196.0}, {"code": "002823", "name": "凯中精密", "tag": "精密零组件", "theme": "其他题材", "topic": "精密零组件", "main_domain": "电力设备·新能源", "main_topic": "电机Ⅱ", "lb": 1, "seal_amt": 24818429.0}, {"code": "002823", "name": "凯中精密", "tag": "机器人布局", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "电力设备·新能源", "main_topic": "电机Ⅱ", "lb": 1, "seal_amt": 24818429.0}, {"code": "603037", "name": "凯众股份", "tag": "机器人零部件", "theme": "机器人·高端制造", "topic": "机器人钢丝绳", "main_domain": "汽车·出行", "main_topic": "汽车零部件", "lb": 1, "seal_amt": 22634903.0}, {"code": "600828", "name": "茂业商业", "tag": "百货零售", "theme": "其他题材", "topic": "百货零售", "main_domain": "消费·新零售", "main_topic": "一般零售", "lb": 1, "seal_amt": 19133388.0}, {"code": "002011", "name": "盾安环境", "tag": "数据中心温控", "theme": "AI算力·光通信", "topic": "数据中心", "main_domain": "消费·新零售", "main_topic": "家电零部", "lb": 1, "seal_amt": 17548458.0}, {"code": "002011", "name": "盾安环境", "tag": "半导体温控", "theme": "半导体·芯片", "topic": "半导体", "main_domain": "消费·新零售", "main_topic": "家电零部", "lb": 1, "seal_amt": 17548458.0}, {"code": "603370", "name": "华新精科", "tag": "人形机器人", "theme": "机器人·高端制造", "topic": "人形机器人", "main_domain": "电力设备·新能源", "main_topic": "电机Ⅱ", "lb": 1, "seal_amt": 7671227.0}, {"code": "603370", "name": "华新精科", "tag": "新能源车铁芯", "theme": "汽车·出行", "topic": "新能源车", "main_domain": "电力设备·新能源", "main_topic": "电机Ⅱ", "lb": 1, "seal_amt": 7671227.0}, {"code": "600715", "name": "文投控股", "tag": "AI漫剧", "theme": "AI算力·光通信", "topic": "AI", "main_domain": "传媒·电子", "main_topic": "游戏运营", "lb": 1, "seal_amt": 6557342.0}, {"code": "603376", "name": "大明电子", "tag": "新能源车型", "theme": "汽车·出行", "topic": "新能源车", "main_domain": "汽车·出行", "main_topic": "汽车电子", "lb": 1, "seal_amt": 3240160.0}], "xpool": {"000678": {"code": "000678", "name": "襄阳轴承", "price": 16.01, "chg": 10.034364700317383, "lb": 4, "lb_stat": "4/4", "board_type": "换手板(涨停)", "first_time": "09:34:09", "last_time": "09:36:48", "open_times": 1, "seal_amt": 128141750.0, "seal_ratio": 0.0, "zt_amount_wan": 149186.5744, "turnover": 20.57141876220703, "float_mv": 7358384869.97, "amount": 1491865744.0, "industry": "汽车零部", "reason_tags": ["机器人轴承", "汽车轴承", "“羊”字辈"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, "603528": {"code": "603528", "name": "多伦科技", "price": 9.85, "chg": 10.055866241455078, "lb": 4, "lb_stat": "4/4", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:01", "last_time": "14:49:13", "open_times": 1, "seal_amt": 114816800.0, "seal_ratio": 0.0, "zt_amount_wan": 80998.0208, "turnover": 11.652510643005371, "float_mv": 6953411790.349999, "amount": 809980208.0, "industry": "软件开发", "reason_tags": ["交通机器人", "具身智能", "智慧交通"], "reason_text": "", "domain": "AI算力·光通信", "topic": "软件开发", "industry_full": "软件开发"}, "002708": {"code": "002708", "name": "光洋股份", "price": 17.22, "chg": 10.031949043273926, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:30:03", "last_time": "09:30:03", "open_times": 0, "seal_amt": 170138025.0, "seal_ratio": 0.0, "zt_amount_wan": 33916.616, "turnover": 3.86814546585083, "float_mv": 8775834644.22, "amount": 339166160.0, "industry": "汽车零部", "reason_tags": ["人形机器人", "PCB", "汽车零部件", "“羊”字辈"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, "001331": {"code": "001331", "name": "胜通能源", "price": 38.52, "chg": 9.99428939819336, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:39:18", "last_time": "13:34:00", "open_times": 3, "seal_amt": 87783420.0, "seal_ratio": 0.0, "zt_amount_wan": 71645.7984, "turnover": 6.690078258514404, "float_mv": 11010331458.0, "amount": 716457984.0, "industry": "燃气Ⅱ", "reason_tags": ["工业机器人", "LNG运贸"], "reason_text": "", "domain": "环保·公用", "topic": "燃气Ⅱ", "industry_full": "燃气Ⅱ"}, "002093": {"code": "002093", "name": "国脉科技", "price": 7.93, "chg": 9.986129760742188, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "09:30:51", "last_time": "09:39:45", "open_times": 2, "seal_amt": 46116153.0, "seal_ratio": 0.0, "zt_amount_wan": 52508.2752, "turnover": 6.627661228179932, "float_mv": 7989475000.0, "amount": 525082752.0, "industry": "教育", "reason_tags": ["AI应用", "养老AI", "身联网", "通信服务"], "reason_text": "", "domain": "AI算力·光通信", "topic": "AI应用", "industry_full": "教育"}, "001219": {"code": "001219", "name": "青岛食品", "price": 14.98, "chg": 9.985315322875977, "lb": 2, "lb_stat": "2/2", "board_type": "Ｔ字板(涨停)", "first_time": "09:25:00", "last_time": "09:38:00", "open_times": 1, "seal_amt": 31827676.0, "seal_ratio": 0.0, "zt_amount_wan": 22117.2383, "turnover": 7.769644260406494, "float_mv": 2849158550.0, "amount": 221172383.0, "industry": "休闲食品", "reason_tags": ["三季报增长", "饼干食品", "渠道拓展"], "reason_text": "", "domain": "消费·新零售", "topic": "饼干食品", "industry_full": "休闲食品"}, "001318": {"code": "001318", "name": "阳光乳业", "price": 13.31, "chg": 10.0, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:11:54", "last_time": "14:20:24", "open_times": 4, "seal_amt": 16831826.0, "seal_ratio": 0.0, "zt_amount_wan": 55721.9472, "turnover": 15.535035133361816, "float_mv": 3762204600.0, "amount": 557219472.0, "industry": "饮料乳品", "reason_tags": ["乳制品", "绿色食品", "冷链物流", "“羊”字辈"], "reason_text": "", "domain": "消费·新零售", "topic": "绿色食品", "industry_full": "饮料乳品"}, "605333": {"code": "605333", "name": "沪光股份", "price": 19.91, "chg": 10.0, "lb": 2, "lb_stat": "2/2", "board_type": "换手板(涨停)", "first_time": "10:21:27", "last_time": "14:50:42", "open_times": 2, "seal_amt": 4738918.0, "seal_ratio": 0.0, "zt_amount_wan": 37027.024, "turnover": 4.176628589630127, "float_mv": 9239044483.460001, "amount": 370270240.0, "industry": "汽车零部", "reason_tags": ["具身智能", "机器人量产", "汽车线束"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, "000058": {"code": "000058", "name": "深 赛 格", "price": 7.87, "chg": 10.069930076599121, "lb": 1, "lb_stat": "1/1", "board_type": "一字板(涨停)", "first_time": "09:25:00", "last_time": "09:25:00", "open_times": 0, "seal_amt": 400730169.0, "seal_ratio": 0.0, "zt_amount_wan": 5901.8704, "turnover": 0.7615416646003723, "float_mv": 7749898125.7300005, "amount": 59018704.0, "industry": "一般零售", "reason_tags": ["布局半导体检测", "罗山基地", "检验检测", "电子市场"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, "002249": {"code": "002249", "name": "大洋电机", "price": 7.7, "chg": 10.0, "lb": 1, "lb_stat": "4/2", "board_type": "换手板(涨停)", "first_time": "09:56:57", "last_time": "14:55:30", "open_times": 1, "seal_amt": 109803871.0, "seal_ratio": 0.0, "zt_amount_wan": 141898.8704, "turnover": 10.161813735961914, "float_mv": 14417724267.1, "amount": 1418988704.0, "industry": "电机Ⅱ", "reason_tags": ["机器人关节", "电机业务", "数据中心风机", "“羊”字辈"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, "301682": {"code": "301682", "name": "宏明电子", "price": 102.1, "chg": 20.004701614379883, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:55:24", "last_time": "13:49:33", "open_times": 2, "seal_amt": 72640882.0, "seal_ratio": 0.0, "zt_amount_wan": 71366.3632, "turnover": 23.657865524291992, "float_mv": 3102547414.0, "amount": 713663632.0, "industry": "军工电子", "reason_tags": ["精密零组件", "人形机器人", "特种电容"], "reason_text": "", "domain": "机器人·高端制造", "topic": "人形机器人", "industry_full": "军工电子"}, "002284": {"code": "002284", "name": "亚太股份", "price": 9.67, "chg": 10.01137638092041, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:30:06", "last_time": "14:49:00", "open_times": 4, "seal_amt": 61259450.0, "seal_ratio": 0.0, "zt_amount_wan": 47765.5504, "turnover": 6.789174556732178, "float_mv": 7080261325.16, "amount": 477655504.0, "industry": "汽车零部", "reason_tags": ["股权受让", "业绩增长", "汽车制动", "机器人模组"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, "300539": {"code": "300539", "name": "横河精密", "price": 19.68, "chg": 20.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "10:04:51", "last_time": "10:04:51", "open_times": 0, "seal_amt": 40267248.0, "seal_ratio": 0.0, "zt_amount_wan": 47350.7456, "turnover": 11.441157341003418, "float_mv": 4299386024.16, "amount": 473507456.0, "industry": "塑料", "reason_tags": ["减速器", "精密模具", "汽车零部件"], "reason_text": "", "domain": "周期·资源", "topic": "塑料", "industry_full": "塑料"}, "002187": {"code": "002187", "name": "广百股份", "price": 5.92, "chg": 10.037175178527832, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:43:30", "last_time": "13:28:30", "open_times": 2, "seal_amt": 35344768.0, "seal_ratio": 0.0, "zt_amount_wan": 20923.3886, "turnover": 5.118494987487793, "float_mv": 4149296227.36, "amount": 209233886.0, "industry": "一般零售", "reason_tags": ["百货零售", "免税退税", "新零售业态"], "reason_text": "", "domain": "消费·新零售", "topic": "免税退税", "industry_full": "一般零售"}, "601956": {"code": "601956", "name": "东贝集团", "price": 5.54, "chg": 9.920635223388672, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:33:58", "last_time": "09:40:43", "open_times": 1, "seal_amt": 33752560.0, "seal_ratio": 0.0, "zt_amount_wan": 14201.4964, "turnover": 4.1508989334106445, "float_mv": 3443755908.6, "amount": 142014964.0, "industry": "家电零部", "reason_tags": ["汽车零部件", "机器人电机", "制冷压缩机"], "reason_text": "", "domain": "消费·新零售", "topic": "家电零部", "industry_full": "家电零部"}, "301479": {"code": "301479", "name": "弘景光电", "price": 56.15, "chg": 20.004274368286133, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:57:06", "last_time": "14:55:36", "open_times": 9, "seal_amt": 33423792.0, "seal_ratio": 0.0, "zt_amount_wan": 74230.28, "turnover": 19.166017532348633, "float_mv": 4003546208.7999997, "amount": 742302800.0, "industry": "光学光电", "reason_tags": ["机器人视觉", "全景相机", "光通信"], "reason_text": "", "domain": "半导体·芯片", "topic": "光学光电子", "industry_full": "光学光电子"}, "002724": {"code": "002724", "name": "海洋王", "price": 13.09, "chg": 10.0, "lb": 1, "lb_stat": "8/7", "board_type": "换手板(涨停)", "first_time": "10:07:42", "last_time": "14:55:18", "open_times": 6, "seal_amt": 32546452.0, "seal_ratio": 0.0, "zt_amount_wan": 209011.4224, "turnover": 28.849712371826172, "float_mv": 7415200803.01, "amount": 2090114224.0, "industry": "照明设备", "reason_tags": ["三季报增长", "专业照明", "AI智慧照明", "“羊”字辈"], "reason_text": "", "domain": "其他题材", "topic": "三季报增长", "industry_full": "照明设备"}, "603565": {"code": "603565", "name": "中谷物流", "price": 12.58, "chg": 9.965035438537598, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:31:15", "last_time": "13:34:42", "open_times": 2, "seal_amt": 31461196.0, "seal_ratio": 0.0, "zt_amount_wan": 39212.408, "turnover": 1.4894860982894897, "float_mv": 26418793835.74, "amount": 392124080.0, "industry": "航运港口", "reason_tags": ["三季报增长", "股权激励", "集装箱物流"], "reason_text": "", "domain": "交运·物流", "topic": "集装箱物流", "industry_full": "航运港口"}, "002823": {"code": "002823", "name": "凯中精密", "price": 13.49, "chg": 10.032626152038574, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "11:05:33", "last_time": "13:20:03", "open_times": 1, "seal_amt": 24818429.0, "seal_ratio": 0.0, "zt_amount_wan": 30204.5952, "turnover": 10.283206939697266, "float_mv": 3008805728.37, "amount": 302045952.0, "industry": "电机Ⅱ", "reason_tags": ["精密零组件", "机器人布局", "汽车连接器"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, "603037": {"code": "603037", "name": "凯众股份", "price": 11.87, "chg": 10.009267807006836, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "13:01:47", "last_time": "13:01:47", "open_times": 0, "seal_amt": 22634903.0, "seal_ratio": 0.0, "zt_amount_wan": 25060.7183, "turnover": 8.182324409484863, "float_mv": 3159201413.99, "amount": 250607183.0, "industry": "汽车零部", "reason_tags": ["机器人零部件", "汽车减震", "拟收购拓盛"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车零部件", "industry_full": "汽车零部件"}, "600828": {"code": "600828", "name": "茂业商业", "price": 4.47, "chg": 10.098522186279297, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:40:42", "last_time": "09:40:42", "open_times": 0, "seal_amt": 19133388.0, "seal_ratio": 0.0, "zt_amount_wan": 11811.2558, "turnover": 1.5669115781784058, "float_mv": 7739180009.07, "amount": 118112558.0, "industry": "一般零售", "reason_tags": ["百货零售", "全渠道运营", "自有物业"], "reason_text": "", "domain": "消费·新零售", "topic": "一般零售", "industry_full": "一般零售"}, "002011": {"code": "002011", "name": "盾安环境", "price": 11.37, "chg": 9.961315155029297, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:30:06", "last_time": "09:30:45", "open_times": 1, "seal_amt": 17548458.0, "seal_ratio": 0.0, "zt_amount_wan": 31269.2608, "turnover": 2.597456216812134, "float_mv": 12069431257.74, "amount": 312692608.0, "industry": "家电零部", "reason_tags": ["数据中心温控", "半导体温控", "汽车热管理"], "reason_text": "", "domain": "消费·新零售", "topic": "家电零部", "industry_full": "家电零部"}, "603370": {"code": "603370", "name": "华新精科", "price": 30.81, "chg": 9.996429443359375, "lb": 1, "lb_stat": "4/2", "board_type": "换手板(涨停)", "first_time": "10:51:48", "last_time": "11:05:27", "open_times": 1, "seal_amt": 7671227.0, "seal_ratio": 0.0, "zt_amount_wan": 31869.6224, "turnover": 12.713977813720703, "float_mv": 2602018589.43, "amount": 318696224.0, "industry": "电机Ⅱ", "reason_tags": ["人形机器人", "关节电机铁芯", "新能源车铁芯"], "reason_text": "", "domain": "电力设备·新能源", "topic": "电机Ⅱ", "industry_full": "电机Ⅱ"}, "600715": {"code": "600715", "name": "文投控股", "price": 1.87, "chg": 10.0, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:41:25", "last_time": "14:56:10", "open_times": 5, "seal_amt": 6557342.0, "seal_ratio": 0.0, "zt_amount_wan": 46857.3856, "turnover": 8.876708984375, "float_mv": 5352636090.67, "amount": 468573856.0, "industry": "游戏Ⅱ", "reason_tags": ["AI漫剧", "游戏运营", "影院运营"], "reason_text": "", "domain": "传媒·电子", "topic": "游戏运营", "industry_full": "游戏Ⅱ"}, "603376": {"code": "603376", "name": "大明电子", "price": 26.3, "chg": 9.995817184448242, "lb": 1, "lb_stat": "1/1", "board_type": "换手板(涨停)", "first_time": "09:48:01", "last_time": "09:59:37", "open_times": 2, "seal_amt": 3240160.0, "seal_ratio": 0.0, "zt_amount_wan": 9179.7962, "turnover": 11.042804718017578, "float_mv": 841621040.0, "amount": 91797962.0, "industry": "汽车零部", "reason_tags": ["汽车电子", "驾驶辅助", "新能源车型"], "reason_text": "", "domain": "汽车·出行", "topic": "汽车电子", "industry_full": "汽车零部件"}}};
+const LONE = '其他/独立';
+/* 显示开关（须在 buildTree/ROOT 之前声明：syncCross 会用到 SHOW_CROSS） */
+let SHOWLABEL=true, HIDE_LONE=false, SHOW_CROSS=DATA.meta.x_on!==false;
+
+/* ============ 树构建 ============ */
+function buildTree(){
+  const root = {id:'root', type:'root', name:DATA.meta.date,
+    sub:`${DATA.meta.zt_count}家涨停 · 最高${DATA.meta.max_lb}板`,
+    sub2:`炸板${DATA.meta.zb_count??'-'}家 · ${DATA.meta.theme_count}个主题域 · ${DATA.meta.topic_count}个细分题材`,
+    children:[], color:'#0a66c2'};
+  DATA.themes.forEach((th,ti)=>{
+    const tn = {id:'t'+ti, type:'theme', name:th.name, color:th.color,
+      count:th.count, max_lb:th.max_lb, children:[], raw:th, xonly:!!th.cross_only};
+    th.topics.forEach((tp,pi)=>{
+      const pn = {id:`t${ti}_${pi}`, type:'topic', name:tp.name, color:th.color,
+        count:tp.count, max_lb:tp.max_lb, children:[], parent:tn, raw:tp,
+        collapsed:true, xonly:!!tp.cross_only, xc:tp.xc||0};
+      // 主归属
+      const mch=[];
+      tp.stocks.forEach((s,si)=>{
+        mch.push({id:`t${ti}_${pi}_${si}`, type:'stock', name:s.name,
+          color:th.color, raw:s, parent:pn, children:[]});
+      });
+      // 副归属（交叉题材）：虚线框，按开关决定是否挂到图上
+      const xch=(tp.xs||[]).map((code,xi)=>{
+        const s=(DATA.xpool||{})[code]; if(!s) return null;
+        return {id:`x${ti}_${pi}_${xi}`, type:'stock', name:s.name,
+          color:th.color, raw:s, parent:pn, children:[], isCross:true};
+      }).filter(Boolean);
+      pn.mchildren=mch; pn.xchildren=xch; pn.children=mch;
+      tn.children.push(pn);
+    });
+    root.children.push(tn);
+  });
+  return root;
+}
+
+/* 副归属开关：把交叉题材个股挂到 / 摘出题材节点 */
+function syncCross(){
+  (function walk(n){
+    if(n.type==='topic'){
+      n.children = SHOW_CROSS ? n.mchildren.concat(n.xchildren) : n.mchildren.slice();
+      n.count = n.children.length;
+    }
+    (n.children||[]).forEach(walk);
+  })(ROOT);
+}
+
+/* ============ 布局 ============ */
+const NW=[218,206,196,214], NH=[80,50,38,42], COLX=[36,300,556,802], RG=9, TG=20;
+let ROOT=buildTree(), FLAT=[], VW=1100, VH=800;
+syncCross();      // 按 SHOW_CROSS 初始挂载副归属
+
+function layout(){
+  FLAT=[]; let y=0;
+  (function walk(n,d){
+    if(!SHOW_CROSS && n.xonly) return;   // 纯副归属节点：开关关闭时整支隐藏
+    n.depth=d; n.x=COLX[d]; n.w=NW[d]; n.h=NH[d]; FLAT.push(n);
+    if(n.collapsed || !n.children.length){
+      n.y=y+n.h/2; y+=n.h+RG;
+    }else{
+      n.children.forEach(c=>walk(c,d+1));
+      const f=n.children[0], l=n.children[n.children.length-1];
+      n.y=(f.y+l.y)/2;
+      if(d===1) y+=TG;
+      if(d===2) y+=4;
+    }
+  })(ROOT,0);
+  VH=Math.max(y,600); VW=COLX[3]+NW[3]+40;
+}
+
+/* ============ 渲染 ============ */
+const NS='http://www.w3.org/2000/svg';
+const svg=document.getElementById('stage');
+let TX=0,TY=0,SC=1;
+
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function lbColor(n){const l=n.raw?n.raw.lb:1;
+  return l>=5?'#a21caf':l>=4?'#dc2626':l>=3?'#ef4444':l>=2?'#f59e0b':'#4b5b70';}
+function fmtYi(v){v=v/1e8; return v>=1?v.toFixed(2)+'亿':(v*10000>=1?Math.round(v*10000)+'万':'0');}
+function fmtTime(t){return t?t.slice(0,5):'--';}
+function esc(s){return String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+function nodeBody(n){
+  const g=el('g',{class:'node','data-id':n.id});
+  const cr=!!n.isCross;                 // 副归属个股（交叉题材）
+  const r=el('rect',{class:'nd',x:n.x,y:n.y-n.h/2,width:n.w,height:n.h,rx:9,
+    fill:cr?'#1f2328':'#ffffff',stroke:n.color,'stroke-width':n.type==='root'?2:1.4,
+    'stroke-opacity':cr?.38:(n.type==='stock'?.45:.9)});
+  if(cr) r.setAttribute('stroke-dasharray','4 3');
+  if(n.type==='theme'||n.type==='topic'||n.type==='root'){
+    r.setAttribute('fill',hexA(n.color,n.type==='topic'?.07:.13));
+  }
+  g.appendChild(r);
+  // 左侧色条
+  if(n.type!=='root'){
+    g.appendChild(el('rect',{x:n.x,y:n.y-n.h/2,width:3.5,height:n.h,rx:2,
+      fill:n.color,'fill-opacity':cr?.32:(n.type==='stock'?.65:1)}));
+  }
+
+  if(n.type==='root'){
+    g.appendChild(txt(n.x+14,n.y-16,n.name,15,'#111418',700));
+    g.appendChild(txt(n.x+14,n.y+5,n.sub,12,'#cf222e',700));
+    g.appendChild(txt(n.x+14,n.y+23,n.sub2,10.5,'#5b6570'));
+  }
+  else if(n.type==='theme'){
+    g.appendChild(txt(n.x+14,n.y-7,n.name,14,'#1f2328',700));
+    g.appendChild(txt(n.x+14,n.y+13,`${n.count}家 · 最高${n.max_lb}板`,11,'#5b6570'));
+    g.appendChild(badgeR(n.x+n.w-10,n.y,`${n.count}`,n.color));
+  }
+  else if(n.type==='topic'){
+    g.appendChild(txt(n.x+13,n.y+1,n.name,12.5,'#1f2328',600));
+    let bx=n.x+n.w-10;
+    if(SHOW_CROSS && n.xc){          // 副归属计数：虚线小徽标
+      const b=badgeR(bx,n.y,`+${n.xc}`,'#8b949e',true);
+      const br=b.querySelector('rect'); if(br) br.setAttribute('stroke-dasharray','3 2');
+      g.appendChild(b);
+      bx -= String(n.xc).length*8+22;
+    }
+    g.appendChild(badgeR(bx,n.y,`${n.count}`,hexA(n.color,.9),true));
+  }
+  else{
+    const s=n.raw;
+    g.appendChild(txt(n.x+12,n.y-6,s.name,13.5,cr?'#5b6570':'#1f2328',700));
+    g.appendChild(badgeR(n.x+n.w-10,n.y-6,`${s.lb}板`,cr?'#8b949e':lbColor(n)));
+    if(cr){
+      g.appendChild(txt(n.x+12,n.y+13,`副归属 · 主属 ${s.topic||'-'}`,10.5,'#9aa4b0'));
+    } else if(SHOWLABEL){
+      const bt=s.board_type?s.board_type.replace('(涨停)',''):'';
+      g.appendChild(txt(n.x+12,n.y+13,
+        `封单${fmtYi(s.seal_amt)} · ${bt||s.lb_stat||''} · ${fmtTime(s.first_time)}`,
+        10.5,'#5b6570'));
+    }
+  }
+  return g;
+}
+function txt(x,y,s,size,fill,weight){
+  const t=el('text',{x,y,'font-size':size,fill});
+  if(weight)t.setAttribute('font-weight',weight);
+  t.textContent=s; return t;
+}
+function badgeR(x,y,s,color,small){
+  const w=String(s).length*(small?8:9)+14, h=small?17:19;
+  const g=el('g',{});
+  g.appendChild(el('rect',{x:x-w,y:y-h/2,width:w,height:h,rx:h/2,fill:color,'fill-opacity':.19,
+    stroke:color,'stroke-opacity':.75,'stroke-width':1}));
+  g.appendChild(txt(x-w/2,y+4,s,small?10.5:11.5,color,700)).setAttribute('text-anchor','middle');
+  return g;
+}
+function hexA(h,a){
+  const n=parseInt(h.slice(1),16);
+  return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;
+}
+
+function render(){
+  svg.innerHTML='';
+  const defs=el('defs',{}); svg.appendChild(defs);
+  const gL=el('g',{id:'links'}), gN=el('g',{id:'nodes'});
+  svg.appendChild(gL); svg.appendChild(gN);
+  FLAT.forEach(n=>{
+    if(!n.parent) return;
+    const x1=n.parent.x+n.parent.w, y1=n.parent.y, x2=n.x, y2=n.y;
+    const dx=Math.max((x2-x1)/2, 26);
+    const p=el('path',{class:'lk',id:'p_'+n.id,
+      d:`M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`,
+      stroke:n.color,'stroke-opacity':n.type==='stock'?.32:.55});
+    gL.appendChild(p);
+  });
+  FLAT.forEach(n=>{const g=nodeBody(n); gN.appendChild(g);});
+  applyFilter();
+  fit();
+}
+function transform(){
+  document.getElementById('links').setAttribute('transform',`translate(${TX},${TY}) scale(${SC})`);
+  document.getElementById('nodes').setAttribute('transform',`translate(${TX},${TY}) scale(${SC})`);
+}
+
+/* ============ 交互 ============ */
+const main=document.getElementById('main'), tip=document.getElementById('tip');
+
+function fit(){
+  const W=main.clientWidth||1000, H=main.clientHeight||700;
+  let s = Math.min((W-40)/VW, (H-40)/VH);
+  s = Math.min(Math.max(s, 0.4), 1.4);
+  SC=s; TX=Math.max(20,(W-VW*s)/2); TY=Math.max(12,(H-VH*s)/2);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('width',W); svg.setAttribute('height',H);
+  transform();
+}
+function set100(){
+  const r=main.getBoundingClientRect();
+  const W=r.width||1000, H=r.height||700;
+  SC=1; TX=Math.max(0,(W-VW)/2); TY=Math.max(0,(H-VH)/2);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('width',W); svg.setAttribute('height',H);
+  transform();
+}
+function zoom(f){
+  const r=main.getBoundingClientRect();
+  const cx=r.width/2, cy=r.height/2;
+  TX=cx-(cx-TX)*f; TY=cy-(cy-TY)*f; SC*=f; transform();
+}
+main.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.12:1/1.12);},{passive:false});
+let drag=null;
+main.addEventListener('mousedown',e=>{if(e.target.closest('.node'))return;
+  drag={x:e.clientX-TX,y:e.clientY-TY};main.classList.add('drag');});
+window.addEventListener('mousemove',e=>{if(drag){TX=e.clientX-drag.x;TY=e.clientY-drag.y;transform();}});
+window.addEventListener('mouseup',()=>{drag=null;main.classList.remove('drag');});
+
+svg.addEventListener('click',e=>{
+  const g=e.target.closest('.node'); if(!g) return;
+  const n=FLAT.find(x=>x.id===g.dataset.id); if(!n) return;
+  if(n.type==='stock'){ showDetail(n.raw, !!n.isCross); return; }
+  n.collapsed=!n.collapsed; layout(); render(); transform();
+});
+svg.addEventListener('mousemove',e=>{
+  const g=e.target.closest('.node');
+  if(!g){tip.style.opacity=0;
+    document.querySelectorAll('path.lk.hi').forEach(p=>p.classList.remove('hi'));return;}
+  const n=FLAT.find(x=>x.id===g.dataset.id); if(!n){return;}
+  // 高亮祖先链
+  document.querySelectorAll('path.lk.hi').forEach(p=>p.classList.remove('hi'));
+  let c=n; while(c.parent){const p=document.getElementById('p_'+c.id); if(p)p.classList.add('hi'); c=c.parent;}
+  const r=main.getBoundingClientRect();
+  let t='';
+  if(n.type==='stock'){const s=n.raw;
+    t=`${s.name} ${s.code} · ${s.lb}板 · 封单${fmtYi(s.seal_amt)} · 换手${(+s.turnover).toFixed(1)}%`
+      +(n.isCross?`　【副归属 · 主属「${s.topic||'-'}」】`:'');}
+  else if(n.type==='topic') t=`${n.name} · ${n.count}家 · 最高${n.max_lb}板`;
+  else if(n.type==='theme') t=`${n.name} · ${n.count}家 · 最高${n.max_lb}板`;
+  else t=`${DATA.meta.date} 涨停${DATA.meta.zt_count}家`;
+  tip.textContent=t; tip.style.opacity=1;
+  tip.style.left=Math.min(e.clientX-r.left+14, r.width-260)+'px';
+  tip.style.top=(e.clientY-r.top+16)+'px';
+});
+svg.addEventListener('mouseleave',()=>{tip.style.opacity=0;});
+
+/* ---- 右侧详情 ---- */
+function showDetail(s, isCross){
+  document.getElementById('tDetail').click();
+  const d=document.getElementById('detail');
+  const ind=s.industry_full||s.industry||'-';
+  const tags=(s.reason_tags||[]).filter(t=>t);
+  d.innerHTML=`
+    <div class="dt-h"><b>${esc(s.name)}</b><code>${s.code}</code>
+      <span style="background:${lbColor({raw:s})};color:#fff;border-radius:5px;
+        padding:2px 8px;font-size:11px;font-weight:700">${s.lb}板</span></div>
+    <div class="dt-sub">${(+s.price).toFixed(2)} 元　
+      <span style="color:var(--up)">+${(+s.chg).toFixed(2)}%</span>　${esc(ind)}　${esc(s.lb_stat||'')}</div>
+    ${isCross?`<div class="reason" style="border-left-color:#8b949e;margin-bottom:12px">
+      当前为<b>副归属</b>节点：该股主属「${esc(s.domain||'-')} / ${esc(s.topic||'-')}」分支，
+      此处因题材标签重合而交叉出现。</div>`:''}
+    <dl class="kv">
+      <dt>板型</dt><dd>${esc(s.board_type||'-')}</dd>
+      <dt>首封</dt><dd>${fmtTime(s.first_time)}　末封 ${fmtTime(s.last_time)}</dd>
+      <dt>炸板</dt><dd>${s.open_times} 次</dd>
+      <dt>封单</dt><dd>${fmtYi(s.seal_amt)}　封成比 ${(+s.seal_ratio).toFixed(1)}</dd>
+      <dt>成交额</dt><dd>${fmtYi(s.amount)}</dd>
+      <dt>换手率</dt><dd>${(+s.turnover).toFixed(2)}%</dd>
+      <dt>流通市值</dt><dd>${fmtYi(s.float_mv)}</dd>
+      <dt>主属题材</dt><dd>${esc(s.topic||'-')}</dd>
+    </dl>
+    <div class="tags">${tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')||'<span class="tag">-</span>'}</div>
+    <div class="reason">${esc(s.reason_text||'暂无涨停原因')}</div>`;
+}
+
+/* ---- 题材强度榜 ---- */
+function showRank(){
+  const r=document.getElementById('rank');
+  const mx=Math.max(...DATA.rank.map(x=>x.count));
+  r.innerHTML=`<div class="sec" style="margin-top:0">细分题材 · 涨停家数</div>`+
+    DATA.rank.map((x,i)=>`
+      <div class="rk">
+        <div class="r">${i+1}</div>
+        <div class="nm" title="${esc(x.name)}">${esc(x.name)}</div>
+        <div class="bar"><i style="width:${x.count/mx*100}%"></i></div>
+        <div class="v">${x.count}</div>
+      </div>`).join('');
+}
+
+/* ---- 主题域筛选 ---- */
+const themeState={};
+function initThemes(){
+  const box=document.getElementById('themes');
+  box.innerHTML=DATA.themes.map((t,i)=>`
+    <div class="ti" data-i="${i}">
+      <div class="dot" style="background:${t.color}"></div>
+      <div class="n">${esc(t.name)}</div><div class="c">${t.count}</div>
+    </div>`).join('');
+  box.querySelectorAll('.ti').forEach(d=>{
+    d.onclick=()=>{const i=d.dataset.i;
+      themeState[i]=!themeState[i]; d.classList.toggle('off',!!themeState[i]);
+      applyFilter();};
+  });
+}
+function applyFilter(){
+  FLAT.forEach(n=>{
+    const g=document.querySelector(`.node[data-id="${n.id}"]`);
+    const p=document.getElementById('p_'+n.id);
+    let dim=false;
+    if(n.type==='theme'&&themeState[n.raw?DATA.themes.indexOf(n.raw):-1]) dim=true;
+    else if(n.parentType) {}
+    if(n.type==='topic'&&themeState[n.parent?DATA.themes.indexOf(n.parent.raw):-1]) dim=true;
+    if(n.type==='stock'&&themeState[n.parent&&n.parent.parent?DATA.themes.indexOf(n.parent.parent.raw):-1]) dim=true;
+    if(HIDE_LONE&&n.type==='topic'&&n.count===1) dim=true;
+    if(g)g.classList.toggle('dim',dim);
+    if(p)p.style.opacity=dim?.06:'';
+  });
+  if(Q){highlight(Q);}
+}
+
+/* ---- 搜索 ---- */
+let Q='';
+function highlight(q){
+  Q=q=q.trim();
+  document.querySelectorAll('.node').forEach(g=>g.classList.remove('dim'));
+  if(!q){applyFilter();return;}
+  FLAT.forEach(n=>{
+    if(n.type==='root')return;
+    const s=n.raw;
+    let hit=false;
+    if(n.type==='stock') hit=s.name.includes(q)||s.code.includes(q)||
+      (s.reason_text||'').includes(q)||(s.reason_tags||[]).some(t=>t.includes(q));
+    else hit=n.name.includes(q);
+    const g=document.querySelector(`.node[data-id="${n.id}"]`);
+    if(g)g.classList.toggle('dim',!hit);
+  });
+}
+document.getElementById('q').addEventListener('input',e=>highlight(e.target.value));
+
+/* ---- 工具按钮 ---- */
+function setAll(c){FLAT.forEach(n=>{if(n.type!=='stock')n.collapsed=c;});layout();render();transform();}
+document.getElementById('bFit').onclick=fit;
+document.getElementById('b100').onclick=set100;
+document.getElementById('bExpand').onclick=()=>setAll(false);
+document.getElementById('bCollapse2').onclick=()=>{setAll(false);
+  FLAT.forEach(n=>{if(n.type==='topic')n.collapsed=true;});layout();render();transform();};
+document.getElementById('bCollapse1').onclick=()=>{setAll(true);};
+document.getElementById('cCross').onchange=e=>{
+  SHOW_CROSS=e.target.checked;
+  syncCross();
+  layout(); render(); transform();
+};
+document.getElementById('cLone').onchange=e=>{HIDE_LONE=e.target.checked;applyFilter();};
+document.getElementById('cLabel').onchange=e=>{SHOWLABEL=e.target.checked;render();transform();};
+document.getElementById('zIn').onclick=()=>zoom(1.2);
+document.getElementById('zOut').onclick=()=>zoom(1/1.2);
+
+document.getElementById('tDetail').onclick=()=>{
+  document.getElementById('tDetail').classList.add('on');
+  document.getElementById('tRank').classList.remove('on');
+  document.getElementById('detail').classList.remove('hide');
+  document.getElementById('rank').classList.add('hide');};
+document.getElementById('tRank').onclick=()=>{
+  document.getElementById('tRank').classList.add('on');
+  document.getElementById('tDetail').classList.remove('on');
+  document.getElementById('detail').classList.add('hide');
+  document.getElementById('rank').classList.remove('hide');};
+
+/* ---- 导出 ---- */
+function svgBlob(){
+  const c=svg.cloneNode(true);
+  c.setAttribute('xmlns',NS);
+  c.setAttribute('width',VW); c.setAttribute('height',VH);
+  c.setAttribute('viewBox',`0 0 ${VW} ${VH}`);
+  c.querySelector('#links').setAttribute('transform','translate(0,0) scale(1)');
+  c.querySelector('#nodes').setAttribute('transform','translate(0,0) scale(1)');
+  const st=document.createElement('style');
+  st.textContent='text{font-family:"Microsoft YaHei",sans-serif}';
+  c.insertBefore(st,c.firstChild);
+  return new XMLSerializer().serializeToString(c);
+}
+document.getElementById('bSvg').onclick=()=>{
+  const b=new Blob([svgBlob()],{type:'image/svg+xml'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);
+  a.download=`涨停思维导图_${DATA.meta.date}.svg`;a.click();};
+document.getElementById('bPng').onclick=()=>{
+  const img=new Image();
+  img.onload=()=>{const cv=document.createElement('canvas');
+    cv.width=VW*2;cv.height=VH*2;const cx=cv.getContext('2d');
+    cx.fillStyle='#f4f6f8';cx.fillRect(0,0,cv.width,cv.height);
+    cx.scale(2,2);cx.drawImage(img,0,0);
+    cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);
+      a.download=`涨停思维导图_${DATA.meta.date}.png`;a.click();});};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svgBlob());};
+
+/* ---- 顶部统计 ---- */
+function initStats(){
+  const m=DATA.meta;
+  const zb=m.zb_count!=null?Math.round(m.zb_count/(m.zb_count+m.zt_count)*100):null;
+  const degraded = m.source && m.source.indexOf('akshare') >= 0;
+  const s=[
+    ['涨停',m.zt_count,'hot'],['最高板',m.max_lb+'板','hot'],
+    ['炸板',m.zb_count!=null?m.zb_count:'-',''],
+    ['炸板率',zb!=null?zb+'%':'-',zb!=null&&zb>35?'warn':''],
+    ['主题域',m.theme_count,''],['细分题材',m.topic_count,''],
+    ['副归属',m.x_on?m.x_total:'-',''],
+    ['数据源', degraded?'东财降级':'TDX', degraded?'warn':''],
+  ];
+  document.getElementById('stats').innerHTML=s.map(([k,v,c])=>
+    `<div class="stat ${c}"><i>${k}</i><b>${v}</b></div>`).join('');
+}
+
+/* ---- go ---- */
+initStats(); initThemes(); showRank();
+layout(); render(); fit();
+window.addEventListener('resize',fit);
+</script>
+</body>
+</html>
