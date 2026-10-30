@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9:25竞价打板扫描 · 收盘反查 20261030</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#ffffff; --line:#d8dee4; --txt:#1f2328; --sub:#5b6570;
+  --up:#cf222e; --down:#1a7f37; --flat:#6e7781; --accent:#0969da; --warn:#9a6700; --warnbg:#fff8c5; --bad:#cf222e; --badbg:#ffebe9; --okbg:#dafbe1;
+}
+*{box-sizing:border-box;}
+body{margin:0;padding:24px 18px 60px;background:var(--bg);color:var(--txt);
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1160px;margin:0 auto;}
+h1{font-size:22px;margin:0 0 6px;letter-spacing:-.2px;}
+.sub{color:var(--sub);font-size:13px;margin-bottom:20px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px;}
+.card h2{font-size:15px;margin:0 0 14px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+.card h2.warnb{border-left-color:var(--warn);}
+.card h2.badb{border-left-color:var(--bad);}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px;}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 14px;}
+.kpi .lb{font-size:11.5px;color:var(--sub);letter-spacing:.3px;margin-bottom:4px;}
+.kpi .vl{font-size:21px;font-weight:650;letter-spacing:-.5px;}
+.kpi .nt{font-size:11px;color:var(--sub);margin-top:2px;}
+.kpi.hl{border-color:#f5c2c7;background:#fffafa;}
+.kpi.hl .vl{color:var(--up);}
+table{width:100%;border-collapse:collapse;font-size:12.8px;}
+th{background:#f0f3f6;color:var(--sub);font-weight:600;text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:12px;}
+td{padding:8px 9px;border-bottom:1px solid #eaeef2;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:#fafbfc;}
+.up{color:var(--up);font-weight:600;}
+.dn{color:var(--down);font-weight:600;}
+.fl{color:var(--flat);}
+.mono{font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;}
+.tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;border:1px solid transparent;white-space:nowrap;}
+.t-bad{background:var(--badbg);color:var(--bad);border-color:#ffcecb;}
+.t-ok{background:var(--okbg);color:var(--down);border-color:#aceebb;}
+.t-warn{background:var(--warnbg);color:var(--warn);border-color:#eed888;}
+.t-mute{background:#eef1f4;color:var(--sub);border-color:var(--line);}
+ul{margin:0;padding-left:20px;}
+li{margin-bottom:7px;}
+li:last-child{margin-bottom:0;}
+.note{background:#f6f8fa;border:1px solid var(--line);border-left:3px solid var(--sub);border-radius:6px;padding:11px 14px;font-size:12.5px;color:var(--sub);}
+.alert{background:var(--badbg);border:1px solid #ffcecb;border-left:3px solid var(--bad);border-radius:6px;padding:12px 15px;font-size:13px;margin-bottom:14px;}
+.alert b{color:var(--bad);}
+.alert.w{background:var(--warnbg);border-color:#eed888;border-left-color:var(--warn);}
+.alert.w b{color:var(--warn);}
+.foot{color:var(--sub);font-size:11.5px;text-align:center;margin-top:26px;line-height:1.8;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:820px){.grid2{grid-template-columns:1fr;}}
+.scroll{overflow-x:auto;}
+code{background:#eef1f4;padding:1px 5px;border-radius:4px;font-size:12px;font-family:ui-monospace,Consolas,monospace;}
+</style>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}.rpt-nav{position:sticky;top:0;z-index:60;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 6px;margin:0 0 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #d8dee4;font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.6}.rpt-nav a{font-size:.86em;padding:6px 14px;border:1px solid #d8dee4;border-radius:8px;color:#1f2328;background:#fff;text-decoration:none;transition:all .2s;white-space:nowrap}.rpt-nav a:hover{background:rgba(10,102,194,.08);border-color:#0a66c2;text-decoration:none}.rpt-nav a.active{background:#0a66c2;color:#fff;border-color:#0a66c2;font-weight:600}.rpt-nav.canvas{position:static;margin:0;border-radius:0;border-left:0;border-right:0;border-top:0;box-shadow:0 2px 10px rgba(0,0,0,.08);flex:0 0 auto}body:has(>.rpt-nav.canvas){display:flex;flex-direction:column;height:100vh;overflow:hidden;padding:0}body:has(>.rpt-nav.canvas)>.app{flex:1 1 0;min-height:0;height:auto}@media(max-width:760px){.rpt-nav{padding:8px 4px;gap:5px;margin-bottom:16px}.rpt-nav a{padding:5px 10px;font-size:.8em}}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<body><!--rptnav:start--><div class="rpt-nav"><a href="../index.html">🏠 首页</a><a href="../index.html#latest">📅 最新</a><a href="../index.html#archive">🗂️ 历史归档</a><a href="../auction/index.html" class="active" title="竞价反查 列表">🔍 竞价反查</a></div><!--rptnav:end-->
+<div class="wrap">
+
+<h1>9:25 竞价打板扫描 · 收盘反查</h1>
+<div class="sub">交易日 <b>2026-10-30（周五）</b>　｜　候选池基准日 20261029　｜　生成于 2026-10-30 15:47</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="lb">候选池总数</div><div class="vl mono">39</div><div class="nt">A+ 4 / A 20 / B+ 9 / B 4 / C 1 / D 1</div></div>
+  <div class="kpi"><div class="lb">今日晋级涨停</div><div class="vl mono">9</div><div class="nt">晋级率 23.1%</div></div>
+  <div class="kpi"><div class="lb">扫描筛出</div><div class="vl mono fl">0</div><div class="nt">「无达标标的」</div></div>
+  <div class="kpi"><div class="lb">筛出命中封板</div><div class="vl mono fl">—</div><div class="nt">无标的可判（0/0）</div></div>
+  <div class="kpi hl"><div class="lb">过滤误杀</div><div class="vl mono">1</div><div class="nt">放弃组 4 只 → 误杀率 25.0%</div></div>
+  <div class="kpi hl"><div class="lb">漏报</div><div class="vl mono">9</div><div class="nt">9 只晋级 100% 未进最终清单</div></div>
+</div>
+
+<div class="card">
+  
+</div>
+
+<div class="card">
+  <h2 class="badb">1. 今日环境与市场底色</h2>
+  <div class="grid2">
+    <div>
+      <div class="rpt-scroll"><table>
+        <tr><th>指数</th><th>昨收</th><th>今开</th><th>开盘涨跌</th><th>收盘涨跌</th></tr>
+        <tr><td>上证 000001</td><td class="mono">3651.43</td><td class="mono">3605.65</td><td class="dn mono">-1.25%</td><td class="dn mono">-1.44%</td></tr>
+        <tr><td>深成 399001</td><td class="mono">11138.20</td><td class="mono">10871.13</td><td class="dn mono">-2.40%</td><td class="dn mono">-2.73%</td></tr>
+        <tr><td>创业板 399006</td><td class="mono">2517.59</td><td class="mono">2434.80</td><td class="dn mono">-3.29%</td><td class="dn mono">-4.13%</td></tr>
+      </table></div>
+      <div class="note" style="margin-top:10px;">9:25 环境判定：<b>弱势低开日</b>（上证低开 &gt;0.5% 或 创业板低开 &gt;1%）→ 触发「弱势日」专属阈值分支。</div>
+    </div>
+    <div>
+      <div class="rpt-scroll"><table>
+        <tr><th>情绪指标</th><th>数值</th><th>说明</th></tr>
+        <tr><td>涨停家数</td><td class="mono">47</td><td>昨日 39，+20.5%</td></tr>
+        <tr><td>炸板家数</td><td class="mono">31</td><td>炸板率 39.74%</td></tr>
+        <tr><td>跌停家数</td><td class="mono up">82</td><td><b>跌停家数为涨停的 1.74 倍</b></td></tr>
+        <tr><td>最高连板</td><td class="mono">5 板</td><td>青岛食品</td></tr>
+        <tr><td>昨涨停今日溢价</td><td class="dn mono">-0.68%</td><td>胜率 48.72%（n=39）</td></tr>
+        <tr><td>20cm 涨停</td><td class="mono">5</td><td>—</td></tr>
+        <tr><td>全市场晋级率</td><td class="mono">23.08%</td><td>1→2 板 20.69% / 2→3 板 33.33% / 3→4 板 0%</td></tr>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="badb">2. 扫描筛出标的 vs 实际收盘（9:25 报告实际只覆盖 4 只）</h2>
+  <div class="alert">
+    <b>结构性事实：</b>当日 9:25 报告《候选股池总览》仅 4 只（A+ 级），占候选池 39 只的 <b>10.3%</b>。原因是 <code>query_set=0</code>（连续第 7 日为 0），报告退化为「A+ 候选 + 查询集」口径，无法覆盖 A/B+/B/C/D 共 35 只。<b>9 只晋级中有 8 只从未进入竞价判定视野。</b>
+  </div>
+  <div class="scroll">
+  <div class="rpt-scroll"><table>
+    <tr><th>代码</th><th>名称</th><th>评级</th><th>开盘涨幅</th><th>竞价判定与依据</th><th>收盘涨跌</th><th>收盘状态</th><th>规则结果</th></tr>
+    <tr><td class="mono">001219</td><td>青岛食品</td><td><span class="tag t-mute">A+</span></td><td class="up mono">+9.98%</td><td>❌ 放弃 ｜ 弱势日 &gt;+5%</td><td class="up mono">+9.98%</td><td><span class="tag t-ok">封板 5 板</span></td><td><span class="tag t-bad">误杀</span></td></tr>
+    <tr><td class="mono">002708</td><td>光洋股份</td><td><span class="tag t-mute">A+</span></td><td class="dn mono">-0.86%</td><td>❌ 放弃 ｜ 弱势日开盘 ≤+1%</td><td class="dn mono">-8.69%</td><td><span class="tag t-mute">未封（全天大跌）</span></td><td><span class="tag t-ok">判对</span></td></tr>
+    <tr><td class="mono">601956</td><td>东贝集团</td><td><span class="tag t-mute">A+</span></td><td class="dn mono">-10.00%</td><td>❌ 放弃 ｜ 弱势日开盘 ≤+1%</td><td class="dn mono">-10.00%</td><td><span class="tag t-mute">跌停</span></td><td><span class="tag t-ok">判对</span></td></tr>
+    <tr><td class="mono">002526</td><td>山东矿机</td><td><span class="tag t-mute">A+</span></td><td class="dn mono">-9.76%</td><td>❌ 放弃 ｜ 弱势日开盘 ≤+1%</td><td class="dn mono">-10.06%</td><td><span class="tag t-mute">跌停</span></td><td><span class="tag t-ok">判对</span></td></tr>
+  </table></div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    最终观察清单：<b>「无达标标的 000000」</b>——4 只候选全部被开盘价规则放弃，当日无任何标的通过过滤。因此「筛出命中封板数」今日无分母可算，不等于 0 命中能力。
+  </div>
+</div>
+
+<div class="card">
+  <h2>3. 竞价关键细节：青岛食品的「涨停价开盘 + 巨额卖压」</h2>
+  <div class="scroll">
+  <div class="rpt-scroll"><table>
+    <tr><th>代码</th><th>名称</th><th>昨收</th><th>今开</th><th>开盘涨幅</th><th>竞价量</th><th>竞价额</th><th>买一档量</th><th>卖压(手)</th><th>卖压/买一</th><th>盘中最低</th><th>收盘</th></tr>
+    <tr><td class="mono">001219</td><td>青岛食品</td><td class="mono">18.13</td><td class="mono">19.94</td><td class="up mono">+9.98%</td><td class="mono">9.91 万手</td><td class="mono">19760 万</td><td class="mono">110 手</td><td class="mono up">14474</td><td class="mono up"><b>131.6×</b></td><td class="mono">19.51（-2.4%）</td><td class="up mono">19.94 封死</td></tr>
+  </table></div>
+  </div>
+  <ul style="margin-top:12px;">
+    <li>竞价买一仅 <b>110 手</b>、卖压 <b>14474 手</b>，卖压为买一的 131.6 倍——典型的「涨停价挂开但封单极薄」。</li>
+    <li>开盘后迅速打开，盘中最低 19.51 元（较开盘 -2.4%），全天炸板 <b>3 次</b>，仍于 09:30:00 首封后回封，收盘封死于 5 板。</li>
+    <li>换手率 24.90%、量比 7.62，封单 5707.5 万元——封单规模在 9 只晋级股中排第 8（仅高于巴比食品）。</li>
+    <li>该股 <code>is_yizi=false</code>（未被识别为一字），故走 <code>&gt;+5%</code> 放弃分支，未能进入一字专用通道。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>4. 候选池晋级完整清单（9 只）</h2>
+  <div class="scroll">
+  <div class="rpt-scroll"><table>
+    <tr><th>#</th><th>代码</th><th>名称</th><th>评级</th><th>pre<br>score</th><th>ML<br>概率</th><th>连板</th><th>首封时间</th><th>今日<br>炸板</th><th>封单额<br>(万元)</th><th>换手率</th><th>量比</th><th>所属题材</th><th>漏因</th></tr>
+    <tr><td>1</td><td class="mono">001219</td><td>青岛食品</td><td><span class="tag t-mute">A+</span></td><td class="mono">4</td><td class="mono">0.241</td><td class="mono">5</td><td class="mono">09:30:00</td><td class="mono">3</td><td class="mono">5,707.5</td><td class="mono">24.90%</td><td class="mono">7.62</td><td>股权转让</td><td><span class="tag t-bad">规则误杀 &gt;+5%</span></td></tr>
+    <tr><td>2</td><td class="mono">002172</td><td>澳洋健康</td><td><span class="tag t-mute">A</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">3</td><td class="mono">10:25:39</td><td class="mono">2</td><td class="mono">6,033.9</td><td class="fl">—</td><td class="fl">—</td><td>脑机接口</td><td><span class="tag t-warn">未进报告（非A+）</span></td></tr>
+    <tr><td>3</td><td class="mono">603131</td><td>上海沪工</td><td><span class="tag t-mute">B+</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">3</td><td class="mono">09:25:02</td><td class="mono">0</td><td class="mono">25,752.6</td><td class="mono">3.21%</td><td class="mono">0.57</td><td>三季报扭亏</td><td><span class="tag t-warn">未进报告 + 一字无通道</span></td></tr>
+    <tr><td>4</td><td class="mono">003032</td><td>传智教育</td><td><span class="tag t-mute">A</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">2</td><td class="mono">09:31:12</td><td class="mono">0</td><td class="mono">9,490.6</td><td class="mono">6.64%</td><td class="mono">0.68</td><td>三季报增长</td><td><span class="tag t-warn">未进报告（非A+）</span></td></tr>
+    <tr><td>5</td><td class="mono">002275</td><td>桂林三金</td><td><span class="tag t-mute">A</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">2</td><td class="mono">09:30:06</td><td class="mono">0</td><td class="mono">10,721.1</td><td class="mono">4.18%</td><td class="mono">3.84</td><td>三季报增长</td><td><span class="tag t-warn">未进报告（非A+）</span></td></tr>
+    <tr><td>6</td><td class="mono">600261</td><td>阳光照明</td><td><span class="tag t-mute">A</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">2</td><td class="mono">09:25:02</td><td class="mono">0</td><td class="mono">61,004.3</td><td class="mono">2.51%</td><td class="mono">0.41</td><td>商业航天</td><td><span class="tag t-warn">未进报告 + 一字无通道</span></td></tr>
+    <tr><td>7</td><td class="mono">605338</td><td>巴比食品</td><td><span class="tag t-mute">B+</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">2</td><td class="mono">13:32:03</td><td class="mono up">6</td><td class="mono dn">389.0</td><td class="mono">6.46%</td><td class="mono">5.34</td><td>三季报净利增</td><td><span class="tag t-warn">未进报告（非A+）</span></td></tr>
+    <tr><td>8</td><td class="mono">603703</td><td>盛洋科技</td><td><span class="tag t-mute">B</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">2</td><td class="mono">09:25:00</td><td class="mono">0</td><td class="mono">24,285.2</td><td class="mono">1.84%</td><td class="mono">0.28</td><td>卫星通信终端</td><td><span class="tag t-warn">未进报告 + 一字无通道</span></td></tr>
+    <tr><td>9</td><td class="mono">002086</td><td>东方海洋</td><td><span class="tag t-bad">D</span></td><td class="fl">—</td><td class="fl">—</td><td class="mono">2</td><td class="mono">09:54:36</td><td class="mono">1</td><td class="mono">8,155.4</td><td class="mono">27.18%</td><td class="mono">1.29</td><td>"羊"字辈</td><td><span class="tag t-bad">未进报告（D级反例）</span></td></tr>
+  </table></div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    结构化特征：连板分布 5 板 1 / 3 板 2 / 2 板 6；<b>零炸板 5 只（55.6%）</b>；首封 ≤09:31 共 5 只（55.6%）；午后首封仅巴比食品 13:32:03（炸 6 次、封单仅 389 万，为 9 只中最弱）。封单 TOP3 阳光照明 6.10 亿 + 上海沪工 2.58 亿 + 盛洋科技 2.43 亿 = 11.10 亿，占 9 只总额 15.15 亿的 <b>73.3%</b>。
+  </div>
+  <div class="note" style="margin-top:10px;">
+    题材聚集度：三季报业绩链（三季报增长×2、三季报扭亏、三季报净利增）<b>4 只 = 44.4%</b>，为当日第一主线；商业航天/卫星通信 2 只；其余分散。无单一题材达到 50% 集中度，属结构性分散日的局部业绩线聚集。
+  </div>
+</div>
+
+<div class="card">
+  <h2>5. 分级有效性检验</h2>
+  <div class="grid2">
+    <div>
+      <div class="rpt-scroll"><table>
+        <tr><th>评级</th><th>池内只数</th><th>晋级只数</th><th>晋级率</th><th>判定</th></tr>
+        <tr><td>S</td><td class="mono">0</td><td class="mono">0</td><td class="fl mono">无样本</td><td><span class="tag t-mute">不可判</span></td></tr>
+        <tr><td><b>A+</b></td><td class="mono">4</td><td class="mono">1</td><td class="up mono">25.0%</td><td><span class="tag t-warn">名义最高</span></td></tr>
+        <tr><td><b>D</b></td><td class="mono">1</td><td class="mono">1</td><td class="up mono">100%</td><td><span class="tag t-bad">反向极值</span></td></tr>
+        <tr><td>B</td><td class="mono">4</td><td class="mono">1</td><td class="up mono">25.0%</td><td><span class="tag t-bad">与A+并列</span></td></tr>
+        <tr><td>B+</td><td class="mono">9</td><td class="mono">2</td><td class="up mono">22.2%</td><td><span class="tag t-bad">高于A</span></td></tr>
+        <tr><td>A</td><td class="mono">20</td><td class="mono">4</td><td class="up mono">20.0%</td><td><span class="tag t-bad">低于B+</span></td></tr>
+        <tr><td>C</td><td class="mono">1</td><td class="mono">0</td><td class="dn mono">0.0%</td><td><span class="tag t-ok">剔除有效</span></td></tr>
+      </table></div>
+    </div>
+    <div>
+      <div class="rpt-scroll"><table>
+        <tr><th>粗分层</th><th>晋级/总数</th><th>晋级率</th></tr>
+        <tr><td>A+ / S 高端</td><td class="mono">1 / 4</td><td class="up mono">25.0%</td></tr>
+        <tr><td>其余（A 及以下）</td><td class="mono">8 / 35</td><td class="up mono">22.9%</td></tr>
+        <tr><td><b>差值</b></td><td colspan="2" class="mono up"><b>+2.1pp（无统计意义）</b></td></tr>
+      </table></div>
+      <div class="rpt-scroll"><table style="margin-top:14px;">
+        <tr><th>pre_score 档</th><th>池内</th><th>晋级</th><th>晋级率</th></tr>
+        <tr><td>4 分</td><td class="mono">3</td><td class="mono">1</td><td class="up mono">33.3%</td></tr>
+        <tr><td>2 分</td><td class="mono">1</td><td class="mono">0</td><td class="dn mono">0.0%</td></tr>
+        <tr><td colspan="4" class="fl" style="font-size:12px;">pre_score 仅覆盖 4/39 = <b>10.3%</b>（仅 A+ 4 只有打分），封成比仍为常数列缺失，无法支撑分档结论</td></tr>
+      </table></div>
+    </div>
+  </div>
+  <div class="alert" style="margin-top:14px;">
+    <b>分级结论：中部四档（A+ 25.0% / B 25.0% / B+ 22.2% / A 20.0%）极差仅 5.0pp，且 B 与 A+ 完全并列、B+ 反超 A，构成典型的中部无区分度。</b>D 级 1/1 全部晋级（东方海洋，2 板炸 1 次、封单 8155 万）为反向极值。A+ 名义上压过 A，但样本仅 4 只、差值 5pp，不构成有效区分。C 级 1 只 0 晋级、剔除方向正确。
+  </div>
+</div>
+
+<div class="card">
+  <h2>6. 开盘价区间规则 · 今日正反检验</h2>
+  <div class="scroll">
+  <div class="rpt-scroll"><table>
+    <tr><th>规则条款</th><th>触发标的</th><th>开盘涨幅</th><th>实际收盘</th><th>规则性质</th><th>结果</th></tr>
+    <tr><td>弱势日 &gt;+5% → 放弃</td><td>青岛食品 001219（A+，5 板）</td><td class="up mono">+9.98%</td><td class="up mono">+9.98% 封死</td><td>高开抑制条款</td><td><span class="tag t-bad">错（误杀）</span></td></tr>
+    <tr><td>弱势日开盘 ≤+1% → 放弃</td><td>光洋股份 002708（A+）</td><td class="dn mono">-0.86%</td><td class="dn mono">-8.69%</td><td>低开抑制条款</td><td><span class="tag t-ok">对</span></td></tr>
+    <tr><td>弱势日开盘 ≤+1% → 放弃</td><td>东贝集团 601956（A+）</td><td class="dn mono">-10.00%</td><td class="dn mono">-10.00% 跌停</td><td>低开抑制条款</td><td><span class="tag t-ok">对</span></td></tr>
+    <tr><td>弱势日开盘 ≤+1% → 放弃</td><td>山东矿机 002526（A+）</td><td class="dn mono">-9.76%</td><td class="dn mono">-10.06% 跌停</td><td>低开抑制条款</td><td><span class="tag t-ok">对</span></td></tr>
+  </table></div>
+  </div>
+  <div class="grid2" style="margin-top:14px;">
+    <div class="note">
+      <b>通过组 vs 放弃组</b><br>
+      通过组：<b>0 只</b>（无标的通过）<br>
+      放弃组：4 只，其中 1 只封死 → 放弃组误杀率 <b>25.0%</b><br>
+      低开抑制条款（≤+1%）：<b>3/3 判对</b>，3 只全部收跌 8.69%~10.06%，其中 2 只跌停 —— 今日最有效的一条规则。
+    </div>
+    <div class="note">
+      <b>&gt;+5% 高开抑制条款累计表现</b><br>
+      今日：1/1 触发，1/1 误杀（100%）<br>
+      近 8 个可算交易日同型误杀：10/14 慈文、10/15 百洋、10/20 4/4、10/27 上海九百/光洋/青岛/国脉、10/28 光洋、10/29 联明、10/30 青岛食品<br>
+      <b>该条款在「涨停价附近开盘 + 弱封单」场景下持续反向</b>
+    </div>
+  </div>
+  <div class="alert w" style="margin-top:14px;">
+    <b>今日新增关键信息：</b>一字/涨停价开盘标的共 4 只（上海沪工 17.55、阳光照明 4.09、盛洋科技 11.95、青岛食品 19.94），<b>全部封死</b>（4/4 = 100%）。其中 3 只从未进入报告视野（非 A+），仅青岛食品被判定且判错。<b>「一字无出口 / &gt;+5% 阈值误杀」这一对组合缺陷已连续第 4 个交易日出现</b>，今日在 4/4 全封的极端样本下再次验证。
+  </div>
+</div>
+
+<div class="card">
+  <h2>7. 核心事实清单（仅数据陈述）</h2>
+  <ul>
+    <li>候选池 39 只、晋级 9 只，晋级率 23.1%；30 日累计 1572 只 / 317 只晋级 = 20.2%，今日高于累计均值 2.9pp。</li>
+    <li>全日指数全程下行：上证开盘 -1.25% → 收 -1.44%，深成 -2.40% → -2.73%，创业板 -3.29% → -4.13%，无任何反抽。</li>
+    <li>跌停 82 家、涨停 47 家，跌停/涨停 = 1.74；炸板 31 家、炸板率 39.74%；昨涨停今日溢价 -0.68%、胜率 48.72%。</li>
+    <li>9:25 报告仅覆盖 4 只（占池 10.3%），<code>query_set=0</code> 连续第 7 个交易日为零，报告退化为 A+ 单档口径。</li>
+    <li>9 只晋级 100% 未进入最终清单：1 只被 &gt;+5% 规则误杀，8 只从未进入竞价判定。</li>
+    <li>4 只被放弃的 A+ 中，3 只低开（-0.86%/-9.76%/-10.00%）收盘全部大幅下跌或跌停，低开抑制条款当日 3/3 判对。</li>
+    <li>唯一被封死的 A+ 青岛食品，竞价买一 110 手 vs 卖压 14474 手（131.6 倍），仍全天封死 5 板，炸板 3 次。</li>
+    <li>晋级 9 只中零炸板 5 只；首封 ≤09:31 共 5 只；午后首封 1 只（巴比食品 13:32:03，炸 6 次，封单 389 万为最弱）。</li>
+    <li>封单集中度高：TOP3 占 9 只总封单 73.3%，其中阳光照明单只 6.10 亿（占 40.3%）。</li>
+    <li>三季报业绩链 4 只晋级（44.4%），为当日唯一达到 40% 以上的题材聚集。</li>
+    <li>pre_score 覆盖 10.3%（4/39），封成比仍为常数列缺失；ML 概率仅 1 只有值（青岛食品 0.241），无排序意义。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>8. 累积样本库状态</h2>
+  <div class="rpt-scroll"><table>
+    <tr><th>项目</th><th>数值</th><th>说明</th></tr>
+    <tr><td>累计交易日</td><td class="mono">30</td><td>本次为第 30 个样本日</td></tr>
+    <tr><td>累计候选池 / 晋级</td><td class="mono">1572 / 317</td><td>累计晋级率 20.2%</td></tr>
+    <tr><td>累计误杀记录</td><td class="mono">40 只</td><td>30 个可算日累计</td></tr>
+    <tr><td>历史文件</td><td><code>zt_925_review_history.json</code></td><td>已追加 20261030</td></tr>
+  </table></div>
+  <div class="alert w" style="margin-top:14px;">
+    <b>重校准条件判定（今日）：</b><br>
+    ① 样本量 ≥10 日 → <b>已达标（30 日）</b>；<br>
+    ② 「A 级晋级率连续 5 日 ≥ A+」→ <b>不成立</b>（今日 A+ 25.0% &gt; A 20.0%，A+ 名义压 A）；<br>
+    ③ 「&gt;5% 误杀率 &gt;50% 连续」→ <b>不成立</b>（今日综合误杀率 25.0%，序列已于 10/29 中断）；<br>
+    ④ 但「一字/涨停价开盘通道缺失」已连续第 4 个交易日出现（10/27 门槛、10/28 无出口+临界一字、10/29 无出口×3+门槛×1、10/30 报告未覆盖一字×3 + &gt;+5% 误杀）→ <b>该单条持续成立，列入周五重训练议题</b>。<br>
+    ⑤ <code>query_set=0</code> 连续 7 日未排查，导致报告覆盖率降至 10.3%，为今日 8/9 漏报的直接结构性原因。
+  </div>
+</div>
+
+<div class="foot">
+  数据来源：涨停池 东财 push2ex（akshare，47 只）｜收盘行情 腾讯 qt.gtimg.cn（10/10）｜指数 腾讯｜交易日历 akshare<br>
+  本次未触发 TDX 兜底（主源四项全 ok）。TDX 涨停池因 headless 会话未注入连接器而不可用，属设计行为，非链路故障。<br>
+  本报告仅呈现客观数据与统计结果，不含任何操作建议。
+</div>
+
+</div>
+<!--metatail:start--><section class="rpt-meta"><h2 class="warnb">0. 口径与数据源溯源</h2>
+  <div class="rpt-scroll"><table>
+    <tr><th style="width:150px">项目</th><th style="width:230px">实际来源</th><th>状态说明</th></tr>
+    <tr><td>涨停池（只数）</td><td>东财 push2ex（akshare）<span class="tag t-mute">src=eastmoney-push2ex</span></td><td>47 只。TDX 涨停池不可用（headless 未注入连接器，设计行为）→ 脚本自动降级东财，<b>非链路故障</b></td></tr>
+    <tr><td>收盘行情</td><td>腾讯 qt.gtimg.cn <span class="tag t-mute">tencent</span></td><td>10/10 只全部取到；<code>tdx_enriched</code> 全部跳过（main_net / chg10 / pe_ttm 缺失）</td></tr>
+    <tr><td>指数</td><td>腾讯 qt.gtimg.cn</td><td>正常</td></tr>
+    <tr><td>交易日历</td><td>akshare 日历</td><td>T=20261030　T_PREV=20261029（真实日历，非算术推算）</td></tr>
+    <tr><td>TDX 兜底</td><td>—</td><td><b>本次未触发 TDX 兜底</b>（主源四项全 ok，tdx_probed=false 属正常）</td></tr>
+    <tr><td>9:25 报告</td><td>zt_925_report_20261030.html</td><td>存在（快照 09:25:41）→ <b>全量版</b>，非降级</td></tr>
+  </table></div>
+  <div class="note" style="margin-top:12px;">
+    口径差异提示：反查涨停池为东财收盘口径（47 只）；17:00 流水线 <code>zt_1700_data_20261030.json</code> 截至本次生成<b>尚未产出</b>，暂无可比数据。东财与 TDX 的"首次涨停/首次封板"判定口径本身存在 5–7 分钟差异，跨源对比时属正常。
+  </div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+</html>
