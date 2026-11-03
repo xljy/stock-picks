@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9:25 竞价打板扫描 · 收盘反查 2026-11-03</title>
+<style>
+  :root{
+    --bg:#f4f6f8; --card:#ffffff; --line:#d8dee4; --txt:#1f2328; --muted:#5b6570;
+    --up:#cf222e; --down:#1a7f37; --warn:#9a6700; --warnbg:#fff8e5; --badbg:#fdeeee; --goodbg:#eef7f0;
+    --accent:#0969da;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:22px 18px 60px;background:var(--bg);color:var(--txt);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+       font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;}
+  h1{font-size:21px;margin:0 0 4px;font-weight:700;letter-spacing:.2px;}
+  .sub{color:var(--muted);font-size:12.5px;margin-bottom:18px;}
+  h2{font-size:15.5px;margin:26px 0 10px;padding-left:9px;border-left:3px solid var(--accent);font-weight:700;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px;margin-bottom:8px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;}
+  .kpi .l{font-size:11.5px;color:var(--muted);margin-bottom:5px;letter-spacing:.3px;}
+  .kpi .v{font-size:22px;font-weight:700;line-height:1.15;}
+  .kpi .n{font-size:11px;color:var(--muted);margin-top:3px;}
+  .up{color:var(--up);} .down{color:var(--down);} .muted{color:var(--muted);}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);}
+  th,td{padding:8px 9px;border-bottom:1px solid #eaeef2;text-align:left;vertical-align:top;}
+  th{background:#f0f3f6;font-weight:600;font-size:12px;color:#3d454d;white-space:nowrap;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#fafbfc;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  .tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11.5px;font-weight:600;white-space:nowrap;}
+  .t-s{background:#fdeeee;color:#cf222e;}
+  .t-ap{background:#fff1e5;color:#bc4c00;}
+  .t-a{background:#eef4ff;color:#0969da;}
+  .t-ok{background:#eef7f0;color:#1a7f37;}
+  .t-bad{background:#fdeeee;color:#cf222e;}
+  .t-warn{background:#fff8e5;color:#9a6700;}
+  .t-gray{background:#eef1f4;color:#5b6570;}
+  .note{background:var(--warnbg);border:1px solid #f0d9a8;border-radius:7px;padding:11px 14px;font-size:12.8px;color:#6b4e00;margin:12px 0;}
+  .note b{color:#8a5a00;}
+  .rule{font-size:12.6px;color:var(--muted);}
+  .rule code{background:#f0f3f6;padding:1px 5px;border-radius:4px;color:#3d454d;}
+  ul.facts{margin:0;padding-left:20px;}
+  ul.facts li{margin-bottom:7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr;}}
+  .bar{height:9px;background:#eef1f4;border-radius:5px;overflow:hidden;margin-top:4px;}
+  .bar i{display:block;height:100%;background:var(--up);border-radius:5px;}
+  .bar.g i{background:var(--down);}
+  .bar.n i{background:#8c959f;}
+  .foot{margin-top:26px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:11.5px;}
+  .em{font-weight:700;}
+</style>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}.rpt-nav{position:sticky;top:0;z-index:60;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 6px;margin:0 0 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #d8dee4;font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.6}.rpt-nav a{font-size:.86em;padding:6px 14px;border:1px solid #d8dee4;border-radius:8px;color:#1f2328;background:#fff;text-decoration:none;transition:all .2s;white-space:nowrap}.rpt-nav a:hover{background:rgba(10,102,194,.08);border-color:#0a66c2;text-decoration:none}.rpt-nav a.active{background:#0a66c2;color:#fff;border-color:#0a66c2;font-weight:600}.rpt-nav.canvas{position:static;margin:0;border-radius:0;border-left:0;border-right:0;border-top:0;box-shadow:0 2px 10px rgba(0,0,0,.08);flex:0 0 auto}body:has(>.rpt-nav.canvas){display:flex;flex-direction:column;height:100vh;overflow:hidden;padding:0}body:has(>.rpt-nav.canvas)>.app{flex:1 1 0;min-height:0;height:auto}@media(max-width:760px){.rpt-nav{padding:8px 4px;gap:5px;margin-bottom:16px}.rpt-nav a{padding:5px 10px;font-size:.8em}}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<body><!--rptnav:start--><div class="rpt-nav"><a href="../index.html">🏠 首页</a><a href="../index.html#latest">📅 最新</a><a href="../index.html#archive">🗂️ 历史归档</a><a href="../auction/index.html" class="active" title="竞价反查 列表">🔍 竞价反查</a></div><!--rptnav:end-->
+<div class="wrap">
+
+  <h1>9:25 竞价打板扫描 · 收盘反查</h1>
+  <div class="sub">交易日 <b>2026-11-03（周二）</b> ｜ 候选池交易日 2026-11-02 ｜ 样本第 <b>32</b> 日 ｜ 全量版（上游三件套齐全）</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="l">候选池总数</div><div class="v">125</div><div class="n">S 25 / A+ 45 / A 55</div></div>
+    <div class="kpi"><div class="l">今日晋级涨停</div><div class="v up">15</div><div class="n">涨停池 48 只</div></div>
+    <div class="kpi"><div class="l">晋级率</div><div class="v down">12.0%</div><div class="n">累计 19.7%（32 日）</div></div>
+    <div class="kpi"><div class="l">扫描筛出</div><div class="v">2</div><div class="n">判定集 70 / 125</div></div>
+    <div class="kpi"><div class="l">筛出命中封板</div><div class="v down">0</div><div class="n">命中率 0.0%</div></div>
+    <div class="kpi"><div class="l">过滤误杀</div><div class="v up">12</div><div class="n">拒绝组 68 → 17.6%</div></div>
+  </div>
+
+  
+
+  <h2>2 · 扫描筛出标的 vs 实际收盘</h2>
+  <div class="card">
+    <div class="rpt-scroll"><table>
+      <thead><tr><th>代码</th><th>名称</th><th class="num">开盘涨幅</th><th>竞价判定</th><th class="num">收盘涨跌</th><th class="num">最高价 / 涨停价</th><th class="num">换手</th><th>封板</th><th>结果</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>688518</td><td>联赢激光</td><td class="num up">+4.27%</td>
+          <td><span class="tag t-ok">✅ 优秀</span></td>
+          <td class="num up">+1.04%</td><td class="num">21.36 / 24.17</td><td class="num">13.72%</td>
+          <td><span class="tag t-bad">否</span></td>
+          <td>失败 — 全天未触板（最高距涨停 −11.6%），量比 4.94 冲高回落</td>
+        </tr>
+        <tr>
+          <td>000892</td><td>欢瑞世纪</td><td class="num up">+3.40%</td>
+          <td><span class="tag t-ok">✅ 优秀</span></td>
+          <td class="num up">+2.04%</td><td class="num">4.83 / 4.85</td><td class="num">21.48%</td>
+          <td><span class="tag t-bad">否</span></td>
+          <td>失败 — 最高距涨停差 2 分未触板，尾盘回落</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p class="rule" style="margin:10px 0 0;">两只筛出标的均在 <code>+3%~+5%</code>「优秀」档产生，当日 <b>0 只触板</b>、<b>0 只封板</b>，为筛选通道样本期内第 4 次零命中（前三次：10/13、10/23、10/30）。</p>
+  </div>
+
+  <h2>3 · 候选池晋级完整清单（15 只）</h2>
+  <div class="card">
+    <div class="rpt-scroll"><table>
+      <thead><tr><th>代码</th><th>名称</th><th>评级</th><th class="num">pre_score</th><th class="num">连板</th><th class="num">首封</th><th class="num">今日炸板</th><th class="num">封单(万)</th><th>题材</th><th>未被选中的原因</th></tr></thead>
+      <tbody>
+        <tr><td>600261</td><td>阳光照明</td><td><span class="tag t-s">S</span></td><td class="num">6</td><td class="num">4</td><td class="num">09:25:02</td><td class="num">5</td><td class="num">19,882</td><td>商业航天</td><td>一字候选无出口（+10.00 开）</td></tr>
+        <tr><td>002086</td><td>东方海洋</td><td><span class="tag t-s">S</span></td><td class="num">4</td><td class="num">4</td><td class="num">09:25:00</td><td class="num">3</td><td class="num">21,578</td><td>“羊”字辈</td><td>一字候选无出口（+9.97 开）</td></tr>
+        <tr><td>002827</td><td>高争民爆</td><td><span class="tag t-s">S</span></td><td class="num">6</td><td class="num">2</td><td class="num">09:25:00</td><td class="num">0</td><td class="num">54,968</td><td>重组复牌</td><td>一字候选无出口（+10.00 开）</td></tr>
+        <tr><td>000995</td><td>皇台酒业</td><td><span class="tag t-s">S</span></td><td class="num">5</td><td class="num">3</td><td class="num">09:25:00</td><td class="num">0</td><td class="num">13,803</td><td>白酒</td><td>一字候选无出口（+10.00 开）</td></tr>
+        <tr><td>600892</td><td>大晟文化</td><td><span class="tag t-s">S</span></td><td class="num">1</td><td class="num">2</td><td class="num">09:25:00</td><td class="num">0</td><td class="num">24,943</td><td>短剧</td><td>一字候选无出口（+10.07 开）</td></tr>
+        <tr><td>605577</td><td>龙版传媒</td><td><span class="tag t-ap">A+</span></td><td class="num">2</td><td class="num">2</td><td class="num">09:25:02</td><td class="num">0</td><td class="num">15,847</td><td>漫剧</td><td>一字候选无出口（+10.00 开）</td></tr>
+        <tr><td>603258</td><td>电魂网络</td><td><span class="tag t-ap">A+</span></td><td class="num">1</td><td class="num">2</td><td class="num">09:25:02</td><td class="num">1</td><td class="num">2,106</td><td>游戏</td><td>买一档 52,691 手 &lt; 10 万手门槛</td></tr>
+        <tr><td>002292</td><td>奥飞娱乐</td><td><span class="tag t-ap">A+</span></td><td class="num">1</td><td class="num">2</td><td class="num">09:30:09</td><td class="num">1</td><td class="num">12,155</td><td>潮玩品牌</td><td>弱势日 &gt;+5% 放弃（+8.15 开）</td></tr>
+        <tr><td>600293</td><td>三峡新材</td><td><span class="tag t-ap">A+</span></td><td class="num">2</td><td class="num">2</td><td class="num">09:54:24</td><td class="num">1</td><td class="num">6,115</td><td>超跌反弹</td><td>+1.65% 开 → 「+1~3%」谨慎降级</td></tr>
+        <tr><td>000599</td><td>青岛双星</td><td><span class="tag t-ap">A+</span></td><td class="num">2</td><td class="num">2</td><td class="num">09:43:33</td><td class="num">0</td><td class="num">4,244</td><td>轮胎</td><td>+0.73% 开 → 「≤+1%」放弃</td></tr>
+        <tr><td>002058</td><td>紫竹高科</td><td><span class="tag t-ap">A+</span></td><td class="num">0</td><td class="num">2</td><td class="num">09:48:48</td><td class="num">0</td><td class="num">7,333</td><td>铝塑膜</td><td>+0.26% 开 → 「≤+1%」放弃</td></tr>
+        <tr><td>002578</td><td>闽发铝业</td><td><span class="tag t-ap">A+</span></td><td class="num">2</td><td class="num">2</td><td class="num">13:00:03</td><td class="num">1</td><td class="num">2,358</td><td>液冷铝材</td><td>+0.29% 开 → 「≤+1%」放弃</td></tr>
+        <tr><td>002029</td><td>七 匹 狼</td><td><span class="tag t-a">A</span></td><td class="num muted">—</td><td class="num">2</td><td class="num">09:32:24</td><td class="num">0</td><td class="num">11,069</td><td>夹克男装</td><td>未进入判定集（55 只池内标的无开盘判定）</td></tr>
+        <tr><td>601599</td><td>浙文影业</td><td><span class="tag t-a">A</span></td><td class="num muted">—</td><td class="num">2</td><td class="num">09:25:00</td><td class="num">0</td><td class="num">15,581</td><td>AI影视</td><td>未进入判定集</td></tr>
+        <tr><td>600715</td><td>文投控股</td><td><span class="tag t-a">A</span></td><td class="num muted">—</td><td class="num">2</td><td class="num">10:13:09</td><td class="num">10</td><td class="num">1,412</td><td>AI漫剧</td><td>未进入判定集</td></tr>
+      </tbody>
+    </table></div>
+    <p class="rule" style="margin:10px 0 0;">
+      <b>结构：</b>2 板 12 只（80.0%）、4 板 2 只、3 板 1 只；零炸板 8/15 = 53.3%；首封 ≤09:31 共 9 只；午后首封仅闽发铝业 13:00:03（炸 1 次、封单 2,358 万）。<br>
+      <b>封单：</b>合计 21.34 亿，TOP3 高争民爆 5.50 亿 / 大晟文化 2.49 亿 / 东方海洋 2.16 亿 = 47.6%。<br>
+      <b>题材：</b>15 只分属 15 个不同标签，零聚集（前高聚集日 11-02 为 11 只全分散）。
+    </p>
+  </div>
+
+  <h2>4 · 分级有效性检验</h2>
+  <div class="grid2">
+    <div class="card">
+      <div style="font-weight:600;margin-bottom:8px;">按评级（今日池仅 S / A+ / A 三档）</div>
+      <div class="rpt-scroll"><table>
+        <thead><tr><th>评级</th><th class="num">池内</th><th class="num">晋级</th><th class="num">晋级率</th><th style="width:110px;">分布</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag t-s">S</span></td><td class="num">25</td><td class="num">5</td><td class="num up em">20.0%</td><td><div class="bar"><i style="width:100%"></i></div></td></tr>
+          <tr><td><span class="tag t-ap">A+</span></td><td class="num">45</td><td class="num">7</td><td class="num up em">15.6%</td><td><div class="bar"><i style="width:78%"></i></div></td></tr>
+          <tr><td><span class="tag t-a">A</span></td><td class="num">55</td><td class="num">3</td><td class="num em">5.5%</td><td><div class="bar n"><i style="width:27%"></i></div></td></tr>
+        </tbody>
+      </table></div>
+      <p class="rule" style="margin:9px 0 0;">
+        <b>结论：分级今日有效。</b>S(20.0%) &gt; A+(15.6%) &gt; A(5.5%) 为<b>完整单调</b>，为 32 日样本第 4 次；A+ 压 A <b>+10.1pp</b>，S 压 A+ <b>+4.4pp</b>。粗分层 A+/S 合计 <b>12/70 = 17.1%</b> vs A 组 <b>3/55 = 5.5%</b>，<b>3.11 倍</b>。今日池无 B+/B/C/D 档，中部无倒挂可能。
+      </p>
+    </div>
+    <div class="card">
+      <div style="font-weight:600;margin-bottom:8px;">按 pre_score 分档（覆盖 70/125 = 56.0%，样本期最高）</div>
+      <div class="rpt-scroll"><table>
+        <thead><tr><th class="num">pre_score</th><th class="num">池内</th><th class="num">晋级</th><th class="num">晋级率</th><th style="width:110px;">分布</th></tr></thead>
+        <tbody>
+          <tr><td class="num">6 分</td><td class="num">4</td><td class="num">2</td><td class="num up em">50.0%</td><td><div class="bar"><i style="width:100%"></i></div></td></tr>
+          <tr><td class="num">1 分</td><td class="num">10</td><td class="num">3</td><td class="num up">30.0%</td><td><div class="bar"><i style="width:60%"></i></div></td></tr>
+          <tr><td class="num">2 分</td><td class="num">14</td><td class="num">4</td><td class="num up">28.6%</td><td><div class="bar"><i style="width:57%"></i></div></td></tr>
+          <tr><td class="num">5 分</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td><div class="bar n"><i style="width:50%"></i></div></td></tr>
+          <tr><td class="num">4 分</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td><div class="bar n"><i style="width:50%"></i></div></td></tr>
+          <tr><td class="num">3 分</td><td class="num">7</td><td class="num">0</td><td class="num down em">0.0%</td><td><div class="bar g"><i style="width:2%"></i></div></td></tr>
+          <tr><td class="num">0 分</td><td class="num">27</td><td class="num">1</td><td class="num em">3.7%</td><td><div class="bar n"><i style="width:7%"></i></div></td></tr>
+        </tbody>
+      </table></div>
+      <p class="rule" style="margin:9px 0 0;">
+        <b>结论：仅首尾有区分力。</b>6 分档 50.0% 登顶、0 分档 3.7% 垫底（13.5 倍），但中间 1/2 分档（30.0%/28.6%）反超 4/5 分档（25.0%），3 分档 0/7 零晋级 —— <b>非单调，中段仍倒置</b>。
+      </p>
+    </div>
+  </div>
+
+  <h2>5 · 开盘价区间规则 · 今日正反检验</h2>
+  <div class="card">
+    <div class="rpt-scroll"><table>
+      <thead><tr><th>规则分支</th><th class="num">样本</th><th class="num">实际封板</th><th class="num">封板率</th><th>判定</th><th>明细（● = 收盘封死）</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>🔒 一字晋级候选</b>（一字开·买一达标）</td><td class="num">7</td><td class="num">6</td><td class="num up em">85.7%</td>
+          <td><span class="tag t-bad">通道失效</span></td>
+          <td class="rule">大晟文化+10.07● / 高争民爆+10.00● / 阳光照明+10.00● / 皇台酒业+10.00● / 龙版传媒+10.00● / 东方海洋+9.97● ｜ <span class="down">劲旅环境+10.00 → 收 −9.52</span></td>
+        </tr>
+        <tr>
+          <td>⚠️ 一字但封单不足（&lt;10 万手）</td><td class="num">1</td><td class="num">1</td><td class="num up em">100%</td>
+          <td><span class="tag t-bad">门槛误杀</span></td>
+          <td class="rule">电魂网络+10.02（52,691 手）●</td>
+        </tr>
+        <tr>
+          <td>✅ 优秀（+3~5%，进入最终清单）</td><td class="num">2</td><td class="num">0</td><td class="num down em">0.0%</td>
+          <td><span class="tag t-warn">方向倒置</span></td>
+          <td class="rule">联赢激光+4.27 → +1.04 ｜ 欢瑞世纪+3.40 → +2.04</td>
+        </tr>
+        <tr>
+          <td>⚠️ 优秀条件未足（+3~5%，被压）</td><td class="num">7</td><td class="num">0</td><td class="num down em">0.0%</td>
+          <td><span class="tag t-ok">判对 7</span></td>
+          <td class="rule">华新建材+4.97 / 长江通信+4.25 / 郑中设计+4.21 / 上海电影+4.13 / 水井坊+3.95 / 中稀有色+3.85 / 桂林三金+3.15</td>
+        </tr>
+        <tr>
+          <td>⚠️ 谨慎（+1~3% 降级）</td><td class="num">21</td><td class="num">1</td><td class="num">4.8%</td>
+          <td><span class="tag t-warn">基本判对</span></td>
+          <td class="rule">三峡新材+1.65● ｜ 其余 20 只未封</td>
+        </tr>
+        <tr>
+          <td>❌ 放弃 &gt;+5%</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td>
+          <td><span class="tag t-ok">首次大幅转正</span></td>
+          <td class="rule">判对 5：合百集团+10.05→−4.94 / 深南电A+9.91→−1.94 / 红太阳+7.29→+1.62 / 澳洋健康+5.85→+4.62 / 青岛金王+5.62→+0.42 ｜ 误杀 1：<span class="up">奥飞娱乐+8.15●</span></td>
+        </tr>
+        <tr>
+          <td>❌ 放弃 0~+1%</td><td class="num">12</td><td class="num">3</td><td class="num up">25.0%</td>
+          <td><span class="tag t-warn">部分误杀</span></td>
+          <td class="rule">误杀 3：<span class="up">青岛双星+0.73● / 闽发铝业+0.29● / 紫竹高科+0.26●</span> ｜ 其余 9 只未封</td>
+        </tr>
+        <tr>
+          <td>❌ 放弃 ≤0%</td><td class="num">14</td><td class="num">0</td><td class="num down em">0.0%</td>
+          <td><span class="tag t-ok">判对 14</span></td>
+          <td class="rule">无一只封板，当日最干净分支（含亚玛顿 −100.00% 异常值，见下）</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <b>方向性结论：规则整体方向今日<b>完全反向</b>。</b>唯一封板率高的通道是「一字」（7 只 6 封 = 85.7%），但它被「一字候选无出口」整段排除在最终清单之外；而唯一进入最终清单的「+3~5% 优秀」档 9 只 <b>0 封</b>。中间低开档（0~+1%）反而有 25.0%。<br>
+      <b>「&gt;+5% 放弃」今日首次转正：</b>6 只 5 对 1 错，误杀率 <b>16.7%</b>，此前可算日该条误杀率为 50%~100%（10/8 75.0%、10/9 66.7%、10/12 100%、10/13 80.0%、10/14 50.0%、10/27 57.1%、10/29 33.3%、11/02 66.7%）→ <b>连续高误杀序列今日中断</b>，主因是当日 5 只高开标的全线炸板回落（含 2 只一字开被砸成负收益）。
+    </div>
+    <p class="rule" style="margin:8px 0 0;">
+      <b>数据异常标注：</b><code>002623 亚玛顿</code> 开盘涨幅被解析为 <b>−100.00%</b>（开盘价缺失/停牌），已归入 ≤0% 组但<b>不计入判定对错</b>；<code>603110 东方材料</code>、<code>002187 广百股份</code> 开 +0.00% 同属无有效竞价，按 ≤+1% 口径处理。
+    </p>
+  </div>
+
+  <h2>6 · 核心事实</h2>
+  <div class="card">
+    <ul class="facts">
+      <li><b>晋级 15/125 = 12.0%</b>，低于 32 日累计 19.7%（1,744 池 / 343 晋级）<b>7.7pp</b>；候选池 125 只为样本期最大（前值 11-02 为 47 只，+166%），晋级数亦为样本期最高绝对值。</li>
+      <li><b>分级当日有效：</b>S 20.0% &gt; A+ 15.6% &gt; A 5.5%，完整单调，A+/S 组为 A 组 3.11 倍。</li>
+      <li><b>筛选通道零命中：</b>2 只筛出标的（联赢激光 +4.27 开、欢瑞世纪 +3.40 开）全部<b>未触板</b>，收盘 +1.04% / +2.04%，最高价距涨停分别差 11.6% 与 2 分。</li>
+      <li><b>最优档反向：</b>「+3~5% 优秀」9 只 0 封（0.0%）；「0~+1%」12 只 3 封（25.0%）；一字组 7 只 6 封（85.7%）→ 三档封板率与档位高低完全倒挂。</li>
+      <li><b>「一字候选无出口」连续第 6 日：</b>6 只一字候选全部封死（阳光照明 4 板、东方海洋 4 板、皇台酒业 3 板、高争民爆 2 板、大晟文化 2 板、龙版传媒 2 板），全部落在最终清单外。</li>
+      <li><b>一字组风险敞口：</b>唯一失败者劲旅环境 +10.00% 开 → <b>−9.52%</b> 收（最高 20.68 = 涨停价、最低 16.93），单日振幅 −8.0pp，为当日最大单票回撤样本。</li>
+      <li><b>一字封单 10 万手门槛同型误杀累计第 16 次：</b>电魂网络买一档 52,691 手被弃，收盘封死 2 板（炸 1 次、封单 2,106 万）。</li>
+      <li><b>低开分支最干净：</b>「≤0% 放弃」14 只 0 封，判定 14/14 全对。</li>
+      <li><b>晋级结构：</b>2 板 12 只占 80.0%；零炸板 8/15 = 53.3%；首封 ≤09:31 共 9 只；午后首封仅 1 只（闽发铝业 13:00:03）。</li>
+      <li><b>封单集中度：</b>合计 21.34 亿，TOP3（高争民爆 5.50 亿、大晟文化 2.49 亿、东方海洋 2.16 亿）占 47.6%。</li>
+      <li><b>题材零聚集：</b>15 只晋级分属 15 个不同标签，传媒/AI 内容链（短剧·漫剧·AI影视·AI漫剧）4 只 = 26.7% 为最大交集，仍未形成单一主线。</li>
+      <li><b>覆盖缺口：</b>125 只池内仅 70 只产生开盘判定（<b>56.0%</b>），55 只从未进入判定视野；其中 3 只（七匹狼、浙文影业、文投控股）收盘封板 → <b>结构性漏报 3 只</b>。query_set 连续第 9 日为 0。</li>
+      <li><b>市场环境：</b>上证 −0.82%（3,608.10）、深成 −1.21%（10,876.99）、创业板 −2.73%（2,391.65），全线回落；涨停 48、炸板 34（炸板率 41.46%）、跌停 17、最高 4 板。</li>
+      <li><b>口径提示：</b>17:00 流水线 <code>zt_1700_data_20261103.json</code> 本次执行时尚未产出（15:47），无同比对账；东财涨停池 48 只为其独立口径。</li>
+    </ul>
+  </div>
+
+  <h2>7 · 累积样本库状态</h2>
+  <div class="card">
+    <div class="rpt-scroll"><table>
+      <thead><tr><th>指标</th><th class="num">今日</th><th class="num">32 日累计</th></tr></thead>
+      <tbody>
+        <tr><td>交易日样本数</td><td class="num">32</td><td class="num">32</td></tr>
+        <tr><td>候选池总量</td><td class="num">125</td><td class="num">1,744</td></tr>
+        <tr><td>晋级数量</td><td class="num">15</td><td class="num">343</td></tr>
+        <tr><td>晋级率</td><td class="num">12.0%</td><td class="num">19.7%</td></tr>
+        <tr><td>筛出数 / 命中数</td><td class="num">2 / 0</td><td class="num muted">—</td></tr>
+        <tr><td>误杀数（拒绝组误杀率）</td><td class="num">12（17.6%）</td><td class="num muted">—</td></tr>
+      </tbody>
+    </table></div>
+    <p class="rule" style="margin:10px 0 0;">
+      history 文件 <code>zt_925_review_history.json</code> 已追加至 <b>32 个交易日</b>。样本量早已满足 ≥10 日门槛。
+    </p>
+  </div>
+
+  <h2>8 · 规则重校准条件核验</h2>
+  <div class="card">
+    <div class="rpt-scroll"><table>
+      <thead><tr><th>条件</th><th>今日是否触发</th><th>依据</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>A 级晋级率连续 ≥ A+</td>
+          <td><span class="tag t-ok">未触发</span></td>
+          <td class="rule">A 5.5% 显著低于 A+ 15.6%，分级方向恢复正确</td>
+        </tr>
+        <tr>
+          <td>&gt;+5% / 一字 误杀率 &gt; 50%</td>
+          <td><span class="tag t-ok">未触发</span></td>
+          <td class="rule">&gt;+5% 分支误杀率 16.7%（连续高误杀序列中断）；综合拒绝组误杀率 17.6%</td>
+        </tr>
+        <tr>
+          <td>「一字通道无出口」持续失效</td>
+          <td><span class="tag t-bad">已触发（连续第 6 日）</span></td>
+          <td class="rule">10/27 门槛、10/28 无出口+临界一字、10/29 无出口×3、10/30 一字全未入报告、11/02 无出口×3、11/03 无出口×6 → <b>需为一字组建立独立出口规则</b></td>
+        </tr>
+        <tr>
+          <td>「+3~5% 最优档」零封板</td>
+          <td><span class="tag t-warn">新增观察项</span></td>
+          <td class="rule">该档 9 只 0 封，同时更低的「0~+1%」档 12 只 3 封；档位与结果方向倒挂</td>
+        </tr>
+        <tr>
+          <td>判定集覆盖率不足</td>
+          <td><span class="tag t-warn">持续（56.0%）</span></td>
+          <td class="rule">55/125 只无开盘判定，其中 3 只收盘封板；query_set 连续 9 日为 0</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <b>重校准结论：</b>今日 A 级与「&gt;+5%」两条阈值均<b>未达重校准条件</b>（分级方向修复、高开误杀率大幅回落）。唯一持续成立的是<b>「一字组无独立出口」</b>——连续第 6 个交易日、累计造成 6 只封板标的完全落在最终清单外，建议在下次重训练中单独立项。
+    </div>
+  </div>
+
+  <div class="foot">
+    数据来源：涨停池 = 东财 push2ex（akshare，48 只）；收盘行情 / 指数 = 腾讯 qt.gtimg.cn；TDX 未参与本次取数（headless 会话设计行为，未触发兜底）。<br>
+    生成时间 2026-11-03 15:47 ｜ 本报告仅呈现客观数据与统计结论，不含任何操作建议。
+  </div>
+
+</div>
+<!--metatail:start--><section class="rpt-meta"><h2>1 · 数据口径与溯源</h2>
+  <div class="card">
+    <div class="rpt-scroll"><table>
+      <thead><tr><th>项目</th><th>实际来源</th><th>结果</th><th>溯源字段</th></tr></thead>
+      <tbody>
+        <tr><td>数据源自检 doctor</td><td>nontdx_src.py doctor</td><td>primary 四项全 ok（indices/quote/kline_day/emotion）</td><td class="rule"><code>verdict=主源可用</code></td></tr>
+        <tr><td>当日涨停池</td><td>东财 push2ex（akshare）</td><td>48 只；已抓全，与候选池交叉</td><td class="rule"><code>src=akshare eastmoney</code></td></tr>
+        <tr><td>收盘精确涨跌幅</td><td>腾讯 qt.gtimg.cn</td><td>8/8 成功</td><td class="rule"><code>src=tencent</code> <code>tdx_fallback=false</code></td></tr>
+        <tr><td>指数</td><td>腾讯 qt.gtimg.cn</td><td>3/3 成功</td><td class="rule"><code>src=tencent</code></td></tr>
+        <tr><td>主力净额 / chg10 / pe_ttm</td><td>—</td><td class="muted">缺失（TDX 未注入，补缺不可用）</td><td class="rule"><code>tdx_enriched_fields=[]</code> <code>tdx_client_ok=false</code></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <b>本次未触发 TDX 兜底。</b>TDX 不可用是 headless 自动化会话的设计行为（<code>--strict-mcp-config</code> 阻断 plugin scope），非链路故障，<code>tdx_probed=false</code> 不代表异常。主力净额等 TDX 独有字段因此全缺，本报告不做资金流归因。<br>
+      <b>溯源坑复现：</b><code>zt_925_review_20261103.json</code> 的 <code>source</code> 字段仍写死为静态值 "tdx_screener"，与实际（akshare 东财）不符，以本节为准。
+    </div>
+  </div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+</html>
