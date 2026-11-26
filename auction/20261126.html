@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9:25竞价扫描收盘反查 · 20261126</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#ffffff; --line:#d8dee4; --tx:#1f2328; --tx2:#5b6570;
+  --red:#cf222e; --green:#1a7f37; --blue:#0969da; --amber:#9a6700; --gray:#6e7781;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.65;padding:24px 16px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:22px;font-weight:700;letter-spacing:-.2px}
+.sub{color:var(--tx2);font-size:12.5px;margin-top:6px}
+.head{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-bottom:16px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.badge{font-size:11.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--line);background:#f6f8fa;color:var(--tx2)}
+.badge.warn{border-color:#f0d8a8;background:#fdf6e3;color:var(--amber)}
+.badge.ok{border-color:#b7e2c0;background:#eefaf1;color:var(--green)}
+.badge.bad{border-color:#f5c2c7;background:#fff0f1;color:var(--red)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px}
+.kpi{background:#f9fbfc;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi .k{font-size:11.5px;color:var(--tx2)}
+.kpi .v{font-size:21px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+.kpi .n{font-size:11px;color:var(--gray);margin-top:2px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+h2{font-size:15.5px;font-weight:700;padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:3px;height:15px;background:var(--blue);border-radius:2px}
+h2 .tag{font-size:11px;font-weight:400;color:var(--tx2);background:#f6f8fa;border:1px solid var(--line);padding:1px 7px;border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:#f6f8fa;color:var(--tx2);font-weight:600;text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:12px}
+td{padding:7px 9px;border-bottom:1px solid #eef1f4;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fafbfc}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.up{color:var(--red);font-weight:600}
+.dn{color:var(--green);font-weight:600}
+.flat{color:var(--gray)}
+.mono{font-family:Consolas,Menlo,monospace;font-size:12px}
+.pill{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;white-space:nowrap}
+.pill.hit{background:#fff0f1;color:var(--red);border:1px solid #f5c2c7}
+.pill.miss{background:#eefaf1;color:var(--green);border:1px solid #b7e2c0}
+.pill.neu{background:#f6f8fa;color:var(--gray);border:1px solid var(--line)}
+.pill.warn{background:#fdf6e3;color:var(--amber);border:1px solid #f0d8a8}
+.pill.info{background:#eef4fd;color:var(--blue);border:1px solid #b6d3f7}
+.cell-name{font-weight:600}
+ul.facts{list-style:none}
+ul.facts li{padding:7px 0 7px 18px;position:relative;border-bottom:1px dashed #eef1f4;font-size:13px}
+ul.facts li:last-child{border-bottom:none}
+ul.facts li::before{content:"•";position:absolute;left:4px;color:var(--blue);font-weight:700}
+.note{background:#fdf9ee;border:1px solid #f0e0b8;border-radius:8px;padding:11px 14px;font-size:12.5px;color:#6b5300;margin-top:12px}
+.note.gray{background:#f6f8fa;border-color:var(--line);color:var(--tx2)}
+.bar{height:6px;background:#eef1f4;border-radius:3px;overflow:hidden;min-width:52px}
+.bar>i{display:block;height:100%;background:var(--red);border-radius:3px}
+.bar.g>i{background:var(--blue)}
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:820px){.gr{grid-template-columns:1fr}table{font-size:11.5px}th,td{padding:6px 5px}}
+.foot{text-align:center;color:var(--gray);font-size:11.5px;padding:8px}
+</style>
+<!--rp:start--><style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{line-height:1.8}img{max-width:100%;height:auto}.rpt-nav{position:sticky;top:0;z-index:60;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 6px;margin:0 0 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #d8dee4;font-family:-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.6}.rpt-nav a{font-size:.86em;padding:6px 14px;border:1px solid #d8dee4;border-radius:8px;color:#1f2328;background:#fff;text-decoration:none;transition:all .2s;white-space:nowrap}.rpt-nav a:hover{background:rgba(10,102,194,.08);border-color:#0a66c2;text-decoration:none}.rpt-nav a.active{background:#0a66c2;color:#fff;border-color:#0a66c2;font-weight:600}.rpt-nav.canvas{position:static;margin:0;border-radius:0;border-left:0;border-right:0;border-top:0;box-shadow:0 2px 10px rgba(0,0,0,.08);flex:0 0 auto}body:has(>.rpt-nav.canvas){display:flex;flex-direction:column;height:100vh;overflow:hidden;padding:0}body:has(>.rpt-nav.canvas)>.app{flex:1 1 0;min-height:0;height:auto}@media(max-width:760px){.rpt-nav{padding:8px 4px;gap:5px;margin-bottom:16px}.rpt-nav a{padding:5px 10px;font-size:.8em}}@media(max-width:760px){html,body{max-width:100%;overflow-x:hidden}.rpt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}table{max-width:100%}th,td{padding:5px 6px}img,svg,video,iframe,pre{max-width:100%;height:auto}body{overflow-wrap:anywhere;word-break:break-word}h1{font-size:20px}h2{font-size:16px}h3{font-size:15px}}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#c9d1d9;border-radius:6px}::-webkit-scrollbar-track{background:transparent}</style><!--rp:end--></head>
+<body><!--rptnav:start--><div class="rpt-nav"><a href="../index.html">🏠 首页</a><a href="../index.html#latest">📅 最新</a><a href="../index.html#archive">🗂️ 历史归档</a><a href="../auction/index.html" class="active" title="竞价反查 列表">🔍 竞价反查</a></div><!--rptnav:end-->
+<div class="wrap">
+
+<div class="head">
+  <h1>9:25 竞价打板扫描 · 收盘反查报告</h1>
+  <div class="sub">交易日 <strong>2026-11-26（周四）</strong> ｜ 候选池基准日 2026-11-25 ｜ 报告生成 15:45（收盘后）</div>
+  <div class="badges">
+    <span class="badge ok">主源正常（indices/quote/kline/emotion 全 ok）</span>
+    <span class="badge">涨停池：akshare 东财 65 只</span>
+    <span class="badge">收盘行情：腾讯 qt.gtimg.cn</span>
+    <span class="badge warn">TDX 未注入（headless 设计行为，未触发兜底）</span>
+    <span class="badge bad">分级倒挂：A+ 14.3% &lt; A 40.0%</span>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="k">候选池总数</div><div class="v">51</div><div class="n">S13 / A+21 / A15 / B+2</div></div>
+    <div class="kpi"><div class="k">今日晋级涨停</div><div class="v">14</div><div class="n">晋级率 27.5%（前值 25.5%）</div></div>
+    <div class="kpi"><div class="k">扫描筛出</div><div class="v">8</div><div class="n">实际封板 1</div></div>
+    <div class="kpi"><div class="k">筛出命中率</div><div class="v">12.5%</div><div class="n">1/8，唯一命中全筑股份</div></div>
+    <div class="kpi"><div class="k">过滤误杀</div><div class="v">7</div><div class="n">误杀率 26.9%（7/26）</div></div>
+    <div class="kpi"><div class="k">判定覆盖率</div><div class="v">66.7%</div><div class="n">34/51，漏报 6 只</div></div>
+  </div>
+</div>
+
+<section>
+  
+</section>
+
+<section>
+  <h2>3 · 扫描筛出标的 vs 实际收盘 <span class="tag">8 只 · 命中 1</span></h2>
+  <div class="rpt-scroll"><table>
+    <thead><tr>
+      <th>代码</th><th>名称</th><th class="num">开盘涨幅</th><th>竞价判定</th><th class="num">买一档(手)</th>
+      <th class="num">收盘涨跌</th><th>封板</th><th class="num">连板</th><th>结果</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="mono">603030</td><td class="cell-name">全筑股份</td><td class="num up">+4.21%</td><td><span class="pill hit">✅ 优秀 +3~5%</span></td><td class="num">1001</td><td class="num up">+9.96%</td><td>封死</td><td class="num">3</td><td><span class="pill hit">命中</span></td></tr>
+      <tr><td class="mono">002548</td><td class="cell-name">金新农</td><td class="num up">+3.19%</td><td><span class="pill warn">✅ 优秀 +3~5%</span></td><td class="num">11792</td><td class="num up">+6.39%</td><td>未封（触板炸）</td><td class="num">—</td><td><span class="pill miss">未封</span></td></tr>
+      <tr><td class="mono">000593</td><td class="cell-name">德龙汇能</td><td class="num up">+2.24%</td><td><span class="pill warn">✅ 最佳 +1~3%</span></td><td class="num">4</td><td class="num up">+5.99%</td><td>未封（距板 3.6%）</td><td class="num">—</td><td><span class="pill miss">未封</span></td></tr>
+      <tr><td class="mono">002164</td><td class="cell-name">宁波东力</td><td class="num up">+2.12%</td><td><span class="pill warn">✅ 最佳 +1~3%</span></td><td class="num">321</td><td class="num dn">-2.95%</td><td>未封</td><td class="num">—</td><td><span class="pill miss">失败</span></td></tr>
+      <tr><td class="mono">603069</td><td class="cell-name">海汽集团</td><td class="num up">+1.91%</td><td><span class="pill warn">✅ 最佳 +1~3%</span></td><td class="num">216</td><td class="num dn">-6.72%</td><td>未封</td><td class="num">—</td><td><span class="pill miss">失败</span></td></tr>
+      <tr><td class="mono">002900</td><td class="cell-name">哈三联</td><td class="num up">+1.55%</td><td><span class="pill warn">✅ 最佳 +1~3%</span></td><td class="num">3</td><td class="num dn">-5.48%</td><td>未封</td><td class="num">—</td><td><span class="pill miss">失败</span></td></tr>
+      <tr><td class="mono">605136</td><td class="cell-name">丽人丽妆</td><td class="num up">+1.53%</td><td><span class="pill warn">✅ 最佳 +1~3%</span></td><td class="num">27</td><td class="num dn">-4.97%</td><td>未封</td><td class="num">—</td><td><span class="pill miss">失败</span></td></tr>
+      <tr><td class="mono">000908</td><td class="cell-name">石药景峰</td><td class="num up">+1.46%</td><td><span class="pill warn">✅ 最佳 +1~3%</span></td><td class="num">119</td><td class="num dn">-7.90%</td><td>未封</td><td class="num">—</td><td><span class="pill miss">失败</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <strong>筛出组收盘均值 -0.71%</strong>（8 只：1 只封板 +9.96%、2 只上涨未封、5 只收跌）。分化极端：命中 1 只封 3 板，而 5 只收跌中 3 只跌超 5%（海汽 -6.72、石药景峰 -7.90、哈三联 -5.48）。「✅ 最佳 +1~3%」档 0/6 全灭，<strong>连续第 3 日该档零命中</strong>。
+  </div>
+</section>
+
+<section>
+  <h2>4 · 候选池晋级完整清单 <span class="tag">14 只 / 51</span></h2>
+  <div class="rpt-scroll"><table>
+    <thead><tr>
+      <th>代码</th><th>名称</th><th>评级</th><th class="num">pre</th><th class="num">连板</th><th class="num">今日炸板</th>
+      <th class="num">封单(万)</th><th>首封时间</th><th>板块</th><th>未被选中原因</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="mono">002872</td><td class="cell-name">天圣制药</td><td><span class="pill hit">S</span></td><td class="num">6</td><td class="num">3</td><td class="num">0</td><td class="num">18090.6</td><td class="mono">09:25:00</td><td>撤销风险警示</td><td><span class="pill neu">一字无出口</span></td></tr>
+      <tr><td class="mono">600814</td><td class="cell-name">杭州解百</td><td><span class="pill hit">S</span></td><td class="num">6</td><td class="num">4</td><td class="num">8</td><td class="num">859.4</td><td class="mono">09:25:01</td><td>百货零售</td><td><span class="pill neu">一字无出口（炸板8次）</span></td></tr>
+      <tr><td class="mono">603960</td><td class="cell-name">克来机电</td><td><span class="pill hit">S</span></td><td class="num">6</td><td class="num">5</td><td class="num">3</td><td class="num">6898.5</td><td class="mono">09:31:14</td><td>工业机器人</td><td><span class="pill warn">&gt;+5% 放弃</span></td></tr>
+      <tr><td class="mono">603030</td><td class="cell-name">全筑股份</td><td><span class="pill hit">S</span></td><td class="num">5</td><td class="num">3</td><td class="num">2</td><td class="num">5416.6</td><td class="mono">09:55:15</td><td>先进光源</td><td><span class="pill hit">✅ 已筛出（唯一命中）</span></td></tr>
+      <tr><td class="mono">002651</td><td class="cell-name">利君股份</td><td><span class="pill hit">S</span></td><td class="num">3</td><td class="num">3</td><td class="num">0</td><td class="num">11584.6</td><td class="mono">09:25:00</td><td>航空军工</td><td><span class="pill neu">一字无出口</span></td></tr>
+      <tr><td class="mono">600280</td><td class="cell-name">中央商场</td><td><span class="pill hit">A+</span></td><td class="num">2</td><td class="num">2</td><td class="num">5</td><td class="num">3250.9</td><td class="mono">09:25:01</td><td>百货零售</td><td><span class="pill neu">一字无出口（炸板5次）</span></td></tr>
+      <tr><td class="mono">600227</td><td class="cell-name">赤天化</td><td><span class="pill hit">A+</span></td><td class="num">1</td><td class="num">2</td><td class="num">6</td><td class="num">1031.0</td><td class="mono">13:42:01</td><td>尿素</td><td><span class="pill warn">低开 -2.79% 放弃</span></td></tr>
+      <tr><td class="mono">603324</td><td class="cell-name">盛剑科技</td><td><span class="pill hit">A+</span></td><td class="num">0</td><td class="num">2</td><td class="num">0</td><td class="num">378.3</td><td class="mono">14:56:40</td><td>光刻胶配套</td><td><span class="pill warn">0.00% 勉强档放弃</span></td></tr>
+      <tr><td class="mono">600722</td><td class="cell-name">金牛化工</td><td><span class="pill info">A</span></td><td class="num">—</td><td class="num">3</td><td class="num">0</td><td class="num">13165.1</td><td class="mono">09:58:42</td><td>甲醇</td><td><span class="pill miss">漏报·未进判定视野</span></td></tr>
+      <tr><td class="mono">600229</td><td class="cell-name">城市传媒</td><td><span class="pill info">A</span></td><td class="num">—</td><td class="num">2</td><td class="num">4</td><td class="num">570.8</td><td class="mono">09:30:16</td><td>AIGC</td><td><span class="pill miss">漏报·未进判定视野</span></td></tr>
+      <tr><td class="mono">600467</td><td class="cell-name">好当家</td><td><span class="pill info">A</span></td><td class="num">—</td><td class="num">2</td><td class="num">0</td><td class="num">5459.7</td><td class="mono">10:28:56</td><td>海参</td><td><span class="pill miss">漏报·未进判定视野</span></td></tr>
+      <tr><td class="mono">600103</td><td class="cell-name">青山纸业</td><td><span class="pill info">A</span></td><td class="num">—</td><td class="num">2</td><td class="num">3</td><td class="num">3456.3</td><td class="mono">10:19:52</td><td>光模块</td><td><span class="pill miss">漏报·未进判定视野</span></td></tr>
+      <tr><td class="mono">002197</td><td class="cell-name">证通电子</td><td><span class="pill info">A</span></td><td class="num">—</td><td class="num">2</td><td class="num">1</td><td class="num">10399.7</td><td class="mono">09:25:00</td><td>算力租赁</td><td><span class="pill miss">漏报·未进判定视野</span></td></tr>
+      <tr><td class="mono">002144</td><td class="cell-name">宏达高科</td><td><span class="pill info">A</span></td><td class="num">—</td><td class="num">2</td><td class="num">2</td><td class="num">45681.4</td><td class="mono">09:30:09</td><td>汽车内饰</td><td><span class="pill miss">漏报·未进判定视野</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <strong>结构特征：</strong>14 只晋级中 5 只首封于 09:25:00–09:25:01（开盘即封），封单额最高为宏达高科 4.57 亿、天圣制药 1.81 亿、金牛化工 1.32 亿、利君股份 1.16 亿。<strong>6 只漏报全部为 A 级、全部为 2 板</strong>——A 档晋级率高达 40%，但判定视野仅覆盖 34/51（66.7%），A 档成员大量从未进入开盘价规则判定。
+  </div>
+</section>
+
+<section>
+  <h2>5 · 分级有效性检验</h2>
+  <div class="gr">
+    <div>
+      <div class="rpt-scroll"><table>
+        <thead><tr><th>评级</th><th class="num">池</th><th class="num">晋级</th><th class="num">晋级率</th><th style="width:80px"></th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill info">A</span></td><td class="num">15</td><td class="num">6</td><td class="num up">40.0%</td><td><div class="bar g"><i style="width:100%"></i></div></td></tr>
+          <tr><td><span class="pill hit">S</span></td><td class="num">13</td><td class="num">5</td><td class="num up">38.5%</td><td><div class="bar g"><i style="width:96%"></i></div></td></tr>
+          <tr><td><span class="pill hit">A+</span></td><td class="num">21</td><td class="num">3</td><td class="num dn">14.3%</td><td><div class="bar"><i style="width:36%"></i></div></td></tr>
+          <tr><td><span class="pill neu">B+</span></td><td class="num">2</td><td class="num">0</td><td class="num flat">0.0%</td><td><div class="bar"><i style="width:1%"></i></div></td></tr>
+        </tbody>
+      </table></div>
+      <div class="note">
+        <strong>A+ 垫底（除 B+ 小样本）。</strong>A+（21 只最大样本池）晋级率 14.3%，被 A（40.0%）反超 <strong>25.7pp</strong>，被 S（38.5%）超出 24.2pp。<strong>A+ 压 A 的假设在今日被证伪</strong>；且 A+ 是池内最大档却贡献最少晋级（3 只）。
+      </div>
+    </div>
+    <div>
+      <div class="rpt-scroll"><table>
+        <thead><tr><th class="num">pre_score</th><th class="num">池</th><th class="num">晋级</th><th class="num">晋级率</th><th style="width:80px"></th></tr></thead>
+        <tbody>
+          <tr><td class="num">6 分</td><td class="num">4</td><td class="num">3</td><td class="num up">75.0%</td><td><div class="bar g"><i style="width:100%"></i></div></td></tr>
+          <tr><td class="num">5 分</td><td class="num">2</td><td class="num">1</td><td class="num up">50.0%</td><td><div class="bar g"><i style="width:67%"></i></div></td></tr>
+          <tr><td class="num">1 分</td><td class="num">2</td><td class="num">1</td><td class="num up">50.0%</td><td><div class="bar g"><i style="width:67%"></i></div></td></tr>
+          <tr><td class="num">0 分</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td><div class="bar"><i style="width:44%"></i></div></td></tr>
+          <tr><td class="num">2 分</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td><td><div class="bar"><i style="width:22%"></i></div></td></tr>
+          <tr><td class="num">3 分</td><td class="num">7</td><td class="num">1</td><td class="num">14.3%</td><td><div class="bar"><i style="width:19%"></i></div></td></tr>
+          <tr><td class="num">4 分</td><td class="num">10</td><td class="num">0</td><td class="num dn">0.0%</td><td><div class="bar"><i style="width:1%"></i></div></td></tr>
+        </tbody>
+      </table></div>
+      <div class="note">
+        <strong>高分端有效、中部彻底失序。</strong>6 分档 75%（3/4）最强，但 4 分档 10 只<strong>全灭（0/10）</strong>，而 1 分档 50%、0 分档 33.3% 反超 4/3/2 分档。<strong>单调性破坏</strong>：pre_score 在 4 分附近完全无预测力，仅 6 分与 ≤1 分两端有信号。覆盖 34/51 = 66.7%。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>6 · 开盘价区间规则 · 今日正反检验 <span class="tag">34 只进判定 · 7 只误杀</span></h2>
+  <div class="rpt-scroll"><table>
+    <thead><tr>
+      <th>规则档位</th><th class="num">标的数</th><th class="num">收盘封板</th><th class="num">档内封板率</th><th>判定是否正确</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="pill hit">通过 · ✅ 优秀/最佳</span> +1~5%</td><td class="num">8</td><td class="num">1</td><td class="num">12.5%</td><td>混判：仅全筑股份封 3 板；6 只「最佳」档全灭，海汽/石药景峰跌超 6.7%</td></tr>
+      <tr><td><span class="pill neu">🔒 一字晋级候选</span> 封单门槛</td><td class="num">4</td><td class="num">4</td><td class="num up">100%</td><td><span class="pill neu">全对但无出口</span> 天圣/杭州解百/利君/中央商场全部封死，门槛值 21.6~50.9 万手全数通过</td></tr>
+      <tr><td><span class="pill warn">⚠️ 勉强</span> 0~+1%</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td><td>基本判对：唯一例外盛剑科技（0.00% 开，14:56 尾盘封 2 板，封单仅 378 万）</td></tr>
+      <tr><td><span class="pill miss">❌ 放弃</span> &gt;+5%</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td>3 对 1 错：克来机电 +8.60 开→5 板（误杀）；汇洲 +5.85 / 福瑞达 +8.93 / 特一 +10.06 均炸板告负（判对）</td></tr>
+      <tr><td><span class="pill miss">❌ 放弃</span> 低开 &lt;0%</td><td class="num">12</td><td class="num">1</td><td class="num">8.3%</td><td><strong>11/12 判对（91.7%）</strong>；唯一误杀赤天化 -2.79 开→尾盘 13:42 封 2 板（炸板 6 次）</td></tr>
+      <tr><td><span class="pill miss">❌ 放弃</span> 其他（+1~5% 但条件不足）</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>无此类（16 只放弃全归入 &gt;+5% 与低开两档）</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 style="margin-top:22px">误杀清单 <span class="tag">7 只 · 全部涨停收盘</span></h2>
+  <div class="rpt-scroll"><table>
+    <thead><tr><th>代码</th><th>名称</th><th class="num">开盘</th><th>触发规则</th><th class="num">收盘</th><th class="num">连板</th><th class="num">封单(万)</th><th>可买性</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">002872</td><td class="cell-name">天圣制药</td><td class="num up">+10.00%</td><td>一字门槛通过→无出口</td><td class="num up">+10.00%</td><td class="num">3</td><td class="num">18090.6</td><td><span class="pill neu">不可买（一字）</span></td></tr>
+      <tr><td class="mono">600814</td><td class="cell-name">杭州解百</td><td class="num up">+10.06%</td><td>一字门槛通过→无出口</td><td class="num up">+10.06%</td><td class="num">4</td><td class="num">859.4</td><td><span class="pill neu">不可买（一字）</span></td></tr>
+      <tr><td class="mono">002651</td><td class="cell-name">利君股份</td><td class="num up">+10.00%</td><td>一字门槛通过→无出口</td><td class="num up">+10.00%</td><td class="num">3</td><td class="num">11584.6</td><td><span class="pill neu">不可买（一字）</span></td></tr>
+      <tr><td class="mono">600280</td><td class="cell-name">中央商场</td><td class="num up">+9.93%</td><td>一字门槛通过→无出口</td><td class="num up">+9.93%</td><td class="num">2</td><td class="num">3250.9</td><td><span class="pill neu">不可买（一字）</span></td></tr>
+      <tr><td class="mono">603960</td><td class="cell-name">克来机电</td><td class="num up">+8.60%</td><td>&gt;+5% 放弃</td><td class="num up">+10.00%</td><td class="num">5</td><td class="num">6898.5</td><td><span class="pill hit">可买 · 成本最大</span></td></tr>
+      <tr><td class="mono">603324</td><td class="cell-name">盛剑科技</td><td class="num flat">0.00%</td><td>0~+1% 勉强档</td><td class="num up">+10.01%</td><td class="num">2</td><td class="num">378.3</td><td><span class="pill hit">可买</span></td></tr>
+      <tr><td class="mono">600227</td><td class="cell-name">赤天化</td><td class="num dn">-2.79%</td><td>低开 放弃</td><td class="num up">+9.91%</td><td class="num">2</td><td class="num">1031.0</td><td><span class="pill hit">可买</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <strong>规则方向性：</strong>通过组封板率 12.5%（1/8），放弃组 12.5%（2/16）——<strong>两组完全持平，差 0.0pp，规则今日无区分度</strong>（前值 -2.7pp）。勉强档 16.7% 反而最高。<br>
+    <strong>&gt;+5% 档误杀率回落至 25%（1/4）</strong>，终结连续 3 日 ≥50% 的恶化（11/23 100%、11/24 100%、11/25 75%）。<br>
+    <strong>真正可买的误杀仅 3 只</strong>（克来、盛剑、赤天化），另 4 只一字板开盘即封死、全天零成交机会，不构成可执行的机会成本。<br>
+    <strong>一字无出口连续第 17 个交易日</strong>：4/4 全封、门槛 21.6~50.9 万手全通过，但规则只识别不输出买点。
+  </div>
+</section>
+
+<section>
+  <h2>7 · 核心事实（仅当日数据）</h2>
+  <ul class="facts">
+    <li>候选池 51 只 → 晋级 14 只，晋级率 <strong>27.5%</strong>，高于 49 日累计 20.2%，为近 5 日次高（11/23 57.1% 为峰）。</li>
+    <li>评级：A 40.0%（6/15）&gt; S 38.5%（5/13）&gt; <strong>A+ 14.3%（3/21）</strong> &gt; B+ 0%。A+ 作为最大样本池垫底，与 A 反向差 25.7pp。</li>
+    <li>pre_score：6 分档 75%（3/4）为唯一强信号，4 分档 0/10 全灭，1 分档 50%、0 分档 33.3% 反超中部档。</li>
+    <li>扫描筛出 8 只，收盘封板 1 只（全筑股份，3 板，封单 5417 万，炸板 2 次），命中率 12.5%；筛出组收盘均值 <strong>-0.71%</strong>。</li>
+    <li>「✅ 最佳 +1~3%」档 6 只全部未封且 5 只收跌，其中海汽 -6.72%、石药景峰 -7.90%、哈三联 -5.48%。</li>
+    <li>过滤放弃 26 只中 7 只收盘涨停，误杀率 26.9%；其中一字板 4 只不可买，可买误杀 3 只（克来、盛剑、赤天化）。</li>
+    <li>低开档 12 只仅 1 只封板（赤天化），规则判对率 91.7%，为全部规则档中最干净的一档。</li>
+    <li>判定覆盖 34/51 = 66.7%，6 只漏报全部为 A 级 2 板，均未进入开盘价规则判定视野。</li>
+    <li>今日 7 只误杀标的中 4 只炸板次数 ≥3（杭州解百 8 次、赤天化 6 次、中央商场 5 次、克来 3 次），封板质量普遍偏低，但最终全部封死。</li>
+    <li>市场环境：上证 +0.01%、深成 -0.02%、创业板 +0.29%，全天涨停 65 只，指数窄幅震荡、个股端活跃。</li>
+    <li>与前一交易日对比：11/25 池 55 → 晋级 14（同数），但筛出由 0 只增至 8 只、误杀由 0 增至 7。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>8 · 累积样本库状态</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="k">累计交易日</div><div class="v">49</div><div class="n">20260902 ~ 20261126</div></div>
+    <div class="kpi"><div class="k">累计晋级</div><div class="v">558 / 2763</div><div class="n">20.2%</div></div>
+    <div class="kpi"><div class="k">今日 vs 累计</div><div class="v">+7.3pp</div><div class="n">27.5% vs 20.2%</div></div>
+  </div>
+  <div class="note gray" style="margin-top:14px">
+    <strong>重校准阈值检查：</strong>① A 级晋级率连续 5 日 ≥ A+ → <strong>未触发</strong>（今日 A 40.0% &gt; A+ 14.3%，为单日反超，此前 11/24 A+ 11.8% &lt; A 8.9%、11/23 A+ 73.3% &gt; A 37.5%，方向不稳定）。② &gt;+5% 档误杀率连续 &gt;50% → <strong>已中断</strong>（今日 25%，此前连续 3 日超阈值）。③ 样本已 49 日 ≥10 日，具备重校准样本量。<br>
+    <strong>持续成立的结构性缺陷（不达硬阈值但需纳入周五重训练）：</strong>分级 A+ 与 A 区分度不稳定 / pre_score 中部 4 分档 0% 单调性破坏 / 一字无出口连续 17 日 / 判定覆盖仅 66.7% 且漏报全部集中在高晋级的 A 档 2 板 / 「最佳 +1~3%」档连续 3 日零命中。
+  </div>
+</section>
+
+<div class="foot">数据来源：akshare 东财涨停池 · 腾讯 qt.gtimg.cn 收盘行情｜本报告仅呈现客观数据与统计结论，不含任何操作建议</div>
+</div>
+<!--metatail:start--><section class="rpt-meta"><h2>2 · 数据口径说明</h2>
+  <div class="rpt-scroll"><table>
+    <tr><th style="width:150px">项目</th><th>口径与来源</th><th style="width:190px">溯源字段</th></tr>
+    <tr><td>涨停池（只数）</td><td>东财 push2ex 收盘数据，经 akshare <span class="mono">stock_zt_pool_em(20261126)</span>，<strong>65 只</strong></td><td><span class="pill info">eastmoney</span></td></tr>
+    <tr><td>收盘行情</td><td>腾讯 <span class="mono">qt.gtimg.cn</span>，15:46 快照（现价/涨跌%/开盘%/高低/换手/量比/涨停价）</td><td><span class="pill info">tencent qt.gtimg.cn</span></td></tr>
+    <tr><td>指数</td><td>腾讯 qt.gtimg.cn：上证 3476.88 (+0.01%)、深成 10084.04 (-0.02%)、创业板 2189.82 (+0.29%)</td><td><span class="pill info">tencent</span></td></tr>
+    <tr><td>候选池</td><td><span class="mono">zt_925_candidates.json</span>，date=20261125 与 T_PREV 一致 ✅，status=ok</td><td><span class="pill neu">—</span></td></tr>
+    <tr><td>早盘报告</td><td><span class="mono">zt_925_report_20261126.html</span> 09:25 生成 → 全量版（非降级）</td><td><span class="pill ok" style="background:#eefaf1;color:#1a7f37;border:1px solid #b7e2c0">report_exists=true</span></td></tr>
+    <tr><td>TDX 状态</td><td>doctor: <span class="mono">tdx.ok=false</span>（会话未注入连接器，headless 设计行为）；quote <span class="mono">tdx_probed=false</span> 表示无需兜底，非故障</td><td><span class="pill neu">tdx_fallback=false</span></td></tr>
+  </table></div>
+  <div class="note gray">
+    <strong>口径差异说明：</strong>本次涨停池 65 只（东财）。17:00 流水线 <span class="mono">zt_1700_data_20261126.json</span> 截至 15:45 尚未生成，无法与流水线口径对账。另：<span class="mono">review.py</span> 的 <span class="mono">source</span> 字段仍静态写 <span class="mono">"tdx_screener"</span>，与实际取数（akshare 东财）不符，属脚本遗留缺陷，本报告以实际调用链为准。<br>
+    <strong>TDX 涨停池探测失败已自动降级 akshare 东财，未发生 nontdx_src.py 层面的 TDX 兜底，故无 fallback_errors。</strong>
+  </div></section><!--metatail:end--><!--rp:start--><style>.rp-back{position:fixed;right:16px;bottom:16px;z-index:9998;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.95);border:1px solid #d8dee4;color:#5b6570;font-size:13px;text-decoration:none;font-family:-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}.rp-back:hover{color:#0a66c2;border-color:#0a66c2;text-decoration:none}</style><a class="rp-back" href="../index.html" title="返回目录页">← 目录</a><!--rp:end--></body>
+</html>
